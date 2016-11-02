@@ -1,0 +1,13 @@
+package com.vico.license.pojo;
+
+public class DataTableRequest {
+	
+	private Integer draw;
+	private Integer start;
+	private Integer length;
+	private <T>  t;
+	
+	
+	
+	
+}

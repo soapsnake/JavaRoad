@@ -1,0 +1,10 @@
+package com.ld.runnable.terminating;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Entrance {
+	
+	private static Count count = new Count();
+	private static List<Entrance> entrances = new ArrayList<Entrance>();
+}

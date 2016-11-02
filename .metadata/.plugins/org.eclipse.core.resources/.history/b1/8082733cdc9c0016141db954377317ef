@@ -1,0 +1,63 @@
+package com.vico.license.controller;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.vico.license.pojo.DataTableRequest;
+import com.vico.license.pojo.User;
+import com.vico.license.pojo.UserByPage;
+import com.vico.license.service.UserService;
+
+
+
+
+@RestController
+@RequestMapping("user")
+public class UserController {
+	
+	@Autowired
+	UserService userService;
+	
+	@RequestMapping(value="showAllUsers")
+	public List<User> showAllUsers(){
+		
+		List<User> users = new ArrayList<User>();
+		try {
+			users = userService.SelectAllUsers();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return users;
+	}
+	
+	@RequestMapping(value="getUserByPage")
+	public List<User> getUserByPage(@RequestBody DataTableRequest request){
+		
+		List<UserByPage> result = new ArrayList<UserByPage>();
+		try {
+			users = userService.getUserByPage(request);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return users;
+	}
+	
+	@RequestMapping(value="addUser")
+	public User addUser(@RequestBody User user){
+		int res = 0;
+		System.out.println("++++++++++++"+user.getUsername());
+		try {
+			res= userService.addUser(user);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return user;
+	}
+	
+	
+}

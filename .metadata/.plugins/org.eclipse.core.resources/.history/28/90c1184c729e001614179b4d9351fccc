@@ -1,0 +1,17 @@
+package com.ld.runnable.terminating;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Entrance {
+	
+	private static Count count = new Count();
+	private static List<Entrance> entrances = new ArrayList<Entrance>();
+	private int number = 0;
+	private final int id;
+	private static volatile boolean canceled = false;
+	public static void cancel() { canceled = true;}
+	public Entrance(int id){
+		this.id = id;
+	}
+}

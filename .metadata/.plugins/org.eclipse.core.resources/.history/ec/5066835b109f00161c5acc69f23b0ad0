@@ -1,0 +1,9 @@
+package com.vico.license.dao;
+
+public interface UserDao {
+	
+	
+	
+	
+	
+}

@@ -1,0 +1,12 @@
+package com.vico.license.pojo;
+
+public class UserByPage {
+	
+	private Integer draw;
+	private Integer recordsTotal;
+	private Integer recordsFilterted;
+	private User user;
+	private String error;
+	
+	
+}

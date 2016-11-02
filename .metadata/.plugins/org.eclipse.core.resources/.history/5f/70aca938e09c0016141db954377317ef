@@ -1,0 +1,5 @@
+package com.vico.license.dao.test;
+
+public class UserDaoTest {
+
+}

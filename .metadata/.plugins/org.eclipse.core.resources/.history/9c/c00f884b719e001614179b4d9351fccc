@@ -1,0 +1,6 @@
+package com.ld.runnable.terminating;
+
+public class Entrance {
+	
+	private static Count count = new Count();
+}

@@ -1,0 +1,5 @@
+package com.vico.license.pojo;
+
+public class PageBean {
+
+}

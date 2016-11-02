@@ -1,0 +1,5 @@
+package com.vico.license.controller;
+
+public class UserController {
+
+}

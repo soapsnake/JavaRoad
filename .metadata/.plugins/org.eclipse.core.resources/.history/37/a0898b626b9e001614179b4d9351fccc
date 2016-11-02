@@ -1,0 +1,5 @@
+package com.ld.runnable.synchronize;
+
+public class DualSynch {
+
+}

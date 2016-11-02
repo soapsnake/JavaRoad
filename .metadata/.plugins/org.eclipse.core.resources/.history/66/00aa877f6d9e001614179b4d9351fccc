@@ -1,0 +1,5 @@
+package com.ld.runnable.threadlocal;
+
+public class ThreadLocalVariableHolder {
+
+}
