@@ -2,15 +2,19 @@ package com.vico.license.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.websocket.server.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.vico.license.pojo.DataTableRequest;
+import com.vico.license.pojo.ProcessResult;
 import com.vico.license.pojo.User;
 import com.vico.license.pojo.UserByPage;
 import com.vico.license.service.UserService;
@@ -25,28 +29,22 @@ public class UserController {
 	@Autowired
 	UserService userService;
 	
-	@RequestMapping(value="showAllUsers")
+	@RequestMapping(value="showAllUsers",method=RequestMethod.GET)
 	public List<User> showAllUsers(){
 		
 		List<User> users = new ArrayList<User>();
 		try {
 			users = userService.SelectAllUsers();
 		} catch (Exception e) {
-			// TODO: handle exception
+			// TODO: handle exceptions
 		}
 		return users;
 	}
 	
-	@RequestMapping(value="getUserByPage")
+	@RequestMapping(value="getUserByPage",method=RequestMethod.POST)
 	public UserByPage getUserByPage( HttpServletRequest request){
-		
-		System.out.println("*****draw: "+request.getParameter("draw"));
-		System.out.println("*****start: "+request.getParameter("start"));
-		System.out.println("*****length: "+request.getParameter("length"));
-		
 		DataTableRequest dataTableRequest = new DataTableRequest();
 		UserByPage result = new UserByPage();
-		
 		try {
 			dataTableRequest.setDraw(Integer.parseInt(request.getParameter("draw")));
 			dataTableRequest.setLength(Integer.parseInt(request.getParameter("length")));
@@ -60,7 +58,7 @@ public class UserController {
 		return result;
 	}
 	
-	@RequestMapping(value="addUser")
+	@RequestMapping(value="addUser",method=RequestMethod.POST)
 	public User addUser(@RequestBody User user){
 		int res = 0;
 		System.out.println("+++++"+user.getUsername());
@@ -71,4 +69,34 @@ public class UserController {
 		}
 		return user;
 	}
-}
+	
+	@RequestMapping(value="modifyUser",method=RequestMethod.POST)
+	public int modifyUser(@RequestBody User user){
+		int res = 0;
+		try {
+			res = userService.modifyUserByID(user);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return res;
+	}
+	
+	@RequestMapping(value="login",method=RequestMethod.POST)
+	public ProcessResult userLogin(@RequestBody User user){
+		ProcessResult result = new ProcessResult();
+		int usergroup = -1;
+		try {
+			if(user != null){
+				usergroup= userService.userLogin(user);
+				result.setResultcode(usergroup);
+				result.setResultdesc(userService.createToken(user.getUsername()));
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return result;
+		}
+	
+	}
+	

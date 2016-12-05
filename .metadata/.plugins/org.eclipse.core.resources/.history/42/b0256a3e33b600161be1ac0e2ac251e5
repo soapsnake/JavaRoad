@@ -1,0 +1,5 @@
+package com.vico.license.aop;
+
+public class SecurityInterceptor {
+
+}

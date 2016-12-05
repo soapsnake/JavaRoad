@@ -2,6 +2,8 @@ package com.vico.license.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.vico.license.pojo.Hospital;
 
 /**
@@ -21,4 +23,8 @@ public interface HospitalDao {
     int updateByPrimaryKey(Hospital hospital);
     
     List<Hospital> showAll();
+
+	List<Hospital> selectAllHospitalsByPage(@Param("start") Integer start,@Param("length") Integer length);
+
+	Integer selectCountHospitals();
 }

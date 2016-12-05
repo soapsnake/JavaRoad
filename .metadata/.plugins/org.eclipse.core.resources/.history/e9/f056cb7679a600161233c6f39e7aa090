@@ -1,0 +1,31 @@
+package com.ld.multithread.interrupt;
+
+public class Athread {
+	
+	public static void main(String[] args){
+		
+		Runnable r = () ->{
+			while(!Thread.currentThread().isInterrupted()){
+				for(int i=0;;i++){
+					System.out.println("this is i: "+i);
+				}
+			}
+		};
+		
+		Thread t = new Thread(r);
+		t.start();
+		
+		try {
+			System.out.println("main thread is sleep!!!!!!!");
+			Thread.sleep(5000);
+			System.out.println("main thread is awaking!!!!!!!");
+			t.interrupt();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
+	
+}

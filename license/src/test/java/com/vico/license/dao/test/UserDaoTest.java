@@ -34,6 +34,16 @@ public class UserDaoTest {
 		for(User user: list){
 			System.out.println("jieguo:  "+user.getUsername() + "  " + i++ );
 		}
-		
+	}
+	
+	//@Test
+	public void testModifyUser(){
+		int i = 1;
+		User user = new User();
+		user.setUserID(2);
+		user.setUsername("tstette");
+		user.setPassword("12321321");
+		i = uDao.modifyUserByID(user);
+		System.out.println(">>>>>>>>>"+i);
 	}
 }

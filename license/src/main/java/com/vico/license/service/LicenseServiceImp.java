@@ -2,6 +2,7 @@ package com.vico.license.service;
 
 import java.security.Key;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 import com.vico.license.dao.HospitalDao;
 import com.vico.license.dao.LicenseDao;
 import com.vico.license.dao.RSAKeyDao;
+import com.vico.license.pojo.DatatableModel;
 import com.vico.license.pojo.LicenseDetail;
 import com.vico.license.pojo.RSAKey;
 import com.vico.license.util.ByteArrayToObj;
@@ -195,5 +197,29 @@ public class LicenseServiceImp implements LicenseService {
 			flag =  zipres;
 		}
 		return flag;
+	}
+
+	@Override
+	public DatatableModel getLicenseByPage(Integer draw, Integer start, Integer length) {
+		// TODO Auto-generated method stub
+		
+		DatatableModel model = new DatatableModel();
+		Integer recordsTotal =0;
+		Integer recordsFiltered =0;
+		try {
+			model.setDraw(draw);
+			List<LicenseDetail> list = new ArrayList<>();
+			list = licensedao.selectAllLicensesByPage(start,length);
+			recordsTotal = licensedao.selectCountLicenses();
+			recordsFiltered = recordsTotal;
+			
+			model.setData(list);
+			model.setRecordsFiltered(recordsFiltered);
+			model.setRecordsTotal(recordsTotal);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return model;
 	}
 }

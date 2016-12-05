@@ -1,0 +1,11 @@
+package com.vico.license.util.annotation;
+
+import java.lang.annotation.Documented;
+
+@Documented
+public @interface NotEmpty {
+	
+	
+	
+	
+}

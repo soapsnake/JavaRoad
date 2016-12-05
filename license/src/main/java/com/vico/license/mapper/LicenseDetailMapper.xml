@@ -52,6 +52,22 @@
 		from license_detail
 		where serial_number_id = #{serialNumberId,jdbcType=INTEGER}
 	</select>
+	
+	<select id="selectCountLicenses" resultType="INTEGER">
+		select
+		count(serial_number_id)
+		from license_detail
+	</select>
+	
+	<select id="selectAllLicensesByPage" resultMap="BaseResultMap">
+		select
+		l.serial_number_id, l.source_number, l.create_date, l.expired_date, l.encrypted_number,
+		l.hospital_number,l.license_state,
+		h.hospital_number, h.hospital_name, h.hospital_phone, h.hospital_address
+		from license_detail as l inner join license_hospital as h
+		on l.hospital_number = h.hospital_number
+		limit #{start,jdbcType=INTEGER},#{length,jdbcType=INTEGER}
+	</select>
 
 	<!-- detail+hospital双表联合查询 -->
 	<select id="selectAllLicenses" resultMap="BaseResultMap">
@@ -62,6 +78,8 @@
 		from license_detail as l inner join license_hospital as h
 		on l.hospital_number = h.hospital_number
 	</select>
+	
+	
 	
 	<!-- detail+rsa_key双表联合查询 -->
 	<select id="selectCodeAndRSAByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">

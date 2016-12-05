@@ -1,0 +1,9 @@
+package com.vico.license.aop;
+
+public class TokenException extends RuntimeException {
+	public TokenException() {
+		super(message);
+	}
+	
+	
+}

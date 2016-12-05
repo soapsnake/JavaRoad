@@ -1,3 +1,8 @@
 #Tomcat publish data
-#Tue Nov 01 10:36:03 CST 2016
-org.eclipse.jst.jee.server\:/binary\:C\:\\Users\\Liu.Dun\\.m2\\repository\\org\\springframework\\spring-web\\4.2.6.RELEASE\\spring-web-4.2.6.RELEASE.jar=WEB-INF/lib/spring-web-4.2.6.RELEASE.jar
+#Sun Dec 04 19:42:05 CST 2016
+org.eclipse.jst.jee.server\:/binary\:F\:\\JavaRoad\\license\\target\\license\\WEB-INF\\lib\\spring-web-4.2.6.RELEASE.jar=D\:\\tools source\\apache-tomcat-8.0.33-windows-x64\\apache-tomcat-8.0.33\\webapps\\license\\WEB-INF\\classes\\target\\license\\WEB-INF\\lib\\spring-web-4.2.6.RELEASE.jar
+org.eclipse.jst.jee.server\:/binary\:F\:\\JavaRoad\\license\\bin\\target\\license\ (1)\\WEB-INF\\lib\\spring-web-4.2.6.RELEASE.jar=D\:\\tools source\\apache-tomcat-8.0.33-windows-x64\\apache-tomcat-8.0.33\\webapps\\license\\WEB-INF\\classes\\bin\\target\\license (1)\\WEB-INF\\lib\\spring-web-4.2.6.RELEASE.jar
+org.eclipse.jst.jee.server\:/binary\:F\:\\JavaRoad\\license\\bin\\target\\license.war=D\:\\tools source\\apache-tomcat-8.0.33-windows-x64\\apache-tomcat-8.0.33\\webapps\\license\\WEB-INF\\classes\\bin\\target\\license.war
+org.eclipse.jst.jee.server\:/binary\:C\:\\Users\\Liu.Dun\\.m2\\repository\\org\\springframework\\spring-web\\4.2.6.RELEASE\\spring-web-4.2.6.RELEASE.jar=D\:\\tools source\\apache-tomcat-8.0.33-windows-x64\\apache-tomcat-8.0.33\\webapps\\license\\WEB-INF\\lib\\spring-web-4.2.6.RELEASE.jar
+org.eclipse.jst.jee.server\:license=D\:\\tools source\\apache-tomcat-8.0.33-windows-x64\\apache-tomcat-8.0.33\\webapps\\license
+org.eclipse.jst.jee.server\:/binary\:F\:\\JavaRoad\\license\\target\\license.war=D\:\\tools source\\apache-tomcat-8.0.33-windows-x64\\apache-tomcat-8.0.33\\webapps\\license\\WEB-INF\\classes\\target\\license.war

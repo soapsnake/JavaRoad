@@ -1,0 +1,13 @@
+package com.ld.multithread.interrupt;
+
+public class Athread {
+	
+	public static void main(String[] args){
+		
+		Runnable r = () ->{
+			while(!Thread.currentThread().isInterrupted())
+		};
+		
+		
+	}
+}

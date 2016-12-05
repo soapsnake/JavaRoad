@@ -1,0 +1,19 @@
+package com.vico.license.aop;
+
+import javax.enterprise.inject.New;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class WebContext {
+	
+	private static ThreadLocal<HttpServletRequest> requestHolder = new ThreadLocal<>();
+	private static ThreadLocal<HttpServletResponse> responseHolder = new ThreadLocal<>();
+	
+	/**
+	 * 初始化
+	 */
+	public static void init(HttpServletRequest request,HttpServletResponse response){
+		requestHolder.set(request);
+		responseHolder.set(response);
+	}
+}

@@ -25,6 +25,19 @@
 		<include refid="Base_Column_List" />
 		from license_hospital
 	</select>
+	
+	<select id="selectAllHospitalsByPage" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from license_hospital
+		limit #{start,jdbcType=INTEGER},#{length,jdbcType=INTEGER}
+	</select>
+	
+	<select id="selectCountHospitals" resultType="INTEGER">
+		select 
+		count(hospital_number)
+		from license_hospital
+	</select>
 
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
 		delete from license_hospital

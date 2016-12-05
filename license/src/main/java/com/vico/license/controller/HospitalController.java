@@ -2,6 +2,7 @@ package com.vico.license.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import javax.websocket.server.PathParam;
 
@@ -9,10 +10,12 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.vico.license.enums.ProcessResultEnum;
+import com.vico.license.pojo.DatatableModel;
 import com.vico.license.pojo.Hospital;
 import com.vico.license.pojo.LicenseDetail;
 import com.vico.license.pojo.ProcessResult;
@@ -51,6 +54,26 @@ public class HospitalController {
 			logger.error(ProcessResultEnum.SELECT_ERROR + ProcessResultEnum.getClassPath());
 		}
 		return processResult;
+	}
+	
+	@RequestMapping(value = "showHospitalByPage",method=RequestMethod.POST)
+	public DatatableModel showAllHospitalByPage(HttpServletRequest request) {
+		Integer draw = 1;
+		Integer length = 0;
+		Integer start = 0;
+		DatatableModel result = null;
+		logger.info("show all hospitals");
+		try {
+			if(request != null){
+				draw = (Integer.parseInt(request.getParameter("draw")));
+				length = Integer.parseInt(request.getParameter("length"));
+				start = Integer.parseInt(request.getParameter("start"));
+				result = hospitalservice.getHospitalByPage(draw,start,length);
+				}
+		} catch (Exception e) {
+			logger.error(ProcessResultEnum.SELECT_ERROR + ProcessResultEnum.getClassPath());
+		}
+		return result;
 	}
 
 	/**

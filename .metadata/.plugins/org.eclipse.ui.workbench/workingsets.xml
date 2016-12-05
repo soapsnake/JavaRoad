@@ -7,18 +7,25 @@
 </workingSet>
 <workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1478049759474_12" label="License" name="License">
 <item elementID="=license" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=licenseWeb" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 </workingSet>
 <workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1478049773594_13" label="Concurrent" name="Concurrent">
+<item elementID="=multithread" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 <item elementID="=runnable" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+</workingSet>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1479549344002_9" label="Generic" name="Generic">
+<item elementID="=generic" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 </workingSet>
 <workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1476879936569_0" label="Window Working Set" name="Aggregate for window 1476879936569"/>
 <workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1476967294860_5" label="Multiple Working Sets" name="Aggregate:JavaRoad:sakura:"/>
 <workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1477802752219_6" label="Multiple Working Sets" name="Aggregate:JavaRoad:license-test:sakura:"/>
 <workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1477879336342_9" label="Multiple Working Sets" name="Aggregate:license-test:pagehelper:"/>
-<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1478049775666_14" label="Multiple Working Sets" name="Aggregate:Concurrent:DesignPattern:License:">
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1478609033484_9" label="Multiple Working Sets" name="Aggregate:Concurrent:DesignPattern:License:">
 <workingSet IMemento.internal.id="Concurrent"/>
 <workingSet IMemento.internal.id="DesignPattern"/>
 <workingSet IMemento.internal.id="License"/>
 </workingSet>
+<mruList name="License"/>
+<mruList name="Generic"/>
 <mruList name="DesignPattern"/>
 </workingSetManager>

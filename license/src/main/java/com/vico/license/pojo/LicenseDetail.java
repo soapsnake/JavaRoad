@@ -6,6 +6,8 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.stereotype.Component;
 
+import com.vico.license.util.annotation.NotEmpty;
+
 /**
  * 
  * @ClassName: LicenseDetail
@@ -17,18 +19,18 @@ import org.springframework.stereotype.Component;
 public class LicenseDetail {
 	private Integer serialNumberId;
 	
-	@NotNull
+	@NotEmpty
 	private String sourceNumber;
 
 	private Date createDate;
 	
-	@NotNull
+	@NotEmpty
 	private Date expiredDate;
 	
-	@NotNull
+	@NotEmpty
 	private String encryptedNumber;
 	
-	@NotNull
+	@NotEmpty
 	private Integer hospitalNumber;
 
 	private Integer licenseState;

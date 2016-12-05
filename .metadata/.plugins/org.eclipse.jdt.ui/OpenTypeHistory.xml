@@ -1,2 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<typeInfoHistroy/>
+<typeInfoHistroy>
+<typeInfo handle="=runnable/C:\/Java\/jdk1.8.0_65\/jre\/lib\/rt.jar&lt;java.lang(Runnable.class[Runnable" modifiers="1537" timestamp="1478222221484"/>
+<typeInfo handle="=multithread/C:\/Java\/jdk1.8.0_65\/jre\/lib\/rt.jar&lt;javax.swing(JFrame.class[JFrame" modifiers="33" timestamp="1478222221484"/>
+<typeInfo handle="=multithread/C:\/Java\/jdk1.8.0_65\/jre\/lib\/rt.jar&lt;javax.swing(JPanel.class[JPanel" modifiers="33" timestamp="1478222221484"/>
+<typeInfo handle="=multithread/src\/main\/java&lt;com.ld.multithread.extend{Parent.java[Parent" modifiers="1" timestamp="1478832600163"/>
+<typeInfo handle="=multithread/C:\/Java\/jdk1.8.0_65\/jre\/lib\/rt.jar&lt;java.util.concurrent(Callable.class[Callable" modifiers="1537" timestamp="1478222221484"/>
+<typeInfo handle="=multithread/C:\/Java\/jdk1.8.0_65\/jre\/lib\/rt.jar&lt;javax.sql.rowset(CachedRowSet.class[CachedRowSet" modifiers="1537" timestamp="1478222221484"/>
+<typeInfo handle="=license/src\/main\/java&lt;com.vico.license.aop{TokenManager.java[TokenManager" modifiers="513" timestamp="1480383607803"/>
+<typeInfo handle="=license/C:\/Users\/Liu.Dun\/.m2\/repository\/org\/mybatis\/mybatis\/3.4.1\/mybatis-3.4.1.jar&lt;org.apache.ibatis.parsing(TokenHandler.class[TokenHandler" modifiers="1537" timestamp="1473589451081"/>
+<typeInfo handle="=license/C:\/Users\/Liu.Dun\/.m2\/repository\/com\/alibaba\/druid\/0.2.26\/druid-0.2.26.jar&lt;com.alibaba.druid.filter(Filter.class[Filter" modifiers="1537" timestamp="1469075313264"/>
+<typeInfo handle="=license/C:\/Users\/Liu.Dun\/.m2\/repository\/javax\/javaee-api\/7.0\/javaee-api-7.0.jar&lt;javax.servlet(Filter.class[Filter" modifiers="1537" timestamp="1473595755290"/>
+<typeInfo handle="=license/C:\/Java\/jdk1.8.0_65\/jre\/lib\/rt.jar&lt;javax.imageio.spi(ServiceRegistry$Filter.class[Filter" modifiers="1545" timestamp="1478222221484"/>
+</typeInfoHistroy>

@@ -2,8 +2,10 @@ package com.vico.license.controller;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.lang.ref.ReferenceQueue;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import javax.websocket.server.PathParam;
@@ -11,12 +13,16 @@ import javax.websocket.server.PathParam;
 import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.vico.license.aop.NeedCheck;
 import com.vico.license.enums.ProcessResultEnum;
+import com.vico.license.pojo.DatatableModel;
 import com.vico.license.pojo.LicenseDetail;
 import com.vico.license.pojo.ProcessResult;
 import com.vico.license.pojo.RSAKey;
@@ -82,8 +88,10 @@ public class LicenseController {
 	 * @Title: showAllCodes
 	 * @Description: 获取所有序列号，并且获取序列号对应的医院名称
 	 */
+	@NeedCheck("Hello world API")  //有这个注解的方法必须进行AOP拦截
 	@RequestMapping(value = "showallcodes")
 	public ProcessResult showAllCodes() {
+		System.out.println("controller方法执行！拦截这个方法!!!!!!!!!!!!!");
 		
 		try {
 			List<LicenseDetail> list = licenseService.listAllCodes();
@@ -94,6 +102,26 @@ public class LicenseController {
 			logger.error(ProcessResultEnum.SELECT_ERROR + ProcessResultEnum.getClassPath());
 		}
 		return processResult;
+	}
+	
+	@NeedCheck("")
+	@RequestMapping(value = "showallcodesByPage",method = RequestMethod.POST)
+	public DatatableModel showAllCodesByPage(HttpServletRequest request) {
+		Integer draw = 1;
+		Integer length = 0;
+		Integer start = 0;
+		DatatableModel result = null;
+		try {
+			if(request != null){
+			draw = (Integer.parseInt(request.getParameter("draw")));
+			length = Integer.parseInt(request.getParameter("length"));
+			start = Integer.parseInt(request.getParameter("start"));
+			result = licenseService.getLicenseByPage(draw,start,length);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 
 	/**
@@ -177,6 +205,43 @@ public class LicenseController {
 			logger.error(ProcessResultEnum.MODIFY_ERROR + ProcessResultEnum.getClassPath());
 		}
 	}
+	
+	@RequestMapping(value = "uselicense/{serialNumberId}")
+	public void useLicenseAngu(@PathVariable("serialNumberId") String serialNumberId,HttpServletResponse response){
+		String path = ClassPathResourceURI.getResourceURI("/").getPath();
+		boolean creatsucess = false;
+		String nameofzip = "license.zip";
+		creatsucess = licenseService.createZIPFile(Integer.parseInt(serialNumberId));
+		if(!creatsucess){
+			logger.error("生成ZIP文件失败!");
+			return;
+		}
+		
+		try {
+				FileInputStream inputStream1 = new FileInputStream(path+nameofzip);
+				response.addHeader("Content-disposition", "attachment;filename=license.zip");
+				response.setContentType("zip/plain");
+				IOUtils.copy(inputStream1, response.getOutputStream());
+				response.flushBuffer();
+					}
+		catch(Exception e){
+				logger.error(e);
+			}
+		
+		try {
+			int i = licenseService.modifyLicenseState(Integer.parseInt(serialNumberId));
+			if(i == 1){
+				processResult.setResultcode(ProcessResultEnum.RETURN_RESULT_SUCCESS);
+				processResult.setResultdesc(ProcessResultEnum.MODIFY_SUCCESS);
+			}else{
+				processResult.setResultcode(ProcessResultEnum.RETURN_RESULT_FAIL);
+				processResult.setResultdesc(ProcessResultEnum.MODIFY_FAIL);
+			}
+		} catch (Exception e) {
+			logger.error(ProcessResultEnum.MODIFY_ERROR + ProcessResultEnum.getClassPath());
+		}
+	}
+	
 	/**
 	 * @param:
 	 * @return: ModelAndView
@@ -187,16 +252,11 @@ public class LicenseController {
 	 * @return
 	 *
 	 */
-	@RequestMapping(value = "savecode")
-	public ModelAndView saveCode(@Valid LicenseDetail licensedetail,Errors errors) {
+	@RequestMapping(value = "savecode",method = RequestMethod.POST)
+	public ModelAndView saveCode(@RequestBody @Valid LicenseDetail licensedetail) {
 		/**
 		 * 非空判断,假如传入信息出现了空值,则返回生成序列号页面
 		 */
-		if(errors.hasErrors()){
-			ModelAndView mv = new ModelAndView("redirect:/bounceController/tocreatecode");
-			return mv;
-		}
-		
 		try {
 			int i = licenseService.saveCode(licensedetail);
 			if(i == 1){

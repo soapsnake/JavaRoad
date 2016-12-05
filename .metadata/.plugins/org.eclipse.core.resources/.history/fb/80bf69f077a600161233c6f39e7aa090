@@ -1,0 +1,5 @@
+package com.ld.multithread.interrupt;
+
+public class Athread {
+
+}

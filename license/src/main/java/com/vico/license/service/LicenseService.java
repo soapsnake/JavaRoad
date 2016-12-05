@@ -1,16 +1,17 @@
 package com.vico.license.service;
 
-import java.security.Key;
 import java.sql.Date;
 import java.util.List;
 
+import com.vico.license.aop.NeedCheck;
+import com.vico.license.pojo.DatatableModel;
 import com.vico.license.pojo.LicenseDetail;
 import com.vico.license.pojo.RSAKey;
 
 public interface LicenseService {
 
 	public String createSourceCode(String duedate,int hosnumber);
-
+	
 	public List<LicenseDetail> listAllCodes();
 
 	public LicenseDetail listOneCode(int serialNumberId);
@@ -49,6 +50,8 @@ public interface LicenseService {
 	RSAKey getLatestRSAKey();
 
 	public boolean createZIPFile(int serialNumberId);
+
+	public DatatableModel getLicenseByPage(Integer draw, Integer start, Integer length);
 
 
 }

@@ -17,7 +17,7 @@
 	                        default-lazy-init="false">
 	                        
 	<context:annotation-config /> 
-
+	
 	<context:property-placeholder location="classpath:jdbc.properties" ignore-unresolvable="true" />
 	
 	<context:component-scan base-package="com.vico.license" />          
@@ -78,6 +78,17 @@
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>  
     </bean> 
     
+    <bean class="org.springframework.validation.beanvalidation.MethodValidationPostProcessor"/>
+    
+    
+    	
+    <!-- 
+    <aop:config>
+    	<aop:aspect ref="securityAspect">  
+    		<aop:around method="execute" pointcut="@annotation(org.springframework.web.bind.annotation.RequestMapping)"/>
+    	</aop:aspect>
+    </aop:config>
+     -->
     
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />

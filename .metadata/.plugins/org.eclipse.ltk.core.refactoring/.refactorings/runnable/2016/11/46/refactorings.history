@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move element &apos;BlockedMutex.java&apos; to &apos;runnable/src/main/java/com.ld.runnable.interrupt.reentrantlock&apos;&#x0D;&#x0A;- Original project: &apos;runnable&apos;&#x0D;&#x0A;- Destination element: &apos;runnable/src/main/java/com.ld.runnable.interrupt.reentrantlock&apos;&#x0D;&#x0A;- Original element: &apos;com.ld.runnable.interrupt.BlockedMutex.java&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move compilation unit" destination="/src\/main\/java&lt;com.ld.runnable.interrupt.reentrantlock" element1="/src\/main\/java&lt;com.ld.runnable.interrupt{BlockedMutex.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" patterns="*" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1478430444241" units="1" version="1.0"/>
+</session>

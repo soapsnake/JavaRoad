@@ -48,7 +48,6 @@ public class UserServiceImpTest {
 	
 	@Test
 	public void testgetUserByPage(){
-		
 		DataTableRequest request =new DataTableRequest();
 		request.setDraw(1);
 		request.setLength(10);

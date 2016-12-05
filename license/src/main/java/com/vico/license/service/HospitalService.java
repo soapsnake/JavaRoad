@@ -2,6 +2,7 @@ package com.vico.license.service;
 
 import java.util.List;
 
+import com.vico.license.pojo.DatatableModel;
 import com.vico.license.pojo.Hospital;
 
 public interface HospitalService {
@@ -32,4 +33,6 @@ public interface HospitalService {
 	public int deleteHospital(int hospitalNumber);
 
 	public int updateHospital(Hospital hospital);
+
+	public DatatableModel getHospitalByPage(Integer draw, Integer start, Integer length);
 }

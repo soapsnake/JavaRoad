@@ -1,0 +1,10 @@
+package com.vico.license.aop;
+
+import javax.enterprise.inject.New;
+import javax.servlet.http.HttpServletRequest;
+
+public class WebContext {
+	
+	private static ThreadLocal<HttpServletRequest> requestHolder = new ThreadLocal<>();
+	
+}

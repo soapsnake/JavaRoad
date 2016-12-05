@@ -1,12 +1,15 @@
 package com.vico.license.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.vico.license.dao.HospitalDao;
+import com.vico.license.pojo.DatatableModel;
 import com.vico.license.pojo.Hospital;
+import com.vico.license.pojo.LicenseDetail;
 
 @Service
 public class HospitalServiceImp implements HospitalService {
@@ -30,7 +33,7 @@ public class HospitalServiceImp implements HospitalService {
 
 	@Override
 	public int deleteHospital(int hospitalnumber) {
-		
+
 		int i = hospitaldao.deleteByPrimaryKey(hospitalnumber);
 		return i;
 	}
@@ -62,4 +65,23 @@ public class HospitalServiceImp implements HospitalService {
 		return hospitaldao.selectByPrimaryKey(hospitalNumber);
 	}
 
+	@Override
+	public DatatableModel getHospitalByPage(Integer draw, Integer start, Integer length) {
+		DatatableModel model = new DatatableModel();
+		Integer recordsTotal = 0;
+		Integer recordsFiltered = 0;
+		try {
+			model.setDraw(draw);
+			List<Hospital> list = new ArrayList<>();
+			list = hospitaldao.selectAllHospitalsByPage(start, length);
+			recordsTotal = hospitaldao.selectCountHospitals();
+			recordsFiltered = recordsTotal;
+			model.setData(list);
+			model.setRecordsFiltered(recordsFiltered);
+			model.setRecordsTotal(recordsTotal);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return model;
+	}
 }

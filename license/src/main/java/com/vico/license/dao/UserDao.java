@@ -17,4 +17,8 @@ public interface UserDao {
 	List<User> getUserByPage(@Param("length")Integer length, @Param("start")Integer start);
 
 	Integer getTotal();
+
+	int modifyUserByID(User user);
+
+	User getUserByName(String username);
 }

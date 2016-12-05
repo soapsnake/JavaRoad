@@ -6,7 +6,7 @@ public class UserByPage {
 	
 	private Integer draw;
 	private Integer recordsTotal;
-	private Integer recordsFilterted;
+	private Integer recordsFiltered;
 	private List<User> data;
 	private String error;
 	
@@ -28,13 +28,13 @@ public class UserByPage {
 	public void setRecordsTotal(Integer recordsTotal) {
 		this.recordsTotal = recordsTotal;
 	}
-	public Integer getRecordsFilterted() {
-		return recordsFilterted;
-	}
-	public void setRecordsFilterted(Integer recordsFilterted) {
-		this.recordsFilterted = recordsFilterted;
-	}
 	
+	public Integer getRecordsFiltered() {
+		return recordsFiltered;
+	}
+	public void setRecordsFiltered(Integer recordsFiltered) {
+		this.recordsFiltered = recordsFiltered;
+	}
 	public String getError() {
 		return error;
 	}

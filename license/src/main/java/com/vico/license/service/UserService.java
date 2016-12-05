@@ -13,5 +13,11 @@ public interface UserService {
 	public int addUser(User user);
 	
 	public UserByPage getUserByPage(DataTableRequest request);
+
+	public int modifyUserByID(User user);
+
+	public int userLogin(User user);
+
+	public String createToken(String username);
 	
 }

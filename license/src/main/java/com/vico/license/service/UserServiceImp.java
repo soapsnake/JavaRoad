@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSON;
+import com.vico.license.aop.TokenManager;
 import com.vico.license.dao.UserDao;
 import com.vico.license.pojo.DataTableRequest;
 import com.vico.license.pojo.User;
@@ -18,6 +19,9 @@ public class UserServiceImp implements UserService {
 	
 	@Autowired
 	UserDao userDao;
+	
+	@Autowired
+	private TokenManager tokenManager;
 	
 	@Override
 	public List<User> SelectAllUsers() {
@@ -60,9 +64,48 @@ public class UserServiceImp implements UserService {
 		result.setDraw(draw);
 		result.setData(users);
 		result.setRecordsTotal(recordsTotal);
-		result.setRecordsFilterted(filterRecordsTotal);	
+		result.setRecordsFiltered(filterRecordsTotal);	
 		System.out.println("service>>>>>>>>>>"+JSON.toJSONString(result));
 		return result;
+	}
+
+	@Override
+	public int modifyUserByID(User user) {
+		// TODO Auto-generated method stub
+		int res = 0;
+		
+		try {
+			res = userDao.modifyUserByID(user);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return res;
+	}
+
+	@Override
+	public int userLogin(User user) {
+		// TODO Auto-generated method stub
+		int usergroup = -1;
+		User user2 = userDao.getUserByName(user.getUsername());
+		
+		try {
+			if(user2 != null){
+			if(user2.getPassword().equals(user.getPassword())){
+				usergroup = user2.getUsergroup();
+				}
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return usergroup;
+	}
+
+	@Override
+	public String createToken(String username) {
+		String token = "";
+		token = tokenManager.createToken(username);
+		return token;
 	}
 
 }

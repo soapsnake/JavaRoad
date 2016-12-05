@@ -1,0 +1,35 @@
+package com.ld.multithread.interrupt;
+
+public class Athread {
+	
+	public static void main(String[] args){
+		
+		Runnable r = () ->{
+			int i = 0;
+			while(!Thread.currentThread().isInterrupted()){
+					System.out.println(i++);
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();     //InterruptedException在这里被捕获,因此状态更新为false
+						Thread.currentThread().interrupt(); //手动再interrupt一次,这样就保证不会再进while循环
+						//return;    //或者捕获异常直接retrun方便又省事
+					}
+				}	
+				//System.out.println(Thread.currentThread().isInterrupted());  //永远为false
+		};
+		
+		Thread t = new Thread(r);
+		t.start();
+		
+		try {
+			System.out.println("main thread is sleep!!!!!!!");
+			Thread.sleep(5000);
+			System.out.println("main thread is awaking and ready to fuck up t !!!!!!!");
+			t.interrupt();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+}

@@ -2,6 +2,8 @@ package com.vico.license.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.vico.license.pojo.LicenseDetail;
 
 /**
@@ -25,4 +27,9 @@ public interface LicenseDao {
     List<LicenseDetail> selectLicenseByHospitalNumber(int hospitalNumber);
     
     LicenseDetail selectCodeAndRSAByPrimaryKey(Integer serialNumberId);
+
+	List<LicenseDetail> selectAllLicensesByPage(@Param("start")Integer start, 
+												@Param("length")Integer length);
+
+	Integer selectCountLicenses();
 }

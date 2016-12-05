@@ -1,0 +1,11 @@
+package com.vico.license.aop;
+
+public interface TokenManager {
+	
+	/*生成安全令牌*/
+	String createToken(String username);
+	
+	//验证安全令牌
+	boolean checkToken(String token);
+	
+}
