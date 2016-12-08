@@ -44,6 +44,7 @@ public class CorsFilter implements Filter {
 				String currentOrigin = request.getHeader("Origin");
 				if(allowOriginList.contains(currentOrigin)){  //如果请求的域名在允许列表当中,那就给请求加一个跨域的请求头
 					System.out.println("cros can here!!!!!!!!");
+					System.out.println(currentOrigin);
 					response.setHeader("Access-Control-Allow-Origin", currentOrigin);
 				}
 			}

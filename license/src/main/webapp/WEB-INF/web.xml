@@ -5,8 +5,35 @@
                         http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
                         version="3.0">
 <display-name>Archetype Created Web Application</display-name>
+
+<!-- cors过滤器 ,配置服务端允许的跨域请求类型,必须保证这个过滤器最先被执行,否则filter chain一旦断裂,这个过滤器不能执行,就会造成CORS问题,难以解决-->
+		<filter>
+		    <filter-name>corsFilter</filter-name>
+		    <filter-class>com.vico.license.filters.CorsFilter</filter-class>
+		    <init-param>
+		        <param-name>allowOrigin</param-name>
+		        <param-value>http://evil.com/,http://172.16.25.18:8000,http://localhost:8000/,http://localhost:8000</param-value>
+		    </init-param>
+		    <init-param>
+		        <param-name>allowMethods</param-name>
+		        <param-value>GET,POST,PUT,DELETE,OPTIONS</param-value>
+		    </init-param>
+		    <init-param>
+		        <param-name>allowCredentials</param-name>
+		        <param-value>true</param-value>
+		    </init-param>
+		    <init-param>
+		        <param-name>allowHeaders</param-name>
+		        <param-value>Content-Type,X-Token</param-value>
+		    </init-param>
+		</filter>
+		<filter-mapping>
+		  <filter-name>corsFilter</filter-name>
+		  <url-pattern>/*</url-pattern>
+		</filter-mapping>
+
+
 	<!-- 设置spring容器的上下文 -->
-  	
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath:spring-mybatis.xml</param-value>
@@ -26,6 +53,7 @@
 			<url-pattern>/*</url-pattern>
 		</filter-mapping>
 		
+		
 		<!-- 自定义过滤器:用于将request和response封装进threadlocal中 -->
 		<filter>
 			<filter-name>webContextFilter</filter-name>
@@ -36,31 +64,7 @@
 			<url-pattern>/*</url-pattern>
 		</filter-mapping>
 		
-		<!-- cors过滤器 ,配置服务端允许的跨域请求类型-->
-		<filter>
-		    <filter-name>corsFilter</filter-name>
-		    <filter-class>com.vico.license.filters.CorsFilter</filter-class>
-		    <init-param>
-		        <param-name>allowOrigin</param-name>
-		        <param-value>http://evil.com/,http://localhost:8000,http://localhost:8000/</param-value>
-		    </init-param>
-		    <init-param>
-		        <param-name>allowMethods</param-name>
-		        <param-value>GET,POST,PUT,DELETE,OPTIONS</param-value>
-		    </init-param>
-		    <init-param>
-		        <param-name>allowCredentials</param-name>
-		        <param-value>true</param-value>
-		    </init-param>
-		    <init-param>
-		        <param-name>allowHeaders</param-name>
-		        <param-value>Content-Type,X-Token</param-value>
-		    </init-param>
-		</filter>
-		<filter-mapping>
-		  <filter-name>corsFilter</filter-name>
-		  <url-pattern>/*</url-pattern>
-		</filter-mapping>
+		
 		
 		
 		<listener>      

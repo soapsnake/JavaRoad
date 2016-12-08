@@ -5,13 +5,14 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.vico.license.dao.HospitalDao;
 import com.vico.license.pojo.DatatableModel;
 import com.vico.license.pojo.Hospital;
-import com.vico.license.pojo.LicenseDetail;
 
 @Service
+@Transactional(rollbackFor = Exception.class)
 public class HospitalServiceImp implements HospitalService {
 
 	@Autowired
@@ -26,15 +27,26 @@ public class HospitalServiceImp implements HospitalService {
 
 	@Override
 	public int addHospital(Hospital hospital) {
-
-		int i = hospitaldao.insertHospital(hospital);
+		int i = 0;
+		try {
+			i = hospitaldao.insertHospital(hospital);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException();
+		}
 		return i;
 	}
 
 	@Override
 	public int deleteHospital(int hospitalnumber) {
 
-		int i = hospitaldao.deleteByPrimaryKey(hospitalnumber);
+		int i = 0;
+		try {
+			i = hospitaldao.deleteByPrimaryKey(hospitalnumber);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException();
+		}
 		return i;
 	}
 
@@ -54,8 +66,13 @@ public class HospitalServiceImp implements HospitalService {
 
 	@Override
 	public int updateHospital(Hospital hospital) {
-
-		int i = hospitaldao.updateByPrimaryKey(hospital);
+		int i = 0;
+		try {
+			i = hospitaldao.updateByPrimaryKey(hospital);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException();
+		}
 		return i;
 	}
 

@@ -78,10 +78,9 @@
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>  
     </bean> 
     
+    <!-- validation配置,用于对象字段非空验证 -->
     <bean class="org.springframework.validation.beanvalidation.MethodValidationPostProcessor"/>
     
-    
-    	
     <!-- 
     <aop:config>
     	<aop:aspect ref="securityAspect">  
@@ -90,9 +89,10 @@
     </aop:config>
      -->
     
+    <!-- 开启基于注解的spring事务,注意上面的bean id要和下面的transacation-manager一致,否则会报错 -->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
-	
+	<tx:annotation-driven transaction-manager="transactionManager" />
     
      </beans>  

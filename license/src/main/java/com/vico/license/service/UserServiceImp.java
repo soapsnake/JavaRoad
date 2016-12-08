@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.alibaba.fastjson.JSON;
 import com.vico.license.aop.TokenManager;
@@ -15,6 +16,7 @@ import com.vico.license.pojo.UserByPage;
 
 
 @Service
+@Transactional(rollbackFor=Exception.class)
 public class UserServiceImp implements UserService {
 	
 	@Autowired
@@ -76,8 +78,12 @@ public class UserServiceImp implements UserService {
 		
 		try {
 			res = userDao.modifyUserByID(user);
+			//测试spring事务:
+			//userDao.addUser(user);  //添加该user会失败,因为ID和原来的一样,抛出异常应该回滚,上一条sql不应该执行
+			
 		} catch (Exception e) {
 			e.printStackTrace();
+			throw new RuntimeException();   //关键语句,只有抛出这个运行时异常,事务才会发生回滚
 		}
 		return res;
 	}

@@ -227,7 +227,7 @@
 				<version>2.2</version>
 				<configuration>
 					<update>true</update>
-					<url>http://172.16.25.17:8080/manager/text</url>
+					<url>http://172.16.25.16:8080/manager/text</url>
 					<username>admin</username>
 					<password>admin</password>
 					<path>/${project.build.finalName}</path>

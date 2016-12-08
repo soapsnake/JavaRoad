@@ -9,6 +9,7 @@ import java.util.Map;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.vico.license.dao.HospitalDao;
 import com.vico.license.dao.LicenseDao;
@@ -26,18 +27,19 @@ import com.vico.license.util.rsa.RSACreateSourceCode;
 import com.vico.license.util.rsa.RSAKeyPair;
 import com.vico.license.util.rsa.RSAdoEncrypt;
 
-
 @Service
+@Transactional(rollbackFor = Exception.class)
 public class LicenseServiceImp implements LicenseService {
 	private static final Logger logger = Logger.getLogger(LicenseServiceImp.class);
 	@Autowired
 	private LicenseDao licensedao;
-	
+
 	@Autowired
 	private HospitalDao hospitaldao;
-	
+
 	@Autowired
 	private RSAKeyDao rsakeydao;
+
 	@Override
 	/**
 	 * 
@@ -47,18 +49,18 @@ public class LicenseServiceImp implements LicenseService {
 	 * @return sourceCode
 	 * @see com.vico.license.service.LicenseService#createSourceCode(java.lang.String)
 	 */
-	public String createSourceCode(String duedate,int hosnumber) {
+	public String createSourceCode(String duedate, int hosnumber) {
 		String sourceCode = "";
 		String hospitalName = "";
 		hospitalName = hospitaldao.selectByPrimaryKey(hosnumber).getHospitalName();
-				
-		sourceCode = RSACreateSourceCode.createSourceCode(duedate,hospitalName);    //RSA风格的原始序列号
-		
-		//sourceCode = MD5CreateSourceCode.createSourceCode(duedate);     //MD5风格的原始序列号
-		
+
+		sourceCode = RSACreateSourceCode.createSourceCode(duedate, hospitalName); // RSA风格的原始序列号
+
+		// sourceCode = MD5CreateSourceCode.createSourceCode(duedate);
+		// //MD5风格的原始序列号
 		return sourceCode;
 	}
-	
+
 	/**
 	 * 
 	 * @Title: createEncryptCode
@@ -68,12 +70,12 @@ public class LicenseServiceImp implements LicenseService {
 	 * @see com.vico.license.service.LicenseService#createEncryptCode(java.lang.String)
 	 */
 	@Override
-	public String createEncryptCode(String code,byte[] publickey) {
+	public String createEncryptCode(String code, byte[] publickey) {
 
 		String encryptcode = "";
 		try {
-			encryptcode = RSAdoEncrypt.encrypt(code,publickey);              //RSA算法加密
-			
+			encryptcode = RSAdoEncrypt.encrypt(code, publickey); // RSA算法加密
+
 		} catch (Exception e) {
 			logger.error(e);
 		}
@@ -92,7 +94,13 @@ public class LicenseServiceImp implements LicenseService {
 		java.sql.Date currentDate = new java.sql.Date(System.currentTimeMillis());
 		licensedetail.setCreateDate(currentDate);
 		licensedetail.setLicenseState(0);
-		int i = licensedao.insertLicenseDetail(licensedetail);
+		int i = 0;
+		try {
+			i = licensedao.insertLicenseDetail(licensedetail);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException();
+		}
 		return i;
 	}
 
@@ -103,11 +111,15 @@ public class LicenseServiceImp implements LicenseService {
 		return list;
 	}
 
-
 	@Override
 	public int deleteCode(int codeID) {
-
-		int i = licensedao.deleteByPrimaryKey(codeID);
+		int i = 0;
+		try {
+			i = licensedao.deleteByPrimaryKey(codeID);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException();
+		}
 		return i;
 	}
 
@@ -145,7 +157,13 @@ public class LicenseServiceImp implements LicenseService {
 
 		LicenseDetail licensedetail = licensedao.selectByPrimaryKey(serialNumberId);
 		licensedetail.setLicenseState(1);
-		int i = licensedao.updateByPrimaryKey(licensedetail);
+		int i = 0;
+		try {
+			i = licensedao.updateByPrimaryKey(licensedetail);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException();
+		}
 		return i;
 	}
 
@@ -158,24 +176,28 @@ public class LicenseServiceImp implements LicenseService {
 	@Override
 	public int createKeyPair(RSAKey rsaKey) {
 		int i = 0;
-				try {
-						Map<String, Key> map = RSAKeyPair.generateKeyPair();
-						Key privatekey = map.get("privateKey");
-						Key publicKey = map.get("publicKey");
-						byte[] pri = ObjToByteArray.ObjectToByte(privatekey);
-						byte[] pub = ObjToByteArray.ObjectToByte(publicKey);
-						rsaKey.setPrivateKey(pri);
-						rsaKey.setPublicKey(pub);
-					} catch (Exception e) {
-						logger.error(e);
-					}
-		i = rsakeydao.insertRSAKeyPair(rsaKey);
+		try {
+			Map<String, Key> map = RSAKeyPair.generateKeyPair();
+			Key privatekey = map.get("privateKey");
+			Key publicKey = map.get("publicKey");
+			byte[] pri = ObjToByteArray.ObjectToByte(privatekey);
+			byte[] pub = ObjToByteArray.ObjectToByte(publicKey);
+			rsaKey.setPrivateKey(pri);
+			rsaKey.setPublicKey(pub);
+		} catch (Exception e) {
+			logger.error(e);
+		}
+		try {
+			i = rsakeydao.insertRSAKeyPair(rsaKey);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException();
+		}
 		return i;
 	}
-	
+
 	@Override
-	public RSAKey getLatestRSAKey(){
-		
+	public RSAKey getLatestRSAKey() {
 		return rsakeydao.selectKeyByID();
 	}
 
@@ -185,16 +207,16 @@ public class LicenseServiceImp implements LicenseService {
 		boolean strtofile = false;
 		boolean objtofile = false;
 		boolean flag = false;
-		
+
 		LicenseDetail lDetail = licensedao.selectCodeAndRSAByPrimaryKey(serialNumberId);
-		
+
 		strtofile = StringToFile.string2File(lDetail.getEncryptedNumber());
-		
+
 		objtofile = ObjToFile.object2File(ByteArrayToObj.ByteToObject(lDetail.getRsaKey().getPrivateKey()));
-		
-		if(strtofile && objtofile){
+
+		if (strtofile && objtofile) {
 			zipres = ZIPFiles.compatFiles();
-			flag =  zipres;
+			flag = zipres;
 		}
 		return flag;
 	}
@@ -202,17 +224,17 @@ public class LicenseServiceImp implements LicenseService {
 	@Override
 	public DatatableModel getLicenseByPage(Integer draw, Integer start, Integer length) {
 		// TODO Auto-generated method stub
-		
+
 		DatatableModel model = new DatatableModel();
-		Integer recordsTotal =0;
-		Integer recordsFiltered =0;
+		Integer recordsTotal = 0;
+		Integer recordsFiltered = 0;
 		try {
 			model.setDraw(draw);
 			List<LicenseDetail> list = new ArrayList<>();
-			list = licensedao.selectAllLicensesByPage(start,length);
+			list = licensedao.selectAllLicensesByPage(start, length);
 			recordsTotal = licensedao.selectCountLicenses();
 			recordsFiltered = recordsTotal;
-			
+
 			model.setData(list);
 			model.setRecordsFiltered(recordsFiltered);
 			model.setRecordsTotal(recordsTotal);
