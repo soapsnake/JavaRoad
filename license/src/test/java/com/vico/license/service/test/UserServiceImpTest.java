@@ -14,6 +14,7 @@ import com.alibaba.fastjson.JSON;
 import com.vico.license.pojo.DataTableRequest;
 import com.vico.license.pojo.User;
 import com.vico.license.pojo.UserByPage;
+import com.vico.license.service.UserService;
 import com.vico.license.service.UserServiceImp;
 
 
@@ -23,7 +24,7 @@ import com.vico.license.service.UserServiceImp;
 public class UserServiceImpTest {
 
 	@Autowired
-	private UserServiceImp usi;
+	private UserService usi;
 	private static final Logger logger = Logger.getLogger(LicenseServiceImpTest.class);
 	
 	//@Test

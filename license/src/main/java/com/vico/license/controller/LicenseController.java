@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.lang.ref.ReferenceQueue;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -46,18 +47,17 @@ public class LicenseController {
 	@Autowired
 	private LicenseService licenseService;
 
-	@Autowired
-	private ProcessResult processResult;
-	
-	@RequestMapping(value = "createcode")
+	@RequestMapping(value = "createcode",method=RequestMethod.GET)
 	public ProcessResult sourceCode(@PathParam("hosnumber") String hosnumber,@PathParam("duedate") String duedate){
-
+		Map<String, String> codeMap = null;
+		ProcessResult processResult = new ProcessResult();
 		try {
-			
-			String sourcecode = licenseService.createSourceCode(duedate,Integer.parseInt(hosnumber));
-			processResult.setResultcode(ProcessResultEnum.RETURN_RESULT_SUCCESS);
-			processResult.setResultdesc(ProcessResultEnum.CREATE_SUCCESS);
-			processResult.setResultmessage(sourcecode);
+			if(hosnumber != null && duedate != null){
+			   codeMap = licenseService.createSourceCode(duedate,Integer.parseInt(hosnumber));
+			   	processResult.setResultcode(ProcessResultEnum.RETURN_RESULT_SUCCESS);
+				processResult.setResultdesc(ProcessResultEnum.CREATE_SUCCESS);
+				processResult.setResultobject(codeMap);
+			}
 		} catch (Exception e) {
 			logger.error(ProcessResultEnum.CREATE_ERROR + ProcessResultEnum.getClassPath());
 		}
@@ -66,7 +66,7 @@ public class LicenseController {
 
 	@RequestMapping(value = "encryptcode")
 	public ProcessResult encryptCode(@PathParam("sourcecode") String sourcecode){
-
+		ProcessResult processResult = new ProcessResult();
 		try {
 			RSAKey rsakey = licenseService.getLatestRSAKey();
 			
@@ -91,6 +91,7 @@ public class LicenseController {
 	@NeedCheck("Hello world API")  //有这个注解的方法必须进行AOP拦截
 	@RequestMapping(value = "showallcodes")
 	public ProcessResult showAllCodes() {
+		ProcessResult processResult = new ProcessResult();
 		System.out.println("controller方法执行！拦截这个方法!!!!!!!!!!!!!");
 		
 		try {
@@ -135,6 +136,7 @@ public class LicenseController {
 	 */
 	@RequestMapping(value = "deletecode")
 	public ProcessResult deleteCode(@PathParam("serialNumberId") String serialNumberId) {
+		ProcessResult processResult = new ProcessResult();
 		
 		try {
 			LicenseDetail licensedetail = licenseService.listOneCode(Integer.parseInt(serialNumberId));
@@ -172,6 +174,7 @@ public class LicenseController {
 	 */
 	@RequestMapping(value = "uselicense")
 	public void useLicense(@PathParam("serialNumberId") String serialNumberId,HttpServletResponse response){
+		ProcessResult processResult = new ProcessResult();
 		String path = ClassPathResourceURI.getResourceURI("/").getPath();
 		boolean creatsucess = false;
 		String nameofzip = "license.zip";
@@ -208,6 +211,7 @@ public class LicenseController {
 	
 	@RequestMapping(value = "uselicense/{serialNumberId}")
 	public void useLicenseAngu(@PathVariable("serialNumberId") String serialNumberId,HttpServletResponse response){
+		ProcessResult processResult = new ProcessResult();
 		String path = ClassPathResourceURI.getResourceURI("/").getPath();
 		boolean creatsucess = false;
 		String nameofzip = "license.zip";
@@ -254,6 +258,7 @@ public class LicenseController {
 	 */
 	@RequestMapping(value = "savecode",method = RequestMethod.POST)
 	public ModelAndView saveCode(@RequestBody @Valid LicenseDetail licensedetail) {
+		ProcessResult processResult = new ProcessResult();
 		/**
 		 * 非空判断,假如传入信息出现了空值,则返回生成序列号页面
 		 */
@@ -275,6 +280,7 @@ public class LicenseController {
 	
 	@RequestMapping(value="createkeypair")
 	public ProcessResult createKeyPair(){
+		ProcessResult processResult = new ProcessResult();
 		int i = 0;
 		RSAKey rsaKey = new RSAKey();
 	     i = licenseService.createKeyPair(rsaKey);

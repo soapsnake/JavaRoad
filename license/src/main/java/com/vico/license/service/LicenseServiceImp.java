@@ -3,6 +3,7 @@ package com.vico.license.service;
 import java.security.Key;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -49,16 +50,24 @@ public class LicenseServiceImp implements LicenseService {
 	 * @return sourceCode
 	 * @see com.vico.license.service.LicenseService#createSourceCode(java.lang.String)
 	 */
-	public String createSourceCode(String duedate, int hosnumber) {
+	public Map<String, String> createSourceCode(String duedate, int hosnumber) {
 		String sourceCode = "";
 		String hospitalName = "";
 		hospitalName = hospitaldao.selectByPrimaryKey(hosnumber).getHospitalName();
 
 		sourceCode = RSACreateSourceCode.createSourceCode(duedate, hospitalName); // RSA风格的原始序列号
+		
+		RSAKey rsakey = getLatestRSAKey();
+		String encryptcode =  createEncryptCode(sourceCode,rsakey.getPublicKey());
+		
+		Map<String, String> codeMap = new HashMap<>();
+		codeMap.put("sourceCode", sourceCode);
+		codeMap.put("encryptcode", encryptcode);
+		codeMap.put("rsaKey", rsakey.getKeyId()+"");
 
 		// sourceCode = MD5CreateSourceCode.createSourceCode(duedate);
 		// //MD5风格的原始序列号
-		return sourceCode;
+		return codeMap;
 	}
 
 	/**

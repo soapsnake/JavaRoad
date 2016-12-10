@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.vico.license.service.LicenseService;
 import com.vico.license.service.LicenseServiceImp;
 
 
@@ -16,7 +17,7 @@ public class LicenseServiceImpTest {
 
 	
 	@Autowired
-	private LicenseServiceImp lsi;
+	private LicenseService lsi;
 	private static final Logger logger = Logger.getLogger(LicenseServiceImpTest.class);
 
 //	@Test

@@ -2,6 +2,7 @@ package com.vico.license.service;
 
 import java.sql.Date;
 import java.util.List;
+import java.util.Map;
 
 import com.vico.license.aop.NeedCheck;
 import com.vico.license.pojo.DatatableModel;
@@ -10,7 +11,7 @@ import com.vico.license.pojo.RSAKey;
 
 public interface LicenseService {
 
-	public String createSourceCode(String duedate,int hosnumber);
+	public Map<String, String> createSourceCode(String duedate,int hosnumber);
 	
 	public List<LicenseDetail> listAllCodes();
 
