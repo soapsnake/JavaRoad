@@ -1,12 +1,12 @@
-#　git使用方法
-## 　git的安装
-1.　sudo add-apt-repository ppa:git-core/ppa
-2.　sudo apt-get update
-3.　sudo apt-get install git
-4.　git --version
+# git使用方法
+## git的安装
+1. sudo add-apt-repository ppa:git-core/ppa
+2. sudo apt-get update
+3. sudo apt-get install git
+4. git --version
 
 ## 　配置ｇｉｔ的一些参数
-1.　git config --global user.name "51721198"
+1. git config --global user.name "51721198"
 2. git config --global user.email "51721198@qq.com"
 3. git config --global core.editor "vim"
 4. git config --list
