@@ -16,6 +16,9 @@
 <workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1479549344002_9" label="Generic" name="Generic">
 <item elementID="=generic" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 </workingSet>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1487413857367_13" label="algorithm" name="algorithm">
+<item elementID="=algorithms" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+</workingSet>
 <workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1476879936569_0" label="Window Working Set" name="Aggregate for window 1476879936569"/>
 <workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1476967294860_5" label="Multiple Working Sets" name="Aggregate:JavaRoad:sakura:"/>
 <workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1477802752219_6" label="Multiple Working Sets" name="Aggregate:JavaRoad:license-test:sakura:"/>
@@ -23,6 +26,19 @@
 <workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1478609033484_9" label="Multiple Working Sets" name="Aggregate:Concurrent:DesignPattern:License:">
 <workingSet IMemento.internal.id="Concurrent"/>
 <workingSet IMemento.internal.id="DesignPattern"/>
+<workingSet IMemento.internal.id="License"/>
+</workingSet>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1487413738903_12" label="Multiple Working Sets" name="Aggregate:Concurrent:DesignPattern:Generic:License:">
+<workingSet IMemento.internal.id="Concurrent"/>
+<workingSet IMemento.internal.id="DesignPattern"/>
+<workingSet IMemento.internal.id="Generic"/>
+<workingSet IMemento.internal.id="License"/>
+</workingSet>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1487418744619_13" label="Multiple Working Sets" name="Aggregate:algorithm:Concurrent:DesignPattern:Generic:License:">
+<workingSet IMemento.internal.id="algorithm"/>
+<workingSet IMemento.internal.id="Concurrent"/>
+<workingSet IMemento.internal.id="DesignPattern"/>
+<workingSet IMemento.internal.id="Generic"/>
 <workingSet IMemento.internal.id="License"/>
 </workingSet>
 <mruList name="License"/>

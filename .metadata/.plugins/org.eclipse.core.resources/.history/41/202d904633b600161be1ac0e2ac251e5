@@ -1,8 +1,0 @@
-package com.vico.license.aop;
-
-public class SecurityInterceptor {
-	
-	private static final String DEFAULT_TOKEN_NAME = "X-Token";
-	
-	private TokenManager tokenManager;
-}

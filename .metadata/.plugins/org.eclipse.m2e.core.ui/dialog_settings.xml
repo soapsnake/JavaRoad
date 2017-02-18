@@ -33,6 +33,7 @@
 	</section>
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="/home/kevin/gitrop/JavaRoad"/>
 			<item value="F:\JavaRoad"/>
 			<item value="F:\JavaRoad\commandpattern"/>
 			<item value="F:\WorkStore\JavaRoad\Mybatis-Spring"/>

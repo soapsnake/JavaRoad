@@ -15,7 +15,7 @@ public class ArrayAlg {
 			if(min.compareTo(a[i]) > 0) min = a[i];
 			if(max.compareTo(a[i]) < 0) max = a[i];
 		}
-		return new Pair<>(min,max);
+		return new Pair<String>(min,max);
 	}
 	
 	public static <T> T getMiddle(T... a){
@@ -35,7 +35,7 @@ public class ArrayAlg {
 			if(min.compareTo(a[i])>0) min = a[i];
 		    if(max.compareTo(a[i])<0) max = a[i];
 		}
-			return  new Pair<>(min,max);
+			return  new Pair<T>(min,max);
 	}
 	
 }

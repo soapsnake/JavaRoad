@@ -1,5 +1,0 @@
-package com.vico.license.util.annotation;
-
-public class notEmptyValidator {
-
-}
