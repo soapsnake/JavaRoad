@@ -25,6 +25,6 @@
 5. sudo git remote add origin https://github.com/51721198/JavaRoad.git
 6. sudo git pull origin master    //提交代码前先更新一下
 7. sudo git push origin master
-
+8. sudo git config --global credential.helper store　　 //缓存repo密码,push就不用每次都要输入github用户名密码
 
  
