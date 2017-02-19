@@ -15,6 +15,7 @@ public class BinaryTree<Key extends Comparable<Key>,Value>{
 			this.key = key;
 			this.value = value;
 			this.countNumber = countNumber;
+			
 		}
 	}
 	
@@ -40,6 +41,7 @@ public class BinaryTree<Key extends Comparable<Key>,Value>{
 	
 	//删
 	public void delete(Key key){
+		
 		
 	}
 	
