@@ -33,13 +33,13 @@ public class BinaryTree<Key extends Comparable<Key>,Value>{
 	}
 	
 	
-	//get方法总入口
+	//get方法API入口
 	public Value getValue(Key key){
 		return getValue(key,rootnode);
 	}
 	
 	//查,根据key查所在的node
-	public Value getValue(Key key,Node node){      //重构，key，node走这个方法
+	private Value getValue(Key key,Node node){      //重构，key，node走这个方法
 		if (node == null) {    // 传进来的node为空
 			return null;
 		}
@@ -59,12 +59,13 @@ public class BinaryTree<Key extends Comparable<Key>,Value>{
 	}
 	
 	
+	//增,改API入口
 	public Node put(Key key,Value value){
 		return put(key, value, rootnode);
 	}
 	
 	//增．改
-	public Node put(Key key,Value value,Node node){
+	private Node put(Key key,Value value,Node node){
 		if (node == null) {                               //假如传入的左右node是空的，那么直接新建一个左或者右node返回
 			return  new Node(key,value,1);
 		}
@@ -74,15 +75,15 @@ public class BinaryTree<Key extends Comparable<Key>,Value>{
 			node.value = value;
 		}
 		
-		if (com >0) {
-			node.right =  put(key, value, node.right);
+		if (com >0) {       
+			node.right =  put(key, value, node.right);        //递归的最终的结果有两个:1.左右子树为空,那会得到一个新建的左右子树
+			              																								//2.左右子树的key正好等于要插的这个key,这种情况返回的就是你传入的左右子树
 		}
 		
 		else{
 			node.left =  put(key, value, node.left);
 		}
 		
-		node.value = value;
 		node.countNumber = size(node.right)+size(node.left)+1;
 		return node;
 	}
@@ -90,10 +91,31 @@ public class BinaryTree<Key extends Comparable<Key>,Value>{
 	//删
 	public void delete(Key key){
 		
+		Value value  = getValue(key);
+		if (value == null) {
+			System.out.println("二叉树中并不存在含有这个key的node");
+			return;
+		}
 		
 	}
 	
-	public int rank(){
+	//key最小的节点
+	public Node minNode(){
+		return null;
+	}
+	
+	//key最大的节点
+	public Node maxNode(){
+		return null;
+	}
+	
+	//返回排名为k的节点的key值
+	public Key select(int k){
+		return null;
+	}
+	
+	//含某key的节点的排名
+	public int rank(Key key){
 		return 0;
 	}
 	
