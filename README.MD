@@ -5,13 +5,13 @@
 3. sudo apt-get install git
 4. git --version
 
-## 　配置ｇｉｔ的一些参数
+## 配置git的一些参数
 1. git config --global user.name "51721198"
 2. git config --global user.email "51721198@qq.com"
 3. git config --global core.editor "vim"
 4. git config --list
 
-##  配置和github通信的ＲＳＡ－ＫＥＹ
+## 配置和github通信的RSA-KEY
 1. 切换到root:su root　　　　//不切换产生的ｋｅｙ不能用，sudo也不行
 2. ssh-keygen -t rsa
 3. 把rsa的pub-key复制设置到github的ssh里面
