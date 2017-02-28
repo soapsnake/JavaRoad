@@ -33,6 +33,7 @@ public class BinaryTree<Key extends Comparable<Key>,Value>{
 	}
 	
 	
+	
 	//get方法API入口
 	public Value getValue(Key key){
 		return getValue(key,rootnode);
@@ -94,6 +95,7 @@ public class BinaryTree<Key extends Comparable<Key>,Value>{
 		Value value  = getValue(key);
 		if (value == null) {
 			System.out.println("二叉树中并不存在含有这个key的node");
+			System.out.println("dsada");
 			return;
 		}
 		
@@ -118,5 +120,6 @@ public class BinaryTree<Key extends Comparable<Key>,Value>{
 	public int rank(Key key){
 		return 0;
 	}
+	
 	
 }
