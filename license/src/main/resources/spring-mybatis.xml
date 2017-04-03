@@ -4,12 +4,15 @@
        xmlns:tx="http://www.springframework.org/schema/tx"
        xmlns:task="http://www.springframework.org/schema/task"
        xmlns="http://www.springframework.org/schema/beans"
+       xmlns:jaxws="http://cxf.apache.org/jaxws"
+       xmlns:soap="http://cxf.apache.org/bindings/soap"
        xsi:schemaLocation=
                "http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-	                        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd 
-	                        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd   
-
-	                     	http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd"
+	                        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+	                        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+	                        http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd
+                            http://cxf.apache.org/jaxws
+                            http://cxf.apache.org/schemas/jaxws.xsd"
        default-lazy-init="false">
 
     <context:annotation-config/>
@@ -47,6 +50,11 @@
         <property name="logAbandoned" value="true"/>
         <property name="filters" value="mergeStat"/>
     </bean>
+
+    <!--<import resource="classpath:META-INF/cxf/cxf.xml" />-->
+
+    <jaxws:client id="webServiceBean" serviceClass="com.ld.wsdl.server.WebService001"
+                  address="http://localhost:8888/webService/test" />
 
     <!-- spring和MyBatis完美整合，不需要mybatis的配置映射文件 -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
