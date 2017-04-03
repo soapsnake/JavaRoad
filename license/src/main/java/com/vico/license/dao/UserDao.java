@@ -1,24 +1,23 @@
 package com.vico.license.dao;
 
-import java.util.List;
-
+import com.vico.license.pojo.User;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
-import com.vico.license.pojo.User;
+import java.util.List;
 
 @Component
 public interface UserDao {
-	
-	List<User> selectAllUsers();
 
-	int addUser(User user);
+    List<User> selectAllUsers();
 
-	List<User> getUserByPage(@Param("length")Integer length, @Param("start")Integer start);
+    int addUser(User user);
 
-	Integer getTotal();
+    List<User> getUserByPage(@Param("length") Integer length, @Param("start") Integer start);
 
-	int modifyUserByID(User user);
+    Integer getTotal();
 
-	User getUserByName(String username);
+    int modifyUserByID(User user);
+
+    User getUserByName(String username);
 }

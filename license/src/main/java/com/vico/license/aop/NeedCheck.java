@@ -6,6 +6,6 @@ import java.lang.annotation.RetentionPolicy;
 
 @Retention(RetentionPolicy.RUNTIME)
 public @interface NeedCheck {
-	
-	String value();
+
+    String value();
 }

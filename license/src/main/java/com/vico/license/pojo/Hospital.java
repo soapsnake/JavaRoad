@@ -3,59 +3,58 @@ package com.vico.license.pojo;
 import org.springframework.stereotype.Component;
 
 /**
- * 
  * @ClassName: Hospital
  * @Description: 医院信息
  * @author: Liu.Dun
  * @date: 2016年6月27日 下午8:46:57
  */
-@Component 
+@Component
 public class Hospital {
-	
-	private Integer hospitalNumber;
-	
-	private String hospitalName;
 
-	private String hospitalPhone;
+    private Integer hospitalNumber;
 
-	private String hospitalAddress;
+    private String hospitalName;
 
-	public Integer getHospitalNumber() {
-		return hospitalNumber;
-	}
+    private String hospitalPhone;
 
-	public void setHospitalNumber(Integer hospitalNumber) {
-		this.hospitalNumber = hospitalNumber;
-	}
+    private String hospitalAddress;
 
-	public String getHospitalName() {
-		return hospitalName;
-	}
+    public Integer getHospitalNumber() {
+        return hospitalNumber;
+    }
 
-	public void setHospitalName(String hospitalName) {
-		this.hospitalName = hospitalName == null ? null : hospitalName.trim();
-	}
+    public void setHospitalNumber(Integer hospitalNumber) {
+        this.hospitalNumber = hospitalNumber;
+    }
 
-	public String getHospitalPhone() {
-		return hospitalPhone;
-	}
+    public String getHospitalName() {
+        return hospitalName;
+    }
 
-	public void setHospitalPhone(String hospitalPhone) {
-		this.hospitalPhone = hospitalPhone == null ? null : hospitalPhone.trim();
-	}
+    public void setHospitalName(String hospitalName) {
+        this.hospitalName = hospitalName == null ? null : hospitalName.trim();
+    }
 
-	public String getHospitalAddress() {
-		return hospitalAddress;
-	}
+    public String getHospitalPhone() {
+        return hospitalPhone;
+    }
 
-	public void setHospitalAddress(String hospitalAddress) {
-		this.hospitalAddress = hospitalAddress == null ? null : hospitalAddress.trim();
-	}
+    public void setHospitalPhone(String hospitalPhone) {
+        this.hospitalPhone = hospitalPhone == null ? null : hospitalPhone.trim();
+    }
 
-	@Override
-	public String toString() {
-		return "Hospital [hospitalNumber=" + hospitalNumber + ", hospitalName=" + hospitalName + ", hospitalPhone="
-				+ hospitalPhone + ", hospitalAddress=" + hospitalAddress + "]";
-	}
-	
+    public String getHospitalAddress() {
+        return hospitalAddress;
+    }
+
+    public void setHospitalAddress(String hospitalAddress) {
+        this.hospitalAddress = hospitalAddress == null ? null : hospitalAddress.trim();
+    }
+
+    @Override
+    public String toString() {
+        return "Hospital [hospitalNumber=" + hospitalNumber + ", hospitalName=" + hospitalName + ", hospitalPhone="
+                + hospitalPhone + ", hospitalAddress=" + hospitalAddress + "]";
+    }
+
 }

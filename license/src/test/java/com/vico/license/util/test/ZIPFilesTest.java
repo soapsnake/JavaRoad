@@ -1,11 +1,5 @@
 package com.vico.license.util.test;
 
-import static org.junit.Assert.*;
-
-import org.junit.Test;
-
-import com.vico.license.util.ZIPFiles;
-
 public class ZIPFilesTest {
 
 //	@Test

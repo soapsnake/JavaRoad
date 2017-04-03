@@ -1,5 +1,6 @@
 package com.vico.license.service.test;
 
+import com.vico.license.service.LicenseService;
 import org.apache.log4j.Logger;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,25 +8,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.vico.license.service.LicenseService;
-import com.vico.license.service.LicenseServiceImp;
-
 
 @RunWith(SpringJUnit4ClassRunner.class) // = extends SpringJUnit4ClassRunner
-@ContextConfiguration(locations = { "classpath:spring-mybatis.xml" })
+@ContextConfiguration(locations = {"classpath:spring-mybatis.xml"})
 public class LicenseServiceImpTest {
 
-	
-	@Autowired
-	private LicenseService lsi;
-	private static final Logger logger = Logger.getLogger(LicenseServiceImpTest.class);
+
+    private static final Logger logger = Logger.getLogger(LicenseServiceImpTest.class);
+    @Autowired
+    private LicenseService lsi;
 
 //	@Test
 //	public void testcreateSourceCode() {
 //		System.out.println("*****************"+lsi.createSourceCode("2017-08-28",21));
 //	}
-	
-	//警告：该测试将向数据库中插入不规范数据，慎用！！！！！！！！！！！
+
+    //警告：该测试将向数据库中插入不规范数据，慎用！！！！！！！！！！！
 //	@Test
 //		public void testMybatis() {
 //		
@@ -43,8 +41,8 @@ public class LicenseServiceImpTest {
 //			lsi.saveCode(ldetail);
 //			//logger.info(JSON.toJSONStringWithDateFormat("add "+i, "yyyy-MM-dd HH:mm:ss"));
 //		}
-	
-//	@Test
+
+    //	@Test
 //	public void testModifyLicenseState(){
 //		lsi.modifyLicenseState(101);
 //	}
@@ -52,10 +50,10 @@ public class LicenseServiceImpTest {
 //	public void showAllCodesTest(){
 //		logger.info("*****************测试信息********************"+lsi.listAllCodes());
 //	}
-	@Test
-	public void selectkeyTest(){
-		System.out.println(lsi.getLatestRSAKey());
-	}
-	
-	
+    @Test
+    public void selectkeyTest() {
+        System.out.println(lsi.getLatestRSAKey());
+    }
+
+
 }

@@ -1,23 +1,23 @@
-(function(window) {
-	/**
-	 * 分页函数
-	 * @date   2015-12-22
-	 * @param  {[type]}   cur   当前页
-	 * @param  {[type]}   total 总页数
-	 * @param  {[type]}   len   显示多少页数
-	 * @return {[type]}         [description]
-	 */
-	/*var pagination = {
-		initPage: function(cur, total, len) {
+(function (window) {
+    /**
+     * 分页函数
+     * @date   2015-12-22
+     * @param  {[type]}   cur   当前页
+     * @param  {[type]}   total 总页数
+     * @param  {[type]}   len   显示多少页数
+     * @return {[type]}         [description]
+     */
+    /*var pagination = {
+     initPage: function(cur, total, len) {
 
-		}
-	}*/
-    var pagination = function(options) {
-        cur = parseInt(options.cur||1, 10);
-        total = parseInt(options.total||0, 10);
-        len = parseInt(options.len||0, 10);
+     }
+     }*/
+    var pagination = function (options) {
+        cur = parseInt(options.cur || 1, 10);
+        total = parseInt(options.total || 0, 10);
+        len = parseInt(options.len || 0, 10);
         tar = document.getElementById(options.targetId);
-        if(!tar || !total) {
+        if (!tar || !total) {
             return '';
         }
         // 总数1页
@@ -79,23 +79,25 @@
             html += '<a href="javascript:void(0);" class="page-index next" data-index="' + (cur + 1) + '">&gt;</a>';
         }
         html += '<span class="page-total">共<span class="number">' + total + '</span>页</span>';
-          // <span class="page-go">到第<input class="w35 go" id="yeshu" type="text" value="">页</span>\
-          // <input type="button" class="gray-btn" id="go-search" value="确定">';
+        // <span class="page-go">到第<input class="w35 go" id="yeshu" type="text" value="">页</span>\
+        // <input type="button" class="gray-btn" id="go-search" value="确定">';
         tar.innerHTML = html;
-        if(options.callback) {
+        if (options.callback) {
             // 执行回调
             options.callback();
         }
     }
 
     // cmd || node.js
-    if ( typeof module === "object" && module && typeof module.exports === "object" ) {
+    if (typeof module === "object" && module && typeof module.exports === "object") {
         module.exports = pagination;
     } else {
         window.pagination = pagination;
         // amd
-        if ( typeof define === "function" && define.amd ) {
-            define( "pagination", [], function () { return pagination; } );
+        if (typeof define === "function" && define.amd) {
+            define("pagination", [], function () {
+                return pagination;
+            });
         }
     }
 })(window)

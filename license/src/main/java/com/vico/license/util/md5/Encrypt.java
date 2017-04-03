@@ -3,21 +3,19 @@ package com.vico.license.util.md5;
 import java.security.MessageDigest;
 
 
-
 /**
  * 两次加密：第一次MD5加密，第二次ascii码向右偏移两位
- * 
- * @author Liu.Dun
  *
+ * @author Liu.Dun
  */
 public class Encrypt {
-	   
-	   //偏移量,此处写死了
-    	static final int offset = 2;
-	
-	public final static String MD5(String s) {
-        char hexDigits[]={'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};   
-        
+
+    //偏移量,此处写死了
+    static final int offset = 2;
+
+    public final static String MD5(String s) {
+        char hexDigits[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
+
         try {
             byte[] btInput = s.getBytes();
             // 获得MD5摘要算法的 MessageDigest 对象
@@ -36,20 +34,20 @@ public class Encrypt {
                 str[k++] = hexDigits[byte0 & 0xf];
             }
             //System.out.println(str);
-            
-            
+
+
             //第二次加密
             String str1 = new String(str);
             StringBuffer sb = new StringBuffer();
-            
+
             char[] oricode = str1.toCharArray();
             int leng = oricode.length;
             int[] afcode = new int[leng];
-            for(int i=0;i<leng;i++){
-            	afcode[i] = oricode[i] + offset;                //所有字符的ascii码偏移
-            	char lastcode = (char)afcode[i];
-            	sb.append(lastcode);
-           }
+            for (int i = 0; i < leng; i++) {
+                afcode[i] = oricode[i] + offset;                //所有字符的ascii码偏移
+                char lastcode = (char) afcode[i];
+                sb.append(lastcode);
+            }
             return sb.toString();
         } catch (Exception e) {
             e.printStackTrace();

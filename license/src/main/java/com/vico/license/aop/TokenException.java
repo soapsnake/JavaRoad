@@ -1,13 +1,13 @@
 package com.vico.license.aop;
 
 public class TokenException extends RuntimeException {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 17812839021831L;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 17812839021831L;
 
-	public TokenException(String message) {
-		super(message);
-	}
-	
+    public TokenException(String message) {
+        super(message);
+    }
+
 }
