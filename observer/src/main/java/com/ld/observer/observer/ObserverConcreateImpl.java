@@ -25,7 +25,6 @@ public class ObserverConcreateImpl implements ObserverConcreate{
 	/**
 	 * 拉模式,观察者在收到通知提示后,会自己到目标中去获取实际的内容
 	 */
-	@Override
 	public void remind(Object o) {
 		receiveContent = ((ObjectConcreateImpl)o).getObjectContent();
 		System.out.println(observerName+"同学,PS4价格已经降到"+receiveContent+"啦,还不快买他妈的?");

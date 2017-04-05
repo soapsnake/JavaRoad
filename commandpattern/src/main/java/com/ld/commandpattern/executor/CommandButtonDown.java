@@ -14,7 +14,6 @@ public class CommandButtonDown implements Command {
 		this.computer = computer;
 	}
 	
-	@Override
 	public void executeCmd() {
 		// TODO Auto-generated method stub
 		computer.turnOff();
