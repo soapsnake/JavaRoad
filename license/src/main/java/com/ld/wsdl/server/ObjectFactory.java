@@ -51,6 +51,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link UserInfo }
+     * 
+     */
+    public UserInfo createUserInfo() {
+        return new UserInfo();
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link TestWebService }{@code >}}
      * 
      */
