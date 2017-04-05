@@ -1,5 +1,8 @@
 package com.ld.wsdl.server;
 
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebResult;

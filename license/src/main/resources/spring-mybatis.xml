@@ -51,8 +51,6 @@
         <property name="filters" value="mergeStat"/>
     </bean>
 
-    <!--<import resource="classpath:META-INF/cxf/cxf.xml" />-->
-
     <jaxws:client id="webServiceBean" serviceClass="com.ld.wsdl.server.WebService001"
                   address="http://localhost:8888/webService/test" />
 
