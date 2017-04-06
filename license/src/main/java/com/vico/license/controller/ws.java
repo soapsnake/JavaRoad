@@ -18,6 +18,7 @@ public class ws {
 
     @RequestMapping("test")
     public String test(){
+        System.out.println("call ws");
         return webServiceBean.testWebService("liudun");
     }
 }
