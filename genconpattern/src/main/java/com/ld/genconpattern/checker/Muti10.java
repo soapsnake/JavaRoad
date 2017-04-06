@@ -14,7 +14,6 @@ public class Muti10 implements Runnable {
 		this.id = idenid;
 	}
 	
-	@Override
 	public void run() {
 		// TODO Auto-generated method stub
 		while(intgen.isCanceled() == false){

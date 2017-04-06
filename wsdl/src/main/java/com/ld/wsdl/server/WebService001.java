@@ -1,5 +1,8 @@
 package com.ld.wsdl.server;
 
+import com.ld.wsdl.pojo.UserInfo;
+import com.ld.wsdl.pojo.WsdlResponse;
+
 import javax.jws.WebService;
 import javax.xml.ws.Endpoint;
 
@@ -9,9 +12,14 @@ import javax.xml.ws.Endpoint;
     @WebService
     public class WebService001 {
 
-        public String testWebService(String name) {
-            System.out.println("Test sucessfully, you input name is :" + name);
-            return name;
+        public WsdlResponse testWebService(String username) {
+            System.out.println("Test sucessfully, you input name is :" + username);
+//            return userInfo;
+            WsdlResponse response = new WsdlResponse();
+            response.setResponse("wsdl success!");
+            response.setStatus(1);
+            response.setUserName(username);
+            return response;
         }
 
         public static void main(String[] args) {
@@ -19,8 +27,6 @@ import javax.xml.ws.Endpoint;
             System.out.println("webService pulish completed!");
         }
     }
-
-
 
 
 

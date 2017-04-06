@@ -15,7 +15,7 @@ public class CommandButtonUP implements Command {
 			
 		this.computer = computer;
 	}
-	@Override
+	
 	public void executeCmd() {
 		// TODO Auto-generated method stub'
 		computer.turnOn();

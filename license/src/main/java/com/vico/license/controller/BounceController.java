@@ -14,8 +14,14 @@ import javax.servlet.http.HttpServletResponse;
  */
 
 @Controller
-@RequestMapping(value = "bounceController")
+@RequestMapping(value = "/")
 public class BounceController {
+
+
+    @RequestMapping(value = "")
+    public String defaultPage(){
+        return "License 序列号认证项目!";
+    }
 
     @RequestMapping(value = "tocreatecode")
     public String toCreate(HttpServletRequest request) {
