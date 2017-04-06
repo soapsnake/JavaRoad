@@ -51,8 +51,8 @@
         <property name="filters" value="mergeStat"/>
     </bean>
 
-    <jaxws:client id="webServiceBean" serviceClass="com.ld.wsdl.server.WebService001"
-                  address="http://localhost:8888/webService/test" />
+    <!--<jaxws:client id="webServiceBean" serviceClass="com.ld.wsdl.server.WebService001"-->
+                  <!--address="http://localhost:8888/webService/test" />-->
 
     <!-- spring和MyBatis完美整合，不需要mybatis的配置映射文件 -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
