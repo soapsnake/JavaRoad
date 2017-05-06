@@ -1,8 +1,9 @@
 package com.vico.license.pojo;
 
-import com.vico.license.util.annotation.NotEmpty;
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.stereotype.Component;
 
+import javax.validation.constraints.NotNull;
 import java.sql.Date;
 
 /**
@@ -15,18 +16,17 @@ import java.sql.Date;
 public class LicenseDetail {
     private Integer serialNumberId;
 
-    @NotEmpty
+    @NotBlank(message = "sourceNumber不能为空")
     private String sourceNumber;
 
     private Date createDate;
 
-    @NotEmpty
     private Date expiredDate;
 
-    @NotEmpty
+    @NotBlank(message = "encryptedNumber不能为空")
     private String encryptedNumber;
 
-    @NotEmpty
+    @NotNull(message = "hospitalNumber不能为空")
     private Integer hospitalNumber;
 
     private Integer licenseState;
@@ -123,5 +123,21 @@ public class LicenseDetail {
 
     public void setHospitalNumber(Integer hospitalNumber) {
         this.hospitalNumber = hospitalNumber;
+    }
+
+    @Override
+    public String toString() {
+        return "LicenseDetail{" +
+                "serialNumberId=" + serialNumberId +
+                ", sourceNumber='" + sourceNumber + '\'' +
+                ", createDate=" + createDate +
+                ", expiredDate=" + expiredDate +
+                ", encryptedNumber='" + encryptedNumber + '\'' +
+                ", hospitalNumber=" + hospitalNumber +
+                ", licenseState=" + licenseState +
+                ", keyId=" + keyId +
+                ", hospital=" + hospital +
+                ", rsaKey=" + rsaKey +
+                '}';
     }
 }

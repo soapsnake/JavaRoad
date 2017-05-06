@@ -46,6 +46,7 @@
       <list>
         <option value="$PROJECT_DIR$/rpc/pom.xml" />
         <option value="$PROJECT_DIR$/license/pom.xml" />
+        <option value="$PROJECT_DIR$/nativemethod/pom.xml" />
       </list>
     </option>
   </component>

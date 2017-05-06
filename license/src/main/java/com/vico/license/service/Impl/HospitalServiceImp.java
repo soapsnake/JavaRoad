@@ -1,8 +1,9 @@
-package com.vico.license.service;
+package com.vico.license.service.Impl;
 
 import com.vico.license.dao.HospitalDao;
 import com.vico.license.pojo.DatatableModel;
 import com.vico.license.pojo.Hospital;
+import com.vico.license.service.HospitalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

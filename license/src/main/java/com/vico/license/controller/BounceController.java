@@ -2,6 +2,7 @@ package com.vico.license.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,10 +18,10 @@ import javax.servlet.http.HttpServletResponse;
 @RequestMapping(value = "/")
 public class BounceController {
 
-
-    @RequestMapping(value = "")
+    @RequestMapping(value = "/")
+    @ResponseBody
     public String defaultPage(){
-        return "License 序列号认证项目!";
+        return "Hello World!!";
     }
 
     @RequestMapping(value = "tocreatecode")

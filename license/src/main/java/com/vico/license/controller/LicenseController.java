@@ -11,6 +11,7 @@ import com.vico.license.util.ClassPathResourceURI;
 import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -119,8 +120,6 @@ public class LicenseController {
     }
 
     /**
-     * @param request
-     * @param response
      * @param:
      * @return: ProcessResult
      * @Title: deleteCode
@@ -245,21 +244,22 @@ public class LicenseController {
      * 后端非空判断采用javax.validation,防止前端js非空判断失效
      */
     @RequestMapping(value = "savecode", method = RequestMethod.POST)
-    public ModelAndView saveCode(@RequestBody @Valid LicenseDetail licensedetail) {
+    public ModelAndView saveCode(@RequestBody @Valid LicenseDetail licensedetail, BindingResult bindingResult) {
         ProcessResult processResult = new ProcessResult();
         /**
          * 非空判断,假如传入信息出现了空值,则返回生成序列号页面
          */
+        if(bindingResult.hasFieldErrors()){
+            logger.error("序列号参数绑定异常:"+bindingResult.getFieldError().getDefaultMessage());
+        }
+
         try {
             int i = licenseService.saveCode(licensedetail);
-            if (i == 1) {
-                processResult.setResultcode(ProcessResultEnum.RETURN_RESULT_SUCCESS);
-                processResult.setResultdesc(ProcessResultEnum.INSERT_SUCCESS);
-            } else {
-                processResult.setResultcode(ProcessResultEnum.RETURN_RESULT_FAIL);
-                processResult.setResultdesc(ProcessResultEnum.INSERT_FAIL);
-            }
+           if (i != 1){
+               logger.warn("序列号保存失败"+licensedetail.toString());
+           }
         } catch (Exception e) {
+            logger.warn("序列号保存失败"+licensedetail.toString());
             logger.error(ProcessResultEnum.INSERT_ERROR + ProcessResultEnum.getClassPath());
         }
         ModelAndView mv = new ModelAndView("redirect:/bounceController/toshowallcodes");

@@ -6,6 +6,7 @@ import com.vico.license.pojo.ProcessResult;
 import com.vico.license.pojo.User;
 import com.vico.license.pojo.UserByPage;
 import com.vico.license.service.UserService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +21,7 @@ import java.util.List;
 @RestController
 @RequestMapping("user")
 public class UserController {
+    public static final Logger logger = Logger.getLogger(UserController.class);
 
     @Autowired
     UserService userService;
@@ -31,7 +33,7 @@ public class UserController {
         try {
             users = userService.SelectAllUsers();
         } catch (Exception e) {
-            // TODO: handle exceptions
+            logger.error(e);
         }
         return users;
     }
@@ -87,7 +89,6 @@ public class UserController {
                 result.setResultdesc(userService.createToken(user.getUsername()));
             }
         } catch (Exception e) {
-            // TODO: handle exception
             e.printStackTrace();
         }
         return result;

@@ -1,9 +1,9 @@
 package com.ld.observer.object;
 
+import com.ld.observer.observer.ObserverConcreate;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import com.ld.observer.observer.ObserverConcreate;
 
 /**
  * 

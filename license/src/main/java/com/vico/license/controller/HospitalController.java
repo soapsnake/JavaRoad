@@ -73,8 +73,6 @@ public class HospitalController {
     }
 
     /**
-     * @param request
-     * @param response
      * @return
      * @由医院编号获取医院信息
      */
@@ -97,9 +95,6 @@ public class HospitalController {
     }
 
     /**
-     * @param request
-     * @param response
-     * @param:
      * @return: void
      * @Title: deleteHospital
      * @Description: 删除医院，有关联序列号信息的医院禁止删除

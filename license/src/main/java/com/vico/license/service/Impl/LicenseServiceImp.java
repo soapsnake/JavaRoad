@@ -1,4 +1,4 @@
-package com.vico.license.service;
+package com.vico.license.service.Impl;
 
 import com.vico.license.dao.HospitalDao;
 import com.vico.license.dao.LicenseDao;
@@ -6,7 +6,13 @@ import com.vico.license.dao.RSAKeyDao;
 import com.vico.license.pojo.DatatableModel;
 import com.vico.license.pojo.LicenseDetail;
 import com.vico.license.pojo.RSAKey;
-import com.vico.license.util.*;
+import com.vico.license.service.LicenseService;
+import com.vico.license.util.ByteArrayToObj;
+import com.vico.license.util.ObjToByteArray;
+import com.vico.license.util.ObjToFile;
+import com.vico.license.util.StringToFile;
+import com.vico.license.util.TimeDiff;
+import com.vico.license.util.ZIPFiles;
 import com.vico.license.util.rsa.RSACreateSourceCode;
 import com.vico.license.util.rsa.RSAKeyPair;
 import com.vico.license.util.rsa.RSAdoEncrypt;
@@ -69,7 +75,6 @@ public class LicenseServiceImp implements LicenseService {
      * @return
      * @Title: createEncryptCode
      * @Description:采用加密算法对原始序列后进行加密
-     * @see com.vico.license.service.LicenseService#createEncryptCode(java.lang.String)
      */
     @Override
     public String createEncryptCode(String code, byte[] publickey) {

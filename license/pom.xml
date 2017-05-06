@@ -241,7 +241,7 @@
                 <version>2.2</version>
                 <configuration>
                     <update>true</update>
-                    <url>http://172.16.25.16:8080/manager/text</url>
+                    <url>http://10.4.226.212:8080/manager/text</url>
                     <username>admin</username>
                     <password>admin</password>
                     <path>/${project.build.finalName}</path>
@@ -291,7 +291,15 @@
                     </execution>
                 </executions>
             </plugin>
-
+            
+       <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <skip>true</skip>
+        </configuration>
+      </plugin>
+            
         </plugins>
     </build>
 </project>
