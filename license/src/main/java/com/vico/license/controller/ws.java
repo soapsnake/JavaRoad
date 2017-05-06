@@ -18,7 +18,7 @@ public class ws {
 
     @RequestMapping(value = "test",method = RequestMethod.GET)
     public String test(@RequestParam("uname")String username){
-
+        System.out.println("call ws");
         JaxWsDynamicClientFactory dcf = JaxWsDynamicClientFactory.newInstance();
 
 //        Client client = dcf.createClient("http://localhost:8888/webService/test?wsdl");
@@ -75,6 +75,7 @@ public class ws {
         System.out.println(objects[0]);
 
         return JSON.toJSONString(objects);
+
     }
 
 
