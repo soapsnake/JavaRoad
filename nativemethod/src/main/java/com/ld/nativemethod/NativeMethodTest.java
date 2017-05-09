@@ -11,9 +11,7 @@ public class NativeMethodTest {
         System.loadLibrary("NativeMethodTest");
     }
 
-
     public static void main(String[] args){
-
         NativeMethodTest nativeMethodTest = new NativeMethodTest();
         nativeMethodTest.printWords("hello world");
     }

@@ -12,8 +12,11 @@ import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -244,13 +247,15 @@ public class LicenseController {
      * 后端非空判断采用javax.validation,防止前端js非空判断失效
      */
     @RequestMapping(value = "savecode", method = RequestMethod.POST)
-    public ModelAndView saveCode(@RequestBody @Valid LicenseDetail licensedetail, BindingResult bindingResult) {
+    public ProcessResult saveCode(@RequestBody @Valid LicenseDetail licensedetail, BindingResult bindingResult) {
         ProcessResult processResult = new ProcessResult();
         /**
          * 非空判断,假如传入信息出现了空值,则返回生成序列号页面
          */
         if(bindingResult.hasFieldErrors()){
             logger.error("序列号参数绑定异常:"+bindingResult.getFieldError().getDefaultMessage());
+            processResult.setResultdesc("参数绑定失败");
+            return processResult;
         }
 
         try {
@@ -261,9 +266,12 @@ public class LicenseController {
         } catch (Exception e) {
             logger.warn("序列号保存失败"+licensedetail.toString());
             logger.error(ProcessResultEnum.INSERT_ERROR + ProcessResultEnum.getClassPath());
+            processResult.setResultdesc(ProcessResultEnum.CREATE_FAIL);
+            return processResult;
         }
-        ModelAndView mv = new ModelAndView("redirect:/bounceController/toshowallcodes");
-        return mv;
+        processResult.setResultcode(ProcessResultEnum.RETURN_RESULT_SUCCESS);
+        processResult.setResultdesc(ProcessResultEnum.INSERT_SUCCESS);
+        return processResult;
     }
 
     @RequestMapping(value = "createkeypair")
