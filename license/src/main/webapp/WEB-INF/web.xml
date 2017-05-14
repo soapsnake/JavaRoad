@@ -37,7 +37,8 @@
     <!-- 设置spring容器的上下文 -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:spring-mybatis.xml</param-value>
+        <!--<param-value>classpath:spring-mybatis.xml</param-value>-->
+        <param-value>classpath:spring-*.xml</param-value>
     </context-param>
 
     <!-- 这个编码过滤器没有用,不知道什么原因 -->
