@@ -2,13 +2,11 @@ package com.vico.license.kafka;
 
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.kafka.listener.MessageListener;
-import org.springframework.stereotype.Component;
 
 /**
  * Created by liudun on 2017/5/9.
  */
 //kafka消费者
-    @Component
 public class KafkaConsumer implements MessageListener<String,String> {
 
     //不和spring集成时你需要手动设置consumer的配置并且进行加载
@@ -50,6 +48,6 @@ public class KafkaConsumer implements MessageListener<String,String> {
 
     @Override
     public void onMessage(ConsumerRecord<String, String> stringStringConsumerRecord) {
-        System.out.println("kafka consumer收到的消息: "+stringStringConsumerRecord.key());
+        System.out.println("kafka consumer收到的消息: "+stringStringConsumerRecord.value());
     }
 }
