@@ -1,3 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">&#x0A;<refactoring comment="Delete resource &apos;license&apos;" deleteContents="false" description="Delete resource &apos;license&apos;" element1="/license" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1478015775476"/>&#x0A;<refactoring comment="Delete resource &apos;Mybatis-Spring&apos;" deleteContents="true" description="Delete resource &apos;Mybatis-Spring&apos;" element1="/Mybatis-Spring" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1478049580163"/>
-</session>

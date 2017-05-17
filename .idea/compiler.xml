@@ -6,15 +6,21 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="annotations" />
+        <module name="concurrence" />
+        <module name="enum" />
         <module name="license" />
         <module name="nativemethod" />
         <module name="rpc" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.8">
+      <module name="annotations" target="1.8" />
+      <module name="concurrence" target="1.8" />
+      <module name="enum" target="1.8" />
       <module name="license" target="1.8" />
-      <module name="nativemethod" target="1.5" />
-      <module name="rpc" target="1.5" />
+      <module name="nativemethod" target="1.8" />
+      <module name="rpc" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Move element &apos;WebContextFilter.java&apos; to &apos;license/src/main/java/com.vico.license.filters&apos;&#x0D;&#x0A;- Original project: &apos;license&apos;&#x0D;&#x0A;- Destination element: &apos;license/src/main/java/com.vico.license.filters&apos;&#x0D;&#x0A;- Original element: &apos;com.vico.license.aop.WebContextFilter.java&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move compilation unit" destination="/src\/main\/java&lt;com.vico.license.filters" element1="/src\/main\/java&lt;com.vico.license.aop{WebContextFilter.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" patterns="*" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1480592650564" units="1" version="1.0"/>
-</session>
