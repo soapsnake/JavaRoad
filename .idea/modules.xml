@@ -3,12 +3,14 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/JavaRoad.iml" filepath="$PROJECT_DIR$/.idea/JavaRoad.iml" />
+      <module fileurl="file://$USER_HOME$/Downloads/1495092502296 2/BusinessFrame/MTthriftClientDemo/MTthriftClientDemo.iml" filepath="$USER_HOME$/Downloads/1495092502296 2/BusinessFrame/MTthriftClientDemo/MTthriftClientDemo.iml" />
+      <module fileurl="file://$USER_HOME$/Downloads/1495092502296 2/BusinessFrame/MTthriftServerDemo/MTthriftServerDemo.iml" filepath="$USER_HOME$/Downloads/1495092502296 2/BusinessFrame/MTthriftServerDemo/MTthriftServerDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/annotations/annotations.iml" filepath="$PROJECT_DIR$/annotations/annotations.iml" />
       <module fileurl="file://$PROJECT_DIR$/concurrence/concurrence.iml" filepath="$PROJECT_DIR$/concurrence/concurrence.iml" />
       <module fileurl="file://$PROJECT_DIR$/enum/enum.iml" filepath="$PROJECT_DIR$/enum/enum.iml" />
       <module fileurl="file://$PROJECT_DIR$/license/license.iml" filepath="$PROJECT_DIR$/license/license.iml" />
       <module fileurl="file://$PROJECT_DIR$/nativemethod/nativemethod.iml" filepath="$PROJECT_DIR$/nativemethod/nativemethod.iml" />
-      <module fileurl="file://$PROJECT_DIR$/rpc/rpc.iml" filepath="$PROJECT_DIR$/rpc/rpc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/thrift/thrift.iml" filepath="$PROJECT_DIR$/thrift/thrift.iml" />
     </modules>
   </component>
 </project>

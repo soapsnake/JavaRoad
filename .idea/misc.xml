@@ -44,12 +44,14 @@
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
-        <option value="$PROJECT_DIR$/rpc/pom.xml" />
         <option value="$PROJECT_DIR$/license/pom.xml" />
         <option value="$PROJECT_DIR$/nativemethod/pom.xml" />
         <option value="$PROJECT_DIR$/enum/pom.xml" />
         <option value="$PROJECT_DIR$/annotations/pom.xml" />
         <option value="$PROJECT_DIR$/concurrence/pom.xml" />
+        <option value="$USER_HOME$/Downloads/1495092502296 2/BusinessFrame/MTthriftClientDemo/pom.xml" />
+        <option value="$USER_HOME$/Downloads/1495092502296 2/BusinessFrame/MTthriftServerDemo/pom.xml" />
+        <option value="$PROJECT_DIR$/thrift/pom.xml" />
       </list>
     </option>
   </component>
