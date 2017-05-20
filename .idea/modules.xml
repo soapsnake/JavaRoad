@@ -11,6 +11,7 @@
       <module fileurl="file://$PROJECT_DIR$/license/license.iml" filepath="$PROJECT_DIR$/license/license.iml" />
       <module fileurl="file://$PROJECT_DIR$/nativemethod/nativemethod.iml" filepath="$PROJECT_DIR$/nativemethod/nativemethod.iml" />
       <module fileurl="file://$PROJECT_DIR$/thrift/thrift.iml" filepath="$PROJECT_DIR$/thrift/thrift.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zookeeper/zookeeper.iml" filepath="$PROJECT_DIR$/zookeeper/zookeeper.iml" />
     </modules>
   </component>
 </project>

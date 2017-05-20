@@ -15,8 +15,7 @@ import java.io.Serializable;
  */
 
 @Component
-//@Scope(value = "request",  proxyMode = ScopedProxyMode.TARGET_CLASS)
-
+//@Scope(value = WebApplicationContext.SCOPE_SESSION,proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class ProcessResult implements Serializable {
 
     /**
@@ -24,7 +23,7 @@ public class ProcessResult implements Serializable {
      * @fieldType: long
      * @Description: TODO
      */
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 18329183219L;
 
     /**
      * 状态码
@@ -80,7 +79,11 @@ public class ProcessResult implements Serializable {
 
     @Override
     public String toString() {
-        return "ProcessResult [resultcode=" + resultcode + ", resultmessage=" + resultmessage + ", resultobject="
-                + resultobject + ", resultdesc=" + resultdesc + "]";
+        return "ProcessResult{" +
+                "resultcode=" + resultcode +
+                ", resultmessage='" + resultmessage + '\'' +
+                ", resultobject=" + resultobject +
+                ", resultdesc='" + resultdesc + '\'' +
+                '}';
     }
 }

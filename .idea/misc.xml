@@ -52,6 +52,7 @@
         <option value="$USER_HOME$/Downloads/1495092502296 2/BusinessFrame/MTthriftClientDemo/pom.xml" />
         <option value="$USER_HOME$/Downloads/1495092502296 2/BusinessFrame/MTthriftServerDemo/pom.xml" />
         <option value="$PROJECT_DIR$/thrift/pom.xml" />
+        <option value="$PROJECT_DIR$/zookeeper/pom.xml" />
       </list>
     </option>
   </component>
