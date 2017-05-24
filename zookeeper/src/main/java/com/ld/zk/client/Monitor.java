@@ -44,12 +44,22 @@ public class Monitor implements Watcher {
             System.out.println("master: " + new String(masterData) + "since" + startDate);
         } catch (KeeperException e) {
             e.printStackTrace();
-            System.out.println("根本就没有master节点!!!!!!!");
+            System.out.println("根本就没有/master节点!!!!!!!");
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
         System.out.println("workers:");
+        try {
+            byte[] workersData = zk.getData("/workers", false, stat);
+            Date startDate = new Date(stat.getCtime());
+            System.out.println("workers: " + new String(workersData) + "since" + startDate);
+        } catch (KeeperException e) {
+            e.printStackTrace();
+            System.out.println("根本就没有/workers节点!!!!!!!");
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         try {
             for (String worker : zk.getChildren("/workers", false)) {
                 byte[] data = zk.getData("/workers/" + worker, false, null);
@@ -64,6 +74,16 @@ public class Monitor implements Watcher {
         }
 
         System.out.println("Tasks:");
+        try {
+            byte[] assignData = zk.getData("/assign", false, stat);
+            Date startDate = new Date(stat.getCtime());
+            System.out.println("assign: " + new String(assignData) + "since" + startDate);
+        } catch (KeeperException e) {
+            e.printStackTrace();
+            System.out.println("根本就没有/assign节点!!!!!!!");
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         try {
             for (String task : zk.getChildren("/assign",false)){
                 System.out.println("\t" + task);

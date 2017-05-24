@@ -36,34 +36,26 @@ public class SecurityAspect {
         this.tokenName = tokenName;
     }
 
-//	@Pointcut("execution(* com..controller.*Controller.*Aspect(..))")
-//    private void pointCutMethod() {
-//    }
-//	
-//	
-//	@Pointcut("within(@org.springframework.stereotype.Controller *)")
-//	public void thing() {
-//		System.out.println("dsada");
-//	}
-//	
-//	@Pointcut("execution(* *(..))")
-//    public void methodPointcut() {}
-
+    //这个切点只拦截带有@NeedCheck注解的方法
     @Pointcut("@annotation(com.vico.license.aop.NeedCheck)")
     public void needAnnotation() {
 
     }
 
-    @Before("needAnnotation()")
+    //这个切点拦截所有除了BounceController之外所有其他controller中的所有方法
+//    @Pointcut("execution(* com.vico.license.controller.*.*(..)) && !bean(bounceController)")
+    //这个切点拦截打到所有cotroller的请求
+    @Pointcut("execution(* com.vico.license.controller.*.*(..))")
+    public void cutAllRequest(){}
+
+//    @Before("needAnnotation()")
+    @Before("cutAllRequest()")
     public void before(JoinPoint joinPoint) throws Throwable {    //Before型通知只能用JoinPoint,不能用ProceedingJoinPoint
         System.out.println("=====SysLogAspect 前置通知开始=====");
     }
 
-    //@Around("com.vico.license.controller.licenseController() && @annotation(com.vico.license.aop.IgnoreSecurity)")
-    //@Around("execution(@com.vico.license..NeedCheck * *(..)) && @annotation(com.vico.license.aop.NeedCheck)")
-    //@Around("thing() && methodPointcut() && @annotation(org.springframework.web.bind.annotation.RequestMapping)")
-    //@Around("@annotation(org.springframework.web.bind.annotation.RequestMapping)")
     @Around("needAnnotation()")
+//    @Around("cutAllRequest()")
     public Object execute(ProceedingJoinPoint pjp) throws Throwable {
 
         System.out.println("=====SysLogAspect 环绕通知开始=====");

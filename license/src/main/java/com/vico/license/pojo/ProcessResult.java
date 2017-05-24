@@ -1,5 +1,6 @@
 package com.vico.license.pojo;
 
+import com.vico.license.enums.ProcessResultEnum;
 import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
@@ -75,6 +76,19 @@ public class ProcessResult implements Serializable {
 
     public void setResultdesc(String resultdesc) {
         this.resultdesc = resultdesc;
+    }
+
+    public ProcessResult setResult(ProcessResultEnum resultEnum){
+        this.resultcode = resultEnum.getCode();
+        this.resultmessage = resultEnum.getMsg();
+        return this;
+    }
+
+    public ProcessResult setResult(ProcessResultEnum resultEnum,Object obj){
+        this.resultcode = resultEnum.getCode();
+        this.resultmessage = resultEnum.getMsg();
+        this.resultobject = obj;
+        return this;
     }
 
     @Override

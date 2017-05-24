@@ -11,6 +11,7 @@ import com.vico.license.util.ClassPathResourceURI;
 import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -43,6 +44,9 @@ public class LicenseController {
 
     @Autowired
     private LicenseService licenseService;
+
+    @Autowired
+    private Environment env;
 
     @RequestMapping(value = "createcode", method = RequestMethod.GET)
     public ProcessResult sourceCode(@PathParam("hosnumber") String hosnumber, @PathParam("duedate") String duedate) {

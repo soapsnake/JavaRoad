@@ -1,6 +1,35 @@
 package com.vico.license.enums;
 
-public class ProcessResultEnum {
+public enum ProcessResultEnum {
+
+    SUCCESS(0,"操作成功"),
+    INS_FAIL(101,"删除失败"),
+    UPD_FAIL(202,"修改失败"),
+    DEL_FAIL(303,"删除失败");
+
+    private int code;
+    private String msg;
+
+    public int getCode() {
+        return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
+
+    ProcessResultEnum(int code, String msg){
+        this.code = code;
+        this.msg = msg;
+    }
 
     /**
      * 操作成功，返回结果1

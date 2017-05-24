@@ -1,5 +1,10 @@
 package com.vico.license.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.vico.license.pojo.ProcessResult;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -16,12 +21,18 @@ import javax.servlet.http.HttpServletResponse;
 
 @Controller
 @RequestMapping(value = "/")
+@PropertySource("classpath:hosts.properties")
 public class BounceController {
+
+    @Autowired
+    private Environment env;
 
     @RequestMapping(value = "/")
     @ResponseBody
     public String defaultPage(){
-        return "Hello World!!";
+        ProcessResult result = new ProcessResult();
+        result.setResultdesc(env.getProperty("master") + " : " + env.getProperty("masterpass"));
+        return JSON.toJSONString(result);
     }
 
     @RequestMapping(value = "tocreatecode")
