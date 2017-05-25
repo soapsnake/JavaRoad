@@ -1,5 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="web" name="Web">
+      <configuration>
+        <descriptors>
+          <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/licenseWeb/src/main/webapp/WEB-INF/web.xml" />
+        </descriptors>
+        <webroots>
+          <root url="file://$MODULE_DIR$/licenseWeb/src/main/webapp" relative="/" />
+        </webroots>
+        <sourceRoots>
+          <root url="file://$MODULE_DIR$/wsdl/src" />
+          <root url="file://$MODULE_DIR$/observer/src" />
+          <root url="file://$MODULE_DIR$/multithread/src/main/java" />
+          <root url="file://$MODULE_DIR$/generic/src" />
+        </sourceRoots>
+      </configuration>
+    </facet>
+    <facet type="web" name="Web2">
+      <configuration>
+        <descriptors>
+          <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/Servers/Tomcat v8.0 Server at localhost-config/web.xml" />
+        </descriptors>
+        <webroots>
+          <root url="file://$MODULE_DIR$/Servers/Tomcat v8.0 Server at localhost-config" relative="/WEB-INF" />
+        </webroots>
+        <sourceRoots>
+          <root url="file://$MODULE_DIR$/wsdl/src" />
+          <root url="file://$MODULE_DIR$/observer/src" />
+          <root url="file://$MODULE_DIR$/multithread/src/main/java" />
+          <root url="file://$MODULE_DIR$/generic/src" />
+        </sourceRoots>
+      </configuration>
+    </facet>
+  </component>
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8" inherit-compiler-output="false">
     <output url="file:///JavaRoad" />
     <output-test url="file:///test/JavaRoad" />
@@ -10,6 +44,9 @@
       <sourceFolder url="file://$MODULE_DIR$/multithread/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/multithread/src/test/java" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/generic/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/algorithms/src/main" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/algorithms/src/test" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/algorithms/target" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

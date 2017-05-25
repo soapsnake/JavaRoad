@@ -40,6 +40,7 @@
   </component>
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/license" />
+    <file type="web" url="file://$PROJECT_DIR$/licenseWeb" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
@@ -53,6 +54,11 @@
         <option value="$USER_HOME$/Downloads/1495092502296 2/BusinessFrame/MTthriftServerDemo/pom.xml" />
         <option value="$PROJECT_DIR$/thrift/pom.xml" />
         <option value="$PROJECT_DIR$/zookeeper/pom.xml" />
+        <option value="$PROJECT_DIR$/lambda/pom.xml" />
+        <option value="$PROJECT_DIR$/licenseWeb/pom.xml" />
+        <option value="$PROJECT_DIR$/wsdl/pom.xml" />
+        <option value="$PROJECT_DIR$/algorithms/pom.xml" />
+        <option value="$PROJECT_DIR$/commandpattern/pom.xml" />
       </list>
     </option>
   </component>
