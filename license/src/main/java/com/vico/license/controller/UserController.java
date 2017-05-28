@@ -78,8 +78,8 @@ public class UserController {
         return res;
     }
 
-    @RequestMapping(value = "login", method = RequestMethod.GET)
-    public ProcessResult userLogin(User user) {
+    @RequestMapping(value = "login" ,method = RequestMethod.POST)
+    public ProcessResult userLogin(@RequestBody User user) {
         ProcessResult result = new ProcessResult();
         int usergroup = -1;
         try {

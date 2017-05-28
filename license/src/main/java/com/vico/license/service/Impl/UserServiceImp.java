@@ -7,7 +7,9 @@ import com.vico.license.pojo.DataTableRequest;
 import com.vico.license.pojo.User;
 import com.vico.license.pojo.UserByPage;
 import com.vico.license.service.UserService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -23,9 +25,9 @@ import java.util.Set;
 @Service
 @Transactional(rollbackFor = Exception.class)
 public class UserServiceImp implements UserService {
-
+    private static final Logger logger = Logger.getLogger(UserServiceImp.class);
     @Autowired
-    UserDao userDao;
+    private UserDao userDao;
 
     @Autowired
     private TokenManager tokenManager;
@@ -46,11 +48,21 @@ public class UserServiceImp implements UserService {
         return users;
     }
 
+    /**
+     * 新加的用户同时会被写进缓存当中
+     * 可以把这个@cacheput注解加在接口上,这样所有实现类都可以用,但是不推荐这样搞
+     * @param user
+     * @return
+     */
     @Override
+    @CachePut("license")
     public int addUser(User user) {
-
         int res = 0;
-        res = userDao.addUser(user);
+        try {
+            res = userDao.addUser(user);
+        }catch (Exception e){
+            logger.error("add user exception:"+user.toString()+e);
+        }
         return res;
     }
 
@@ -61,7 +73,7 @@ public class UserServiceImp implements UserService {
         Integer draw = 0;
         Integer recordsTotal = 0;
         Integer filterRecordsTotal = 0;
-        List<User> users = new ArrayList<User>();
+        List<User> users = new ArrayList<>();
 
         length = request.getLength();
         start = request.getStart();
@@ -99,8 +111,14 @@ public class UserServiceImp implements UserService {
         return res;
     }
 
+    /**
+     * cacheable注解:基于切面,请求会先到缓存中查请求参数即user对象,查到直接
+     * 返回方法需要返回的值:这里为group而不是user对象
+     * 如果没有查到,会放请求下去,查完数据库后会把user对象写进缓存
+     * @param user
+     * @return
+     */
     @Override
-    //注解方式走缓存,请求会先到缓存中检查序列化的user对象,
     @Cacheable("license")
     public int userLogin(User user) {
         User userIncache = redisTemplate.opsForValue().get("licenseUser:"+user.getUsername()+"");

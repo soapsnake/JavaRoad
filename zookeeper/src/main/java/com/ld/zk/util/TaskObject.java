@@ -5,8 +5,8 @@ package com.ld.zk.util;
  */
 public class TaskObject {
 
-    getTask();
+    void getTask(){};
 
 
-    setTaskName(String name);
+    void setTaskName(String name){};
 }
