@@ -8,11 +8,16 @@ import com.vico.license.pojo.User;
 import com.vico.license.pojo.UserByPage;
 import com.vico.license.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.redis.cache.RedisCacheManager;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 
 @Service
@@ -24,6 +29,12 @@ public class UserServiceImp implements UserService {
 
     @Autowired
     private TokenManager tokenManager;
+
+    @Autowired
+    private RedisTemplate<String,User> redisTemplate;
+
+    @Autowired
+    private RedisCacheManager manager;
 
     @Override
     public List<User> SelectAllUsers() {
@@ -89,7 +100,24 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
+    //注解方式走缓存,请求会先到缓存中检查序列化的user对象,
+    @Cacheable("license")
     public int userLogin(User user) {
+        User userIncache = redisTemplate.opsForValue().get("licenseUser:"+user.getUsername()+"");
+
+        //template手动操作缓存
+//        if (userIncache != null) {
+//            System.out.println("缓存有此结果,查缓存进行比较");
+//            if (!user.getPassword().equals(userIncache.getPassword())) return -1;
+//        }else {
+//            System.out.println("缓存查无结果,查数据库如果合法则放进缓存");
+//        }
+
+        System.out.println(String.valueOf(userIncache));
+        Set<String> set = redisTemplate.keys("*");
+        Collection<String> set2 = manager.getCacheNames();
+        set.forEach(System.out::println);
+        set2.forEach(System.out::println);
         // TODO Auto-generated method stub
         int usergroup = -1;
         User user2 = userDao.getUserByName(user.getUsername());
@@ -98,10 +126,10 @@ public class UserServiceImp implements UserService {
             if (user2 != null) {
                 if (user2.getPassword().equals(user.getPassword())) {
                     usergroup = user2.getUsergroup();
+//                    redisTemplate.opsForValue().set("licenseUser:"+user.getUsername()+"",user);
                 }
             }
         } catch (Exception e) {
-            // TODO: handle exception
             e.printStackTrace();
         }
         return usergroup;

@@ -30,9 +30,7 @@ public class SecurityAspect {
     }
 
     public void setTokenName(String tokenName) {
-        if (StringUtil.isEmpty(tokenName)) {
-            tokenName = DEFAULT_TOKEN_NAME;
-        }
+        if (StringUtil.isEmpty(tokenName)) tokenName = DEFAULT_TOKEN_NAME;
         this.tokenName = tokenName;
     }
 
@@ -45,18 +43,18 @@ public class SecurityAspect {
     //这个切点拦截所有除了BounceController之外所有其他controller中的所有方法
 //    @Pointcut("execution(* com.vico.license.controller.*.*(..)) && !bean(bounceController)")
     //这个切点拦截打到所有cotroller的请求
-                 //这个*代表任意返回值                类名.方法(..)两点表示任意参数
+                    //这个*代表任意返回值             类名.方法(..)两点表示任意参数
     @Pointcut("execution(* com.vico.license.controller.*.*(..))")
-    public void cutAllRequest(){}
+    public void cutMethodRequest(){}
 
 //    @Before("needAnnotation()")
-    @Before("cutAllRequest()")
+    @Before("cutMethodRequest()")
     public void before(JoinPoint joinPoint) throws Throwable {    //Before型通知只能用JoinPoint,不能用ProceedingJoinPoint
         System.out.println("=====SysLogAspect 前置通知开始=====");
     }
 
-    @Around("needAnnotation()")
-//    @Around("cutAllRequest()")
+    //只有添加了@needAnnotation注解的contorller中的方法才会被拦截
+    @Around("needAnnotation() && cutMethodRequest()")
     public Object execute(ProceedingJoinPoint pjp) throws Throwable {
 
         System.out.println("=====SysLogAspect 环绕通知开始=====");

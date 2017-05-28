@@ -7,25 +7,29 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>license Maven Webapp</name>
 
+    <properties>
+        <spring-framework.verion>4.3.8.RELEASE</spring-framework.verion>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
-            <version>4.2.6.RELEASE</version>
+            <version>${spring-framework.verion}</version>
         </dependency>
 
         <!-- http://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
-            <version>4.2.6.RELEASE</version>
+            <version>${spring-framework.verion}</version>
         </dependency>
 
         <!-- http://mvnrepository.com/artifact/org.springframework/spring-test -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <version>4.2.6.RELEASE</version>
+            <version>${spring-framework.verion}</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
@@ -97,8 +101,9 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
-            <version>4.2.6.RELEASE</version>
+            <version>${spring-framework.verion}</version>
         </dependency>
+
         <dependency>
             <groupId>org.codehaus.jackson</groupId>
             <artifactId>jackson-mapper-asl</artifactId>
@@ -212,6 +217,19 @@
             <version>1.0.5.RELEASE</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-redis -->
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-redis</artifactId>
+            <version>1.8.3.RELEASE</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/redis.clients/jedis -->
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>2.9.0</version>
+        </dependency>
 
     </dependencies>
 

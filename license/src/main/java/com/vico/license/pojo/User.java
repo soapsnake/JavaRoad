@@ -2,8 +2,10 @@ package com.vico.license.pojo;
 
 import org.springframework.stereotype.Component;
 
+import java.io.Serializable;
+
 @Component
-public class User {
+public class User implements Serializable {
 
     private String username;
     private Integer userID;
@@ -42,5 +44,13 @@ public class User {
         this.usergroup = usergroup;
     }
 
-
+    @Override
+    public String toString() {
+        return "User{" +
+                "username='" + username + '\'' +
+                ", userID=" + userID +
+                ", password='" + password + '\'' +
+                ", usergroup=" + usergroup +
+                '}';
+    }
 }
