@@ -46,3 +46,8 @@ Temporary Items
 .recommenders
 testignore.ls
 
+/*/target/
+
+.project
+*.iml
+.settings
