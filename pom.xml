@@ -43,7 +43,7 @@
         <module>algorithms</module>
         <module>annotations</module>
         <module>collections</module>
-        <module>commandpattern</module>
+        <module>pattern</module>
         <module>concurrence</module>
         <module>enum</module>
         <module>lambda</module>
@@ -51,10 +51,7 @@
         <module>thrift</module>
         <module>wsdl</module>
         <module>zookeeper</module>
-        <module>genconpattern</module>
         <module>generic</module>
-        <module>observer</module>
-        <module>runnable</module>
     </modules>
 
 </project>
