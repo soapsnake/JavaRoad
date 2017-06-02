@@ -2,9 +2,13 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.ld</groupId>
+  <parent>
+    <artifactId>JavaRoad</artifactId>
+    <groupId>com.ld</groupId>
+    <version>1.0.0</version>
+  </parent>
+
   <artifactId>observer</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>observer</name>
@@ -18,7 +22,6 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
