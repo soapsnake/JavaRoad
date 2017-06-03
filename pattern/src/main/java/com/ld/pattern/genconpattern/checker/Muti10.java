@@ -1,6 +1,7 @@
 package com.ld.pattern.genconpattern.checker;
 
-import com.ld.genconpattern.generator.Intgen;
+
+import com.ld.pattern.genconpattern.generator.Intgen;
 
 public class Muti10 implements Runnable {
 	

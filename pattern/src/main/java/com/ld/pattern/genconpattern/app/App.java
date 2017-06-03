@@ -1,8 +1,9 @@
 package com.ld.pattern.genconpattern.app;
 
-import com.ld.genconpattern.checker.Muti10;
-import com.ld.genconpattern.generator.Intgen;
-import com.ld.genconpattern.generator.IntgenImpl;
+
+import com.ld.pattern.genconpattern.checker.Muti10;
+import com.ld.pattern.genconpattern.generator.Intgen;
+import com.ld.pattern.genconpattern.generator.IntgenImpl;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
