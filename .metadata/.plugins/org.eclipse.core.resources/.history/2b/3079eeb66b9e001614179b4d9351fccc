@@ -1,7 +1,0 @@
-package com.ld.runnable.synchronize;
-
-public class DualSynch {
-	
-	private Object syncObject = new Object();
-
-}

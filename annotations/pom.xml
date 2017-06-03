@@ -10,7 +10,11 @@
         <version>1.0.0</version>
     </parent>
 
-    <artifactId>nativemethod</artifactId>
+    <artifactId>annotations</artifactId>
+    <dependencies>
 
+
+
+    </dependencies>
 
 </project>
