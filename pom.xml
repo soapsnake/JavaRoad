@@ -147,6 +147,8 @@
         <module>zookeeper</module>
         <module>generic</module>
         <module>springboot</module>
+        <module>math</module>
+        <module>thinkinjava</module>
     </modules>
 
     <build>

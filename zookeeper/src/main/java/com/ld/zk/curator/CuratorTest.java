@@ -40,10 +40,16 @@ public class CuratorTest {
         test.zkc.create().withMode(CreateMode.EPHEMERAL).inBackground().forPath("/workers",new byte[0]);
 
         try {
-            Thread.sleep(10000);
+            for (int i=0;i<10;i++){
+                System.out.println(i + "...");
+                Thread.sleep(1000);
+            }
             LOGGER.warn("即将断开连接");
         }finally {
             test.zkc.close();
         }
+
+
+
     }
 }
