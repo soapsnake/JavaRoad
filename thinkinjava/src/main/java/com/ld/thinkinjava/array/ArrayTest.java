@@ -13,11 +13,16 @@ public class ArrayTest {
 
         Integer i3 = new Integer(40);
 
-        Integer[] arr = {i1,i2,i3};
+        Integer[] arr = {i1, i2, i3};
 
-        for (Integer integer : arr){
+        for (Integer integer : arr) {
             System.out.println(integer);
         }
+
+        ArrayTest2 test2 = new ArrayTest2();
+        test2.testPack();
+
+        test2.testProtec();
 
     }
 }

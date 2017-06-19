@@ -1,5 +1,7 @@
 package com.ld.thinkinjava.math;
 
+import com.ld.thinkinjava.array.ArrayTest2;
+
 /**
  * Created by liudun on 2017/6/8.
  */
@@ -32,6 +34,11 @@ public class MathTest {
         long i9 = 0;
         Long i10 = new Long(0);
         System.out.println(i10.getClass().getName());
+
+        ArrayTest2 test2 = new ArrayTest2();
+//        test2.testPack();   不允许访问
+
+//        test2.testProtec();   只有通过继承才能访问
 
 
     }
