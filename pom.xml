@@ -149,6 +149,7 @@
         <module>springboot</module>
         <module>math</module>
         <module>thinkinjava</module>
+        <module>crane</module>
     </modules>
 
     <build>
