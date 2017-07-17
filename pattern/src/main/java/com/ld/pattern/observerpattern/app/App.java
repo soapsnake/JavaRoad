@@ -1,7 +1,8 @@
 package com.ld.pattern.observerpattern.app;
 
-import com.ld.observer.object.ObjectConcreateImpl;
-import com.ld.observer.observer.ObserverConcreateImpl;
+
+import com.ld.pattern.observerpattern.object.ObjectConcreateImpl;
+import com.ld.pattern.observerpattern.observer.ObserverConcreateImpl;
 
 /**
  * 观察者模式!!!!!!!!
@@ -21,7 +22,7 @@ public class App
         /**
          * 创建两个观察者对象:小明和小刚
          */
-        ObserverConcreateImpl obsever1 = new ObserverConcreateImpl();  
+        ObserverConcreateImpl obsever1 = new ObserverConcreateImpl();
         obsever1.setObserverName("小明");
         ObserverConcreateImpl obsever2 = new ObserverConcreateImpl(); 
         obsever2.setObserverName("小刚");

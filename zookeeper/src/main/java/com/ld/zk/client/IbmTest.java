@@ -41,14 +41,14 @@ public class IbmTest {
         zk.setData("/testRootPath/testChildPathOne","modifyChildDataOne".getBytes(),-1);
 
         //利用exists监控/testRootPath
-        System.out.println("目录节点状态：["+zk.exists("/testRootPath",true)+"]");
+        System.out.println(">>>>>>>>>>目录节点状态：["+zk.exists("/testRootPath",true)+"]");
 
         // 创建另外一个子目录节点
         zk.create("/testRootPath/testChildPathTwo", "testChildDataTwo".getBytes(),
                 ZooDefs.Ids.OPEN_ACL_UNSAFE,CreateMode.PERSISTENT);
 
         //利用getData监控/testRootPath/testChildPathTwo,
-        System.out.println(new String(zk.getData("/testRootPath/testChildPathTwo",true,null)));
+        System.out.println(">>>>>>"+new String(zk.getData("/testRootPath/testChildPathTwo",true,null)));
         // 删除子目录节点,testChildPathTwo被监控,因此必然会触发事件
         zk.delete("/testRootPath/testChildPathTwo",-1);
 
