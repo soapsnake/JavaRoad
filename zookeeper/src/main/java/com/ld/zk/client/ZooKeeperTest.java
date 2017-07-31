@@ -11,11 +11,9 @@ import org.apache.zookeeper.ZooKeeper;
 import java.io.IOException;
 
 /**
- * ibm的东西就是牛逼!!!
- * https://www.ibm.com/developerworks/cn/opensource/os-cn-zookeeper/
  * Created by liudun on 2017/5/21.
  */
-public class IbmTest {
+public class ZooKeeperTest {
 
     public static void main(String[] args) throws IOException, KeeperException, InterruptedException {
         // 创建一个与服务器的连接
