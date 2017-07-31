@@ -25,15 +25,15 @@ public class Master implements Watcher {
     private String serverId;
     private static boolean isLeader = false;
 
-    public Master(String hostport){
+    public Master(String hostport) {
         this.hostport = hostport;
         Random random = new Random();
         serverId = String.valueOf(random.nextLong());
     }
 
-    void startZK(){
+    void startZK() {
         try {
-            zk = new ZooKeeper(hostport,15000, this);
+            zk = new ZooKeeper(hostport, 15000, this);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -43,18 +43,22 @@ public class Master implements Watcher {
         zk.close();
     }
 
+    //事件触发回调函数
+    @Override
     public void process(WatchedEvent event) {
-        System.out.println("=========================");
-        System.out.println(event.getPath());
-        System.out.println(event.getType());
-        System.out.println(event.getState());
+        System.out.println("==============事件触发===========");
+        System.out.println("event.getClass(): " + event.getClass());
+        System.out.println("event.getWrapper(): " + event.getWrapper());
+        System.out.println("event.getPath(): " + event.getPath());
+        System.out.println("event.getType(): " + event.getType());
+        System.out.println("event.getState(): " + event.getState());
     }
 
-    boolean checkMaster(){
-        while (true){
+    boolean checkMaster() {
+        while (true) {
             try {
                 Stat stat = new Stat();
-                byte[] data = zk.getData("/master",false,stat);
+                byte[] data = zk.getData("/master", false, stat);
                 isLeader = new String(data).equals(serverId);
                 return true;
             } catch (InterruptedException e) {
@@ -66,10 +70,10 @@ public class Master implements Watcher {
         }
     }
 
-    void runForMaster(){
-        while (true){
+    void runForMaster() {
+        while (true) {
             try {
-                zk.create("/master",serverId.getBytes(),OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL);
+                zk.create("/master", serverId.getBytes(), OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL);
                 isLeader = true;
                 break;
             } catch (InterruptedException e) {
@@ -83,18 +87,26 @@ public class Master implements Watcher {
         }
     }
 
-    void runForMasterAsyn(){
-        zk.create("/master",serverId.getBytes(),OPEN_ACL_UNSAFE
-                ,CreateMode.EPHEMERAL,masterCreateCallback,null);
+    private void delMaster() {
+        try {
+            zk.delete("/master", -1);
+        } catch (InterruptedException | KeeperException e) {
+            e.printStackTrace();
+        }
     }
 
-    void checkMaterAsyn(){
-        zk.getData("/master",false,masterCheckCallBack,null);
+    void runForMasterAsyn() {
+        zk.create("/master", serverId.getBytes(), OPEN_ACL_UNSAFE
+                , CreateMode.EPHEMERAL, masterCreateCallback, null);
+    }
+
+    void checkMaterAsyn() {
+        zk.getData("/master", false, masterCheckCallBack, null);
     }
 
     AsyncCallback.DataCallback masterCheckCallBack = new AsyncCallback.DataCallback() {
         public void processResult(int rc, String path, Object ctx, byte[] data, Stat stat) {
-            switch (KeeperException.Code.get(rc)){
+            switch (KeeperException.Code.get(rc)) {
                 case CONNECTIONLOSS:
                     checkMaterAsyn();
                     return;
@@ -108,7 +120,7 @@ public class Master implements Watcher {
     //异步回调对象,zookeeper执行完成后会回调这个对象中的processResult告知执行结果
     AsyncCallback.StringCallback masterCreateCallback = new AsyncCallback.StringCallback() {
         public void processResult(int rc, String path, Object ctx, String name) {
-            switch (KeeperException.Code.get(rc)){
+            switch (KeeperException.Code.get(rc)) {
                 case CONNECTIONLOSS:
                     checkMaterAsyn();
                     return;
@@ -118,10 +130,16 @@ public class Master implements Watcher {
                 default:
                     isLeader = false;
             }
-            System.out.println(">>>>>>>>>>>>>>>>>>I'm "+(isLeader ? "" :"not") + "leader");
-            System.out.println("rc: "+rc);
-            System.out.println("path: "+ path);
-            System.out.println("name: "+ name);
+            System.out.println(">>>>>>>>>>>>>>>>>>I'm " + (isLeader ? "" : "not") + "leader");
+            System.out.println("rc: " + rc);
+            System.out.println("path: " + path);
+            System.out.println("name: " + name);
+            try {
+                //为master节点上监听器,后续master节点发生变化将会触发event事件
+                zk.exists("/master",true);
+            } catch (KeeperException | InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     };
 
@@ -141,8 +159,15 @@ public class Master implements Watcher {
 //            System.out.println("someone else is leader!");
 //        }
 
-        Thread.sleep(120000);
+        Thread.sleep(5000);
+
+        System.out.println("delete master node");
+        master.delMaster();
+
+        Thread.sleep(30000);
         System.out.println("master 客户端即将断开!");
         master.stopZK();
     }
+
+
 }

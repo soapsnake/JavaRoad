@@ -2,6 +2,8 @@ package com.ld.thinkinjava.math;
 
 import com.ld.thinkinjava.array.ArrayTest2;
 
+import java.util.Random;
+
 /**
  * Created by liudun on 2017/6/8.
  */
@@ -39,6 +41,23 @@ public class MathTest {
 //        test2.testPack();   不允许访问
 
 //        test2.testProtec();   只有通过继承才能访问
+
+        Random random = new Random();
+        for (int i=0;i<10000;i++){
+            int j = 0;
+            j = random.nextInt(40);
+            System.out.print(random.nextInt(40) + ",");
+            if ( j > 40){
+                System.out.println("j > 40: "+ j);
+            }
+        }
+
+        System.out.println("=========");
+        int[] a = {1,3,23,43,545,234,32432,32131};
+//        ArrayList<Integer> list = (ArrayList<Integer>) Arrays.asList(a);
+
+//        new String.CASE_INSENSITIVE_ORDER(){};
+
 
 
     }
