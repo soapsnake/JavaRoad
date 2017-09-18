@@ -150,6 +150,7 @@
         <module>math</module>
         <module>thinkinjava</module>
         <module>crane</module>
+        <module>hbaseclient</module>
     </modules>
 
     <build>
