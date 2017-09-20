@@ -35,6 +35,7 @@ public class PutClient {
         //连接hbase
         System.out.println("Trying to connect to HBase");
         Connection connection = ConnectionFactory.createConnection(conf);
+
         Admin admin = connection.getAdmin();
         System.out.println("Connected to HBase");
 
