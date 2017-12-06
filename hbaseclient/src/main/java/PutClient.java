@@ -132,6 +132,7 @@ public class PutClient {
         Result result = table.get(get);
         System.out.println("get row1 result: " + result);
 
+
         //精确版get
         get.addColumn(Bytes.toBytes("colfam1"), Bytes.toBytes("qual1"));
         Result result1 = table.get(get);
@@ -141,30 +142,39 @@ public class PutClient {
 
         //scan操作
         Person person = new Person();
-        person.setName("liu");
+        person.setName("tail");
         person.setAge(18);
-        person.setGender(1);
+        person.setGender(2);
         HTable table2 = new HTable(conf, "testtable2");
         Put put2 = new Put(Bytes.toBytes("row2-1"));
         put2.add(Bytes.toBytes("colfam2-1"), Bytes.toBytes("qual2-1"), Bytes.toBytes(person.toString()));
         table2.put(put2);
+
+        Get get2 = new Get(Bytes.toBytes("row2-1"));
+        get2.addFamily(Bytes.toBytes("colfam2-1"));
+        get2.setMaxVersions(3);
+        //获取一个单元格(cell)中所有版本的数据,需要服务端首先开启多版本才行!!
+        Result multiVersionsRes = table2.get(get2);
+        System.out.println("multiVersionsRes:" +multiVersionsRes.getMap().entrySet());
 
 //        boolean putRes2 = table2.checkAndPut(Bytes.toBytes("colfam2-1"), Bytes.toBytes("qual2-1"), Bytes.toBytes("val2-1"), null, put2);
 //        System.out.println("put2 is success?: " + putRes2);
 
         Scan scan = new Scan();
 //        scan.addFamily(Bytes.toBytes("colfam1"));
+        //对scan使用过滤器
+        scan.setFilter(CustomFilter.getFamilyFilter());
+
         ResultScanner scanner =  table2.getScanner(scan);
         System.out.println("scanner: " + scanner.toString());
         for (Result scanRes : scanner) {
             System.out.println("scanner process: " + scanRes);
         }
+
         scanner.close();
 
 
         System.out.println("buffer size: " + table.getWriteBufferSize());   //默认缓冲区大小
-
-
 
 
 
