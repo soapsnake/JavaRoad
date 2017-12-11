@@ -23,7 +23,7 @@ import java.util.List;
 /**
  * Created by liudun on 2017/9/16.
  */
-public class PutClient {
+public class HbaseClient {
 
     public static void main(String[] args) throws IOException {
         Configuration conf = HBaseConfiguration.create(); // co PutExample-1-CreateConf Create the required configuration.
