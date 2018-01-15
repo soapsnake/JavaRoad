@@ -149,6 +149,7 @@
         <module>springboot</module>
         <module>thinkinjava</module>
         <module>hbaseclient</module>
+        <module>netty</module>
     </modules>
 
     <build>
