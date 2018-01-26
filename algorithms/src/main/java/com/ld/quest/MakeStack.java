@@ -39,6 +39,7 @@ public class MakeStack {
     }
 
     public static void main(String[] args) {
+
         MakeStack makeStack = new MakeStack();
         for (int i=0;i<30;i++){
             makeStack.push(i, makeStack.queue1);
