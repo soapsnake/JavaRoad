@@ -20,4 +20,6 @@ public class HalfQuery {
 		}
 		return p;
 	}
+
+
 }
