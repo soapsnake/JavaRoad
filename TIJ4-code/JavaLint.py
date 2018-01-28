@@ -14,15 +14,15 @@ for path, dirs, files in os.walk('.'):
             javadirs.append(path)
             break
 
-start = os.getcwd()
+source = os.getcwd()
 
 for jd in javadirs:
   os.chdir(jd)
   print jd
   os.system("javac -source 1.5 -Xlint -Xlint:-serial *.java -Xstdout " + outputfile)
-  os.chdir(start)
+  os.chdir(source)
 
-results = open(start + os.sep + outputfile, 'w')
+results = open(source + os.sep + outputfile, 'w')
 
 for jd in javadirs:
   messages = open(jd + os.sep + outputfile).read()

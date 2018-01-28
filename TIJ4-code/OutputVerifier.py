@@ -182,8 +182,8 @@ if __name__ == "__main__":
         os.system("javac " + javaSource)
         SimpleTest(javaSource.split('.')[0], file(javaSource).read(), javaSource, sys.stdout).run()
         sys.exit()
-    start = os.getcwd()
-    reportFile = ReportFile(start + os.sep + "OutputErrors.txt")
+    source = os.getcwd()
+    reportFile = ReportFile(source + os.sep + "OutputErrors.txt")
     for root, dirs, files in os.walk('.'):
         print root
         os.chdir(root)
@@ -193,7 +193,7 @@ if __name__ == "__main__":
             if text.find("/* Output:") != -1:
                 referencePath = os.path.join(root, f + ".java")
                 SimpleTest(f, text, referencePath, reportFile).run()
-        os.chdir(start)
+        os.chdir(source)
     reportFile.close()
     if reportFile.file:
         print "Errors in OutputErrors.txt"

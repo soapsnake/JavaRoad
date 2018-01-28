@@ -335,7 +335,7 @@
     </Match>
     <Match class="ResponsiveUI">
         <BugCode name="SC"/>
-        <!--ResponsiveUI.<init>() invokes ResponsiveUI.start()  At ResponsiveUI.java:[line 18]-->
+        <!--ResponsiveUI.<init>() invokes Responsivsourcetart()  At ResponsiveUI.java:[line 18]-->
     </Match>
     <Match class="ReversibleArrayList$1$1">
         <BugCode name="It"/>
@@ -347,7 +347,7 @@
     </Match>
     <Match class="SelfManaged">
         <BugCode name="SC"/>
-        <!--SelfManaged.<init>() invokes java.lang.Thread.start()  At SelfManaged.java:[line 7]-->
+        <!--SelfManaged.<init>() invokes java.lang.Thrsourcetart()  At SelfManaged.java:[line 7]-->
     </Match>
     <Match class="SimpleQueue">
         <BugCode name="RV"/>
@@ -359,7 +359,7 @@
     </Match>
     <Match class="SimpleThread">
         <BugCode name="SC"/>
-        <!--SimpleThread.<init>() invokes SimpleThread.start()  At SimpleThread.java:[line 9]-->
+        <!--SimpleThread.<init>() invokes SimpleThrsourcetart()  At SimpleThread.java:[line 9]-->
     </Match>
     <Match class="SprinklerSystem">
         <BugCode name="UwF"/>

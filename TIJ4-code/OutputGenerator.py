@@ -96,7 +96,7 @@ class ReportFile:
             self.file.close()
 
 if __name__ == "__main__":
-    start = os.getcwd()
+    source = os.getcwd()
     args = sys.argv[1:]
     forceFlag = False
     if len(args):
@@ -111,10 +111,10 @@ if __name__ == "__main__":
             os.system("javac " + javaSource)
             makeOutputIncludedFile(os.getcwd(), javaSource, None, force = True)
     else:
-        changeReport = ReportFile(os.path.join(start, "Changes.txt"))
+        changeReport = ReportFile(os.path.join(source, "Changes.txt"))
         for root, dirs, files in os.walk('.'):
             if (os.sep + "gui") in root: continue
-            path = os.path.normpath(os.path.join(start,root))
+            path = os.path.normpath(os.path.join(source,root))
             print path
             for name in [name for name in files if name.endswith(".java")]:
                 java = file(os.path.join(path, name)).read()
