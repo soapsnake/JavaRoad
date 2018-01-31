@@ -14,7 +14,10 @@ public class TestAlgorithms {
 		
 		int[] srotedArr1 = FastSort.fastSort(arr, 0, arr.length-1);
 		System.out.println("排序后的数组为： "+printArr(srotedArr1));
-		
+
+		int[] srotedArr2 = FastSortV2.sort(arr, 0, arr.length-1);
+		System.out.println("排序后的数组为v2： "+printArr(srotedArr2));
+
 		System.out.println("数字在数组中的位置为: arr["+ HalfQuery.rank(srotedArr1, 78, 0, srotedArr1.length)+"]");
 		
 	}
