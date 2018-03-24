@@ -6,7 +6,7 @@ class TreeNode {
       TreeNode left;
       TreeNode right;
       TreeNode(int x) { val = x; }
-      int depth=1;
+      int maxDepth=0;
  }
 
 class Solution {
@@ -36,37 +36,22 @@ class Solution {
         return root;
     }
 
-    public int scanNode(TreeNode node){
-       if (node == null){
-           return 0;
-       }
-
-       node.depth = 1;
-       maxDepth(node);
-        System.out.println(node.depth);
-       return node.depth;
-    }
-
-    public void maxDepth(TreeNode root) {
-        if (root == null){
-            return;
+    public int maxDepth(TreeNode node) {
+        if (node == null){
+            return 0;
         }
-        System.out.println("正在遍历的节点是:--> " + root.val);
-
-        if (root.left != null){
-            root.depth++;
-            maxDepth(root.left);
+        if (node.left == null && node.right == null){
+            return 1;
         }
 
-        if (root.right != null){
-            root.depth++;
-            maxDepth(root.right);
-        }
+        int left = maxDepth(node.left);
+        int right = maxDepth(node.right);
+        return 1 + (left > right ? left : right);
     }
 
     public static void main(String[] args) {
         Solution solution = new Solution();
         TreeNode node = solution.makeTree();
-        solution.scanNode(node);
+        System.out.println("max depth is: " + solution.maxDepth(node));
     }
 }
