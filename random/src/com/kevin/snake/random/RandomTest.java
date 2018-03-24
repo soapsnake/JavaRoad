@@ -6,20 +6,15 @@ public class RandomTest {
     public static void main(String[] args)
     {
         Random random = new Random(System.currentTimeMillis());
-        System.out.println(Math.abs(random.nextLong() % 900) + 300);
-        System.out.println(Math.abs(random.nextLong() % 900) + 300);
-        System.out.println(Math.abs(random.nextLong() % 900) + 300);
-        System.out.println(Math.abs(random.nextLong() % 900) + 300);
-        System.out.println(Math.abs(random.nextLong() % 900) + 300);
-        System.out.println(Math.abs(random.nextLong() % 900) + 300);
-        System.out.println(Math.abs(random.nextLong() % 900) + 300);
-        System.out.println(Math.abs(random.nextLong() % 900) + 300);
-        System.out.println(Math.abs(random.nextLong() % 900) + 300);
-        System.out.println(Math.abs(random.nextLong() % 900) + 300);
-        System.out.println(Math.abs(random.nextLong() % 900) + 300);
-        System.out.println(Math.abs(random.nextLong() % 900) + 300);
-        System.out.println(Math.abs(random.nextLong() % 900) + 300);
-        System.out.println(Math.abs(random.nextLong() % 900) + 300);
+
+        //上限
+        int lowLimit = 2000;
+        //下限
+        int upperLimit = 2000;
+        int gradient = Math.abs(upperLimit - lowLimit);
+        System.out.println( Math.abs(random.nextLong() % gradient) + lowLimit);
+
+
 
 
     }
