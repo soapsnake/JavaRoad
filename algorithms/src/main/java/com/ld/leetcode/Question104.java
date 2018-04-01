@@ -1,6 +1,9 @@
 package com.ld.leetcode;
 
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 class TreeNode {
       int val;
       TreeNode left;
@@ -21,6 +24,8 @@ class Solution {
      *        8   12
      *           / \
      *         10   22
+     *        /  \
+     *      4     14
      * @return
      */
     public TreeNode makeTree(){
@@ -33,6 +38,8 @@ class Solution {
         root.right.right.left = new TreeNode(8);
         root.right.right.right.right = new TreeNode(22);
         root.right.right.right.left = new TreeNode(10);
+        root.right.right.right.left.left = new TreeNode(4);
+        root.right.right.right.left.right = new TreeNode(14);
         return root;
     }
 
@@ -53,5 +60,37 @@ class Solution {
         Solution solution = new Solution();
         TreeNode node = solution.makeTree();
         System.out.println("max depth is: " + solution.maxDepth(node));
+
+        System.out.println("layerTraverse:");
+        layerTravse(node);
     }
+
+    //层状遍历二叉树
+    public static void layerTravse(TreeNode root) {
+        Queue<TreeNode> queue = new LinkedList<>();
+
+        if (root == null){
+            return;
+        }
+
+        queue.add(root);
+        int i=1;
+        while (!queue.isEmpty()){
+            TreeNode current = queue.poll();
+
+            System.out.println(current.val);
+
+            if (current.left != null){
+                queue.add(current.left);
+            }
+            if (current.right != null){
+                queue.add(current.right);
+            }
+            if (queue.contains(current.left) && queue.contains(current.right)){
+                System.out.println("本层结束:" + i++);
+            }
+        }
+        System.out.println("本层结束:"+ i);
+    }
+
 }
