@@ -36,16 +36,16 @@ class Solution {
         return root;
     }
 
-    public int maxDepth(TreeNode node) {
-        if (node == null){
+    public int maxDepth(TreeNode root) {
+        if (root == null){
             return 0;
         }
-        if (node.left == null && node.right == null){
+        if (root.left == null && root.right == null){
             return 1;
         }
 
-        int left = maxDepth(node.left);
-        int right = maxDepth(node.right);
+        int left = maxDepth(root.left);
+        int right = maxDepth(root.right);
         return 1 + (left > right ? left : right);
     }
 
