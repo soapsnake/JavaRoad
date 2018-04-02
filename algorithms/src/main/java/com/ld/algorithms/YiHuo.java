@@ -7,7 +7,7 @@ public class YiHuo {
 
     public static void main(String[] args) {
         int i1 = 22;
-        int i2 = 22;
+        int i2 = 24;
 
         int i3 = i1 ^ i2;
 
