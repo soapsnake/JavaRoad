@@ -12,18 +12,18 @@ public class Question617 {
      * }
      */
     class Solution {
-        public TreeNode mergeTrees(TreeNode t1, TreeNode t2) {
+        public TreeNode mergeTrees(TreeNode t1, TreeNode t2)
+        {
+            TreeNode newNode;
+            if (t1 == null && t2 == null){
+                return null;
+            }
+            int res = (t1 == null ? 0 : t1.val) + (t2 == null ? 0 : t2.val);
+            newNode = new TreeNode(res);
 
-            return null;
-        }
-
-        //层状遍历二叉树,从上往下,遍历的节点存入数组
-        public int[] layeredTraversal(TreeNode root) {
-            int[] tree = new int[100];
-            
-
-
-            return null;
+            newNode.left = mergeTrees(t1 == null ? null : t1.left, t2 == null ? null : t2.left);
+            newNode.right = mergeTrees(t1 == null ? null : t1.right, t2 == null ? null : t2.right);
+            return newNode;
         }
     }
 }

@@ -11,7 +11,13 @@ public class YiHuo {
 
         int i3 = i1 ^ i2;
 
+        int i4 = i1 ^ 0;
+
+        int i5 = i2 ^ 0;
+
         System.out.println(i3);
+        System.out.println(i4);
+        System.out.println(i5);
 
 
     }
