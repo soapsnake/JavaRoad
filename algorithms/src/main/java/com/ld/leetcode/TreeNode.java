@@ -1,5 +1,8 @@
 package com.ld.leetcode;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class TreeNode {
 
     int val;
@@ -37,5 +40,32 @@ public class TreeNode {
         root.right.right.right.left.left = new TreeNode(4);
         root.right.right.right.left.right = new TreeNode(14);
         return root;
+    }
+
+    public static void layerTravse(TreeNode root) {
+        Queue<TreeNode> queue = new LinkedList<>();
+
+        if (root == null) {
+            return;
+        }
+
+        queue.add(root);
+        int i = 1;
+        while (!queue.isEmpty()) {
+            TreeNode current = queue.poll();
+
+            System.out.println(current.val);
+
+            if (current.left != null) {
+                queue.add(current.left);
+            }
+            if (current.right != null) {
+                queue.add(current.right);
+            }
+            if (queue.contains(current.left) && queue.contains(current.right)) {
+                System.out.println("本层结束:" + i++);
+            }
+        }
+        System.out.println("本层结束:" + i);
     }
 }

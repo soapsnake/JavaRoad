@@ -8,12 +8,17 @@ package com.ld.leetcode;
 public class Question226 {
 
     public TreeNode invertTree(TreeNode root) {
+        if (root == null){
+            return null;
+        }
 
-
-
-
-
-        return null;
+        TreeNode temp;
+        temp = root.left;
+        root.left = root.right;
+        root.right = temp;
+        invertTree(root.left);
+        invertTree(root.right);
+        return root;
     }
 
     public static void main(String[] args) {
@@ -21,6 +26,13 @@ public class Question226 {
         System.out.println(nums.length);
 
 //        List<Integer> ls = new ArrayList<Integer>(Arrays.asList(nums));
+
+        TreeNode old = TreeNode.makeTree();
+
+        Question226 question226 = new Question226();
+        TreeNode newTree = question226.invertTree(old);
+
+        TreeNode.layerTravse(newTree);
 
 
     }
