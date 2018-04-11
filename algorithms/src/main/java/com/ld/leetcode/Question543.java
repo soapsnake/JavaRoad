@@ -23,6 +23,8 @@ public class Question543 {
         }
         int left = maxDepth(node.left);
         int right = maxDepth(node.right);
+
+        //关键:每一次都需要比较最大距离
         max = Math.max(max, left + right);
         return (left > right ? left : right) + 1;
     }
