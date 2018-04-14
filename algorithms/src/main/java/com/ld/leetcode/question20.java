@@ -1,5 +1,7 @@
 package com.ld.leetcode;
 
+import java.util.Stack;
+
 /**
  * Given a string containing just the characters '(', ')', '{', '}', '[' and ']',
  * determine if the input string is valid.
@@ -10,13 +12,29 @@ package com.ld.leetcode;
  */
 public class question20 {
 
+    //利用栈来解决这个问题
     public boolean isValid(String s) {
+        Stack<Character> stack = new Stack<>();
+        if (s.equals("")) {
+            return true;
+        }
 
-        return true;
+        for (Character c : s.toCharArray()) {
+            if (c.equals('(')) {
+                stack.push(')');
+            } else if (c.equals('[')) {
+                stack.push(']');
+            } else if (c.equals('{')) {
+                stack.push('}');
+            } else if (stack.isEmpty() || !stack.pop().equals(c)){
+                return false;
+            }
+        }
+        return stack.isEmpty();
     }
 
     public static void main(String[] args) {
         question20 question20 = new question20();
-        System.out.println(question20.isValid("(){}[]"));
+        System.out.println(question20.isValid("()"));
     }
 }
