@@ -35,14 +35,16 @@ public class Question2 {
 
         char[] chars = String.valueOf(dest).toCharArray();
         int i = 1;
-        ListNode head = new ListNode(Integer.parseInt(String.valueOf(chars[0])));
+        ListNode x = new ListNode(Integer.parseInt(String.valueOf(chars[0])));
+        ListNode last = x;
         while (i < chars.length){
-            ListNode tail = findTail(head);
             int c = Integer.parseInt(String.valueOf(chars[i]));
-            tail.next = new ListNode(c);
+            ListNode t = new ListNode(c);
+            last.next = t;
+            last = t;
             i++;
         }
-        return revert(head);
+        return revert(x);
     }
 
     private ListNode findTail(ListNode node) {
