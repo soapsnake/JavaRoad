@@ -28,35 +28,42 @@ public class Question2 {
             revertl2 = revertl2.next;
         }
 
-        Integer list1 = Integer.parseInt(sb1.toString());
-        Integer list2 = Integer.parseInt(sb2.toString());
+        char[] c1 = sb1.toString().toCharArray();
+        char[] c2 = sb2.toString().toCharArray();
+        char[] c3 = new char[Math.max(c1.length, c2.length)];
+        int temp = 0;
+        char[] big = c1.length > c2.length ? c1 : c2;
+        for (int i=0;i<Math.max(c1.length, c2.length);i++){
+            if (i < Math.min(c1.length, c2.length)) {
+                int i1 = Integer.parseInt(String.valueOf(c1[i]));
+                int i2 = Integer.parseInt(String.valueOf(c2[i]));
+                int dest = 0;
+                if (i1 + i2 >= 10) {
+                    temp = 1;
+                    dest = i1 + i2 - 10;
+                    c3[i] = (char) (dest + '0');
+                    continue;
+                }
+                dest = i1 + i2 + temp;
+                c3[i] = (char) (dest + '0');
+                temp = 0;
+            }else{
+                c3[i] = big[i];
+            }
+        }
 
-        Integer dest = list1 + list2;
-
-        char[] chars = String.valueOf(dest).toCharArray();
         int i = 1;
-        ListNode x = new ListNode(Integer.parseInt(String.valueOf(chars[0])));
-        ListNode last = x;
-        while (i < chars.length){
-            int c = Integer.parseInt(String.valueOf(chars[i]));
+        ListNode head = new ListNode(Integer.parseInt(String.valueOf(c3[0])));
+        ListNode last = head;
+        while (i < c3.length){
+            int c = Integer.parseInt(String.valueOf(c3[i]));
             ListNode t = new ListNode(c);
             last.next = t;
             last = t;
             i++;
         }
-        return revert(x);
+        return revert(head);
     }
-
-    private ListNode findTail(ListNode node) {
-        if (node == null){
-            return null;
-        }
-        if (node.next != null){
-            node = findTail(node.next);
-        }
-        return node;
-    }
-
 
     private ListNode revert(ListNode node) {
         //反转链表
@@ -71,14 +78,33 @@ public class Question2 {
         return tail;
     }
 
-    public static void main(String[] args) {
-        ListNode l1 = new ListNode(2);
-        l1.next = new ListNode(4);
-        l1.next.next = new ListNode(3);
+    //解法2
+    public ListNode addTwoNumbers2(ListNode l1, ListNode l2) {
+        ListNode prev = new ListNode(0);
+        ListNode head = prev;
+        int carry = 0;
+        while (l1 != null || l2 != null || carry != 0) {
+            ListNode cur = new ListNode(0);
+            int sum = ((l2 == null) ? 0 : l2.val) + ((l1 == null) ? 0 : l1.val) + carry;
+            cur.val = sum % 10;
+            carry = sum / 10;
+            prev.next = cur;
+            prev = cur;
 
-        ListNode l2 = new ListNode(5);
-        l2.next = new ListNode(6);
-        l2.next.next = new ListNode(4);
+            l1 = (l1 == null) ? l1 : l1.next;
+            l2 = (l2 == null) ? l2 : l2.next;
+        }
+        return head.next;
+    }
+
+    public static void main(String[] args) {
+        ListNode l1 = new ListNode(9);
+//        l1.next = new ListNode(4);
+//        l1.next.next = new ListNode(3);
+
+        ListNode l2 = new ListNode(9);
+//        l2.next = new ListNode(6);
+//        l2.next.next = new ListNode(4);
 
         Question2 q = new Question2();
         ListNode.printListNode(l1);
