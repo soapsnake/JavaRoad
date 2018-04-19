@@ -1,10 +1,12 @@
 package com.ld.leetcode;
 
 public class ListNode {
-    int val;
-    ListNode next;
+    public int val;
+    public ListNode next;
+    private ListNode last;
     public ListNode(int x) {
         val = x;
+        last = this;
     }
 
     public static void printListNode(ListNode root){
@@ -27,7 +29,16 @@ public class ListNode {
     }
 
     public void addNode(ListNode node){
-        this.next = node;
+        if (node == null){
+            return;
+        }
+        if (this.last == null){
+            last = node;
+            return;
+        }
+
+        last.next = node;
+        last = node;
     }
 
     public static void main(String[] args) {
