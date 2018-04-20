@@ -1,8 +1,6 @@
 package com.ld.leetcode;
 
 
-import static com.ld.leetcode.TreeNode.layerTravse;
-
 class Question104 {
     public static void main(String[] args) {
         Question104 solution = new Question104();
@@ -10,7 +8,7 @@ class Question104 {
         System.out.println("max depth is: " + solution.maxDepth(node));
 
         System.out.println("layerTraverse:");
-        layerTravse(node);
+        TreeNode.layerTravse(node);
     }
 
 
