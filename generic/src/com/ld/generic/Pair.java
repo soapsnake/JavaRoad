@@ -6,7 +6,6 @@ public class Pair<T> {
 	private T second;
 	
 	public Pair() {
-		// TODO Auto-generated constructor stub
 		first = null;
 		second = null;
 	}

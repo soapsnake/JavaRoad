@@ -26,7 +26,7 @@ public class Entrance implements Runnable{
 			try {
 				TimeUnit.MILLISECONDS.sleep(2000);
 			} catch (Exception e) {
-				// TODO: handle exception
+				//: handle exception
 				System.out.println("sleep interrupted : 睡眠中断!!!!!");
 			}
 		}

@@ -15,7 +15,7 @@ public class Son extends Parent implements SonOtherParent {
 
 	@Override
 	public void function2(int number) {
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
 		System.out.println("this is a method implement a interface");
 	}
 }

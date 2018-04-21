@@ -13,7 +13,7 @@ public class BlockingQueueTest {
 	private static BlockingQueue<File> queque = new ArrayBlockingQueue<>(FILE_QUEUE_SIZE); //创建队列,大小为10
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
 		try (Scanner in = new Scanner(System.in)){
 			System.out.println("输入根目录(e.g. /opt/jdk1.8.0/src): ");
 			String directroy = in.nextLine();
@@ -25,7 +25,7 @@ public class BlockingQueueTest {
 					enumerate(new File(directroy));
 					queque.put(DUMMY);   //最后把DUMMY文件放进队列用于标识队列的末尾
 				} catch (Exception e) {
-					// TODO: handle exception
+					//: handle exception
 				}
 			};
 			new Thread(enumerator).start();   //启动枚举线程,枚举线程只有一条
@@ -51,7 +51,7 @@ public class BlockingQueueTest {
 				new Thread(searcher).start();  //启动这100条搜索线程
 			}
 		} catch (Exception e) {
-			// TODO: handle exception
+			//: handle exception
 			e.printStackTrace();
 		}
 	}
@@ -75,7 +75,7 @@ public class BlockingQueueTest {
 					}
 				}
 			} catch (Exception e) {
-				// TODO: handle exception
+				//: handle exception
 				e.printStackTrace();
 			}
 		}

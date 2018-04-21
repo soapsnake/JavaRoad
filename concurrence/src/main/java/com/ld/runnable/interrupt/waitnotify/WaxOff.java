@@ -6,14 +6,14 @@ public class WaxOff implements Runnable {
 	
 	private Car car;
 	 public WaxOff(Car car) {
-		// TODO Auto-generated constructor stub
+		// Auto-generated method stub
 		 this.car =car;
 	}
 	
 	
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
 		try {
 			while(!Thread.interrupted()){
 				car.waitForBuffing();
@@ -24,7 +24,7 @@ public class WaxOff implements Runnable {
 			}
 			
 		} catch (InterruptedException e) {
-			// TODO: handle exception
+			//: handle exception
 			System.out.println("抛光线程遭遇interrupted");
 		}
 		System.out.println("抛光线程执行完毕");

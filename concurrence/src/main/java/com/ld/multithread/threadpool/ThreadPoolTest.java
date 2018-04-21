@@ -25,7 +25,7 @@ public class ThreadPoolTest {
 			try {
 				System.out.println(future.get()+" maching files.");
 			} catch (ExecutionException e) {
-				// TODO: handle exception
+				//: handle exception
 			}
 			
 			exec.shutdown();
@@ -33,7 +33,7 @@ public class ThreadPoolTest {
 			System.out.println("largestPoolSize= "+largestPoolSize);
 			
 		} catch (InterruptedException e) {
-			// TODO: handle exception
+			//: handle exception
 		}
 	}
 }

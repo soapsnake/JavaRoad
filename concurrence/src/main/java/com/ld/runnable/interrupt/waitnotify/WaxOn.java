@@ -11,7 +11,7 @@ public class WaxOn implements Runnable {
 	
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
      try {
 		while(!Thread.interrupted()){
 			System.out.println("上蜡!!!!!!");
@@ -20,7 +20,7 @@ public class WaxOn implements Runnable {
 			car.waitForBuffing();
 		}
 	} catch (InterruptedException e) {
-		// TODO: handle exception
+		//: handle exception
 		System.out.println("线程遭遇interrupted");
 	}
      System.out.println("打蜡线程执行完毕");

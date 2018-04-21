@@ -20,10 +20,10 @@ public class FutureTest {
 			try {
 				System.out.println(task.get()+" maching files.");
 			} catch (ExecutionException e) {
-				// TODO: handle exception
+				//: handle exception
 			}
 		} catch (InterruptedException e) {
-			// TODO: handle exception
+			//: handle exception
 		}
 	}
 }

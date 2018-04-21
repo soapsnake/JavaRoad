@@ -42,6 +42,25 @@ public class TreeNode {
         return root;
     }
 
+/**     对称树
+ *            3
+ *        /     \
+ *      20       20
+ *     /  \     /  \
+ *   7    15   15   7
+ **/
+    public static TreeNode makeSymmetric(){
+        TreeNode root = new TreeNode(3);
+        root.left = new TreeNode(20);
+        root.left.left = new TreeNode(7);
+        root.left.right = new TreeNode(15);
+
+        root.right = new TreeNode(20);
+        root.right.left = new TreeNode(15);
+        root.right.right = new TreeNode(7);
+        return root;
+    }
+
     public static void main(String[] args) {
         TreeNode treeNode = makeTree();
         List<List<TreeNode>> lists = layerTravse(treeNode);

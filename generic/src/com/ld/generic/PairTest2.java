@@ -5,7 +5,7 @@ import java.time.LocalDate;
 public class PairTest2 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		//  Auto-generated method stub
 		LocalDate[] birthdays = {
 				LocalDate.of(1906, 12, 9),
 				LocalDate.of(1815, 12, 10),

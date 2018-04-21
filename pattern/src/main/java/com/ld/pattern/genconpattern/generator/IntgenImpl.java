@@ -5,7 +5,7 @@ public class IntgenImpl extends Intgen {
 	private int a = 1;
 	@Override
 	public synchronized int next() {
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
 		++a;
 		Thread.yield();
 		++a;

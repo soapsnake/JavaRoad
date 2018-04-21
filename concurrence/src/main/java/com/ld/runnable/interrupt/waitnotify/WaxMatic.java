@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit;
 public class WaxMatic {
 
 	public static void main(String[] args) throws Exception{
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
 		Car car = new Car();
 		ExecutorService executorService = Executors.newCachedThreadPool();
 		executorService.execute(new WaxOff(car));

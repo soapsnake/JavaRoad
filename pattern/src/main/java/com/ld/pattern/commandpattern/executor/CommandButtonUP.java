@@ -17,7 +17,7 @@ public class CommandButtonUP implements Command {
 	}
 	
 	public void executeCmd() {
-		// TODO Auto-generated method stub'
+		// Auto-generated method stub'
 		computer.turnOn();
 	}
 }
