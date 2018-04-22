@@ -15,14 +15,14 @@ public class MachCounter implements Callable<Integer> {   //callable接口必须
 	private String keyword;
 	
 	public MachCounter(File directory,String keyword) {
-		// TODO Auto-generated constructor stub
+		// Auto-generated method stub
 		this.keyword = keyword;
 		this.directory = directory;
 	}
 	
 	@Override
 	public Integer call() throws Exception {
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
 		
 		int count = 0;
 		try {
@@ -45,12 +45,12 @@ public class MachCounter implements Callable<Integer> {   //callable接口必须
 					try {
 						count += future.get();
 					} catch (ExecutionException e) {
-						// TODO: handle exception
+						//: handle exception
 					}
 				}
 			}
 		} catch (InterruptedException e) {
-			// TODO: handle exception
+			//: handle exception
 		}
 		return count;
 	}
@@ -67,10 +67,10 @@ public class MachCounter implements Callable<Integer> {   //callable接口必须
 					return found;
 				}
 			} catch (Exception e) {
-				// TODO: handle exception
+				//: handle exception
 			}
 		} catch (Exception e) {
-			// TODO: handle exception
+			//: handle exception
 		}
 		return false;
 	}

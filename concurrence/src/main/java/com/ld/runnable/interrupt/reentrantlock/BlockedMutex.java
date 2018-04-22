@@ -15,7 +15,7 @@ public class BlockedMutex {
 			lock.lockInterruptibly();
 			System.out.println("在f方法当中获取锁");
 		} catch (InterruptedException e) {
-			// TODO: handle exception
+			//: handle exception
 			System.out.println("interrupt异常从被锁住的方法当中产生了!!!!!!!");
 		}
 	}

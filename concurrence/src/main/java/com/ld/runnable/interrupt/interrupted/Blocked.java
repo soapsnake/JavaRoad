@@ -7,7 +7,7 @@ public class Blocked implements Runnable{
 	private volatile double d = 0.0;
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
 		try {
 			while(!Thread.interrupted()){
 				NeedsCleanup n1 = new NeedsCleanup(1);
@@ -22,17 +22,17 @@ public class Blocked implements Runnable{
 							d = d + (Math.PI +Math.E) /d;
 						System.out.println("finished time-consuming operation");
 					} finally {
-						// TODO: handle exception
+						//: handle exception
 						n2.cleanup();
 					}
 				} finally {
-					// TODO: handle exception
+					//: handle exception
 					n1.cleanup();
 				}
 			}
 			System.out.println("Exiting via while() test");
 		} catch (Exception e) {
-			// TODO: handle exception
+			//: handle exception
 			System.out.println("Exiting via InterruptedException");
 		}
 	}

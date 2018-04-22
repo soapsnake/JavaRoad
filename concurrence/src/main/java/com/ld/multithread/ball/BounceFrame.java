@@ -11,7 +11,7 @@ public class BounceFrame extends JFrame {
 	public static final int DELAY = 5;
 	
 	public BounceFrame() {
-		// TODO Auto-generated constructor stub
+		// Auto-generated method stub
 		setTitle("Bounce");
 		comp = new BallComponent();
 		add(comp,BorderLayout.CENTER);
@@ -39,7 +39,7 @@ public class BounceFrame extends JFrame {
 						try {
 							Thread.sleep(DELAY);
 						} catch (InterruptedException e) {
-							// TODO Auto-generated catch block
+							//Auto-generated method stub
 							e.printStackTrace();
 						}
 					}

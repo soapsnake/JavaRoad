@@ -10,7 +10,7 @@ public class UnsynchBankTest {
 	public static final int DELAY = 1;   //延迟
 	
 	public synchronized static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
 		Bank bank = new Bank(NACCOUNTS,INITIAL_BALANCE);  //初始化:账户,初始资金
 		for(int i=0;i<NACCOUNTS;i++){    //用for循环不停产生新线程
 			int fromAccount = i;   //不同的线程,source账户不一样
@@ -24,7 +24,7 @@ public class UnsynchBankTest {
 						Thread.sleep((int) (DELAY*Math.random()));
 					}
 				} catch (Exception e) {
-					// TODO: handle exception
+					//: handle exception
 					e.printStackTrace();
 				}
 			};

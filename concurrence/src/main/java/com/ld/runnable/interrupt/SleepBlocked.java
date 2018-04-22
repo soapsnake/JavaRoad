@@ -6,7 +6,7 @@ public class SleepBlocked implements Runnable{ //睡眠工作线程
 
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
 		try {
 			TimeUnit.SECONDS.sleep(100);         //睡眠100秒
 		} catch (InterruptedException e) {

@@ -140,6 +140,12 @@
                 <version>4.1.4.Final</version>
             </dependency>
 
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-collections4</artifactId>
+                <version>4.1</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
@@ -159,8 +165,9 @@
         <module>generic</module>
         <module>springboot</module>
         <module>thinkinjava</module>
-        <module>hbaseclient</module>
+        <module>hbase-client</module>
         <module>netty</module>
+        <module>random</module>
     </modules>
 
     <build>

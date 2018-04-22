@@ -7,14 +7,11 @@ public class LockTest {
 
         Person b = new Person();
 
-        Thread t1 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    a.doSomeThing();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+        Thread t1 = new Thread(() -> {
+            try {
+                a.doSomeThing();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }, "thread t1");
         t1.start();

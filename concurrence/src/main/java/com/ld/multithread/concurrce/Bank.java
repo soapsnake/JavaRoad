@@ -38,10 +38,10 @@ public class Bank {
 	 sufficientFunds.signal();      //实测该方法会导致死锁!!!!
 	 //只要账户发生了变动,就应该给wait的线程一个机会,让他们自己去检查自己是否能够继续运行
 	 } catch (InterruptedException e) {
-	 // TODO Auto-generated catch block
+	 //Auto-generated method stub
 	 e.printStackTrace();
 	 } finally {
-	 // TODO: handle finally clause
+	 //: handle finally clause
 	 banklock.unlock();
 	 }
 	
@@ -63,7 +63,7 @@ public class Bank {
 //	        notifyAll(); // 只要账户发生了变动,就应该给wait的线程一个机会,让他们自己去检查自己是否能够继续运行
 //			
 //		} catch (InterruptedException e) {
-//			// TODO Auto-generated catch block
+//			//Auto-generated method stub
 //			e.printStackTrace();
 //		} 
 //	}

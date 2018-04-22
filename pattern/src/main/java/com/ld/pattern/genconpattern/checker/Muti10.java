@@ -16,13 +16,13 @@ public class Muti10 implements Runnable {
 	}
 	
 	public void run() {
-		// TODO Auto-generated method stub
+		//  Auto-generated method stub
 		while(intgen.isCanceled() == false){
 			
 			try {
 				Thread.sleep(100);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
+				//  Auto-generated catch block
 				e.printStackTrace();
 			}
 			
