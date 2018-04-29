@@ -1,4 +1,4 @@
-package com.ld.reentrantelock;
+package com.ld.aqs;
 
 import com.ld.multithread.lock.Person;
 

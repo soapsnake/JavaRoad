@@ -28,6 +28,11 @@ public class ListNode {
         System.out.println("   ->ListSize is: " + size);
     }
 
+    public void add(int val){
+        ListNode newNode = new ListNode(val);
+        this.addNode(newNode);
+    }
+
     public void addNode(ListNode node){
         if (node == null){
             return;
@@ -41,6 +46,32 @@ public class ListNode {
         last = node;
     }
 
+    @Override
+    public String toString() {
+        return "ListNode{" +
+                "val=" + val +
+                ", next=" + next +
+                '}';
+    }
+
+    public static ListNode revertList(ListNode node){
+        if (node == null){
+            return null;
+        }
+
+        ListNode head;
+        ListNode newList = null;
+        while (node != null){
+            head = new ListNode(node.val);
+            head.next = newList;
+            newList = head;
+            node = node.next;
+        }
+        return newList;
+    }
+
+
+
     public static void main(String[] args) {
         ListNode node = new ListNode(1);
 
@@ -53,15 +84,14 @@ public class ListNode {
 //        printListNode(null);
         ListNode node1 = new ListNode(2);
         node.addNode(node1);
-
         printListNode(node);
-    }
 
-    @Override
-    public String toString() {
-        return "ListNode{" +
-                "val=" + val +
-                ", next=" + next +
-                '}';
+        ListNode node2 = new ListNode(1);
+        node2.add(2);
+        node2.add(3);
+        node2.add(4);
+
+        ListNode.printListNode(ListNode.revertList(node2));
+
     }
 }
