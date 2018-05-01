@@ -28,7 +28,7 @@ public class CountDownLatchTest {
 
         private void doWork(int i) throws InterruptedException {
             System.out.println(Thread.currentThread().getName() + " is working on: " + i);
-            Thread.sleep(5000L);
+            Thread.sleep(1000L);
         }
     }
 
