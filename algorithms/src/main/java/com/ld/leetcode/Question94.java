@@ -57,7 +57,6 @@ public class Question94 {
        List<Integer> res =  question94.inorderTraversal(node);
         System.out.println(res);
 
-
         question94.inorderTraversal2(node);
 
     }
