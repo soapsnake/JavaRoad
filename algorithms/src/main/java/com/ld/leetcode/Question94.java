@@ -22,13 +22,14 @@ import java.util.Stack;
  */
 public class Question94 {
     public List<Integer> inorderTraversal(TreeNode root) {
+        //TODO debug
         List<Integer> res = new ArrayList<>();
 
         Stack<TreeNode> stack = new Stack<TreeNode>();
         TreeNode cur = root;
 
         while(cur!=null || !stack.empty()){
-            while(cur!=null){
+            while(cur !=null){
                 stack.add(cur);
                 cur = cur.left;
             }
@@ -36,8 +37,16 @@ public class Question94 {
             res.add(cur.val);
             cur = cur.right;
         }
-
         return res;
+    }
+
+    //递归版代码有多简单
+    public void inorderTraversal2(TreeNode root) {
+        if (root != null){
+            inorderTraversal2(root.left);
+            System.out.print(root.val + ", ");
+            inorderTraversal2(root.right);
+        }
     }
 
     public static void main(String[] args) {
@@ -47,6 +56,9 @@ public class Question94 {
 
        List<Integer> res =  question94.inorderTraversal(node);
         System.out.println(res);
+
+
+        question94.inorderTraversal2(node);
 
     }
 }
