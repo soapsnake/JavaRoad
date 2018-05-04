@@ -1,5 +1,7 @@
 package com.ld.multiutil;
 
+import com.ld.multithread.lock.Person;
+
 import java.util.concurrent.Semaphore;
 
 public class SemophoneExam {
@@ -18,10 +20,10 @@ public class SemophoneExam {
 
     // Not a particularly efficient data structure; just for demo
 
-    protected Object[] items = new Object[]{};
-    protected boolean[] used = new boolean[MAX_AVAILABLE];
+    private Person[] items = new Person[]{};
+    private boolean[] used = new boolean[MAX_AVAILABLE];
 
-    protected synchronized Object getNextAvailableItem() {
+    private synchronized Object getNextAvailableItem() {
         for (int i = 0; i < MAX_AVAILABLE; ++i) {
             if (!used[i]) {
                 used[i] = true;
@@ -31,7 +33,7 @@ public class SemophoneExam {
         return null; // not reached
     }
 
-    protected synchronized boolean markAsUnused(Object item) {
+    private synchronized boolean markAsUnused(Object item) {
         for (int i = 0; i < MAX_AVAILABLE; ++i) {
             if (item == items[i]) {
                 if (used[i]) {
@@ -42,5 +44,16 @@ public class SemophoneExam {
             }
         }
         return false;
+    }
+
+    public static void main(String[] args) {
+        SemophoneExam exam = new SemophoneExam();
+        Person person = Person.builder().age(12).name("dsadsa").build();
+        exam.putItem(person);
+        try {
+            exam.getItem();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
