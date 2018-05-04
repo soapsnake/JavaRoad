@@ -164,6 +164,12 @@
                 <version>1.16.18</version>
             </dependency>
 
+            <dependency>
+                <groupId>org.apache.tomcat.embed</groupId>
+                <artifactId>tomcat-embed-core</artifactId>
+                <version>9.0.6</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
@@ -184,7 +190,7 @@
         <module>springboot</module>
         <module>thinkinjava</module>
         <module>hbase-client</module>
-        <module>netty</module>
+        <module>nio</module>
         <module>random</module>
     </modules>
 
