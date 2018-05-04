@@ -1,6 +1,5 @@
 package com.ld.thinkinjava.generics;
 
-import sun.awt.util.IdentityLinkedList;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -37,7 +36,7 @@ public class TestClass<T extends Number> {
         list3.add("dsadsa");
         list2.add(list3);
         list2.add(new LinkedList());
-        list2.add(new IdentityLinkedList());
+//        list2.add(new IdentityLinkedList());
 
         System.out.println(list2);
     }
