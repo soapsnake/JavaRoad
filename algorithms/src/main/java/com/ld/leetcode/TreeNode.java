@@ -3,7 +3,6 @@ package com.ld.leetcode;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
 import java.util.Stack;
 
 public class TreeNode {
@@ -66,7 +65,6 @@ public class TreeNode {
     public static void main(String[] args) {
         TreeNode treeNode = makeTree();
 
-
         List<List<TreeNode>> lists = layerTravse(treeNode);
 
         List<TreeNode> vals = frontTravse(treeNode);
@@ -115,18 +113,22 @@ public class TreeNode {
     public static List<TreeNode> frontTravse(TreeNode root){
         List<Integer> vals = new ArrayList<>();
         List<TreeNode> nodes = new ArrayList<>();
-        Queue<TreeNode> temp = new LinkedList<>();
+
+        //前序遍历时,stack用来存放右子节点,当所有的左子节点遍历结束,弹栈即可实现所有右子节点的遍历
+        Stack<TreeNode> stack = new Stack<>();
         TreeNode cur = root;
-        while (cur != null || !temp.isEmpty()){
+        while (cur != null || !stack.isEmpty()){
             while (cur != null){
-                temp.add(cur);
+                if (cur.right != null){
+                    stack.push(cur.right);
+                }
+                vals.add(cur.val);
+                nodes.add(cur);
                 cur = cur.left;
             }
-            //取队头元素
-            cur = temp.poll();
-            nodes.add(cur);
-            vals.add(cur.val);
-            cur = cur.right;
+            if (!stack.isEmpty()){
+                cur = stack.pop();
+            }
         }
         System.out.print("前序遍历: ");
         ArrayUtils.printList(vals);
@@ -137,6 +139,8 @@ public class TreeNode {
     public static List<TreeNode> middleTravse(TreeNode root){
         List<Integer> vals = new ArrayList<>();
         List<TreeNode> nodes = new ArrayList<>();
+
+        //中序遍历时stack用来存放根节点
         Stack<TreeNode> temp = new Stack<>();
         TreeNode cur = root;
 
