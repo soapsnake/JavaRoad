@@ -3,6 +3,8 @@ package com.ld.leetcode;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
+import java.util.Stack;
 
 public class TreeNode {
 
@@ -63,14 +65,13 @@ public class TreeNode {
 
     public static void main(String[] args) {
         TreeNode treeNode = makeTree();
+
+
         List<List<TreeNode>> lists = layerTravse(treeNode);
-        int i = 1;
-        for (List<TreeNode> list : lists){
-            for (TreeNode node : list){
-                System.out.print(node.val + " , ");
-            }
-            System.out.println("第 " + i++  +" 层打印完毕");
-        }
+
+        List<TreeNode> vals = frontTravse(treeNode);
+
+        List<TreeNode> vals2 = middleTravse(treeNode);
     }
 
     //层状遍历二叉树
@@ -80,7 +81,6 @@ public class TreeNode {
         if (root == null) {
             return lists;
         }
-
         int cur = 0;
         int last = 1;
         List<TreeNode> que = new LinkedList<>();
@@ -111,12 +111,49 @@ public class TreeNode {
         return lists;
     }
 
-    public static void frontTravse(TreeNode root){
-
+    //前序遍历   根 --> 左孩 --> 右孩
+    public static List<TreeNode> frontTravse(TreeNode root){
+        List<Integer> vals = new ArrayList<>();
+        List<TreeNode> nodes = new ArrayList<>();
+        Queue<TreeNode> temp = new LinkedList<>();
+        TreeNode cur = root;
+        while (cur != null || !temp.isEmpty()){
+            while (cur != null){
+                temp.add(cur);
+                cur = cur.left;
+            }
+            //取队头元素
+            cur = temp.poll();
+            nodes.add(cur);
+            vals.add(cur.val);
+            cur = cur.right;
+        }
+        System.out.print("前序遍历: ");
+        ArrayUtils.printList(vals);
+        return nodes;
     }
 
-    public static void middleTravse(TreeNode root){
+    //中序遍历:   左孩  --> 根 --> 右孩
+    public static List<TreeNode> middleTravse(TreeNode root){
+        List<Integer> vals = new ArrayList<>();
+        List<TreeNode> nodes = new ArrayList<>();
+        Stack<TreeNode> temp = new Stack<>();
+        TreeNode cur = root;
 
+        while (cur != null || !temp.isEmpty()){
+            while (cur != null){
+                temp.add(cur);
+                cur = cur.left;
+            }
+
+            cur = temp.pop();
+            vals.add(cur.val);
+            nodes.add(cur);
+            cur = cur.right;
+        }
+        System.out.print("中序遍历: ");
+        ArrayUtils.printList(vals);
+        return nodes;
     }
 
     @Override

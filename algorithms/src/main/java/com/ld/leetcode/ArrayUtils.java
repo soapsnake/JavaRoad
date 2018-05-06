@@ -22,8 +22,13 @@ public class ArrayUtils {
         if (list == null || list.isEmpty()){
             System.out.println("list 为空");
         }
-        for (T t : list){
-            System.out.println(t.toString());
+        for (int i=0;i<list.size();i++){
+            System.out.print(list.get(i));
+            if (i == (list.size() - 1)){
+                System.out.println("\n");
+            }else {
+                System.out.print(" -> ");
+            }
         }
     }
 }

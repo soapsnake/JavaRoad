@@ -4,6 +4,7 @@ import org.apache.commons.lang3.RandomStringUtils;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class MapTest {
 
@@ -16,6 +17,11 @@ public class MapTest {
         }
         ClassMates mates2 = ClassMates.builder().id(13).age(13 * 10).name(RandomStringUtils.randomAlphabetic(6)).build();
         map.put(mates2, 8);
+
+
+        Map<ClassMates, Integer> map2 = new ConcurrentHashMap<>();
+        map2.put(mates2, 8);
+
 
 
     }

@@ -1,5 +1,6 @@
 package com.ld.aqs;
 
+import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -16,6 +17,7 @@ public class ReentrantLockTest {
 
         public void lockMethod(){
             lock.lock();
+            Condition condition = lock.newCondition();
             try {
                 System.out.println(Thread.currentThread().getName() + " is sleepping!!!");
                 Thread.sleep(1000000L);
