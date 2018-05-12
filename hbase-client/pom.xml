@@ -939,9 +939,6 @@
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <!-- Need to set Guava to 15.0 since Hadoop dependencies break
-            with newer version. -->
-            <version>15.0</version>
         </dependency>
         <dependency>
             <groupId>org.codehaus.jackson</groupId>
