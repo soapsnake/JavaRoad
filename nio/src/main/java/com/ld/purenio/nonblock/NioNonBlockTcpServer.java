@@ -18,12 +18,12 @@ public class NioNonBlockTcpServer {
     public static void main(String[] args) throws IOException {
         Selector selector = Selector.open();
 
-        ServerSocketChannel server = ServerSocketChannel.open();
-        server.socket().bind(new InetSocketAddress(1111));
+        ServerSocketChannel socketChannel1 = ServerSocketChannel.open();
+        socketChannel1.socket().bind(new InetSocketAddress(1111));
 
         // 将其注册到 Selector 中，监听 OP_ACCEPT 事件
-        server.configureBlocking(false);
-        server.register(selector, SelectionKey.OP_ACCEPT);
+        socketChannel1.configureBlocking(false);
+        socketChannel1.register(selector, SelectionKey.OP_ACCEPT);
 
         while (true) {
             int readyChannels = selector.select();
@@ -39,7 +39,7 @@ public class NioNonBlockTcpServer {
 
                 if (key.isAcceptable()) {
                     // 有已经接受的新的到服务端的连接
-                    SocketChannel socketChannel = server.accept();
+                    SocketChannel socketChannel = socketChannel1.accept();
 
                     // 有新的连接并不代表这个通道就有数据，
                     // 这里将这个新的 SocketChannel 注册到 Selector，监听 OP_READ 事件，等待数据

@@ -23,7 +23,6 @@ public class Question35 {
     }
 
     public static void main(String[] args) {
-        //TODO 解法有问题,没解全
         int[] nums = new int[]{1,2,3,4,5,7,8,10};
         Question35 question35 = new Question35();
         System.out.println(question35.searchInsert2(nums, 8));
