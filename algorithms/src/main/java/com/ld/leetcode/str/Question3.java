@@ -2,6 +2,7 @@ package com.ld.leetcode.str;
 
 public class Question3 {
 
+    //最傻逼解法,时间复杂度平方级别
     public int lengthOfLongestSubstring(String s) {
         if (s == null) return 0;
         if (s .equals("")) return 0;
@@ -11,6 +12,7 @@ public class Question3 {
             String temp = "";
             for (int i=0;i<chars.length;i++){
                 temp += chars[i];
+                if (chars.length - i <= max) return max;
                 for (int j=i+1;j<chars.length;j++){
                     if (temp.contains(chars[j] + "")){
                         break;
