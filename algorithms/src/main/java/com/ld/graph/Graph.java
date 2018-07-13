@@ -21,7 +21,7 @@ public class Graph {
 
     Graph(int v){
         this.V = v;
-        adjTable = new Set[V];
+        adjTable = (Set<Integer>[]) new Set[V];
         for (int i=0;i<V;i++){
             adjTable[i] = new HashSet<>();
         }
