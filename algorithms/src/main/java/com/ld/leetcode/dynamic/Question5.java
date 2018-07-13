@@ -1,4 +1,4 @@
-package com.ld.leetcode.str;
+package com.ld.leetcode.dynamic;
 
 public class Question5 {
 
@@ -69,19 +69,28 @@ public class Question5 {
     }
 
     //动态规划,正确得解法,不过没有看明白
+    //https://leetcode.com/problems/longest-palindromic-substring/solution/
+    //中文解释可见:https://www.felix021.com/blog/read.php?2040
     public String longestPalindromeDPSolution(String s) {
-        boolean[][] dp = new boolean[s.length()][s.length()];
-        int maxStart = 0;
-        int maxEnd = 0;
+        int start = 0, end = 0;
         for (int i = 0; i < s.length(); i++) {
-            for (int j = 0; j < s.length() - i; j++) {
-                if (i == 0 || (s.charAt(j) == s.charAt(j + i) && (i == 1 || dp[j + 1][j + i - 1]))) {
-                    dp[j][j + i] = true;
-                    maxStart = j;
-                    maxEnd = j + i;
-                }
+            int len1 = expandAroundCenter(s, i, i);
+            int len2 = expandAroundCenter(s, i, i + 1);
+            int len = Math.max(len1, len2);
+            if (len > end - start) {
+                start = i - (len - 1) / 2;
+                end = i + len / 2;
             }
         }
-        return s.substring(maxStart, maxEnd + 1);
+        return s.substring(start, end + 1);
+    }
+
+    private int expandAroundCenter(String s, int left, int right) {
+        int L = left, R = right;
+        while (L >= 0 && R < s.length() && s.charAt(L) == s.charAt(R)) {
+            L--;
+            R++;
+        }
+        return R - L - 1;
     }
 }
