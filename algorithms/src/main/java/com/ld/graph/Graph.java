@@ -13,19 +13,18 @@ import java.util.Set;
  */
 public class Graph {
 
-    private int V;  //顶点
+    private int V;  //顶点数目
 
-    private int E;  //边
+    private int E;  //边数目
 
     private Set<Integer>[] adjTable;  //邻接表
 
     Graph(int v){
-        this.V = v;
+        this.V = v;  //顶点个数
         adjTable = (Set<Integer>[]) new Set[V];
         for (int i=0;i<V;i++){
             adjTable[i] = new HashSet<>();
         }
-
     }
 
     Graph(int v, int e){
@@ -33,18 +32,32 @@ public class Graph {
         this.E = e;
     }
 
-    //从输入流中读取一副图
+    //从输入流"tinyGraph.txt"中读取一副图
     Graph(String  filePath){
         try {
             InputStream inputStream = new FileInputStream(filePath);
             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+            int e = 0;
+            int v = 0;
             while (true) {
                 String str = reader.readLine();
-                String[] intStr = str.split(",");
-                int v = Integer.parseInt(intStr[0]);
-                String points = intStr[1];
-                String[] point = points.split(" ");
-
+                if (str == null) break;
+                String[] intStr = str.split(":");
+                if (intStr[0].equals("v")) {
+                    v = Integer.parseInt(intStr[1]);
+                    this.V = v;  //顶点个数
+                    adjTable = (Set<Integer>[]) new Set[V];
+                    for (int i=0;i<V;i++){
+                        adjTable[i] = new HashSet<>();
+                    }
+                    continue;
+                }
+                int vertexIndex = Integer.parseInt(intStr[0]);
+                String[] adjPoints = intStr[1].split(" ");
+                for (String vertex : adjPoints){
+                    adjTable[vertexIndex].add(Integer.parseInt(vertex));
+                    this.E++;
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -98,9 +111,6 @@ public class Graph {
     public Iterable<Integer> adj(int v){
         return adjTable[v];
     }
-
-
-
 
     public int getV() {
         return V;
