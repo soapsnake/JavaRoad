@@ -1,4 +1,4 @@
-package com.ld.alibaba;
+package com.ld.alib;
 
 import java.util.Random;
 

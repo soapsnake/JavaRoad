@@ -1,4 +1,4 @@
-package com.ld.alibaba;
+package com.ld.alib;
 
 /**
  *1、随机生成一个长度为N的无序链表，节点的value在0-10之间，删除链表中重复的节点（链表需要自己创建）。
