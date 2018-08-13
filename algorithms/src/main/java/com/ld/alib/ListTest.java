@@ -7,33 +7,43 @@ public class ListTest {
 
     public static void main(String[] args) {
         Random random = new Random();
-        Node node = new Node(random.nextInt(10));
-        NodeList nodeList = new NodeList(node);
-        int size = 20;
-        for (int i = 1; i<size;i++){
-            Node node1 = new Node(random.nextInt(10));
-            nodeList.addNode(node1);
-        }
-        //删除重复几点:
-        deleteDuplicate(nodeList);
-        nodeList.reverse();
-    }
+        NodeList nodeList = new NodeList();
+        int size = 10;
 
-    private static void deleteDuplicate(NodeList nodeList) {
-        if (nodeList == null)
-            return;
-        Node temp = nodeList.getHead();
-        int dest = temp.value;
-        Node cur;
-        while (temp.next != null){
-            cur = temp;
-            if(cur.value == dest){
-                nodeList.delNode(cur);
-            }
-            temp = temp.next;
+
+        for (int i = 1; i<size;i++){
+            NodeList.Node node =  new NodeList.Node(random.nextInt(10));
+            nodeList.addNode(node);
         }
-        nodeList.delNode(nodeList.getHead());
-        deleteDuplicate(nodeList);
+        System.out.println("原始链表");
+        NodeList.printList(nodeList);
+        //删除重复节点:
+        nodeList.deleteDuplicate();
+        System.out.println("清除重复节点后");
+        NodeList.printList(nodeList);
+
+        NodeList.reverse(nodeList);
+        System.out.println("链表全反转后");
+        NodeList.printList(nodeList);
+
+//        NodeList.Node delTar = new NodeList.Node(2);
+//        nodeList.delNode(delTar);
+
+//        nodeList.deleteDuplicate();
+//
+//        nodeList.printList();
+
+//        NodeList nodeList2 = new NodeList();
+//        nodeList2.addNode(new NodeList.Node(1));
+//        nodeList2.addNode(new NodeList.Node(7));
+//        nodeList2.addNode(new NodeList.Node(8));
+//        nodeList2.addNode(new NodeList.Node(7));
+//        nodeList2.printList();
+//
+//        nodeList2.deleteDuplicate();
+//        nodeList2.printList();
+
+
     }
 
 

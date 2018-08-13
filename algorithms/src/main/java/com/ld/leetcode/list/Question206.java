@@ -44,6 +44,36 @@ public class Question206 {
         ListNode.printListNode(listNode);
 
         Question206 question206 = new Question206();
-        ListNode.printListNode(question206.reverseList2(listNode));
+        ListNode.printListNode(question206.reverseList4(listNode));
     }
+
+    // Recursion: 递归版实现
+    public ListNode reverseList3(ListNode head) {
+        return helper(null, head);
+    }
+
+    ListNode helper(ListNode reversed, ListNode remaining) {
+        if(remaining==null) return reversed;
+        ListNode tmp = remaining.next;
+        remaining.next = reversed;
+        return helper(remaining, tmp);
+    }
+
+    // Iteration:  遍历版实现
+    public ListNode reverseList4(ListNode head) {
+        if(head==null) return head;
+        ListNode newhead = new ListNode(0);
+        newhead.next = head;
+
+        while(head.next!=null) {
+            ListNode tmp = head.next;
+            head.next = head.next.next;
+
+            tmp.next = newhead.next;
+            newhead.next = tmp;
+        }
+        return newhead.next;
+    }
+
+
 }

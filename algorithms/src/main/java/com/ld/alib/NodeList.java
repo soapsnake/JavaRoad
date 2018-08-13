@@ -9,82 +9,162 @@ package com.ld.alib;
  */
 public class NodeList {
 
-    private Node node;
+    //单向链表
+    public static class Node {
+        public int value;
+        public Node next; //下一个节点
 
-    private Node next;
+        public Node(int value){
+            this.value = value;
+        }
 
-    private Node head;
+        @Override
+        public boolean equals(Object o){
+            if (!(o instanceof Node)){
+                return false;
+            }
+            return this.value == ((Node) o).value;
+        }
 
-    private Node tail;
+        @Override
+        public String toString(){
+            return String.valueOf(this.value);
+        }
 
-    public NodeList(Node node){
+    }
+
+    public Node head;  //表头
+
+    public Node tail; //表尾
+
+    public int size;
+
+    public NodeList(){}
+
+    public NodeList(Node node) {
         this.head = node;
         this.tail = node;
     }
 
-    public Node getNode() {
-        return node;
+    //打印链表
+    private String printList(){
+        String res = "";
+        Node temp = this.head;
+        while (temp != null){
+            System.out.print(temp.value);
+            res += temp.value;
+            res += "->";
+            if (temp.next != null){
+                System.out.print(" -> ");
+            }
+            temp = temp.next;
+        }
+        System.out.println(" :链表size="+this.size);
+        return res;
     }
 
-    public void setNode(Node node) {
-        this.node = node;
+    public static String printList(NodeList list){
+        String res = "";
+        Node temp = list.head;
+        while (temp != null){
+            System.out.print(temp.value);
+            res += temp.value;
+            res += "->";
+            if (temp.next != null){
+                System.out.print(" -> ");
+            }
+            temp = temp.next;
+        }
+        System.out.println(" :链表size="+list.size);
+        return res;
     }
 
-    public Node getNext() {
-        return next;
-    }
+    //添加节点
+    public void addNode(Node node) {
+        this.size += 1;
+        if (null == this.head && null == this.tail){
+            //空链表
+            this.head = node;
+            this.tail = node;
+            return;
+        }
 
-    public void setNext(Node next) {
-        this.next = next;
-    }
-
-    public Node getHead() {
-        return head;
-    }
-
-    public void setHead(Node head) {
-        this.head = head;
-    }
-
-    public Node getTail() {
-        return tail;
-    }
-
-    public void setTail(Node tail) {
-        this.tail = tail;
-    }
-
-    public void addNode(Node node){
         this.tail.next = node;
         this.tail = node;
     }
 
-    public void delNode(Node node){
-        Node list = node;
-        Node cur;
-        while (list.next != null){
-            cur = this.head;
-            if (cur.next.equals(node)){
-                cur.next = node.next;
-                break;
+    //删除给定节点
+    public void delNode(Node node) {
+        if (!this.containsNode(node)){
+            return;
+        }
+        Node pointer = this.head;
+        while (pointer.next != null){
+            if (pointer.equals(node)){
+                //头节点就是要删除的节点
+                this.head = pointer.next;
             }
-            list = list.next;
-        }
-    }
-    public void reverse() {
-        Node list = this.head;
-        Node cur = list;
-        while (list.next != null) {
-            //指针每移动一次,需要把该节点的next节点的next节点指向该节点
-            cur = list.next;
-            Node temp = cur.next;
-            list = cur.next;
-            list.next = temp;
-            list = list.next;
+            if (pointer.next.equals(node)){
+                pointer.next = pointer.next.next;
+            }
+            pointer = pointer.next;
         }
     }
 
+    //是否包含指定节点
+    public boolean containsNode(Node node) {
+        Node temp = this.head;
+        while (temp.next != null){
+            if (temp.equals(node)){
+                return true;
+            }
+            temp = temp.next;
+        }
+        System.out.println("当前链表不包含该值为"+node.value+"的节点");
+        return false;
+    }
+
+    //链表全反转
+    public static void reverse(NodeList list) {
+        Node head = list.head;
+        Node prev = head;
+        Node cur = head;
+        Node temp = null;
+        while(cur != null){
+            temp = cur.next;
+            cur.next = prev;
+
+            cur = cur.next;
+        }
+        head.next = prev;
+    }
+
+    //链表两两反转
+    public void reverseTriple(){
+
+    }
+
+    //删除重复节点
+    public void deleteDuplicate() {
+        Node man = this.head;
+        Node kuai = man;
+        while (man.next != null){
+            kuai = man;
+            while (kuai.next != null){
+                if (kuai.next.equals(man)){   //探测到了重复
+                    kuai.next = kuai.next.next;
+                    this.size--;
+                    continue;
+                }
+                kuai = kuai.next;
+            }
+            man = man.next;
+        }
+    }
 
 
-
+    @Override
+    public String toString(){
+        return this.printList();
+    }
 }
