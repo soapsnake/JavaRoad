@@ -78,23 +78,18 @@ public class ListNode{
         }
     }
 
-    public static ListNode revertList(ListNode node){
-//        if (node == null){
-//            return null;
-//        }
-//
-//        ListNode head;
-//        ListNode newList = null;
-//        while (node != null){
-//            head = new ListNode(node.val);
-//            head.next = newList;
-//            newList = head;
-//            node = node.next;
-//        }
-//        return newList;
-        return null;
+    public static ListNode revertList(ListNode head){
+        ListNode prev = null;
+        ListNode next;
+        while (head.next != null) {
+            next = head.next;
+            head.next = prev;
+            prev = head;
+            head = next;
+            }
+        head.next = prev;
+        return head;
     }
-
 
 
     public static void main(String[] args) {
@@ -111,13 +106,13 @@ public class ListNode{
 //        printListNode(node);
 
         ListNode node2 = new ListNode();
-//        node2.add(1);
-//        node2.add(2);
-//        node2.add(3);
-//        node2.add(4);
-        ListNode.printListNode(node2);
-//        ListNode.printListNode(ListNode.revertList(node2));
-        node2.deleteNode(new ListNode(2));
+        node2.addNode(new ListNode(1));
+        node2.addNode(new ListNode(2));
+        node2.addNode(new ListNode(3));
+        node2.addNode(new ListNode(4));
+        ListNode.printListNode(node2.head);
+        ListNode.printListNode(ListNode.revertList(node2.head));
+//        node2.deleteNode(new ListNode(2));
         ListNode.printListNode(node2);
     }
 

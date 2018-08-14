@@ -1,5 +1,7 @@
 package com.ld.alib;
 
+import org.omg.CORBA.ULongLongSeqHelper;
+
 /**
  *1、随机生成一个长度为N的无序链表，节点的value在0-10之间，删除链表中重复的节点（链表需要自己创建）。
  2、实现：自定义一个链表数据结构（可以是单链表或双向链表），然后初始化一个链表数据，
@@ -126,22 +128,41 @@ public class NodeList {
 
     //链表全反转
     public static void reverse(NodeList list) {
-        Node head = list.head;
-        Node prev = head;
-        Node cur = head;
-        Node temp = null;
-        while(cur != null){
-            temp = cur.next;
-            cur.next = prev;
+        Node cur = list.head;
+        Node prev = null;    //指针prev保存了反转后的链表
+        Node next = null;    //指针next保存了当前节点的后继节点,主要用来防止链表断裂
+        while(cur.next!=null){    //指针head不断沿链表移动进行遍历
+            next = cur.next;   //先把当前节点的下一个节点保存起来,防止链表断裂
+            cur.next = prev;   //链表的反转:当前节点的下一个节点指向prev节点
+            prev = cur;    //prev指针需要不断沿着新链表向表头方向移动(相当于由表尾向表头移动)
 
-            cur = cur.next;
+            cur = next;   //旧链表的遍历,如果next指针不保存旧链表,那么旧链表将会无法遍历
         }
-        head.next = prev;
+        cur.next = prev;
+        list.head = cur;
     }
 
     //链表两两反转
-    public void reverseTriple(){
+    public static void reverseTriple(NodeList list){
+        Node cur = list.head;    //当前节点
+        Node prev = null;        //前一个节点
+        Node next = null;        //下一个节点
+        Node nextNext = null;    //下下个节点
 
+        //难点在于:每反转一次,后一个节点的下个节点,并不是next节点,而是nextNext节点
+        while (cur != null && cur.next != null) {
+            next = cur.next;
+            nextNext = next.next;
+
+            next.next = cur;
+            cur.next = nextNext;
+
+            if (prev != null) {
+                prev.next = next;
+            }
+            prev = cur;
+            cur = nextNext;
+        }
     }
 
     //删除重复节点
