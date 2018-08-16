@@ -7,6 +7,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * Given an array of integers where 1 ≤ a[i] ≤ n (n = size of array), some elements appear twice and others appear once.
+ Find all the elements of [1, n] inclusive that do not appear in this array.
+ Could you do it without extra space and in O(n) runtime? You may assume the returned list does not count as extra space.
+ */
 public class Question448 {
 
     //题目要求不能使用其他内存(除了数组和list)来解题,但是我这里使用了set,算是违规了

@@ -12,4 +12,13 @@ public class Question148 {
         return null;
     }
 
+
+    public static void main(String[] args) {
+
+        Question148 question148 = new Question148();
+
+        question148.sortList(new ListNode());
+        throw new RuntimeException("测试测试");
+    }
+
 }
