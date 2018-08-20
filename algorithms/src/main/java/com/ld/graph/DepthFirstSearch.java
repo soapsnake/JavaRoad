@@ -25,11 +25,12 @@ public class DepthFirstSearch implements Search {
         dfs(graph, source);
     }
 
+    //dfs的思路是我要尽快完成搜索任务,所以,只要找到一条可以连通的路径就行了
     private void dfs(Graph graph, int source) {
         marked[source] = true;
         count++;
         for (int w : graph.adj(source)){  //遍历所有与source邻接的点
-            if (!marked[w]){   //如果发现还没有被标记过的点(之前没有访问过)
+            if (!marked[w]){   //如果发现还没有被标记过的点(之前没有访问过),这里如果和w有很多连通的点,那么只会选其中的一条
                 edgeTO[w] = source;    // source -> w
                 dfs(graph, w);   //那就连到该点上,继续搜索
             }
@@ -57,8 +58,9 @@ public class DepthFirstSearch implements Search {
 
     //计算s -> v的一条路径,注意只有一条
     @Override
-    public Stack<Integer> pathTo(int v) {
-        if (!this.hasPathTo(v)) return null;       //如果两个点根本就不连通,那就直接返回不计算了
+    public Iterable<Integer> pathTo(int v) {
+        if (!this.hasPathTo(v))
+            return null;       //如果两个点根本就不连通,那就直接返回不计算了
         Stack<Integer> path = new Stack<>();    //这个为什么要用stack:我们找路径是从终点回溯的,但是路径一般是起点到终点
         //s -> v     edgeTO[v] = s
         int vParent = edgeTO[v];

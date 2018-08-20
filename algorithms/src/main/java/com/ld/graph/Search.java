@@ -1,7 +1,6 @@
 package com.ld.graph;
 
 import java.util.List;
-import java.util.Stack;
 
 public interface Search {
     //s -> v是否连通
@@ -14,5 +13,5 @@ public interface Search {
     List<List<Integer>> allPath(int s);
 
     //找出s -> v的一条路径
-    Stack<Integer> pathTo(int v);
+    Iterable<Integer> pathTo(int v);
 }

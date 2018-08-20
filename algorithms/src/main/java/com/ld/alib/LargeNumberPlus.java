@@ -27,8 +27,8 @@ public class LargeNumberPlus {
         }else{
             res = new StringBuilder();
         }
-        for (int j =0;j<str.length;j++){
-            res.append(str[j]);
+        for (String aStr : str) {
+            res.append(aStr);
         }
         return res.toString();
     }
