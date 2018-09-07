@@ -17,5 +17,6 @@ public class Question101 {
 
         Question101 question101 = new Question101();
         System.out.println(question101.isSymmetric(origin));
+
     }
 }
