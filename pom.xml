@@ -198,6 +198,7 @@
         <module>hbase-client</module>
         <module>nio</module>
         <module>random</module>
+        <module>mq</module>
     </modules>
 
     <build>
