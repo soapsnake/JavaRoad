@@ -25,7 +25,7 @@ public class KafkaConsumerDemo {
         properties.put("group.id", consumerGroup);
         properties.put("session.timeout.ms", 10000);
         properties.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
-        properties.put("value.deserializer", "com.hidden.client.DemoDeserializer");
+        properties.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
         properties.put("client.id", "hidden-consumer-client-id-zzh-2");
         KafkaConsumer<String, Company> consumer = new KafkaConsumer<String, Company>(properties);
         consumer.subscribe(Arrays.asList(topic));

@@ -1,5 +1,6 @@
 package com.ld.mq.kafka.client;
 
+import com.ld.mq.kafka.pojos.Company;
 import org.apache.kafka.clients.producer.Callback;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.Producer;
@@ -12,21 +13,24 @@ import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
 public class KafkaProducerDemo {
-    public static final String brokerList = "192.168.0.2:9092,192.168.0.3:9092,192.168.0.4:9092";
+    public static final String brokerList = "118.184.84.117:9092";
     public static final String topic = "hidden-topic";
 
     public static void main(String[] args) {
         Properties properties = new Properties();
         properties.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
-        properties.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
+        properties.put("value.serializer", "com.ld.mq.kafka.serializer.DemoSerializer");   //value采用自定义序列化工具
         properties.put("client.id", "hidden-producer-client-id-1");
         properties.put("bootstrap.servers", brokerList);
+        properties.put("partitioner.class","com.ld.mq.kafka.partition.DemoPartitioner");
 
-        Producer<String,String> producer = new KafkaProducer<>(properties);
+        Producer<String, Company> producer = new KafkaProducer<>(properties);   //这里的value就要改成company类型了
 
         while (true) {
-            String message = "kafka_message-" + new Date().getTime() + "-edited by hidden.zhu";
-            ProducerRecord<String, String> producerRecord = new ProducerRecord<>(topic, message);
+            Company company = new Company();
+            company.setName("hidden.cooperation-" + new Date().getTime());
+            company.setAddress("Shanghai, China");
+            ProducerRecord<String, Company> producerRecord = new ProducerRecord<>(topic, company);
             try {
                 Future<RecordMetadata> future =  producer.send(producerRecord, new Callback() {
                     public void onCompletion(RecordMetadata metadata, Exception exception) {
