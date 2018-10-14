@@ -14,28 +14,34 @@ public class Question905 {
 
     //快排版思路
     public int[] sortArrayByParity(int[] A) {
-        int middleIndex = A.length / 2;
+        if (A.length % 2 != 0){  //元素必然成对
+            return null;
+        }
 
         int left = 0;
         int right = A.length - 1;
-
-        for (int i =0; ;i++){
-            if (A[left] % 2 == 0){
-                left++;
+        while (right > left){
+            while (left < right){
+                if (A[left] % 2 !=0){
+                    break;
+                }else {
+                    left++;
+                }
             }
 
-            //left指针指向奇数了
-            if (A[right] % 2 != 0){
-                right--;
+            while (right > left){
+                if (A[right] % 2 == 0){
+                    break;
+                }else {
+                    right--;
+                }
             }
-            //right此时指向偶数了
+
             int temp = A[left];
             A[left] = A[right];
             A[right] = temp;
-
-            if (left == right){
-                break;
-            }
+            left++;
+            right--;
         }
         return A;
     }
