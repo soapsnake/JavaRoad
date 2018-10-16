@@ -12,10 +12,14 @@ import com.ld.leetcode.list.ArrayUtils;
  */
 public class Question905 {
 
-    //快排版思路
+    //todo 快排版思路,但是这个解法不对
     public int[] sortArrayByParity(int[] A) {
+        if (A.length == 1){
+            return A;
+        }
+
         if (A.length % 2 != 0){  //元素必然成对
-            return null;
+            return A;
         }
 
         int left = 0;
