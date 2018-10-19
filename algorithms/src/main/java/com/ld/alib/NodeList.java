@@ -1,7 +1,5 @@
 package com.ld.alib;
 
-import org.omg.CORBA.ULongLongSeqHelper;
-
 /**
  *1、随机生成一个长度为N的无序链表，节点的value在0-10之间，删除链表中重复的节点（链表需要自己创建）。
  2、实现：自定义一个链表数据结构（可以是单链表或双向链表），然后初始化一个链表数据，
@@ -12,7 +10,7 @@ import org.omg.CORBA.ULongLongSeqHelper;
 public class NodeList {
 
     //单向链表
-    public static class Node {
+     static class Node {
         public int value;
         public Node next; //下一个节点
 
