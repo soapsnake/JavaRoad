@@ -26,30 +26,6 @@ public class ChatRoomServer {
 
     private Channel channel;
 
-    public ChannelFuture start(InetSocketAddress address){
-        ServerBootstrap serverBootstrap = new ServerBootstrap();
-        serverBootstrap.group(eventExecutors)
-                .channel(NioServerSocketChannel.class)
-                .childHandler(createInitializer(channelGroup));
-        ChannelFuture future = serverBootstrap.bind(address);
-        future.syncUninterruptibly();
-        channel = future.channel();
-        return future;
-
-    }
-
-    private ChannelHandler createInitializer(ChannelGroup channelGroup) {
-        return new ChatServerInitializer(channelGroup);
-    }
-
-    public void destroy() {
-        if (channel != null){
-            channel.close();
-        }
-        channelGroup.close();
-        eventExecutors.shutdownGracefully();
-    }
-
     public static void main(String[] args) {
         //非spring集成的log4j使用方法
         BasicConfigurator.configure();
@@ -66,6 +42,30 @@ public class ChatRoomServer {
         });
 
         future.channel().closeFuture().syncUninterruptibly();
+    }
+
+    public ChannelFuture start(InetSocketAddress address) {
+        ServerBootstrap serverBootstrap = new ServerBootstrap();
+        serverBootstrap.group(eventExecutors)
+                .channel(NioServerSocketChannel.class)
+                .childHandler(createInitializer(channelGroup));
+        ChannelFuture future = serverBootstrap.bind(address);
+        future.syncUninterruptibly();
+        channel = future.channel();
+        return future;
+
+    }
+
+    private ChannelHandler createInitializer(ChannelGroup channelGroup) {
+        return new ChatServerInitializer(channelGroup);
+    }
+
+    public void destroy() {
+        if (channel != null) {
+            channel.close();
+        }
+        channelGroup.close();
+        eventExecutors.shutdownGracefully();
     }
 
 }

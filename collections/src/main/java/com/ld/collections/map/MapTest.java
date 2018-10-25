@@ -11,7 +11,7 @@ public class MapTest {
     public static void main(String[] args) {
         //TODO debug
         Map<ClassMates, Integer> map = new HashMap<>();
-        for (int i=1;i<13;i++) {
+        for (int i = 1; i < 13; i++) {
             ClassMates mates = ClassMates.builder().id(i).age(i * 10).name(RandomStringUtils.randomAlphabetic(6)).build();
             map.put(mates, i);
         }
@@ -21,7 +21,6 @@ public class MapTest {
 
         Map<ClassMates, Integer> map2 = new ConcurrentHashMap<>();
         map2.put(mates2, 8);
-
 
 
     }

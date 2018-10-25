@@ -2,6 +2,13 @@ package com.ld.leetcode.dynamic;
 
 public class Question5 {
 
+    public static void main(String[] args) {
+        Question5 question5 = new Question5();
+        String str1 = "babad";
+        String str2 = "cbbd";
+        System.out.println(question5.longestPalindrome2(str2));
+    }
+
     //答案正确,但是解法复杂度过高,n平方
     public String longestPalindrome(String s) {
         if (s == null) return "";
@@ -11,34 +18,26 @@ public class Question5 {
         int max = Integer.MIN_VALUE;
         String maxStr = "";
         StringBuilder sb;
-        for (int i =0;i<s.length(); i++){
+        for (int i = 0; i < s.length(); i++) {
             if (s.length() - i < max) return maxStr;   //最大长度不可能超过max了,后面不算了
             sb = new StringBuilder();
-            for (int j=i;j<s.length();j++){
+            for (int j = i; j < s.length(); j++) {
                 sb.insert(0, s.charAt(j));
                 if (sb.length() == 1) continue;
-                if (s.substring(i,j+1).equals(sb.toString())){
-                        if (sb.length() > max){
-                            max = sb.length();
-                            maxStr = sb.toString();
-                        }
+                if (s.substring(i, j + 1).equals(sb.toString())) {
+                    if (sb.length() > max) {
+                        max = sb.length();
+                        maxStr = sb.toString();
                     }
                 }
+            }
         }
-        if (maxStr.equals("")){
-            return s.charAt(0)+"";
-        }else{
+        if (maxStr.equals("")) {
+            return s.charAt(0) + "";
+        } else {
             return maxStr;
         }
     }
-
-    public static void main(String[] args) {
-        Question5 question5 = new Question5();
-        String str1 = "babad";
-        String str2 = "cbbd";
-        System.out.println(question5.longestPalindrome2(str2));
-    }
-
 
     //解法复杂度还是过高
     public String longestPalindrome2(String s) {
@@ -48,22 +47,23 @@ public class Question5 {
         if (s.length() == 1) return s;
         int leftStr = 0;
         int rightStr = 0;
-        for (int i=0;i<s.length();i++){
-            for (int j=0; i - j >=0; j++){
-                leftStr =j;
+        for (int i = 0; i < s.length(); i++) {
+            for (int j = 0; i - j >= 0; j++) {
+                leftStr = j;
                 rightStr = i - j;
                 String s1 = s.substring(leftStr, s.length() - rightStr);
                 if (this.checkPalindrome(s1))
                     return s1;
             }
         }
-        return s.charAt(0)+"";
+        return s.charAt(0) + "";
     }
-        //校验字符串是否回文结构
-    public boolean checkPalindrome(String source){
+
+    //校验字符串是否回文结构
+    public boolean checkPalindrome(String source) {
         StringBuilder sb = new StringBuilder("");
-        for (int i=0;i<source.length();i++){
-            sb.insert(0,source.charAt(i));
+        for (int i = 0; i < source.length(); i++) {
+            sb.insert(0, source.charAt(i));
         }
         return source.equals(sb.toString());
     }

@@ -10,11 +10,10 @@ import java.util.Stack;
  * 3. 如果s - v 连通,找出连通的路径
  */
 public class DepthFirstSearch implements Search {
-    private boolean[] marked;
-    private int count;
-
     private final Graph graph;
     private final int source;
+    private boolean[] marked;
+    private int count;
     private int[] edgeTO;     //这个数组的索引代表了边终点,值代表了边起点,例如s -> v 就是 edgeTo[v] = s
 
     //这个构造方法很奇特,调用这个构造方法后生成的对象,已经完成了DFS,与指定source连通的所有端点都会被标记
@@ -29,8 +28,8 @@ public class DepthFirstSearch implements Search {
     private void dfs(Graph graph, int source) {
         marked[source] = true;
         count++;
-        for (int w : graph.adj(source)){  //遍历所有与source邻接的点
-            if (!marked[w]){   //如果发现还没有被标记过的点(之前没有访问过),这里如果和w有很多连通的点,那么只会选其中的一条
+        for (int w : graph.adj(source)) {  //遍历所有与source邻接的点
+            if (!marked[w]) {   //如果发现还没有被标记过的点(之前没有访问过),这里如果和w有很多连通的点,那么只会选其中的一条
                 edgeTO[w] = source;    // source -> w
                 dfs(graph, w);   //那就连到该点上,继续搜索
             }
@@ -65,7 +64,7 @@ public class DepthFirstSearch implements Search {
         //s -> v     edgeTO[v] = s
         int vParent = edgeTO[v];
         path.add(vParent);
-        while (vParent != source){
+        while (vParent != source) {
             vParent = edgeTO[vParent];   //回溯算法,一直回溯到边起点是source为止
             path.push(vParent);
         }

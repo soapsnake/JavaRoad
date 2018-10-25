@@ -17,7 +17,7 @@ import java.io.IOException;
 
 /**
  * Created by liudun on 2017/9/21.
- *
+ * <p>
  * 与表结构相关的操作
  */
 public class HTableAPI {
@@ -27,7 +27,7 @@ public class HTableAPI {
 
     HBaseAdmin admin;
 
-    private HTableAPI(){
+    private HTableAPI() {
         poolTest = new HTablePoolTest(10);
 
         Configuration conf = HBaseConfiguration.create(); // co PutExample-1-CreateConf Create the required configuration.
@@ -45,8 +45,28 @@ public class HTableAPI {
 
 
     /////////////////////////////////////////////////////////////表操作api///////////////////////////////////////////////////////////////////////////////////
+
+    public static void main(String[] args) {
+        HTableAPI api = new HTableAPI();
+
+
+        api.getDescriptor("testtable2");
+        api.createTable("testtable3", "colfam1");
+
+//        api.deleteTable("testtable3");
+
+        api.modifyTable("testtable3", "colfam1", new HTableDescriptor("testtable3"));
+
+
+        api.getClusterStatus();
+
+
+        api.getAllTableDescriptors();
+    }
+
     /**
      * 获取单表结构描述信息
+     *
      * @param tableName
      * @return
      */
@@ -63,6 +83,7 @@ public class HTableAPI {
 
     /**
      * 获取所有表的表结构描述信息
+     *
      * @return
      */
     public HTableDescriptor[] getAllTableDescriptors() {
@@ -80,6 +101,7 @@ public class HTableAPI {
 
     /**
      * 建表
+     *
      * @param tableName
      */
     public void createTable(String tableName, String columnFamName) {
@@ -109,6 +131,7 @@ public class HTableAPI {
 
     /**
      * 删表操作
+     *
      * @param tableName
      */
     public void deleteTable(String tableName) {
@@ -119,16 +142,20 @@ public class HTableAPI {
             long cahs = 1000000000000021300L;
         } catch (IOException e) {
             e.printStackTrace();
-            LOGGER.error("delete :{} failed",tableName, e);
+            LOGGER.error("delete :{} failed", tableName, e);
         }
     }
 
+
+    /////////////////////////////////////////////////////////////集群操作api///////////////////////////////////////////////////////////////////////////////////
+
     /**
      * 异步修改表结构
+     *
      * @param tableName
      * @param columnFamName
      */
-    public void modifyTable(String tableName, String columnFamName,HTableDescriptor newRule) {
+    public void modifyTable(String tableName, String columnFamName, HTableDescriptor newRule) {
         HTableDescriptor descriptor = new HTableDescriptor(Bytes.toBytes(tableName));
 
         HColumnDescriptor columnDescriptor = new HColumnDescriptor(Bytes.toBytes(columnFamName));
@@ -137,7 +164,7 @@ public class HTableAPI {
 
         Person person = new Person();
         person.setName("hud");
-        descriptor.setValue("hud",person.toString());
+        descriptor.setValue("hud", person.toString());
 
         try {
             //修改表之前必须先禁用表
@@ -155,11 +182,9 @@ public class HTableAPI {
 
     }
 
-
-    /////////////////////////////////////////////////////////////集群操作api///////////////////////////////////////////////////////////////////////////////////
-
     /**
      * 检查远程HBase集群的可用性
+     *
      * @param conf
      */
     public void checkHBase(Configuration conf) {
@@ -173,13 +198,16 @@ public class HTableAPI {
         }
     }
 
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     /**
      * 获取集群状态信息
      */
     public ClusterStatus getClusterStatus() {
         ClusterStatus status = new ClusterStatus();
         try {
-            status =  admin.getClusterStatus();
+            status = admin.getClusterStatus();
             LOGGER.info("status: {}", status.toString());
 
             for (ServerName name : status.getServers()) {
@@ -189,32 +217,6 @@ public class HTableAPI {
             e.printStackTrace();
         }
         return status;
-    }
-
-
-
-
-
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-    public static void main(String[] args) {
-        HTableAPI api = new HTableAPI();
-
-
-        api.getDescriptor("testtable2");
-        api.createTable("testtable3", "colfam1");
-
-//        api.deleteTable("testtable3");
-
-        api.modifyTable("testtable3", "colfam1", new HTableDescriptor("testtable3"));
-
-
-
-        api.getClusterStatus();
-
-
-        api.getAllTableDescriptors();
     }
 
 }

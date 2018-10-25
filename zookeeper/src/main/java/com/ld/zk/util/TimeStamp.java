@@ -5,11 +5,11 @@ package com.ld.zk.util;
  */
 public class TimeStamp {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
 
         long timestamp = System.currentTimeMillis();
 
-        System.out.println("timestamp: "+timestamp);
+        System.out.println("timestamp: " + timestamp);
     }
 
 }

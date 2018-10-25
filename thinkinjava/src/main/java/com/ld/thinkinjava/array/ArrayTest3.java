@@ -30,12 +30,12 @@ public class ArrayTest3 {
         int[] ints1;
 //        ints1[2] = 3;  //数组没有初始化不能使用
 
-        int[] ints2 = {1,2,3,4,5,6};
+        int[] ints2 = {1, 2, 3, 4, 5, 6};
         System.out.println(ints2.length);
 
         List<String>[] ls;
         List[] la = new List[10];
-        ls = (List<String>[])la;
+        ls = (List<String>[]) la;
         ls[0] = new ArrayList<String>();
         //泛型检测可以检测出来
 //        ls[1] = new ArrayList<Integer>();

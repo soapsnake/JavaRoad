@@ -7,11 +7,11 @@ import java.util.Stack;
 
 public class BreadthFirstSearch implements Search {
 
+    private final int source;
     private boolean[] marked;
     private int[] edgeTo;
-    private final int source;
 
-    public BreadthFirstSearch(Graph graph,int source){
+    public BreadthFirstSearch(Graph graph, int source) {
         marked = new boolean[graph.getV()];
         edgeTo = new int[graph.getV()];
         this.source = source;
@@ -23,10 +23,10 @@ public class BreadthFirstSearch implements Search {
         Queue<Integer> queue = new LinkedList<>();  //队列
         marked[source] = true;
         queue.add(source);
-        while (!queue.isEmpty()){
+        while (!queue.isEmpty()) {
             int v = queue.poll();
-            for (int w : graph.adj(v)){
-                if (!marked[w]){
+            for (int w : graph.adj(v)) {
+                if (!marked[w]) {
                     edgeTo[w] = v;
                     marked[w] = true;
                     queue.add(w);
@@ -58,7 +58,7 @@ public class BreadthFirstSearch implements Search {
         //s -> v     edgeTO[v] = s
         int vParent = edgeTo[v];
         path.add(vParent);
-        while (vParent != source){
+        while (vParent != source) {
             vParent = edgeTo[vParent];   //回溯算法,一直回溯到边起点是source为止
             path.push(vParent);
         }

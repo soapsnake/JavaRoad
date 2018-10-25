@@ -8,10 +8,28 @@ import java.util.List;
  */
 public class Question102 {
 
+    /**
+     * 3
+     * /\
+     * 9   20
+     * / \
+     * 15    7
+     * /  \
+     * 8     12
+     * / \     / \
+     * 6    9  10   22
+     * /  \
+     * 4     14
+     */
+    public static void main(String[] args) {
+        Question102 question102 = new Question102();
+        System.out.println(question102.levelOrder(TreeNode.makeTree()));
+    }
+
     public List<List<Integer>> levelOrder(TreeNode root) {
         List<List<Integer>> res = new ArrayList<>();
 
-        if (root == null){
+        if (root == null) {
             return res;
         }
 
@@ -41,23 +59,5 @@ public class Question102 {
             res.add(layerNodesVal);
         }
         return res;
-    }
-
-/**
- *         3
- *        /\
- *      9   20
- *         / \
- *      15    7
- *          /  \
- *        8     12
- *      / \     / \
- *    6    9  10   22
- *           /  \
- *         4     14
- */
-    public static void main(String[] args) {
-        Question102 question102 = new Question102();
-        System.out.println(question102.levelOrder(TreeNode.makeTree()));
     }
 }

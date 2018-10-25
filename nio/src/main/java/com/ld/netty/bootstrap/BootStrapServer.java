@@ -32,9 +32,9 @@ public class BootStrapServer {
         future.addListener(new ChannelFutureListener() {
             @Override
             public void operationComplete(ChannelFuture future) throws Exception {
-                if (future.isSuccess()){
+                if (future.isSuccess()) {
                     System.out.println("server bound");
-                }else {
+                } else {
                     System.out.println("bound attempt failed");
                     future.cause().printStackTrace();
                 }

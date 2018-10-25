@@ -5,7 +5,7 @@ package com.ld.wsdl.pojo;
  */
 public class UserInfo {
 
-    private  String userName;
+    private String userName;
     private int UserAge;
 
     public String getUserName() {

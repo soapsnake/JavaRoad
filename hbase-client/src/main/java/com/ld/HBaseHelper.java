@@ -156,7 +156,7 @@ public class HBaseHelper implements Closeable {
     public void fillTable(String table, int startRow, int endRow, int numCols,
                           String... colfams)
             throws IOException {
-        fillTable(TableName.valueOf(table), startRow,endRow, numCols, colfams);
+        fillTable(TableName.valueOf(table), startRow, endRow, numCols, colfams);
     }
 
     public void fillTable(TableName table, int startRow, int endRow, int numCols,
@@ -256,7 +256,7 @@ public class HBaseHelper implements Closeable {
                     int colNum = rnd.nextInt(maxCol - minCol + 1);
                     String colName = "col-" + padNum(colNum, padCol);
                     int valNum = rnd.nextInt(maxVal - minVal + 1);
-                    String val = "val-" +  padNum(valNum, padCol);
+                    String val = "val-" + padNum(valNum, padCol);
                     if (setTimestamp) {
                         put.addColumn(Bytes.toBytes(cf), Bytes.toBytes(colName), col,
                                 Bytes.toBytes(val));

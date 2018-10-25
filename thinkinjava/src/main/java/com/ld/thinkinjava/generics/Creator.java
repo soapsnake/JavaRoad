@@ -10,7 +10,7 @@ public class Creator extends GenericWithCreate<X> {
         return new X();    //重写了父类型中的create()方法,因此父类调用create()方法时将会调用这个方法
     }
 
-    void f(){
+    void f() {
         System.out.println(element.getClass().getSimpleName());
     }
 }

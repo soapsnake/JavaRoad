@@ -35,11 +35,11 @@ public class ArrayTest2 {
 
     //public > protected > none > private
     //protected还有从其他dir通过继承的方式实现访问的可能,none在其他dir完全没有访问的可能性
-    void testPack(){
+    void testPack() {
         System.out.println("can access this method only this dir!");
     }
 
-    protected void testProtec(){
+    protected void testProtec() {
         System.out.println("can access from other dir");
     }
 

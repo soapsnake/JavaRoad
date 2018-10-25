@@ -5,7 +5,7 @@ package com.ld.thinkinjava.inner;
  */
 public class Cheese {
 
-    Cheese(){
+    Cheese() {
         System.out.println("Cheese()");
     }
 }

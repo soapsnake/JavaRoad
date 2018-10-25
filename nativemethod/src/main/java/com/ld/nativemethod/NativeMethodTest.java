@@ -5,15 +5,15 @@ package com.ld.nativemethod;
  */
 public class NativeMethodTest {
 
-    public native String printWords(String arg);
-
-    static{
+    static {
         System.loadLibrary("NativeMethodTest");
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         NativeMethodTest nativeMethodTest = new NativeMethodTest();
         nativeMethodTest.printWords("hello world");
     }
+
+    public native String printWords(String arg);
 
 }

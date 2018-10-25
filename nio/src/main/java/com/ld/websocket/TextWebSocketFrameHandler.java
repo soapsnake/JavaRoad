@@ -17,7 +17,7 @@ public class TextWebSocketFrameHandler extends SimpleChannelInboundHandler<TextW
 
     private final ChannelGroup group;
 
-    public TextWebSocketFrameHandler(ChannelGroup group){
+    public TextWebSocketFrameHandler(ChannelGroup group) {
         this.group = group;
     }
 
@@ -29,7 +29,7 @@ public class TextWebSocketFrameHandler extends SimpleChannelInboundHandler<TextW
 
     @Override
     public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
-        if (evt == WebSocketServerProtocolHandler.ServerHandshakeStateEvent.HANDSHAKE_COMPLETE){
+        if (evt == WebSocketServerProtocolHandler.ServerHandshakeStateEvent.HANDSHAKE_COMPLETE) {
             //如果这个状态被触发,说明请求是websocket请求,那么移除http的handler以提高性能
             ctx.pipeline().remove(HttpRequestHandler.class);
 
@@ -37,7 +37,7 @@ public class TextWebSocketFrameHandler extends SimpleChannelInboundHandler<TextW
             group.writeAndFlush(new TextWebSocketFrame("Client" + ctx.channel() + "joined"));
             //将这个新的channel加到channelgroup中,以使这个新的客户端也可以接收到消息
             group.add(ctx.channel());
-        }else {
+        } else {
             super.userEventTriggered(ctx, evt);
         }
     }

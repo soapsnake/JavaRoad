@@ -5,7 +5,7 @@ package com.ld.thinkinjava.inner;
  */
 public class Meal {
 
-    Meal(){
+    Meal() {
         System.out.println("Meal()");
     }
 }

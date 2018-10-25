@@ -5,5 +5,6 @@ package com.ld.thinkinjava.abstracttest;
  */
 public abstract class Instrument4 {
     int i;
+
     public abstract void play();
 }

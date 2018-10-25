@@ -20,19 +20,19 @@ public class ByteBufTest {
         buf.setByte(0, 'J');
         System.out.println(buf.getByte(0) == sliced.getByte(0));
 
-        System.out.println("isReadable: "+buf.isReadable());
+        System.out.println("isReadable: " + buf.isReadable());
 
-        System.out.println("isWritable: "+buf.isWritable());
+        System.out.println("isWritable: " + buf.isWritable());
 
-        System.out.println("readableBytes: "+buf.readableBytes());
+        System.out.println("readableBytes: " + buf.readableBytes());
 
-        System.out.println("writableBytes: "+buf.writableBytes());
+        System.out.println("writableBytes: " + buf.writableBytes());
 
-        System.out.println("maxCapacity: "+buf.maxCapacity());
+        System.out.println("maxCapacity: " + buf.maxCapacity());
 
-        System.out.println("hasArray: "+buf.hasArray());
+        System.out.println("hasArray: " + buf.hasArray());
 
-        System.out.println("buf.array: "+Arrays.toString(buf.array()));
+        System.out.println("buf.array: " + Arrays.toString(buf.array()));
 
     }
 }

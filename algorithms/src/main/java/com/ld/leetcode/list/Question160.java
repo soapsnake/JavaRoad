@@ -2,47 +2,68 @@ package com.ld.leetcode.list;
 
 /**
  * Write a program to find the node at which the intersection of two singly linked lists begins.
- For example, the following two linked lists:
+ * For example, the following two linked lists:
  */
 public class Question160 {
 
-    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+    public static void main(String[] args) {
+        ListNode headA = new ListNode(1);
+        headA.addNode(new ListNode(2));
+        headA.addNode(new ListNode(3));
+        headA.addNode(new ListNode(4));
+        ListNode common = new ListNode(6);
+        headA.addNode(common);
+        headA.addNode(new ListNode(5));
 
-        if (headA == null){
-            return null;
-        }
-        if (headB == null){
-            return null;
-        }
+        ListNode headB = new ListNode(7);
+        headB.addNode(new ListNode(8));
+        headB.addNode(common);
+        headB.addNode(new ListNode(5));
 
-       ListNode reverHeadA = revertList(headA);
-       ListNode reverHeadB = revertList(headB);
+        Question160 question160 = new Question160();
+        ListNode.printListNode(question160.getIntersectionNode(headA, headB));
 
-       if (reverHeadA.val != reverHeadB.val){
-           return null;
-       }
+//        ListNode.printListNode(question160.revertList(headA));
 
-       ListNode last =reverHeadA;
-       last.next = reverHeadA;
-       while (reverHeadA.next != null && reverHeadB.next != null){
-           if (reverHeadA.val != reverHeadB.val){
-               return new ListNode(last.val);
-           }
-           last = reverHeadA;
-           reverHeadA = reverHeadA.next;
-           reverHeadB = reverHeadB.next;
-       }
-       return reverHeadA;
     }
 
-    public ListNode revertList(ListNode root){
-        if (root == null){
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+
+        if (headA == null) {
+            return null;
+        }
+        if (headB == null) {
+            return null;
+        }
+
+        ListNode reverHeadA = revertList(headA);
+        ListNode reverHeadB = revertList(headB);
+
+        if (reverHeadA.val != reverHeadB.val) {
+            return null;
+        }
+
+        ListNode last = reverHeadA;
+        last.next = reverHeadA;
+        while (reverHeadA.next != null && reverHeadB.next != null) {
+            if (reverHeadA.val != reverHeadB.val) {
+                return new ListNode(last.val);
+            }
+            last = reverHeadA;
+            reverHeadA = reverHeadA.next;
+            reverHeadB = reverHeadB.next;
+        }
+        return reverHeadA;
+    }
+
+    public ListNode revertList(ListNode root) {
+        if (root == null) {
             return null;
         }
 
         ListNode head;
         ListNode newlist = null;
-        while (root != null){
+        while (root != null) {
             head = new ListNode(root.val);
             head.next = newlist;
             newlist = head;
@@ -66,26 +87,5 @@ public class Question160 {
             b = b == null ? headA : b.next;
         }
         return a;
-    }
-
-    public static void main(String[] args) {
-        ListNode headA = new ListNode(1);
-        headA.addNode(new ListNode(2));
-        headA.addNode(new ListNode(3));
-        headA.addNode(new ListNode(4));
-        ListNode common = new ListNode(6);
-        headA.addNode(common);
-        headA.addNode(new ListNode(5));
-
-        ListNode headB = new ListNode(7);
-        headB.addNode(new ListNode(8));
-        headB.addNode(common);
-        headB.addNode(new ListNode(5));
-
-        Question160 question160 = new Question160();
-        ListNode.printListNode(question160.getIntersectionNode(headA, headB));
-
-//        ListNode.printListNode(question160.revertList(headA));
-
     }
 }

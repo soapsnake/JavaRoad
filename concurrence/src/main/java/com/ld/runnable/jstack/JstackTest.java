@@ -5,26 +5,6 @@ package com.ld.runnable.jstack;
  */
 public class JstackTest {
 
-    public static class Member{
-        String name;
-        Integer age;
-
-        public Member(){
-
-        }
-
-        public synchronized void call()   {
-            while (true){
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                System.out.println("member method call()....");
-            }
-        }
-    }
-
     /**
      * 打开Jsatack的命令为: jstack -l pid
      */
@@ -58,5 +38,25 @@ public class JstackTest {
         t2.setName("thread t2");
         t2.start();
 
+    }
+
+    public static class Member {
+        String name;
+        Integer age;
+
+        public Member() {
+
+        }
+
+        public synchronized void call() {
+            while (true) {
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.out.println("member method call()....");
+            }
+        }
     }
 }

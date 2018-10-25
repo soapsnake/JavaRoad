@@ -5,6 +5,7 @@ package com.ld.thinkinjava.inner;
  */
 public class WithInner {
 
-    class Inner{}
+    class Inner {
+    }
 
 }

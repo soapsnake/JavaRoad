@@ -9,9 +9,6 @@ import java.util.List;
 public class Parent {
 
     public static FieldTest2 test2 = new FieldTest2("parent static field");
-
-    public FieldTest test = new FieldTest("parent field");
-
     public static List<?> anyList = new ArrayList<>();
 
     static {
@@ -19,15 +16,17 @@ public class Parent {
 
     }
 
+    public FieldTest test = new FieldTest("parent field");
+
     {
         System.out.println("parent non static");
     }
 
-    Parent(){
+    Parent() {
         System.out.println("parent constructor");
     }
 
-    void f(){
+    void f() {
         System.out.println("parent method");
     }
 

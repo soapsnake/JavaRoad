@@ -5,14 +5,14 @@ package com.ld.thinkinjava.inner;
  */
 public abstract class Glyph {
 
-    abstract void draw();
-
-    Glyph(){
+    Glyph() {
         System.out.println("Glyph() before draw()");
 
         draw();
 
         System.out.println("Glyph() after draw()");
     }
+
+    abstract void draw();
 
 }

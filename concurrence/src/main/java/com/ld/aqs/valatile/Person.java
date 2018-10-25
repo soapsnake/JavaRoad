@@ -18,22 +18,23 @@ public class Person {
 
     }
 
-    public void doSome(){
+    public void doSome() {
         Person.this.age = 10;
     }
 
-    class LittlePerson{
+    class LittlePerson {
         int name;
         int age;
-        LittlePerson(){
+
+        LittlePerson() {
             this.age = 100;
         }
 
-        public int getInnerAge(){
+        public int getInnerAge() {
             return this.age;         //这里的this指向内部对象
         }
 
-        public int getOutterAge(){
+        public int getOutterAge() {
             return Person.this.age;   //这里的this指向的是外部的对象
         }
     }

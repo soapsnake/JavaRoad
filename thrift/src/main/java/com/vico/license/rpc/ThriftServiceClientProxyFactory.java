@@ -10,7 +10,7 @@ import org.springframework.cglib.proxy.Proxy;
 /**
  * Created by liudun on 2017/6/4.
  */
-public class ThriftServiceClientProxyFactory implements FactoryBean,InitializingBean {
+public class ThriftServiceClientProxyFactory implements FactoryBean, InitializingBean {
 
     private String service;
 
@@ -23,6 +23,19 @@ public class ThriftServiceClientProxyFactory implements FactoryBean,Initializing
     private Integer idleTime;
 
     private Object proxyClient;
+    private Class objectClass;
+    private GenericObjectPool<TServiceClient> pool;
+    private PoolOperationCallback callback = new PoolOperationCallback() {
+        @Override
+        public void destory(TServiceClient client) {
+            System.out.println("destory");
+        }
+
+        @Override
+        public void make(TServiceClient client) {
+            System.out.println("create");
+        }
+    };
 
     public String getService() {
         return service;
@@ -64,29 +77,6 @@ public class ThriftServiceClientProxyFactory implements FactoryBean,Initializing
         this.proxyClient = proxyClient;
     }
 
-    private Class objectClass;
-
-    private GenericObjectPool<TServiceClient> pool;
-
-    static interface PoolOperationCallback{
-
-        void destory(TServiceClient client);
-
-        void make(TServiceClient client);
-    }
-
-    private PoolOperationCallback callback = new PoolOperationCallback() {
-        @Override
-        public void destory(TServiceClient client) {
-            System.out.println("destory");
-        }
-
-        @Override
-        public void make(TServiceClient client) {
-            System.out.println("create");
-        }
-    };
-
     @Override
     public Object getObject() throws Exception {
         return proxyClient;
@@ -114,21 +104,21 @@ public class ThriftServiceClientProxyFactory implements FactoryBean,Initializing
         objectClass = classLoader.loadClass(service + "$Iface");
 
         //感叹这种加载类的手法
-        Class<TServiceClientFactory<TServiceClient>> fi = (Class<TServiceClientFactory<TServiceClient>>) classLoader.loadClass(service+"$Client$Factory");
+        Class<TServiceClientFactory<TServiceClient>> fi = (Class<TServiceClientFactory<TServiceClient>>) classLoader.loadClass(service + "$Client$Factory");
 
         //创建TServiceClientFactory对象
         TServiceClientFactory<TServiceClient> clientFactory = fi.newInstance();
 
         //客户端对象池
-        ThriftClientPoolFactory clientPool = new ThriftClientPoolFactory(serverAddress,clientFactory,callback);
+        ThriftClientPoolFactory clientPool = new ThriftClientPoolFactory(serverAddress, clientFactory, callback);
         //客户端对象池的属性设置
         GenericObjectPool.Config poolConfig = new GenericObjectPool.Config();
         poolConfig.maxActive = maxActive;
         poolConfig.minIdle = 0;
         poolConfig.minEvictableIdleTimeMillis = idleTime;
-        poolConfig.timeBetweenEvictionRunsMillis = idleTime/2L;
+        poolConfig.timeBetweenEvictionRunsMillis = idleTime / 2L;
         //池创建:ThriftClientPoolFactory对象,config对象
-        pool = new GenericObjectPool<>(clientPool,poolConfig);
+        pool = new GenericObjectPool<>(clientPool, poolConfig);
 
         proxyClient = Proxy.newProxyInstance(classLoader, new Class[]{objectClass}, (o, method, objects) -> {
             //从pool中获取client对象
@@ -141,5 +131,12 @@ public class ThriftServiceClientProxyFactory implements FactoryBean,Initializing
                 pool.returnObject(client);
             }
         });
+    }
+
+    static interface PoolOperationCallback {
+
+        void destory(TServiceClient client);
+
+        void make(TServiceClient client);
     }
 }

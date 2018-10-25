@@ -14,7 +14,7 @@ public class ConnectionTest {
 
         //使用hashset的话发现结果是排序的,原因不明,treeset的结果也是排了序的
         Set<Integer> integers = new TreeSet<>();
-        for (int i=0;i<10000;i++){
+        for (int i = 0; i < 10000; i++) {
             System.out.println(i);
             integers.add(random.nextInt(47));
         }

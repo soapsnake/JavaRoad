@@ -5,7 +5,7 @@ package com.ld.thinkinjava.classtest;
  */
 public class FieldTest2 {
 
-    public FieldTest2(String msg){
+    public FieldTest2(String msg) {
         System.out.println(msg);
     }
 }

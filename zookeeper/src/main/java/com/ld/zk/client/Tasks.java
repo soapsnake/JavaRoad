@@ -17,30 +17,8 @@ public class Tasks implements Watcher {
     private ZooKeeper zk;
     private String hostport;
 
-    Tasks(String hostport){
+    Tasks(String hostport) {
         this.hostport = hostport;
-    }
-
-    public void process(WatchedEvent event) {
-        System.out.println(event.toString());
-    }
-
-    private void startZK() throws IOException {
-        zk = new ZooKeeper(hostport,1500,this);
-    }
-
-    private void stopZK() throws InterruptedException {
-        zk.close();
-    }
-
-    String createTasks(String command) throws KeeperException, InterruptedException {
-        while (true){
-                String name = zk.create("/tasks/task-",
-                        command.getBytes(),
-                        ZooDefs.Ids.OPEN_ACL_UNSAFE,
-                        CreateMode.EPHEMERAL_SEQUENTIAL);
-                return name;
-        }
     }
 
     public static void main(String[] args) throws IOException, KeeperException, InterruptedException {
@@ -52,6 +30,28 @@ public class Tasks implements Watcher {
 
         Thread.sleep(30000);
 
-        System.out.println("task been created: "+name);
+        System.out.println("task been created: " + name);
+    }
+
+    public void process(WatchedEvent event) {
+        System.out.println(event.toString());
+    }
+
+    private void startZK() throws IOException {
+        zk = new ZooKeeper(hostport, 1500, this);
+    }
+
+    private void stopZK() throws InterruptedException {
+        zk.close();
+    }
+
+    String createTasks(String command) throws KeeperException, InterruptedException {
+        while (true) {
+            String name = zk.create("/tasks/task-",
+                    command.getBytes(),
+                    ZooDefs.Ids.OPEN_ACL_UNSAFE,
+                    CreateMode.EPHEMERAL_SEQUENTIAL);
+            return name;
+        }
     }
 }

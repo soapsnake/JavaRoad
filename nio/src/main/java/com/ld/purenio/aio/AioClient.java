@@ -14,7 +14,7 @@ public class AioClient {
     public static void main(String[] args) throws Exception {
         AsynchronousSocketChannel client = AsynchronousSocketChannel.open();
         // 来个 Future 形式的
-        Future<?> future = client.connect(new InetSocketAddress("127.0.0.1",8080));
+        Future<?> future = client.connect(new InetSocketAddress("127.0.0.1", 8080));
         // 阻塞一下，等待连接成功
         future.get();
 

@@ -8,27 +8,6 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 public class TestLock {
 
-    void lockMethod(){
-
-        Lock lock = new ReentrantLock();
-        lock.lock();
-
-        try {
-            while (true){
-                Thread.sleep(2000);
-                String threadName = Thread.currentThread().getName();
-                System.out.println("thread: "+threadName+" is running...");
-            }
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }finally {
-            lock.unlock();
-        }
-
-
-    }
-
-
     public static void main(String[] args) {
         TestLock testLock = new TestLock();
 
@@ -47,6 +26,26 @@ public class TestLock {
             }
         });
         t2.start();
+    }
+
+    void lockMethod() {
+
+        Lock lock = new ReentrantLock();
+        lock.lock();
+
+        try {
+            while (true) {
+                Thread.sleep(2000);
+                String threadName = Thread.currentThread().getName();
+                System.out.println("thread: " + threadName + " is running...");
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } finally {
+            lock.unlock();
+        }
+
+
     }
 
 

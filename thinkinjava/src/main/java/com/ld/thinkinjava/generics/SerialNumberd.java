@@ -10,7 +10,8 @@ public class SerialNumberd extends Decorator {
     public SerialNumberd(Basic basic) {
         super(basic);
     }
-    public long getSerialNumber(){
+
+    public long getSerialNumber() {
         return serialNumber;
     }
 }

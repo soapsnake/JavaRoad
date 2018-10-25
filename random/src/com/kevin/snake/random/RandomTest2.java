@@ -8,17 +8,17 @@ public class RandomTest2 {
 
         Random random = new Random(System.currentTimeMillis());
 
-        System.out.println(random.nextDouble() *.3);
-        System.out.println(random.nextDouble() *.3);
-        System.out.println(random.nextDouble() *.3);
-        System.out.println(random.nextDouble() *.3);
-        System.out.println(random.nextDouble() *.3);
-        System.out.println(random.nextDouble() *.3);
-        System.out.println(random.nextDouble() *.3);
-        System.out.println(random.nextDouble() *.3);
-        System.out.println(random.nextDouble() *.3);
-        System.out.println(random.nextDouble() *.3);
-        System.out.println(random.nextDouble() *.3);
+        System.out.println(random.nextDouble() * .3);
+        System.out.println(random.nextDouble() * .3);
+        System.out.println(random.nextDouble() * .3);
+        System.out.println(random.nextDouble() * .3);
+        System.out.println(random.nextDouble() * .3);
+        System.out.println(random.nextDouble() * .3);
+        System.out.println(random.nextDouble() * .3);
+        System.out.println(random.nextDouble() * .3);
+        System.out.println(random.nextDouble() * .3);
+        System.out.println(random.nextDouble() * .3);
+        System.out.println(random.nextDouble() * .3);
 
     }
 }

@@ -5,7 +5,7 @@ import com.ld.thinkinjava.array.ArrayTest2;
 /**
  * Created by liudun on 2017/6/10.
  */
-public class ArrayTest3 extends ArrayTest2{
+public class ArrayTest3 extends ArrayTest2 {
 
     public static void main(String[] args) {
         ArrayTest2 test2 = new ArrayTest2();
@@ -17,7 +17,6 @@ public class ArrayTest3 extends ArrayTest2{
         super.testProtec();
         System.out.println("从另外一个package中访问某类的protect方法");
     }
-
 
 
 }

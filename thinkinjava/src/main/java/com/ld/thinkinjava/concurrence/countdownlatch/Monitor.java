@@ -36,7 +36,7 @@ public class Monitor {
         }
 
 
-        System.out.println("CountDownLatch count = " +countDownLatch.getCount());
+        System.out.println("CountDownLatch count = " + countDownLatch.getCount());
         System.out.println("job is finish...");
 
 

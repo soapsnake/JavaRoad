@@ -7,10 +7,12 @@ import java.util.Set;
 /**
  * Created by liudun on 2017/5/17.
  */
-public class ForwardingSet<E> implements Set<E>{
+public class ForwardingSet<E> implements Set<E> {
     private final Set<E> s;
 
-    public ForwardingSet(Set<E> s){this.s = s;}
+    public ForwardingSet(Set<E> s) {
+        this.s = s;
+    }
 
     @Override
     public int size() {
@@ -78,17 +80,17 @@ public class ForwardingSet<E> implements Set<E>{
     }
 
     @Override
-    public boolean equals(Object o){
+    public boolean equals(Object o) {
         return s.equals(o);
     }
 
     @Override
-    public int hashCode(){
+    public int hashCode() {
         return s.hashCode();
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return s.toString();
     }
 }

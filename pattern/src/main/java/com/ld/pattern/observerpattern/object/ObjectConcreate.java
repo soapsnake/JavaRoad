@@ -7,20 +7,20 @@ import com.ld.pattern.observerpattern.observer.ObserverConcreate;
  */
 
 public abstract class ObjectConcreate {
-	
-	private String objectContent;
-	
-	public abstract void registorObserver(ObserverConcreate observer);
-	
-	public abstract void notifyObserver();
-	
-	public String getObjectContent() {
-		return objectContent;
-	}
 
-	public void setObjectContent(String objectContent) {
-		this.objectContent = objectContent;
-	}
+    private String objectContent;
 
-	
+    public abstract void registorObserver(ObserverConcreate observer);
+
+    public abstract void notifyObserver();
+
+    public String getObjectContent() {
+        return objectContent;
+    }
+
+    public void setObjectContent(String objectContent) {
+        this.objectContent = objectContent;
+    }
+
+
 }

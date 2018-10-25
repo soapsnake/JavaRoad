@@ -16,7 +16,7 @@ public class HTablePoolTest {
 
     private HTablePool tablePool;
 
-    public HTablePoolTest(int count){
+    public HTablePoolTest(int count) {
         if (count == 0) {
             count = 1;
         }
@@ -29,7 +29,7 @@ public class HTablePoolTest {
     }
 
     //HTableInterface继承了Table
-    public Table getHTable(String tableName){
+    public Table getHTable(String tableName) {
         return this.tablePool.getTable(tableName);
     }
 
@@ -37,7 +37,7 @@ public class HTablePoolTest {
      * @param tableName
      */
     @Deprecated
-    public void  closeHTable(String tableName){
+    public void closeHTable(String tableName) {
         HTableInterface table = this.tablePool.getTable(tableName);
         try {
             this.tablePool.putTable(table);

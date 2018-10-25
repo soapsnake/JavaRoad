@@ -9,19 +9,19 @@ public class Initial {
 
     private String test;
 
-    Initial(){
+    Initial() {
         test2.testProtec();
         System.out.println("没有报空指针");
-    }
-
-    public void f(){
-        test2.testPack();
-        System.out.println("还是没有空指针");
     }
 
     public static void main(String[] args) {
         Initial initial = new Initial();
         initial.f();
+    }
+
+    public void f() {
+        test2.testPack();
+        System.out.println("还是没有空指针");
     }
 
 }

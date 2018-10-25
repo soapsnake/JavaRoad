@@ -12,6 +12,7 @@ import org.apache.hadoop.mapreduce.Mapper;
 public class ImportFromFile {
 
     public static final String NAME = "ImportFromFile";
+
     public enum Counters {LINES}
 
     static class ImportMapper extends Mapper<LongWritable, Text, ImmutableBytesWritable, Writable> {

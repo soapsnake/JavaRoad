@@ -8,7 +8,7 @@ import java.util.concurrent.CountDownLatch;
 public class Worker1 implements Runnable {
     private CountDownLatch countDownLatch;
 
-    public Worker1(CountDownLatch countDownLatch){
+    public Worker1(CountDownLatch countDownLatch) {
         this.countDownLatch = countDownLatch;
     }
 
@@ -18,7 +18,7 @@ public class Worker1 implements Runnable {
         Thread.currentThread().setName("worker1 thread");
         System.out.println("worker1 start working...");
 
-        for (int i = 0;i<10;i++){
+        for (int i = 0; i < 10; i++) {
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
@@ -27,6 +27,6 @@ public class Worker1 implements Runnable {
         }
         System.out.println("worker1 finish his job...");
         countDownLatch.countDown();
-        System.out.println("CountDownLatch count = " +countDownLatch.getCount());
+        System.out.println("CountDownLatch count = " + countDownLatch.getCount());
     }
 }

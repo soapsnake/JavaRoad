@@ -12,22 +12,22 @@ public class App {
 
         Method[] methods = sample2.getClass().getDeclaredMethods();
 
-        for(Method method : methods){
-            if (method.isAnnotationPresent(ExceptionTest.class)){
+        for (Method method : methods) {
+            if (method.isAnnotationPresent(ExceptionTest.class)) {
                 try {
                     method.invoke(null);
-                    System.out.println(method.getName()+"测试不通过:未抛出异常!");
-                }catch (Exception e){
-                    Class<? extends  Exception> exeType = method.getAnnotation(ExceptionTest.class).value();
+                    System.out.println(method.getName() + "测试不通过:未抛出异常!");
+                } catch (Exception e) {
+                    Class<? extends Exception> exeType = method.getAnnotation(ExceptionTest.class).value();
                     Throwable throwable = e.getCause();
-                    if (exeType.isInstance(throwable)){
-                        System.out.println(method.getName()+"测试通过!");
-                    }else {
-                        System.out.println(method.getName()+"测试不通过:异常类型不匹配!");
+                    if (exeType.isInstance(throwable)) {
+                        System.out.println(method.getName() + "测试通过!");
+                    } else {
+                        System.out.println(method.getName() + "测试不通过:异常类型不匹配!");
                     }
                 }
-            }else {
-                System.out.println(method.getName()+"未添加测试注解!");
+            } else {
+                System.out.println(method.getName() + "未添加测试注解!");
             }
         }
     }

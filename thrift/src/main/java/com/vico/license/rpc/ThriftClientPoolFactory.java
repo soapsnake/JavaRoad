@@ -31,30 +31,31 @@ public class ThriftClientPoolFactory extends BasePoolableObjectFactory<TServiceC
     @Override
     public TServiceClient makeObject() throws Exception {
         String[] args = serverAddress.split(":");
-        TSocket tSocket = new TSocket(args[0],Integer.parseInt(args[1]));
+        TSocket tSocket = new TSocket(args[0], Integer.parseInt(args[1]));
         TProtocol protocol = new TBinaryProtocol(tSocket);
         TServiceClient client = clientFactory.getClient(protocol);
         tSocket.open();
-        if (callback != null){
+        if (callback != null) {
             try {
                 callback.make(client);
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
         return client;
     }
 
-    public void destoryObject(TServiceClient client){
-        if (callback != null){
+    public void destoryObject(TServiceClient client) {
+        if (callback != null) {
             try {
                 callback.destory(client);
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
     }
-    public boolean validateObject(TServiceClient client){
+
+    public boolean validateObject(TServiceClient client) {
         TTransport pin = client.getInputProtocol().getTransport();
         return pin.isOpen();
     }

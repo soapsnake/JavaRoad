@@ -10,32 +10,7 @@ import java.util.List;
 public class Question589 {
     private List<Integer> res = new ArrayList<>();
 
-    //递归版本实现
-    public List<Integer> preorder(Node root) {
-        if (null == root){
-            return res;
-        }
-
-        res.add(root.val);
-
-        if (root.children == null || root.children.isEmpty()){
-            return res;
-        }
-
-        for (Node node : root.children){
-            preorder(node);
-        }
-        return res;
-    }
-
-    //todo 循环版本实现
-    public List<Integer> preorder2(Node root) {
-
-        return null;
-    }
-
-
-        public static void main(String[] args) {
+    public static void main(String[] args) {
 
 
         Node node5 = new Node(5, null);
@@ -51,6 +26,30 @@ public class Question589 {
         Question589 question589 = new Question589();
 
         ArrayUtils.printList(question589.preorder(root));
+    }
+
+    //递归版本实现
+    public List<Integer> preorder(Node root) {
+        if (null == root) {
+            return res;
+        }
+
+        res.add(root.val);
+
+        if (root.children == null || root.children.isEmpty()) {
+            return res;
+        }
+
+        for (Node node : root.children) {
+            preorder(node);
+        }
+        return res;
+    }
+
+    //todo 循环版本实现
+    public List<Integer> preorder2(Node root) {
+
+        return null;
     }
 
 }

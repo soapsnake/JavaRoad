@@ -5,6 +5,13 @@ public class Person {
     public int age = 1;
     public String name;
 
+    public static void main(String[] args) {
+        Person person = new Person();
+        ++person.age;
+        System.out.println(person.age);
+
+    }
+
     public int getAge() {
         return age;
     }
@@ -19,13 +26,5 @@ public class Person {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-
-    public static void main(String[] args) {
-        Person person = new Person();
-        ++person.age;
-        System.out.println(person.age);
-
     }
 }

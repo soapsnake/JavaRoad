@@ -6,37 +6,43 @@ import com.ld.leetcode.list.ArrayUtils;
  * Given an array A of non-negative integers,
  * return an array consisting of all the even elements of A,
  * followed by all the odd elements of A.
- *
+ * <p>
  * Input: [3,1,2,4]
  * Output: [2,4,3,1]
  */
 public class Question905 {
 
+    public static void main(String[] args) {
+        Question905 question905 = new Question905();
+        int[] arr = {3, 1, 2, 4};
+        ArrayUtils.printArr(question905.sortArrayByParity2(arr));
+    }
+
     //todo 快排版思路,但是这个解法不对
     public int[] sortArrayByParity(int[] A) {
-        if (A.length == 1){
+        if (A.length == 1) {
             return A;
         }
 
-        if (A.length % 2 != 0){  //元素必然成对
+        if (A.length % 2 != 0) {  //元素必然成对
             return A;
         }
 
         int left = 0;
         int right = A.length - 1;
-        while (right > left){
-            while (left < right){
-                if (A[left] % 2 !=0){
+        while (right > left) {
+            while (left < right) {
+                if (A[left] % 2 != 0) {
                     break;
-                }else {
+                } else {
                     left++;
                 }
             }
 
-            while (right > left){
-                if (A[right] % 2 == 0){
+            while (right > left) {
+                if (A[right] % 2 == 0) {
                     break;
-                }else {
+                } else {
                     right--;
                 }
             }
@@ -55,21 +61,15 @@ public class Question905 {
         int[] res = new int[A.length];
         int left = 0;
         int right = A.length - 1;
-        for (int i=0;i<A.length;i++){
-            if (A[i] % 2 == 0){
+        for (int i = 0; i < A.length; i++) {
+            if (A[i] % 2 == 0) {
                 res[left] = A[i];
                 ++left;
-            }else {
+            } else {
                 res[right] = A[i];
                 --right;
             }
         }
-        return  res;
-    }
-
-        public static void main(String[] args) {
-        Question905 question905 = new Question905();
-        int[] arr = {3,1,2,4};
-        ArrayUtils.printArr(question905.sortArrayByParity2(arr));
+        return res;
     }
 }

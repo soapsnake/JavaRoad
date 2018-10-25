@@ -42,7 +42,7 @@ public class AppTest {
         test.<Date>get(new Date());
 
         //超级泛型方法:①入参个数不固定,②入参类型不固定,③每个入参的类型不固定
-        test.get6("string",1,new Date());
+        test.get6("string", 1, new Date());
 
         //newObj专门用来传入类型而生成这个类型的参数
         test.newObj(String.class);
@@ -70,25 +70,14 @@ public class AppTest {
 
         List<X> xList = Arrays.asList(new X());
 
-        System.out.println(">>>>>>>>"+xList.getClass().getSimpleName() + xList.size());
+        System.out.println(">>>>>>>>" + xList.getClass().getSimpleName() + xList.size());
 
     }
 
 
-    public static  void test(SomeClass<Number> some){
+    public static void test(SomeClass<Number> some) {
 
     }
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

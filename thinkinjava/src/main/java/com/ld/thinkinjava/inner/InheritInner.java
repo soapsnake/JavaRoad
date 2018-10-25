@@ -3,9 +3,9 @@ package com.ld.thinkinjava.inner;
 /**
  * Created by liudun on 2017/6/18.
  */
-public class InheritInner extends WithInner.Inner{
+public class InheritInner extends WithInner.Inner {
 
-    InheritInner(WithInner withInner){
+    InheritInner(WithInner withInner) {
         withInner.super();
     }
 

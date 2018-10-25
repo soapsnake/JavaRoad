@@ -22,15 +22,15 @@ public class ChildrenCache {
         return children;
     }
 
-    public List<String> addedAndSet( List<String> newChildren) {
+    public List<String> addedAndSet(List<String> newChildren) {
         ArrayList<String> diff = null;
 
-        if(children == null) {
+        if (children == null) {
             diff = new ArrayList<String>(newChildren);
         } else {
-            for(String s: newChildren) {
-                if(!children.contains( s )) {
-                    if(diff == null) {
+            for (String s : newChildren) {
+                if (!children.contains(s)) {
+                    if (diff == null) {
                         diff = new ArrayList<String>();
                     }
 
@@ -43,13 +43,13 @@ public class ChildrenCache {
         return diff;
     }
 
-    public List<String> removedAndSet( List<String> newChildren) {
+    public List<String> removedAndSet(List<String> newChildren) {
         List<String> diff = null;
 
-        if(children != null) {
-            for(String s: children) {
-                if(!newChildren.contains( s )) {
-                    if(diff == null) {
+        if (children != null) {
+            for (String s : children) {
+                if (!newChildren.contains(s)) {
+                    if (diff == null) {
                         diff = new ArrayList<String>();
                     }
 

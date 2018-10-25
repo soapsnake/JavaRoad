@@ -28,7 +28,7 @@ public class BootStrapClient {
                 .handler(new SimpleChannelInboundHandler<ByteBuf>() {
                     @Override
                     protected void channelRead0(ChannelHandlerContext ctx, ByteBuf msg) throws Exception {
-                        System.out.println("recevied data!!!"+ msg.toString());
+                        System.out.println("recevied data!!!" + msg.toString());
                     }
 
                     @Override
@@ -41,9 +41,9 @@ public class BootStrapClient {
         future.addListener(new ChannelFutureListener() {
             @Override
             public void operationComplete(ChannelFuture future) throws Exception {
-                if (future.isSuccess()){
+                if (future.isSuccess()) {
                     System.out.println("connection established");
-                }else {
+                } else {
                     System.out.println("connection attempt failed");
                     future.cause().printStackTrace();
                 }

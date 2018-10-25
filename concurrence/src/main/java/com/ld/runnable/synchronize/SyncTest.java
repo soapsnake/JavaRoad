@@ -3,23 +3,10 @@ package com.ld.runnable.synchronize;
 public class SyncTest {
 
 
-    public synchronized void methodA() throws InterruptedException {
-        while (!Thread.currentThread().isInterrupted()) {
-            Thread.sleep(1000);
-            System.out.println(Thread.currentThread().getName() + "is working on methodA");
-        }
-    }
-
-    public synchronized void methodB(){
-        System.out.println(Thread.currentThread().getName() + "is working on methodB");
-
-    }
-
-
     public static void main(String[] args) {
         SyncTest syncTest = new SyncTest();
 
-       Thread t1 =  new Thread(new Runnable() {
+        Thread t1 = new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
@@ -29,7 +16,7 @@ public class SyncTest {
                 }
             }
         }, "thread 1 ");
-       t1.start();
+        t1.start();
 
         new Thread(new Runnable() {
             @Override
@@ -52,6 +39,18 @@ public class SyncTest {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    public synchronized void methodA() throws InterruptedException {
+        while (!Thread.currentThread().isInterrupted()) {
+            Thread.sleep(1000);
+            System.out.println(Thread.currentThread().getName() + "is working on methodA");
+        }
+    }
+
+    public synchronized void methodB() {
+        System.out.println(Thread.currentThread().getName() + "is working on methodB");
+
     }
 
 }

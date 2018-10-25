@@ -5,11 +5,11 @@ import java.util.concurrent.CountDownLatch;
 /**
  * Created by liudun on 2017/7/21.
  */
-public class Worker2 implements Runnable{
+public class Worker2 implements Runnable {
 
     private CountDownLatch countDownLatch;
 
-    Worker2(CountDownLatch countDownLatch){
+    Worker2(CountDownLatch countDownLatch) {
         this.countDownLatch = countDownLatch;
     }
 
@@ -19,7 +19,7 @@ public class Worker2 implements Runnable{
         Thread.currentThread().setName("worker2 thread");
         System.out.println("worker2 start working...");
 
-        for (int i = 0;i<10;i++){
+        for (int i = 0; i < 10; i++) {
             try {
                 Thread.sleep(2200);
             } catch (InterruptedException e) {
@@ -28,7 +28,7 @@ public class Worker2 implements Runnable{
         }
         System.out.println("worker2 finish");
         countDownLatch.countDown();
-        System.out.println("CountDownLatch count = " +countDownLatch.getCount());
+        System.out.println("CountDownLatch count = " + countDownLatch.getCount());
 
 
     }

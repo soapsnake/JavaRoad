@@ -5,9 +5,10 @@ package com.ld.thinkinjava.generics;
  */
 public class Fuck {
 
-    public Fuck(){}
+    public Fuck() {
+    }
 
-    public void f(){
+    public void f() {
         System.out.println("Fuck s method f()");
     }
 }

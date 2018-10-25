@@ -10,7 +10,7 @@ import java.util.List;
 public class ChecketList {
 
     @SuppressWarnings("unchecked")
-    private static void oldStyleMethod(List probablyDogs){
+    private static void oldStyleMethod(List probablyDogs) {
         probablyDogs.add(new Cat());
     }
 

@@ -11,36 +11,36 @@ public class MakeQueque {
     private Stack<Integer> stack1;
     private Stack<Integer> stack2;
 
-    public MakeQueque(){
+    public MakeQueque() {
         this.stack1 = new Stack<>();
         this.stack2 = new Stack<>();
     }
 
-    //入队
-    public void add(int num){
-        stack1.push(num);
-    }
-
-    //出队
-    public void out(){
-        for (int i=0;i<stack1.size(); i++){
-            Integer temp = stack1.pop();
-            stack2.push(temp);
-        }
-
-        System.out.println(stack2.pop());
-    }
-
     public static void main(String[] args) {
         MakeQueque makeQueque = new MakeQueque();
-        for (int i=0 ; i<50;i++){
+        for (int i = 0; i < 50; i++) {
             makeQueque.add(i);
         }
 
         System.out.println(makeQueque.stack1);
 
-            makeQueque.out();
+        makeQueque.out();
 
+    }
+
+    //入队
+    public void add(int num) {
+        stack1.push(num);
+    }
+
+    //出队
+    public void out() {
+        for (int i = 0; i < stack1.size(); i++) {
+            Integer temp = stack1.pop();
+            stack2.push(temp);
+        }
+
+        System.out.println(stack2.pop());
     }
 
 

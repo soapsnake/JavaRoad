@@ -291,7 +291,7 @@ public class ThreadPoolTest {
 
         executor.shutdown();
 
-        System.out.println("系统CPU数:"+Runtime.getRuntime().availableProcessors());
+        System.out.println("系统CPU数:" + Runtime.getRuntime().availableProcessors());
 
 
     }

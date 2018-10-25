@@ -120,7 +120,8 @@ public class CustomFilter {
 
     /**
      * 分页过滤器
-     *结果可能不准确
+     * 结果可能不准确
+     *
      * @param pageSize
      * @return
      */
@@ -131,6 +132,7 @@ public class CustomFilter {
 
     /**
      * 时间戳过滤器,可以返回精确匹配这些时间戳的数据
+     *
      * @param timestamps
      * @return
      */
@@ -141,6 +143,7 @@ public class CustomFilter {
 
     /**
      * 列分页过滤器,可以把一行中的所有列分页返回
+     *
      * @param limit
      * @param offset
      * @return
@@ -152,9 +155,10 @@ public class CustomFilter {
 
     /**
      * 多过滤器,MUST_PASS_ALL 代表返回值必须经过所有过滤器,取所有过滤器结果的交集
+     *
      * @return
      */
-    public static Filter getFilterList(){
+    public static Filter getFilterList() {
         List<Filter> filters = new ArrayList<>();
         filters.add(getPageFilter(100L));
         filters.add(getRowFilter());

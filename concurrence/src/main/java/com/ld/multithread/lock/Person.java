@@ -14,8 +14,8 @@ public class Person {
     private String name;
     private int age;
 
-    public  void doSomeThing() throws InterruptedException {
-        synchronized(this) {
+    public void doSomeThing() throws InterruptedException {
+        synchronized (this) {
             System.out.println(Thread.currentThread().getName() + " is in...");
             int i = 0;
             for (; ; ) {

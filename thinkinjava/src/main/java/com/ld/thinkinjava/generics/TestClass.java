@@ -11,11 +11,6 @@ import java.util.List;
  */
 public class TestClass<T extends Number> {
 
-    void add(String parm){
-        System.out.println(parm);
-    }
-
-
     public static void main(String[] args) {
 
         //容器定界,容器有了界限后就不能再随意的创建了
@@ -39,6 +34,10 @@ public class TestClass<T extends Number> {
 //        list2.add(new IdentityLinkedList());
 
         System.out.println(list2);
+    }
+
+    void add(String parm) {
+        System.out.println(parm);
     }
 
 }

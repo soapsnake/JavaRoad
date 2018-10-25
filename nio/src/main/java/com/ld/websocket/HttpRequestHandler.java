@@ -25,9 +25,8 @@ import java.net.URL;
  * Created by liudun on 2018/1/16.
  * 用来处理http请求的handler
  */
-public class HttpRequestHandler extends SimpleChannelInboundHandler<FullHttpRequest>{
+public class HttpRequestHandler extends SimpleChannelInboundHandler<FullHttpRequest> {
 
-    private final String wsUri;
     private static final File INDEX;
 
     static {
@@ -45,18 +44,20 @@ public class HttpRequestHandler extends SimpleChannelInboundHandler<FullHttpRequ
         }
     }
 
-    public HttpRequestHandler(String wsUri){
+    private final String wsUri;
+
+    public HttpRequestHandler(String wsUri) {
         this.wsUri = wsUri;
     }
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, FullHttpRequest request) throws Exception {
-        if (wsUri.equalsIgnoreCase(request.getUri())){
+        if (wsUri.equalsIgnoreCase(request.getUri())) {
             //如果请求访问的websocket链接,那就增加引用计数防止释放,然后传给下一个handler来处理
             ctx.fireChannelRead(request.retain());
-        }else {
+        } else {
             //请求的是普通的http链接
-            if (HttpHeaders.is100ContinueExpected(request)){
+            if (HttpHeaders.is100ContinueExpected(request)) {
                 send100Continue(ctx);
             }
         }
@@ -68,21 +69,21 @@ public class HttpRequestHandler extends SimpleChannelInboundHandler<FullHttpRequ
         HttpResponse response = new DefaultFullHttpResponse(request.getProtocolVersion(), HttpResponseStatus.OK);
         response.headers().set(HttpHeaders.Names.CONTENT_TYPE, "text/html; charset=UTF-8");
         boolean keepAlive = HttpHeaders.isKeepAlive(request);
-        if (keepAlive){
+        if (keepAlive) {
             response.headers().set(HttpHeaders.Names.CONTENT_LENGTH, file.length());
             response.headers().set(HttpHeaders.Names.CONNECTION, HttpHeaders.Values.KEEP_ALIVE);
         }
 
         ctx.write(response);
-        if (ctx.pipeline().get(SslHandler.class) == null){
+        if (ctx.pipeline().get(SslHandler.class) == null) {
             ctx.write(new DefaultFileRegion(file.getChannel(), 0, file.length()));
-        }else {
+        } else {
             ctx.write(new ChunkedNioFile(file.getChannel()));
         }
 
         //写lastcontent并发送给客户端
         ChannelFuture future = ctx.writeAndFlush(LastHttpContent.EMPTY_LAST_CONTENT);
-        if (!keepAlive){
+        if (!keepAlive) {
             //如果请求时非keepAlive的,则在写操作完成之后关闭channel
             future.addListener(ChannelFutureListener.CLOSE);
         }
@@ -90,6 +91,7 @@ public class HttpRequestHandler extends SimpleChannelInboundHandler<FullHttpRequ
 
     /**
      * 普通http请求的返回
+     *
      * @param ctx
      */
     private void send100Continue(ChannelHandlerContext ctx) {
@@ -99,6 +101,7 @@ public class HttpRequestHandler extends SimpleChannelInboundHandler<FullHttpRequ
 
     /**
      * 异常处理
+     *
      * @param ctx
      * @param cause
      * @throws Exception

@@ -11,7 +11,7 @@ public class Parent {
 
     private String priParent;
 
-    public Parent(){
+    public Parent() {
         this.parent1 = "parent1";
         this.parent2 = "parent2";
         this.priParent = "privateParent";
@@ -19,11 +19,11 @@ public class Parent {
         System.out.println("父构造方法被调用,parent1被赋值为: " + parent1);
     }
 
-    public void parentShow(){
+    public void parentShow() {
         System.out.println("parent的parentShow方法");
     }
 
-    public void parenShow1(){
+    public void parenShow1() {
         System.out.println("parent的parenShow1方法");
     }
 

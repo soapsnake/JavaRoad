@@ -6,7 +6,6 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- *
  * 这个注解专用于测试会抛出异常的方法
  * Created by liudun on 2017/5/16.
  */

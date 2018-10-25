@@ -17,9 +17,8 @@ public class TEst {
         al.add("paper");
         al.add("white board");
 
-        for(int k=0;k<al.size();k++)
-        {
-            System.out.println("elements are"+al.get(k));
+        for (int k = 0; k < al.size(); k++) {
+            System.out.println("elements are" + al.get(k));
 
             al.get(k);
         }

@@ -9,14 +9,15 @@ public class Worker3 implements Runnable {
 
     private CountDownLatch countDownLatch;
 
-    Worker3(CountDownLatch countDownLatch){
+    Worker3(CountDownLatch countDownLatch) {
         this.countDownLatch = countDownLatch;
     }
+
     @Override
     public void run() {
         Thread.currentThread().setName("worker3 thread");
         System.out.println("worker3 start working...");
-        for (int i = 0;i<10;i++){
+        for (int i = 0; i < 10; i++) {
             try {
                 Thread.sleep(1800);
             } catch (InterruptedException e) {
@@ -25,7 +26,7 @@ public class Worker3 implements Runnable {
         }
         System.out.println("worker3 finish");
         countDownLatch.countDown();
-        System.out.println("CountDownLatch count = " +countDownLatch.getCount());
+        System.out.println("CountDownLatch count = " + countDownLatch.getCount());
 
     }
 }

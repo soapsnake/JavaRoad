@@ -9,7 +9,7 @@ import java.nio.channels.SocketChannel;
 public class SocketHandler implements Runnable {
     private SocketChannel socketChannel;
 
-    public SocketHandler(SocketChannel socketChannel){
+    public SocketHandler(SocketChannel socketChannel) {
         this.socketChannel = socketChannel;
     }
 

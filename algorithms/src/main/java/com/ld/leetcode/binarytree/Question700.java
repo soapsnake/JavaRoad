@@ -7,28 +7,7 @@ package com.ld.leetcode.binarytree;
  */
 public class Question700 {
 
-    //递归版本实现
-    public TreeNode searchBST(TreeNode root, int val) {
-        if (null == root){
-            return null;
-        }
-        if (val == root.val){
-            return root;
-        }else if (val > root.val){
-            return searchBST(root.right, val);
-        }else {
-            return searchBST(root.left, val);
-        }
-    }
-
-    //todo 用遍历实现一次
-    public TreeNode searchBST2(TreeNode root, int val) {
-
-        return null;
-    }
-
-
-        public static void main(String[] args) {
+    public static void main(String[] args) {
 
         Question700 question700 = new Question700();
         TreeNode root = new TreeNode(4);
@@ -38,6 +17,26 @@ public class Question700 {
         root.left.right = new TreeNode(3);
 
         TreeNode.layerTravse(question700.searchBST(root, 2));
+    }
+
+    //递归版本实现
+    public TreeNode searchBST(TreeNode root, int val) {
+        if (null == root) {
+            return null;
+        }
+        if (val == root.val) {
+            return root;
+        } else if (val > root.val) {
+            return searchBST(root.right, val);
+        } else {
+            return searchBST(root.left, val);
+        }
+    }
+
+    //todo 用遍历实现一次
+    public TreeNode searchBST2(TreeNode root, int val) {
+
+        return null;
     }
 
 }

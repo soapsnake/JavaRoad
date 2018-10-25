@@ -6,26 +6,6 @@ package com.ld.leetcode.binarytree;
  */
 public class Question100 {
 
-    public boolean isSameTree(TreeNode p, TreeNode q) {
-
-        if (p == null && q ==null){
-            return true;
-        }
-        if (p == null){
-            return false;
-        }
-        if (q == null){
-            return false;
-        }
-        boolean left = false;
-        boolean right = false;
-        if (p.val == q.val){
-             left = isSameTree(p.left, q.left);
-             right = isSameTree(p.right, q.right);
-        }
-        return left && right;
-    }
-
     public static void main(String[] args) {
         Question100 question100 = new Question100();
 
@@ -39,5 +19,25 @@ public class Question100 {
         node1.right = new TreeNode(2);
 
         System.out.println(question100.isSameTree(node, node1));
+    }
+
+    public boolean isSameTree(TreeNode p, TreeNode q) {
+
+        if (p == null && q == null) {
+            return true;
+        }
+        if (p == null) {
+            return false;
+        }
+        if (q == null) {
+            return false;
+        }
+        boolean left = false;
+        boolean right = false;
+        if (p.val == q.val) {
+            left = isSameTree(p.left, q.left);
+            right = isSameTree(p.right, q.right);
+        }
+        return left && right;
     }
 }

@@ -13,10 +13,10 @@ import io.netty.handler.stream.ChunkedWriteHandler;
  * Created by liudun on 2018/1/16.
  * netty-channel-initializer
  */
-public class ChatServerInitializer extends ChannelInitializer<Channel>{
+public class ChatServerInitializer extends ChannelInitializer<Channel> {
     private final ChannelGroup group;
 
-    public ChatServerInitializer(ChannelGroup group){
+    public ChatServerInitializer(ChannelGroup group) {
         this.group = group;
     }
 

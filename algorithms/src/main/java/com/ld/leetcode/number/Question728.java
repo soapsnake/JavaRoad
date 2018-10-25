@@ -15,39 +15,6 @@ import java.util.List;
 
 public class Question728 {
 
-    public List<Integer> selfDividingNumbers(int left, int right) {
-        List<Integer> res = new ArrayList<>();
-        for (int i=left;i<= right; i++){
-            String temp = i + "";
-            if (temp.contains("0")){
-                continue;
-            }
-            int sort = 0;
-            for (char c: temp.toCharArray()){
-                if (i % Integer.valueOf(c + "") != 0){    //字符char型数字绝对不能使用Integer.valueOf转int,否则得到的是AsiII码的值,要转先把char+""转成string
-                    break;
-                }else {
-                    sort++; //符合
-                }
-            }
-            if (sort == temp.toCharArray().length){
-                res.add(i);
-            }
-        }
-        return res;
-    }
-
-    //推荐版解法
-    public List<Integer> selfDividingNumbers2(int left, int right) {
-        List<Integer> res = new ArrayList<>();
-        for (int i = left, n = 0; i <= right; i++) {
-            for (n = i; n > 0; n /= 10)
-                if (n % 10 == 0 || i % (n % 10) != 0) break;
-            if (n == 0) res.add(i);
-        }
-        return res;
-    }
-
     public static void main(String[] args) {
         int left = 1;
         int right = 22;
@@ -67,6 +34,39 @@ public class Question728 {
         System.out.println(1 % 1 != 0);
 
         System.out.println(289 % 100);
+    }
+
+    public List<Integer> selfDividingNumbers(int left, int right) {
+        List<Integer> res = new ArrayList<>();
+        for (int i = left; i <= right; i++) {
+            String temp = i + "";
+            if (temp.contains("0")) {
+                continue;
+            }
+            int sort = 0;
+            for (char c : temp.toCharArray()) {
+                if (i % Integer.valueOf(c + "") != 0) {    //字符char型数字绝对不能使用Integer.valueOf转int,否则得到的是AsiII码的值,要转先把char+""转成string
+                    break;
+                } else {
+                    sort++; //符合
+                }
+            }
+            if (sort == temp.toCharArray().length) {
+                res.add(i);
+            }
+        }
+        return res;
+    }
+
+    //推荐版解法
+    public List<Integer> selfDividingNumbers2(int left, int right) {
+        List<Integer> res = new ArrayList<>();
+        for (int i = left, n = 0; i <= right; i++) {
+            for (n = i; n > 0; n /= 10)
+                if (n % 10 == 0 || i % (n % 10) != 0) break;
+            if (n == 0) res.add(i);
+        }
+        return res;
     }
 
 }

@@ -6,10 +6,11 @@ package com.ld.pattern.templatemethod;
 public abstract class Absparent {
 
 
-    public Absparent(){}
+    public Absparent() {
+    }
 
 
-    public final  void parentMethod(){
+    public final void parentMethod() {
         System.out.println("父类final方法");
     }
 

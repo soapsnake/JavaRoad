@@ -13,14 +13,14 @@ public class ClassMates {
 
 
     @Override
-    public int hashCode(){
-        if (id <= 5){
+    public int hashCode() {
+        if (id <= 5) {
             return 1;
-        }else if (id <= 10){
+        } else if (id <= 10) {
             return 2;
-        }else if (id <= 15){
+        } else if (id <= 15) {
             return 3;
-        }else
+        } else
             return 4;
     }
 

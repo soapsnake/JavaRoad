@@ -12,23 +12,27 @@ public class TreeNode {
     int val;
     TreeNode left;
     TreeNode right;
-    TreeNode(int x) { val = x; }
+
+    TreeNode(int x) {
+        val = x;
+    }
 
     /**
-     *         3
-     *        /\
-     *      9   20
-     *         / \
-     *      15    7
-     *          /  \
-     *        8     12
-     *      / \     / \
-     *    6    9  10   22
-     *           /  \
-     *         4     14
+     * 3
+     * /\
+     * 9   20
+     * / \
+     * 15    7
+     * /  \
+     * 8     12
+     * / \     / \
+     * 6    9  10   22
+     * /  \
+     * 4     14
+     *
      * @return
      */
-    public static TreeNode makeTree(){
+    public static TreeNode makeTree() {
         TreeNode root = new TreeNode(3);
         root.left = new TreeNode(9);
         root.right = new TreeNode(20);
@@ -45,14 +49,15 @@ public class TreeNode {
         return root;
     }
 
-/**     对称树
- *            3
- *        /     \
- *      20       20
- *     /  \     /  \
- *   7    15   15   7
- **/
-    public static TreeNode makeSymmetric(){
+    /**
+     * 对称树
+     * 3
+     * /     \
+     * 20       20
+     * /  \     /  \
+     * 7    15   15   7
+     **/
+    public static TreeNode makeSymmetric() {
         TreeNode root = new TreeNode(3);
         root.left = new TreeNode(20);
         root.left.left = new TreeNode(7);
@@ -76,7 +81,7 @@ public class TreeNode {
 
     //层状遍历二叉树
     //@see:Question102 完全自己手写
-    public static List<List<TreeNode>> layerTravse(TreeNode root){
+    public static List<List<TreeNode>> layerTravse(TreeNode root) {
 
         List<List<TreeNode>> lists = new ArrayList<>();
         if (root == null) {
@@ -86,16 +91,16 @@ public class TreeNode {
         int last = 1;
         List<TreeNode> que = new LinkedList<>();
         que.add(root);
-        while (cur < que.size()){
+        while (cur < que.size()) {
             last = que.size();
             List<TreeNode> list2 = new ArrayList<>();
-            while (cur < last){
+            while (cur < last) {
                 TreeNode curNode = que.get(cur);
                 list2.add(curNode);
-                if (curNode.left != null){
+                if (curNode.left != null) {
                     que.add(curNode.left);
                 }
-                if (curNode.right != null){
+                if (curNode.right != null) {
                     que.add(curNode.right);
                 }
                 cur++;
@@ -103,33 +108,33 @@ public class TreeNode {
             lists.add(list2);
         }
         int i = 1;
-        for (List<TreeNode> list : lists){
-            for (TreeNode node : list){
+        for (List<TreeNode> list : lists) {
+            for (TreeNode node : list) {
                 System.out.print(node.val + " , ");
             }
-            System.out.println("第 " + i++  +" 层打印完毕");
+            System.out.println("第 " + i++ + " 层打印完毕");
         }
         return lists;
     }
 
     //前序遍历   根 --> 左孩 --> 右孩
-    public static List<TreeNode> frontTravse(TreeNode root){
+    public static List<TreeNode> frontTravse(TreeNode root) {
         List<Integer> vals = new ArrayList<>();
         List<TreeNode> nodes = new ArrayList<>();
 
         //前序遍历时,stack用来存放右子节点,当所有的左子节点遍历结束,弹栈即可实现所有右子节点的遍历
         Stack<TreeNode> stack = new Stack<>();
         TreeNode cur = root;
-        while (cur != null || !stack.isEmpty()){
-            while (cur != null){
-                if (cur.right != null){
+        while (cur != null || !stack.isEmpty()) {
+            while (cur != null) {
+                if (cur.right != null) {
                     stack.push(cur.right);
                 }
                 vals.add(cur.val);
                 nodes.add(cur);
                 cur = cur.left;
             }
-            if (!stack.isEmpty()){
+            if (!stack.isEmpty()) {
                 cur = stack.pop();
             }
         }
@@ -139,7 +144,7 @@ public class TreeNode {
     }
 
     //中序遍历:   左孩  --> 根 --> 右孩
-    public static List<TreeNode> middleTravse(TreeNode root){
+    public static List<TreeNode> middleTravse(TreeNode root) {
         //TODO debug
         List<Integer> vals = new ArrayList<>();
         List<TreeNode> nodes = new ArrayList<>();
@@ -148,8 +153,8 @@ public class TreeNode {
         Stack<TreeNode> temp = new Stack<>();
         TreeNode cur = root;
 
-        while (cur != null || !temp.isEmpty()){
-            while (cur != null){
+        while (cur != null || !temp.isEmpty()) {
+            while (cur != null) {
                 temp.add(cur);
                 cur = cur.left;
             }

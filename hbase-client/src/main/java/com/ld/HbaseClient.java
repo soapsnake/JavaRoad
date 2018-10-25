@@ -42,7 +42,7 @@ public class HbaseClient {
         System.out.println("Connected to HBase");
 
         //获取hbase中所有的表
-        System.out.println("this tables in hbase: " +Arrays.toString(admin.listTableNames()));
+        System.out.println("this tables in hbase: " + Arrays.toString(admin.listTableNames()));
 
 
         //创建表
@@ -55,7 +55,7 @@ public class HbaseClient {
         newtable2.addFamily(cf2);
 
         try {
-          System.out.print("Creating table: ");
+            System.out.print("Creating table: ");
             admin.createTable(newtable2);
             System.out.println("create table success!");
         } catch (IOException e) {
@@ -70,13 +70,12 @@ public class HbaseClient {
         //查看表的信息
 
 
-
         //对testtable这张表进行put操作: 增,改
         HTable table = new HTable(conf, "testtable");
-                                           //行键
+        //行键
         Put put = new Put(Bytes.toBytes("row1"));
 
-                                //列族名                     //列名                       //值
+        //列族名                     //列名                       //值
         put.add(Bytes.toBytes("colfam1"), Bytes.toBytes("qual1"), Bytes.toBytes("val1"));
         put.add(Bytes.toBytes("colfam1"), Bytes.toBytes("qual2"), Bytes.toBytes("val2"));
         table.setAutoFlush(false);     //这里设置false激活缓冲区
@@ -102,7 +101,7 @@ public class HbaseClient {
 
             System.out.println(Arrays.toString(processRes));
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -120,14 +119,13 @@ public class HbaseClient {
         try {
             table.delete(delete);
 
-            boolean deleteRes = table.checkAndDelete(Bytes.toBytes("colfam1"), Bytes.toBytes("qual1"), Bytes.toBytes("val1"),null,delete);
+            boolean deleteRes = table.checkAndDelete(Bytes.toBytes("colfam1"), Bytes.toBytes("qual1"), Bytes.toBytes("val1"), null, delete);
             System.out.println("CAS delete, res:" + deleteRes);
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
         table.flushCommits();    //缓冲区激活后需要调这个函数发生实际远程调用
-
 
 
         //对testtable表进行get操作     查
@@ -158,7 +156,7 @@ public class HbaseClient {
         get2.setMaxVersions(3);
         //获取一个单元格(cell)中所有版本的数据,需要服务端首先开启多版本才行!!
         Result multiVersionsRes = table2.get(get2);
-        System.out.println("multiVersionsRes:" +multiVersionsRes.getMap().entrySet());
+        System.out.println("multiVersionsRes:" + multiVersionsRes.getMap().entrySet());
 
 //        boolean putRes2 = table2.checkAndPut(Bytes.toBytes("colfam2-1"), Bytes.toBytes("qual2-1"), Bytes.toBytes("val2-1"), null, put2);
 //        System.out.println("put2 is success?: " + putRes2);
@@ -168,7 +166,7 @@ public class HbaseClient {
         //对scan使用过滤器
         scan.setFilter(CustomFilter.getFamilyFilter());
 
-        ResultScanner scanner =  table2.getScanner(scan);
+        ResultScanner scanner = table2.getScanner(scan);
         System.out.println("scanner: " + scanner.toString());
         for (Result scanRes : scanner) {
             System.out.println("scanner process: " + scanRes);
@@ -178,7 +176,6 @@ public class HbaseClient {
 
 
         System.out.println("buffer size: " + table.getWriteBufferSize());   //默认缓冲区大小
-
 
 
         table.close();

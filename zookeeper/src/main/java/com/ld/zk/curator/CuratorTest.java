@@ -17,7 +17,7 @@ public class CuratorTest {
     private RetryPolicy retryPolicy;
     private CuratorFramework zkc;
 
-    public CuratorTest(){
+    public CuratorTest() {
         retryPolicy = new RetryPolicy() {
             @Override
             public boolean allowRetry(int i, long l, RetrySleeper retrySleeper) {
@@ -27,28 +27,27 @@ public class CuratorTest {
 
         new Thread(() -> System.out.println("hello"));
 
-        zkc = CuratorFrameworkFactory.newClient(ZkConstant.ZK_HOST_PORT,retryPolicy);
+        zkc = CuratorFrameworkFactory.newClient(ZkConstant.ZK_HOST_PORT, retryPolicy);
         zkc.start();
     }
 
     public static void main(String[] args) throws Exception {
         CuratorTest test = new CuratorTest();
         //串行模式创建节点
-        test.zkc.create().withMode(CreateMode.EPHEMERAL).forPath("/master",new byte[0]);
+        test.zkc.create().withMode(CreateMode.EPHEMERAL).forPath("/master", new byte[0]);
 
         //异步方式创建节点
-        test.zkc.create().withMode(CreateMode.EPHEMERAL).inBackground().forPath("/workers",new byte[0]);
+        test.zkc.create().withMode(CreateMode.EPHEMERAL).inBackground().forPath("/workers", new byte[0]);
 
         try {
-            for (int i=0;i<10;i++){
+            for (int i = 0; i < 10; i++) {
                 System.out.println(i + "...");
                 Thread.sleep(1000);
             }
             LOGGER.warn("即将断开连接");
-        }finally {
+        } finally {
             test.zkc.close();
         }
-
 
 
     }

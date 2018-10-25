@@ -18,19 +18,19 @@ public class NetTest {
 
             if (networkInterface == null) {
                 System.out.println("no such interface :en0");
-            }else {
-                System.out.println("getDisplayName: " +networkInterface.getDisplayName());
+            } else {
+                System.out.println("getDisplayName: " + networkInterface.getDisplayName());
 
 
                 for (byte interfaceEnumeration : networkInterface.getHardwareAddress()) {
                     System.out.println("getHardwareAddress: " + interfaceEnumeration);
                 }
-                System.out.println("getInetAddresses: " +networkInterface.getInetAddresses().toString());
-                System.out.println("getInterfaceAddresses: " +networkInterface.getInterfaceAddresses());
-                System.out.println("getName: " +networkInterface.getName());
-                System.out.println("getParent: " +networkInterface.getParent());
-                System.out.println("getSubInterfaces: " +networkInterface.getSubInterfaces());
-                System.out.println("supportsMulticast: " +networkInterface.supportsMulticast());
+                System.out.println("getInetAddresses: " + networkInterface.getInetAddresses().toString());
+                System.out.println("getInterfaceAddresses: " + networkInterface.getInterfaceAddresses());
+                System.out.println("getName: " + networkInterface.getName());
+                System.out.println("getParent: " + networkInterface.getParent());
+                System.out.println("getSubInterfaces: " + networkInterface.getSubInterfaces());
+                System.out.println("supportsMulticast: " + networkInterface.supportsMulticast());
             }
         } catch (SocketException e) {
             e.printStackTrace();
@@ -39,13 +39,13 @@ public class NetTest {
 
         try {
             URL url = new URL("http://www.baidu.com");
-            System.out.println("getAuthority: " +url.getAuthority());
-            System.out.println("getContent: " +url.getContent());
-            System.out.println("getDefaultPort: " +url.getDefaultPort());
-            System.out.println("getHost: " +url.getHost());
-            System.out.println("getPath: " +url.getPath());
-            System.out.println("getProtocol: " +url.getProtocol());
-            System.out.println("getUserInfo: " +url.getUserInfo());
+            System.out.println("getAuthority: " + url.getAuthority());
+            System.out.println("getContent: " + url.getContent());
+            System.out.println("getDefaultPort: " + url.getDefaultPort());
+            System.out.println("getHost: " + url.getHost());
+            System.out.println("getPath: " + url.getPath());
+            System.out.println("getProtocol: " + url.getProtocol());
+            System.out.println("getUserInfo: " + url.getUserInfo());
 
         } catch (MalformedURLException e) {
             e.printStackTrace();

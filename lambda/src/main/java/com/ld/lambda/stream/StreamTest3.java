@@ -10,18 +10,18 @@ public class StreamTest3 {
     public static void main(String[] args) {
 
         List<Integer> list = new ArrayList<>();
-        for (int i=1;i<=30;i++){
+        for (int i = 1; i <= 30; i++) {
             list.add(i);
         }
         Set<Integer> set = new HashSet<>();
         list.forEach(integer -> {
             set.add(integer);
-            if (set.size() >= 10){
+            if (set.size() >= 10) {
                 System.out.println("到10了");
             }
         });
 
-        for (Integer integer: set){
+        for (Integer integer : set) {
             System.out.println(integer);
         }
 

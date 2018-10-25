@@ -7,7 +7,7 @@ public class App {
 
     public static void main(String[] args) {
         for (Shrubbery shrubbery : Shrubbery.values()) {
-            System.out.println(shrubbery +" : " + shrubbery.getDeclaringClass());
+            System.out.println(shrubbery + " : " + shrubbery.getDeclaringClass());
         }
     }
 }

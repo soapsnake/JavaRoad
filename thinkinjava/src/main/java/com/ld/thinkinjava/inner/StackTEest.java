@@ -18,7 +18,7 @@ public class StackTEest {
         stack.push("shit");
         stack.push("pro");
 
-        for (String string: stack){
+        for (String string : stack) {
             System.out.println(string);
 
         }

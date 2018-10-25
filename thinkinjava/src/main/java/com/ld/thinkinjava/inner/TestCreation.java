@@ -19,37 +19,37 @@ public class TestCreation {
 
         final long REPS = 100000000L;
 
-        long t1  = System.currentTimeMillis();
+        long t1 = System.currentTimeMillis();
         System.out.print("HashTable");
 
-        for (long i = 0; i<REPS;i++){
+        for (long i = 0; i < REPS; i++) {
             new Hashtable<>();
         }
 
         long t2 = System.currentTimeMillis();
         System.out.println(":" + (t2 - t1));
 
-         t1  = System.currentTimeMillis();
+        t1 = System.currentTimeMillis();
         System.out.print("TreeMap");
 
-        for (long i = 0; i<REPS;i++){
+        for (long i = 0; i < REPS; i++) {
             new TreeMap<>();
         }
 
-         t2 = System.currentTimeMillis();
+        t2 = System.currentTimeMillis();
         System.out.println(":" + (t2 - t1));
 
-         t1  = System.currentTimeMillis();
+        t1 = System.currentTimeMillis();
         System.out.print("HashMap");
 
-        for (long i = 0; i<REPS;i++){
+        for (long i = 0; i < REPS; i++) {
             new HashMap<>();
         }
 
-         t2 = System.currentTimeMillis();
+        t2 = System.currentTimeMillis();
         System.out.println(":" + (t2 - t1));
 
-        String[] strings = {"this","is","an","array"};
+        String[] strings = {"this", "is", "an", "array"};
 
         List<String> list = Arrays.asList(strings);
 
@@ -61,7 +61,7 @@ public class TestCreation {
 
         System.out.println(Arrays.toString(strings));
 
-        int i = Arrays.binarySearch(strings,"is");
+        int i = Arrays.binarySearch(strings, "is");
 
         System.out.println(i);
 
@@ -98,11 +98,11 @@ public class TestCreation {
 
     }
 
-    static void a(){
+    static void a() {
         throw new NullPointerException();
     }
 
-    static void b(){
+    static void b() {
         throw new Error();
     }
 }

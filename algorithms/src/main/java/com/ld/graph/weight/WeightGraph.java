@@ -11,6 +11,7 @@ public class WeightGraph {
     private Vertex vertex;
     private Set<Integer>[] adjTable;
 
-    public WeightGraph(){}
+    public WeightGraph() {
+    }
 
 }

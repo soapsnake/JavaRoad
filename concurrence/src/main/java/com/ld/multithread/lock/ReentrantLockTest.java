@@ -15,7 +15,7 @@ public class ReentrantLockTest {
             person.toString();
         } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             lock.unlock();
         }
     }

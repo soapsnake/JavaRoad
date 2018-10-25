@@ -13,7 +13,6 @@ public class JoinTest {
         ExecutorService service = Executors.newFixedThreadPool(3);
 
 
-
         Thread worker = new Thread(new CountThread());
 
         worker.run();
@@ -25,8 +24,6 @@ public class JoinTest {
         }
 
         System.out.println("main线程退出....");
-
-
 
 
     }

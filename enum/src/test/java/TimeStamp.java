@@ -6,8 +6,8 @@ import org.junit.Test;
 public class TimeStamp {
 
     @Test
-    public void testTimestamp(){
+    public void testTimestamp() {
         long timestamp = System.currentTimeMillis();
-        System.out.println("timestamp:"+timestamp);
+        System.out.println("timestamp:" + timestamp);
     }
 }

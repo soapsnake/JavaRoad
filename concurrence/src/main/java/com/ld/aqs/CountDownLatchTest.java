@@ -6,12 +6,23 @@ import java.util.concurrent.Executors;
 
 public class CountDownLatchTest {
 
-    static class WorkerRunnable implements Runnable{
+    public static void main(String[] args) throws InterruptedException {
+
+        CountDownLatch doneSignal = new CountDownLatch(8);
+        Executor executor = Executors.newFixedThreadPool(8);
+
+        for (int i = 0; i < 8; i++) {
+            executor.execute(new WorkerRunnable(doneSignal, i));
+        }
+        doneSignal.await();
+    }
+
+    static class WorkerRunnable implements Runnable {
 
         private final CountDownLatch doneSignal;
         private final int i;
 
-        WorkerRunnable(CountDownLatch doneSignal, int i){
+        WorkerRunnable(CountDownLatch doneSignal, int i) {
             this.doneSignal = doneSignal;
             this.i = i;
         }
@@ -30,18 +41,6 @@ public class CountDownLatchTest {
             System.out.println(Thread.currentThread().getName() + " is working on: " + i);
             Thread.sleep(1000L);
         }
-    }
-
-
-    public static void main(String[] args) throws InterruptedException {
-
-        CountDownLatch doneSignal = new CountDownLatch(8);
-        Executor executor = Executors.newFixedThreadPool(8);
-
-        for (int i=0; i<8; i++){
-            executor.execute(new WorkerRunnable(doneSignal, i));
-        }
-        doneSignal.await();
     }
 
 }

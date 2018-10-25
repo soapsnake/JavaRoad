@@ -8,7 +8,7 @@ public class Prediction {
     boolean shadow = Math.random() > 0.5;
 
     @Override
-    public String toString(){
+    public String toString() {
         if (shadow) return "six more weeks of winter!";
         else return "early spring!";
     }

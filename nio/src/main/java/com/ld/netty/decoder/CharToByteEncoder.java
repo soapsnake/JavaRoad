@@ -7,7 +7,7 @@ import io.netty.handler.codec.MessageToByteEncoder;
 /**
  * Created by liudun on 2018/1/16.
  */
-public class CharToByteEncoder extends MessageToByteEncoder<Character>{
+public class CharToByteEncoder extends MessageToByteEncoder<Character> {
     @Override
     protected void encode(ChannelHandlerContext ctx, Character msg, ByteBuf out) throws Exception {
         out.writeChar(msg);

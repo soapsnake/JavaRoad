@@ -29,7 +29,6 @@ public class SingletonListTest {
         System.out.println(list1.size());
 
 
-
     }
 
 

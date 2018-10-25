@@ -5,18 +5,18 @@ package com.ld.thinkinjava.inner;
  */
 public class Egg {
 
-    //内部类
-    protected class Yolk {
-        public Yolk(){
-            System.out.println("Egg.Yolk()");
-        }
-    }
-
     private Yolk yolk;
 
-    public Egg(){
+    public Egg() {
         System.out.println("new Egg");
         yolk = new Yolk();
+    }
+
+    //内部类
+    protected class Yolk {
+        public Yolk() {
+            System.out.println("Egg.Yolk()");
+        }
     }
 
 }

@@ -15,7 +15,7 @@ public class DemoPartitioner implements Partitioner {
     public int partition(String topic, Object key, byte[] keyBytes, Object value, byte[] valueBytes, Cluster cluster) {
         List<PartitionInfo> partitions = cluster.partitionsForTopic(topic);
         int numPartitions = partitions.size();
-        if (null == keyBytes || keyBytes.length<1) {
+        if (null == keyBytes || keyBytes.length < 1) {
             return atomicInteger.getAndIncrement() % numPartitions;
         }
         //借用String的hashCode的计算方式
@@ -23,7 +23,8 @@ public class DemoPartitioner implements Partitioner {
         for (byte b : keyBytes) {
             hash = 31 * hash + b;
         }
-        return hash % numPartitions;    }
+        return hash % numPartitions;
+    }
 
     @Override
     public void close() {

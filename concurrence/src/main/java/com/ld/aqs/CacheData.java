@@ -5,10 +5,10 @@ import com.ld.multithread.lock.Person;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class CacheData {
-    Object data;
-    volatile boolean cacheValid;
     // 读写锁实例
     final ReentrantReadWriteLock rwl = new ReentrantReadWriteLock();
+    Object data;
+    volatile boolean cacheValid;
 
     void processCachedData() {
         // 获取读锁

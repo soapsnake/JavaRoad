@@ -6,12 +6,9 @@ package com.ld.thinkinjava.map;
 public class Groundhog {
     int ghNumber;
 
-    Groundhog(int n){
+    Groundhog(int n) {
         ghNumber = n;
     }
-
-
-
 
 
 }

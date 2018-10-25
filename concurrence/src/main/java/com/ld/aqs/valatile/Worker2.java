@@ -1,9 +1,9 @@
 package com.ld.aqs.valatile;
 
-public class Worker2 implements Runnable{
+public class Worker2 implements Runnable {
     Person person;
 
-    Worker2(Person person){
+    Worker2(Person person) {
         this.person = person;
     }
 

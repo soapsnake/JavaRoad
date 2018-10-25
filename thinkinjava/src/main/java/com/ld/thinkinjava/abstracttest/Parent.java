@@ -6,12 +6,12 @@ package com.ld.thinkinjava.abstracttest;
 public class Parent {
     private String name;
 
-    Parent(){
+    Parent() {
         System.out.println("parent constructor");
         isNew();
     }
 
-    void isNew(){
+    void isNew() {
         this.name = "parent";
         System.out.println(this.name);
     }

@@ -38,7 +38,7 @@ import java.util.concurrent.TimeoutException;
  */
 public class MyChannelFactory {
 
-    public static  Channel  getChannel(){
+    public static Channel getChannel() {
         Channel channel = new Channel() {
             @Override
             public ChannelId id() {

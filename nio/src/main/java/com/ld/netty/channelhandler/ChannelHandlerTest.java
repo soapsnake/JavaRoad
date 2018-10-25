@@ -13,7 +13,7 @@ public class ChannelHandlerTest {
     public static void main(String[] args) {
         Channel channel = MyChannelFactory.getChannel();
 
-        ChannelPipeline pipeline =  channel.pipeline();
+        ChannelPipeline pipeline = channel.pipeline();
 
         ChannelHandler firstHandler = new DisCardInboundHandler();
 

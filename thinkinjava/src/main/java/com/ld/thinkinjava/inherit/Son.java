@@ -9,7 +9,7 @@ public class Son extends Parent {
 
     private String son2;
 
-    public Son(){
+    public Son() {
 
         System.out.println("子类构造方法被调用");
         System.out.println("this.parent1 被赋值前,this.parent1 = " + this.parent1);
@@ -32,14 +32,14 @@ public class Son extends Parent {
         System.out.println(this.parent1);
     }
 
-    public void printpar(){
+    public void printpar() {
         System.out.println("==================");
         System.out.println(super.parent1);
         System.out.println(this.parent1);
     }
 
     @Override
-    public void parenShow1(){
+    public void parenShow1() {
         System.out.println("子类的parentShow1方法");
     }
 

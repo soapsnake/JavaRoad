@@ -2,19 +2,6 @@ package com.ld.leetcode.list;
 
 public class Question876 {
 
-    public ListNode middleNode(ListNode head) {
-
-        ListNode fast = head;
-        ListNode slow = head;
-
-        //快速指针一次两步,慢速指针一次一步
-        while (fast != null && fast.next!=null){
-            fast = fast.next.next;
-            slow = slow.next;
-        }
-        return slow;
-    }
-
     public static void main(String[] args) {
         ListNode head = new ListNode(1);
         head.next = new ListNode(2);
@@ -29,5 +16,18 @@ public class Question876 {
 
         ListNode.printListNode(question876.middleNode(head));
 
+    }
+
+    public ListNode middleNode(ListNode head) {
+
+        ListNode fast = head;
+        ListNode slow = head;
+
+        //快速指针一次两步,慢速指针一次一步
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+        }
+        return slow;
     }
 }

@@ -14,7 +14,7 @@ public class TimeStamped extends Decorator {
         timeStamp = new Date().getTime();
     }
 
-    public long getStamp(){
+    public long getStamp() {
         return timeStamp;
     }
 }

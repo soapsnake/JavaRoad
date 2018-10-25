@@ -6,7 +6,7 @@ package com.ld.thinkinjava.generics;
 public abstract class GenericWithCreate<T> {
     final T element;
 
-    GenericWithCreate(){
+    GenericWithCreate() {
         element = create();
     }
 

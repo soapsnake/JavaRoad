@@ -30,7 +30,7 @@ public class DemoSerializer implements Serializer<Company> {
             } else {
                 address = new byte[0];
             }
-            ByteBuffer buffer = ByteBuffer.allocate(4+4+name.length + address.length);
+            ByteBuffer buffer = ByteBuffer.allocate(4 + 4 + name.length + address.length);
             buffer.putInt(name.length);
             buffer.put(name);
             buffer.putInt(address.length);
@@ -39,7 +39,8 @@ public class DemoSerializer implements Serializer<Company> {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-        return new byte[0];    }
+        return new byte[0];
+    }
 
     @Override
     public void close() {

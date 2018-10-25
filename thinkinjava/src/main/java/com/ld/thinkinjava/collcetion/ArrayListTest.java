@@ -11,7 +11,7 @@ public class ArrayListTest {
 
     public static void main(String[] args) {
 
-        String[] strings = {"just","want","to","fuck","the","world"};
+        String[] strings = {"just", "want", "to", "fuck", "the", "world"};
 
         System.out.println(strings.length);
 
@@ -28,7 +28,7 @@ public class ArrayListTest {
 
         List<String> list1 = new ArrayList<>();
 
-        for (int i =0; i<10;i++){
+        for (int i = 0; i < 10; i++) {
             list1.add("dsadsa");
         }
 

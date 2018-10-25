@@ -51,7 +51,7 @@ public class App {
         System.out.println("======进行排序操作!!!!!!=======");
         Collections.sort(list);
         System.out.println(list);
-        for (Person person : list){
+        for (Person person : list) {
             System.out.println(person.toString());
         }
     }

@@ -21,11 +21,23 @@ public class Monitor implements Watcher {
         this.hostport = hostport;
     }
 
+    public static void main(String[] args) throws IOException, InterruptedException {
+        Monitor monitor = new Monitor(ZkConstant.ZK_HOST_PORT);
+
+        monitor.startZK();
+
+        monitor.listState();
+
+        Thread.sleep(5000);
+
+        monitor.stopZK();
+    }
+
     public void process(WatchedEvent event) {
         System.out.println("===============================process函数触发");
-        System.out.println("path: "+event.getPath());
-        System.out.println("state: "+event.getState());
-        System.out.println("type: "+event.getType());
+        System.out.println("path: " + event.getPath());
+        System.out.println("state: " + event.getState());
+        System.out.println("type: " + event.getType());
     }
 
     private void startZK() throws IOException {
@@ -85,7 +97,7 @@ public class Monitor implements Watcher {
             e.printStackTrace();
         }
         try {
-            for (String task : zk.getChildren("/assign",false)){
+            for (String task : zk.getChildren("/assign", false)) {
                 System.out.println("\t" + task);
             }
         } catch (KeeperException e) {
@@ -94,17 +106,5 @@ public class Monitor implements Watcher {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-    }
-
-    public static void main(String[] args) throws IOException, InterruptedException {
-        Monitor monitor = new Monitor(ZkConstant.ZK_HOST_PORT);
-
-        monitor.startZK();
-
-        monitor.listState();
-
-        Thread.sleep(5000);
-
-        monitor.stopZK();
     }
 }

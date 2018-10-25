@@ -1,6 +1,12 @@
 package com.ld.leetcode.dynamic;
 
 public class Question198 {
+    public static void main(String[] args) {
+        Question198 question198 = new Question198();
+        int[] robs = new int[]{1, 3, 1};
+        System.out.println(question198.rob(robs));
+    }
+
     //动态规划的解题思想,本质上,這是一个 0/1 knapsack 即n/p完全问题:https://www.youtube.com/watch?v=wFP5VHGHFdk
     public int rob(int[] nums) {
         // We go through all the values, we maintain two counts, 1) if we rob this cell, 2) if we didn't rob this cell
@@ -17,11 +23,5 @@ public class Question198 {
             ifRobbedPrevious = currRobbed;
         }
         return Math.max(ifRobbedPrevious, ifDidntRobPrevious);
-    }
-
-    public static void main(String[] args) {
-        Question198 question198 = new Question198();
-        int[] robs = new int[]{1, 3, 1};
-        System.out.println(question198.rob(robs));
     }
 }

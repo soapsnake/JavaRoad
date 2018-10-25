@@ -5,7 +5,26 @@ package com.ld.thinkinjava.math;
  */
 public class BiteMathTest {
 
-    public enum TestEnum{
+    public static void main(String[] args) {
+//
+//        int i = -1;
+//        i >>>= 10;
+//        System.out.println(i);
+//
+//        Integer j = Integer.MAX_VALUE;
+//        j >>>= 10;
+//        System.out.println(j);
+//
+//        System.out.println(0 < 0);
+
+        for (TestEnum testEnum : TestEnum.values()) {
+            System.out.println(testEnum.getValue());
+        }
+
+
+    }
+
+    public enum TestEnum {
         NOT_BILLED((short) 0, "未开票"),
         BILLING((short) 1, "开票中"),
         BILLED((short) 2, "已开票"),
@@ -33,26 +52,5 @@ public class BiteMathTest {
         public void setDesc(String desc) {
             this.desc = desc;
         }
-    }
-
-    public static void main(String[] args) {
-//
-//        int i = -1;
-//        i >>>= 10;
-//        System.out.println(i);
-//
-//        Integer j = Integer.MAX_VALUE;
-//        j >>>= 10;
-//        System.out.println(j);
-//
-//        System.out.println(0 < 0);
-
-        for (TestEnum testEnum: TestEnum.values()){
-            System.out.println(testEnum.getValue());
-        }
-
-
-
-
     }
 }

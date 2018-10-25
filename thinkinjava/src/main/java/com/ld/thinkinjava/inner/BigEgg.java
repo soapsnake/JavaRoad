@@ -6,16 +6,16 @@ package com.ld.thinkinjava.inner;
 public class BigEgg extends Egg {
 
 
-    //子类不能覆盖父类型的内部类
-    public class Yolk{
-        public Yolk(){
-            System.out.println("BigEgg.Yolk()");
-        }
-    }
-
     public static void main(String[] args) {
         new BigEgg();
 
+    }
+
+    //子类不能覆盖父类型的内部类
+    public class Yolk {
+        public Yolk() {
+            System.out.println("BigEgg.Yolk()");
+        }
     }
 
 }
