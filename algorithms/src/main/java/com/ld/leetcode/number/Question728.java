@@ -24,7 +24,7 @@ public class Question728 {
             }
             int sort = 0;
             for (char c: temp.toCharArray()){
-                if (i % Integer.valueOf(c + "") != 0){
+                if (i % Integer.valueOf(c + "") != 0){    //字符char型数字绝对不能使用Integer.valueOf转int,否则得到的是AsiII码的值,要转先把char+""转成string
                     break;
                 }else {
                     sort++; //符合
