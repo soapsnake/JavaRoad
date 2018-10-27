@@ -1,7 +1,6 @@
 package com.ld.graph;
 
 import java.io.BufferedReader;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -33,9 +32,9 @@ public class Graph {
     }
 
     //从输入流"tinyGraph.txt"中读取一副图
-    Graph(String filePath) {
+    Graph(String fileName) {
         try {
-            InputStream inputStream = new FileInputStream(filePath);
+            InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream(fileName);
             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
             int e = 0;
             int v = 0;

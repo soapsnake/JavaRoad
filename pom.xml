@@ -200,6 +200,7 @@
         <module>nio</module>
         <module>random</module>
         <module>mq</module>
+        <module>spi</module>
     </modules>
 
     <build>

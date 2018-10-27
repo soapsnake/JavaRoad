@@ -1,5 +1,6 @@
-# 说明
-1. algorithms算法
-2. pattern设计模式
-3. generic泛型
-4. hbase-clint hbase
+# Notes
+- algorithms: algorithms implement by Java or other languages(Python etc..)
+- pattern: about design patterns
+- hbase-clint: something about HBase api
+- spi: something about Java-spi or dubbo-spi
+- zookeeper: zk client api
