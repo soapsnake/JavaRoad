@@ -53,3 +53,11 @@ testignore.ls
 .settings
 /algorithms/.classpath
 /classes/
+dubbo/dubbo-api/src/main/resources/
+dubbo/dubbo-api/src/test/
+dubbo/dubbo-api/target/generated-sources/
+dubbo/dubbo-consumer/src/test/
+dubbo/dubbo-consumer/target/generated-sources/
+dubbo/dubbo-provider/src/test/
+dubbo/dubbo-provider/target/generated-sources/
+spi/src/test/
