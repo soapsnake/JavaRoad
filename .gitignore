@@ -53,5 +53,5 @@ testignore.ls
 .settings
 /algorithms/.classpath
 /classes/
-dubbo/*/target/generated-sources/
+dubbo/*/target/
 spi/src/test/
