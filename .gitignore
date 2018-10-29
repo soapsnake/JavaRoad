@@ -54,3 +54,4 @@ testignore.ls
 /algorithms/.classpath
 /classes/
 dubbo/*/target/
+/.idea/
