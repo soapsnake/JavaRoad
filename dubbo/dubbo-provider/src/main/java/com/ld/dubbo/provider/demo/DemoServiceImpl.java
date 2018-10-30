@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.ld.dubbo.provider;
+package com.ld.dubbo.provider.demo;
 
 import com.alibaba.dubbo.rpc.RpcContext;
 import com.ld.dubbo.api.service.DemoService;
@@ -28,6 +28,11 @@ public class DemoServiceImpl implements DemoService {
     public String sayHello(String name) {
         System.out.println("[" + new SimpleDateFormat("HH:mm:ss").format(new Date()) + "] Hello " + name + ", request from consumer: " + RpcContext.getContext().getRemoteAddress());
         return "Hello " + name + ", response from provider: " + RpcContext.getContext().getLocalAddress();
+    }
+
+    @Override
+    public void checkToken() {
+        System.out.println("check token success!!");
     }
 
 }

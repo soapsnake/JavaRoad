@@ -16,9 +16,11 @@
  */
 package com.ld.dubbo.consumer;
 
+import com.alibaba.dubbo.rpc.service.GenericService;
 import com.ld.dubbo.api.service.CallbackListener;
 import com.ld.dubbo.api.service.CallbackService;
 import com.ld.dubbo.api.service.DemoService;
+import com.ld.dubbo.api.service.TestGenericService;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Consumer {
@@ -32,10 +34,17 @@ public class Consumer {
 //        System.setProperty("java.net.preferIPv6Addresses", "true");    //加在这里没有用,只能添加为虚拟机参数
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(new String[]{"META-INF/spring/dubbo-consumer.xml"});
         context.start();
+
+        GenericService barService = (GenericService) context.getBean("barService");
+        Object result = barService.$invoke("testBar", new String[] {"java.lang.String", "java.lang.Integer"}, new Object[] { "snake", 100 });
+        System.out.println("GenericService call ->" + result);
+
+        TestGenericService testGenericService = (TestGenericService) context.getBean("testGenericService");
+        System.out.println("testGenericService --->" + testGenericService.testGen("hello"));
+
         DemoService demoService = (DemoService) context.getBean("demoService"); // get remote service proxy
 
         CallbackService callbackService = (CallbackService) context.getBean("callbackService");
-
         callbackService.addListener("http://10.20.160.198/wiki/display/dubbo/foo.bar", new CallbackListener() {
             public void changed(String msg) {
                 System.out.println("callback1:" + msg);
@@ -48,6 +57,8 @@ public class Consumer {
                 Thread.sleep(1000);
                 String hello = demoService.sayHello("world"); // call remote method
                 System.out.println(i++ + ":: " + hello); // get result
+
+                demoService.checkToken();
             } catch (Throwable throwable) {
                 throwable.printStackTrace();
             }
