@@ -10,7 +10,7 @@ package com.ld.leetcode.array;
 public class Question893 {
 
     public int numSpecialEquivGroups(String[] A) {
-        //todo
+        //todo 题目没有看懂???
         return 0;
     }
 }

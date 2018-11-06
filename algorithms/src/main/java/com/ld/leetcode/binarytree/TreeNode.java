@@ -18,17 +18,17 @@ public class TreeNode {
     }
 
     /**
-     * 3
-     * /\
-     * 9   20
-     * / \
-     * 15    7
-     * /  \
-     * 8     12
-     * / \     / \
-     * 6    9  10   22
-     * /  \
-     * 4     14
+             *       3
+             *     /  \
+             *    9    20
+             *   / \
+             * 15   7
+            * /     \
+           * 8     12
+          * / \   /  \
+         * 6  9  10  22
+         * /  \
+        * 4   14
      *
      * @return
      */
@@ -160,8 +160,8 @@ public class TreeNode {
             }
 
             cur = temp.pop();
-            vals.add(cur.val);
-            nodes.add(cur);
+//            vals.add(cur.val);
+//            nodes.add(cur);
             cur = cur.right;
         }
         System.out.print("中序遍历: ");
