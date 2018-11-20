@@ -2,7 +2,7 @@ package com.ld.leetcode.array;
 
 import com.ld.leetcode.list.ArrayUtils;
 
-public class Question922 {
+class Question922 {
 
     public static void main(String[] args) {
         Question922 question922 = new Question922();

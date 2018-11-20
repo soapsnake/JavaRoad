@@ -7,7 +7,7 @@ package com.ld.leetcode.str;
  * Input: "Let's take LeetCode contest"
  * Output: "s'teL ekat edoCteeL tsetnoc"
  */
-public class Question557 {
+class Question557 {
 
     public static void main(String[] args) {
         Question557 question557 = new Question557();

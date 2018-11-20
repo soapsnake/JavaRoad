@@ -1,7 +1,7 @@
 package com.ld.leetcode.array;
 
 
-public class Question852 {
+class Question852 {
 
     public static void main(String[] args) {
         Question852 question852 = new Question852();

@@ -4,7 +4,7 @@ package com.ld.leetcode.list;
  * Merge two sorted linked lists and return it as a new list.
  * The new list should be made by splicing together the nodes of the first two lists.
  */
-public class Question21 {
+class Question21 {
 
     public static void main(String[] args) {
         ListNode node1 = new ListNode(1);

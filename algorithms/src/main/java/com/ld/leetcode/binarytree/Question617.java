@@ -1,6 +1,6 @@
 package com.ld.leetcode.binarytree;
 
-public class Question617 {
+class Question617 {
 
     /**
      * Definition for a binary tree node.

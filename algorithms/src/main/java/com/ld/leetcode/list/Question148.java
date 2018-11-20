@@ -6,7 +6,7 @@ package com.ld.leetcode.list;
  * Input: 4->2->1->3
  * Output: 1->2->3->4
  */
-public class Question148 {
+class Question148 {
     public static void main(String[] args) {
 
         Question148 question148 = new Question148();

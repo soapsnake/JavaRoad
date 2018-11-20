@@ -3,7 +3,7 @@ package com.ld.leetcode.binarytree;
 /**
  * Invert a binary tree.
  */
-public class Question226 {
+class Question226 {
 
     public static void main(String[] args) {
         int[] nums = new int[]{4, 4, 4, 4, 4, 4, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3, 3, 4, 4, 4, 3, 3, 3, 3, 3, 3, 3, 4, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 3, 3, 4, 3, 3, 3, 4, 4, 4, 4, 4, 3, 4, 3, 3, 3, 3, 3, 4, 4, 3, 3, 3, 4, 4, 4, 3, 4, 3, 4, 3, 4, 4, 4, 3, 4, 3, 4, 3, 4, 4, 3, 3, 4, 3, 4, 3, 3, 3, 4, 3, 3};

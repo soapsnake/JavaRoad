@@ -4,7 +4,7 @@ package com.ld.leetcode.array;
  * Given an array of size n, find the majority element. The majority element is the element that appears more than ⌊ n/2 ⌋ times.
  * You may assume that the array is non-empty and the majority element always exist in the array.
  */
-public class Question169 {
+class Question169 {
 
     public static void main(String[] args) {
         Question169 question169 = new Question169();

@@ -13,7 +13,7 @@ import java.util.List;
  * Output: 2
  * Explanation: "testemail@leetcode.com" and "testemail@lee.tcode.com" actually receive mails
  */
-public class Quesiton929 {
+class Quesiton929 {
 
     /**
      * 1. 先遇+截断

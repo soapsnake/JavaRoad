@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * 二叉树的层状遍历
  */
-public class Question102 {
+class Question102 {
 
     /**
      * 3

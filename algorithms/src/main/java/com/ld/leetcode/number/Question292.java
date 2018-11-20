@@ -4,7 +4,7 @@ package com.ld.leetcode.number;
  * @author soapsnake
  * @date 2018/11/12
  */
-public class Question292 {
+class Question292 {
     public boolean canWinNim(int n) {
         /**
          *todo 只要是4的倍数你就不可能赢, 比如n = 8:

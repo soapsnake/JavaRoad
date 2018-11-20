@@ -5,7 +5,7 @@ package com.ld.leetcode.array;
  * Note:
  * Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?
  */
-public class Question136 {
+class Question136 {
 
     public static void main(String[] args) {
         int[] nums = new int[]{-1, 3, -2, -1, -2, 3, 8};

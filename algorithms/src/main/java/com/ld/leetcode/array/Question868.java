@@ -8,7 +8,7 @@ package com.ld.leetcode.array;
  * If there aren't two consecutive 1's, return 0.
  */
 
-public class Question868 {
+class Question868 {
     //todo 题目例子没看明白?两个'1'之间的最大距离?
     public int binaryGap(int N) {
         String string = Integer.toBinaryString(N);

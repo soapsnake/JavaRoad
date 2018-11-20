@@ -4,7 +4,7 @@ package com.ld.leetcode.str;
 /**
  * Write a function that takes a string as input and returns the string reversed.
  */
-public class Question344 {
+class Question344 {
 
     public static void main(String[] args) {
         String s = "hello world";

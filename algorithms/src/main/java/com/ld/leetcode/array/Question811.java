@@ -20,7 +20,7 @@ import java.util.Map;
  * As discussed above, the subdomain "leetcode.com" and "com" will also be visited.
  * So they will all be visited 9001 times.
  */
-public class Question811 {
+class Question811 {
     //傻逼办法,单有效
     public List<String> subdomainVisits(String[] cpdomains) {
         Map<String, Integer> domainMap = new HashMap<>();

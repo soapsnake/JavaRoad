@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 //多叉树的先根遍历(前序遍历)
-public class Question589 {
+class Question589 {
     private List<Integer> res = new ArrayList<>();
 
     public static void main(String[] args) {

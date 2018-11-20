@@ -5,7 +5,7 @@ package com.ld.leetcode.array;
  * You need to find the shortest such subarray and output its length.
  * 老实说这个题目我压根就没有看懂
  */
-public class Question581 {
+class Question581 {
 
 
     public static void main(String[] args) {

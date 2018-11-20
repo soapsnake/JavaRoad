@@ -9,7 +9,7 @@ import java.util.List;
  * Given an array nums of n integers, are there elements a, b, c in nums such that a + b + c = 0?
  * Find all unique triplets in the array which gives the sum of zero.
  */
-public class Question15 {
+class Question15 {
 
     public static void main(String[] args) {
         Question15 question15 = new Question15();

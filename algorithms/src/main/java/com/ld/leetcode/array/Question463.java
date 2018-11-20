@@ -4,7 +4,7 @@ package com.ld.leetcode.array;
  * @author soapsnake
  * @date 2018/11/2
  */
-public class Question463 {
+class Question463 {
 
     public int islandPerimeter(int[][] grid) {
         int res = 0;

@@ -9,7 +9,7 @@ import com.ld.leetcode.list.ArrayUtils;
  * Given a string S and a character C,
  * return an array of integers representing the shortest distance from the character C in the string.
  */
-public class Question821 {
+class Question821 {
 
     public int[] shortestToChar(String S, char C) {
        char[] chars = S.toCharArray();

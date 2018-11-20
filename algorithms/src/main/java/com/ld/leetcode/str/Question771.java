@@ -1,6 +1,6 @@
 package com.ld.leetcode.str;
 
-public class Question771 {
+class Question771 {
 
     public static int numJewelsInStones(String J, String S) {
         if (J == null || J.equals("") || S == null || S.equals("")) {

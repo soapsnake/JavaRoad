@@ -7,7 +7,7 @@ import java.util.List;
  * @author soapsnake
  * @date 2018/11/15
  */
-public class Question824 {
+class Question824 {
 
     //纯碎就是繁琐
     public String toGoatLatin(String S) {

@@ -11,7 +11,7 @@ import java.util.List;
  * Given a List of words, return the words that can be typed using letters of alphabet
  * on only one row's of American keyboard like the image below.
  */
-public class Question500 {
+class Question500 {
 
     public String[] findWords(String[] words) {
         List<String> standers = new ArrayList<>();

@@ -4,7 +4,7 @@ package com.ld.leetcode.list;
  * Write a program to find the node at which the intersection of two singly linked lists begins.
  * For example, the following two linked lists:
  */
-public class Question160 {
+class Question160 {
 
     public static void main(String[] args) {
         ListNode headA = new ListNode(1);

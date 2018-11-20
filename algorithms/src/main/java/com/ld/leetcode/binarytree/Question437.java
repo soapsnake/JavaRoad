@@ -1,6 +1,6 @@
 package com.ld.leetcode.binarytree;
 
-public class Question437 {
+class Question437 {
 
     public static void main(String[] args) {
 

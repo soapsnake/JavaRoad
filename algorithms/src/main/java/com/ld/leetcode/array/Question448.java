@@ -12,7 +12,7 @@ import java.util.Set;
  * Find all the elements of [1, n] inclusive that do not appear in this array.
  * Could you do it without extra space and in O(n) runtime? You may assume the returned list does not count as extra space.
  */
-public class Question448 {
+class Question448 {
 
     public static void main(String[] args) {
         int[] nums = new int[]{1, 1};

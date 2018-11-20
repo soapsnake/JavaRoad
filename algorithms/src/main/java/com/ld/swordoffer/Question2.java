@@ -3,7 +3,7 @@ package com.ld.swordoffer;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class Question2 {
+class Question2 {
     public static class SingleTon {
         private static SingleTon singleTon = null;
 

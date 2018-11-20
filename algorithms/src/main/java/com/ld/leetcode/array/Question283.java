@@ -6,7 +6,7 @@ import com.ld.leetcode.list.ArrayUtils;
  * Given an array nums, write a function to move all 0's to the end of it while maintaining the relative order of the non-zero elements.
  * For example, given nums = [0, 1, 0, 3, 12], after calling your function, nums should be [1, 3, 12, 0, 0].
  */
-public class Question283 {
+class Question283 {
     public static void main(String[] args) {
         int[] nums = new int[]{0, 1, 0, 3, 12};
         Question283 question283 = new Question283();

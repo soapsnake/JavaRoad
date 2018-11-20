@@ -1,6 +1,6 @@
 package com.ld.leetcode.dynamic;
 
-public class Question5 {
+class Question5 {
 
     public static void main(String[] args) {
         Question5 question5 = new Question5();

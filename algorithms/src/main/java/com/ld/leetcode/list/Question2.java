@@ -10,7 +10,7 @@ package com.ld.leetcode.list;
  * Output: 7 -> 0 -> 8
  * Explanation: 342 + 465 = 807.
  */
-public class Question2 {
+class Question2 {
 
     public static void main(String[] args) {
         ListNode l1 = new ListNode(9);

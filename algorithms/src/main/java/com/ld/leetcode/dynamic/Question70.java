@@ -8,7 +8,7 @@ import java.util.Map;
  * Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
  * Note: Given n will be a positive integer.
  */
-public class Question70 {
+class Question70 {
 
     //解法1:斐波那契数列的递归算法,利用map缓存中间结果(字典缓存算法)
     Map<Integer, Integer> map = new HashMap<>();

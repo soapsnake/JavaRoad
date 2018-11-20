@@ -19,7 +19,7 @@ import java.util.Stack;
  * /  \
  * 4     14
  */
-public class Question144 {
+class Question144 {
 
     /**
      * 2

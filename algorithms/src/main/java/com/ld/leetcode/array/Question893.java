@@ -7,7 +7,7 @@ package com.ld.leetcode.array;
  * You are given an array A of strings.
  * Two strings S and T are special-equivalent if after any number of moves, S == T.
  */
-public class Question893 {
+class Question893 {
 
     public int numSpecialEquivGroups(String[] A) {
         //todo 题目没有看懂???

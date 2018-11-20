@@ -4,7 +4,7 @@ package com.ld.leetcode.binarytree;
  * Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center).
  * For example, this binary tree [1,2,2,3,4,4,3] is symmetric:
  */
-public class Question101 {
+class Question101 {
     public static void main(String[] args) {
         TreeNode origin = TreeNode.makeTree();
         System.out.println("======================================");

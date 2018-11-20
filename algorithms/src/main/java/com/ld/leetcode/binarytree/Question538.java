@@ -4,7 +4,7 @@ package com.ld.leetcode.binarytree;
  * Given a Binary Search Tree (BST), convert it to a Greater Tree such that every key of the original BST
  * is changed to the original key plus sum of all keys greater than the original key in BST.
  */
-public class Question538 {
+class Question538 {
 
     public static void main(String[] args) {
         Question538 question538 = new Question538();

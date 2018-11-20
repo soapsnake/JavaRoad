@@ -4,7 +4,7 @@ package com.ld.leetcode.str;
  * @author soapsnake
  * @date 2018/11/12
  */
-public class Question521 {
+class Question521 {
 
     public int findLUSlength(String a, String b) {
 

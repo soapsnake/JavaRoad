@@ -4,7 +4,7 @@ package com.ld.leetcode.str;
  * The Hamming distance between two integers is the number of positions at which the corresponding bits are different.
  * Given two integers x and y, calculate the Hamming distance.
  */
-public class Question461 {
+class Question461 {
 
     public static void main(String[] args) {
         Question461 question461 = new Question461();

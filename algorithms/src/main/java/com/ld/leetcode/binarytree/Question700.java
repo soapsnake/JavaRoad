@@ -5,7 +5,7 @@ package com.ld.leetcode.binarytree;
  * You need to find the node in the BST that the node's value equals the given value.
  * Return the subtree rooted with that node. If such node doesn't exist, you should return NULL.
  */
-public class Question700 {
+class Question700 {
 
     public static void main(String[] args) {
 

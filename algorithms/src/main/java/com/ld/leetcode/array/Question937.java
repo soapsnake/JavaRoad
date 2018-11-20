@@ -8,7 +8,7 @@ import java.util.List;
  * @author soapsnake
  * @date 2018/11/13
  */
-public class Question937 {
+class Question937 {
 
     public String[] reorderLogFiles(String[] logs) {
         //todo 难就难在数字日志次序不能乱

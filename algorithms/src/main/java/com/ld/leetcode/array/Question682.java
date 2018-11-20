@@ -7,7 +7,7 @@ import java.util.List;
  * @author soapsnake
  * @date 2018/11/3
  */
-public class Question682 {
+class Question682 {
 
     public int calPoints(String[] ops) {
         int res = 0;

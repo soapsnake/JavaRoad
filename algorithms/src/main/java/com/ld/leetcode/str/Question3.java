@@ -1,6 +1,6 @@
 package com.ld.leetcode.str;
 
-public class Question3 {
+class Question3 {
 
     public static void main(String[] args) {
         Question3 question3 = new Question3();

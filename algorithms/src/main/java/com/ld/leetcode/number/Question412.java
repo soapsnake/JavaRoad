@@ -7,7 +7,7 @@ import java.util.List;
  * @author soapsnake
  * @date 2018/11/5
  */
-public class Question412 {
+class Question412 {
 
     //todo 避免使用取余运算可以加快运行速度,想一下不用取余数怎么解决
     public List<String> fizzBuzz(int n) {

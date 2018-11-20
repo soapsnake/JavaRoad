@@ -4,7 +4,7 @@ import java.util.Comparator;
 import java.util.Stack;
 
 
-public class Question155 {
+class Question155 {
 
     public static void main(String[] args) {
         MinStack stack = new MinStack();

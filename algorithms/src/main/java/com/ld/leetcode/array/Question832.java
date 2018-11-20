@@ -6,7 +6,7 @@ package com.ld.leetcode.array;
  * Explanation: First reverse each row: [[0,1,1],[1,0,1],[0,0,0]].   //先进行横向翻转
  * Then, invert the image: [[1,0,0],[0,1,0],[1,1,1]]                 //然后0和1互换
  */
-public class Question832 {
+class Question832 {
     public static void main(String[] args) {
         Question832 question832 = new Question832();
         int[][] a = {{1, 1, 0, 1}, {1, 0, 1, 1}, {0, 0, 0, 1}};

@@ -9,7 +9,7 @@ import java.util.List;
  * @author soapsnake
  * @date 2018/11/7
  */
-public class Question897 {
+class Question897 {
     private List<TreeNode> nodes = new LinkedList<>();
     private List<Integer> integers = new LinkedList<>();
 

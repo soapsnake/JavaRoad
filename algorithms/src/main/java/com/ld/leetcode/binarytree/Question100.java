@@ -4,7 +4,7 @@ package com.ld.leetcode.binarytree;
  * Given two binary trees, write a function to check if they are the same or not.
  * Two binary trees are considered the same if they are structurally identical and the nodes have the same value.
  */
-public class Question100 {
+class Question100 {
 
     public static void main(String[] args) {
         Question100 question100 = new Question100();

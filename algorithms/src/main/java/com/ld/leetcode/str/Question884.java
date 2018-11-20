@@ -12,7 +12,7 @@ import java.util.Map;
  * We are given two sentences A and B.  (A sentence is a string of space separated words.
  * Each word consists only of lowercase letters.)
  */
-public class Question884 {
+class Question884 {
 
     public String[] uncommonFromSentences(String A, String B) {
         String[] awords = A.split(" ");

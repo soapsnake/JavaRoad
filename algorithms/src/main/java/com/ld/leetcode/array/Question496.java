@@ -6,7 +6,7 @@ import com.ld.leetcode.list.ArrayUtils;
  * @author soapsnake
  * @date 2018/11/8
  */
-public class Question496 {
+class Question496 {
 
     //todo 这道题目并不简单
     public int[] nextGreaterElement(int[] nums1, int[] nums2) {

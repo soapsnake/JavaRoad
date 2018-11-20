@@ -10,7 +10,7 @@ import java.util.Queue;
  * @author soapsnake
  * @date 2018/11/11
  */
-public class Question429 {
+class Question429 {
 
     public List<List<Integer>> levelOrder(Node root) {
 

@@ -6,7 +6,7 @@ import java.util.Arrays;
  * @author soapsnake
  * @date 2018/11/6
  */
-public class Question566 {
+class Question566 {
 
     //两次循环 + 额外数组,(本人的)弱智解法
     public int[][] matrixReshape(int[][] nums, int r, int c) {

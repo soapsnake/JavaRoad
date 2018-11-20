@@ -2,7 +2,7 @@ package com.ld.leetcode.array;
 
 import java.util.Arrays;
 
-public class Question35 {
+class Question35 {
 
     public static void main(String[] args) {
         int[] nums = new int[]{1, 2, 3, 4, 5, 7, 8, 10};

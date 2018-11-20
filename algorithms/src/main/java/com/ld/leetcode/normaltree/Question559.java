@@ -9,7 +9,7 @@ import java.util.List;
  * The maximum depth is the number of nodes along the longest path from the root
  * node down to the farthest leaf node.
  */
-public class Question559 {
+class Question559 {
 
     private int max = 0;
 

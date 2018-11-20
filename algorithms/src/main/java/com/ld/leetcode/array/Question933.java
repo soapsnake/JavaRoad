@@ -14,7 +14,7 @@ import java.util.TreeMap;
  * 思路2:如下利用TreeMap,关键是其tailMap方法
  *
  */
-public class Question933 {
+class Question933 {
 
     //todo 利用上面的思路1自己实现一遍
     class RecentCounter {

@@ -4,7 +4,7 @@ package com.ld.leetcode.array;
 import java.util.Arrays;
 
 //矩阵转置
-public class Question867 {
+class Question867 {
 
     public static void main(String[] args) {
         Question867 question867 = new Question867();

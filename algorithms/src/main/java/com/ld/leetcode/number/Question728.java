@@ -13,7 +13,7 @@ import java.util.List;
  * Given a lower and upper number bound, output a list of every possible self dividing number, including the bounds if possible.
  */
 
-public class Question728 {
+class Question728 {
 
     public static void main(String[] args) {
         int left = 1;

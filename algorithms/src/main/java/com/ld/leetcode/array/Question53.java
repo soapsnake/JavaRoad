@@ -1,6 +1,6 @@
 package com.ld.leetcode.array;
 
-public class Question53 {
+class Question53 {
 
     public static void main(String[] args) {
         Question53 question53 = new Question53();

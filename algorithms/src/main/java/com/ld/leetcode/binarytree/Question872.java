@@ -10,7 +10,7 @@ import java.util.Stack;
  *
  * Consider all the leaves of a binary tree.  From left to right order, the values of those leaves form a leaf value sequence.
  */
-public class Question872 {
+class Question872 {
 
     //卧槽,写完提交一遍过,吓死老子了
     //解法一的缺陷为,即使两个树不满足条件也必须全部遍历完才能知道结果

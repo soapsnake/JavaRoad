@@ -1,6 +1,6 @@
 package com.ld.leetcode.list;
 
-public class Question876 {
+class Question876 {
 
     public static void main(String[] args) {
         ListNode head = new ListNode(1);

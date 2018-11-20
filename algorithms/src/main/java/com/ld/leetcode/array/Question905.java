@@ -10,7 +10,7 @@ import com.ld.leetcode.list.ArrayUtils;
  * Input: [3,1,2,4]
  * Output: [2,4,3,1]
  */
-public class Question905 {
+class Question905 {
 
     public static void main(String[] args) {
         Question905 question905 = new Question905();

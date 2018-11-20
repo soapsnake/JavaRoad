@@ -1,6 +1,6 @@
 package com.ld.leetcode.list;
 
-public class Question234 {
+class Question234 {
 
     public static void main(String[] args) {
 

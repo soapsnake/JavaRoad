@@ -13,7 +13,7 @@ import java.util.Queue;
  * @author soapsnake
  * @date 2018/11/9
  */
-public class Question637 {
+class Question637 {
 
     //计算二叉树每层节点的平均值,利用队列实现,复杂度O(n²)
     public List<Double> averageOfLevels(TreeNode root) {

@@ -20,7 +20,7 @@ import java.util.Stack;
  * /  \
  * 4     14
  */
-public class Question94 {
+class Question94 {
     public static void main(String[] args) {
 
         Question94 question94 = new Question94();

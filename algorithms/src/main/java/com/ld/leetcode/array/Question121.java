@@ -7,7 +7,7 @@ package com.ld.leetcode.array;
  * design an algorithm to find the maximum profit.
  * 中文翻译:找出数组中,后面的数字减去前面的数字的最大值,如果后面的数字都比前面的小,那么返回0
  */
-public class Question121 {
+class Question121 {
     public static void main(String[] args) {
         Question121 question121 = new Question121();
         int[] pr = new int[]{7, 1, 5, 3, 6, 4};

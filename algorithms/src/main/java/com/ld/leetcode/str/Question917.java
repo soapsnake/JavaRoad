@@ -7,7 +7,7 @@ import java.util.List;
  * @author soapsnake
  * @date 2018/11/11
  */
-public class Question917 {
+class Question917 {
 
     public String reverseOnlyLetters(String S) {
         /**

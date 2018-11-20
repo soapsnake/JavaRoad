@@ -6,7 +6,7 @@ package com.ld.leetcode.binarytree;
  * Given a binary search tree and the lowest and highest boundaries as L and R, trim the tree so that all its elements lies in [L, R] (R >= L). You might need to change the root of the tree,
  * so the result should return the new root of the trimmed binary search tree.
  */
-public class Question669 {
+class Question669 {
 
     public TreeNode trimBST2(TreeNode root, int L, int R) {
 //        List<TreeNode> res = new ArrayList<>();

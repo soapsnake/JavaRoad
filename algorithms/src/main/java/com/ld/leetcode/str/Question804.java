@@ -9,7 +9,7 @@ import java.util.Map;
 /**
  * [".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."]
  */
-public class Question804 {
+class Question804 {
 
     public static void main(String[] args) {
         Question804 question804 = new Question804();

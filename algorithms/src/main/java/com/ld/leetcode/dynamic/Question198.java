@@ -1,6 +1,6 @@
 package com.ld.leetcode.dynamic;
 
-public class Question198 {
+class Question198 {
     public static void main(String[] args) {
         Question198 question198 = new Question198();
         int[] robs = new int[]{1, 3, 1};

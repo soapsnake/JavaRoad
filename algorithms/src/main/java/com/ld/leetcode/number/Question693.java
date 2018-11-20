@@ -4,7 +4,7 @@ package com.ld.leetcode.number;
  * @author soapsnake
  * @date 2018/11/10
  */
-public class Question693 {
+class Question693 {
 
     public boolean hasAlternatingBits(int n) {
         String biner = Integer.toBinaryString(n);

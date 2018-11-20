@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
  * For example,
  * Given [1,1,1,2,2,3] and k = 2, return [1,2].
  */
-public class Question347 {
+class Question347 {
     public static void main(String[] args) {
         Question347 question347 = new Question347();
         int[] tar = new int[]{1, 1, 1, 2, 2, 3};
