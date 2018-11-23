@@ -82,7 +82,7 @@ class Question637 {
         node.left.left = new TreeNode(15);
         node.left.right = new TreeNode(7);
 
-        List<Double> list = question637.averageOfLevels(TreeNode.makeTree());
+        List<Double> list = question637.averageOfLevels(TreeNode.makeNormalTree());
         ArrayUtils.printList(list);
     }
 

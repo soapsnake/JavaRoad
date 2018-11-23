@@ -8,7 +8,7 @@ class Question538 {
 
     public static void main(String[] args) {
         Question538 question538 = new Question538();
-        TreeNode node = TreeNode.makeTree();
+        TreeNode node = TreeNode.makeNormalTree();
         TreeNode newTree = question538.convertBST(node);
         TreeNode.layerTravse(newTree);
     }

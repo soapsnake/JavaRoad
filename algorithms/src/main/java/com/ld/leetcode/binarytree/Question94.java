@@ -24,7 +24,7 @@ class Question94 {
     public static void main(String[] args) {
 
         Question94 question94 = new Question94();
-        TreeNode node = TreeNode.makeTree();
+        TreeNode node = TreeNode.makeNormalTree();
 
         List<Integer> res = question94.inorderTraversal(node);
         System.out.println(res);

@@ -11,7 +11,7 @@ class Question226 {
 
 //        List<Integer> ls = new ArrayList<Integer>(Arrays.asList(nums));
 
-        TreeNode old = TreeNode.makeTree();
+        TreeNode old = TreeNode.makeNormalTree();
 
         Question226 question226 = new Question226();
         TreeNode newTree = question226.invertTree(old);

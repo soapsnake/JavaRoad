@@ -4,7 +4,7 @@ package com.ld.leetcode.binarytree;
 class Question104 {
     public static void main(String[] args) {
         Question104 solution = new Question104();
-        TreeNode node = TreeNode.makeTree();
+        TreeNode node = TreeNode.makeNormalTree();
         System.out.println("max depth is: " + solution.maxDepth(node));
 
         System.out.println("layerTraverse:");

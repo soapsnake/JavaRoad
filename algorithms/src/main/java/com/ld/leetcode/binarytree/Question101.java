@@ -6,7 +6,7 @@ package com.ld.leetcode.binarytree;
  */
 class Question101 {
     public static void main(String[] args) {
-        TreeNode origin = TreeNode.makeTree();
+        TreeNode origin = TreeNode.makeNormalTree();
         System.out.println("======================================");
 
         Question101 question101 = new Question101();

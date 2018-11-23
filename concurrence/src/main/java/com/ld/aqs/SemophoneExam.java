@@ -6,8 +6,8 @@ import java.util.concurrent.Semaphore;
 
 public class SemophoneExam {
     private static final int MAX_AVAILABLE = 100;
-    private final Semaphore semaphore = new Semaphore(MAX_AVAILABLE, true);
-    private Person[] items = new Person[]{};
+    private final Semaphore semaphore = new Semaphore(10, true);   //100个令牌
+    private Person[] items = new Person[100];
     private boolean[] used = new boolean[MAX_AVAILABLE];
 
     // Not a particularly efficient data structure; just for demo

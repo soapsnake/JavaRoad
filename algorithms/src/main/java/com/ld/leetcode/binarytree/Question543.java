@@ -11,7 +11,7 @@ class Question543 {
 
     public static void main(String[] args) {
         Question543 question543 = new Question543();
-        TreeNode treeNode = TreeNode.makeTree();
+        TreeNode treeNode = TreeNode.makeNormalTree();
         int max = question543.diameterOfBinaryTree(treeNode);
         System.out.println(max);
     }

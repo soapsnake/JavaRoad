@@ -23,7 +23,7 @@ class Question102 {
      */
     public static void main(String[] args) {
         Question102 question102 = new Question102();
-        System.out.println(question102.levelOrder(TreeNode.makeTree()));
+        System.out.println(question102.levelOrder(TreeNode.makeNormalTree()));
     }
 
     public List<List<Integer>> levelOrder(TreeNode root) {

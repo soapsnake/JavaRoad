@@ -18,46 +18,47 @@ public class TreeNode {
     }
 
     /**
-             *       3
-             *     /  \
-             *    9    20
-             *   / \
-             * 15   7
-            * /     \
-           * 8     12
-          * / \   /  \
-         * 6  9  10  22
-         * /  \
-        * 4   14
+     * 普通二叉树
+             *         3
+             *      /    \
+             *     9      20
+             *    /      /  \
+             *   8      15   7
+            *   /\            \
+           *   6  9           12
+          *   /    \          / \
+         *   4     14       10  22
      *
      * @return
      */
-    public static TreeNode makeTree() {
+    public static TreeNode makeNormalTree() {
         TreeNode root = new TreeNode(3);
-        root.left = new TreeNode(9);
+
         root.right = new TreeNode(20);
         root.right.left = new TreeNode(15);
         root.right.right = new TreeNode(7);
         root.right.right.right = new TreeNode(12);
-        root.right.right.left = new TreeNode(8);
-        root.right.right.left.left = new TreeNode(6);
-        root.right.right.left.right = new TreeNode(9);
         root.right.right.right.right = new TreeNode(22);
         root.right.right.right.left = new TreeNode(10);
-        root.right.right.right.left.left = new TreeNode(4);
-        root.right.right.right.left.right = new TreeNode(14);
+
+        root.left = new TreeNode(9);
+        root.left.left = new TreeNode(8);
+        root.left.left.left = new TreeNode(6);
+        root.left.left.right = new TreeNode(9);
+        root.left.left.left.left = new TreeNode(4);
+        root.left.left.right.right = new TreeNode(14);
         return root;
     }
 
     /**
      * 对称树
-     * 3
-     * /     \
-     * 20       20
-     * /  \     /  \
-     * 7    15   15   7
+     *        3
+     *     /    \
+     *   20      20
+     *  /  \     /  \
+     * 7    15  15   7
      **/
-    public static TreeNode makeSymmetric() {
+    public static TreeNode makeSymmetricTree() {
         TreeNode root = new TreeNode(3);
         root.left = new TreeNode(20);
         root.left.left = new TreeNode(7);
@@ -69,8 +70,29 @@ public class TreeNode {
         return root;
     }
 
+    /**
+     *
+     * 二叉搜索树
+     *       5
+     *      / \
+     *     3   6
+     *    /\    \
+     *   2  4    7
+     */
+    public static TreeNode makeBinerSearchTree() {
+            TreeNode root = new TreeNode(5);
+
+            root.left = new TreeNode(3);
+            root.left.left = new TreeNode(2);
+            root.left.right = new TreeNode(4);
+
+            root.right = new TreeNode(6);
+            root.right.right = new TreeNode(7);
+            return root;
+    }
+
     public static void main(String[] args) {
-        TreeNode treeNode = makeTree();
+        TreeNode treeNode = makeNormalTree();
 
         List<List<TreeNode>> lists = layerTravse(treeNode);
 
@@ -168,6 +190,18 @@ public class TreeNode {
         ArrayUtils.printList(vals);
         return nodes;
     }
+
+    //todo 先序遍历递归实现
+    public static List<TreeNode> frontTravseRecursive(TreeNode root) {
+
+        return null;
+    }
+
+    //todo 中序遍历递归实现
+    public static List<TreeNode> middleTravseRecursive(TreeNode root) {
+        return null;
+    }
+
 
     @Override
     public String toString() {
