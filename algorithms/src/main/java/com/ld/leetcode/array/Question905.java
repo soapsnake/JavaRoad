@@ -1,7 +1,5 @@
 package com.ld.leetcode.array;
 
-import com.ld.leetcode.list.ArrayUtils;
-
 /**
  * Given an array A of non-negative integers,
  * return an array consisting of all the even elements of A,

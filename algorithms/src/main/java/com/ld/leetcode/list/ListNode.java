@@ -4,7 +4,7 @@ public class ListNode {
     public int val;
     public ListNode next;
 
-    public ListNode tail;
+//    public ListNode tail;
 
     public ListNode() {
 
@@ -86,10 +86,10 @@ public class ListNode {
         if (node == null) {
             throw new NullPointerException("节点不能位null");
         }
-        if (this.tail != null) {
-            this.tail.next = node;
-        }
-        this.tail = node;
+//        if (this.tail != null) {
+//            this.tail.next = node;
+//        }
+//        this.tail = node;
     }
 
     @Override
@@ -121,6 +121,7 @@ public class ListNode {
 //            list = list.next;
 //        }
 //    }
+
 
     @Override
     public boolean equals(Object o) {

@@ -1,6 +1,6 @@
 package com.ld.leetcode.str;
 
-import com.ld.leetcode.list.ArrayUtils;
+import com.ld.leetcode.array.ArrayUtils;
 
 /**
  * @author soapsnake

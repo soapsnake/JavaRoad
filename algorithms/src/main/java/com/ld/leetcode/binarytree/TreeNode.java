@@ -1,6 +1,6 @@
 package com.ld.leetcode.binarytree;
 
-import com.ld.leetcode.list.ArrayUtils;
+import com.ld.leetcode.array.ArrayUtils;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

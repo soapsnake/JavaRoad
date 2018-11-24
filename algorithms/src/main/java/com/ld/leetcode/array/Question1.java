@@ -1,7 +1,5 @@
 package com.ld.leetcode.array;
 
-import com.ld.leetcode.list.ArrayUtils;
-
 import java.util.HashMap;
 import java.util.Map;
 

@@ -7,10 +7,20 @@ package com.ld.leetcode.list;
  */
 class Question237 {
 
-
     public void deleteNode(ListNode node) {
+        node.val = node.next.val;
+        node.next = node.next.next;
+    }
 
+    public static void main(String[] args) {
+        Question237 question237 = new Question237();
+        ListNode head = new ListNode(1);
+        head.next = new ListNode(2);
+        head.next.next = new ListNode(3);
+        head.next.next.next = new ListNode(4);
+        ListNode.printListNode(head);
 
+        ListNode.printListNode(head);
     }
 
 }

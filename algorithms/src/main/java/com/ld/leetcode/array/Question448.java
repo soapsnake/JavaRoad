@@ -1,7 +1,5 @@
 package com.ld.leetcode.array;
 
-import com.ld.leetcode.list.ArrayUtils;
-
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;

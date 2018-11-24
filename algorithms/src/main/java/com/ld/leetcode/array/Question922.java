@@ -1,7 +1,5 @@
 package com.ld.leetcode.array;
 
-import com.ld.leetcode.list.ArrayUtils;
-
 class Question922 {
 
     public static void main(String[] args) {
