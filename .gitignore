@@ -50,6 +50,7 @@ testignore.ls
 
 .project
 *.iml
+
 .settings
 /algorithms/.classpath
 /classes/

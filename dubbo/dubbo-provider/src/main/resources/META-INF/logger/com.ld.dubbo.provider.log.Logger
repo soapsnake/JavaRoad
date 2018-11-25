@@ -1,3 +1,3 @@
-kevin = com.ld.dubbo.provider.log.impl.KevinLogger
-snake = com.ld.dubbo.provider.log.impl.SnakeLogger
+kevin = com.soapsnake.dubbo.provider.log.impl.KevinLogger
+snake = com.soapsnake.dubbo.provider.log.impl.SnakeLogger
 

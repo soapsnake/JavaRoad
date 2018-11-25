@@ -34,25 +34,25 @@
     <dubbo:protocol name="dubbo" port="20880"/>
 
     <!-- service implementation, as same as regular local bean -->
-    <bean id="demoService" class="com.ld.dubbo.provider.demo.DemoServiceImpl"/>
-    <bean id="barService" class="com.ld.dubbo.provider.demo.BarServiceImpl" />
+    <bean id="demoService" class="com.soapsnake.dubbo.provider.demo.DemoServiceImpl"/>
+    <bean id="barService" class="com.soapsnake.dubbo.provider.demo.BarServiceImpl" />
 
     <!-- declare the service interface to be exported -->
-    <dubbo:service interface="com.ld.dubbo.api.service.DemoService" ref="demoService"/>
-    <dubbo:service interface="com.ld.dubbo.api.service.BarService" ref="barService" />
+    <dubbo:service interface="com.soapsnake.dubbo.api.service.DemoService" ref="demoService"/>
+    <dubbo:service interface="com.soapsnake.dubbo.api.service.BarService" ref="barService" />
 
     <dubbo:provider token="true"/>
 
-    <bean id="callbackService" class="com.ld.dubbo.provider.callback.CallbackServiceImpl" />
-    <dubbo:service interface="com.ld.dubbo.api.service.CallbackService" ref="callbackService" connections="1" callbacks="1000">
+    <bean id="callbackService" class="com.soapsnake.dubbo.provider.callback.CallbackServiceImpl" />
+    <dubbo:service interface="com.soapsnake.dubbo.api.service.CallbackService" ref="callbackService" connections="1" callbacks="1000">
         <dubbo:method name="addListener">
             <!--<dubbo:argument index="1" callback="true" />-->
             <!--也可以通过指定类型的方式-->
-            <dubbo:argument type="com.ld.dubbo.api.service.CallbackListener" callback="true" />
+            <dubbo:argument type="com.soapsnake.dubbo.api.service.CallbackListener" callback="true" />
         </dubbo:method>
     </dubbo:service>
 
-    <bean id="genericService" class="com.ld.dubbo.provider.demo.MyGenericService" />
-    <dubbo:service interface="com.ld.dubbo.api.service.TestGenericService" ref="genericService" />
+    <bean id="genericService" class="com.soapsnake.dubbo.provider.demo.MyGenericService" />
+    <dubbo:service interface="com.soapsnake.dubbo.api.service.TestGenericService" ref="genericService" />
 
 </beans>

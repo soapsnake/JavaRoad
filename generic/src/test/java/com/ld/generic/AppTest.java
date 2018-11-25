@@ -1,4 +1,4 @@
-package com.ld.generic;
+package com.soapsnake.generic;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

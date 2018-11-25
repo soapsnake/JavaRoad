@@ -7,8 +7,8 @@
 
 
     <!-- fixedAddress 硬编码服务端地址-->
-    <bean id="helloWorldService" class="com.vico.license.rpc.ThriftServiceClientProxyFactory">
-        <property name="service" value="com.vico.license.service.HelloWorldService"></property>
+    <bean id="helloWorldService" class="com.soapsnake.thrift.license.rpc.ThriftServiceClientProxyFactory">
+        <property name="service" value="com.soapsnake.thrift.license.service.HelloWorldService"></property>
         <property name="serverAddress" value="10.4.226.212:9090"></property>
         <!--<property name="serverAddress" value="127.0.0.1:9090"></property>-->
         <property name="maxActive" value="5"></property>

@@ -1,5 +1,5 @@
-import com.ld.dubbo.provider.loader.KevinExtensionLoader;
-import com.ld.dubbo.provider.log.Logger;
+import com.soapsnake.dubbo.provider.loader.KevinExtensionLoader;
+import com.soapsnake.dubbo.provider.log.Logger;
 import org.junit.Test;
 
 /**

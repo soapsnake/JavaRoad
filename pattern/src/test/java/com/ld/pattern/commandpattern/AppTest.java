@@ -1,4 +1,4 @@
-package com.ld.pattern.commandpattern;
+package com.soapsnake.pattern.commandpattern;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

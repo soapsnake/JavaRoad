@@ -3,4 +3,4 @@
 - pattern: about design patterns
 - hbase-clint: something about HBase api
 - spi: about Java-spi
-- zookeeper: zk client api
+- zookeeper-client: zk client api
