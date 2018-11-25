@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by liudun on 2017/7/4.
+ * Created by soapsnake on 2017/7/4.
  */
 public class BoundedClassReferences<T> {
 

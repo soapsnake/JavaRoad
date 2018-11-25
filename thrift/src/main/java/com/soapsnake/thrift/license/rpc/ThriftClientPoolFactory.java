@@ -10,7 +10,7 @@ import org.apache.thrift.transport.TTransport;
 
 /**
  * 对象池创建类
- * Created by liudun on 2017/6/4.
+ * Created by soapsnake on 2017/6/4.
  */
 public class ThriftClientPoolFactory extends BasePoolableObjectFactory<TServiceClient> {
     private String serverAddress;

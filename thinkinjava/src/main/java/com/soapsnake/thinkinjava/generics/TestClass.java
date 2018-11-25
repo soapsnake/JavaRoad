@@ -7,7 +7,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Created by liudun on 2017/7/14.
+ * Created by soapsnake on 2017/7/14.
  */
 public class TestClass<T extends Number> {
 

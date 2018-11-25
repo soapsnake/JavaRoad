@@ -3,7 +3,7 @@ package com.soapsnake.thinkinjava.math;
 import com.soapsnake.thinkinjava.array.ArrayTest2;
 
 /**
- * Created by liudun on 2017/6/10.
+ * Created by soapsnake on 2017/6/10.
  */
 public class ArrayTest3 extends ArrayTest2 {
 

@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.Set;
 
 /**
- * Created by liudun on 2017/5/17.
+ * Created by soapsnake on 2017/5/17.
  */
 public class ForwardingSet<E> implements Set<E> {
     private final Set<E> s;

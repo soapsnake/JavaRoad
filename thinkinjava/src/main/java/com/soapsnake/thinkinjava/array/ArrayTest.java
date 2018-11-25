@@ -1,7 +1,7 @@
 package com.soapsnake.thinkinjava.array;
 
 /**
- * Created by liudun on 2017/6/9.
+ * Created by soapsnake on 2017/6/9.
  */
 public class ArrayTest {
 

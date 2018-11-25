@@ -10,7 +10,7 @@ import org.apache.zookeeper.data.Stat;
 import java.io.IOException;
 
 /**
- * Created by liudun on 2017/5/20.
+ * Created by soapsnake on 2017/5/20.
  */
 public class Status implements Watcher {
     private ZooKeeper zk;

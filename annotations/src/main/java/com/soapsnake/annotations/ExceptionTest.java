@@ -7,7 +7,7 @@ import java.lang.annotation.Target;
 
 /**
  * 这个注解专用于测试会抛出异常的方法
- * Created by liudun on 2017/5/16.
+ * Created by soapsnake on 2017/5/16.
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)

@@ -16,7 +16,7 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 
 /**
- * Created by liudun on 2017/9/21.
+ * Created by soapsnake on 2017/9/21.
  * <p>
  * 与表结构相关的操作
  */

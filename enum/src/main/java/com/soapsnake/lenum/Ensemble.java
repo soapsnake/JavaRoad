@@ -1,7 +1,7 @@
 package com.soapsnake.lenum;
 
 /**
- * Created by liudun on 2017/5/16.
+ * Created by soapsnake on 2017/5/16.
  */
 public enum Ensemble {
 

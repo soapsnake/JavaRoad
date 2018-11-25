@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.Random;
 
 /**
- * Created by liudun on 2017/5/20.
+ * Created by soapsnake on 2017/5/20.
  */
 public class Worker implements Watcher {
 

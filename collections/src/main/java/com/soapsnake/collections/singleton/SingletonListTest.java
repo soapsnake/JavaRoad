@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Created by liudun on 2017/6/2.
+ * Created by soapsnake on 2017/6/2.
  */
 public class SingletonListTest {
 

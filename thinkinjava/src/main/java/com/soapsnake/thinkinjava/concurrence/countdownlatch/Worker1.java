@@ -3,7 +3,7 @@ package com.soapsnake.thinkinjava.concurrence.countdownlatch;
 import java.util.concurrent.CountDownLatch;
 
 /**
- * Created by liudun on 2017/7/21.
+ * Created by soapsnake on 2017/7/21.
  */
 public class Worker1 implements Runnable {
     private CountDownLatch countDownLatch;

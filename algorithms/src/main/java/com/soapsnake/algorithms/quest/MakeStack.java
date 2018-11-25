@@ -4,7 +4,7 @@ import java.util.Queue;
 import java.util.concurrent.ArrayBlockingQueue;
 
 /**
- * Created by liudun on 2018/1/22.
+ * Created by soapsnake on 2018/1/22.
  * 用两个队列实现一个栈
  */
 public class MakeStack {

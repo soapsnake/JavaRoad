@@ -1,7 +1,7 @@
 package com.soapsnake.thinkinjava.concurrence;
 
 /**
- * Created by liudun on 2017/9/14.
+ * Created by soapsnake on 2017/9/14.
  */
 public class CountThread implements Runnable {
     @Override

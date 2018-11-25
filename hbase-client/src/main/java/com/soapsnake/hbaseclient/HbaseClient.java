@@ -23,7 +23,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Created by liudun on 2017/9/16.
+ * Created by soapsnake on 2017/9/16.
  */
 public class HbaseClient {
 

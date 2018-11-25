@@ -1,7 +1,7 @@
 package com.soapsnake.hbaseclient;
 
 /**
- * Created by liudun on 2017/9/19.
+ * Created by soapsnake on 2017/9/19.
  */
 public class Person {
 

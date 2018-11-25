@@ -15,7 +15,7 @@ import org.apache.log4j.BasicConfigurator;
 import java.net.InetSocketAddress;
 
 /**
- * Created by liudun on 2018/1/16.
+ * Created by soapsnake on 2018/1/16.
  * 服务器
  */
 public class ChatRoomServer {

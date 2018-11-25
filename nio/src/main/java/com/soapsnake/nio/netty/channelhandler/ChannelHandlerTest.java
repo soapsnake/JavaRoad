@@ -6,7 +6,7 @@ import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelPipeline;
 
 /**
- * Created by liudun on 2018/1/15.
+ * Created by soapsnake on 2018/1/15.
  */
 public class ChannelHandlerTest {
 

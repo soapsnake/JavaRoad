@@ -7,7 +7,7 @@ import java.nio.channels.Selector;
 import java.nio.channels.SocketChannel;
 
 /**
- * Created by liudun on 2017/9/12.
+ * Created by soapsnake on 2017/9/12.
  */
 public class NioTest {
 

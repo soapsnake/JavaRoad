@@ -3,7 +3,7 @@ package com.soapsnake.pattern.observerpattern.observer;
 import com.soapsnake.pattern.observerpattern.object.ObjectConcreateImpl;
 
 /**
- * @author Liu.Dun
+ * @author soapsnake
  * 观察者对象
  */
 public class ObserverConcreateImpl implements ObserverConcreate {

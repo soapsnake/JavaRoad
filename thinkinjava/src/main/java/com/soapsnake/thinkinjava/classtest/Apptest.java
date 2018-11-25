@@ -1,7 +1,7 @@
 package com.soapsnake.thinkinjava.classtest;
 
 /**
- * Created by liudun on 2017/7/3.
+ * Created by soapsnake on 2017/7/3.
  */
 public class Apptest {
 

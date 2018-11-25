@@ -3,7 +3,7 @@ package com.soapsnake.thinkinjava.array;
 import java.util.Random;
 
 /**
- * Created by liudun on 2017/6/10.
+ * Created by soapsnake on 2017/6/10.
  */
 public class ArrayTest2 {
 

@@ -24,7 +24,7 @@ import java.util.List;
 
 /**
  * 各种各样的hbase过滤器
- * Created by liudun on 2017/9/20.
+ * Created by soapsnake on 2017/9/20.
  */
 public class CustomFilter {
 

@@ -5,7 +5,7 @@ import com.soapsnake.thinkinjava.array.ArrayTest2;
 import java.util.Random;
 
 /**
- * Created by liudun on 2017/6/8.
+ * Created by soapsnake on 2017/6/8.
  */
 public class MathTest {
 

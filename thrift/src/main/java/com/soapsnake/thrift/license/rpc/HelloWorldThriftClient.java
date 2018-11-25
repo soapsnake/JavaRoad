@@ -6,7 +6,7 @@ import org.apache.thrift.TException;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
- * Created by liudun on 2017/6/4.
+ * Created by soapsnake on 2017/6/4.
  */
 
 public class HelloWorldThriftClient {

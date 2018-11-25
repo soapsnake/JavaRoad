@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.util.Date;
 
 /**
- * Created by liudun on 2017/5/20.
+ * Created by soapsnake on 2017/5/20.
  */
 public class Monitor implements Watcher {
     private ZooKeeper zk;

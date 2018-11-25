@@ -1,7 +1,7 @@
 package com.soapsnake.thinkinjava.abstracttest;
 
 /**
- * Created by liudun on 2017/6/14.
+ * Created by soapsnake on 2017/6/14.
  */
 public class Parcel9 {
     public static void main(String[] args) {

@@ -1,7 +1,7 @@
 package com.soapsnake.algorithms.utils;
 
 /**
- * Created by liudun on 2018/1/29.
+ * Created by soapsnake on 2018/1/29.
  */
 public class YiHuo {
 

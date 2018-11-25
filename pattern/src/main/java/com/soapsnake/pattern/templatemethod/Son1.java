@@ -1,7 +1,7 @@
 package com.soapsnake.pattern.templatemethod;
 
 /**
- * Created by liudun on 2017/8/24.
+ * Created by soapsnake on 2017/8/24.
  */
 public class Son1 extends Absparent {
     @Override

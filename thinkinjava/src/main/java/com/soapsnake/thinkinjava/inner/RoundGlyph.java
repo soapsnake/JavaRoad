@@ -1,7 +1,7 @@
 package com.soapsnake.thinkinjava.inner;
 
 /**
- * Created by liudun on 2017/6/18.
+ * Created by soapsnake on 2017/6/18.
  */
 public class RoundGlyph extends Glyph {
 

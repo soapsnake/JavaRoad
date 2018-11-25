@@ -7,7 +7,7 @@ import org.apache.hadoop.io.Writable;
 import org.apache.hadoop.mapreduce.Mapper;
 
 /**
- * Created by liudun on 2017/9/26.
+ * Created by soapsnake on 2017/9/26.
  */
 public class ImportFromFile {
 

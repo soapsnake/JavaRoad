@@ -1,7 +1,7 @@
 package com.soapsnake.nativemethod;
 
 /**
- * Created by liudun on 2017/4/7.
+ * Created by soapsnake on 2017/4/7.
  */
 public class NativeMethodTest {
 

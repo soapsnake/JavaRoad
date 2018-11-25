@@ -7,7 +7,7 @@ import io.netty.handler.codec.ByteToMessageDecoder;
 import java.util.List;
 
 /**
- * Created by liudun on 2018/1/16.
+ * Created by soapsnake on 2018/1/16.
  */
 public class ByteToCharDecoder extends ByteToMessageDecoder {
     @Override

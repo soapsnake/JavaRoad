@@ -1,7 +1,7 @@
 package com.soapsnake.annotations;
 
 /**
- * Created by liudun on 2017/5/16.
+ * Created by soapsnake on 2017/5/16.
  */
 public class Sample2 {
     @ExceptionTest(ArithmeticException.class)

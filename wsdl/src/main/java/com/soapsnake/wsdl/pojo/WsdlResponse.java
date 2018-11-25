@@ -1,7 +1,7 @@
 package com.soapsnake.wsdl.pojo;
 
 /**
- * Created by liudun on 2017/4/5.
+ * Created by soapsnake on 2017/4/5.
  */
 public class WsdlResponse {
 

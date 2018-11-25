@@ -1,7 +1,7 @@
 package com.soapsnake.pattern.commandpattern.receiver;
 
 /**
- * @author Liu.Dun
+ * @author soapsnake
  * 命令接受者,命令接受者和命令发起者完全解耦,不知道
  * 对自己发号施令的到底是个什么货色
  */

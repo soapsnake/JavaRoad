@@ -1,7 +1,7 @@
 package com.soapsnake.concurrence.multithread.effective;
 
 /**
- * Created by liudun on 2017/5/17.
+ * Created by soapsnake on 2017/5/17.
  */
 public interface SetObserver<E> {
 

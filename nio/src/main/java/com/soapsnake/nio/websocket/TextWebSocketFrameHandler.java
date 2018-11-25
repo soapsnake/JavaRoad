@@ -8,7 +8,7 @@ import io.netty.handler.codec.http.websocketx.WebSocketServerProtocolHandler;
 import org.apache.log4j.Logger;
 
 /**
- * Created by liudun on 2018/1/16.
+ * Created by soapsnake on 2018/1/16.
  * 用来处理websocket请求的handler,这个handle要跟在httprequesthandler的后边
  */
 public class TextWebSocketFrameHandler extends SimpleChannelInboundHandler<TextWebSocketFrame> {

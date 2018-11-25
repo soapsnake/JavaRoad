@@ -1,7 +1,7 @@
 package com.soapsnake.thinkinjava.array;
 
 /**
- * Created by liudun on 2017/6/10.
+ * Created by soapsnake on 2017/6/10.
  */
 public class Initial {
 

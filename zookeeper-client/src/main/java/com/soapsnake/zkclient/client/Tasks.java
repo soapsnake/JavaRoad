@@ -11,7 +11,7 @@ import org.apache.zookeeper.ZooKeeper;
 import java.io.IOException;
 
 /**
- * Created by liudun on 2017/5/20.
+ * Created by soapsnake on 2017/5/20.
  */
 public class Tasks implements Watcher {
     private ZooKeeper zk;

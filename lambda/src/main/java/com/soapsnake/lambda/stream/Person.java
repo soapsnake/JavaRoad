@@ -1,7 +1,7 @@
 package com.soapsnake.lambda.stream;
 
 /**
- * Created by liudun on 2017/6/1.
+ * Created by soapsnake on 2017/6/1.
  */
 public class Person {
 

@@ -1,7 +1,7 @@
 package com.soapsnake.thinkinjava.inherit;
 
 /**
- * Created by liudun on 2017/7/27.
+ * Created by soapsnake on 2017/7/27.
  */
 public class Parent {
 

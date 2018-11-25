@@ -1,7 +1,7 @@
 package com.soapsnake.springboot.domain;
 
 /**
- * Created by liudun on 2017/6/3.
+ * Created by soapsnake on 2017/6/3.
  */
 public class Contact {
 

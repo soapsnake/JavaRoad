@@ -7,7 +7,7 @@ import io.netty.buffer.Unpooled;
 import io.netty.channel.Channel;
 
 /**
- * Created by liudun on 2018/1/15.
+ * Created by soapsnake on 2018/1/15.
  */
 public class HowToGetByteBuf {
     //两种获取ByteBuf的方式

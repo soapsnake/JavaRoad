@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Created by liudun on 2017/9/12.
+ * Created by soapsnake on 2017/9/12.
  */
 public class FileLock {
 

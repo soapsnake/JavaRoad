@@ -3,7 +3,7 @@ package com.soapsnake.thinkinjava.map;
 import java.util.Hashtable;
 
 /**
- * Created by liudun on 2017/6/21.
+ * Created by soapsnake on 2017/6/21.
  */
 public class SpringDetector {
 

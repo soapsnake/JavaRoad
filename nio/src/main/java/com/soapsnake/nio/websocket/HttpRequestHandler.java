@@ -22,7 +22,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 
 /**
- * Created by liudun on 2018/1/16.
+ * Created by soapsnake on 2018/1/16.
  * 用来处理http请求的handler
  */
 public class HttpRequestHandler extends SimpleChannelInboundHandler<FullHttpRequest> {

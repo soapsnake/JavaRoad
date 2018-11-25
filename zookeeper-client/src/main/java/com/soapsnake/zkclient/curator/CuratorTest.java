@@ -10,7 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Created by liudun on 2017/5/26.
+ * Created by soapsnake on 2017/5/26.
  */
 public class CuratorTest {
     private static final Logger LOGGER = LoggerFactory.getLogger(CuratorTest.class);

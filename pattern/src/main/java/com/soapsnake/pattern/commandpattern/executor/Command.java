@@ -1,7 +1,7 @@
 package com.soapsnake.pattern.commandpattern.executor;
 
 /**
- * @author Liu.Dun
+ * @author soapsnake
  * 执行者
  */
 public interface Command {

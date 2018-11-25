@@ -5,13 +5,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * Created by liudun on 2017/5/27.
+ * Created by soapsnake on 2017/5/27.
  */
 public class StreamTest {
 
     public static void main(String[] args) {
 
-        List<String> list = Arrays.asList("liudun", "zhangliting", "maohongyan");
+        List<String> list = Arrays.asList("soapsnake", "zhangliting", "maohongyan");
 
         //计算list中每个单词的hashcode,并且输出到控制台,map为中间操作,forEach为终结操作常用来做遍历
         list.stream().map(String::hashCode).forEach(System.out::println);

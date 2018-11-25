@@ -1,7 +1,7 @@
 package com.soapsnake.thinkinjava.list;
 
 /**
- * Created by liudun on 2017/7/11.
+ * Created by soapsnake on 2017/7/11.
  */
 public class Person implements Comparable<Person> {
 

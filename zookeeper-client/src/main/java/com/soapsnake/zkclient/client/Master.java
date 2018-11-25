@@ -16,7 +16,7 @@ import static org.apache.zookeeper.ZooDefs.Ids.OPEN_ACL_UNSAFE;
 
 /**
  * 用来在zookeeper中创建master节点(znode)
- * Created by liudun on 2017/5/19.
+ * Created by soapsnake on 2017/5/19.
  */
 public class Master implements Watcher {
 

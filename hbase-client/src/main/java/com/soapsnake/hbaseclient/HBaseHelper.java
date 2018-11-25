@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * Created by liudun on 2017/9/16.
+ * Created by soapsnake on 2017/9/16.
  */
 public class HBaseHelper implements Closeable {
 

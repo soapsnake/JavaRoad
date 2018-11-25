@@ -8,7 +8,7 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.cglib.proxy.Proxy;
 
 /**
- * Created by liudun on 2017/6/4.
+ * Created by soapsnake on 2017/6/4.
  */
 public class ThriftServiceClientProxyFactory implements FactoryBean, InitializingBean {
 

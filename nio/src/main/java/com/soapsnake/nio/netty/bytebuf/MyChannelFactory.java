@@ -34,7 +34,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
 /**
- * Created by liudun on 2018/1/15.
+ * Created by soapsnake on 2018/1/15.
  */
 public class MyChannelFactory {
 

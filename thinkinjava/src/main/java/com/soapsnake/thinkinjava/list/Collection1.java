@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.Iterator;
 
 /**
- * Created by liudun on 2017/6/23.
+ * Created by soapsnake on 2017/6/23.
  */
 public class Collection1 {
 

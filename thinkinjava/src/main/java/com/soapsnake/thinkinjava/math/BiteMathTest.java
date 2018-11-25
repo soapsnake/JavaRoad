@@ -1,7 +1,7 @@
 package com.soapsnake.thinkinjava.math;
 
 /**
- * Created by liudun on 2017/6/11.
+ * Created by soapsnake on 2017/6/11.
  */
 public class BiteMathTest {
 

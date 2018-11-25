@@ -7,7 +7,7 @@ import java.net.SocketException;
 import java.net.URL;
 
 /**
- * Created by liudun on 2017/9/14.
+ * Created by soapsnake on 2017/9/14.
  */
 public class NetTest {
 

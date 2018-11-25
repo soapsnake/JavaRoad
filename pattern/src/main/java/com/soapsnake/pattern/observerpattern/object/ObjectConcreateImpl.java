@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author Liu.Dun
+ * @author soapsnake
  * 目标对象,负责处理具体的任务
  */
 public class ObjectConcreateImpl extends ObjectConcreate {

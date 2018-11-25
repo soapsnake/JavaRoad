@@ -3,7 +3,7 @@ package com.soapsnake.thinkinjava.inner;
 import java.util.Stack;
 
 /**
- * Created by liudun on 2017/6/29.
+ * Created by soapsnake on 2017/6/29.
  */
 public class StackTEest {
 

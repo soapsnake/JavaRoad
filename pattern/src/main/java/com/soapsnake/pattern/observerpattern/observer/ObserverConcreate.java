@@ -3,7 +3,7 @@ package com.soapsnake.pattern.observerpattern.observer;
 /**
  * +
  *
- * @author Liu.Dun
+ * @author soapsnake
  * 观察者接口
  */
 public interface ObserverConcreate {

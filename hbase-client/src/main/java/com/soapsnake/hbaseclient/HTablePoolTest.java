@@ -9,7 +9,7 @@ import org.apache.hadoop.hbase.client.Table;
 import java.io.IOException;
 
 /**
- * Created by liudun on 2017/9/20.
+ * Created by soapsnake on 2017/9/20.
  * hbase表池,多线程可从该表池中获取HTable
  */
 public class HTablePoolTest {

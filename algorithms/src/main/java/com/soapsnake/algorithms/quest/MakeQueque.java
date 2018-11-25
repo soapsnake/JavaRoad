@@ -3,7 +3,7 @@ package com.soapsnake.algorithms.quest;
 import java.util.Stack;
 
 /**
- * Created by liudun on 2018/1/22.
+ * Created by soapsnake on 2018/1/22.
  * 用两个栈实现一个队列
  */
 public class MakeQueque {
