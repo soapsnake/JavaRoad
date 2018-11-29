@@ -96,9 +96,9 @@ public class TreeNode {
 
         List<List<TreeNode>> lists = layerTravse(treeNode);
 
-        List<TreeNode> vals = frontTravse(treeNode);
+        List<TreeNode> vals = frontTravseWhile(treeNode);
 
-        List<TreeNode> vals2 = middleTravse(treeNode);
+        List<TreeNode> vals2 = middleTravseWhile(treeNode);
     }
 
     //层状遍历二叉树
@@ -140,7 +140,7 @@ public class TreeNode {
     }
 
     //前序遍历   根 --> 左孩 --> 右孩
-    public static List<TreeNode> frontTravse(TreeNode root) {
+    public static List<TreeNode> frontTravseWhile(TreeNode root) {
         List<Integer> vals = new ArrayList<>();
         List<TreeNode> nodes = new ArrayList<>();
 
@@ -166,7 +166,7 @@ public class TreeNode {
     }
 
     //中序遍历:   左孩  --> 根 --> 右孩
-    public static List<TreeNode> middleTravse(TreeNode root) {
+    public static List<TreeNode> middleTravseWhile(TreeNode root) {
         //TODO debug
         List<Integer> vals = new ArrayList<>();
         List<TreeNode> nodes = new ArrayList<>();
@@ -200,6 +200,21 @@ public class TreeNode {
     //todo 中序遍历递归实现
     public static List<TreeNode> middleTravseRecursive(TreeNode root) {
         return null;
+    }
+
+    //TODO 右序遍历递归实现
+    public static List<TreeNode> rightTravseRecursive(TreeNode root) {
+        return null;
+    }
+
+    //todo 二叉查找树节点插入
+    public boolean insertIntoBinerSearchTree(TreeNode node) {
+        return false;
+    }
+
+    //todo 二叉查找树节点删除
+    public boolean removeFromBinerSearchTree(TreeNode node) {
+        return false;
     }
 
 

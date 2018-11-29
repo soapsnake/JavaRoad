@@ -76,6 +76,6 @@ class Question669 {
         root.right.left = new TreeNode(13);
         root.right.right = new TreeNode(17);
 
-        TreeNode.middleTravse(question669.trimBST(root, 6, 15));
+        TreeNode.middleTravseWhile(question669.trimBST(root, 6, 15));
     }
 }

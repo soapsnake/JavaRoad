@@ -169,7 +169,7 @@ class Question897 {
 
 //    public static void main(String[] args) {
 //        Question897 question897 = new Question897();
-//        TreeNode.frontTravse(question897.increasingBST(TreeNode.makeNormalTree()));
+//        TreeNode.frontTravseWhile(question897.increasingBST(TreeNode.makeNormalTree()));
 //    }
 
 }
