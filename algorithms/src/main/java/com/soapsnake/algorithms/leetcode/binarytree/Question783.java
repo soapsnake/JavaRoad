@@ -55,7 +55,7 @@ public class Question783 {
         if (root.left != null) {
             dfs(root.left);
         }
-        min = Math.min(root.val - this.last, min);
+        min = Math.min(root.val - this.last, min);   //last取Integer.MIN会造成溢出,得到负无穷大数
         System.out.println(min);
         last = root.val;
         if (root.right != null) {
@@ -63,5 +63,23 @@ public class Question783 {
         }
     }
 
+    public List<TreeNode> inorderDFS(TreeNode root) {
+        if (root == null)
+            return null;
+
+        List<TreeNode> res = new ArrayList<>();
+        TreeNode cur = root;
+        Stack<TreeNode> stack = new Stack<>();
+        while (cur != null || !stack.isEmpty()) {
+            while (cur != null) {
+                stack.push(cur);
+                cur = cur.left;
+            }
+            cur = stack.pop();
+            res.add(cur);
+            cur = cur.right; //如果这步后cur=null,大循环也不会退出因为!stack.isEmpty()
+        }
+        return res;
+    }
 
 }
