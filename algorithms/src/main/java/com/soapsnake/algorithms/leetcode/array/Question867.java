@@ -15,16 +15,16 @@ class Question867 {
     }
 
     public int[][] transpose(int[][] A) {
-        //todo 只适用于正方形矩阵,不适用于长方形矩阵
+        int row = A.length;
+        int collum = A[0].length;
+        int[][] B = new int[collum][row];
+
         for (int i = 0; i < A.length; i++) {
             for (int j = 0; j < A[i].length; j++) {
-                int temp = A[i][j];
-                A[i][j] = A[j][i];
-                A[j][i] = temp;
+                B[j][i] = A[i][j];
             }
         }
-
-        return A;
+        return B;
     }
 
 }

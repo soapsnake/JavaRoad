@@ -5,6 +5,7 @@ import com.soapsnake.algorithms.leetcode.array.ArrayUtils;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Stack;
 
 //多叉树的先根遍历(前序遍历)
 class Question589 {
@@ -25,7 +26,10 @@ class Question589 {
 
         Question589 question589 = new Question589();
 
-        ArrayUtils.printList(question589.preorder(root));
+//        ArrayUtils.printList(question589.preorder(root));
+
+        ArrayUtils.printList(question589.preorder2(root));
+
     }
 
     //递归版本实现
@@ -33,13 +37,10 @@ class Question589 {
         if (null == root) {
             return res;
         }
-
         res.add(root.val);
-
         if (root.children == null || root.children.isEmpty()) {
             return res;
         }
-
         for (Node node : root.children) {
             preorder(node);
         }
@@ -48,8 +49,22 @@ class Question589 {
 
     //todo 循环版本实现
     public List<Integer> preorder2(Node root) {
-
-        return null;
+        List<Integer> list = new ArrayList<>();
+        if (root == null) {
+            return list;
+        }
+        Stack<Node> stack = new Stack<>();
+        stack.push(root);
+        while (!stack.empty()) {
+            root = stack.pop();
+            list.add(root.val);
+            if (root.children != null) {
+                for (int i = root.children.size() - 1; i >= 0; i--) {
+                    stack.push(root.children.get(i));
+                }
+            }
+        }
+        return list;
     }
 
 }

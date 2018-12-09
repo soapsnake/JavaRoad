@@ -93,12 +93,13 @@ public class TreeNode {
 
     public static void main(String[] args) {
         TreeNode treeNode = makeNormalTree();
+        List<TreeNode> lists1 = frontTravseWhile(treeNode);
 
-        List<List<TreeNode>> lists = layerTravse(treeNode);
-
-        List<TreeNode> vals = frontTravseWhile(treeNode);
-
-        List<TreeNode> vals2 = middleTravseWhile(treeNode);
+//        List<List<TreeNode>> lists = layerTravse(treeNode);
+//
+//        List<TreeNode> vals = frontTravseWhile(treeNode);
+//
+//        List<TreeNode> vals2 = middleTravseWhile(treeNode);
     }
 
     //层状遍历二叉树
@@ -143,24 +144,26 @@ public class TreeNode {
     public static List<TreeNode> frontTravseWhile(TreeNode root) {
         List<Integer> vals = new ArrayList<>();
         List<TreeNode> nodes = new ArrayList<>();
-
         //前序遍历时,stack用来存放右子节点,当所有的左子节点遍历结束,弹栈即可实现所有右子节点的遍历
         Stack<TreeNode> stack = new Stack<>();
         TreeNode cur = root;
         while (cur != null || !stack.isEmpty()) {
             while (cur != null) {
+                nodes.add(cur);
+                vals.add(cur.val);
                 if (cur.right != null) {
                     stack.push(cur.right);
                 }
-                vals.add(cur.val);
-                nodes.add(cur);
                 cur = cur.left;
             }
-            if (!stack.isEmpty()) {
-                cur = stack.pop();
+            cur = stack.pop();
+            nodes.add(cur);
+            vals.add(cur.val);
+            if (cur.right != null) {
+                stack.push(cur.right);
             }
+            cur = cur.left;
         }
-        System.out.print("前序遍历: ");
         ArrayUtils.printList(vals);
         return nodes;
     }
@@ -180,10 +183,9 @@ public class TreeNode {
                 temp.add(cur);
                 cur = cur.left;
             }
-
             cur = temp.pop();
-//            vals.add(cur.val);
-//            nodes.add(cur);
+            vals.add(cur.val);
+            nodes.add(cur);
             cur = cur.right;
         }
         System.out.print("中序遍历: ");
