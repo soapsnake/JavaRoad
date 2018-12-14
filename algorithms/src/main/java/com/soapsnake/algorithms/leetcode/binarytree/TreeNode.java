@@ -102,7 +102,7 @@ public class TreeNode {
 //        List<TreeNode> vals2 = middleTravseWhile(treeNode);
     }
 
-    //层状遍历二叉树
+    //层状遍历迭代版
     //@see:Question102 完全自己手写
     public static List<List<TreeNode>> layerTravse(TreeNode root) {
 
@@ -140,7 +140,15 @@ public class TreeNode {
         return lists;
     }
 
-    //前序遍历   根 --> 左孩 --> 右孩
+    //层状遍历递归版本
+    //link: https://leetcode.com/problems/binary-tree-level-order-traversal-ii/discuss/34981/My-DFS-and-BFS-java-solution
+    public static List<List<TreeNode>> layerTravseRecursive(TreeNode root) {
+        //todo
+        return null;
+    }
+
+
+        //前序遍历   根 --> 左孩 --> 右孩
     public static List<TreeNode> frontTravseWhile(TreeNode root) {
         List<Integer> vals = new ArrayList<>();
         List<TreeNode> nodes = new ArrayList<>();
