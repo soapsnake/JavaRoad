@@ -1,4 +1,4 @@
-package com.soapsnake.algorithms.leetcode.number;
+package com.soapsnake.algorithms.leetcode.biner;
 
 /**
  * Given a positive integer, output its complement number.

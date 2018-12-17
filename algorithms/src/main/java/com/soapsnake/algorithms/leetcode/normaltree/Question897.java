@@ -2,8 +2,10 @@ package com.soapsnake.algorithms.leetcode.normaltree;
 
 import com.soapsnake.algorithms.leetcode.binarytree.TreeNode;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Stack;
 
 /**
  * @author soapsnake
@@ -13,17 +15,17 @@ class Question897 {
     private List<TreeNode> nodes = new LinkedList<>();
     private List<Integer> integers = new LinkedList<>();
 
-    public TreeNode increasingBST2(TreeNode root) {
+    public TreeNode increasingBST5(TreeNode root) {
         if (root == null) {
             return null;
         }
         //把树里面的节点按大小序插入链表
         this.insertList(root);
         if (root.left != null) {
-            increasingBST(root.left);
+            increasingBST5(root.left);
         }
         if (root.right != null) {
-            increasingBST(root.right);
+            increasingBST5(root.right);
         }
 
         TreeNode newRoot = nodes.get(0);
@@ -66,21 +68,21 @@ class Question897 {
         return search(0, mid, arr, dest);
     }
 
-    public static void main(String[] args) {
-        Question897 question897 = new Question897();
-        int[] dest = {1,2,3,4,5,6,7,8,9,13,15};   //9的索引为8
-
-        int target = 1;
-        long start1 = System.nanoTime();
-        System.out.println(question897.binerSearch(dest, target));
-        long end1 = System.nanoTime() - start1;
-
-        long start2 = System.nanoTime();
-        System.out.println(question897.iterateBS(dest, target));
-        long end2 = System.nanoTime() - start2;
-
-        System.out.println("cost1 = " + end1 + " cost2 = " + end2);
-    }
+//    public static void main(String[] args) {
+//        Question897 question897 = new Question897();
+//        int[] dest = {1,2,3,4,5,6,7,8,9,13,15};   //9的索引为8
+//
+//        int target = 1;
+//        long start1 = System.nanoTime();
+//        System.out.println(question897.binerSearch(dest, target));
+//        long end1 = System.nanoTime() - start1;
+//
+//        long start2 = System.nanoTime();
+//        System.out.println(question897.iterateBS(dest, target));
+//        long end2 = System.nanoTime() - start2;
+//
+//        System.out.println("cost1 = " + end1 + " cost2 = " + end2);
+//    }
 
     //迭代版二分
     private int iterateBS(int[] arr, int dest) {
@@ -140,7 +142,7 @@ class Question897 {
 //    }
 
     private TreeNode newRoot;
-    public TreeNode increasingBST(TreeNode root) {
+    public TreeNode increasingBST4(TreeNode root) {
         if (root == null) {
             return null;
         }
@@ -159,17 +161,45 @@ class Question897 {
         }
 
         if (root.left != null) {
-            increasingBST(root.left);
+            increasingBST4(root.left);
         }
         if (root.right != null) {
-            increasingBST(root.right);
+            increasingBST4(root.right);
         }
         return newRoot;
     }
 
-//    public static void main(String[] args) {
-//        Question897 question897 = new Question897();
-//        TreeNode.frontTravseWhile(question897.increasingBST(TreeNode.makeNormalTree()));
-//    }
+    List<TreeNode> res = new ArrayList<>();
+    public TreeNode increasingBST(TreeNode root) {
+        if (root == null) {
+            return null;
+        }
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode cur = root;
+
+        TreeNode newRoot = new TreeNode(0);
+        TreeNode tail = newRoot;
+        while (cur != null || !stack.empty()) {
+            while (cur != null) {
+                stack.push(cur);
+                cur = cur.left;
+            }
+
+            cur = stack.pop();
+            tail.right = cur;
+            tail = tail.right;
+            cur.left = null;
+            cur = cur.right;
+        }
+        return newRoot.right; //这里返回的是newRoot得right子节点
+    }
+
+
+
+
+    public static void main(String[] args) {
+        Question897 question897 = new Question897();
+        TreeNode.layerTravse(question897.increasingBST(question897.increasingBST(TreeNode.makeBinerSearchTree())));
+    }
 
 }

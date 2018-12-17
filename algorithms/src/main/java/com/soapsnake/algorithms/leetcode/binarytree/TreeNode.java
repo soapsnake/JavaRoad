@@ -13,7 +13,7 @@ public class TreeNode {
     public TreeNode left;
     public TreeNode right;
 
-    TreeNode(int x) {
+    public TreeNode(int x) {
         val = x;
     }
 
@@ -215,6 +215,32 @@ public class TreeNode {
     //TODO 右序遍历递归实现
     public static List<TreeNode> rightTravseRecursive(TreeNode root) {
         return null;
+    }
+
+
+    /**
+     *437题的二叉树
+     *       10
+     *      /  \
+     *     5   -3
+     *    / \    \
+     *   3   2   11
+     *  / \   \
+     * 3  -2   1
+     */
+    public static TreeNode makeNormalTreeFor437() {
+        TreeNode root = new TreeNode(10);
+        //left
+        root.left = new TreeNode(5);
+        root.left.left = new TreeNode(3);
+        root.left.right = new TreeNode(2);
+        root.left.left.left = new TreeNode(3);
+        root.left.left.right = new TreeNode(-2);
+
+        //right
+        root.right = new TreeNode(-3);
+        root.right.right = new TreeNode(11);
+        return root;
     }
 
     //todo 二叉查找树节点插入

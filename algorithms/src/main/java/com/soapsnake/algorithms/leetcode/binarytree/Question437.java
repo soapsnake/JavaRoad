@@ -3,7 +3,10 @@ package com.soapsnake.algorithms.leetcode.binarytree;
 class Question437 {
 
     public static void main(String[] args) {
+        TreeNode treeNode = TreeNode.makeNormalTreeFor437();
 
+        Question437 question437 = new Question437();
+        System.out.println(question437.pathSum(treeNode, 8));
     }
 
     /**
@@ -18,12 +21,25 @@ class Question437 {
      * @return
      */
     public int pathSum(TreeNode root, int sum) {
-        //TODO 这个还没有解了!!!!!!!1
+        //dfs
         if (root == null) {
             return 0;
         }
+        int count = 0;
+        if (root.val + preTraval(root.left) + preTraval(root.right) == sum) {
+            count++;
+        }
+        return count;
+    }
 
+    private int preTraval(TreeNode root) {
+        if (root.left != null) {
+            preTraval(root.left);
+        }
 
-        return 0;
+        if (root.right != null) {
+            preTraval(root.right);
+        }
+        return root.val;
     }
 }

@@ -4,49 +4,31 @@ class Question922 {
 
     public static void main(String[] args) {
         Question922 question922 = new Question922();
-        int[] a = new int[]{4, 1, 1, 0, 1, 0};
+        int[] a = new int[]{3,2};
         int[] res = question922.sortArrayByParityII(a);
         ArrayUtils.printArr(res);
     }
 
-    //有问题:左指针必须和右指针的情形必须反过来
     public int[] sortArrayByParityII(int[] A) {
-        if (A.length % 2 != 0) {  //元素必然成对
-            return null;
-        }
+        int even = 0;
+        int odd = 1;
+        int length = A.length;
 
-        for (int left = 0, right = A.length - 1; right > left; ) {
-            if (left % 2 == 0 & A[left] % 2 != 0) {
-                while (right > left) {
-                    if (right % 2 != 0 & A[right] % 2 == 0) {
-                        int temp = A[left];
-                        A[left] = A[right];
-                        A[right] = temp;
-                        System.out.println("right = " + right);
-                        break;
-                    }
-                    right--;
-                }
+        while (even < length && odd < length) {
+            while (even < length && A[even] % 2 == 0) {
+                even += 2;
             }
-            if (left % 2 != 0 & A[left] % 2 == 0) {
-                while (right > left) {
-                    if (right % 2 == 0 & A[right] % 2 != 0) {
-                        int temp = A[left];
-                        A[left] = A[right];
-                        A[right] = temp;
-                        System.out.println("2right = " + right);
-                        break;
-                    }
-                    right--;
-                }
+
+            while (odd < length && A[odd] % 2 != 0) {
+                odd += 2;
             }
-            left++;
+
+            if (even < length && odd < length) {
+                int temp = A[even];
+                A[even] = A[odd];
+                A[odd] = temp;
+            }
         }
         return A;
-    }
-
-    //todo 解法:奇数指针和偶数指针
-    public int[] sortArrayByParityII2(int[] A) {
-        return null;
     }
 }
