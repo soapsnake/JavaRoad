@@ -243,6 +243,22 @@ public class TreeNode {
         return root;
     }
 
+    /**
+     *     3
+     *    / \
+     *   9  20
+     *     /  \
+     *    15   7
+     */
+    public static TreeNode makeNormalTreeFor110() {
+        TreeNode root = new TreeNode(3);
+        root.left = new TreeNode(9);
+        root.right = new TreeNode(20);
+        root.right.right = new TreeNode(7);
+        root.right.left = new TreeNode(15);
+        return root;
+    }
+
     //todo 二叉查找树节点插入
     public boolean insertIntoBinerSearchTree(TreeNode node) {
         return false;
