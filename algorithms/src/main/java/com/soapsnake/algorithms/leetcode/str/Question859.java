@@ -40,7 +40,7 @@ public class Question859 {
                 if (charA[right] != charB[right]) {
                     break;
                 }
-                left++;
+                right--;
             }
 
             if (left < right) { //这里一定要加 left < right!!!!
