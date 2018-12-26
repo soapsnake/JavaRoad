@@ -10,7 +10,7 @@ import java.util.Set;
  */
 public class Question859 {
 
-    //整体时间复杂度为2O(n),算是非常高效的算法了!!!!
+    //整体时间复杂度为2xO(n),算是非常高效的算法了!!!!
     public boolean buddyStrings(String A, String B) {
         if (A.length() != B.length()) {
             return false;
