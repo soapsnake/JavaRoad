@@ -6,27 +6,29 @@ package com.soapsnake.algorithms.leetcode.binarytree;
  */
 public class Question108 {
 
-    TreeNode root;
+    /**
+     * 排序数组转平衡二叉搜索树
+     * @param nums
+     * @return
+     */
     public TreeNode sortedArrayToBST(int[] nums) {
-        int left = 0;
-        int right = nums.length - 1;
-        midTravel(nums, left, right);
+        //思路,把数组不断求中位数索引,传mid和数组不同部分进去
+        TreeNode root = this.find(0, nums.length - 1, nums);
         return root;
     }
 
-    private TreeNode midTravel(int[] nums, int left, int right) {
-        int mid = (left + right) / 2;
-        System.out.println("mid = " + mid);
-        root = new TreeNode(nums[mid]);
-        if (mid == 0 || mid == nums.length - 1) {
-            return root;
+    private TreeNode find(int left, int right, int[] nums) {
+        if (left > right) {  //递归终止条件
+            return null;
         }
-        root.left = midTravel(nums, left, mid - 1);
-        root.right = midTravel(nums, mid + 1, right);
-        TreeNode.layerTravse(root);
 
-        return root;
+        int mid = left + (right - left) / 2;
+        TreeNode node = new TreeNode(nums[mid]);   //数组的中卫数作为父节点
+        node.left = find(left, mid - 1, nums);
+        node.right = find(mid + 1, right, nums);
+        return node;
     }
+
 
     public static void main(String[] args) {
         Question108 question108 = new Question108();

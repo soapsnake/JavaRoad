@@ -14,7 +14,6 @@ public class Question122 {
         //1. 一次买入必须有一次卖出,所以周6不能买入,周一不能卖出
         //买入为-, 卖出为+
 
-
         //如果题目不限制同一天即能买入也能卖出,那么用下面的解法就可以了
         int total = 0;
         for (int i=0; i< prices.length-1; i++) {
@@ -25,7 +24,6 @@ public class Question122 {
 
 
         //todo 如果限制一天只能买入/或者卖出了?如何用DP解决这个问题?
-
 
     }
 }
