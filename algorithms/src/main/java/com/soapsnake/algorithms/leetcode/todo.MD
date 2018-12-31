@@ -14,6 +14,7 @@
 - HashSet的add()添加失败时会返回false,可用这个来判数组或list的重复元素
 - 左右指针碰撞算法可以用来解决的题:917,922,859,快排(的思路)
 - 判断字符是否'a'~'z'或者'A'~'Z'(英语字母): Character.isLetter(c)
+- 判断字符是数字:Character.isDigit(c)
 - idea如果进入debug时长时间卡顿,可尝试把项目所有以前打的断点全部删除
 - char[]转string最有效的办法是String.valueOf(char[]);
 - 字符串List转数组最有效的办法是list.toArray(new String[0]);
