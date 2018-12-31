@@ -1,7 +1,9 @@
 package com.soapsnake.algorithms.leetcode.array;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * Given an array of integers, return indices of the two numbers such that they add up to a specific target.
@@ -18,6 +20,7 @@ class Question1 {
 //        }
     }
 
+    //解法1:暴力枚举
     public int[] twoSum(int[] nums, int target) {
         int[] res = new int[2];
         for (int i = 0; i < nums.length; i++) {
@@ -42,6 +45,31 @@ class Question1 {
                 res[1] = temp.get(target - nums[i]);
             }
             temp.put(nums[i], i);
+        }
+        return res;
+    }
+
+    //解法3:左右指针碰撞算法!!!!这题不行,因为nums不是排序的,但是如果对其进行排序,会破坏其原始指针
+    //这里用了个map来保存值 -> 索引的映射,想法是好的,但是一旦有重复的值就歇逼了,所以还是不行
+    public int[] twoSum3(int[] nums, int target) {
+        int[] res = new int[2];
+        int left = 0;
+        int right = nums.length - 1;
+        Map<Integer, Integer> map = new TreeMap<>(); //值 -> 索引
+        for (int i = 0; i < nums.length; i++) {
+            map.put(nums[i], i);
+        }
+        Arrays.sort(nums);
+        for (;right > left;) {
+            if (nums[left] + nums[right] == target) {
+                res[0] = map.get(nums[left]);
+                res[1] = map.get(nums[right]);
+                break;
+            }else if (nums[left] + nums[right] > target) {
+                right--;
+            }else if (nums[left] + nums[right] < target) {
+                left++;
+            }
         }
         return res;
     }

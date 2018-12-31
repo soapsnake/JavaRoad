@@ -14,38 +14,51 @@ import java.util.Set;
  */
 class Question784 {
 
-    //todo 这个题目没有那么简单,其实是树的遍历问题
+    //这个题目太他妈有意思了!!!!!
     public List<String> letterCasePermutation(String S) {
-        int smallLeft = 'a';
-        int smallRight = 'z';
-        int bigLeft = 'A';
-        int bigRight = 'Z';
-        int range = 'a' - 'A';
-
-        char[] chars = S.toCharArray();
-
-        Set<String> strings = new HashSet<>();
-        strings.add(S);
-        for (int i = 0; i < chars.length; i++) {
-            char[] tempChars = Arrays.copyOfRange(chars, 0, chars.length);
-            int curr = (int) chars[i];
-            if (smallLeft <= curr && curr <= smallRight) {
-                tempChars[i] = (char) (tempChars[i] - range);
-                String temp = new String(tempChars);
-                strings.add(temp);
-            }
-            if (bigLeft <= curr && curr <= bigRight) {
-                tempChars[i] = (char) (tempChars[i] + range);
-                String temp = new String(tempChars);
-                strings.add(temp);
-            }
+        Set<String> res = new HashSet<>();
+        if (S == null) {
+            return new ArrayList<>(res);
         }
-      return new ArrayList<>(strings);
+        if ("".equals(S)) {
+            return Arrays.asList("");
+        }
+        char[] chars = S.toCharArray();
+        //树的路径遍历算法
+        this.treeDFS(chars, 0, res);
+        return new ArrayList<>(res);
+    }
+
+    private void treeDFS(char[] chars, int index, Set<String> res) {
+        if (index == chars.length) {
+            res.add(String.valueOf(chars));
+            return;
+        }
+
+        //如果是数字那么直接跳过不处理
+        if (Character.isDigit(chars[index])) {
+            treeDFS(chars, index + 1, res);
+        }
+
+        //如果是字符那么其实需要大转小,或者是小转大
+        if (Character.isLetter(chars[index])) {
+            //不变一次,相当于treeDFS(root.left, ...);
+            treeDFS(chars, index + 1, res);
+
+            //变相应大(小)写又一次,相当于treeDFS(root.right, ...);
+            if (chars[index] - 'A' <= 25) {
+                chars[index] = (char) (chars[index] - ('A' - 'a')); //大写转小写
+            }else if (chars[index] - 'a' <= 25) {
+                chars[index] = (char) (chars[index] + ('A' - 'a')); //小写转大写
+            }
+            treeDFS(chars, index + 1, res);
+        }
     }
 
     public static void main(String[] args) {
         Question784 question784 = new Question784();
-        ArrayUtils.printList(question784.letterCasePermutation("a1b2"));
-
+        List<String> res = question784.letterCasePermutation("C");
+        System.out.println(res.size());
+        ArrayUtils.printList(res);
     }
 }

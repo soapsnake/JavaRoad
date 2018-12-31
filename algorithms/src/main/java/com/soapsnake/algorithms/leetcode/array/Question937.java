@@ -1,8 +1,7 @@
 package com.soapsnake.algorithms.leetcode.array;
 
 import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.Comparator;
 
 /**
  * @author soapsnake
@@ -11,39 +10,50 @@ import java.util.List;
 class Question937 {
 
     public String[] reorderLogFiles(String[] logs) {
-        //todo 难就难在数字日志次序不能乱
-        /**
-         * 1. 字母日志要在数字日志之前
-         * 2. 字母日志按字典序
-         * 3. 数字日志按原始顺序
-         */
-        List<String> res = new LinkedList<>();
-        for (int i = 0; i < logs.length; i++) {
-            if (isStrLog(logs[i])) {
-                if (res.isEmpty()) {
-                    res.add(logs[i]);
-                    continue;
-                }
-                String head = ((LinkedList<String>) res).element();
-                while (head != null) {
+        Comparator<String> comparator = (o1, o2) -> {
+            //1. 字母日志要在数字日志之前
+            if (isStrLog(o1) && !isStrLog(o2)) {
+                return -1;
+            }
+            //1. 字母日志要在数字日志之前
+            if (!isStrLog(o1) && isStrLog(o2)) {
+                return 1;
+            }
 
-
+            //2. 字母日志按字典序
+            if (isStrLog(o1) && isStrLog(o2)) {
+                int res0 = compareChar(getChar(o1, 0), getChar(o2, 0));
+                if (res0 == 0) { //如果第一个字符相同则继续比较第二个字符
+                    return compareChar(getChar(o1, 1), getChar(o2, 1));
+                } else {
+                    return res0;
                 }
             }
+
+            //3. 数字日志按原始顺序
+            if (!isStrLog(o1) && !isStrLog(o2)) {
+                return 0;
+            }
+            return 0;
+        };
+        Arrays.sort(logs, comparator);
+        return logs;
+    }
+
+    private int compareChar(char c1, char c2) {
+        if (c1 - c2 > 0) {
+            return 1;
+        } else if (c1 - c2 < 0) {
+            return -1;
+        }else {
+            return 0;
         }
-        return res.toArray(new String[0]);
     }
 
-    private void change(int i, int j, String[] arr) {
-        String temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
-    }
-
-    private int firstChar(String log) {
+    private char getChar(String log, int index) {
         String[] strings = log.split(" ");
         char[] chars = strings[1].toCharArray();
-        return (int) chars[0];
+        return chars[index];
     }
 
     private boolean isStrLog(String log) {
@@ -58,8 +68,9 @@ class Question937 {
 
     public static void main(String[] args) {
         Question937 question937 = new Question937();
-        String[] strings = {"t kvr", "r 3 1", "i 403", "7 so", "t 54"};
+        String[] strings = {"j mo", "5 m w","g 07","o 2 0","t q h"};
         System.out.println(Arrays.toString(question937.reorderLogFiles(strings)));
+        //["g1 act car","a8 act zoo","ab1 off key dog","a1 9 2 3 1","zo4 4 7"]
     }
 
 
