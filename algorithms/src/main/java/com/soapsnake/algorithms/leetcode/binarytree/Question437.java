@@ -1,12 +1,18 @@
 package com.soapsnake.algorithms.leetcode.binarytree;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 class Question437 {
 
     public static void main(String[] args) {
-        TreeNode treeNode = TreeNode.makeNormalTreeFor437();
+//        TreeNode treeNode = TreeNode.makeNormalTreeFor437();
+        TreeNode treeNode = new TreeNode(1);
 
         Question437 question437 = new Question437();
-        System.out.println(question437.pathSum(treeNode, 8));
+        System.out.println(question437.pathSum(treeNode, 1));
     }
 
     /**
@@ -22,24 +28,38 @@ class Question437 {
      */
     public int pathSum(TreeNode root, int sum) {
         //dfs
+        //这个题难就难在路径上的节点必须是父子连续节点,不连续的节点不算
         if (root == null) {
             return 0;
         }
-        int count = 0;
-        if (root.val + preTraval(root.left) + preTraval(root.right) == sum) {
-            count++;
-        }
-        return count;
+        List<String> res = new ArrayList<>();
+        Map<String, TreeNode> preNode = new HashMap<>();
+        preNode.put("", root);
+        this.treeDFS(0, root, sum, "", res, preNode);
+        System.out.println(res);
+        return res.size();
     }
 
-    private int preTraval(TreeNode root) {
-        if (root.left != null) {
-            preTraval(root.left);
+    private void treeDFS(int temp, TreeNode root, int sum, String path, List<String> res, Map<String, TreeNode> pre) {
+        if (root == null) {
+            return;
+        }
+        if (root.val + temp == sum) {
+            if (pre.get(path).left == root || pre.get(path).right == root) {
+                res.add(path + root.val);
+                return;
+            }
         }
 
-        if (root.right != null) {
-            preTraval(root.right);
-        }
-        return root.val;
+        //略过本节点
+        this.treeDFS(temp, root.left, sum, path, res, pre);
+        this.treeDFS(temp, root.right, sum, path,res, pre);
+
+        //加上本节点的值
+        temp = temp + root.val;
+        path = path + root.val + "->";
+        pre.put(path, root);
+        this.treeDFS(temp, root.left ,sum, path, res,  pre);
+        this.treeDFS(temp, root.right ,sum, path, res, pre);
     }
 }

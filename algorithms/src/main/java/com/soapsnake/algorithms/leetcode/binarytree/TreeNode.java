@@ -236,6 +236,7 @@ public class TreeNode {
         root.left.right = new TreeNode(2);
         root.left.left.left = new TreeNode(3);
         root.left.left.right = new TreeNode(-2);
+        root.left.right.right = new TreeNode(1);
 
         //right
         root.right = new TreeNode(-3);

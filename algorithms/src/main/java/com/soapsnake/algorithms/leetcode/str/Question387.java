@@ -1,5 +1,7 @@
 package com.soapsnake.algorithms.leetcode.str;
 
+import java.util.Arrays;
+
 /**
  * @Auther soapsnake@gmail.com
  * @Date 2018/12/4 19:15
@@ -10,6 +12,18 @@ public class Question387 {
 
         //todo freqen[]
 
+        int[] frequen = new int[26];
+        char[] chars = s.toCharArray();
+
+        for (int i = 0; i < chars.length; i++) {
+            frequen[chars[i] - 'a']++;
+        }
+        System.out.println(Arrays.toString(frequen));
+        for (int i = 0; i < chars.length; i++) {
+            if (frequen[chars[i] - 'a'] == 1) {
+                return i;
+            }
+        }
         return -1;
     }
 
@@ -19,6 +33,6 @@ public class Question387 {
 
         String tar1 = "cc";
 
-        System.out.println(question387.firstUniqChar(tar1));
+        System.out.println(question387.firstUniqChar(tar));
     }
 }
