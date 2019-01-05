@@ -1,18 +1,14 @@
 package com.soapsnake.algorithms.leetcode.binarytree;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 class Question437 {
 
     public static void main(String[] args) {
-//        TreeNode treeNode = TreeNode.makeNormalTreeFor437();
-        TreeNode treeNode = new TreeNode(1);
-
+        TreeNode treeNode = TreeNode.makeNormalTreeFor437();
         Question437 question437 = new Question437();
-        System.out.println(question437.pathSum(treeNode, 1));
+        System.out.println(question437.pathSum(treeNode, 8));
     }
 
     /**
@@ -28,38 +24,43 @@ class Question437 {
      */
     public int pathSum(TreeNode root, int sum) {
         //dfs
-        //这个题难就难在路径上的节点必须是父子连续节点,不连续的节点不算
+        //我觉得这个解法完全没有问题,不知道为啥不算对,他妈的
         if (root == null) {
             return 0;
         }
-        List<String> res = new ArrayList<>();
-        Map<String, TreeNode> preNode = new HashMap<>();
-        preNode.put("", root);
-        this.treeDFS(0, root, sum, "", res, preNode);
-        System.out.println(res);
-        return res.size();
+        List<String> finalres = new ArrayList<>();
+        this.treeDFS(0, root, sum, "", finalres, false);
+        System.out.println(finalres);
+        return finalres.size();
     }
 
-    private void treeDFS(int temp, TreeNode root, int sum, String path, List<String> res, Map<String, TreeNode> pre) {
+    private void treeDFS(int temp, TreeNode root, int sum, String path, List<String> finalres, boolean start) {
         if (root == null) {
             return;
         }
         if (root.val + temp == sum) {
-            if (pre.get(path).left == root || pre.get(path).right == root) {
-                res.add(path + root.val);
-                return;
-            }
+            path = path + root.val;
+            finalres.add(path);
+            return;
         }
 
-        //略过本节点
-        this.treeDFS(temp, root.left, sum, path, res, pre);
-        this.treeDFS(temp, root.right, sum, path,res, pre);
+        //如果还没开始求和,那么节点就有两种选择:作为第一个节点开始进行求和, 或者不开始求和,留给子类去做选择
+        if (!start) {
+            //本节点不作为开始节点
+            this.treeDFS(temp, root.left, sum, path, finalres, false);
+            this.treeDFS(temp, root.right, sum, path, finalres, false);
 
-        //加上本节点的值
-        temp = temp + root.val;
-        path = path + root.val + "->";
-        pre.put(path, root);
-        this.treeDFS(temp, root.left ,sum, path, res,  pre);
-        this.treeDFS(temp, root.right ,sum, path, res, pre);
+            //本节点作为开始节点
+            temp = temp + root.val;
+            path = path + root.val + "->";
+            this.treeDFS(temp, root.left, sum, path, finalres, true);
+            this.treeDFS(temp, root.right, sum, path, finalres, true);
+        }else {
+            //如果已经开始进行求和,那么这个节点就没有选择了,必须跟进
+            temp = temp + root.val;
+            path = path + root.val + "->";
+            this.treeDFS(temp, root.left, sum, path, finalres, true);
+            this.treeDFS(temp, root.right, sum, path, finalres, true);
+        }
     }
 }

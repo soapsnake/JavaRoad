@@ -59,7 +59,7 @@ public class Question67 {
         Question67 question67 = new Question67();
         String a = "110010";
         String b = "10111";
-        System.out.println(question67.addBinary2(a, b));
+        System.out.println(question67.addBinary3(a, b));
     }
 
     public String addBinary2(String a, String b) {
@@ -103,5 +103,26 @@ public class Question67 {
             resnum = "1" + resnum;
         }
         return resnum;
+    }
+
+    public String addBinary3(String a, String b) {
+        StringBuilder sb = new StringBuilder();
+        int i = a.length() - 1;
+        int j = b.length() - 1;
+        int carry = 0;
+        while (i >= 0 || j >= 0) {
+            int sum = carry;
+            if (j >= 0) {
+                sum += b.charAt(j--) - '0';
+            }
+            if (i >= 0) {
+                sum += a.charAt(i--) - '0';
+            }
+            sb.append(sum % 2);  //0, 1, 2  0和2的结果都是0, 1的结果是1,求余运算的特性
+            carry = sum / 2;   //只要sum大于2就会发生进位
+        }
+        if (carry != 0) sb.append(carry);
+        System.out.println("reverse前 = " + sb.toString());
+        return sb.reverse().toString();  //这里为什么要反转实在是想不明白
     }
 }

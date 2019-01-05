@@ -8,52 +8,22 @@ import java.util.Arrays;
  */
 public class Question453 {
 
-    private int recur = 0;
-    public int minMoves2(int[] nums) {
-        int maxIndex = 0;
-        int con = 1;
-        int biggest = Integer.MIN_VALUE;
-        int minnest = Integer.MAX_VALUE;
-        int diff = 0;
-        for (int i = 0; i < nums.length - 1; i++) {
-            //找出并记录数组中最大的数字和其索引
-            if (nums[i] != nums[i + 1]) {
-                int temp = nums[i] > nums[i + 1] ? nums[i] : nums[i + 1];
-                int min = nums[i] > nums[i + 1] ? nums[i + 1] : nums[i];
-                int tempIndex = nums[i] > nums[i + 1] ? i : i + 1;
-                if (temp > biggest) {
-                    biggest = temp;
-                    maxIndex = tempIndex;
-                }
-                if (min < minnest) {
-                    minnest = min;
-                }
-                diff = biggest - minnest;
-            } else {
-                con++;
-            }
-        }
-        if (con != nums.length) {
-            //发现了不等现象
-            for (int i = 0; i < nums.length; i++) {
-                if (i != maxIndex) {
-                    nums[i] += diff;
-                }
-            }
-            System.out.println(Arrays.toString(nums));
-            recur += diff;
-            minMoves(nums);
-        } else {
-            return recur;
-        }
-        return recur;
-    }
 
-    //把n - 1个元素进行加1操作,反过来,其实就是把某一个元素进行减1操作
+    /**
+     *Given a non-empty integer array of size n, find the minimum number of moves required to make all array elements equal,
+     * where a move is incrementing n - 1 elements by 1.
+     *
+     * 把n - 1个元素进行加1操作,反过来,其实就是把某一个元素进行减1操作
+     */
     public int minMoves(int[] nums) {
-        //todo
 
-        return 0;
+        //其实只需要找出来最小的数字就行了,没必要做排序
+        Arrays.sort(nums);
+        int count = 0;
+        for (int i = nums.length - 1; i >= 0 ; i--) {
+            count += nums[i] - nums[0];
+        }
+        return count;
     }
 
         public static void main(String[] args) {
