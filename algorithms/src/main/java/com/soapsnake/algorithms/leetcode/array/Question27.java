@@ -33,12 +33,11 @@ public class Question27 {
                 for (int j = i; j < nums.length - 1; j++) {
                     nums[j] = nums[j + 1];
                     if (nums[nums.length - 1] == val) {
-                        nums[nums.length - 1] = conf;
+                        nums[nums.length - 1] = conf; //保证最后一位不会再出现重复数引起重复数数目不对
                     }
                 }
             }
         }
-        System.out.println(Arrays.toString(nums));
         return newlen;
     }
 
