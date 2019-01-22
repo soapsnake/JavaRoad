@@ -2,7 +2,9 @@ package com.soapsnake.algorithms.leetcode.binarytree;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Auther soapsnake@gmail.com
@@ -51,6 +53,9 @@ public class Question501 {
 
     public static void main(String[] args) {
 //        TreeNode node = TreeNode.makeBinerSearchTree();
+
+        Map<String, Integer> jiushi = new HashMap<>();
+        jiushi.put("idjisa", null);
 
         TreeNode node = new TreeNode(2147483647);
 //        node.left = new TreeNode(1);
