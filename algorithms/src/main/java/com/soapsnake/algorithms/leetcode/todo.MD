@@ -1,6 +1,6 @@
 # 未解决问题阈值:20题
 # 没有解决干净的problem:
-1. 25min内解不出来(还剩4 chances): 205, 949, 234, 69, 437, 108, 15, 697, 189, 193, 203, 235, 937, 290, 482
+1. 25min内解不出来(还剩3 chances): 532, 507, 205, 949, 234, 69, 437, 108, 15, 697, 189, 193, 203, 235, 937, 290, 482, 
 2. 题目看不懂: 所有leetcode挂todo的题目: 806, 893, 921, 202
 3. 有更巧妙解法: 905, 832, 557, 728, 867, 872, 412, 566, 485, 258, 690, 389, 788, 349, 217, 796, 14, 110, 219,605, 67, 27, 268, 409
 4. 解法需要特殊数学知识: 812(3点坐标求三角形面积), 371(二进制), 476(二进制), 192
@@ -20,13 +20,13 @@
 - idea进入debug时"Finished,saving caches"卡住的解决办法:https://stackoverflow.com/questions/20658400/intellij-idea-hangs-while-finished-saving-caches
 - char[]转string最有效的办法是String.valueOf(char[]);
 - 字符串List转数组最有效的办法是list.toArray(new String[0]);
-- int型List转数组最有效办法是list.toArray(new Integer[0]),不能使用基本类型;
+- Integer型(int就不行)List转数组最有效办法是list.toArray(new Integer[0]),不能使用基本类型;
 - 某字符串包含某个字符用str.contains(c + "");
 - 字符串去掉某个字符应该用str.replace("#", "")双引号而非单引;
 - 取余运算(%)效率比较低,特别极端情况下应避免;
 - 如何创建一维的二维数组: int[][] dest = new int[length][1];
 - 同样的实现(比如二分查找),迭代花的时间比递归要长,网上说法是函数调用开销比较大;
-- 二分查找,中位索引使用加法,但是要注意mid能不能取到边界索引(0和length-1);
+- 二分查找,中位数的取法:int mid = left + (right - left) /2,要注意mid能不能取到边界索引(0和length-1);
 - ArrayList节点,LinkedList节点,HashMap的key....都可以为null,但是ConcurrentHashMap的k和v都不能为null
 - StringBuilder在开头插入字符可用sb.insert(0, "x");
 - 利用递归计算时,如果需要累积递归的附加效果,则目标变量最好是全局变量(例如690) //不推荐使用全局变量,但不用的话容易出错

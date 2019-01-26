@@ -8,9 +8,7 @@ class Question521 {
 
     public int findLUSlength(String a, String b) {
 
-        //本题题目有问题,实际上是一道检验智商的题
-
-        return 0;
+        return a.equals(b) ? -1 : Math.max(a.length(), b.length());
     }
 
     public static void main(String[] args) {
