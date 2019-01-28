@@ -16,8 +16,11 @@ public class Question949 {
         for (int n : A) {
             for (int size = q.size(); size > 0; size--) {
                 String s = q.poll();
-                for (int i = 0; i <= s.length(); i++)
-                    q.add(s.substring(0, i) + n + s.substring(i));
+                for (int i = 0; i <= s.length(); i++) {
+                    String temp = s.substring(0, i) + n + s.substring(i);
+                    System.out.println(temp);
+                    q.add(temp);
+                }
             }
         }
         String largest = "";
@@ -25,8 +28,10 @@ public class Question949 {
             s = s.substring(0, 2) + ":" + s.substring(2);
 
             //这个比较完全没有看懂?字符的compareto比较的是ASCII值吗?
-            if (s.charAt(3) < '6' && s.compareTo("24:00") < 0 && s.compareTo(largest) > 0)
+            if (s.charAt(3) < '6' && s.compareTo("24:00") < 0 && s.compareTo(largest) > 0) {
+                System.out.println("可能最大的时间; =>" + s);
                 largest = s;
+            }
         }
         return largest;
     }

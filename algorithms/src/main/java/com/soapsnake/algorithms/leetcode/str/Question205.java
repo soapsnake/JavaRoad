@@ -1,7 +1,7 @@
 package com.soapsnake.algorithms.leetcode.str;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @Auther soapsnake@gmail.com
@@ -9,35 +9,43 @@ import java.util.Set;
  */
 public class Question205 {
 
+    //还是没有看懂
     public boolean isIsomorphic(String s, String t) {
+        Map<Character, Integer> m1 = new HashMap<>();
+        Map<Character, Integer> m2 = new HashMap<>();
 
-        Set<Character> sTemp = new HashSet<>();
-        Set<Character> tTemp = new HashSet<>();
-        char[] charS = s.toCharArray();
-        char[] charT = t.toCharArray();
-        for (int i = 0; i < s.length(); i++) {
-            if (!sTemp.add(charS[i])) {
-                charS[i] = '0';
-            }
-            if (!tTemp.add(charT[i])) {
-                charT[i] = '0';
-            }
-        }
-
-        for (int i = 0; i < charS.length; i++) {
-            if (charS[i] == '0') {
-                if (charT[i] != '0') {
-                    return false;
-                }
+        for(Integer i = 0; i < s.length(); i++) {
+            //hashmap的put接口会返回插入的value的值,如果是同一键值不同的value(覆盖),会返回旧值
+            Integer i1 = m1.put(s.charAt(i), i);
+            Integer i2 = m2.put(t.charAt(i), i);
+            if(i1 != i2) {
+                return false;
             }
         }
         return true;
     }
 
+    //没有搞懂
+    public boolean isIsomorphic2(String s, String t) {
+        int[] m1 = new int[256];
+        int[] m2 = new int[256];
+        int n = s.length();
+        for (int i = 0; i < n; ++i) {
+            if (m1[s.charAt(i)] != m2[t.charAt(i)]) {   //char字符会转换成ASCii值
+                return false;
+            }
+            m1[s.charAt(i)] = i + 1;  //a -> 1   b -> 1
+            m2[t.charAt(i)] = i + 1; //b -> 1    a -> 1
+        }
+        return true;
+    }
+
+
+
     public static void main(String[] args) {
         Question205 question205 = new Question205();
         String s = "aba";
         String t = "baa";
-        System.out.println(question205.isIsomorphic(s, t));
+        System.out.println(question205.isIsomorphic2(s, t));
     }
 }
