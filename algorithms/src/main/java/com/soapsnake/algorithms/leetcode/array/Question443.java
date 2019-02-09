@@ -1,5 +1,8 @@
 package com.soapsnake.algorithms.leetcode.array;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 /**
  * @Auther soapsnake@gmail.com
  * @Date 2019-01-19 20:55
@@ -12,60 +15,20 @@ public class Question443 {
             return 0;
         }
 
-        for (int i = 0;i < chars.length;) {
-            int dup = 0;
-            int firstIndex = 0;
-            int j = i + 1;
-            for (; j < chars.length; j++) {
-                if (j == chars.length - 1) {
-                    if (chars[j] == chars[i]) {
-                        for (int start = firstIndex; start <= j; start++) {
-                            chars[start] = ' ';
-                        }
-                        return chars.length;
-                    }else {
-                        if (dup == 0) {
-                            return chars.length;
-                        } else {
-                            for (int start = firstIndex; start < j; start++) {
-                                chars[start] = ' ';
-                            }
-                            return chars.length;
-                        }
-                    }
-                }
-                if (chars[j] != chars[i]) { //
-                    if (dup == 0) {
-                        //没有重复的
-                        i++;
-                        continue;
-                    } else {
-                        //出现过重复,但是现在重复结束了,endIndex
-                        // 1.之前从第2次重复开始要改数字
-                        //2. i指针现在要移到新的位置
-                        int range = j - firstIndex;
-                        for (int start = firstIndex; start < j; start++) {
-                            chars[start] = ' ';
-                        }
-                        i = j;
-                        break;
-                    }
-                }else {
-                    if (dup == 0) { //第一次重复
-                        firstIndex = j; // 首次重复索引
-                        dup++;
-                    } else {
-                        dup++; //
-                    }
-                }
+        Map<Character, Integer> map = new LinkedHashMap<>();
+        for (int i = 0; i < chars.length; i++) {
+            if (map.containsKey(chars[i])) {
+                map.put(chars[i], map.get(chars[i]) + 1);
+            } else {
+                map.put(chars[i], 1);
             }
         }
-        return chars.length;
+        return 2 * map.size();
     }
 
     public static void main(String[] args) {
         Question443 question443 = new Question443();
-        char[] chars = {'a','a','b','b','c','c','c'};
+        char[] chars = {'a'};
         System.out.println(question443.compress(chars));
     }
 }
