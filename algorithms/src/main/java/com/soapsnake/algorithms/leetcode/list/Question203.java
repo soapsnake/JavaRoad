@@ -8,17 +8,18 @@ public class Question203 {
 
     //链表的题目真心都不简单,及其容易把人搞晕
     public ListNode removeElements(ListNode head, int val) {
-        ListNode fakeHead = new ListNode(1);
+        ListNode fakeHead = new ListNode(0);
         fakeHead.next = head;
-        ListNode prev = fakeHead;
         ListNode cur = head;
+        ListNode prev = fakeHead;
         while (cur != null) {
+            ListNode next = cur.next;
             if (cur.val == val) {
                 prev.next = cur.next;
             } else {
                 prev = prev.next;
             }
-            cur = cur.next;
+            cur = next;
         }
         return fakeHead.next;
     }
@@ -26,7 +27,7 @@ public class Question203 {
     public static void main(String[] args) {
         Question203 question203 = new Question203();
         ListNode head = ListNode.makeTestList();
-        ListNode.printListNode(question203.removeElements(head, 6));
+        ListNode.printListNode(question203.removeElements(head, 1));
     }
 
 }
