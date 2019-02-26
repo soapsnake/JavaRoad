@@ -37,8 +37,8 @@ public class Question19 {
         ListNode cur = head;
         ListNode fast = head;
         int i = n;
-        while (i > 0) {
-            if (fast == null) { //这题最难的就是计算快指针的初始位置
+        while (i > 0) {    //这题最难的就是计算快指针的初始位置
+            if (fast == null) {
                 return null;
             }
             fast = fast.next;
