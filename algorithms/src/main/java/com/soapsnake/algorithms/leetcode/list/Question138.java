@@ -32,10 +32,7 @@ public class Question138 {
 
     Map<Node, Node> cache = new HashMap<>();
     public Node copyRandomList(Node head) {
-
-
-
-        return null;
+      return null;
     }
 
     public static void main(String[] args) {
