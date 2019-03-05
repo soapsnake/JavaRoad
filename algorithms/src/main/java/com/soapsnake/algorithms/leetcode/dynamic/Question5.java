@@ -68,29 +68,32 @@ class Question5 {
         return source.equals(sb.toString());
     }
 
-    //动态规划,正确得解法,不过没有看明白
     //https://leetcode.com/problems/longest-palindromic-substring/solution/
     //中文解释可见:https://www.felix021.com/blog/read.php?2040
+    /**
+     * 动态规划算法
+     */
+    private int lo;       //最长子字符串左索引
+    private int maxLen;  //最长子字符串最大长度(右边界的偏移量)
     public String longestPalindromeDPSolution(String s) {
-        int start = 0, end = 0;
-        for (int i = 0; i < s.length(); i++) {
-            int len1 = expandAroundCenter(s, i, i);
-            int len2 = expandAroundCenter(s, i, i + 1);
-            int len = Math.max(len1, len2);
-            if (len > end - start) {
-                start = i - (len - 1) / 2;
-                end = i + len / 2;
-            }
-        }
-        return s.substring(start, end + 1);
+       if (s.length() < 2) {
+           return s;
+       }
+       for (int i = 0; i < s.length(); i++) {
+           this.extendPalindrome(s, i ,i);   //以第i个字符为中心点往两边扩散,那么子字符串长度将为奇数
+           this.extendPalindrome(s, i, i + 1); //以第i和i+1个字符为中心点往两边扩散,那么子字符串长度将为偶数
+       }
+       return s.substring(lo, lo + maxLen);
     }
 
-    private int expandAroundCenter(String s, int left, int right) {
-        int L = left, R = right;
-        while (L >= 0 && R < s.length() && s.charAt(L) == s.charAt(R)) {
-            L--;
-            R++;
+    private void extendPalindrome(String s, int left, int right) {
+        while (left >= 0 && right < s.length() - 1 && s.charAt(left) == s.charAt(right)) { //左右指针不是聚拢而是往两边扩散
+            left--;
+            right++;
         }
-        return R - L - 1;
+        if (maxLen < right - left - 1) {  //能进这个if说明这个子字符串的长度更加的长
+            lo = left + 1;
+            maxLen = right - left - 1;
+        }
     }
 }

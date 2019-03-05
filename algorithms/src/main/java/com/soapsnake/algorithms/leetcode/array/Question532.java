@@ -30,11 +30,31 @@ public class Question532 {
         return res;
     }
 
-    public static void main(String[] args) {
+    public int findPairs2(int[] nums, int k) {
+        Arrays.sort(nums);
+        int left = 0;
+        int right = nums.length - 1;
+        int res = 0;
+        while (right > left) {
+            if (nums[right] - nums[left] == k) {
+                res++;
+                left++;
+                right--;
+            } else if (nums[right] - nums[left] > k) {
+                left++;
+            } else if (nums[right] - nums[left] < k) {
+                right--;
+            }
+        }
+        return res;
+    }
+
+
+        public static void main(String[] args) {
         Question532 question532 = new Question532();
-        int[] nus = {1, 1, 1, 1, 1};
-        int k = 0;
-        System.out.println(question532.findPairs(nus, k));
+        int[] nus = {3,1,4,1,5};
+        int k = 2;
+        System.out.println(question532.findPairs2(nus, k));
     }
 
 

@@ -1,7 +1,6 @@
 package com.soapsnake.algorithms.leetcode.str;
 
 import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @Auther soapsnake@gmail.com
@@ -11,15 +10,21 @@ public class Question205 {
 
     //还是没有看懂
     public boolean isIsomorphic(String s, String t) {
-        Map<Character, Integer> m1 = new HashMap<>();
-        Map<Character, Integer> m2 = new HashMap<>();
+        if(s == null || s.length() <= 1) return true;
+        HashMap<Character, Character> map = new HashMap<Character, Character>();
+        for(int i = 0 ; i< s.length(); i++){
+            char a = s.charAt(i);
+            char b = t.charAt(i);
+            if(map.containsKey(a)){
+                if(map.get(a).equals(b))
+                    continue;
+                else
+                    return false;
+            }else{
+                if(!map.containsValue(b))
+                    map.put(a,b);
+                else return false;
 
-        for(Integer i = 0; i < s.length(); i++) {
-            //hashmap的put接口会返回插入的value的值,如果是同一键值不同的value(覆盖),会返回旧值
-            Integer i1 = m1.put(s.charAt(i), i);
-            Integer i2 = m2.put(t.charAt(i), i);
-            if(i1 != i2) {
-                return false;
             }
         }
         return true;
@@ -44,8 +49,8 @@ public class Question205 {
 
     public static void main(String[] args) {
         Question205 question205 = new Question205();
-        String s = "aba";
-        String t = "baa";
-        System.out.println(question205.isIsomorphic2(s, t));
+        String s = "egg";
+        String t = "add";
+        System.out.println(question205.isIsomorphic(s, t));
     }
 }
