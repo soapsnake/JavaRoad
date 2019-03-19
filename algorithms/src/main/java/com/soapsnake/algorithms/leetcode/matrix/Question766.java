@@ -1,4 +1,4 @@
-package com.soapsnake.algorithms.leetcode.array;
+package com.soapsnake.algorithms.leetcode.matrix;
 
 /**
  * @author soapsnake
