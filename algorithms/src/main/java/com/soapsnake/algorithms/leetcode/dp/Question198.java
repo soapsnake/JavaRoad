@@ -1,4 +1,4 @@
-package com.soapsnake.algorithms.leetcode.dynamic;
+package com.soapsnake.algorithms.leetcode.dp;
 
 class Question198 {
     public static void main(String[] args) {
