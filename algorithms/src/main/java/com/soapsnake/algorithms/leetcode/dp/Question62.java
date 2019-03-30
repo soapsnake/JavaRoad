@@ -1,6 +1,7 @@
 package com.soapsnake.algorithms.leetcode.dp;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -28,7 +29,7 @@ public class Question62 {
 
     //todo 正确解法
     // https://leetcode.com/problems/unique-paths/discuss/220418/Java-solution-with-explanations-in-Chinese
-    public int uniquePaths(int m, int n) {
+    public int uniquePaths2(int m, int n) {
         this.right = m;
         this.down = n;
         List<String> paths = new ArrayList<>();
@@ -54,13 +55,40 @@ public class Question62 {
     }
 
     public int uniquePathsSample(int m, int n) {
-        int[] dp = new int[m];
-        dp[0] = 1;
-        for (int i = 0; i < n; i++)
-            for (int j = 1; j < m; j++)
-                dp[j] = dp[j - 1] + dp[j];
-        return dp[m - 1];
+        int[][] paths = new int[m][n];
+        Arrays.fill(paths[0], 1);  //第0行全部填充1
+        for (int i = 1; i < m; i++) {
+            paths[i][0] = 1;   //所有列全部填成1,何必了
+        }
+        for (int i = 1; i < m; i++) {
+            for (int j = 1; j < n; j++) {
+                paths[i][j] = paths[i-1][j] + paths[i][j-1];
+            }
+        }
+        return paths[m-1][n-1];
     }
+
+
+    public int uniquePaths(int m, int n) {
+        int[][] paths = new int[m][n];
+//        Arrays.fill(paths[0], 1);  //第0行全部填充1
+//        for (int i = 1; i < m; i++) {
+//            paths[i][0] = 1;   //所有列全部填成1,何必了
+//        }
+        for (int i = 1; i < m; i++) {         //把所有的格子都初始化为1
+            for (int j = 1; j < n; j++) {
+                paths[i][j] = 1;
+            }
+        }
+        for (int i = 1; i < m; i++) {
+            for (int j = 1; j < n; j++) {
+                paths[i][j] = paths[i-1][j] + paths[i][j-1];
+            }
+        }
+        return paths[m-1][n-1];
+    }
+
+
 
     public static void main(String[] args) {
         Question62 question62 = new Question62();
