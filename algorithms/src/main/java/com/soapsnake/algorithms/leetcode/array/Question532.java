@@ -35,15 +35,16 @@ public class Question532 {
         int left = 0;
         int right = nums.length - 1;
         int res = 0;
-        while (right > left) {
-            if (nums[right] - nums[left] == k) {
+
+        while (right >=0 && left < nums.length) {
+            if (Math.abs(nums[right] - nums[left]) == k) {
                 res++;
-                left++;
                 right--;
-            } else if (nums[right] - nums[left] > k) {
                 left++;
-            } else if (nums[right] - nums[left] < k) {
+            } else if (Math.abs(nums[right] - nums[left]) > k) {
                 right--;
+            } else {
+                left++;
             }
         }
         return res;

@@ -7,23 +7,10 @@ package com.soapsnake.algorithms.leetcode.str;
 public class Question482 {
 
     public String licenseKeyFormatting(String S, int K) {
-
-        StringBuilder sb = new StringBuilder(S);
-        int segment = 0;
-        int i = 0;
-        while (sb.charAt(i) != ' ') {
-            if (Character.isDigit(sb.charAt(i)) || Character.isLetter(sb.charAt(i))) {
-                segment++;
-            } else {
-//                sb.replace(i, '');
-            }
-
-            if (segment == K) {
-                sb.insert(i, '-');
-                segment = 0;
-            }
-            i++;
-        }
-        return sb.toString();
+        StringBuilder sb = new StringBuilder();
+        for (int i = S.length() - 1; i >= 0; i--)
+            if (S.charAt(i) != '-')
+                sb.append(sb.length() % (K + 1) == K ? '-' : "").append(S.charAt(i));
+        return sb.reverse().toString().toUpperCase();
     }
 }
