@@ -44,6 +44,7 @@ public class Question113 {
         if (root.left == null && root.right == null && sum == 0) {
             res.add(new LinkedList<>(temp));
         }
+
         dfs(root.left, res, sum, temp);
         dfs(root.right, res, sum, temp);
         temp.remove(temp.size() - 1); //其实最关键就是这步,有点类似于backtrace算法的思路
