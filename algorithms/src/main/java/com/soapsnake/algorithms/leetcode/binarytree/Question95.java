@@ -11,6 +11,18 @@ public class Question95 {
 
     //草,真他吗难懂
     //https://youtu.be/SHp-uB4ngkU
+
+    /**
+     * Input: 3
+     * Output:
+     * [
+     *   [1,null,3,2],
+     *   [3,2,null,1],
+     *   [3,1,null,null,2],
+     *   [2,1,3],
+     *   [1,null,2,null,3]
+     * ]
+     */
     public List<TreeNode> generateTrees(int n) {
         return genTrees(1, n);
     }
@@ -51,19 +63,19 @@ public class Question95 {
         System.out.println(question95.generateTrees(5));
     }
 
-    //DP解法
+    //DP解法,这个实在看不懂...
     public static List<TreeNode> generateTrees2(int n) {
         List<TreeNode>[] result = new List[n + 1];   //类似hashmap的结构
-        result[0] = new ArrayList<TreeNode>();
+        result[0] = new ArrayList<>();
         if (n == 0) {
             return result[0];
         }
 
         result[0].add(null);
         for (int len = 1; len <= n; len++) {
-            result[len] = new ArrayList<TreeNode>();
+            result[len] = new ArrayList<>();   //n等于多少就会有多少个bucket,这里相当于初始化
             for (int j = 0; j < len; j++) {
-                for (TreeNode nodeL : result[j]) { //遍历
+                for (TreeNode nodeL : result[j]) { //遍历,如果前面没有进行初始化这里可能会报错
                     for (TreeNode nodeR : result[len - j - 1]) {
                         TreeNode node = new TreeNode(j + 1);
                         node.left = nodeL;

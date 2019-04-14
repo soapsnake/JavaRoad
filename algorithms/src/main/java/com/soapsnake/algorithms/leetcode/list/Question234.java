@@ -4,25 +4,51 @@ class Question234 {
 
     public static void main(String[] args) {
         Question234 question234 = new Question234();
-        ListNode head = new ListNode(1);
-        head.next = new ListNode(2);
-        head.next.next = new ListNode(3);
-        head.next.next.next = new ListNode(2);
-        head.next.next.next.next = new ListNode(1);
-
-        System.out.println(question234.isPalindrome2(head));
+        System.out.println(question234.isPalindrome2(ListNode.makeTestListFor234()));
     }
 
     /**
-     * todo
+     * Input: 1->2->2->1
+     * Output: true
+     *
      * 1. 找到中间节点
      * 2. 后半倒转
      * 3. 比原始和后半
      */
     public boolean isPalindrome(ListNode head) {
+        if (head == null) {
+            return true;
+        }
 
+        ListNode fast = head;
+        ListNode slow = head;
 
-        return false;
+        //寻找链表中间节点slow
+        while (fast != null && fast.next !=null && slow != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+        }
+
+        ListNode cur = slow;
+        ListNode newHead = null;
+        //后半截链表翻转
+        while (cur != null) {
+            ListNode nextnode = cur.next;
+            cur.next = newHead;
+            newHead = cur;
+            cur = nextnode;
+        }
+        ListNode origin = head;
+
+        //比对链表翻转后的后半截与原始链表的前半截
+        while (origin != null && newHead != null) {
+            if (origin.val != newHead.val) {
+                return false;
+            }
+            origin = origin.next;
+            newHead = newHead.next;
+        }
+        return true;
     }
 
     //把链表倒转, 然后和原始链表进行比较,时间复杂度 2*O(n)

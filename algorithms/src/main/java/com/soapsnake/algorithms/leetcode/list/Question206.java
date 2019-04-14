@@ -15,6 +15,7 @@ class Question206 {
     }
 
     public ListNode reverseList(ListNode head) {
+        // 模板:链表翻转
         ListNode newHead = null;
         ListNode cur = head;
         while (cur != null) {

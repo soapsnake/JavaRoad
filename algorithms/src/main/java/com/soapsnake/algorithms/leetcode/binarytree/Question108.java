@@ -12,21 +12,23 @@ public class Question108 {
      * @return
      */
     public TreeNode sortedArrayToBST(int[] nums) {
-        //思路,把数组不断求中位数索引,传mid和数组不同部分进去
-        TreeNode root = this.find(0, nums.length - 1, nums);
-        return root;
+       if (nums == null || nums.length == 0) {
+           return null;
+       }
+       int left = 0;
+       int right = nums.length - 1;
+       return find(left, right, nums);
     }
 
     private TreeNode find(int left, int right, int[] nums) {
-        if (left > right) {  //递归终止条件
+        if (left > right) {
             return null;
         }
-
         int mid = left + (right - left) / 2;
-        TreeNode node = new TreeNode(nums[mid]);   //数组的中卫数作为父节点
-        node.left = find(left, mid - 1, nums);
-        node.right = find(mid + 1, right, nums);
-        return node;
+        TreeNode root = new TreeNode(nums[mid]);
+        root.left = find(left, mid - 1, nums);
+        root.right = find(mid + 1, right, nums);
+        return root;
     }
 
 

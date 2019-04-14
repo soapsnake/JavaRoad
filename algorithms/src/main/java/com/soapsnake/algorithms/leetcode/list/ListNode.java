@@ -106,6 +106,16 @@ public class ListNode {
         return head;
     }
 
+    public static ListNode makeTestListFor234() {
+        ListNode head = new ListNode(1);
+        head.next = new ListNode(2);
+        head.next.next = new ListNode(3);
+        head.next.next.next = new ListNode(2);
+        head.next.next.next.next = new ListNode(1);
+        return head;
+    }
+
+
     public void addNode(ListNode node) {
 //        if (node == null) {
 //            return;
