@@ -30,17 +30,13 @@ public class Question39 {
         if (remain < 0) {
             return;
         } else if (remain == 0) {
-            /**
-             *  最关键的就是这个new ArrayList,由于tmp后续会改变,所以如果不copy出来一个新对象,
-             *  那么tmp中的值会一直变,res也会跟着变,导致最后结果不准确
-             */
             res.add(new ArrayList<>(tmp));
             return;
         } else {
             for (int i = start; i < candidates.length; i++) {
                 tmp.add(candidates[i]);
-                dfsTree(res, tmp, candidates, remain - candidates[i], i); //这里为什么用i
-                tmp.remove(tmp.size() - 1);  //这个remove操作完成了回退操作,非常的神奇
+                dfsTree(res, tmp, candidates, remain - candidates[i], i);
+                tmp.remove(tmp.size() - 1);
             }
         }
     }
