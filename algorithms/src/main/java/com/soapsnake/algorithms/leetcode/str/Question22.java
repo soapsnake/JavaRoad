@@ -23,12 +23,22 @@ public class Question22 {
         if (n == 0) {
             return new ArrayList<>();
         }
+        dfsTree("", 0,0, n);
         return res;
     }
 
     List<String> res = new ArrayList<>();
     private void dfsTree(String tmp, int open, int close, int n) {
-
+        if (tmp.length() == 2 * n) {
+            res.add(tmp);
+            return;
+        }
+        if (open < n) {
+            dfsTree(tmp + "(", open + 1, close, n);
+        }
+        if (open > close) {
+            dfsTree(tmp + ")", open, close + 1, n);
+        }
     }
 
 

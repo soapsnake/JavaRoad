@@ -5,6 +5,7 @@ package com.soapsnake.algorithms.leetcode.str;
  * @Date 2019-02-24 21:10
  */
 public class Question8 {
+
     public int myAtoi(String str) {
 
 

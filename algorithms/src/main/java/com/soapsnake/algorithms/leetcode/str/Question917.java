@@ -50,7 +50,12 @@ class Question917 {
         String s = "a-bC-dEf-ghIj";
                  //"j-Ih-gfE-dCba"
         Question917 question917 = new Question917();
-        System.out.println(question917.reverseOnlyLetters2(s));
+//        System.out.println(question917.reverseOnlyLetters2(s));
+
+        String dest = "发哦见覅都是*&*";
+        String regex = "^[a-zA-Z0-9_\\u4e00-\\u9fa5]+$";
+        System.out.println(dest.matches(regex));
+
     }
 
     //类似快排的左右指针碰撞,只要左右字符不是特殊字符就交换

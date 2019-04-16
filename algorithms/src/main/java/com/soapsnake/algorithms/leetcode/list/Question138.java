@@ -20,23 +20,34 @@ public class Question138 {
             random = _random;
         }
 
-        @Override
-        public String toString() {
-            return "Node{" +
-                    "val=" + val +
-                    ", next=" + next +
-                    ", random=" + random +
-                    '}';
-        }
+//        @Override
+//        public String toString() {
+//            return "Node{" +
+//                    "val=" + val +
+//                    ", next=" + next +
+//                    ", random=" + random +
+//                    '}';
+//        }
     }
 
-    private Map<Node, Node> cache = new HashMap<>();
     public Node copyRandomList(Node head) {
+        Map<Node, Node> cache = new HashMap<>();
+        if (head == null) {
+            return null;
+        }
+        Node cur = head;
+        while (cur != null) {
+            cache.put(cur, new Node(cur.val, null, null));
+            cur = cur.next;
+        }
 
-
-
-
-        return null;
+        Node newNode = head;
+        while (newNode !=null) {
+            cache.get(newNode).next = cache.get(newNode.next);
+            cache.get(newNode).random = cache.get(newNode.random);
+            newNode = newNode.next;
+        }
+        return cache.get(head);     //这一步其实更加容易错
     }
 
     public static void main(String[] args) {
