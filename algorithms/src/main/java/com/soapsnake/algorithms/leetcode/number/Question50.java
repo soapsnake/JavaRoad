@@ -14,6 +14,7 @@ public class Question50 {
     }
 
     /**
+     * 求x的n次方
      * fast power
      * n%2==0 -> x^n = x^(n/2) * x^(n/2) = (x*x)^(n/2)
      * n%2==1 -> x^n = x*(x^(n/2) * x^(n/2)) = x * (x*x)^(n/2)
@@ -25,9 +26,12 @@ public class Question50 {
         if (n == Integer.MIN_VALUE) {
             return (1 / x) * myPow(x, n + 1);
         }
-        if (n < 0) {
+        if (n < 0) {  //如果n小于0
             return 1 / myPow(x, -n);
         }
+
+        //如果n能够被2整除(2的n次方)  x的n次方 = (x²) n/2次方
+        //如果n不能够被2整除(非2的n次方)  x的n次方 = x * (x²)(n - 1)/2次方
         return n % 2 == 0 ? myPow(x * x, n / 2) : x * myPow(x * x, (n - 1) / 2);
     }
 }

@@ -30,11 +30,8 @@ public class Question47 {
         return res;
     }
 
-    private <E> void backtrace(List<List<Integer>> res, ArrayList<Integer> tmp, int[] nums, boolean[] used) {
+    private void backtrace(List<List<Integer>> res, ArrayList<Integer> tmp, int[] nums, boolean[] used) {
         if (tmp.size() == nums.length) {
-//            if (!res.contains(tmp)) {
-//                res.add(new ArrayList<>(tmp));
-//            }
             res.add(new ArrayList<>(tmp));
             return;
         }

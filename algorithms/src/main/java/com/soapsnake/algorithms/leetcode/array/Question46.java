@@ -29,19 +29,19 @@ public class Question46 {
     }
 
     private void dfsTree(List<List<Integer>> res, List<Integer> tmp, int[] nums) {
-        if (tmp.size() == nums.length) {
-            res.add(new ArrayList<>(tmp));
-            return;
-        }
+       if (tmp.size() == nums.length) {
+           res.add(new ArrayList<>(tmp));
+           return;
+       }
 
-        for (int i = 0; i < nums.length; i++) {
-            if (tmp.contains(nums[i])) {
-                continue;
-            }
-            tmp.add(nums[i]);
-            dfsTree(res, tmp, nums);
-            tmp.remove(tmp.size() - 1);
-        }
+       for (int i = 0; i < nums.length; i++) {
+           if (tmp.contains(nums[i])) {
+               continue;
+           }
+           tmp.add(nums[i]);
+           dfsTree(res, tmp, nums);
+           tmp.remove(tmp.size() - 1);
+       }
     }
 
     public static void main(String[] args) {
