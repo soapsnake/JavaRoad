@@ -1,5 +1,9 @@
 package com.soapsnake.algorithms.leetcode.normaltree;
 
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
+
 /**
  * @Auther soapsnake@gmail.com
  * @Date 2019-04-18 00:13
@@ -23,9 +27,30 @@ public class Question116 {
     };
 
     public Node connect(Node root) {
-
-
-
-        return null;
+        if (root == null) {
+            return null;
+        }
+        Queue<Node> queue = new LinkedList<>();
+        ((LinkedList<Node>) queue).add(root);
+        while (!queue.isEmpty()) {
+            Stack<Node> row = new Stack<>();
+            while (!queue.isEmpty()) {
+                Node node = queue.poll();
+                if (node != null) {
+                    row.push(node);
+                }
+            }
+            for (Node node : row) {   //用for循环遍历栈的时候是先进先出的
+                queue.add(node.left);
+                queue.add(node.right);
+            }
+            Node pre = null;
+            while (!row.empty()) {
+                Node node = row.pop();  //pop弹栈遵循先进后出
+                node.next = pre;
+                pre = node;
+            }
+        }
+        return root;
     }
 }
