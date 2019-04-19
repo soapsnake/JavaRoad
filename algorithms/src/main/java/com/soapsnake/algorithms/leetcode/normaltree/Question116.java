@@ -26,6 +26,7 @@ public class Question116 {
         }
     };
 
+    //117题也可以这么解, 不过117要求不能用额外的存储
     public Node connect(Node root) {
         if (root == null) {
             return null;
