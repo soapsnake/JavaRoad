@@ -8,9 +8,7 @@ public class Question55 {
 
 
     /**
-     *
      * Example 1:
-     *
      * Input: [2,3,1,1,4]
      * Output: true
      * Explanation: Jump 1 step from index 0 to 1, then 3 steps to the last index.
@@ -25,12 +23,12 @@ public class Question55 {
      */
     public boolean canJump(int[] nums) {
 
-        int reachable = 0;
-        for (int i=0; i< nums.length; ++i) {
-            if (i > reachable) {  //如果索引超过了最远可达索引,那么说明,当前索引是不可能到达的,后续的所有索引就更不可能了
+        int reachAble = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (i > reachAble) {
                 return false;
             }
-            reachable = Math.max(reachable, i + nums[i]);  //reachable是最远可达索引
+            reachAble = Math.max(reachAble, i + nums[i]);
         }
         return true;
     }

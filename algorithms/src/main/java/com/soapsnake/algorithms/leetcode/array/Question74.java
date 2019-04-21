@@ -23,7 +23,8 @@ public class Question74 {
         int row_num = matrix.length;
         int col_num = matrix[0].length;
 
-        int begin = 0, end = row_num * col_num - 1;
+        int begin = 0;
+        int end = row_num * col_num - 1;  //这个end为什么要这么算没看明白
 
         while(begin <= end){
             int mid = (begin + end) / 2;

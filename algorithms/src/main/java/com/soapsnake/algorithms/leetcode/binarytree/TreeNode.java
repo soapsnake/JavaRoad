@@ -260,6 +260,20 @@ public class TreeNode {
         return root;
     }
 
+    /**
+     *     1
+     *    / \
+     *   2  3
+     */
+    public static TreeNode makeNormalTreeFor129() {
+        TreeNode root = new TreeNode(1);
+        root.left = new TreeNode(2);
+        root.right = new TreeNode(3);
+//        root.right.right = new TreeNode(7);
+//        root.right.left = new TreeNode(15);
+        return root;
+    }
+
     //todo 二叉查找树节点插入
     public boolean insertIntoBinerSearchTree(TreeNode node) {
         return false;
