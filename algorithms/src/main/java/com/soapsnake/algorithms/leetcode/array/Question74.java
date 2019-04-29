@@ -24,20 +24,22 @@ public class Question74 {
         int col_num = matrix[0].length;
 
         int begin = 0;
-        int end = row_num * col_num - 1;  //这个end为什么要这么算没看明白
+        int end = row_num * col_num - 1;  //如果是3 x 3的矩阵,那么end = 8
 
         while(begin <= end){
-            int mid = (begin + end) / 2;
-            int mid_value = matrix[mid/col_num][mid%col_num];
+            int mid = (begin + end) / 2;   //如果是3 x 3矩阵, 那么 mid = (0 + 8) / 2= 4
+
+            //这道题的精髓就是求这个中间点的坐标 = nums[mid / 列数][mid % 列数]
+            int mid_value = matrix[mid/col_num][mid%col_num];  //mid_valud = matrix[4 / 3] [4 % 3] = matrx[1][1]刚好是中心位置
 
             if( mid_value == target){
                 return true;
 
             }else if(mid_value < target){
                 //Should move a bit further, otherwise dead loop.
-                begin = mid+1;
+                begin = mid+1;  //如果中点值比value小,那么左边界 = mid + 1  (目标在右侧)
             }else{
-                end = mid-1;
+                end = mid-1;  //如果中点值比value大,那么右边界 = mid - 1(目标在左侧)
             }
         }
         return false;
