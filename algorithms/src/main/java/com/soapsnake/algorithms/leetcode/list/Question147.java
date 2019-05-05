@@ -24,12 +24,14 @@ public class Question147 {
         ListNode pre = helper; //insert node between pre and pre.next
         ListNode next = null; //the next node will be inserted
         //not the end of input list
+        int i = 0;
         while( cur != null ){
             next = cur.next;
 
             //find the right place to insert
             while( pre.next != null && pre.next.val < cur.val ){
                 pre = pre.next;
+                ListNode.printListNode(helper);
             }
             //insert between pre and pre.next
             cur.next = pre.next;
@@ -45,6 +47,6 @@ public class Question147 {
     public static void main(String[] args) {
         Question147 question147 = new Question147();
 
-        ListNode.printListNode(question147.insertionSortList(ListNode.makeTestListFor147()));
+        question147.insertionSortList(ListNode.makeTestListFor147());
     }
 }
