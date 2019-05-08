@@ -274,6 +274,18 @@ public class TreeNode {
         return root;
     }
 
+    public static TreeNode makeNormalTreeFor173() {
+        TreeNode root = new TreeNode(7);
+        root.left = new TreeNode(3);
+        root.right = new TreeNode(15);
+        root.right.right = new TreeNode(20);
+        root.right.left = new TreeNode(9);
+        return root;
+    }
+
+
+
+
     //todo 二叉查找树节点插入
     public boolean insertIntoBinerSearchTree(TreeNode node) {
         return false;

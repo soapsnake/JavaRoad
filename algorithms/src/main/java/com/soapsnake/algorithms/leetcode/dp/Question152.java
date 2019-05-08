@@ -1,4 +1,4 @@
-package com.soapsnake.algorithms.leetcode.array;
+package com.soapsnake.algorithms.leetcode.dp;
 
 import java.util.ArrayList;
 import java.util.List;
