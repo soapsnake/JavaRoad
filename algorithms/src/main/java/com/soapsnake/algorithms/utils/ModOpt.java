@@ -22,6 +22,8 @@ public class ModOpt {
 
         System.out.println("2 % 10 = " + (2 % 10));
 
+        System.out.println("12 % 10 = " + (12 % 10));
+
         System.out.println("2 % 4 = " + (2 % 4));
 
         System.out.println("5 % 6 = " + (5 % 6));

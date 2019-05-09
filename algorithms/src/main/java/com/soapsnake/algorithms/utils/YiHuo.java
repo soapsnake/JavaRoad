@@ -18,7 +18,5 @@ public class YiHuo {
         System.out.println(i3);
         System.out.println(i4);
         System.out.println(i5);
-
-
     }
 }
