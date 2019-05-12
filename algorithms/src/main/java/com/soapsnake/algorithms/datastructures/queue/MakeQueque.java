@@ -1,4 +1,4 @@
-package com.soapsnake.algorithms.quest;
+package com.soapsnake.algorithms.datastructures.queue;
 
 import java.util.Stack;
 

@@ -1,4 +1,4 @@
-package com.soapsnake.algorithms.quest;
+package com.soapsnake.algorithms.datastructures.stack;
 
 import java.util.Queue;
 import java.util.concurrent.ArrayBlockingQueue;

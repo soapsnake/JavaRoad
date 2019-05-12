@@ -13,7 +13,7 @@ public class NodeList {
     public Node tail; //表尾
     public int size;
 
-    public NodeList() {
+    NodeList() {
     }
 
     public NodeList(Node node) {

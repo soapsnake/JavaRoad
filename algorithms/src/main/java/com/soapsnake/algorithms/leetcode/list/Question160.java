@@ -1,5 +1,7 @@
 package com.soapsnake.algorithms.leetcode.list;
 
+import com.soapsnake.algorithms.datastructures.list.ListNode;
+
 /**
  * Write a program to find the node at which the intersection of two singly linked lists begins.
  * For example, the following two linked lists:

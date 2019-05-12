@@ -1,4 +1,4 @@
-package com.soapsnake.algorithms.operators;
+package com.soapsnake.algorithms.bitAlgorithms.operators;
 
 public class OperatorsTest {
 

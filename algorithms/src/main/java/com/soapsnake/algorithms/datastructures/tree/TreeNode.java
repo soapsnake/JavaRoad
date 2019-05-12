@@ -1,4 +1,4 @@
-package com.soapsnake.algorithms.leetcode.binarytree;
+package com.soapsnake.algorithms.datastructures.tree;
 
 import com.soapsnake.algorithms.leetcode.array.ArrayUtils;
 

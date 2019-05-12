@@ -1,5 +1,7 @@
 package com.soapsnake.algorithms.leetcode.list;
 
+import com.soapsnake.algorithms.datastructures.list.ListNode;
+
 /**
  * @Auther soapsnake@gmail.com
  * @Date 2019-02-22 20:51

@@ -1,4 +1,4 @@
-package com.soapsnake.algorithms.graph;
+package com.soapsnake.algorithms.datastructures.graph;
 
 import java.io.BufferedReader;
 import java.io.IOException;

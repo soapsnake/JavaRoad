@@ -156,11 +156,16 @@ public class HelloWorldService {
                 super("sayHello");
             }
 
-            protected sayHello_args getEmptyArgsInstance() {
+            public sayHello_args getEmptyArgsInstance() {
                 return new sayHello_args();
             }
 
-            protected sayHello_result getResult(I iface, sayHello_args args) throws org.apache.thrift.TException {
+            @Override
+            protected boolean isOneway() {
+                return false;
+            }
+
+            public sayHello_result getResult(I iface, sayHello_args args) throws org.apache.thrift.TException {
                 sayHello_result result = new sayHello_result();
                 result.success = iface.sayHello(args.name);
                 return result;

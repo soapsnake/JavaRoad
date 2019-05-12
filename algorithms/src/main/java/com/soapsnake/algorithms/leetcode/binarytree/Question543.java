@@ -1,5 +1,7 @@
 package com.soapsnake.algorithms.leetcode.binarytree;
 
+import com.soapsnake.algorithms.datastructures.tree.TreeNode;
+
 /**
  * Given a binary tree, you need to compute the length of the diameter of the tree.
  * The diameter of a binary tree is the length of the longest path between any two nodes in a tree.

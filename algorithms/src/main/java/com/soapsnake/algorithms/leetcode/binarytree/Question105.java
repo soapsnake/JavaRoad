@@ -1,5 +1,7 @@
 package com.soapsnake.algorithms.leetcode.binarytree;
 
+import com.soapsnake.algorithms.datastructures.tree.TreeNode;
+
 /**
  * @Auther soapsnake@gmail.com
  * @Date 2019-04-09 23:13

@@ -1,6 +1,8 @@
 package com.soapsnake.algorithms.leetcode.binarytree;
 
 
+import com.soapsnake.algorithms.datastructures.tree.TreeNode;
+
 class Question104 {
     public static void main(String[] args) {
         Question104 solution = new Question104();

@@ -1,5 +1,7 @@
 package com.soapsnake.algorithms.leetcode.list;
 
+import com.soapsnake.algorithms.datastructures.list.ListNode;
+
 import java.util.HashMap;
 import java.util.Map;
 

@@ -1,4 +1,4 @@
-package com.soapsnake.algorithms.leetcode.list;
+package com.soapsnake.algorithms.datastructures.list;
 
 public class ListNode {
     public int val;

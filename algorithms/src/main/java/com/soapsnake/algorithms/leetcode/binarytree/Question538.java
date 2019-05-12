@@ -1,5 +1,6 @@
 package com.soapsnake.algorithms.leetcode.binarytree;
 
+import com.soapsnake.algorithms.datastructures.tree.TreeNode;
 import com.soapsnake.algorithms.leetcode.array.ArrayUtils;
 
 import java.util.ArrayList;
