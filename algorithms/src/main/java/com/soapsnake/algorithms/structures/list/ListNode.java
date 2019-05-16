@@ -1,4 +1,4 @@
-package com.soapsnake.algorithms.datastructures.list;
+package com.soapsnake.algorithms.structures.list;
 
 public class ListNode {
     public int val;

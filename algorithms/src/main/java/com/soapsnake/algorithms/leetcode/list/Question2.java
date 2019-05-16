@@ -1,6 +1,6 @@
 package com.soapsnake.algorithms.leetcode.list;
 
-import com.soapsnake.algorithms.datastructures.list.ListNode;
+import com.soapsnake.algorithms.structures.list.ListNode;
 
 /**
  * You are given two non-empty linked lists representing two non-negative integers.

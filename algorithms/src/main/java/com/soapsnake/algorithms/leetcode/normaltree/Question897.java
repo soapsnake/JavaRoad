@@ -1,6 +1,6 @@
 package com.soapsnake.algorithms.leetcode.normaltree;
 
-import com.soapsnake.algorithms.datastructures.tree.TreeNode;
+import com.soapsnake.algorithms.structures.tree.TreeNode;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

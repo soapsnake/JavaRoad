@@ -1,4 +1,4 @@
-package com.soapsnake.algorithms.datastructures.graph.weight;
+package com.soapsnake.algorithms.structures.graph.weight;
 
 import java.util.Set;
 

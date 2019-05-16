@@ -1,4 +1,4 @@
-package com.soapsnake.algorithms.datastructures.graph;
+package com.soapsnake.algorithms.structures.graph;
 
 public class GraphTest {
 

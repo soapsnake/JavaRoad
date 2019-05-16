@@ -1,4 +1,4 @@
-package com.soapsnake.algorithms.datastructures.queue;
+package com.soapsnake.algorithms.structures.queue;
 
 
 /**

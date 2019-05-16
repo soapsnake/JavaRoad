@@ -1,6 +1,6 @@
 package com.soapsnake.algorithms.leetcode.binarytree;
 
-import com.soapsnake.algorithms.datastructures.tree.TreeNode;
+import com.soapsnake.algorithms.structures.tree.TreeNode;
 
 /**
  * @author soapsnake

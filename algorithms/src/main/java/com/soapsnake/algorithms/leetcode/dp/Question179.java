@@ -29,4 +29,33 @@ public class Question179 {
         return stringBuffer.toString();
     }
 
+    public static void main(String[] args) {
+        int a = 10;
+        int b = 11;
+        swap(a, b);
+        System.out.println("a=" + a);
+        System.out.println("b=" + b);
+
+        Integer a1 = 1000;
+        Integer b1 = 1001;
+        swap2(a1, b1);
+
+        System.out.println("a1=" + a1);
+        System.out.println("b1=" + b1);
+    }
+
+    private static void swap2(Integer a1, Integer b1) {
+        Integer temp = a1;
+        a1 = b1;
+        b1 = temp;
+    }
+
+    private static void swap(int a, int b) {
+        int temp = a;
+        a = b;
+        b = temp;
+    }
+
+
+
 }

@@ -1,7 +1,7 @@
 package com.soapsnake.algorithms.leetcode.binarytree;
 
 
-import com.soapsnake.algorithms.datastructures.tree.TreeNode;
+import com.soapsnake.algorithms.structures.tree.TreeNode;
 
 class Question104 {
     public static void main(String[] args) {

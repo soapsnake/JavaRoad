@@ -1,6 +1,6 @@
 package com.soapsnake.algorithms.leetcode.list;
 
-import com.soapsnake.algorithms.datastructures.list.ListNode;
+import com.soapsnake.algorithms.structures.list.ListNode;
 
 /**
  * Sort a linked list in O(n log n) time using constant space complexity.

@@ -1,6 +1,6 @@
 package com.soapsnake.algorithms.leetcode.binarytree;
 
-import com.soapsnake.algorithms.datastructures.tree.TreeNode;
+import com.soapsnake.algorithms.structures.tree.TreeNode;
 
 /**
  * Given two non-empty binary trees s and t, check whether tree t has exactly the same structure and node values with a subtree of s.

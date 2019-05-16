@@ -1,6 +1,6 @@
 package com.soapsnake.algorithms.leetcode.list;
 
-import com.soapsnake.algorithms.datastructures.list.ListNode;
+import com.soapsnake.algorithms.structures.list.ListNode;
 
 /**
  * Merge two sorted linked lists and return it as a new list.

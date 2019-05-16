@@ -1,4 +1,4 @@
-package com.soapsnake.algorithms.datastructures.graph;
+package com.soapsnake.algorithms.structures.graph;
 
 import java.util.LinkedList;
 import java.util.List;

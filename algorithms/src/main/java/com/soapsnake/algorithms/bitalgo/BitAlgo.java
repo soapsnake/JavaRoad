@@ -1,4 +1,4 @@
-package com.soapsnake.algorithms.bitAlgorithms;
+package com.soapsnake.algorithms.bitalgo;
 
 
 /**

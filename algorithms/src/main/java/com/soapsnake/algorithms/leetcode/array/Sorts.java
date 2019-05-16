@@ -1,5 +1,7 @@
 package com.soapsnake.algorithms.leetcode.array;
 
+import com.soapsnake.algorithms.structures.queue.MaxPriorityQueue;
+
 import java.util.Arrays;
 import java.util.Random;
 
@@ -11,10 +13,10 @@ public class Sorts {
 
     /**
      * 稳定排序
-     * 插入排序O(n²)
+     * 选择排序O(n²)
      * 每一次取子数组i -> end中的最小数字与nums[i]交换
      */
-    public static void insertSorts(int[] nums) {
+    public static void selectionSort(int[] nums) {
         Long start = System.currentTimeMillis();
         for (int i = 0; i < nums.length; i++) {
             int smallest = Integer.MAX_VALUE;
@@ -136,18 +138,56 @@ public class Sorts {
     }
 
     /**
+     * 不稳定(最差O(n²))
+     * 插入排序
+     * i指针指向的数字与0 -> i - 1之间的数字进行比较,如果比j小,那么a[i]需要插到j位置处,j - i的元素依次往后移动一个位置
+     */
+    public static void insertSorts(int[] arr) {
+        long start = System.currentTimeMillis();
+        int n = arr.length;
+        int i, j, k;
+        for (i = 1; i < n; i++) {
+            //在[0...i-1]区间内查找元素arr[i]待插入的位置
+            for (j = i - 1; j >= 0; j--) {
+                if (arr[j] < arr[i]) {
+                    break;
+                }
+            }
+            //如果找了待插入的位置
+            if (j != i - 1) {
+                int temp = arr[i];
+                //比a[i]大的数据往后移动
+                for (k = i - 1; k > j; k--) {
+                    arr[k + 1] = arr[k];
+                }
+                //将a[i]放在待插入的位置
+                arr[k + 1] = temp;
+            }
+
+        }
+        System.out.println("insertSorts结果:" +Arrays.toString(arr) + "用时:" + (System.currentTimeMillis() - start));
+    }
+
+    /**
      *堆排
      */
     public static void heapSorts(int[] nums) {
-
-
+        Long start = System.currentTimeMillis();
+        MaxPriorityQueue<Integer> maxPriorityQueue = new MaxPriorityQueue<>(nums.length);
+        for (int i : nums) {
+            maxPriorityQueue.insert(i);
+        }
+        nums = Arrays.stream(maxPriorityQueue.sort()).mapToInt(Integer::intValue).toArray();
+        System.out.println("heapSorts结果:" +Arrays.toString(nums) + "用时:" + (System.currentTimeMillis() - start));
     }
+
+
 
 
     public static void main(String[] args) {
         int[] nums1 = randomArr(10);
         System.out.println("nums1 = " + Arrays.toString(nums1));
-        insertSorts(nums1);
+        selectionSort(nums1);
 
         int[] nums2 = randomArr(10);
         System.out.println("nums2 = " + Arrays.toString(nums2));
@@ -171,6 +211,8 @@ public class Sorts {
 
         int[] nums7 = randomArr(10);
         System.out.println("nums7 = " + Arrays.toString(nums7));
+        insertSorts(nums7);
+
     }
 
     public static int[] randomArr(int n) {

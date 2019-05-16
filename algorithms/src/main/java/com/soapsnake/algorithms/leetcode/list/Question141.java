@@ -1,6 +1,6 @@
 package com.soapsnake.algorithms.leetcode.list;
 
-import com.soapsnake.algorithms.datastructures.list.ListNode;
+import com.soapsnake.algorithms.structures.list.ListNode;
 
 class Question141 {
 

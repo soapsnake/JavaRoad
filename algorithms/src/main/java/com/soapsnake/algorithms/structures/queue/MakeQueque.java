@@ -1,4 +1,4 @@
-package com.soapsnake.algorithms.datastructures.queue;
+package com.soapsnake.algorithms.structures.queue;
 
 import java.util.Stack;
 
@@ -6,7 +6,7 @@ import java.util.Stack;
  * Created by soapsnake on 2018/1/22.
  * 用两个栈实现一个队列
  */
-public class MakeQueque {
+public class MakeQueque<T> implements Comparable<T> {
 
     private Stack<Integer> stack1;
     private Stack<Integer> stack2;
@@ -44,4 +44,8 @@ public class MakeQueque {
     }
 
 
+    @Override
+    public int compareTo(T anotherObj) {
+        return 0;
+    }
 }

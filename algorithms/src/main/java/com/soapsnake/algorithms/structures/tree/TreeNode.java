@@ -1,4 +1,4 @@
-package com.soapsnake.algorithms.datastructures.tree;
+package com.soapsnake.algorithms.structures.tree;
 
 import com.soapsnake.algorithms.leetcode.array.ArrayUtils;
 
