@@ -26,7 +26,7 @@
 - 用for循环迭代一个栈,会发现迭代顺序是先进先出的,所以想先进后出只能pop()
 - 求一个数字每位的数:对10求余取个位数的数字的值,然后除10
 - 如果a能被b整除,那么必有a % b = 0
-- 2,8,10,16进制的加法中,都可以用除法确定进位值,可以用求余确定该位的最终值
+- 2,8,10,16进制的加法中,都可以用除法确定进位值,可以用求余确定该位的最终值,见题目168
 - HashSet的add()添加失败时会返回false,可用这个来判数组或list的重复元素
 - 判断字符是否'a'~'z'或者'A'~'Z'(英语字母): Character.isLetter(c), 判断字符是数字:Character.isDigit(c)
 - idea进入debug时"Finished,saving caches"卡住的解决办法:https://stackoverflow.com/questions/20658400/intellij-idea-hangs-while-finished-saving-caches
