@@ -2,7 +2,7 @@ package com.soapsnake.algorithms.structures.graph;
 
 import java.util.List;
 
-public interface Search {
+public interface GraphSearch {
     //s -> v是否连通
     boolean hasPathTo(int v);
 
@@ -14,4 +14,6 @@ public interface Search {
 
     //找出s -> v的一条路径
     Iterable<Integer> pathTo(int v);
+
+    int countTotal(List<Integer> vertexs);
 }

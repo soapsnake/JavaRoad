@@ -5,17 +5,19 @@ import java.util.List;
 import java.util.Queue;
 import java.util.Stack;
 
-public class BreadthFirstSearch implements Search {
+public class BreadthFirstSearch implements GraphSearch {
 
     private final int source;
     private boolean[] marked;
     private int[] edgeTo;
+    private Graph graph;
 
-    public BreadthFirstSearch(Graph graph, int source) {
+    public BreadthFirstSearch(Graph graph, int source) {  //传入的graph已经构造完邻接表
+        this.graph = graph;
         marked = new boolean[graph.getV()];
         edgeTo = new int[graph.getV()];
         this.source = source;
-        bfs(graph, source);
+        bfs(graph, source);  //意义何在?纯粹就是标记下哪些点可以到达吗?
     }
 
     //bfs和dfs最大的区别,就是bfs会遍历所有和source连通的点,所有可以连通的路径都会走到
@@ -24,11 +26,11 @@ public class BreadthFirstSearch implements Search {
         marked[source] = true;
         queue.add(source);
         while (!queue.isEmpty()) {
-            int v = queue.poll();
-            for (int w : graph.adj(v)) {
+            int v = queue.poll();  //取出并删除队头
+            for (int w : graph.adj(v)) {   //graph.adj(v)返回所有从v出发可以到达的点
                 if (!marked[w]) {
-                    edgeTo[w] = v;
-                    marked[w] = true;
+                    edgeTo[w] = v;  //v -> w
+                    marked[w] = true;  //标记w被访问了(可达)
                     queue.add(w);
                 }
             }
@@ -37,7 +39,7 @@ public class BreadthFirstSearch implements Search {
 
     @Override
     public boolean hasPathTo(int v) {
-        return marked[v];
+        return marked[v];   //s -> v是否可达
     }
 
     @Override
@@ -46,9 +48,11 @@ public class BreadthFirstSearch implements Search {
     }
 
     @Override
-    public List<List<Integer>> allPath(int s) {
+    //s -> v所有可达路径
+    public List<List<Integer>> allPath(int v) {
         return null;
     }
+
 
     @Override
     public Iterable<Integer> pathTo(int v) {
@@ -64,5 +68,10 @@ public class BreadthFirstSearch implements Search {
         }
         path.push(source);   //没有这个会少一个起点
         return path;
+    }
+
+    @Override
+    public int countTotal(List<Integer> vertexs) {
+        return 0;
     }
 }

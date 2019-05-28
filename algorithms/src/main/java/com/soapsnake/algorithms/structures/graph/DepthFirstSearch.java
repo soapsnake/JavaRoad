@@ -1,5 +1,6 @@
 package com.soapsnake.algorithms.structures.graph;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
@@ -9,7 +10,7 @@ import java.util.Stack;
  * 2.这幅图有多少个可以连通的点(最大值)
  * 3. 如果s - v 连通,找出连通的路径
  */
-public class DepthFirstSearch implements Search {
+public class DepthFirstSearch implements GraphSearch {
     private final Graph graph;
     private final int source;
     private boolean[] marked;
@@ -21,6 +22,7 @@ public class DepthFirstSearch implements Search {
         this.graph = graph;
         this.source = source;
         marked = new boolean[graph.getV()];  //数组的长度为图的所有顶点数
+        edgeTO = new int[graph.getV()];
         dfs(graph, source);
     }
 
@@ -50,10 +52,33 @@ public class DepthFirstSearch implements Search {
 
     //返回所有连接source和v的路径,深度优先算法是不是没有办法计算这个?????
     @Override
-    public List<List<Integer>> allPath(int s) {
-        return null;
+    public List<List<Integer>> allPath(int v) {
+        List<List<Integer>> res = new ArrayList<>();
+        if (!this.hasPathTo(v)) {
+            return res;
+        }
+        dfs(res, this.source, v, new ArrayList<>());
+        return res;
     }
 
+    //回溯算法
+    private void dfs(List<List<Integer>> res, int s, int v, List<Integer> tmp) {
+        if (s == v) {  //如果起点终点重合
+            if (!res.contains(tmp)) {
+                res.add(new ArrayList<>(tmp));
+            }
+            return;
+        }
+
+        for (int tar : graph.adj(s)) {
+            if (tmp.contains(tar)) {
+                continue;
+            }
+            tmp.add(tar);
+            dfs(res, tar, v, tmp);
+            tmp.remove(tmp.size() - 1);
+        }
+    }
 
     //计算s -> v的一条路径,注意只有一条
     @Override
@@ -70,5 +95,10 @@ public class DepthFirstSearch implements Search {
         }
         path.push(source);   //没有这个会少一个起点
         return path;
+    }
+
+    @Override
+    public int countTotal(List<Integer> vertexs) {
+        return 0;
     }
 }
