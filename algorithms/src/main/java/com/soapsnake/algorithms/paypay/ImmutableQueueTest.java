@@ -5,25 +5,40 @@ import org.junit.Test;
 
 
 public class ImmutableQueueTest {
-    ImmutableQueue immutableQueue = new ImmutableQueue();
+    private ImmutableQueue<String> immutableQueue;
+
+    public ImmutableQueueTest() {
+        this.immutableQueue =  new ImmutableQueue<>();
+        immutableQueue.enQueue("Hello");
+        immutableQueue.enQueue("world");
+        immutableQueue.enQueue("I am");
+        immutableQueue.enQueue("liu dun");
+    }
 
     @Test
     public void testEnQueue() throws Exception {
-
+        immutableQueue.enQueue("hi");
+        Assert.assertSame("Hello", immutableQueue.head());
     }
 
 
     @Test
     public void testDeQueue() throws Exception {
+        immutableQueue.deQueue();
+        Assert.assertSame("world", immutableQueue.head());
     }
 
     @Test
     public void testHead() throws Exception {
+        Assert.assertSame("Hello", immutableQueue.head());
     }
 
     @Test
     public void testIsEmpty() throws Exception {
-        boolean result = immutableQueue.isEmpty();
-        Assert.assertTrue(result);
+        immutableQueue.deQueue();
+        immutableQueue.deQueue();
+        immutableQueue.deQueue();
+        immutableQueue.deQueue();
+        Assert.assertTrue(immutableQueue.isEmpty());
     }
 }

@@ -5,7 +5,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class ImmutableQueue<T> implements Queue<T> {
 
-    private Object[] array;
+    public Object[] array;
 
     private final ReentrantLock lock = new ReentrantLock();
 
@@ -14,9 +14,6 @@ public class ImmutableQueue<T> implements Queue<T> {
     }
 
     @Override
-    /**
-     * que不可变,这里返回的应该是一个新的queue
-     */
     public Queue<T> enQueue(T t) {
         final ReentrantLock lock = this.lock;
         lock.lock();
@@ -35,16 +32,18 @@ public class ImmutableQueue<T> implements Queue<T> {
     @Override
     /**
      * Removes the element at the beginning of the immutable queue, and returns the new queue.
-     * que不可变,这里返回的应该是一个新的queue
      */
     public Queue<T> deQueue() {
+        if (this.isEmpty()) {
+            return this;
+        }
         final ReentrantLock lock = this.lock;
         lock.lock();
         try {
             Object[] elements = this.array;
             int len = elements.length;
             Object[] newElements = new Object[len - 1];
-            System.arraycopy(elements, 0, newElements, 0, len - 1);
+            System.arraycopy(elements, 1, newElements, 0, len - 1);
             this.array = newElements;
             return this;
         } finally {
@@ -54,8 +53,10 @@ public class ImmutableQueue<T> implements Queue<T> {
 
     @Override
     public T head() {
-        int len = this.array.length;
-        return (T) this.array[len - 1];
+        if (this.isEmpty()) {
+            return null;
+        }
+        return (T) this.array[0];
     }
 
     @Override
