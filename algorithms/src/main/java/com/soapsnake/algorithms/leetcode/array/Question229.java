@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class Question229 {
 
@@ -28,19 +30,19 @@ public class Question229 {
     //https://gregable.com/2013/10/majority-vote-algorithm-find-majority.html
     public List<Integer> majorityElement(int[] nums) {
         if (nums == null || nums.length == 0)
-            return new ArrayList<Integer>();
-        List<Integer> result = new ArrayList<Integer>();
-        int number1 = nums[0], number2 = nums[0], count1 = 0, count2 = 0, len = nums.length;
-        for (int i = 0; i < len; i++) {
-            if (nums[i] == number1)
+            return new ArrayList<>();
+        List<Integer> result = new ArrayList<>();
+        int candi1 = nums[0], candi2 = nums[0], count1 = 0, count2 = 0, len = nums.length;
+        for (int i = 0; i < len; i++) {   //这个for循环的意义在于找到可能的最多重复次数候选数字candi1和candi2
+            if (nums[i] == candi1)
                 count1++;
-            else if (nums[i] == number2)
+            else if (nums[i] == candi2)
                 count2++;
             else if (count1 == 0) {
-                number1 = nums[i];
+                candi1 = nums[i];
                 count1 = 1;
             } else if (count2 == 0) {
-                number2 = nums[i];
+                candi2 = nums[i];
                 count2 = 1;
             } else {
                 count1--;
@@ -50,15 +52,22 @@ public class Question229 {
         count1 = 0;
         count2 = 0;
         for (int i = 0; i < len; i++) {
-            if (nums[i] == number1)
+            if (nums[i] == candi1)
                 count1++;
-            else if (nums[i] == number2)
+            else if (nums[i] == candi2)
                 count2++;
         }
         if (count1 > len / 3)
-            result.add(number1);
+            result.add(candi1);
         if (count2 > len / 3)
-            result.add(number2);
+            result.add(candi2);
         return result;
+    }
+
+    public static void main(String[] args) {
+        Set<Integer> set = new TreeSet<>();
+
+
+
     }
 }

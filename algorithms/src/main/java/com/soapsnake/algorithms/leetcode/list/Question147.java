@@ -33,12 +33,14 @@ public class Question147 {
             //find the right place to insert
             while( pre.next != null && pre.next.val < cur.val ){
                 pre = pre.next;
-                ListNode.printListNode(helper);
+//                ListNode.printListNode(helper);
             }
+            //到这里有两种情况: 1. pre.next == null 2.pre.next > cur 也就是找到了一个比cur大的元素,需要把cur插到这个位置
+
             //insert between pre and pre.next
             cur.next = pre.next;
             pre.next = cur;
-            pre = helper;
+            pre = helper;    //pre指针回归初始位置,也就是每一次pre指针都是从表头遍历到cur指针
 
             cur = next;
         }
@@ -49,6 +51,6 @@ public class Question147 {
     public static void main(String[] args) {
         Question147 question147 = new Question147();
 
-        question147.insertionSortList(ListNode.makeTestListFor147());
+        question147.insertionSortList(ListNode.makeTestListFor147());  //-1->5->3->4->0
     }
 }

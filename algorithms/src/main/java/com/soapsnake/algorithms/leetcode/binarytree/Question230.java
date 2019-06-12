@@ -1,0 +1,28 @@
+package com.soapsnake.algorithms.leetcode.binarytree;
+
+import com.soapsnake.algorithms.structures.tree.TreeNode;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Question230 {
+
+    public int kthSmallest(TreeNode root, int k) {
+        List<Integer> list = new ArrayList<>();
+        dfs(root, list, k);
+        return tar;
+    }
+
+    int tar = 0;
+    private void dfs(TreeNode root, List<Integer> list, int k) {
+        if (root == null) {
+            return;
+        }
+        dfs(root.left, list, k);
+        list.add(root.val);
+        if (list.size() == k) {
+            tar = root.val;
+        }
+        dfs(root.right, list, k);
+    }
+}
