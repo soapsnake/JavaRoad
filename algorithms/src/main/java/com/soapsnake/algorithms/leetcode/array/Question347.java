@@ -45,7 +45,6 @@ class Question347 {
      * 另外一种解法,这种解法不需要再对map的value值进行排序,因此,复杂度下降到了O()
      *
      * @param nums
-     * @param kn
      * @return
      */
     public List<Integer> topKFrequent1(int[] nums, int k) {
