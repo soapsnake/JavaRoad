@@ -12,6 +12,15 @@ public class Question264 {
         System.out.println(question264.nthUglyNumber3(n));
     }
 
+    /**
+     * The basic idea of this problem is to compute all the ugly numbers in sequence and count to the given number of k ugly numbers.
+     * The way I approached this problem is first I have a arraylist to store the ugly numbers in sequence.
+     * Then I declared three counter variables: a,b,and c which represent the corresponding index in the arraylist for the multiplier of 2,3,and 5.
+     * Since each previous ugly number times one of the multiplier will produce a new ugly number,
+     * I start from the starting index 0 and multiply the ugly number at that index with each multiplier and get the smallest product which is the next ugly number from the three.
+     * The corresponding multipliers' index will be incremented by one and we do this recursively until we have K ugly numbers.
+     * Here is the code implementation in Java:
+     */
     public int nthUglyNumber3(int n) {
         if (n <= 0) return 0;
         int a = 0, b = 0, c = 0;
