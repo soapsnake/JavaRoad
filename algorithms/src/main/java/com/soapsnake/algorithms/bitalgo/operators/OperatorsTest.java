@@ -16,5 +16,9 @@ public class OperatorsTest {
         System.out.println(j >> 2);
         System.out.println(j << 2);
 
+        Integer i1 = 2;
+        Integer i2 = 1;
+        System.out.println(i1.compareTo(i2));
+
     }
 }
