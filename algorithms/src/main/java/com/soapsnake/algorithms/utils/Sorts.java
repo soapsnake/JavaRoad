@@ -1,8 +1,10 @@
-package com.soapsnake.algorithms.leetcode.array;
+package com.soapsnake.algorithms.utils;
 
 import com.soapsnake.algorithms.structures.queue.MaxPriorityQueue;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -39,8 +41,17 @@ public class Sorts {
      * 两两比较
      */
     public static void bubleSorts(int[] nums) {
-
-
+        Long start = System.currentTimeMillis();
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = i + 1; j < nums.length; j++) {
+                if (nums[i] > nums[j]) {
+                    int temp = nums[i];
+                    nums[i] = nums[j];
+                    nums[j] = temp;
+                }
+            }
+        }
+        System.out.println("bubleSorts结果:" +Arrays.toString(nums) + "用时:" + (System.currentTimeMillis() - start));
     }
 
     /**
@@ -133,8 +144,42 @@ public class Sorts {
      *快排
      */
     public static void quicktSorts(int[] nums) {
+        Long start = System.currentTimeMillis();
+        int low = 0;
+        int high = nums.length - 1;
+        quickSort(nums, low, high);
+        System.out.println("quickSorts结果:" +Arrays.toString(nums) + "用时:" + (System.currentTimeMillis() - start));
+    }
 
+    private static void quickSort(int[] arr, int low, int high) {
+        if (arr == null || low >= high || arr.length <= 1) {
+            return;
+        }
 
+        int left = low;
+        int right = high;
+        int middle = arr[(left + right) / 2];
+        while (left <= right) {
+            while (arr[left] < middle) {
+                ++left;
+            }
+            while (arr[right] > middle) {
+                --right;
+            }
+
+            if (left < right) {
+                int temp = arr[left];
+                arr[left] = arr[right];
+                arr[right] = temp;
+                ++left;
+                --right;
+            } else if (left == right) {
+                ++left;
+            }
+        }
+
+        quickSort(arr, low, right);
+        quickSort(arr, left, high);
     }
 
     /**
@@ -169,7 +214,7 @@ public class Sorts {
     }
 
     /**
-     *堆排
+     *堆排,使用优先级队列
      */
     public static void heapSorts(int[] nums) {
         Long start = System.currentTimeMillis();
@@ -181,6 +226,61 @@ public class Sorts {
         System.out.println("heapSorts结果:" +Arrays.toString(nums) + "用时:" + (System.currentTimeMillis() - start));
     }
 
+    /**
+     * 桶排序
+     * @param nums
+     */
+    public static void bucketSort(int[] nums) {
+        Long start = System.currentTimeMillis();
+
+        int max = nums[0], min = nums[0];
+        for (int a : nums) {
+            if (max < a)     //求数组的最大值和最小值
+                max = a;
+            if (min > a)
+                min = a;
+        }
+        // 該值也可根據實際情況選擇
+        int bucketNum = max / 10 - min / 10 + 1;     //取桶的数量是任意取得
+        List<List<Integer>> buckList = new ArrayList<>();  //每一个桶里都是一个链表,和HashMap的结构一样
+        // create bucket
+        for (int i = 1; i <= bucketNum; i++) {
+            buckList.add(new ArrayList<>());
+        }
+        // push into the bucket
+        for (int i = 0; i < nums.length; i++) {
+
+            //是不是很眼熟,非常像HashMap的索引计算
+            int index = indexFor(nums[i], min, 10);   //这个step其实就是区间范围,比如1~10, 或者20~30
+            buckList.get(index).add(nums[i]);
+        }
+        ArrayList<Integer> bucket = null;
+        int index = 0;
+        for (int i = 0; i < bucketNum; i++) {
+            bucket = (ArrayList<Integer>) buckList.get(i);
+            insertSort(bucket);  //为何此处使用插入排序???
+            for (int k : bucket) {
+                nums[index++] = k;   //其实这个就是合并
+            }
+        }
+        System.out.println("bucketSort结果:" +Arrays.toString(nums) + "用时:" + (System.currentTimeMillis() - start));
+    }
+
+    // 把桶內元素插入排序
+    private static void insertSort(List<Integer> bucket) {
+        for (int i = 1; i < bucket.size(); i++) {
+            int temp = bucket.get(i);
+            int j = i - 1;
+            for (; j >= 0 && bucket.get(j) > temp; j--) {
+                bucket.set(j + 1, bucket.get(j));
+            }
+            bucket.set(j + 1, temp);
+        }
+    }
+
+    private static int indexFor(int a, int min, int step) {
+        return (a - min) / step;
+    }
 
 
 
@@ -213,6 +313,9 @@ public class Sorts {
         System.out.println("nums7 = " + Arrays.toString(nums7));
         insertSorts(nums7);
 
+        int[] nums8 = randomArr(10);
+        System.out.println("nums8 = " + Arrays.toString(nums8));
+        bucketSort(nums8);
     }
 
     public static int[] randomArr(int n) {

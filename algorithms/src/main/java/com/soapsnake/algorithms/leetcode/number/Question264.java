@@ -9,7 +9,7 @@ public class Question264 {
     public static void main(String[] args) {
         Question264 question264 = new Question264();
         int n = 10;
-        System.out.println(question264.nthUglyNumber3(n));
+        System.out.println(question264.nthUglyNumber2(n));
     }
 
     /**
@@ -60,16 +60,21 @@ public class Question264 {
         PriorityQueue<Long> q = new PriorityQueue<>();   //Jdk的这个优先级队列是一个小顶堆,堆顶元素最小,也就是queue[0]是最小值
         q.add(1L);
 
+        List<Long> out = new ArrayList<>();
         for (long i = 1; i < n; i++) {
+            System.out.println("操作前的队列= " + q);
             long tmp = q.poll();   //弹出堆顶最小元素,是remove操作,弹出堆顶后,pq会把queue[]的最后一个元素插到堆顶,然后下沉这个新堆顶,保证堆顶一定最小
+            out.add(tmp);
             while (!q.isEmpty() && q.peek() == tmp) {   //这一步不明白是干嘛的了,去除重复元素吗????
                 tmp = q.poll();
+                out.add(tmp);
             }
             q.add(tmp * 2);
             q.add(tmp * 3);
             q.add(tmp * 5);
-            System.out.println(q);
+            System.out.println("操作结束的队列= " + q);
         }
+        System.out.println("out = " + out);
         return q.poll().intValue();
     }
 
