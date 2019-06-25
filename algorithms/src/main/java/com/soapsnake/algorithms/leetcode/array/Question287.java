@@ -5,6 +5,49 @@ import java.util.Set;
 
 public class Question287 {
 
+    public int findDuplicate3(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return -1;
+        }
+
+        int slow = nums[0];
+        int fast = nums[0];
+        do {
+            slow = nums[slow];
+            fast = nums[nums[fast]];
+        } while (slow != fast);
+
+        int fastPtr = fast;
+        int slowPtr = nums[0];
+        while (fastPtr != slowPtr) {
+            fastPtr = nums[fastPtr];
+            slowPtr = nums[slowPtr];
+        }
+        return fastPtr;
+    }
+
+
+    public int findDuplicate2(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+
+        Set<Integer> set = new HashSet<>();
+        for (int i = 0; i < nums.length; i++) {
+            if (!set.add(nums[i])) {
+                return nums[i];
+            }
+        }
+        return 0;
+    }
+
+
+
+
+
+
+
+
     /**
      * 龟兔赛跑算法,用快慢指针探测链表环
      * @param nums
@@ -32,18 +75,6 @@ public class Question287 {
         return ptr1;
     }
 
-    public int findDuplicate2(int[] nums) {
-        if (nums == null || nums.length == 0) {
-            return 0;
-        }
 
-        Set<Integer> set = new HashSet<>();
-        for (int i = 0; i < nums.length; i++) {
-            if (!set.add(nums[i])) {
-                return nums[i];
-            }
-        }
-        return 0;
-    }
 
 }
