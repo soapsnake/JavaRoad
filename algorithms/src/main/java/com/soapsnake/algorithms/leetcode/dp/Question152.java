@@ -101,7 +101,7 @@ public class Question152 {
         int res = dp[0].imax;
         for (int i = 1; i < nums.length; i++) {
             Tuple prev = dp[i - 1];
-            int imax = Math.max(Math.max(nums[i], nums[i] * prev.imax) , nums[i] * prev.imin);
+            int imax = Math.max(Math.max(nums[i], nums[i] * prev.imax) , nums[i] * prev.imin);   //nums[i],  nums[i] * prevMax,  nums[i] * prevMin
             int imin = Math.min(Math.min(nums[i], nums[i] * prev.imax) , nums[i] * prev.imin);
             dp[i] = new Tuple(imax,imin);
             res = Math.max(imax, res);
