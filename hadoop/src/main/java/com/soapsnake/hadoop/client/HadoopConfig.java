@@ -5,6 +5,13 @@ import org.apache.hadoop.conf.Configuration;
 
 public class HadoopConfig {
 
+
+    public String getConfigByName() {
+
+
+        return "";
+    }
+
     public static void main(String[] args) {
 
         Configuration configuration = new Configuration();

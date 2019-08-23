@@ -24,6 +24,7 @@
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.apache.mrunit/mrunit -->
+<!--        专门用来测试mapreduce的东西-->
         <dependency>
             <groupId>org.apache.mrunit</groupId>
             <artifactId>mrunit</artifactId>
