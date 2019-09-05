@@ -196,6 +196,15 @@
                 <version>25.0-jre</version>
             </dependency>
 
+            <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>1.18.8</version>
+                <scope>provided</scope>
+            </dependency>
+
+
         </dependencies>
     </dependencyManagement>
 
@@ -222,6 +231,7 @@
         <module>spi</module>
         <module>dubbo</module>
         <module>hadoop</module>
+        <module>webflux</module>
     </modules>
 
     <build>
