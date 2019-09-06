@@ -5,19 +5,9 @@ public class Question1115 {
 	public static void main(String[] args) throws InterruptedException {
 		int count  = 10;
 		FooBar fooBar = new FooBar(count);
-		Runnable printFoo = new Runnable() {
-			@Override
-			public void run() {
-				System.out.println("foo");
-			}
-		};
+		Runnable printFoo = () -> System.out.println("foo");
 
-		Runnable printBar = new Runnable() {
-			@Override
-			public void run() {
-				System.out.println("bar");
-			}
-		};
+		Runnable printBar = () -> System.out.println("bar");
 		new Thread(() -> {
 			try {
 				fooBar.foo(printFoo);
@@ -47,13 +37,9 @@ public class Question1115 {
 		public synchronized void foo(Runnable printFoo) throws InterruptedException {
 
 			for (int i = 0; i < n; i++) {
-
 				// printFoo.run() outputs "foo". Do not change or remove this line.
 				printFoo.run();
-				System.out.println("i = " + i);
 				notifyAll();
-				System.out.println(Thread.currentThread().getName() + "准备睡了!");
-				Thread.sleep(1000);
 				wait();  //休眠并且释放锁
 			}
 		}
@@ -61,10 +47,8 @@ public class Question1115 {
 		public synchronized void bar(Runnable printBar) throws InterruptedException {
 			for (int i = 0; i < n; i++) {
 				// printBar.run() outputs "bar". Do not change or remove this line.
-					printBar.run();
-					notifyAll();
-				System.out.println(Thread.currentThread().getName() + "准备睡了!");
-				Thread.sleep(1000);
+				printBar.run();
+				notifyAll();
 				wait();
 			}
 		}
