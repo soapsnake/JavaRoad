@@ -1,27 +1,27 @@
 package com.soapsnake.lambda.stream;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
+import java.util.List;
+
 /**
  * Created by soapsnake on 2017/6/1.
  */
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 public class Person {
 
     private long id;
 
-    private long age;
+    private Integer age;
 
-    public long getId() {
-        return id;
-    }
+    private String name;
 
-    public void setId(long id) {
-        this.id = id;
-    }
+    private List<Person> friends;
 
-    public long getAge() {
-        return age;
-    }
-
-    public void setAge(long age) {
-        this.age = age;
-    }
 }

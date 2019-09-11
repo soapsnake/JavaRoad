@@ -11,7 +11,7 @@ public class StreamTest2 {
     public static void main(String[] args) {
 
         List<Person> list = new ArrayList<>();
-        for (long i = 0; i < 101; i++) {
+        for (int i = 0; i < 101; i++) {
             Person person = new Person();
             person.setId(i);
 
