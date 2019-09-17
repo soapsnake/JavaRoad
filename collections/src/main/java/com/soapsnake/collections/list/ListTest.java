@@ -1,5 +1,6 @@
 package com.soapsnake.collections.list;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -24,6 +25,18 @@ public class ListTest {
 
         list.set(10, 100);
         System.out.println("list.set(10, 100) " + list);
+
+
+
+        List<Person> list10 = new ArrayList<>();
+        Person person = new Person();
+        person.age = 18;
+        person.name = "peter";
+
+        list10.add(person);
+
+        List<Person> list11 = new ArrayList<>(list10);
+
 
 
     }
