@@ -1,5 +1,6 @@
 package com.soapsnake.collections.map;
 
+import com.soapsnake.collections.list.SomeOne;
 import org.apache.commons.lang3.RandomStringUtils;
 
 import java.util.HashMap;
@@ -21,6 +22,16 @@ public class MapTest {
 
         Map<ClassMates, Integer> map2 = new ConcurrentHashMap<>();
         map2.put(mates2, 8);
+
+        SomeOne someOne = new SomeOne();
+
+
+        class A {
+            public int anInt = 3;
+        }
+        Object o = new A();
+        A a = (A) o;
+        System.out.println("i = " + a.anInt);
 
 
     }

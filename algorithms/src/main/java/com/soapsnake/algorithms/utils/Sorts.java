@@ -272,7 +272,7 @@ public class Sorts {
             int temp = bucket.get(i);
             int j = i - 1;
             for (; j >= 0 && bucket.get(j) > temp; j--) {
-                bucket.set(j + 1, bucket.get(j));
+                bucket.set(j + 1, bucket.get(j));  //把arr[j]的值赋给arr[j+1]
             }
             bucket.set(j + 1, temp);
         }
