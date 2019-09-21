@@ -5,6 +5,10 @@ import org.apache.commons.lang3.RandomStringUtils;
 
 public class Person {
 
+    static {
+        System.out.println("static has been called");
+    }
+
     private String name;
 
     private String password;

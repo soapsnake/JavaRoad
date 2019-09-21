@@ -8,7 +8,7 @@ public class ArrayUtils {
         if (arr == null) {
             System.out.println("数组为空");
         }
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < arr.length; i++) {
             sb.append(arr[i]);
             if (i != arr.length - 1) {

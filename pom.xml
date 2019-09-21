@@ -238,6 +238,8 @@
         <module>dubbo</module>
         <module>hadoop</module>
         <module>webflux</module>
+        <module>lab</module>
+        <module>scala</module>
     </modules>
 
     <build>

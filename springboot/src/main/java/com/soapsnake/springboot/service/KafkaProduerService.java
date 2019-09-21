@@ -3,6 +3,7 @@ package com.soapsnake.springboot.service;
 
 import com.alibaba.fastjson.JSON;
 import com.soapsnake.springboot.domain.KafkaMessage;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +14,8 @@ import java.util.UUID;
 @Service
 public class KafkaProduerService {
 
-	private static final  String kafkaTopic = "binary-in";
+	@Value("${kafka.topic}")
+	private String kafkaTopic;
 
 	@Resource
 	private KafkaTemplate<String, String> kafkaTemplate;
