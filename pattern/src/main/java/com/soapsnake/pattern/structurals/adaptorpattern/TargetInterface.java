@@ -1,4 +1,4 @@
-package com.soapsnake.pattern.structurals.adaptor;
+package com.soapsnake.pattern.structurals.adaptorpattern;
 
 /**
  * @Auther soapsnake@gmail.com

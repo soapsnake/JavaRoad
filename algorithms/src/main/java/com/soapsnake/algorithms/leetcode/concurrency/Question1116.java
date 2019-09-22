@@ -13,21 +13,21 @@ public class Question1116 {
 		}
 
 		// printNumber.accept(x) outputs "x", where x is an integer.
-		public void zero(IntConsumer printNumber) throws InterruptedException {
+		public synchronized void zero(IntConsumer printNumber) throws InterruptedException {
 			if (n == 0) {
 				printNumber.accept(n);
 				n++;
 			}
 		}
 
-		public void even(IntConsumer printNumber) throws InterruptedException {
+		public synchronized void even(IntConsumer printNumber) throws InterruptedException {
 			if (n /2 == 0) {
 				printNumber.accept(n);
 				n++;
 			}
 		}
 
-		public void odd(IntConsumer printNumber) throws InterruptedException {
+		public synchronized void odd(IntConsumer printNumber) throws InterruptedException {
 			if (n / 2 != 0) {
 				printNumber.accept(n);
 				n++;
@@ -50,26 +50,7 @@ public class Question1116 {
 	}
 
 	public static void main(String[] args) throws ClassNotFoundException {
-		new Thread(new Runnable() {
-			@Override
-			public void run() {
 
-			}
-		}).start();
-
-		new Thread(new Runnable() {
-			@Override
-			public void run() {
-
-			}
-		}).start();
-
-		new Thread(new Runnable() {
-			@Override
-			public void run() {
-
-			}
-		}).start();
 
 
 

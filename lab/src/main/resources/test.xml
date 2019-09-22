@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
 
-<flower>
-    <name>kevin</name>
-    <age>18</age>
-    <douzi>good</douzi>
+<flowers>
+    <flower type="singleTon">
+        <name>kevin</name>
+        <age>18</age>
+        <douzi>good</douzi>
+    </flower>
 
-</flower>
+    <flower type="protoType">
+        <name>snake</name>
+        <age>21</age>
+        <douzi>bad</douzi>
+    </flower>
+</flowers>

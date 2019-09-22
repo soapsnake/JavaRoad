@@ -19,7 +19,6 @@ public class ClassLoaderTester {
 		//奇怪吧,loadCLass不会初始化static块
 		classLoader.loadClass("com.soapsnake.lab.classloader.ClassLoaderTester");
 
-
 		Thread.currentThread().sleep(0);
 
 	}
