@@ -16,5 +16,6 @@ public class Adaptor extends TobeAdapte implements TargetInterface  {
     @Override
     public void method3() {
         System.out.println("TargetObj -> method3");
+
     }
 }
