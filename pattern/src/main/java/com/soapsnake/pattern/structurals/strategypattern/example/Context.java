@@ -1,4 +1,4 @@
-package com.soapsnake.pattern.structurals.strategypattern;
+package com.soapsnake.pattern.structurals.strategypattern.example;
 
 public class Context {
 
