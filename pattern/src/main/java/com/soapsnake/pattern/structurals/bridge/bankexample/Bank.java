@@ -1,4 +1,4 @@
-package com.soapsnake.pattern.structurals.bridge;
+package com.soapsnake.pattern.structurals.bridge.bankexample;
 
 public abstract class Bank {
 
