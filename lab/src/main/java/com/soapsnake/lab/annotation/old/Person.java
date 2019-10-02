@@ -1,4 +1,4 @@
-package com.soapsnake.annotations;
+package com.soapsnake.lab.annotation.old;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import org.apache.commons.lang3.RandomStringUtils;

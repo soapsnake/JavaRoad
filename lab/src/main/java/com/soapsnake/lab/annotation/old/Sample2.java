@@ -1,4 +1,4 @@
-package com.soapsnake.annotations;
+package com.soapsnake.lab.annotation.old;
 
 /**
  * Created by soapsnake on 2017/5/16.

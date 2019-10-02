@@ -1,4 +1,4 @@
-package com.soapsnake.annotations;
+package com.soapsnake.lab.annotation.old;
 
 import java.lang.reflect.Method;
 
@@ -8,7 +8,7 @@ import java.lang.reflect.Method;
 public class App {
 
     public static void main(String[] args) throws ClassNotFoundException, IllegalAccessException, InstantiationException, NoSuchMethodException {
-        Sample2 sample2 = (Sample2) Class.forName("com.soapsnake.annotations.Sample2").newInstance();
+        Sample2 sample2 = (Sample2) Class.forName("com.soapsnake.lab.annotation.old.Sample2").newInstance();
 
         Method[] methods = sample2.getClass().getDeclaredMethods();
 

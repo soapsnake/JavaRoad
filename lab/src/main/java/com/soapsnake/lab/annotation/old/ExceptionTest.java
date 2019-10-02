@@ -1,4 +1,4 @@
-package com.soapsnake.annotations;
+package com.soapsnake.lab.annotation.old;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
