@@ -1,7 +1,7 @@
 package com.soapsnake.springboot.controller;
 
-import com.soapsnake.springboot.domain.Contact;
-import com.soapsnake.springboot.repo.ContactRepository;
+import com.soapsnake.springboot.pojo.User;
+import com.soapsnake.springboot.service.ContactService;
 import com.soapsnake.springboot.service.HelloService;
 import com.soapsnake.springboot.service.KafkaProduerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -21,27 +20,24 @@ import java.util.Map;
 @Controller
 @RequestMapping("/")
 public class ContactController {
-
-    @Autowired
-    private ContactRepository contactRepo;
-
     @Autowired
     private HelloService helloService;
+
+    @Resource
+    private ContactService contactService;
 
     @Resource
     private KafkaProduerService produerService;
 
     @RequestMapping(method = RequestMethod.GET)
     public String getHome(Map<String, Object> model) {
-        List<Contact> contacts = contactRepo.findAll();
-        model.put("contacts", contacts);
+        model.put("contacts", contactService.getAllUsers());
         return "home";
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String saveContact(Contact contact) {
-        contactRepo.saveContact(contact);
-
+    public String saveContact(User user) {
+        contactService.saveUser(user);
         helloService.sayHello();
         return "redirect:/";
     }

@@ -2,14 +2,12 @@ package com.soapsnake.springboot.service;
 
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.messaging.simp.stomp.StompSession;
 import org.springframework.messaging.simp.stomp.StompSessionHandler;
 import org.springframework.stereotype.Service;
 import org.springframework.web.socket.messaging.WebSocketStompClient;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
-import java.util.concurrent.ExecutionException;
 
 @Service
 public class WebSocketService {
@@ -25,11 +23,11 @@ public class WebSocketService {
 
 	@PostConstruct
 	public void getMsg() {
-		try {
-			StompSession session = stompClient.connect(url, stompSessionHandler).get();
-		} catch (InterruptedException | ExecutionException e) {
-			System.out.println("websocket got error " + e);
-			e.printStackTrace();
-		}
+//		try {
+//			StompSession session = stompClient.connect(url, stompSessionHandler).get();
+//		} catch (InterruptedException | ExecutionException e) {
+//			System.out.println("websocket got error " + e);
+//			e.printStackTrace();
+//		}
 	}
 }
