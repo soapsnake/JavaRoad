@@ -20,11 +20,11 @@ public class ContactServiceImpl implements ContactService {
 	private UserMapper userMapper;
 
 	@Override
-	@Transactional(propagation = Propagation.REQUIRES_NEW)  //这里无论调用方是否有事务都会加事务
-//	@Transactional(isolation = Isolation.READ_COMMITTED)  //隔离级别是session级别,这里设置会覆盖数据库默认
+	@Transactional(propagation = Propagation.REQUIRES_NEW)  //这里无论调用方是否有事务我都会加事务
+//	@Transactional(isolation = Isolation.READ_COMMITTED)  //这里设置该session的隔离级别,这里设置会覆盖数据库默认
 //	@Transactional(propagation = Propagation.NEVER)  //无论调用方是否有事务,我都不加事务
-//	@Transactional(propagation = Propagation.MANDATORY) //如果调用方没有事务这样子会抛异常
-//	@Transactional(propagation = Propagation.NESTED)  //调用发无事务这里会开新的,如果有那就会嵌套子事务
+//	@Transactional(propagation = Propagation.MANDATORY) //如果调用方没有事务那别怪我抛异常
+//	@Transactional(propagation = Propagation.NESTED)  //调用发无事务我就开新的,如果有那就会嵌套子事务
 	public void anotherAction(User user) {
 		user.setFirstName(user.getFirstName() + "-anot");
 		user.setPhoneNumber(RandomStringUtils.randomNumeric(8));
