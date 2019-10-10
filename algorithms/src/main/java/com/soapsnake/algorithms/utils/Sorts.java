@@ -158,28 +158,31 @@ public class Sorts {
 
         int left = low;
         int right = high;
-        int middle = arr[(left + right) / 2];
+        int middle = arr[(left + right) / 2];   //middle是中间值,不是中位索引
         while (left <= right) {
             while (arr[left] < middle) {
                 ++left;
             }
+            //到这里发现了左半数组比中值大的数字
             while (arr[right] > middle) {
                 --right;
             }
+            //到这里发现了右半数组比中值小的数字
 
-            if (left < right) {
+            if (left < right) {   //如果左指针比右指针小,那么只交换数字
                 int temp = arr[left];
                 arr[left] = arr[right];
                 arr[right] = temp;
-                ++left;
-                --right;
-            } else if (left == right) {
-                ++left;
+                ++left;  //驱动
+                --right;  //驱动
+            } else if (left == right) {  //但是如果左右指针碰撞了??
+                ++left;  //利用这个来退出外层循环,这里操作后left就绝对比right大了,太他吗精髓了这个
             }
         }
+        //到这里,左半都比右半小,而且left > right
 
-        quickSort(arr, low, right);
-        quickSort(arr, left, high);
+        quickSort(arr, low, right);  //左半继续,这个左右边界选的太他吗精髓了
+        quickSort(arr, left, high);   //右半继续,这个左右边界选的太他吗精髓了
     }
 
     /**

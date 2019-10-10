@@ -7,9 +7,9 @@ public class OperatorsTest {
 
 
         //向右移位值会减少
-        System.out.println(i >> 1);
+        System.out.println(i >> 1);   //相当于除以2的1次方就是除以2嘛
         //向左移位值会增加
-        System.out.println(i << 1);
+        System.out.println(i << 1);  //相当于乘以2的1次方就是乘以2
 
         int j = -10;
         //负数反过来

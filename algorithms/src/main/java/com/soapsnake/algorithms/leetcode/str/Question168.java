@@ -38,5 +38,28 @@ public class Question168 {
     public static void main(String[] args) {
         Question168 question168 = new Question168();
         System.out.println(question168.convertToTitle(52));
+
+        System.out.println(strAdd("823", "597"));
     }
+
+
+    public  static String strAdd(String a , String b) {
+        int len = Math.min(a.length(), b.length());
+        StringBuilder stringBuffer = new StringBuilder();
+        int step = 0; //进位
+        for (int i = len - 1;i >= 0; i--) {
+            int c = 0;  //位实际值
+            int numA = a.charAt(i) - '0';
+            int numB = b.charAt(i) - '0';
+            c = (numA + numB + step) % 10;        //余10得本位值,注意进位
+            step = (numA + numB + step) / 10;     //除10得进位
+            stringBuffer.insert(0, c + "");
+        }
+        if (step != 0) {
+            stringBuffer.insert(0, step + "");
+        }
+        return stringBuffer.toString();
+    }
+
+
 }

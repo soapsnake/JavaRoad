@@ -59,7 +59,7 @@ public class Question82 {
         while (cur != null) {
             while (cur.next != null && cur.val == cur.next.val) {
                 //发现了重复节点
-                cur = cur.next;
+                cur = cur.next;  //这步是核心
             }
             //这个算法最核心的思想就是这个==号,object如果==为true表明这个节点没有变过(没有重复)
             if (pre.next == cur) {
