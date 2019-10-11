@@ -1,4 +1,4 @@
-package com.soapsnake.algorithms.sometest;
+package com.soapsnake.algorithms.alib;
 
 import com.soapsnake.algorithms.structures.list.ListNode;
 

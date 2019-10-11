@@ -13,14 +13,71 @@ class Question1 {
     public static void main(String[] args) {
         int[] ques = new int[]{3, 3};
         Question1 question1 = new Question1();
-        ArrayUtils.printArr(question1.twoSum2(ques, 6));
+        ArrayUtils.printArr(question1.twoSum6(ques, 6));
 
 //        for (int i = 1;i<20;i++) {
 //            System.out.println(i % 10);
 //        }
     }
 
-    //解法1:暴力枚举
+
+    public int[] twoSum4(int[] nums, int target) {
+        int[] res = new int[2];
+        Map<Integer, Integer> map = new HashMap<>();  // num -> index
+        for (int i = 0; i < nums.length; i++) {
+            map.put(nums[i] , i);
+        }
+        Arrays.sort(nums);
+        int low = 0;
+        int high = nums.length - 1;
+        while (low < high) {
+            if (nums[low] + nums[high] == target) {
+                res[0] = map.get(nums[low]);
+                res[1] = map.get(nums[high]);
+                return res;
+            } else if (nums[low] + nums[high] > target) {
+                high--;
+            } else {
+                low++;
+            }
+
+        }
+        return null;
+    }
+
+    public int[] twoSum5(int[] nums, int target) {
+        int[] res = new int[2];
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = i + 1; j < nums.length; j++) {
+                if (nums[j] == target - nums[i]) {
+                    res[0] = i;
+                    res[1] = j;
+                    return res;
+                }
+            }
+        }
+        return nums;
+    }
+
+    public int[] twoSum6(int[] nums, int target) {
+        int[] res = new int[2];
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            if (map.get(target - nums[i]) != null) {
+                res[0] = i;
+                res[1] = map.get(target - nums[i]);
+                return res;
+            } else {
+                map.put(nums[i], i);
+            }
+        }
+        return null;
+    }
+
+
+
+
+        //解法1:暴力枚举
     public int[] twoSum(int[] nums, int target) {
         int[] res = new int[2];
         for (int i = 0; i < nums.length; i++) {
