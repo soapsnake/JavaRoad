@@ -26,6 +26,20 @@ public class Question39 {
         return  res;
     }
 
+    private void dfsTree2(List<List<Integer>> res, ArrayList<Integer> tmp, int[] candidates, int remain, int start) {
+        if (remain < 0) {
+            return;
+        } else if (remain == 0) {
+            res.add(new ArrayList<>(tmp));
+        } else {
+            for (int i = start; i < candidates.length; i++) {
+                tmp.add(candidates[i]);
+                dfsTree2(res, tmp, candidates, remain - candidates[i], i);
+                tmp.remove(tmp.size() - 1);
+            }
+        }
+    }
+
     private void dfsTree(List<List<Integer>> res, ArrayList<Integer> tmp, int[] candidates, int remain, int start) {
         if (remain < 0) {
             return;
@@ -40,6 +54,8 @@ public class Question39 {
             }
         }
     }
+
+
 
     public static void main(String[] args) {
         Question39 question39  = new Question39();
