@@ -5,6 +5,7 @@ import com.soapsnake.algorithms.leetcode.array.ArrayUtils;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Stack;
 
 public class TreeNode {
@@ -244,6 +245,15 @@ public class TreeNode {
         return root;
     }
 
+    /**
+     *          3
+     *         / \
+     *        5   1
+     *       /\  /\
+     *      6 2 0  8
+     *       /\
+      *     7 4
+     */
     public static TreeNode makeNormalTreeFor236() {
         //1层
         TreeNode root = new TreeNode(3);
@@ -326,5 +336,18 @@ public class TreeNode {
                 ", left=" + left +
                 ", right=" + right +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof TreeNode)) return false;
+        TreeNode node = (TreeNode) o;
+        return val == node.val;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(val);
     }
 }

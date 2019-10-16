@@ -29,7 +29,6 @@ public class Question56 {
     public List<Interval> merge(List<Interval> intervals) {
         //他妈的明明思路和最高votes一样的,复杂度确高不少,为啥?
 
-
          if (intervals == null || intervals.size() == 0) {
              return new ArrayList<>();
          }

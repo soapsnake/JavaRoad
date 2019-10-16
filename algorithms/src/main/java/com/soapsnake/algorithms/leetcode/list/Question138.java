@@ -43,7 +43,7 @@ public class Question138 {
 
         Node newNode = head;
         while (newNode !=null) {
-            cache.get(newNode).next = cache.get(newNode.next);
+            cache.get(newNode).next = cache.get(newNode.next);     //这里的两部其实是在建立各个节点之间的联系
             cache.get(newNode).random = cache.get(newNode.random);
             newNode = newNode.next;
         }

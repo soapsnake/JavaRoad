@@ -10,8 +10,20 @@ public class Question98 {
 
     //验证是否二叉搜索树
     public boolean isValidBST(TreeNode root) {
-        return isValidBST(root, Long.MIN_VALUE, Long.MAX_VALUE);
+        return isValidBST2(root, Long.MIN_VALUE, Long.MAX_VALUE);
     }
+
+
+    public boolean isValidBST2(TreeNode root, long minVal, long maxVal) {
+        if (root == null) {
+            return true;
+        }
+        if (root.val <= minVal || root.val >= maxVal) {
+            return false;
+        }
+        return isValidBST2(root.left, minVal, root.val) && isValidBST2(root.right, root.val, maxVal);
+    }
+
 
     public boolean isValidBST(TreeNode root, long minVal, long maxVal) {
         if (root == null) {
@@ -24,4 +36,5 @@ public class Question98 {
         //root所有左子节点的值,都应该在最小值 ~ root.val之间   所有右子节点的值,都应该在root.val ~ 最大值之间
         return isValidBST(root.left, minVal, root.val) && isValidBST(root.right, root.val, maxVal);
     }
+
 }

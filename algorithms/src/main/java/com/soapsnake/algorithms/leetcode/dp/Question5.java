@@ -4,9 +4,9 @@ class Question5 {
 
     public static void main(String[] args) {
         Question5 question5 = new Question5();
-        String str1 = "babad";
-        String str2 = "cbbd";
-        System.out.println(question5.longestPalindrome2(str2));
+//        String str1 = "babad";
+        String str2 = "efabcbaefehiabcba";
+        System.out.println(question5.longestPalindromeDPSolution(str2));
     }
 
     //答案正确,但是解法复杂度过高,n平方
