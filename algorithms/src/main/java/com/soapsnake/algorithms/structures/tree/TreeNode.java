@@ -273,9 +273,6 @@ public class TreeNode {
         return root;
     }
 
-
-
-
     /**
      *     3
      *    / \
@@ -289,6 +286,13 @@ public class TreeNode {
         root.right = new TreeNode(20);
         root.right.right = new TreeNode(7);
         root.right.left = new TreeNode(15);
+        return root;
+    }
+
+    public static TreeNode makeNormalTreeFor110v2() {
+        TreeNode root = new TreeNode(20);
+        root.left = new TreeNode(15);
+        root.right = new TreeNode(7);
         return root;
     }
 

@@ -1,5 +1,8 @@
 package com.soapsnake.algorithms.alib;
 
+import com.soapsnake.algorithms.structures.tree.TreeNode;
+import org.junit.Test;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,15 +42,94 @@ public class LargeNumberPlus {
         System.out.println(LargeNumberPlus.plus(num1, num2));
     }
 
-    public List<Integer> getMaxMin() {
+    //无需数组的最大最小数
+    public List<Integer> getMaxMin(int[] arr) {
         List<Integer> res = new ArrayList<>();
-
-        //基本思路,借助快排的思想,先数一个中位数,然后把比中位数小的数字挪到中位数左边,
-        //比中位数大的数字挪到中卫数右边,根据本题目的要求,每次左半边只取比中位数小的,右边只取比中位数大的数子
-        //不断进行递归操作,即可的最终结果
-
-        //代码略
-
+        if (arr == null || arr.length == 0) {
+            return res;
+        }
+        int max = Integer.MIN_VALUE;
+        int min = Integer.MAX_VALUE;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] > max) {
+                max = arr[i];
+            }
+            if (arr[i] < min) {
+                min = arr[i];
+            }
+        }
+        res.add(min);
+        res.add(max);
         return res;
     }
+
+    @Test
+    public void testGetMaxMin() {
+        int[] arr = {2,3,4,5,45,2,3,4,5,13,4,5,34,623,5,234,903};
+        System.out.println(getMaxMin(arr));
+
+        System.out.println(8921 % 10);
+        System.out.println(892 % 10);
+        System.out.println(89 % 10);
+        System.out.println(8 % 10);
+    }
+
+    //非递归斐波拉契数列
+    public Long fabici(int n) {
+        if (n == 0) {
+            return 1L;
+        }
+        Long first = 1L;
+        Long second = 2L;
+        Long tar = 0L;
+        while (n-- > 2) {
+            tar = first + second;
+            first = second;
+            second = tar;
+        }
+        return tar;
+    }
+
+    @Test
+    public void testFacbirci() {
+        //1,2,3,5,8,11,19,30,49
+
+        System.out.println(fabici(5));
+//        System.out.println(fabici(10));
+//        System.out.println(fabici(12));
+//        System.out.println(fabici(15));
+//        System.out.println(fabici(100));
+//        System.out.println(fabici(20));
+//        System.out.println(fabici(200));
+    }
+
+    //判断树A是不是B的子树
+    public boolean isSubTree(TreeNode a, TreeNode b) {
+        if (a == null || b == null) {
+            return false;
+        }
+        return dfsTree(a, b);
+    }
+
+    private boolean dfsTree(TreeNode a, TreeNode b) {
+        if (a == null && b == null) {
+            return true;
+        } else if (a == null) {
+            return false;
+        }else if (b == null) {
+            return false;
+        } else if (a.val == b.val) {
+            return dfsTree(a.left, b.left) && dfsTree(a.right, b.right);
+        } else {
+            return dfsTree(a, b.left) || dfsTree(a, b.right);
+        }
+    }
+
+    @Test
+    public void testIsSubTree() {
+        TreeNode a = TreeNode.makeNormalTreeFor110();
+        TreeNode b = TreeNode.makeNormalTreeFor110v2();
+        System.out.println(isSubTree(b, a));
+    }
+
 }

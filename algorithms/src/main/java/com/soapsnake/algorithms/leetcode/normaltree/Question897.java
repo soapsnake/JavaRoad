@@ -68,22 +68,6 @@ class Question897 {
         return search(0, mid, arr, dest);
     }
 
-//    public static void main(String[] args) {
-//        Question897 question897 = new Question897();
-//        int[] dest = {1,2,3,4,5,6,7,8,9,13,15};   //9的索引为8
-//
-//        int target = 1;
-//        long start1 = System.nanoTime();
-//        System.out.println(question897.binerSearch(dest, target));
-//        long end1 = System.nanoTime() - start1;
-//
-//        long start2 = System.nanoTime();
-//        System.out.println(question897.iterateBS(dest, target));
-//        long end2 = System.nanoTime() - start2;
-//
-//        System.out.println("cost1 = " + end1 + " cost2 = " + end2);
-//    }
-
     //迭代版二分
     private int iterateBS(int[] arr, int dest) {
         int mid = arr.length / 2;
@@ -193,9 +177,6 @@ class Question897 {
         }
         return newRoot.right; //这里返回的是newRoot得right子节点
     }
-
-
-
 
     public static void main(String[] args) {
         Question897 question897 = new Question897();
