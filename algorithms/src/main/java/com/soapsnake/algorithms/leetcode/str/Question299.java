@@ -5,10 +5,18 @@ import java.util.List;
 
 public class Question299 {
 
+    public static void main(String[] args) {
+        Question299 question299 = new Question299();
+        String secret = "1123";
+        String guess = "0111";
+        System.out.println(question299.getHint(secret, guess));  //should 1A1B
+    }
+
     /**
      * Input: secret = "1807", guess = "7810"
      * Output: "1A3B"
      * Explanation: 1 bull and 3 cows. The bull is 8, the cows are 0, 1 and 7.
+     *
      * @param secret
      * @param guess
      * @return
@@ -38,11 +46,10 @@ public class Question299 {
         for (char c : bulls) {
             if (list.contains(c))
                 countB++;
-                list.remove(Character.valueOf(c));
+            list.remove(Character.valueOf(c));
         }
-        return countA +  "A" + countB + "B";
+        return countA + "A" + countB + "B";
     }
-
 
     public String getHint2(String secret, String guess) {
         int len = secret.length();
@@ -61,12 +68,5 @@ public class Question299 {
             cow += Math.min(secretarr[i], guessarr[i]);
         }
         return "" + bull + "A" + cow + "B";
-    }
-
-    public static void main(String[] args) {
-        Question299 question299 = new Question299();
-        String secret = "1123";
-        String guess =  "0111";
-        System.out.println(question299.getHint(secret, guess));  //should 1A1B
     }
 }

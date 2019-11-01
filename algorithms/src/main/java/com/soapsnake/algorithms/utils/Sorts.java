@@ -33,7 +33,7 @@ public class Sorts {
             nums[i] = nums[smallIndex];
             nums[smallIndex] = temp;
         }
-        System.out.println("insertSorts结果:" +Arrays.toString(nums) + "用时:" + (System.currentTimeMillis() - start));
+        System.out.println("insertSorts结果:" + Arrays.toString(nums) + "用时:" + (System.currentTimeMillis() - start));
     }
 
     /**
@@ -51,39 +51,39 @@ public class Sorts {
                 }
             }
         }
-        System.out.println("bubleSorts结果:" +Arrays.toString(nums) + "用时:" + (System.currentTimeMillis() - start));
+        System.out.println("bubleSorts结果:" + Arrays.toString(nums) + "用时:" + (System.currentTimeMillis() - start));
     }
 
     /**
-     *归并排序
-     *
-     *
+     * 归并排序
+     * <p>
+     * <p>
      * 思路:先利用递归对数组进行拆分,然后合并拆分的两个数组
      */
     public static void mergeSorts(int[] nums) {
         Long start = System.currentTimeMillis();
-        mergeSortRecursive(nums, 0,nums.length - 1);
-        System.out.println("mergeSorts结果:" +Arrays.toString(nums) + "用时:" + (System.currentTimeMillis() - start));
+        mergeSortRecursive(nums, 0, nums.length - 1);
+        System.out.println("mergeSorts结果:" + Arrays.toString(nums) + "用时:" + (System.currentTimeMillis() - start));
     }
 
     //归并排序的拆分过程
     private static void mergeSortRecursive(int[] arr, int start, int end) {
-            //如果只有一个元素，那就不用排序了
-            if (start == end) {
-                return;
-            } else {
-                //取中间的数，进行拆分
-                int mid = (start + end) / 2;
+        //如果只有一个元素，那就不用排序了
+        if (start == end) {
+            return;
+        } else {
+            //取中间的数，进行拆分
+            int mid = (start + end) / 2;
 
-                //左边的数不断进行拆分
-                mergeSortRecursive(arr, start, mid);
+            //左边的数不断进行拆分
+            mergeSortRecursive(arr, start, mid);
 
-                //右边的数不断进行拆分
-                mergeSortRecursive(arr, mid + 1, end);
+            //右边的数不断进行拆分
+            mergeSortRecursive(arr, mid + 1, end);
 
-                //合并
-                merge(arr, start, mid + 1, end);
-            }
+            //合并
+            merge(arr, start, mid + 1, end);
+        }
     }
 
     //归并排序的合并过程
@@ -103,7 +103,7 @@ public class Sorts {
         }
         int i = 0, j = 0;
         // arrays数组的第一个元素
-        int  k = left;  //left是初始值,第一轮就是0
+        int k = left;  //left是初始值,第一轮就是0
         //比较这两个数组的值，哪个小，就往数组上放
         while (i < leftTemp.length && j < rightTemp.length) {
             //谁比较小，谁将元素放入大数组中,移动指针，继续比较下一个
@@ -115,7 +115,7 @@ public class Sorts {
                 arrays[k] = rightTemp[j];
                 j++;
             }
-                k++;            //k指针每轮都会移动
+            k++;            //k指针每轮都会移动
         }
 
         //如果左边的数组还没比较完，右边的数都已经完了(右数组普遍比左数组的数字小)，那么将左边的数抄到大数组中(剩下的都是大数字,填补空位)
@@ -133,7 +133,7 @@ public class Sorts {
     }
 
     /**
-     *希尔排序
+     * 希尔排序
      */
     public static void hillSorts(int[] nums) {
 
@@ -141,14 +141,14 @@ public class Sorts {
     }
 
     /**
-     *快排
+     * 快排
      */
     public static void quicktSorts(int[] nums) {
         Long start = System.currentTimeMillis();
         int low = 0;
         int high = nums.length - 1;
         quickSort(nums, low, high);
-        System.out.println("quickSorts结果:" +Arrays.toString(nums) + "用时:" + (System.currentTimeMillis() - start));
+        System.out.println("quickSorts结果:" + Arrays.toString(nums) + "用时:" + (System.currentTimeMillis() - start));
     }
 
     private static void quickSort(int[] arr, int low, int high) {
@@ -213,11 +213,11 @@ public class Sorts {
             }
 
         }
-        System.out.println("insertSorts结果:" +Arrays.toString(arr) + "用时:" + (System.currentTimeMillis() - start));
+        System.out.println("insertSorts结果:" + Arrays.toString(arr) + "用时:" + (System.currentTimeMillis() - start));
     }
 
     /**
-     *堆排,使用优先级队列
+     * 堆排,使用优先级队列
      */
     public static void heapSorts(int[] nums) {
         Long start = System.currentTimeMillis();
@@ -226,11 +226,12 @@ public class Sorts {
             maxPriorityQueue.insert(i);
         }
         nums = Arrays.stream(maxPriorityQueue.sort()).mapToInt(Integer::intValue).toArray();
-        System.out.println("heapSorts结果:" +Arrays.toString(nums) + "用时:" + (System.currentTimeMillis() - start));
+        System.out.println("heapSorts结果:" + Arrays.toString(nums) + "用时:" + (System.currentTimeMillis() - start));
     }
 
     /**
      * 桶排序
+     *
      * @param nums
      */
     public static void bucketSort(int[] nums) {
@@ -266,7 +267,7 @@ public class Sorts {
                 nums[index++] = k;   //其实这个就是合并
             }
         }
-        System.out.println("bucketSort结果:" +Arrays.toString(nums) + "用时:" + (System.currentTimeMillis() - start));
+        System.out.println("bucketSort结果:" + Arrays.toString(nums) + "用时:" + (System.currentTimeMillis() - start));
     }
 
     // 把桶內元素插入排序
@@ -284,7 +285,6 @@ public class Sorts {
     private static int indexFor(int a, int min, int step) {
         return (a - min) / step;
     }
-
 
 
     public static void main(String[] args) {

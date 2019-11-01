@@ -4,6 +4,7 @@ package com.soapsnake.algorithms.structures.queue;
 /**
  * 1. 小顶堆(堆顶部元素最小)
  * 2. 带索引
+ *
  * @param <K>
  */
 public class IndexMinPQ<K extends Comparable<K>> implements PriorityQueue<K> {
@@ -15,24 +16,24 @@ public class IndexMinPQ<K extends Comparable<K>> implements PriorityQueue<K> {
 
     //insert item ; associate it with k
     //讲元素插到索引k处,实际上这是一个替换操作,但是插入完了次序可能是乱的????
-     void insert(int k, K item) {
+    void insert(int k, K item) {
 
-     }
+    }
 
     //change the item associated with k to item
-    void  change(int k, K item) {
+    void change(int k, K item) {
 
     }
 
     //is k associated with some item?
     //k索引处是否有元素
-    boolean  contains(int k) {
+    boolean contains(int k) {
         return false;
     }
 
     //remove k and its associated itemItem
     //删除索引k的元素
-    void  delete(int k) {
+    void delete(int k) {
 
     }
 

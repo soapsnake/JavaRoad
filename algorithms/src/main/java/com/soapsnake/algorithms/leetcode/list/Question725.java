@@ -12,6 +12,13 @@ import java.util.List;
  */
 public class Question725 {
 
+    public static void main(String[] args) {
+        Question725 question725 = new Question725();
+        ListNode root = ListNode.makeTestListFor725();
+        int k = 3;
+        System.out.println(Arrays.toString(question725.splitListToParts(root, k)));
+    }
+
     /**
      * Input:
      * root = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], k = 3
@@ -106,7 +113,7 @@ public class Question725 {
             }
             seg[k - 1] = init - 1;
             return seg;
-        }else {
+        } else {
             if (total + init + 1 == length) {
                 for (int i = 0; i < k - 1; i++) {
                     seg[i] = init;
@@ -116,12 +123,5 @@ public class Question725 {
             }
             return countSeg(length, k, init + 1);
         }
-    }
-
-    public static void main(String[] args) {
-        Question725 question725 = new Question725();
-        ListNode root = ListNode.makeTestListFor725();
-        int k = 3;
-        System.out.println(Arrays.toString(question725.splitListToParts(root, k)));
     }
 }

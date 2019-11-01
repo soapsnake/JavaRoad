@@ -8,9 +8,13 @@ import java.util.Arrays;
  */
 public class Question16 {
 
+    public static void main(String[] args) {
+        Question16 question16 = new Question16();
+        int[] nums = {-1, 2, 1, -4};
+        System.out.println(question16.threeSumClosest(nums, 1));
+    }
+
     /**
-     *
-     *
      * Given array nums = [-1, 2, 1, -4], and target = 1.
      * The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).
      */
@@ -51,11 +55,5 @@ public class Question16 {
             }
         }
         return res;
-    }
-
-    public static void main(String[] args) {
-        Question16 question16 = new Question16();
-        int[] nums = {-1,2,1,-4};
-        System.out.println(question16.threeSumClosest(nums, 1));
     }
 }

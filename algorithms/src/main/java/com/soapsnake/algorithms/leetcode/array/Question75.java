@@ -11,6 +11,13 @@ import java.util.Map;
 public class Question75 {
 
 
+    public static void main(String[] args) {
+        Question75 question75 = new Question75();
+        int[] nums = {2, 0, 2, 1, 1, 0};
+        question75.sortColors(nums);
+        System.out.println(Arrays.toString(nums));
+    }
+
     public void sortColors2(int[] nums) {
         int count0 = 0, count1 = 0, count2 = 0;
         for (int i = 0; i < nums.length; i++) {
@@ -32,7 +39,6 @@ public class Question75 {
             }
         }
     }
-
 
     public void sortColors(int[] nums) {
 
@@ -62,12 +68,5 @@ public class Question75 {
             nums[i] = 2;
             map.put(2, map.get(2) - 1);
         }
-    }
-
-    public static void main(String[] args) {
-        Question75 question75 = new Question75();
-        int[] nums = {2, 0, 2, 1, 1, 0};
-        question75.sortColors(nums);
-        System.out.println(Arrays.toString(nums));
     }
 }

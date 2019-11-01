@@ -8,6 +8,14 @@ import java.util.List;
 public class Question173 {
 
 
+    public static void main(String[] args) {
+        TreeNode node = TreeNode.makeNormalTreeFor173();
+        BSTIterator bstIterator = new BSTIterator(node);
+        while (bstIterator.hasNext()) {
+            System.out.println(bstIterator.next());
+        }
+    }
+
     /**
      * BSTIterator iterator = new BSTIterator(root);
      * iterator.next();    // return 3
@@ -39,25 +47,21 @@ public class Question173 {
             toList(root.right);
         }
 
-        /** @return the next smallest number */
+        /**
+         * @return the next smallest number
+         */
         public int next() {
             int res = 0;
-            res =  values.get(currentIndex);
+            res = values.get(currentIndex);
             currentIndex++;
             return res;
         }
 
-        /** @return whether we have a next smallest number */
+        /**
+         * @return whether we have a next smallest number
+         */
         public boolean hasNext() {
             return currentIndex < values.size();
-        }
-    }
-
-    public static void main(String[] args) {
-        TreeNode node = TreeNode.makeNormalTreeFor173();
-        BSTIterator bstIterator = new BSTIterator(node);
-        while (bstIterator.hasNext()) {
-            System.out.println(bstIterator.next());
         }
     }
 }

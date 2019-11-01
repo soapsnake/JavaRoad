@@ -4,6 +4,12 @@ import java.util.Arrays;
 
 public class Question319 {
 
+    public static void main(String[] args) {
+        Question319 question319 = new Question319();
+        int n = 3;
+        System.out.println(question319.bulbSwitch(n));
+    }
+
     public int bulbSwitch2(int n) {
         return (int) Math.sqrt(n);
     }
@@ -28,11 +34,5 @@ public class Question319 {
                 res++;
         }
         return res;
-    }
-
-    public static void main(String[] args) {
-        Question319 question319  = new Question319();
-        int n = 3;
-        System.out.println(question319.bulbSwitch(n));
     }
 }

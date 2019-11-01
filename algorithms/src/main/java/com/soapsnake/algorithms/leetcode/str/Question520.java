@@ -4,7 +4,12 @@ package com.soapsnake.algorithms.leetcode.str;
  * @author soapsnake
  * @date 2018/11/20
  */
- class Question520 {
+class Question520 {
+
+    public static void main(String[] args) {
+        Question520 question520 = new Question520();
+        System.out.println(question520.detectCapitalUse("ggjaijisd"));
+    }
 
     public boolean detectCapitalUse(String word) {
         char[] chars = word.toCharArray();
@@ -30,11 +35,6 @@ package com.soapsnake.algorithms.leetcode.str;
             }
         }
         return first != 1 || accu <= 1 || accu >= chars.length;
-    }
-
-    public static void main(String[] args) {
-        Question520 question520 = new Question520();
-        System.out.println(question520.detectCapitalUse("ggjaijisd"));
     }
 
 

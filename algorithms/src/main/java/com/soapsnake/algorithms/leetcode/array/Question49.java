@@ -1,10 +1,6 @@
 package com.soapsnake.algorithms.leetcode.array;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -13,13 +9,21 @@ import java.util.stream.Collectors;
  */
 public class Question49 {
 
+    public static void main(String[] args) {
+        Question49 question49 = new Question49();
+        String[] a = {"eat", "tea", "tan", "ate", "nat", "bat"};
+        System.out.println(question49.groupAnagrams2(a));
+
+        System.out.println(question49.permut("abc"));
+    }
+
     /**
      * Input: ["eat", "tea", "tan", "ate", "nat", "bat"],
      * Output:
      * [
-     *   ["ate","eat","tea"],
-     *   ["nat","tan"],
-     *   ["bat"]
+     * ["ate","eat","tea"],
+     * ["nat","tan"],
+     * ["bat"]
      * ]
      */
     public List<List<String>> groupAnagrams(String[] strs) {
@@ -67,7 +71,7 @@ public class Question49 {
     private List<String> permut(String o) {
         char[] chars = o.toCharArray();
         List<String> res = new ArrayList<>();
-        this.backTrace(res,new ArrayList<>(),   chars);
+        this.backTrace(res, new ArrayList<>(), chars);
         return res;
     }
 
@@ -88,13 +92,5 @@ public class Question49 {
             backTrace(res, tmp, chars);
             tmp.remove(tmp.size() - 1);
         }
-    }
-
-    public static void main(String[] args) {
-        Question49 question49 = new Question49();
-        String[] a = {"eat", "tea", "tan", "ate", "nat", "bat"};
-        System.out.println(question49.groupAnagrams2(a));
-
-        System.out.println(question49.permut("abc"));
     }
 }

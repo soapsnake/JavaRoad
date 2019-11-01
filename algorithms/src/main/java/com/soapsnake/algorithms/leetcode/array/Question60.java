@@ -10,12 +10,21 @@ import java.util.List;
  */
 public class Question60 {
 
+    public static void main(String[] args) {
+        Question60 question60 = new Question60();
+        int n = 9;
+        int k = 331987;
+        long start = System.currentTimeMillis();
+        System.out.println(question60.getPermutation(n, k));
+        System.out.println("时间 = " + (System.currentTimeMillis() - start));
+    }
+
     /**
      * Example 1:
      * Input: n = 3, k = 3
      * Output: "213"
-     *
-     *
+     * <p>
+     * <p>
      * Example 2:
      * Input: n = 4, k = 9
      * Output: "2314"
@@ -50,14 +59,5 @@ public class Question60 {
             backTrace(init, res, tmp);
             tmp.remove(tmp.size() - 1);
         }
-    }
-
-    public static void main(String[] args) {
-        Question60 question60 = new Question60();
-        int n = 9;
-        int k = 331987;
-        long start = System.currentTimeMillis();
-        System.out.println(question60.getPermutation(n ,k));
-        System.out.println("时间 = " + (System.currentTimeMillis() - start));
     }
 }

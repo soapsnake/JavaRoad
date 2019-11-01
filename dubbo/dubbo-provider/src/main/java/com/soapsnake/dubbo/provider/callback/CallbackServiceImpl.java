@@ -19,9 +19,9 @@ public class CallbackServiceImpl implements CallbackService {
     public CallbackServiceImpl() {
         Thread t = new Thread(new Runnable() {
             public void run() {
-                while(true) {
+                while (true) {
                     try {
-                        for(Map.Entry<String, CallbackListener> entry : listeners.entrySet()){
+                        for (Map.Entry<String, CallbackListener> entry : listeners.entrySet()) {
                             try {
                                 entry.getValue().changed(getChanged(entry.getKey()));
                             } catch (Throwable t) {

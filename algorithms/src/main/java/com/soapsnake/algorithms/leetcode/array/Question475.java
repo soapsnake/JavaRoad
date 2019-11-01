@@ -8,6 +8,13 @@ import java.util.Arrays;
  */
 public class Question475 {
 
+    public static void main(String[] args) {
+        Question475 question475 = new Question475();
+        int[] hous = {1, 5};
+        int[] hea = {2};
+        question475.findRadius(hous, hea);
+    }
+
     public int findRadius(int[] houses, int[] heaters) {
 
         //heater之间差值的最大值
@@ -26,12 +33,5 @@ public class Question475 {
             res = Math.max(res, Math.abs(heaters[i] - house));
         }
         return res;
-    }
-
-    public static void main(String[] args) {
-        Question475 question475 = new Question475();
-        int[] hous = {1, 5};
-        int[] hea = {2};
-        question475.findRadius(hous, hea);
     }
 }

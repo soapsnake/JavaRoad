@@ -10,22 +10,6 @@ import java.util.Stack;
  */
 public class Question116 {
 
-    class Node {
-        public int val;
-        public Node left;
-        public Node right;
-        public Node next;
-
-        public Node() {}
-
-        public Node(int _val,Node _left,Node _right,Node _next) {
-            val = _val;
-            left = _left;
-            right = _right;
-            next = _next;  //next指针指向同一级横向右侧的节点
-        }
-    };
-
     //117题也可以这么解, 不过117要求不能用额外的存储
     public Node connect(Node root) {
         if (root == null) {
@@ -53,5 +37,24 @@ public class Question116 {
             }
         }
         return root;
+    }
+
+    ;
+
+    class Node {
+        public int val;
+        public Node left;
+        public Node right;
+        public Node next;
+
+        public Node() {
+        }
+
+        public Node(int _val, Node _left, Node _right, Node _next) {
+            val = _val;
+            left = _left;
+            right = _right;
+            next = _next;  //next指针指向同一级横向右侧的节点
+        }
     }
 }

@@ -7,6 +7,10 @@ import java.util.Set;
 
 public class Question187 {
 
+    public static void main(String[] args) {
+
+    }
+
     /**
      * Example:
      * Input: s = "AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT"
@@ -24,10 +28,6 @@ public class Question187 {
             }
         }
         return new ArrayList<>(set2);
-    }
-
-    public static void main(String[] args) {
-
     }
 
 }

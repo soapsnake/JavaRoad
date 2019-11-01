@@ -1,9 +1,9 @@
 package com.soapsnake.pattern.structurals.genconpattern.app;
 
 
+import com.soapsnake.pattern.structurals.genconpattern.checker.Muti10;
 import com.soapsnake.pattern.structurals.genconpattern.generator.Intgen;
 import com.soapsnake.pattern.structurals.genconpattern.generator.IntgenImpl;
-import com.soapsnake.pattern.structurals.genconpattern.checker.Muti10;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

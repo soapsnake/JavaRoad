@@ -11,9 +11,9 @@ import java.util.Queue;
 
 public class SomeTester {
 
+    final Integer test;
     ListNode fakehead = new ListNode();
     ListNode cur = fakehead;
-    final Integer test;
 
     public SomeTester() {
         test = 1;
@@ -81,35 +81,6 @@ public class SomeTester {
         }
     }
 
-    //二叉查找树转排序链表
-    public ListNode treeToList(TreeNode root) {
-        //二叉查找树的中序遍历结果一定是有序的!!!!!
-        TreeNode.layerTravse(root);
-        dfsTree(root);
-        return fakehead.next;
-    }
-
-    private void dfsTree(TreeNode root) {
-        if (root == null) {
-            return;
-        }
-        dfsTree(root.left);
-        cur.next = new ListNode(root.val);
-        cur = cur.next;
-        dfsTree(root.right);
-    }
-
-    @Test
-    public void testMaxSub() {
-        int[] arr = {1, -2, 3, 10, -4, 7, 2, -5};
-        System.out.println(maxSubArr(arr));
-    }
-
-    @Test
-    public void testfindAllSum() {
-        System.out.println(findAllSum(TreeNode.makeNormalTreeFor437(), 18));
-    }
-
     public static List<List<TreeNode>> layerTravse(TreeNode root) {
         if (root == null) {
             return new ArrayList<>();
@@ -139,17 +110,6 @@ public class SomeTester {
         return res;
     }
 
-    @Test
-    public void testlayerTravse() {
-
-        List<List<TreeNode>> lists = layerTravse(TreeNode.makeBinerSearchTree());
-
-        for (List list : lists) {
-            System.out.println(list);
-        }
-    }
-
-
     //判断两个链表是否相交
     public static boolean isFuckedList(ListNode list1, ListNode list2) {
         ListNode cur1 = list1;
@@ -165,6 +125,45 @@ public class SomeTester {
             cur1 = cur1.next;
         }
         return false;
+    }
+
+    //二叉查找树转排序链表
+    public ListNode treeToList(TreeNode root) {
+        //二叉查找树的中序遍历结果一定是有序的!!!!!
+        TreeNode.layerTravse(root);
+        dfsTree(root);
+        return fakehead.next;
+    }
+
+    private void dfsTree(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        dfsTree(root.left);
+        cur.next = new ListNode(root.val);
+        cur = cur.next;
+        dfsTree(root.right);
+    }
+
+    @Test
+    public void testMaxSub() {
+        int[] arr = {1, -2, 3, 10, -4, 7, 2, -5};
+        System.out.println(maxSubArr(arr));
+    }
+
+    @Test
+    public void testfindAllSum() {
+        System.out.println(findAllSum(TreeNode.makeNormalTreeFor437(), 18));
+    }
+
+    @Test
+    public void testlayerTravse() {
+
+        List<List<TreeNode>> lists = layerTravse(TreeNode.makeBinerSearchTree());
+
+        for (List list : lists) {
+            System.out.println(list);
+        }
     }
 
 }

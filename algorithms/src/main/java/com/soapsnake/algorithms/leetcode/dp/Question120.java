@@ -15,8 +15,8 @@ public class Question120 {
         //所以我们应该从下往上,先找出最底层的最小数字i,然后往上倒,找上一层i - 1,i中比较小的数字,一层一层晚上往上
         //类似五子棋多叉树的回溯思想
 
-        for(int i = triangle.size() - 2; i >= 0; i--) {
-            for(int j = 0; j <= i; j++) {
+        for (int i = triangle.size() - 2; i >= 0; i--) {
+            for (int j = 0; j <= i; j++) {
 
                 //第i行第j个元素的最小值,应该等于第i + 1行第j个元素和第j+ 1个元素中较小的那个数
                 int min = Math.min(triangle.get(i + 1).get(j), triangle.get(i + 1).get(j + 1));
@@ -28,4 +28,4 @@ public class Question120 {
         return triangle.get(0).get(0);
     }
 
-    }
+}

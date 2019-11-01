@@ -2,11 +2,7 @@ package com.soapsnake.algorithms.leetcode.binarytree;
 
 import com.soapsnake.algorithms.structures.tree.TreeNode;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * @Auther soapsnake@gmail.com
@@ -14,9 +10,22 @@ import java.util.Queue;
  */
 public class Question110 {
 
+    public static void main(String[] args) {
+        TreeNode root = TreeNode.makeNormalTreeFor110();
+        Question110 question110 = new Question110();
+        System.out.println(question110.isBalanced(root));
+
+        TreeNode root1 = new TreeNode(1);
+        root1.right = new TreeNode(2);
+        root1.right.right = new TreeNode(3);
+//        root1.right.right.right = new TreeNode(4);
+        System.out.println(question110.isBalanced(root1));
+
+    }
+
     /**
-     *     解法的思路是对的,但是,由于特殊情况,这个答案过不了检查
-     *     https://leetcode.com/problems/balanced-binary-tree/discuss/36042/Two-different-definitions-of-balanced-binary-tree-result-in-two-different-judgments
+     * 解法的思路是对的,但是,由于特殊情况,这个答案过不了检查
+     * https://leetcode.com/problems/balanced-binary-tree/discuss/36042/Two-different-definitions-of-balanced-binary-tree-result-in-two-different-judgments
      */
     public boolean isBalanced(TreeNode root) {
         if (root == null) {
@@ -56,19 +65,5 @@ public class Question110 {
             }
         }
         return true;
-    }
-
-
-    public static void main(String[] args) {
-        TreeNode root = TreeNode.makeNormalTreeFor110();
-        Question110 question110 = new Question110();
-        System.out.println(question110.isBalanced(root));
-
-        TreeNode root1 = new TreeNode(1);
-        root1.right = new TreeNode(2);
-        root1.right.right = new TreeNode(3);
-//        root1.right.right.right = new TreeNode(4);
-        System.out.println(question110.isBalanced(root1));
-
     }
 }

@@ -5,6 +5,12 @@ package com.soapsnake.algorithms.leetcode.array;
  * @Date 2019-02-10 13:55
  */
 public class Question849 {
+    public static void main(String[] args) {
+        Question849 question849 = new Question849();
+        int[] seats = {1, 0, 0, 1};
+        System.out.println(question849.maxDistToClosest(seats));
+    }
+
     public int maxDistToClosest(int[] seats) {
         if (seats == null || seats.length == 1) {
             return 0;
@@ -33,11 +39,5 @@ public class Question849 {
             maxlen = Math.max(maxlen, temp);
         }
         return maxlen;
-    }
-
-    public static void main(String[] args) {
-        Question849 question849 = new Question849();
-        int[] seats = {1,0,0,1};
-        System.out.println(question849.maxDistToClosest(seats));
     }
 }

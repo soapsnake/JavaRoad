@@ -5,6 +5,14 @@ import java.util.List;
 
 public class Question152 {
 
+    int max = 0;
+
+    public static void main(String[] args) {
+        Question152 question152 = new Question152();
+        int[] nums = {3, -2, -3, -3, 1, 3, 0};
+        System.out.println(question152.maxProduct2(nums));
+    }
+
     /**
      * Input: [2,3,-2,4]
      * Output: 6
@@ -23,7 +31,6 @@ public class Question152 {
         return this.max;
     }
 
-    int max = 0;
     private void backTrace(int[] nums, List<Integer> tmp, int index, int pre) {
         System.out.println(tmp);
         if (tmp.size() > nums.length) {
@@ -37,7 +44,7 @@ public class Question152 {
             if (tmp.size() == 0) {
                 tmp.add(nums[i]);
                 this.max = Math.max(nums[i], max);
-            }else if (tmp.get(tmp.size() - 1) == nums[i - 1] && i == pre + 1) {
+            } else if (tmp.get(tmp.size() - 1) == nums[i - 1] && i == pre + 1) {
                 tmp.add(nums[i]);
                 int product = getProduct(tmp);
                 this.max = Math.max(product, max);
@@ -55,12 +62,6 @@ public class Question152 {
             res *= i;
         }
         return res;
-    }
-
-    public static void main(String[] args) {
-        Question152 question152 = new Question152();
-        int[] nums = {3,-2,-3,-3,1,3,0};
-        System.out.println(question152.maxProduct2(nums));
     }
 
     //动态规划算法,实在太他妈难理解了
@@ -92,18 +93,19 @@ public class Question152 {
      * 但是这道题给我们打开了新的思路：我们的dp数组里面可以存更多的信息。而上面的解法之所以没有用dp数组的原因是dp[i]只依赖于dp[i - 1]因此没有必要把前面所有的信息都存起来，
      * 只需要存前一个dp[i-1]的最大和最小的乘积就可以了。下面的代码使用了自定义的内部类Tuple,从而可以同时存imax和imin,并将所有的imax和imin存到了dp数组中。
      * 虽然稍显复杂，但是有助于加深理解。
+     *
      * @param nums
      * @return
      */
     public int maxProduct3(int[] nums) {
         Tuple[] dp = new Tuple[nums.length];
-        dp[0] = new Tuple(nums[0],nums[0]);
+        dp[0] = new Tuple(nums[0], nums[0]);
         int res = dp[0].imax;
         for (int i = 1; i < nums.length; i++) {
             Tuple prev = dp[i - 1];
-            int imax = Math.max(Math.max(nums[i], nums[i] * prev.imax) , nums[i] * prev.imin);   //nums[i],  nums[i] * prevMax,  nums[i] * prevMin
-            int imin = Math.min(Math.min(nums[i], nums[i] * prev.imax) , nums[i] * prev.imin);
-            dp[i] = new Tuple(imax,imin);
+            int imax = Math.max(Math.max(nums[i], nums[i] * prev.imax), nums[i] * prev.imin);   //nums[i],  nums[i] * prevMax,  nums[i] * prevMin
+            int imin = Math.min(Math.min(nums[i], nums[i] * prev.imax), nums[i] * prev.imin);
+            dp[i] = new Tuple(imax, imin);
             res = Math.max(imax, res);
         }
         return res;
@@ -112,6 +114,7 @@ public class Question152 {
     private class Tuple {
         private int imax;
         private int imin;
+
         private Tuple(int imax, int imin) {
             this.imax = imax;
             this.imin = imin;

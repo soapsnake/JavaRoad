@@ -13,33 +13,33 @@ import java.lang.reflect.Type;
 @Service(value = "stompSessionHandler")
 public class MyStompSessionHandler implements StompSessionHandler {
 
-	@Value("wsTopic")
-	private String wstopic;
+    @Value("wsTopic")
+    private String wstopic;
 
-	@Override
-	public void afterConnected(StompSession session, StompHeaders headers) {
-		session.subscribe(wstopic, this);
+    @Override
+    public void afterConnected(StompSession session, StompHeaders headers) {
+        session.subscribe(wstopic, this);
 //		session.send("", get)
-	}
+    }
 
-	@Override
-	public void handleException(StompSession session, StompCommand command, StompHeaders headers, byte[] bytes, Throwable throwable) {
+    @Override
+    public void handleException(StompSession session, StompCommand command, StompHeaders headers, byte[] bytes, Throwable throwable) {
 
-	}
+    }
 
-	@Override
-	public void handleTransportError(StompSession session, Throwable throwable) {
+    @Override
+    public void handleTransportError(StompSession session, Throwable throwable) {
 
-	}
+    }
 
-	@Override
-	public Type getPayloadType(StompHeaders headers) {
-		return null;
-	}
+    @Override
+    public Type getPayloadType(StompHeaders headers) {
+        return null;
+    }
 
-	@Override
-	public void handleFrame(StompHeaders headers, Object o) {
-		Message message = (Message) o;
-		System.out.println("Received : " + message.getPayload() + " from:" + message.getHeaders());
-	}
+    @Override
+    public void handleFrame(StompHeaders headers, Object o) {
+        Message message = (Message) o;
+        System.out.println("Received : " + message.getPayload() + " from:" + message.getHeaders());
+    }
 }

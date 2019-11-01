@@ -7,6 +7,7 @@ public class LRUCacheLinkedHashMap implements Cache {
 
     private Map<Integer, Integer> map = new LinkedHashMap<>();
     private int limit;
+
     public LRUCacheLinkedHashMap(int capacity) {
         this.limit = capacity;
     }
@@ -31,7 +32,7 @@ public class LRUCacheLinkedHashMap implements Cache {
         //todo LinkedHashMap没有好的办法取到第一个和最后一个元素,所以不可取
         map.put(key, value);
         if (map.size() > limit) {
-            for (Map.Entry entry: map.entrySet()) {
+            for (Map.Entry entry : map.entrySet()) {
                 System.out.println(entry);
             }
         }

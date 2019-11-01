@@ -6,6 +6,11 @@ package com.soapsnake.algorithms.leetcode.number;
  */
 class Question693 {
 
+    public static void main(String[] args) {
+        Question693 question693 = new Question693();
+        System.out.println(question693.hasAlternatingBits(3));
+    }
+
     public boolean hasAlternatingBits(int n) {
         String biner = Integer.toBinaryString(n);
 
@@ -17,15 +22,10 @@ class Question693 {
         }
 
         for (int j = 0; j < ints.length - 1; j++) {
-                if (ints[j + 1] - ints[j] == 0) {
-                    return false;
-                }
+            if (ints[j + 1] - ints[j] == 0) {
+                return false;
+            }
         }
         return true;
-    }
-
-    public static void main(String[] args) {
-        Question693 question693 = new Question693();
-        System.out.println(question693.hasAlternatingBits(3));
     }
 }

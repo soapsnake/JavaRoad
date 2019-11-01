@@ -2,6 +2,26 @@ package com.soapsnake.algorithms.leetcode.concurrency;
 
 public class Question1114 {
 
+    public static void main(String[] args) throws InterruptedException {
+        String name = "";
+        int[] ints = {1, 3, 2};
+        Foo foo = new Foo();
+
+        System.out.println(name);
+        Runnable first = () -> System.out.println("this is first");
+        Runnable second = () -> System.out.println("this is second");
+        Runnable third = () -> System.out.println("this is third");
+        for (int i : ints) {
+            if (i == 1) {
+                foo.first(first);
+            } else if (i == 2) {
+                foo.second(second);
+            } else {
+                foo.third(third);
+            }
+        }
+    }
+
     static class Foo {
 
 
@@ -15,6 +35,7 @@ public class Question1114 {
          */
         private volatile boolean firstrun;
         private volatile boolean secondrun;
+
         public Foo() {
             this.firstrun = false;
             this.secondrun = false;
@@ -47,26 +68,6 @@ public class Question1114 {
             }
             notifyAll();
             printThird.run();
-        }
-    }
-
-    public static void main(String[] args) throws InterruptedException {
-        String name = "";
-        int[] ints = {1,3,2};
-        Foo foo = new Foo();
-
-        System.out.println(name);
-        Runnable first = () -> System.out.println("this is first");
-        Runnable second = () -> System.out.println("this is second");
-        Runnable third = () -> System.out.println("this is third");
-        for (int i : ints) {
-            if (i == 1) {
-                foo.first(first);
-            } else if (i == 2) {
-                foo.second(second);
-            } else {
-                foo.third(third);
-            }
         }
     }
 }

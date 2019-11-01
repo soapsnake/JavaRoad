@@ -11,20 +11,20 @@ public class Question12 {
      * Input: 3
      * Output: "III"
      * Example 2:
-     *
+     * <p>
      * Input: 4
      * Output: "IV"
      * Example 3:
-     *
+     * <p>
      * Input: 9
      * Output: "IX"
      * Example 4:
-     *
+     * <p>
      * Input: 58
      * Output: "LVIII"
      * Explanation: L = 50, V = 5, III = 3.
      * Example 5:
-     *
+     * <p>
      * Input: 1994
      * Output: "MCMXCIV"
      * Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
@@ -55,9 +55,9 @@ public class Question12 {
 
                 } else if (i == 1) {
 
-                }else if (i == 2){
+                } else if (i == 2) {
 
-                }else {
+                } else {
 
                 }
             } else {
@@ -65,9 +65,9 @@ public class Question12 {
 
                 } else if (i == 1) {
 
-                }else if (i == 2){
+                } else if (i == 2) {
 
-                }else {
+                } else {
 
                 }
             }

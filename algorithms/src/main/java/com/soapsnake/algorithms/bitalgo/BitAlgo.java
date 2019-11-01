@@ -45,13 +45,13 @@ public class BitAlgo {
 
         //不存在无符号左移位,以下算式报错
 //        System.out.println(Integer.toBinaryString(11 <<< 1) + ":" + (11 <<< 1));
-        int[] arr = {2,3,4};
+        int[] arr = {2, 3, 4};
         changeArr(arr);
         System.out.println(Arrays.toString(arr));
 
     }
 
-     static void changeArr(final int[] arr) {
+    static void changeArr(final int[] arr) {
         arr[0] = 1;
     }
 

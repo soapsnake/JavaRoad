@@ -2,14 +2,14 @@ package com.soapsnake.collections.list;
 
 public class SomeOne {
 
-	String name;
+    String name;
 
 
-	protected void getProtected() {
-		System.out.println("someone's method getProtected()");
-	}
+    protected void getProtected() {
+        System.out.println("someone's method getProtected()");
+    }
 
-	void getDefault(){
-		System.out.println("someone's method getDefault()");
-	}
+    void getDefault() {
+        System.out.println("someone's method getDefault()");
+    }
 }

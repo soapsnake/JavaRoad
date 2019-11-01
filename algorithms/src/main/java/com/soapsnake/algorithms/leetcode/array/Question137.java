@@ -8,7 +8,7 @@ public class Question137 {
 
     /**
      * Example 1:
-     *
+     * <p>
      * Input: [2,2,3,2]
      * Output: 3
      */

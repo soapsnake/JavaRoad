@@ -27,13 +27,11 @@ object ScalaStringTest {
 
     println(s"you are 33 years old : ${age == 33}")
 
-//    val upper = "hello, world".map(c => c.toUpper)
-//    println(upper)
+    //    val upper = "hello, world".map(c => c.toUpper)
+    //    println(upper)
 
     val some = for (c <- "hello world") yield c.toUpper
     println(some)
-
-
 
 
   }

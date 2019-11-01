@@ -30,11 +30,17 @@ public class Question697 {
      * return result;
      */
 
+    public static void main(String[] args) {
+        Question697 question697 = new Question697();
+        int[] nums = {1, 3, 2, 2, 3, 1};
+        System.out.println(question697.findShortestSubArray(nums));
+    }
+
     /**
-     *        1. nums中有重复数字,该重复的数字重复次数记为n
-     *      * 2. 则nums的度记为Max(n)
-     *      * 3. 找出nums的连续子数组中,能够达到Max(n)的最短子数组
-     *      * 4. 输出能找到的最短子数组的长度
+     * 1. nums中有重复数字,该重复的数字重复次数记为n
+     * * 2. 则nums的度记为Max(n)
+     * * 3. 找出nums的连续子数组中,能够达到Max(n)的最短子数组
+     * * 4. 输出能找到的最短子数组的长度
      */
     public int findShortestSubArray(int[] nums) {
         Map<Integer, Integer> counter = new HashMap<>();
@@ -43,7 +49,7 @@ public class Question697 {
         int maxDup = 0;
         int res = -1;
         for (int i = 0; i < nums.length; i++) {
-            firstIndex.putIfAbsent(nums[i] ,i); //只记录首次索引
+            firstIndex.putIfAbsent(nums[i], i); //只记录首次索引
             counter.put(nums[i], counter.getOrDefault(nums[i], 0) + 1); //更新数字出现次数
 
             if (counter.get(nums[i]) > maxDup) {
@@ -54,12 +60,6 @@ public class Question697 {
             }
         }
         return res;
-    }
-
-    public static void main(String[] args) {
-        Question697 question697 = new Question697();
-        int[] nums = {1,3,2,2,3,1};
-        System.out.println(question697.findShortestSubArray(nums));
     }
 
 }

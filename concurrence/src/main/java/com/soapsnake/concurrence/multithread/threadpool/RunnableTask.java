@@ -1,6 +1,6 @@
 package com.soapsnake.concurrence.multithread.threadpool;
 
-public class RunnableTask implements  Runnable {
+public class RunnableTask implements Runnable {
     @Override
     public void run() {
         System.out.println("runabble task");

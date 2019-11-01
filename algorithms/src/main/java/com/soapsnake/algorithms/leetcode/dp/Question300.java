@@ -3,6 +3,12 @@ package com.soapsnake.algorithms.leetcode.dp;
 public class Question300 {
 
 
+    public static void main(String[] args) {
+        Question300 question300 = new Question300();
+        int[] nums = {1, 3, 6, 7, 9, 4, 10, 5, 6};
+        System.out.println(question300.lengthOfLIS(nums));
+    }
+
     //遍历版本dp,dp数组存的是从0 -> i的最大递增子数组的长度,每一次计算dp[i+1]的时候都需要重头算0 -> i+1的最大子数组长度和dp[i]比较取较大的
     //所以这个虽然是使用动态规划,但是复杂性还是比较的高的
     public int lengthOfLIS(int[] nums) {
@@ -33,7 +39,7 @@ public class Question300 {
         }
 
         //思路:backtrace,找到所有的递增数组,返回长度最长的
-       return backtrac(nums, 0, Integer.MIN_VALUE);
+        return backtrac(nums, 0, Integer.MIN_VALUE);
     }
 
     private Integer backtrac(int[] nums, int curIndex, int prev) {
@@ -46,11 +52,5 @@ public class Question300 {
         }
         int end = backtrac(nums, curIndex + 1, nums[curIndex]);
         return Math.max(notEnd, end);
-    }
-
-    public static void main(String[] args) {
-        Question300 question300 = new Question300();
-        int[] nums  = {1,3,6,7,9,4,10,5,6};
-        System.out.println(question300.lengthOfLIS(nums));
     }
 }

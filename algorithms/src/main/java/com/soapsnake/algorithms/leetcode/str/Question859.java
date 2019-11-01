@@ -10,6 +10,13 @@ import java.util.Set;
  */
 public class Question859 {
 
+    public static void main(String[] args) {
+        Question859 question859 = new Question859();
+        String a = "ab";
+        String b = "ab";
+        System.out.println(question859.buddyStrings(a, b));
+    }
+
     //整体时间复杂度为2xO(n),算是非常高效的算法了!!!!
     public boolean buddyStrings(String A, String B) {
         if (A.length() != B.length()) {
@@ -65,12 +72,5 @@ public class Question859 {
             }
         }
         return false;
-    }
-
-    public static void main(String[] args) {
-        Question859 question859 = new Question859();
-        String a = "ab";
-        String b = "ab";
-        System.out.println(question859.buddyStrings(a, b));
     }
 }

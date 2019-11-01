@@ -10,6 +10,13 @@ import java.util.List;
  */
 public class Question18 {
 
+    public static void main(String[] args) {
+        Question18 question18 = new Question18();
+        int[] nums = {1, 0, -1, 0, -2, 2};
+        int target = 0;
+        System.out.println(question18.fourSum(nums, target));
+    }
+
     public List<List<Integer>> fourSum(int[] nums, int target) {
         if (nums == null || nums.length < 4) {
             return new ArrayList<>();
@@ -39,12 +46,5 @@ public class Question18 {
             }
         }
         return res;
-    }
-
-    public static void main(String[] args) {
-        Question18 question18 = new Question18();
-        int[] nums = {1,0,-1,0,-2,2};
-        int target = 0;
-        System.out.println(question18.fourSum(nums, target));
     }
 }

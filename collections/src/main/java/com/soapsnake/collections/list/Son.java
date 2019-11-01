@@ -2,38 +2,37 @@ package com.soapsnake.collections.list;
 
 public class Son extends Person {
 
-	Son() {
-		this("nihao");
-		System.out.println("son 无参构造被调用");
-	}
+    private String name;
+    private Integer age;
 
-	Son(String name) {
-		System.out.println("son 有参构造被调用");
-		this.name = name;
-	}
+    Son() {
+        this("nihao");
+        System.out.println("son 无参构造被调用");
+    }
+    Son(String name) {
+        System.out.println("son 有参构造被调用");
+        this.name = name;
+    }
 
-	private  String name;
-	private Integer age;
+    public static void main(String[] args) {
+        Son son = new Son();
 
-	public static void main(String[] args) {
-		Son son = new Son();
+        System.out.println(son.name);
 
-		System.out.println(son.name);
+        int someoen = 1;
 
-		int someoen = 1;
+        System.out.println(someoen);
 
-		System.out.println(someoen);
+        String s = "xbcde";
+        System.out.println(s.charAt(4));
 
-		String s  = "xbcde";
-		System.out.println(s.charAt(4));
-
-		SomeOne someOne = new SomeOne();
-
-
-		String string = "人ABC们";
-		System.out.println("Jieduan = " + string.substring(5));
+        SomeOne someOne = new SomeOne();
 
 
-	}
+        String string = "人ABC们";
+        System.out.println("Jieduan = " + string.substring(5));
+
+
+    }
 
 }

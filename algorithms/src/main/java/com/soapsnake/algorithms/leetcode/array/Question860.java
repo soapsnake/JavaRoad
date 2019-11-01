@@ -6,6 +6,12 @@ package com.soapsnake.algorithms.leetcode.array;
  */
 public class Question860 {
 
+    public static void main(String[] args) {
+        Question860 question860 = new Question860();
+        int[] bills = {5, 5, 5, 5, 20, 20, 5, 5, 20, 5};
+        System.out.println(question860.lemonadeChange(bills));
+    }
+
     public boolean lemonadeChange(int[] bills) {
 
         int countOf5 = 0;
@@ -49,11 +55,5 @@ public class Question860 {
             }
         }
         return true;
-    }
-
-    public static void main(String[] args) {
-        Question860 question860 = new Question860();
-        int[] bills = {5,5,5,5,20,20,5,5,20,5};
-        System.out.println(question860.lemonadeChange(bills));
     }
 }

@@ -18,6 +18,15 @@ public class Question220 {
      * Output: false
      */
 
+    public static void main(String[] args) {
+        String string = "ce";
+        System.out.println(string.length());
+
+        String string2 = "测";
+        System.out.println(string2.length());
+
+    }
+
     /**
      * 这道题是真的难,有资格hard难度
      * This problem requires to maintain a window of size k of the previous values that can be queried for value ranges.
@@ -25,7 +34,7 @@ public class Question220 {
      * As a result maintaining the tree of size k will result in time complexity O(N lg K).
      * In order to check if there exists any value of range abs(nums[i] - nums[j]) to simple queries can be executed both of time complexity O(lg K)
      * Here is the whole solution using TreeMap.
-     *
+     * <p>
      * 这道题用到了二叉平衡树,也就是java里面的TreeSet,需要先搞懂里面的api的含义
      */
     public boolean containsNearbyAlmostDuplicate(int[] nums, int k, int t) {
@@ -52,14 +61,5 @@ public class Question220 {
         }
 
         return false;
-    }
-
-    public static void main(String[] args) {
-        String string = "ce";
-        System.out.println(string.length());
-
-        String string2 = "测";
-        System.out.println(string2.length());
-
     }
 }

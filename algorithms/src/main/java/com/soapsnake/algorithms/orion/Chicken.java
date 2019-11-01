@@ -2,7 +2,8 @@ package com.soapsnake.algorithms.orion;
 
 public class Chicken implements Bird {
 
-    Chicken(){}
+    Chicken() {
+    }
 
     @Override
     public Egg lay() {

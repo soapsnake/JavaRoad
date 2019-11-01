@@ -10,9 +10,9 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 public class User {
-	private Long id;
-	private String firstName;
-	private String lastName;
-	private String phoneNumber;
-	private String emailAddress;
+    private Long id;
+    private String firstName;
+    private String lastName;
+    private String phoneNumber;
+    private String emailAddress;
 }

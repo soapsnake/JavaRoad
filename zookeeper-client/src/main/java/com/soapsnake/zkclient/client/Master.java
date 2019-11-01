@@ -1,12 +1,7 @@
 package com.soapsnake.zkclient.client;
 
 import com.soapsnake.zkclient.constant.ZkConstant;
-import org.apache.zookeeper.AsyncCallback;
-import org.apache.zookeeper.CreateMode;
-import org.apache.zookeeper.KeeperException;
-import org.apache.zookeeper.WatchedEvent;
-import org.apache.zookeeper.Watcher;
-import org.apache.zookeeper.ZooKeeper;
+import org.apache.zookeeper.*;
 import org.apache.zookeeper.data.Stat;
 
 import java.io.IOException;
@@ -22,6 +17,20 @@ public class Master implements Watcher {
 
     private static boolean isLeader = false;
     private ZooKeeper zk;
+    private String hostport;
+    private String serverId;
+    AsyncCallback.DataCallback masterCheckCallBack = new AsyncCallback.DataCallback() {
+        public void processResult(int rc, String path, Object ctx, byte[] data, Stat stat) {
+            switch (KeeperException.Code.get(rc)) {
+                case CONNECTIONLOSS:
+                    checkMaterAsyn();
+                    return;
+                case NONODE:
+                    runForMasterAsyn();
+                    return;
+            }
+        }
+    };
     //异步回调对象,zookeeper执行完成后会回调这个对象中的processResult告知执行结果
     AsyncCallback.StringCallback masterCreateCallback = new AsyncCallback.StringCallback() {
         public void processResult(int rc, String path, Object ctx, String name) {
@@ -44,20 +53,6 @@ public class Master implements Watcher {
                 zk.exists("/master", true);
             } catch (KeeperException | InterruptedException e) {
                 e.printStackTrace();
-            }
-        }
-    };
-    private String hostport;
-    private String serverId;
-    AsyncCallback.DataCallback masterCheckCallBack = new AsyncCallback.DataCallback() {
-        public void processResult(int rc, String path, Object ctx, byte[] data, Stat stat) {
-            switch (KeeperException.Code.get(rc)) {
-                case CONNECTIONLOSS:
-                    checkMaterAsyn();
-                    return;
-                case NONODE:
-                    runForMasterAsyn();
-                    return;
             }
         }
     };

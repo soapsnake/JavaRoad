@@ -16,8 +16,8 @@ public class Question122 {
 
         //如果题目不限制同一天即能买入也能卖出,那么用下面的解法就可以了
         int total = 0;
-        for (int i=0; i< prices.length-1; i++) {
-            if (prices[i+1]>prices[i]) total += prices[i+1]-prices[i];
+        for (int i = 0; i < prices.length - 1; i++) {
+            if (prices[i + 1] > prices[i]) total += prices[i + 1] - prices[i];
         }
 
         return total;

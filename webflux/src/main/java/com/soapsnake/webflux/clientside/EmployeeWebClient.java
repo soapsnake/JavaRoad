@@ -11,38 +11,36 @@ import reactor.core.publisher.Mono;
 public class EmployeeWebClient {
 
 
-	WebClient client = WebClient.create("http://localhost:8080");
+    WebClient client = WebClient.create("http://localhost:8080");
 
-	// ...
+    // ...
 
-	public void testGetOne() {
-		Mono<Employee> employeeMono = client.get()
-				.uri("/employees/{id}", "1")
-				.retrieve()
-				.bodyToMono(Employee.class);
+    public static void main(String[] args) {
+        EmployeeWebClient employeeWebClient = new EmployeeWebClient();
 
-		employeeMono.subscribe(System.out::println);
-	}
-
-	public void testGetAll() {
-		Flux<Employee> employeeFlux = client.get()
-				.uri("/employees")
-				.retrieve()
-				.bodyToFlux(Employee.class);
-
-		employeeFlux.subscribe(System.out::println);
-	}
+        employeeWebClient.testGetOne();
 
 
-	public static void main(String[] args) {
-		EmployeeWebClient employeeWebClient = new EmployeeWebClient();
+        employeeWebClient.testGetAll();
+    }
 
-		employeeWebClient.testGetOne();
+    public void testGetOne() {
+        Mono<Employee> employeeMono = client.get()
+                .uri("/employees/{id}", "1")
+                .retrieve()
+                .bodyToMono(Employee.class);
 
+        employeeMono.subscribe(System.out::println);
+    }
 
-		employeeWebClient.testGetAll();
-	}
+    public void testGetAll() {
+        Flux<Employee> employeeFlux = client.get()
+                .uri("/employees")
+                .retrieve()
+                .bodyToFlux(Employee.class);
 
+        employeeFlux.subscribe(System.out::println);
+    }
 
 
 }

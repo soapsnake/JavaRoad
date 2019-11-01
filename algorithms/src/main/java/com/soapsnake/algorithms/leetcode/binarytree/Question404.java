@@ -13,6 +13,18 @@ public class Question404 {
     int sum = 0;
     List<Integer> res = new ArrayList<>();
     boolean isLeft = false;
+
+    public static void main(String[] args) {
+        TreeNode root = new TreeNode(3);
+        root.left = new TreeNode(9);
+        root.right = new TreeNode(20);
+        root.right.left = new TreeNode(15);
+        root.right.right = new TreeNode(7);
+
+        Question404 question404 = new Question404();
+        System.out.println(question404.sumOfLeftLeaves(root));
+    }
+
     public int sumOfLeftLeaves(TreeNode root) {
         if (root == null) {
             return 0;
@@ -41,16 +53,5 @@ public class Question404 {
             sum += root.val;
         }
 
-    }
-
-    public static void main(String[] args) {
-        TreeNode root = new TreeNode(3);
-        root.left = new TreeNode(9);
-        root.right = new TreeNode(20);
-        root.right.left = new TreeNode(15);
-        root.right.right = new TreeNode(7);
-
-        Question404 question404 = new Question404();
-        System.out.println(question404.sumOfLeftLeaves(root));
     }
 }

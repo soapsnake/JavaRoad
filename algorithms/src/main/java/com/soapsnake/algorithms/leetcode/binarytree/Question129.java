@@ -9,12 +9,20 @@ import com.soapsnake.algorithms.structures.tree.TreeNode;
 public class Question129 {
 
 
+    int sum = 0;
+
+    public static void main(String[] args) {
+        Question129 question129 = new Question129();
+        TreeNode root = TreeNode.makeNormalTreeFor129();
+        System.out.println(question129.sumNumbers(root));
+    }
+
     /**
      * Example:
      * Input: [1,2,3]
-     *     1
-     *    / \
-     *   2   3
+     * 1
+     * / \
+     * 2   3
      * Output: 25
      * Explanation:
      * The root-to-leaf path 1->2 represents the number 12.
@@ -26,11 +34,10 @@ public class Question129 {
             return 0;
         }
 
-        dfs(root,  "");
+        dfs(root, "");
         return sum;
     }
 
-    int sum = 0;
     private void dfs(TreeNode root, String path) {
         if (root == null) {
             return;
@@ -43,11 +50,5 @@ public class Question129 {
         }
         dfs(root.left, path + root.val);
         dfs(root.right, path + root.val);
-    }
-
-    public static void main(String[] args) {
-        Question129 question129 = new Question129();
-        TreeNode root = TreeNode.makeNormalTreeFor129();
-        System.out.println(question129.sumNumbers(root));
     }
 }

@@ -12,6 +12,12 @@ import java.util.Stack;
  */
 public class Question653 {
 
+    public static void main(String[] args) {
+        TreeNode root = TreeNode.makeBinerSearchTree();
+        Question653 question653 = new Question653();
+        System.out.println(question653.findTarget(root, 5));
+    }
+
     public boolean findTarget(TreeNode root, int k) {
         //todo 利用排序数组来解决这个问题
         if (root == null) {
@@ -49,11 +55,5 @@ public class Question653 {
             integers.add(cur.val);
             cur = cur.right;
         }
-    }
-
-    public static void main(String[] args) {
-        TreeNode root = TreeNode.makeBinerSearchTree();
-        Question653 question653 = new Question653();
-        System.out.println(question653.findTarget(root, 5));
     }
 }

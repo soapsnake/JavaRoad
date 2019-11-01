@@ -13,12 +13,7 @@ import org.apache.thrift.scheme.SchemeFactory;
 import org.apache.thrift.scheme.StandardScheme;
 import org.apache.thrift.scheme.TupleScheme;
 
-import java.util.BitSet;
-import java.util.Collections;
-import java.util.EnumMap;
-import java.util.EnumSet;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Person implements org.apache.thrift.TBase<Person, Person._Fields>, java.io.Serializable, Cloneable {
     public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
@@ -94,7 +89,9 @@ public class Person implements org.apache.thrift.TBase<Person, Person._Fields>, 
         this.userName = null;
     }
 
-    /** Returns true if field userName is set (has been assigned a value) and false otherwise */
+    /**
+     * Returns true if field userName is set (has been assigned a value) and false otherwise
+     */
     public boolean isSetUserName() {
         return this.userName != null;
     }
@@ -119,7 +116,9 @@ public class Person implements org.apache.thrift.TBase<Person, Person._Fields>, 
         __isset_bit_vector.clear(__USERPHONE_ISSET_ID);
     }
 
-    /** Returns true if field userPhone is set (has been assigned a value) and false otherwise */
+    /**
+     * Returns true if field userPhone is set (has been assigned a value) and false otherwise
+     */
     public boolean isSetUserPhone() {
         return __isset_bit_vector.get(__USERPHONE_ISSET_ID);
     }
@@ -161,7 +160,9 @@ public class Person implements org.apache.thrift.TBase<Person, Person._Fields>, 
         throw new IllegalStateException();
     }
 
-    /** Returns true if field corresponding to fieldID is set (has been assigned a value) and false otherwise */
+    /**
+     * Returns true if field corresponding to fieldID is set (has been assigned a value) and false otherwise
+     */
     public boolean isSet(_Fields field) {
         if (field == null) {
             throw new IllegalArgumentException();
@@ -305,7 +306,9 @@ public class Person implements org.apache.thrift.TBase<Person, Person._Fields>, 
         }
     }
 
-    /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
+    /**
+     * The set of fields this struct contains, along with convenience methods for finding and manipulating them.
+     */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
         USER_NAME((short) 1, "userName"),
         USER_PHONE((short) 2, "userPhone");

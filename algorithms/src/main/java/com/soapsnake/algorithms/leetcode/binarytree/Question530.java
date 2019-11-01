@@ -21,7 +21,7 @@ public class Question530 {
         List<Integer> res = new ArrayList<>();
         Stack<TreeNode> stack = new Stack<>();
         TreeNode cur = root;
-        while (!stack.isEmpty() || cur != null){
+        while (!stack.isEmpty() || cur != null) {
             while (cur != null) {
                 stack.push(cur);
                 cur = cur.left;

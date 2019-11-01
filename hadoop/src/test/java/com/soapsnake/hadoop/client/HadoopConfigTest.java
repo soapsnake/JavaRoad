@@ -8,7 +8,6 @@ public class HadoopConfigTest {
     HadoopConfig hadoopConfig = new HadoopConfig();
 
 
-
     @Test
     public void testGetSomething() {
 

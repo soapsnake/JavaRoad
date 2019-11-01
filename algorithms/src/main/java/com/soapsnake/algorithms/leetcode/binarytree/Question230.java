@@ -7,13 +7,14 @@ import java.util.List;
 
 public class Question230 {
 
+    int tar = 0;
+
     public int kthSmallest(TreeNode root, int k) {
         List<Integer> list = new ArrayList<>();
         dfs(root, list, k);
         return tar;
     }
 
-    int tar = 0;
     private void dfs(TreeNode root, List<Integer> list, int k) {
         if (root == null) {
             return;

@@ -6,14 +6,19 @@ package com.soapsnake.algorithms.leetcode.str;
  */
 public class Question14 {
 
-        //todo 二分查找思想
-        public String longestCommonPrefix2(String[] strs) {
+    public static void main(String[] args) {
+        Question14 question14 = new Question14();
+        String[] strings = {"c", "c"};
+        System.out.println(question14.longestCommonPrefix(strings));
+    }
 
-            return "";
-        }
+    //todo 二分查找思想
+    public String longestCommonPrefix2(String[] strs) {
 
+        return "";
+    }
 
-        public String longestCommonPrefix(String[] strs) {
+    public String longestCommonPrefix(String[] strs) {
         String maxPre = "";
         if (strs == null || strs.length == 0) {
             return maxPre;
@@ -36,13 +41,5 @@ public class Question14 {
             maxPre = pre;
         }
         return maxPre;
-    }
-
-
-
-    public static void main(String[] args) {
-        Question14 question14 = new Question14();
-        String[] strings = {"c", "c"};
-        System.out.println(question14.longestCommonPrefix(strings));
     }
 }

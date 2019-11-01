@@ -6,6 +6,12 @@ package com.soapsnake.algorithms.leetcode.array;
  */
 class Question896 {
 
+    public static void main(String[] args) {
+        Question896 question896 = new Question896();
+        int[] A = {1, 1, 2};
+        System.out.println(question896.isMonotonic(A));
+    }
+
     public boolean isMonotonic(int[] A) {
 
         int crease = 0;   // 1 zeng 2jian
@@ -28,11 +34,5 @@ class Question896 {
             }
         }
         return true;
-    }
-
-    public static void main(String[] args) {
-        Question896 question896 = new Question896();
-        int[] A = {1,1,2};
-        System.out.println(question896.isMonotonic(A));
     }
 }

@@ -19,9 +19,9 @@ public class Question961 {
             }
         }
 
-        int maxdup =  -1;
+        int maxdup = -1;
         int maxEle = -1;
-        for (Map.Entry<Integer, Integer> entry: map.entrySet()) {
+        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
             if (entry.getValue() > maxdup) {
                 maxdup = entry.getValue();
                 maxEle = entry.getKey();

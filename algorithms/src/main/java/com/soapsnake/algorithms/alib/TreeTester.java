@@ -1,14 +1,22 @@
 package com.soapsnake.algorithms.alib;
 
 import com.soapsnake.algorithms.structures.tree.Node;
+import com.soapsnake.algorithms.structures.tree.TreeNode;
 import org.apache.commons.lang3.RandomUtils;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class TreeTester {
+
+    //求树节点的最大距离
+    int max = 0;
+
+    public static void main(String[] args) {
+        TreeTester treeTester = new TreeTester();
+        Node.layerPrint(treeTester.makeTree());
+    }
 
     public Node makeTree() {
         int layer = rand();
@@ -35,51 +43,24 @@ public class TreeTester {
         return RandomUtils.nextInt(1, 10);
     }
 
-    public static void main(String[] args) {
-        TreeTester treeTester = new TreeTester();
-        Node.layerPrint(treeTester.makeTree());
-    }
+    public int findMaxRange(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        if (root.left == null && root.right == null) {
+            //到这里说明root不为null, 但是root是叶节点了
+            return 1;
+        }
 
+        int left = findMaxRange(root.left);
+        int right = findMaxRange(root.right);
+        max = Math.max(left + right, max);
+        return Math.max(left, right) + 1;
+    }
 
     @Test
-    public void testsort() {
-        int[] nums = {5,2,4,90,432,34,34,34,15,8};
-        sort(nums);
-        System.out.println(Arrays.toString(nums));
-    }
-    public void sort(int[] nums) {
-        if (nums == null || nums.length == 0) {
-            return;
-        }
-        this.quickSort(nums, 0, nums.length - 1);
-    }
-
-    private void quickSort(int[] nums, int left, int right) {
-        if (nums == null || nums.length < 1 || right <= left) {
-            return;
-        }
-        int i = left;
-        int j = right;
-        int midIndex = left + (right - left) / 2;
-        while (i <= j) {
-            while (nums[i] < nums[midIndex]) {
-                ++i;
-            }
-            while (nums[j] > nums[midIndex]) {
-                --j;
-            }
-            if (i < j) {
-                int temp = nums[i];
-                nums[i] = nums[j];
-                nums[j] = temp;
-                ++i;
-                --j;
-            } else if (i == j) {
-                ++i;
-            }
-        }
-        quickSort(nums,left,j);
-        quickSort(nums,i,right);
+    public void testFindMaxrange() {
+        System.out.println(findMaxRange(TreeNode.makeNormalTreeFor236()));
     }
 
 

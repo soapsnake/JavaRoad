@@ -9,6 +9,12 @@ import java.util.Set;
  */
 public class Question217 {
 
+    public static void main(String[] args) {
+        Question217 question217 = new Question217();
+        int[] nums = {1, 1, 1, 3, 3, 4, 3, 2, 4, 2};
+        System.out.println(question217.containsDuplicate(nums));
+    }
+
     public boolean containsDuplicate(int[] nums) {
         Set<Integer> collection = new HashSet<>();
 
@@ -19,11 +25,5 @@ public class Question217 {
             collection.add(n);
         }
         return false;
-    }
-
-    public static void main(String[] args) {
-        Question217 question217 = new Question217();
-        int[] nums = {1,1,1,3,3,4,3,2,4,2};
-        System.out.println(question217.containsDuplicate(nums));
     }
 }

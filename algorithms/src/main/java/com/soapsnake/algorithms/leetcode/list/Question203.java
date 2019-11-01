@@ -8,6 +8,12 @@ import com.soapsnake.algorithms.structures.list.ListNode;
  */
 public class Question203 {
 
+    public static void main(String[] args) {
+        Question203 question203 = new Question203();
+        ListNode head = ListNode.makeTestList();
+        ListNode.printListNode(question203.removeElements(head, 1));
+    }
+
     //链表的题目真心都不简单,及其容易把人搞晕
     public ListNode removeElements(ListNode head, int val) {
         ListNode fakeHead = new ListNode(0);
@@ -24,12 +30,6 @@ public class Question203 {
             cur = next;
         }
         return fakeHead.next;
-    }
-
-    public static void main(String[] args) {
-        Question203 question203 = new Question203();
-        ListNode head = ListNode.makeTestList();
-        ListNode.printListNode(question203.removeElements(head, 1));
     }
 
 }

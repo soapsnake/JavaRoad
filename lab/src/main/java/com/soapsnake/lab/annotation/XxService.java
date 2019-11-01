@@ -2,8 +2,8 @@ package com.soapsnake.lab.annotation;
 
 public interface XxService {
 
-	void print( boolean fuck, String fuckName);
+    void print(boolean fuck, String fuckName);
 
-	void doother();
+    void doother();
 
 }

@@ -6,17 +6,23 @@ import java.util.Map;
 
 public class Question318 {
 
+    public static void main(String[] args) {
+        Question318 question318 = new Question318();
+        String[] words = {"abcw", "baz", "foo", "bar", "xtfn", "abcdef"};
+        System.out.println(question318.maxProduct2(words));
+    }
+
     /**
      * Example 1:
      * Input: ["abcw","baz","foo","bar","xtfn","abcdef"]
      * Output: 16
      * Explanation: The two words can be "abcw", "xtfn".
-     *
+     * <p>
      * Example 2:
      * Input: ["a","ab","abc","d","cd","bcd","abcd"]
      * Output: 4
      * Explanation: The two words can be "ab", "cd".
-     *
+     * <p>
      * Example 3:
      * Input: ["a","aa","aaa","aaaa"]
      * Output: 0
@@ -64,7 +70,7 @@ public class Question318 {
             for (int j = 0; j < tmp.length(); j++) {
                 //
                 value[i] |= 1 << (tmp.charAt(j) - 'a');
-                System.out.println("value["+i+"]= " + value[i]);
+                System.out.println("value[" + i + "]= " + value[i]);
             }
         }
         System.out.println("value= " + Arrays.toString(value));
@@ -75,11 +81,5 @@ public class Question318 {
                     maxProduct = words[i].length() * words[j].length();
             }
         return maxProduct;
-    }
-
-    public static void main(String[] args) {
-        Question318 question318 = new Question318();
-        String[] words = {"abcw","baz","foo","bar","xtfn","abcdef"};
-        System.out.println(question318.maxProduct2(words));
     }
 }

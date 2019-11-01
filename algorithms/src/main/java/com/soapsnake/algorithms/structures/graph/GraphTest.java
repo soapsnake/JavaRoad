@@ -11,7 +11,7 @@ public class GraphTest {
 
         //给定一些顶点,计算这些顶点之间的总路径,如果这些点有不联通的,应该抛出异常
         GraphSearch search = new DepthFirstSearch(graph, 0);
-        System.out.println(search.countTotal(Arrays.asList(0 ,1, 2)));  //计算顶点0, 1, 2路径和
+        System.out.println(search.countTotal(Arrays.asList(0, 1, 2)));  //计算顶点0, 1, 2路径和
 
 
         //给点两个点,找出联通这两点的所有路径

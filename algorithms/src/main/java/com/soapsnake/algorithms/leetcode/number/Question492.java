@@ -8,10 +8,15 @@ import java.util.Arrays;
  */
 public class Question492 {
 
+    public static void main(String[] args) {
+        Question492 question492 = new Question492();
+        int area = 2;
+        System.out.println(Arrays.toString(question492.constructRectangle(area)));
+    }
+
     /**
-     *   1.  如果a能整除b,那么 a % b == 0
-     *   2. Math.squrt()可以用来开方
-     *
+     * 1.  如果a能整除b,那么 a % b == 0
+     * 2. Math.squrt()可以用来开方
      */
     public int[] constructRectangle(int area) {
         int[] res = new int[2];   //l >= w
@@ -32,11 +37,5 @@ public class Question492 {
             }
         }
         return res;
-    }
-
-    public static void main(String[] args) {
-        Question492 question492 = new Question492();
-        int area = 2;
-        System.out.println(Arrays.toString(question492.constructRectangle(area)));
     }
 }

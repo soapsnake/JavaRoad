@@ -5,9 +5,8 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class ImmutableQueue<T> implements Queue<T> {
 
-    public Object[] array;
-
     private final ReentrantLock lock = new ReentrantLock();
+    public Object[] array;
 
     public ImmutableQueue() {
         this.array = new Object[0];

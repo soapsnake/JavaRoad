@@ -8,6 +8,7 @@ public interface TestGenericService {
 
     /**
      * 泛化实现,provider侧根本就没有实现该接口的类,consumer仍可调用
+     *
      * @param param
      * @return
      */

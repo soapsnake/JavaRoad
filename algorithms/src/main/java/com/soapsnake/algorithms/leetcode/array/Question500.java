@@ -7,11 +7,18 @@ import java.util.List;
 /**
  * @author soapsnake
  * @date 2018/10/28
- *
+ * <p>
  * Given a List of words, return the words that can be typed using letters of alphabet
  * on only one row's of American keyboard like the image below.
  */
 class Question500 {
+
+    public static void main(String[] args) {
+        Question500 question500 = new Question500();
+        String[] words = {"Hello", "Alaska", "Dad", "Peace"};
+
+        System.out.println(Arrays.toString(question500.findWords(words)));
+    }
 
     public String[] findWords(String[] words) {
         List<String> standers = new ArrayList<>();
@@ -35,7 +42,7 @@ class Question500 {
 
                 if (stand.contains((c + "").toUpperCase())) {
                     count++;
-                }else {
+                } else {
                     break;
                 }
             }
@@ -49,12 +56,5 @@ class Question500 {
 //            stringres[i++] = s;
 //        }
         return res.toArray(new String[0]);  //字符串list转数组的最有效方法
-    }
-
-    public static void main(String[] args) {
-        Question500 question500 = new Question500();
-        String[] words = {"Hello", "Alaska", "Dad", "Peace"};
-
-        System.out.println(Arrays.toString(question500.findWords(words)));
     }
 }

@@ -2,11 +2,7 @@ package com.soapsnake.algorithms.structures.tree;
 
 import com.soapsnake.algorithms.leetcode.array.ArrayUtils;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Stack;
+import java.util.*;
 
 public class TreeNode {
 
@@ -20,15 +16,15 @@ public class TreeNode {
 
     /**
      * 普通二叉树
-             *         3
-             *      /    \
-             *     9      20
-             *    /      /  \
-             *   8      15   7
-            *   /\            \
-           *   6  9           12
-          *   /    \          / \
-         *   4     14       10  22
+     * 3
+     * /    \
+     * 9      20
+     * /      /  \
+     * 8      15   7
+     * /\            \
+     * 6  9           12
+     * /    \          / \
+     * 4     14       10  22
      *
      * @return
      */
@@ -53,10 +49,10 @@ public class TreeNode {
 
     /**
      * 对称树
-     *        3
-     *     /    \
-     *   20      20
-     *  /  \     /  \
+     * 3
+     * /    \
+     * 20      20
+     * /  \     /  \
      * 7    15  15   7
      **/
     public static TreeNode makeSymmetricTree() {
@@ -72,24 +68,23 @@ public class TreeNode {
     }
 
     /**
-     *
      * 二叉搜索树
-     *       5
-     *      / \
-     *     3   6
-     *    /\    \
-     *   2  4    7
+     * 5
+     * / \
+     * 3   6
+     * /\    \
+     * 2  4    7
      */
     public static TreeNode makeBinerSearchTree() {
-            TreeNode root = new TreeNode(5);
+        TreeNode root = new TreeNode(5);
 
-            root.left = new TreeNode(3);
-            root.left.left = new TreeNode(2);
-            root.left.right = new TreeNode(4);
+        root.left = new TreeNode(3);
+        root.left.left = new TreeNode(2);
+        root.left.right = new TreeNode(4);
 
-            root.right = new TreeNode(6);
-            root.right.right = new TreeNode(7);
-            return root;
+        root.right = new TreeNode(6);
+        root.right.right = new TreeNode(7);
+        return root;
     }
 
     public static void main(String[] args) {
@@ -149,7 +144,7 @@ public class TreeNode {
     }
 
 
-        //前序遍历   根 --> 左孩 --> 右孩
+    //前序遍历   根 --> 左孩 --> 右孩
     public static List<TreeNode> frontTravseWhile(TreeNode root) {
         List<Integer> vals = new ArrayList<>();
         List<TreeNode> nodes = new ArrayList<>();
@@ -220,13 +215,13 @@ public class TreeNode {
 
 
     /**
-     *437题的二叉树
-     *       10
-     *      /  \
-     *     5   -3
-     *    / \    \
-     *   3   2   11
-     *  / \   \
+     * 437题的二叉树
+     * 10
+     * /  \
+     * 5   -3
+     * / \    \
+     * 3   2   11
+     * / \   \
      * 3  -2   1
      */
     public static TreeNode makeNormalTreeFor437() {
@@ -246,13 +241,13 @@ public class TreeNode {
     }
 
     /**
-     *          3
-     *         / \
-     *        5   1
-     *       /\  /\
-     *      6 2 0  8
-     *       /\
-      *     7 4
+     * 3
+     * / \
+     * 5   1
+     * /\  /\
+     * 6 2 0  8
+     * /\
+     * 7 4
      */
     public static TreeNode makeNormalTreeFor236() {
         //1层
@@ -274,11 +269,11 @@ public class TreeNode {
     }
 
     /**
-     *     3
-     *    / \
-     *   9  20
-     *     /  \
-     *    15   7
+     * 3
+     * / \
+     * 9  20
+     * /  \
+     * 15   7
      */
     public static TreeNode makeNormalTreeFor110() {
         TreeNode root = new TreeNode(3);
@@ -297,9 +292,9 @@ public class TreeNode {
     }
 
     /**
-     *     1
-     *    / \
-     *   2  3
+     * 1
+     * / \
+     * 2  3
      */
     public static TreeNode makeNormalTreeFor129() {
         TreeNode root = new TreeNode(1);
@@ -318,8 +313,6 @@ public class TreeNode {
         root.right.left = new TreeNode(9);
         return root;
     }
-
-
 
 
     //todo 二叉查找树节点插入

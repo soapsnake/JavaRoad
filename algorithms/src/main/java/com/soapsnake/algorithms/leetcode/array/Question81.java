@@ -8,6 +8,7 @@ public class Question81 {
 
     /**
      * 在一个本来是升序的但是被重排的数组里,找出target是否存在
+     *
      * @param nums
      * @param target
      * @return
@@ -22,7 +23,7 @@ public class Question81 {
                 segment = i;
             }
         }
-        if (segment !=  -1) {
+        if (segment != -1) {
             return binerSearch(nums, 0, segment, target) || binerSearch(nums, segment + 1, nums.length - 1, target);
         } else {
             return binerSearch(nums, 0, nums.length - 1, target);

@@ -5,6 +5,11 @@ package com.soapsnake.algorithms.leetcode.number;
  * @date 2018/11/12
  */
 class Question292 {
+    public static void main(String[] args) {
+        Question292 question292 = new Question292();
+        System.out.println(question292.canWinNim(4));
+    }
+
     public boolean canWinNim(int n) {
         /**
          *todo 只要是4的倍数你就不可能赢, 比如n = 8:
@@ -14,10 +19,5 @@ class Question292 {
          * 只要最后还剩4个,你就必输
          */
         return n % 4 != 0;
-    }
-
-    public static void main(String[] args) {
-        Question292 question292 = new Question292();
-        System.out.println(question292.canWinNim(4));
     }
 }

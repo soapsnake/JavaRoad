@@ -9,7 +9,7 @@ public class Question11 {
     /**
      * Input: [1,8,6,2,5,4,8,3,7]
      * Output: 49
-     *
+     * <p>
      * (长方形长度)索引差尽可能大,长方形高度已低的为准.
      */
     public int maxArea(int[] height) {

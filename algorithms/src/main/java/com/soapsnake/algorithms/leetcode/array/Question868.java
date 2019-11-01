@@ -3,12 +3,17 @@ package com.soapsnake.algorithms.leetcode.array;
 /**
  * @author soapsnake
  * @date 2018/11/4
- *
+ * <p>
  * Given a positive integer N, find and return the longest distance between two consecutive 1's in the binary representation of N.
  * If there aren't two consecutive 1's, return 0.
  */
 
 class Question868 {
+    public static void main(String[] args) {
+        Question868 question868 = new Question868();
+        System.out.println(question868.binaryGap(5));
+    }
+
     //todo 题目例子没看明白?两个'1'之间的最大距离?
     public int binaryGap(int N) {
         String string = Integer.toBinaryString(N);
@@ -27,11 +32,5 @@ class Question868 {
             }
         }
         return max < 0 ? 0 : max;
-    }
-
-
-    public static void main(String[] args) {
-        Question868 question868 = new Question868();
-        System.out.println(question868.binaryGap(5));
     }
 }

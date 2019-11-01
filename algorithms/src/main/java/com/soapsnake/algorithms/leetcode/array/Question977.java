@@ -15,7 +15,7 @@ public class Question977 {
 
         for (int i = 0; i < A.length; i++) {
             if (A[i] < 0) {
-                A[i] = - A[i];
+                A[i] = -A[i];
             } else {
                 break;
             }

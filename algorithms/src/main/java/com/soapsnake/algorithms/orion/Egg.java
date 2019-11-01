@@ -5,7 +5,7 @@ public class Egg {
     private boolean isHatched;
 
     Egg(Bird bird) {
-       this.bird = bird;
+        this.bird = bird;
     }
 
     public Bird hatch() {

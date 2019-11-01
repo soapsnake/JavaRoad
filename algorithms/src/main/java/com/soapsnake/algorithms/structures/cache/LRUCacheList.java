@@ -6,18 +6,9 @@ import java.util.List;
 
 /**
  * 用链表的解法,复杂度过高
- *
  */
 public class LRUCacheList implements Cache {
     private List<Node> list = new LinkedList<>();
-    static class Node {
-        int key;
-        int val;
-        public Node(int key, int val) {
-            this.key = key;
-            this.val = val;
-        }
-    }
     private int limit;
 
     public LRUCacheList(int capacity) {
@@ -53,6 +44,16 @@ public class LRUCacheList implements Cache {
         } else {
             Node tar = this.list.get(this.list.size() - 1);
             tar.val = value;
+        }
+    }
+
+    static class Node {
+        int key;
+        int val;
+
+        public Node(int key, int val) {
+            this.key = key;
+            this.val = val;
         }
     }
 }

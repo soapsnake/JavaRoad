@@ -7,7 +7,7 @@ import java.util.List;
  * @date 2018/11/18
  */
 
- class Employee {
+class Employee {
     // It's the unique id of each node;
     // unique id of this employee
     public int id;

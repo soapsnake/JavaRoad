@@ -4,14 +4,23 @@ import com.soapsnake.algorithms.structures.tree.TreeNode;
 
 public class Question236 {
 
+    TreeNode LCA = null;
+    TreeNode target = null;
+    private TreeNode ans;
+
+    public Question236() {
+        // Variable to store LCA node.
+        this.ans = null;
+    }
+
     /**
-     *          3
-     *         / \
-     *        5   1
-     *       /\  /\
-     *      6 2 0  8
-     *       /\
-     *     7   4
+     * 3
+     * / \
+     * 5   1
+     * /\  /\
+     * 6 2 0  8
+     * /\
+     * 7   4
      */
     public static void main(String[] args) {
         Question236 question236 = new Question236();
@@ -19,45 +28,45 @@ public class Question236 {
         TreeNode root = TreeNode.makeNormalTreeFor236();
         TreeNode p = root.left.right.left;
         TreeNode q = root.left.right.right;
-        TreeNode answer = question236.findLCA(root, p , q);
+        TreeNode answer = question236.findLCA(root, p, q);
         System.out.println(answer);
         System.out.println(answer.val);
     }
 
     public TreeNode findLCA(TreeNode root, TreeNode p, TreeNode q) {
-        lowestCommonAncestor4(root,p,q);
+        lowestCommonAncestor4(root, p, q);
         return LCA;
     }
-    TreeNode LCA = null;
+
     public boolean lowestCommonAncestor4(TreeNode currentNode, TreeNode p, TreeNode q) {
-            if (currentNode == null) {
-                return false;
-            }
-            int left = lowestCommonAncestor4(currentNode.left,p,q) ? 1 : 0;
-            int rifht = lowestCommonAncestor4(currentNode.right,p, q) ? 1: 0;
-            int mid = currentNode == p || currentNode == q ? 1 : 0;
-            if (left + rifht + mid >= 2) {
-                LCA = currentNode;
-            }
-            return (left + rifht + mid >= 1);
+        if (currentNode == null) {
+            return false;
+        }
+        int left = lowestCommonAncestor4(currentNode.left, p, q) ? 1 : 0;
+        int rifht = lowestCommonAncestor4(currentNode.right, p, q) ? 1 : 0;
+        int mid = currentNode == p || currentNode == q ? 1 : 0;
+        if (left + rifht + mid >= 2) {
+            LCA = currentNode;
+        }
+        return (left + rifht + mid >= 1);
     }
 
-        //https://www.youtube.com/watch?v=py3R23aAPCA  需要看一下原理
+    //https://www.youtube.com/watch?v=py3R23aAPCA  需要看一下原理
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        if(root == null){
+        if (root == null) {
             return null;
         }
-        if(root == p || root == q){
+        if (root == p || root == q) {
             return root;
         }
-        TreeNode l = lowestCommonAncestor(root.left,p,q);
+        TreeNode l = lowestCommonAncestor(root.left, p, q);
 
-        TreeNode r = lowestCommonAncestor(root.right,p,q);
+        TreeNode r = lowestCommonAncestor(root.right, p, q);
 
-        if(l != null && r != null){
+        if (l != null && r != null) {
             return root;
         }
-        return l != null ? l:r;
+        return l != null ? l : r;
     }
 
     //最低公共祖先,傻逼版解法
@@ -72,7 +81,6 @@ public class Question236 {
         }
         return target;
     }
-    TreeNode target = null;
 
     private boolean canReach(TreeNode root, TreeNode p) {
         if (root == null) {
@@ -82,12 +90,6 @@ public class Question236 {
             return true;
         }
         return canReach(root.left, p) || canReach(root.right, p);
-    }
-
-    private TreeNode ans;
-    public Question236() {
-        // Variable to store LCA node.
-        this.ans = null;
     }
 
     //leetcode官方解法

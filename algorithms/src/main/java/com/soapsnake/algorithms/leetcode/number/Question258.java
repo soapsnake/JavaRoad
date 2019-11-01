@@ -6,21 +6,6 @@ package com.soapsnake.algorithms.leetcode.number;
  */
 public class Question258 {
 
-    public int addDigits(int num) {
-        String numStr = num + "";
-        while (numStr.length() != 1) {
-            char[] chars = numStr.toCharArray();
-            int temp = 0;
-            for (int i = 0; i < chars.length; i++) {
-                int curr = Integer.valueOf(chars[i] + "");
-                temp += curr;
-            }
-            numStr = temp + "";
-        }
-        return Integer.valueOf(numStr);
-    }
-
-    //todo 更巧妙的解法:取余
     /**
      * Say a number x = 23456
      * x = 2* 10000 + 3 * 1000 + 4 * 100 + 5 * 10 + 6
@@ -35,8 +20,24 @@ public class Question258 {
     public static void main(String[] args) {
         Question258 question258 = new Question258();
         System.out.println(question258.addDigits(38));
-        for (int i = 0; i <= 19 ; i++) {
-            System.out.println( "i = "+i + " and i % 9 = " + i % 9);
+        for (int i = 0; i <= 19; i++) {
+            System.out.println("i = " + i + " and i % 9 = " + i % 9);
         }
+    }
+
+    //todo 更巧妙的解法:取余
+
+    public int addDigits(int num) {
+        String numStr = num + "";
+        while (numStr.length() != 1) {
+            char[] chars = numStr.toCharArray();
+            int temp = 0;
+            for (int i = 0; i < chars.length; i++) {
+                int curr = Integer.valueOf(chars[i] + "");
+                temp += curr;
+            }
+            numStr = temp + "";
+        }
+        return Integer.valueOf(numStr);
     }
 }

@@ -8,6 +8,12 @@ import com.soapsnake.algorithms.structures.list.ListNode;
  */
 public class Question82 {
 
+    public static void main(String[] args) {
+        Question82 question82 = new Question82();
+        ListNode head = ListNode.makeTestListFor82();
+        System.out.println(question82.deleteDuplicates(head));  //should be 1 -> 2 -> 5 -> 8
+    }
+
     /**
      * 与83题的区别是,这个题目要求只要出现重复的就全部删除一个不留
      */
@@ -70,12 +76,5 @@ public class Question82 {
             cur = cur.next;
         }
         return fakehead.next;
-    }
-
-
-        public static void main(String[] args) {
-        Question82 question82 = new Question82();
-        ListNode head = ListNode.makeTestListFor82();
-        System.out.println(question82.deleteDuplicates(head));  //should be 1 -> 2 -> 5 -> 8
     }
 }

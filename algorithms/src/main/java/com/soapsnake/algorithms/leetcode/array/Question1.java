@@ -25,7 +25,7 @@ class Question1 {
         int[] res = new int[2];
         Map<Integer, Integer> map = new HashMap<>();  // num -> index
         for (int i = 0; i < nums.length; i++) {
-            map.put(nums[i] , i);
+            map.put(nums[i], i);
         }
         Arrays.sort(nums);
         int low = 0;
@@ -75,7 +75,7 @@ class Question1 {
     }
 
 
-        //解法1:暴力枚举
+    //解法1:暴力枚举
     public int[] twoSum(int[] nums, int target) {
         int[] res = new int[2];
         for (int i = 0; i < nums.length; i++) {
@@ -115,14 +115,14 @@ class Question1 {
             map.put(nums[i], i);
         }
         Arrays.sort(nums);
-        for (;right > left;) {
+        for (; right > left; ) {
             if (nums[left] + nums[right] == target) {
                 res[0] = map.get(nums[left]);
                 res[1] = map.get(nums[right]);
                 break;
-            }else if (nums[left] + nums[right] > target) {
+            } else if (nums[left] + nums[right] > target) {
                 right--;
-            }else if (nums[left] + nums[right] < target) {
+            } else if (nums[left] + nums[right] < target) {
                 left++;
             }
         }

@@ -14,14 +14,6 @@ public class Node {
         this.val = val;
     }
 
-    @Override
-    public String toString() {
-        return "Node{" +
-                "val=" + val +
-                ", children=" + children +
-                '}';
-    }
-
     public static void layerPrint(Node root) {
         if (root == null) {
             throw new RuntimeException("root不合法");
@@ -44,5 +36,13 @@ public class Node {
             }
             System.out.println("本层结束");
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Node{" +
+                "val=" + val +
+                ", children=" + children +
+                '}';
     }
 }

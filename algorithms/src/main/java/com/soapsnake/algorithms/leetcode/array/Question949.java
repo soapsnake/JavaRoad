@@ -8,6 +8,12 @@ import java.util.LinkedList;
  */
 public class Question949 {
 
+    public static void main(String[] args) {
+        Question949 question949 = new Question949();
+        int[] a = {1, 2, 3, 4};
+        System.out.println(question949.largestTimeFromDigits(a));
+    }
+
     public String largestTimeFromDigits(int[] A) {
         LinkedList<String> q = new LinkedList<>();
         q.add("");
@@ -34,11 +40,5 @@ public class Question949 {
             }
         }
         return largest;
-    }
-
-    public static void main(String[] args) {
-        Question949 question949 = new Question949();
-        int[] a = {1,2,3,4};
-        System.out.println(question949.largestTimeFromDigits(a));
     }
 }

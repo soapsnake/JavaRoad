@@ -9,18 +9,24 @@ import java.util.List;
  */
 public class Question93 {
 
-        public List<String> restoreIpAddresses(String s) {
-            List<String> total = new ArrayList<>();
-            if (s.length() < 4 || s.length() > 12) {
-                return new ArrayList<>();
-            }
-            //s >= 4 && <= 12
-            //每一个数字应该是0 ~ 255
-            //思路,可以先暴力罗列所有可能的字符串组,然后进行校验,暴力罗列可以使用树的深度递归
+    public static void main(String[] args) {
+        Question93 question93 = new Question93();
+        String s = "25525511135";
+        System.out.println(question93.restoreIpAddresses(s));
+    }
 
-            dfsTree(s, total, 0, "", 0);
-            return total;
+    public List<String> restoreIpAddresses(String s) {
+        List<String> total = new ArrayList<>();
+        if (s.length() < 4 || s.length() > 12) {
+            return new ArrayList<>();
         }
+        //s >= 4 && <= 12
+        //每一个数字应该是0 ~ 255
+        //思路,可以先暴力罗列所有可能的字符串组,然后进行校验,暴力罗列可以使用树的深度递归
+
+        dfsTree(s, total, 0, "", 0);
+        return total;
+    }
 
     private void dfsTree(String ip, List<String> solutions, int idx, String restored, int count) {
         if (count > 4) return;
@@ -36,11 +42,5 @@ public class Question93 {
             }
             dfsTree(ip, solutions, idx + i, restored + s + (count == 3 ? "" : "."), count + 1);
         }
-    }
-
-    public static void main(String[] args) {
-        Question93 question93 = new Question93();
-        String s = "25525511135";
-        System.out.println(question93.restoreIpAddresses(s));
     }
 }

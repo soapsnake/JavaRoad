@@ -11,6 +11,8 @@ import java.util.Map;
 public class Question133 {
 
 
+    Map<Integer, Node> cache = new HashMap<>();
+
     public Node cloneGraph(Node node) {
         if (node == null) {
             return null;
@@ -28,6 +30,5 @@ public class Question133 {
         }
         return newNode;
     }
-    Map<Integer, Node> cache = new HashMap<>();
 
 }

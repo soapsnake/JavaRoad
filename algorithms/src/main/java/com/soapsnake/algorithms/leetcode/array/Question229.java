@@ -1,13 +1,14 @@
 package com.soapsnake.algorithms.leetcode.array;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 public class Question229 {
+
+    public static void main(String[] args) {
+        Set<Integer> set = new TreeSet<>();
+
+
+    }
 
     //傻逼版解法,空间复杂度不符合o(1)的要求
     public List<Integer> majorityElement2(int[] nums) {
@@ -62,12 +63,5 @@ public class Question229 {
         if (count2 > len / 3)
             result.add(candi2);
         return result;
-    }
-
-    public static void main(String[] args) {
-        Set<Integer> set = new TreeSet<>();
-
-
-
     }
 }

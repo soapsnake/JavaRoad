@@ -9,6 +9,15 @@ import java.util.List;
  */
 public class Question139 {
 
+    boolean valid = false;
+
+    public static void main(String[] args) {
+        Question139 question139 = new Question139();
+        String s = "ccbb";
+        List<String> list = Arrays.asList("bc", "cb");
+        System.out.println(question139.wordBreak(s, list));
+    }
+
     public boolean wordBreak(String s, List<String> wordDict) {
         boolean[] breakable = new boolean[s.length() + 1];
         breakable[0] = true;
@@ -35,8 +44,6 @@ public class Question139 {
         return valid;
     }
 
-    boolean valid = false;
-
     private void backtrace(String s, List<String> wordDict) {
         System.out.println(s);
         if (s.length() == 0) {
@@ -52,13 +59,6 @@ public class Question139 {
         }
     }
 
-    public static void main(String[] args) {
-        Question139 question139 = new Question139();
-        String s = "ccbb";
-        List<String> list = Arrays.asList("bc", "cb");
-        System.out.println(question139.wordBreak(s, list));
-    }
-
     public boolean wordBreak3(String s, List<String> wordDict) {
         if (null == s) {
             return true;
@@ -67,7 +67,7 @@ public class Question139 {
         boolean[] match = new boolean[s.length()];
         for (int i = 1; i < s.length(); i++) {
             for (int j = 0; j < i; j++) {
-                if (match[j] && wordDict.contains(s.substring(j , i))) {
+                if (match[j] && wordDict.contains(s.substring(j, i))) {
                     match[i] = true;
                     break;
                 }

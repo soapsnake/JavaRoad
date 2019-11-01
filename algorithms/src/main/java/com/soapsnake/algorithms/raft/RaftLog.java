@@ -16,7 +16,6 @@ public class RaftLog {
     private String data;
 
 
-
     //清空自startIndex之后的所有日志条目
     public void clean(int startIndex) {
 

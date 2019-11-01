@@ -9,6 +9,11 @@ import java.util.List;
  */
 class Question824 {
 
+    public static void main(String[] args) {
+        Question824 question824 = new Question824();
+        System.out.println(question824.toGoatLatin("I speak Goat Latin"));
+    }
+
     //纯碎就是繁琐
     public String toGoatLatin(String S) {
         String[] strings = S.split(" ");
@@ -32,10 +37,5 @@ class Question824 {
     private boolean isVowel(String string) {
         List<Character> list = Arrays.asList('a', 'A', 'e', 'E', 'i', 'I', 'o', 'O', 'u', 'U');
         return list.contains(string.charAt(0));
-    }
-
-    public static void main(String[] args) {
-        Question824 question824 = new Question824();
-        System.out.println(question824.toGoatLatin("I speak Goat Latin"));
     }
 }

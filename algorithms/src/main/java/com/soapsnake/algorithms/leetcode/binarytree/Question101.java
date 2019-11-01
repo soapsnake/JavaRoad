@@ -24,7 +24,7 @@ class Question101 {
         return false;
     }
 
-        //思路:层状遍历,每一层都是对称结构,可用左右指针碰撞算法校验每一层是否对称
+    //思路:层状遍历,每一层都是对称结构,可用左右指针碰撞算法校验每一层是否对称
     public boolean isSymmetric(TreeNode root) {
         if (root == null) {
             return false;
@@ -41,7 +41,7 @@ class Question101 {
             while (!queue.isEmpty()) {
                 TreeNode node = queue.poll();
                 if (node != null)
-                row.add(node);
+                    row.add(node);
             }
             int left = 0;
             int right = row.size() - 1;
@@ -71,5 +71,5 @@ class Question101 {
             }
         }
         return true;
-     }
+    }
 }

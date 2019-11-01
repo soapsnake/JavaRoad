@@ -6,16 +6,16 @@ package com.soapsnake.algorithms.leetcode.str;
  */
 public class Question8 {
 
-    public int myAtoi(String str) {
-
-
-        return 0;
-    }
-
     public static void main(String[] args) {
         Question8 question8 = new Question8();
         String str = "   +-42";
         System.out.println(question8.myAtoi(str));
+    }
+
+    public int myAtoi(String str) {
+
+
+        return 0;
     }
 
 }

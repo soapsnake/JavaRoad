@@ -26,7 +26,7 @@ public class Question240 {
         while (col >= 0 && row <= matrix.length) {
             if (matrix[row][col] == target) {
                 return true;
-            } else if (matrix[row][col] > target){
+            } else if (matrix[row][col] > target) {
                 col--;
             } else {
                 row++;

@@ -16,6 +16,12 @@ public class Question509 {
      * F(N) = F(N - 1) + F(N - 2), for N > 1.
      */
     Map<Integer, Integer> temp = new HashMap<>();
+
+    public static void main(String[] args) {
+        Question509 question509 = new Question509();
+        System.out.println(question509.fib(4));
+    }
+
     public int fib(int N) {
         if (N == 0) {
             return 0;
@@ -27,22 +33,16 @@ public class Question509 {
         int res;
         if (temp.get(N) != null) {
             return temp.get(N);
-        }else {
-            res =  fib(N - 1) + fib(N - 2);
+        } else {
+            res = fib(N - 1) + fib(N - 2);
             temp.put(N, res);
         }
         return res;
     }
 
-
-
-    public static void main(String[] args) {
-        Question509 question509 = new Question509();
-        System.out.println(question509.fib(4));
-    }
-
     /**
      * 自底向上解斐波拉契数列(DP),2ms
+     *
      * @param N
      * @return
      */

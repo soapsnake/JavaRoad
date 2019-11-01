@@ -8,6 +8,14 @@ import java.util.Arrays;
  */
 public class Question27 {
 
+    public static void main(String[] args) {
+        Question27 question27 = new Question27();
+        int[] nums = {0, 1, 2, 2, 3, 0, 4, 2};
+        int val = 2;
+        System.out.println(question27.removeElement2(nums, val));
+        System.out.println(Arrays.toString(nums));
+    }
+
     //智障级解法!
     public int removeElement(int[] nums, int val) {
         if (nums == null) {
@@ -41,20 +49,12 @@ public class Question27 {
         return newlen;
     }
 
-    public static void main(String[] args) {
-        Question27 question27 = new Question27();
-        int[] nums = {0,1,2,2,3,0,4,2};
-        int val = 2;
-        System.out.println(question27.removeElement2(nums, val));
-        System.out.println(Arrays.toString(nums));
-    }
-
     //大神级解法,没看懂囧
     public int removeElement2(int[] A, int elem) {
         int m = 0;
-        for(int i = 0; i < A.length; i++){
+        for (int i = 0; i < A.length; i++) {
 
-            if(A[i] != elem){
+            if (A[i] != elem) {
                 A[m] = A[i];
                 m++;
             }

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *  设计一个栈,要求min()得到最小元素,push, pop,o1复杂度
+ * 设计一个栈,要求min()得到最小元素,push, pop,o1复杂度
  */
 public class O1Stack {
     private List<Integer> items;
@@ -13,53 +13,6 @@ public class O1Stack {
     public O1Stack() {
         this.items = new ArrayList<>();
         this.minList = new ArrayList<>();
-    }
-    /**
-     *
-     * @return min of stack
-     */
-    public Integer min() {
-        if (this.minList.size() > 0) {
-            return this.minList.get(0);
-        } else {
-            return null;
-        }
-    }
-
-    /**
-     */
-    public void push(Integer o) {
-        if (o == null) {
-            return;
-        }
-        if (this.minList.size() == 0) {
-            this.minList.add(o);
-        } else {
-            for (int i = minList.size() - 1; i >= 0; i--) {
-                if (minList.get(i) <= o) {
-                    minList.add(i + 1, o);
-                    break;
-                }
-            }
-        }
-        items.add(o);
-    }
-
-    /**
-     * pop from stack
-     * @return
-     */
-    public Integer pop() {
-        if (items.size() == 0) {
-            return null;
-        }
-        Integer res = items.remove(items.size() - 1);
-        minList.remove(res);
-       return res;
-    }
-
-    public void printStack() {
-        System.out.println(this.items);
     }
 
     public static void main(String[] args) {
@@ -84,5 +37,54 @@ public class O1Stack {
         System.out.println("最小" + stack.minList);
         System.out.println(stack.min());
         stack.printStack();
+    }
+
+    /**
+     * @return min of stack
+     */
+    public Integer min() {
+        if (this.minList.size() > 0) {
+            return this.minList.get(0);
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     *
+     */
+    public void push(Integer o) {
+        if (o == null) {
+            return;
+        }
+        if (this.minList.size() == 0) {
+            this.minList.add(o);
+        } else {
+            for (int i = minList.size() - 1; i >= 0; i--) {
+                if (minList.get(i) <= o) {
+                    minList.add(i + 1, o);
+                    break;
+                }
+            }
+        }
+        items.add(o);
+    }
+
+    /**
+     * pop from stack
+     *
+     * @return
+     */
+    public Integer pop() {
+        if (items.size() == 0) {
+            return null;
+        }
+        Integer res = items.remove(items.size() - 1);
+        minList.remove(res);
+        return res;
+    }
+
+    public void printStack() {
+        System.out.println(this.items);
     }
 }

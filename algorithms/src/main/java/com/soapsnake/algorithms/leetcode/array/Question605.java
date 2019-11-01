@@ -6,6 +6,13 @@ package com.soapsnake.algorithms.leetcode.array;
  */
 public class Question605 {
 
+    public static void main(String[] args) {
+        Question605 question605 = new Question605();
+        int[] flowBed = {0, 1, 0};
+        int n = 1;
+        System.out.println(question605.canPlaceFlowers(flowBed, n));
+    }
+
     //题目看着简单,其实做起来一点不简单,边界值特别容易出问题
     public boolean canPlaceFlowers(int[] flowerbed, int n) {
         if (n == 0) {
@@ -48,12 +55,5 @@ public class Question605 {
             }
         }
         return false;
-    }
-
-    public static void main(String[] args) {
-        Question605 question605 = new Question605();
-        int[] flowBed = {0,1,0};
-        int n = 1;
-        System.out.println(question605.canPlaceFlowers(flowBed, n));
     }
 }

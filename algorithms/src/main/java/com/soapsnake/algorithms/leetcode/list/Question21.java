@@ -4,7 +4,7 @@ import com.soapsnake.algorithms.structures.list.ListNode;
 
 /**
  * 两个链表合并为一个链表,要求:合并后的链表必须是排序的
- *
+ * <p>
  * Merge two sorted linked lists and return it as a new list.
  * The new list should be made by splicing together the nodes of the first two lists.
  */
@@ -38,17 +38,7 @@ class Question21 {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-        //递归版实现,我是想不出来这么好的解法
+    //递归版实现,我是想不出来这么好的解法
     public ListNode mergeTwoLists(ListNode l1head, ListNode l2head) {
         //鲁棒性
         if (l1head == null) return l2head;

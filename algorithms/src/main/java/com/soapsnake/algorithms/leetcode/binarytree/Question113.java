@@ -11,20 +11,24 @@ import java.util.List;
  */
 public class Question113 {
 
+    public static void main(String[] args) {
+
+    }
+
     /**
      * Given the below binary tree and sum = 22,
-     *
-     *       5
-     *      / \
-     *     4   8
-     *    /   / \
-     *   11  13  4
-     *  /  \    / \
+     * <p>
+     * 5
+     * / \
+     * 4   8
+     * /   / \
+     * 11  13  4
+     * /  \    / \
      * 7    2  5   1
      * Return:
      * [
-     *    [5,4,11,2],
-     *    [5,8,4,5]
+     * [5,4,11,2],
+     * [5,8,4,5]
      * ]
      */
     public List<List<Integer>> pathSum(TreeNode root, int sum) {
@@ -50,10 +54,6 @@ public class Question113 {
         dfs(root.left, res, sum, temp);
         dfs(root.right, res, sum, temp);
         temp.remove(temp.size() - 1); //其实最关键就是这步,有点类似于backtrace算法的思路
-    }
-
-    public static void main(String[] args) {
-
     }
 
 }

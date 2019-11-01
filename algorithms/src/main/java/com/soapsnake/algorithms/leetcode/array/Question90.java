@@ -10,13 +10,21 @@ import java.util.List;
  */
 public class Question90 {
 
+    public static void main(String[] args) {
+        Question90 question90 = new Question90();
+        int[] nums = {1, 2, 2};
+        System.out.println(question90.subsetsWithDup(nums));
+
+
+    }
+
     public List<List<Integer>> subsetsWithDup(int[] nums) {
         if (nums == null || nums.length == 0) {
             return new ArrayList<>();
         }
         Arrays.sort(nums); //backtrac类型题目有时候缺的就是这个sort
         List<List<Integer>> res = new ArrayList<>();
-        backTrace(nums ,res, 0, new ArrayList<>());
+        backTrace(nums, res, 0, new ArrayList<>());
         return res;
     }
 
@@ -30,13 +38,5 @@ public class Question90 {
             backTrace(nums, res, i + 1, tmp);
             tmp.remove(tmp.size() - 1);
         }
-    }
-
-    public static void main(String[] args) {
-        Question90 question90 = new Question90();
-        int[] nums = {1, 2, 2};
-        System.out.println(question90.subsetsWithDup(nums));
-
-
     }
 }

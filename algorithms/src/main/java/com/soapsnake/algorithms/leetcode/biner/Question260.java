@@ -6,6 +6,13 @@ import java.util.Set;
 
 public class Question260 {
 
+    public static void main(String[] args) {
+        Question260 question260 = new Question260();
+
+        int[] nums = {1, 2, 1, 3, 2, 5};
+        System.out.println(Arrays.toString(question260.singleNumber(nums)));
+    }
+
     //O(n)版本解法
     public int[] singleNumber(int[] nums) {
         // Pass 1 :
@@ -19,21 +26,17 @@ public class Question260 {
 
         // Pass 2 :
         int[] rets = {0, 0}; // this array stores the two numbers we will return
-        for (int num : nums)
-        {
+        for (int num : nums) {
             if ((num & diff) == 0) // the bit is not set
             {
                 rets[0] ^= num;
-            }
-            else // the bit is set
+            } else // the bit is set
             {
                 rets[1] ^= num;
             }
         }
         return rets;
     }
-
-
 
     //空间复杂度o(n)版本解法
     public int[] singleNumber2(int[] nums) {
@@ -52,13 +55,6 @@ public class Question260 {
             res[j++] = i;
         }
         return res;
-    }
-
-    public static void main(String[] args) {
-        Question260 question260 = new Question260();
-
-        int[] nums = {1,2,1,3,2,5};
-        System.out.println(Arrays.toString(question260.singleNumber(nums)));
     }
 
 

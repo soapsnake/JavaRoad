@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface ContactService {
 
-	void anotherAction(User user);
+    void anotherAction(User user);
 
-	List<User> getAllUsers();
+    List<User> getAllUsers();
 
-	void saveUser(User user);
+    void saveUser(User user);
 }

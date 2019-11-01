@@ -12,8 +12,15 @@ import java.util.Stack;
  * @date 2018/11/7
  */
 class Question897 {
+    List<TreeNode> res = new ArrayList<>();
     private List<TreeNode> nodes = new LinkedList<>();
     private List<Integer> integers = new LinkedList<>();
+    private TreeNode newRoot;
+
+    public static void main(String[] args) {
+        Question897 question897 = new Question897();
+        TreeNode.layerTravse(question897.increasingBST(question897.increasingBST(TreeNode.makeBinerSearchTree())));
+    }
 
     public TreeNode increasingBST5(TreeNode root) {
         if (root == null) {
@@ -57,13 +64,20 @@ class Question897 {
         return this.search(0, arr.length - 1, arr, dest);
     }
 
+//    public static void main(String[] args) {
+//        Question897 question897 = new Question897();
+//        List<Integer> arr = Arrays.asList(2,3,4,5,6,7,8,9,10,23,5,8);
+//        arr.forEach(question897::insertList2);
+//        ArrayUtils.printList(question897.integers);
+//    }
+
     private int search(int left, int right, int[] arr, int dest) {
         int mid = (right + left) / 2;
         if (dest == arr[mid]) {
-                return mid;
+            return mid;
         }
         if (dest > arr[mid]) {
-          return search(mid + 1, right, arr, dest);
+            return search(mid + 1, right, arr, dest);
         }
         return search(0, mid, arr, dest);
     }
@@ -118,14 +132,6 @@ class Question897 {
         }
     }
 
-//    public static void main(String[] args) {
-//        Question897 question897 = new Question897();
-//        List<Integer> arr = Arrays.asList(2,3,4,5,6,7,8,9,10,23,5,8);
-//        arr.forEach(question897::insertList2);
-//        ArrayUtils.printList(question897.integers);
-//    }
-
-    private TreeNode newRoot;
     public TreeNode increasingBST4(TreeNode root) {
         if (root == null) {
             return null;
@@ -153,7 +159,6 @@ class Question897 {
         return newRoot;
     }
 
-    List<TreeNode> res = new ArrayList<>();
     public TreeNode increasingBST(TreeNode root) {
         if (root == null) {
             return null;
@@ -176,11 +181,6 @@ class Question897 {
             cur = cur.right;
         }
         return newRoot.right; //这里返回的是newRoot得right子节点
-    }
-
-    public static void main(String[] args) {
-        Question897 question897 = new Question897();
-        TreeNode.layerTravse(question897.increasingBST(question897.increasingBST(TreeNode.makeBinerSearchTree())));
     }
 
 }

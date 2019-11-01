@@ -8,7 +8,7 @@ public class OtherBird implements Bird {
 
     @Override
     public Egg lay() {
-        Egg egg =  new Egg(this);
+        Egg egg = new Egg(this);
         return egg;
     }
 }

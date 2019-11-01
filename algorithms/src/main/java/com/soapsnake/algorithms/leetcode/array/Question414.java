@@ -19,10 +19,10 @@ public class Question414 {
                 third = second;
                 second = max;
                 max = i;
-            }else if (second == null || i > second) {
+            } else if (second == null || i > second) {
                 third = second;
                 second = i;
-            }else if (third == null || i > third) {
+            } else if (third == null || i > third) {
                 third = i;
             }
         }

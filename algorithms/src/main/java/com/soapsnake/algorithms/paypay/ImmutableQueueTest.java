@@ -8,7 +8,7 @@ public class ImmutableQueueTest {
     private ImmutableQueue<String> immutableQueue;
 
     public ImmutableQueueTest() {
-        this.immutableQueue =  new ImmutableQueue<>();
+        this.immutableQueue = new ImmutableQueue<>();
         immutableQueue.enQueue("Hello");
         immutableQueue.enQueue("world");
         immutableQueue.enQueue("I am");

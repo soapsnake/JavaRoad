@@ -28,14 +28,14 @@ public class Question506 {
 
         int rank = 1; //顺序
         for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-            int item =  entry.getKey();
+            int item = entry.getKey();
             int indexOfItem = entry.getValue();
             String str = "";
             if (rank == 1) {
                 str = "Gold Medal";
-            }else if (rank == 2) {
+            } else if (rank == 2) {
                 str = "Silver Medal";
-            }else if (rank == 3) {
+            } else if (rank == 3) {
                 str = "Bronze Medal";
             } else {
                 str = rank + "";

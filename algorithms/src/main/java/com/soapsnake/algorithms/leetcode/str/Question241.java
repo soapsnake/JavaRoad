@@ -7,34 +7,37 @@ import java.util.Map;
 
 public class Question241 {
 
+    Map<String, List<Integer>> map = new HashMap<>();
+
     public static void main(String[] args) {
         Question241 question241 = new Question241();
         String str = "11*12";
         System.out.println(question241.diffWaysToCompute(str));  //shoud be [-34, -14, -10, -10, 10]
     }
 
-
-    Map<String, List<Integer>> map = new HashMap<>();
     public List<Integer> diffWaysToCompute(String input) {
-        if(map.containsKey(input)) return map.get(input);
+        if (map.containsKey(input)) return map.get(input);
         List<Integer> res = new ArrayList<>();
-        for (int i=0; i<input.length(); i++) {
-            if (input.charAt(i) == '-' || input.charAt(i) == '*' || input.charAt(i) == '+' ) {
+        for (int i = 0; i < input.length(); i++) {
+            if (input.charAt(i) == '-' || input.charAt(i) == '*' || input.charAt(i) == '+') {
                 String part1 = input.substring(0, i);
-                String part2 = input.substring(i+1);
+                String part2 = input.substring(i + 1);
                 List<Integer> part1Ret = diffWaysToCompute(part1);
                 List<Integer> part2Ret = diffWaysToCompute(part2);
                 System.out.println("part1Ret = " + part1Ret);
                 System.out.println("part2Ret = " + part2Ret);
-                for (Integer p1 :   part1Ret) {
-                    for (Integer p2 :   part2Ret) {
+                for (Integer p1 : part1Ret) {
+                    for (Integer p2 : part2Ret) {
                         int c = 0;
                         switch (input.charAt(i)) {
-                            case '+': c = p1+p2;
+                            case '+':
+                                c = p1 + p2;
                                 break;
-                            case '-': c = p1-p2;
+                            case '-':
+                                c = p1 - p2;
                                 break;
-                            case '*': c = p1*p2;
+                            case '*':
+                                c = p1 * p2;
                                 break;
                         }
                         res.add(c);

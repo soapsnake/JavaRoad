@@ -29,14 +29,14 @@ public class Question54 {
             rowBegin++;   //行数递增
 
             // Traverse Down
-            for (int j = rowBegin; j <= rowEnd; j ++) {
+            for (int j = rowBegin; j <= rowEnd; j++) {
                 res.add(matrix[j][colEnd]);   //光标最右边一列往下走
             }
             colEnd--;   //列数递减(到达最底层后往左移动)
 
             if (rowBegin <= rowEnd) {
                 // Traverse Left
-                for (int j = colEnd; j >= colBegin; j --) {
+                for (int j = colEnd; j >= colBegin; j--) {
                     res.add(matrix[rowEnd][j]);  //光标从右往左走
                 }
             }
@@ -44,11 +44,11 @@ public class Question54 {
 
             if (colBegin <= colEnd) {    //不能和之前遍历过得行重叠
                 // Traver Up
-                for (int j = rowEnd; j >= rowBegin; j --) {
+                for (int j = rowEnd; j >= rowBegin; j--) {
                     res.add(matrix[j][colBegin]);   //光标往上移动
                 }
             }
-            colBegin ++;   //列递增,准备启动第二次的顺时针循环(内圈)
+            colBegin++;   //列递增,准备启动第二次的顺时针循环(内圈)
         }
 
         return res;

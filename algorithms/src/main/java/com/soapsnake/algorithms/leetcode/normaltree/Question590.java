@@ -24,7 +24,7 @@ public class Question590 {
             return;
         }
 
-        for (Node node: root.children) {
+        for (Node node : root.children) {
             dfsTree(node);
         }
         res.add(root.val);

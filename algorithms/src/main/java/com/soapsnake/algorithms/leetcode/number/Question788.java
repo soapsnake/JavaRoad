@@ -6,6 +6,11 @@ package com.soapsnake.algorithms.leetcode.number;
  */
 public class Question788 {
 
+    public static void main(String[] args) {
+        Question788 question788 = new Question788();
+        System.out.println(question788.rotatedDigits(857)); //247
+    }
+
     public int rotatedDigits(int N) {
         int good = 0;
         for (int i = 1; i <= N; i++) {
@@ -14,6 +19,8 @@ public class Question788 {
         }
         return good;
     }
+
+    //todo 利用动态规划解决这个问题
 
     private boolean isValid(int n) {
         boolean isvalid = false;
@@ -30,24 +37,17 @@ public class Question788 {
             if (n % 10 == 9) {
                 isvalid = true;
             }
-            if (n % 10  == 3) {
+            if (n % 10 == 3) {
                 return false;
             }
-            if (n % 10  == 4) {
+            if (n % 10 == 4) {
                 return false;
             }
-            if (n % 10  == 7) {
+            if (n % 10 == 7) {
                 return false;
             }
             n = n / 10;
         }
         return isvalid;
-    }
-
-    //todo 利用动态规划解决这个问题
-
-    public static void main(String[] args) {
-        Question788 question788 = new Question788();
-        System.out.println(question788.rotatedDigits(857)); //247
     }
 }

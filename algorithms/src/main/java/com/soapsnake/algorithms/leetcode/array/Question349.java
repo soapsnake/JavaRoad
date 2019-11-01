@@ -37,7 +37,7 @@ public class Question349 {
         for (int i : res) {
             resu[k++] = i;
         }
-    return resu;
+        return resu;
     }
 
     //O(n)
@@ -54,8 +54,8 @@ public class Question349 {
         }
         Set<Integer> res = new HashSet<>();
         for (Map.Entry entry : map.entrySet()) {
-            if ((int)entry.getValue() != 1) {
-                res.add((int)entry.getKey());
+            if ((int) entry.getValue() != 1) {
+                res.add((int) entry.getKey());
             }
         }
 

@@ -17,7 +17,7 @@ public class Question142 {
         ListNode slow = head;
         ListNode fast = head.next;
         while (slow != null && fast != null) {
-            if (slow == fast){
+            if (slow == fast) {
             }
             slow = head.next;
             fast = head.next.next;

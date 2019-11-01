@@ -1,6 +1,6 @@
 package com.soapsnake.pattern.creationals.builder;
 
-public class Son extends Parent  {
+public class Son extends Parent {
 
     static {
         System.out.println("son static");

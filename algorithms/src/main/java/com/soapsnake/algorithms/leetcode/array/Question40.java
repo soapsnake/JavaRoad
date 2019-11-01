@@ -11,21 +11,28 @@ import java.util.List;
 public class Question40 {
 
 
+    public static void main(String[] args) {
+        Question40 question40 = new Question40();
+        int[] nums = {10, 1, 2, 7, 6, 1, 5};
+        int tar = 8;
+        System.out.println(question40.combinationSum2(nums, tar));
+    }
+
     /**
-     *Input: candidates = [10,1,2,7,6,1,5], target = 8,
+     * Input: candidates = [10,1,2,7,6,1,5], target = 8,
      * A solution set is:
      * [
-     *   [1, 7],
-     *   [1, 2, 5],
-     *   [2, 6],
-     *   [1, 1, 6]
+     * [1, 7],
+     * [1, 2, 5],
+     * [2, 6],
+     * [1, 1, 6]
      * ]
      */
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {
 
         List<List<Integer>> res = new ArrayList<>();
         Arrays.sort(candidates);
-        this.backTrace(res, new ArrayList<>(), candidates,target, 0);
+        this.backTrace(res, new ArrayList<>(), candidates, target, 0);
         return res;
 
     }
@@ -51,14 +58,6 @@ public class Question40 {
             res += i;
         }
         return res == target;
-    }
-
-
-    public static void main(String[] args) {
-        Question40 question40 = new Question40();
-        int[] nums = {10,1,2,7,6,1,5};
-        int tar = 8;
-        System.out.println(question40.combinationSum2(nums, tar));
     }
 
 }

@@ -27,7 +27,6 @@ public class ListTest {
         System.out.println("list.set(10, 100) " + list);
 
 
-
         List<Person> list10 = new ArrayList<>();
         Person person = new Person();
         person.age = 18;
@@ -36,7 +35,6 @@ public class ListTest {
         list10.add(person);
 
         List<Person> list11 = new ArrayList<>(list10);
-
 
 
     }

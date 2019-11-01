@@ -6,8 +6,14 @@ package com.soapsnake.algorithms.leetcode.number;
  */
 class Question812 {
 
+    public static void main(String[] args) {
+        Question812 question812 = new Question812();
+        int[][] nums = {{0, 0}, {0, 1}, {1, 0}, {0, 2}, {2, 0}};
+        System.out.println(question812.largestTriangleArea(nums));
+    }
+
     public double largestTriangleArea(int[][] points) {
-        if (points.length <3) {
+        if (points.length < 3) {
             return 0;
         }
 
@@ -21,15 +27,6 @@ class Question812 {
         }
 
 
-
-
-
-    return maxX * maxY * 0.5;
-    }
-
-    public static void main(String[] args) {
-        Question812 question812 = new Question812();
-        int[][] nums = {{0,0}, {0,1}, {1,0}, {0,2}, {2,0}};
-        System.out.println(question812.largestTriangleArea(nums));
+        return maxX * maxY * 0.5;
     }
 }

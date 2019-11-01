@@ -6,6 +6,12 @@ package com.soapsnake.algorithms.leetcode.str;
  */
 public class Question434 {
 
+    public static void main(String[] args) {
+        Question434 question434 = new Question434();
+        String s = "Hello, my name is John";
+        System.out.println(question434.countSegments(s));
+    }
+
     public int countSegments(String s) {
         String[] strings = s.split(" ");
         int maxCount = 0;
@@ -24,16 +30,10 @@ public class Question434 {
         return maxCount;
     }
 
-    public static void main(String[] args) {
-        Question434 question434 = new Question434();
-        String s = "Hello, my name is John";
-        System.out.println(question434.countSegments(s));
-    }
-
     public int countSegments2(String s) {
-        int res=0;
-        for(int i=0; i<s.length(); i++)
-            if(s.charAt(i) != ' ' && (i==0 || s.charAt(i-1)==' ')) {
+        int res = 0;
+        for (int i = 0; i < s.length(); i++)
+            if (s.charAt(i) != ' ' && (i == 0 || s.charAt(i - 1) == ' ')) {
                 res++;
             }
         return res;

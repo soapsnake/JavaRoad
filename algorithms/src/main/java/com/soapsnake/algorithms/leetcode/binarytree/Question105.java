@@ -8,6 +8,15 @@ import com.soapsnake.algorithms.structures.tree.TreeNode;
  */
 public class Question105 {
 
+    public static void main(String[] args) {
+        Question105 question105 = new Question105();
+        int[] pre = {3, 9, 20, 15, 7};
+        int[] inorder = {9, 3, 15, 20, 7};
+        TreeNode.layerTravse(question105.buildTree(pre, inorder));
+
+
+    }
+
     /**
      * 假设我们有两个数组,pre和in数组
      * 先序遍历的规则表明pre[0]就是树的根节点
@@ -35,16 +44,7 @@ public class Question105 {
         root.left = helper(preStart + 1, inStart, inIndex - 1, preorder, inorder);
 
         //(inIndex - inStart + 1)是一个偏移量,他表示的是出现在root左子树中的元素个数 //inIndex + 1 -> end 右子树的边界
-        root.right = helper(preStart + (inIndex - inStart + 1), inIndex + 1, inEnd,  preorder, inorder);
+        root.right = helper(preStart + (inIndex - inStart + 1), inIndex + 1, inEnd, preorder, inorder);
         return root;
-    }
-
-    public static void main(String[] args) {
-        Question105 question105 = new Question105();
-        int[] pre = {3,9,20,15,7};
-        int[] inorder = {9,3,15,20,7};
-        TreeNode.layerTravse(question105.buildTree(pre, inorder));
-
-
     }
 }

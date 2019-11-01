@@ -8,11 +8,19 @@ import java.util.Arrays;
  */
 public class Question34 {
 
+    public static void main(String[] args) {
+        Question34 question34 = new Question34();
+
+        int[] nums = {5, 7, 7, 8, 8, 10};
+        int tar = 8;
+        System.out.println(Arrays.toString(question34.searchRange(nums, tar)));
+    }
+
     /**
      * Example 1:
      * Input: nums = [5,7,7,8,8,10], target = 8
      * Output: [3,4]
-     *
+     * <p>
      * Example 2:
      * Input: nums = [5,7,7,8,8,10], target = 6
      * Output: [-1,-1]
@@ -32,7 +40,7 @@ public class Question34 {
             res[1] = tempIndex;
             int left = tempIndex;
             int right = tempIndex;
-            while (left-- > 0 ) {
+            while (left-- > 0) {
                 if (nums[left] == target) {
                     res[0] = left;
                 }
@@ -48,6 +56,7 @@ public class Question34 {
 
     /**
      * 遍历版二分
+     *
      * @param nums
      * @param target
      * @return
@@ -60,20 +69,12 @@ public class Question34 {
             middle = left + (right - left) / 2;
             if (nums[middle] == target) {
                 return middle;
-            }else if (nums[middle] > target) {
+            } else if (nums[middle] > target) {
                 right = middle - 1;
             } else {
                 left = middle + 1;
             }
         }
         return -1;
-     }
-
-    public static void main(String[] args) {
-        Question34 question34 = new Question34();
-
-        int[] nums = {5,7,7,8,8,10};
-        int tar = 8;
-        System.out.println(Arrays.toString(question34.searchRange(nums, tar)));
     }
 }

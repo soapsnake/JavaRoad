@@ -16,7 +16,7 @@ public class SeniorCitizen extends AccountDecorator {
 
     @Override
     public String getTotalBenefits() {
-        return account.getTotalBenefits() + " other benefits are"+
+        return account.getTotalBenefits() + " other benefits are" +
                 this.applyOtherBenefits();
     }
 }

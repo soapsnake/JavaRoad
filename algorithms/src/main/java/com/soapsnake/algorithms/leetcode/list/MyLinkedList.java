@@ -2,44 +2,23 @@ package com.soapsnake.algorithms.leetcode.list;
 
 /**
  * 本人自用双向链表
+ *
  * @author soapsnake
  * @date 2018/11/24
  * todo 1.目前对链表进行delete操作后node.toString会抛异常
- *      2.链表不允许插入null节点,但是JDK的LinkedList是可以的
- *      3. 线程不安全
- *      4. 还实现不了迭代
- *      5. 没有索引
- *      6. add接口只支持插到链表尾部,还不能插到中间或头部
+ * 2.链表不允许插入null节点,但是JDK的LinkedList是可以的
+ * 3. 线程不安全
+ * 4. 还实现不了迭代
+ * 5. 没有索引
+ * 6. add接口只支持插到链表尾部,还不能插到中间或头部
  */
 public class MyLinkedList<T> {
-    static class Node<T> {
-        private Node prev;
-        private Node next;
-        T val;
-        private int index;
-        Node(T val, Node prev, Node next){
-            this.prev = prev;
-            this.next = next;
-            this.val = val;
-        }
+    private Node head;
+    private Node tail;
+    private int size;
+    public MyLinkedList() {
 
-        @Override
-        public String toString() {
-            return "Node{" +
-                    "prev=" + prev +
-                    ", next=" + next +
-                    ", val=" + val +
-                    '}';
-        }
     }
-
-   private Node head;
-   private Node tail;
-   private int size;
-
-   public MyLinkedList() {
-
-   }
 
     public MyLinkedList(Node head) {
         if (head == null || head.val == null) {
@@ -48,6 +27,54 @@ public class MyLinkedList<T> {
         this.head = head;
         this.tail = head;
         this.size = 1;
+    }
+
+    /**
+     * 打印链表
+     *
+     * @param list
+     */
+    public static void printMyList(MyLinkedList list) {
+        if (list == null) {
+            throw new RuntimeException("list is null!");
+        }
+        Node head = list.head;
+        while (head != null) {
+            if (head.next != null) {
+                System.out.print(head.val + " -> ");
+            } else {
+                System.out.print(head.val);
+            }
+            head = head.next;
+        }
+        System.out.println(" list.size=" + list.size + " list.head=" + list.getHead().val +
+                " list.tail=" + list.getTail().val);
+    }
+
+    public static void main(String[] args) {
+        MyLinkedList<Integer> myList = new MyLinkedList<>();
+
+        myList.add(1);
+        myList.add(3);
+        myList.add(2);
+        myList.add(4);
+        myList.add(5);
+
+        printMyList(myList);
+        System.out.println(myList.contains(4));
+        System.out.println(myList.contains(6));
+
+        myList.deleteNode(1);
+        myList.deleteNode(5);
+        printMyList(myList);
+
+        myList.deleteNode(2);
+        printMyList(myList);
+
+        myList.deleteNode(1);
+
+        myList.add(7);
+        printMyList(myList);
     }
 
     public Node getHead() {
@@ -64,9 +91,8 @@ public class MyLinkedList<T> {
 
     /**
      * 添加节点
-     * @param val
      *
-     * 注意了,这里的实现不允许存在null节点,但是JDK的LinkedList是允许null节点的
+     * @param val 注意了,这里的实现不允许存在null节点,但是JDK的LinkedList是允许null节点的
      */
     public void add(T val) {
         if (val == null) {
@@ -93,7 +119,7 @@ public class MyLinkedList<T> {
         Node head = this.head;
 
         while (head != null) {
-            if (head.val.equals(val)){
+            if (head.val.equals(val)) {
                 return true;
             }
             head = head.next;
@@ -103,6 +129,7 @@ public class MyLinkedList<T> {
 
     /**
      * 删除节点
+     *
      * @param val
      */
     public void deleteNode(T val) {
@@ -142,32 +169,12 @@ public class MyLinkedList<T> {
 
     /**
      * todo 返回某节点的index
+     *
      * @param val
      * @return
      */
     public int nodeIndex(T val) {
         return 0;
-    }
-
-    /**
-     * 打印链表
-     * @param list
-     */
-    public static void printMyList(MyLinkedList list) {
-        if (list == null) {
-            throw new RuntimeException("list is null!");
-        }
-        Node head = list.head;
-        while (head != null) {
-            if (head.next != null) {
-                System.out.print(head.val + " -> ");
-            } else {
-                System.out.print(head.val);
-            }
-            head = head.next;
-        }
-        System.out.println(" list.size=" + list.size + " list.head=" + list.getHead().val +
-                " list.tail=" + list.getTail().val);
     }
 
     @Override
@@ -179,30 +186,25 @@ public class MyLinkedList<T> {
                 '}';
     }
 
+    static class Node<T> {
+        T val;
+        private Node prev;
+        private Node next;
+        private int index;
 
-    public static void main(String[] args) {
-        MyLinkedList<Integer> myList = new MyLinkedList<>();
+        Node(T val, Node prev, Node next) {
+            this.prev = prev;
+            this.next = next;
+            this.val = val;
+        }
 
-        myList.add(1);
-        myList.add(3);
-        myList.add(2);
-        myList.add(4);
-        myList.add(5);
-
-        printMyList(myList);
-        System.out.println(myList.contains(4));
-        System.out.println(myList.contains(6));
-
-        myList.deleteNode(1);
-        myList.deleteNode(5);
-        printMyList(myList);
-
-        myList.deleteNode(2);
-        printMyList(myList);
-
-        myList.deleteNode(1);
-
-        myList.add(7);
-        printMyList(myList);
+        @Override
+        public String toString() {
+            return "Node{" +
+                    "prev=" + prev +
+                    ", next=" + next +
+                    ", val=" + val +
+                    '}';
+        }
     }
 }

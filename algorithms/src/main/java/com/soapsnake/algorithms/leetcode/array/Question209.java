@@ -5,6 +5,15 @@ import java.util.List;
 
 public class Question209 {
 
+    int min = Integer.MAX_VALUE;
+
+    public static void main(String[] args) {
+        Question209 question209 = new Question209();
+        int[] nums = {2, 3, 1, 2, 4, 3};
+        int s = 7;
+        System.out.println(question209.minSubArrayLen1(s, nums));
+    }
+
     //不是特别懂啊这个
     public int minSubArrayLen(int s, int[] nums) {
         int i = 0, j = 0, total = 0, min = Integer.MAX_VALUE;
@@ -32,7 +41,6 @@ public class Question209 {
         return min;
     }
 
-    int min = Integer.MAX_VALUE;
     private void dfs(int[] nums, int s, int preTotal, List<Integer> tmp) {
         int pre = tmp.get(tmp.size() - 1);
         int cur = pre + 1;
@@ -50,12 +58,5 @@ public class Question209 {
             tmp.add(cur);
             dfs(nums, s, preTotal + nums[cur], tmp);
         }
-    }
-
-    public static void main(String[] args) {
-        Question209 question209 = new Question209();
-        int[] nums = {2,3,1,2,4,3};
-        int s = 7;
-        System.out.println(question209.minSubArrayLen1(s, nums));
     }
 }

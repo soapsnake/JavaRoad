@@ -11,6 +11,13 @@ import java.util.List;
  */
 public class Question796 {
 
+    public static void main(String[] args) {
+        Question796 question796 = new Question796();
+        System.out.println(question796.rotateString("aa", "a"));
+    }
+
+    //todo 能不能用string.contains来解这个问题???
+
     public boolean rotateString(String A, String B) {
         char[] charsA = A.toCharArray();
         char[] charsB = B.toCharArray();
@@ -44,12 +51,5 @@ public class Question796 {
             i++;
         }
         return false;
-    }
-
-    //todo 能不能用string.contains来解这个问题???
-
-    public static void main(String[] args) {
-        Question796 question796 = new Question796();
-        System.out.println(question796.rotateString("aa", "a"));
     }
 }

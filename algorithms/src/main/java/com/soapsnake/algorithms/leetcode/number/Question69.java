@@ -6,6 +6,11 @@ package com.soapsnake.algorithms.leetcode.number;
  */
 public class Question69 {
 
+    public static void main(String[] args) {
+        Question69 question69 = new Question69();
+        System.out.println(question69.mySqrt(9));
+    }
+
     //todo 二分查找
     public int mySqrt(int x) {
         if (x <= 0) {
@@ -26,10 +31,5 @@ public class Question69 {
                 }
             }
         }
-    }
-
-    public static void main(String[] args) {
-        Question69 question69 = new Question69();
-        System.out.println(question69.mySqrt(9));
     }
 }

@@ -5,6 +5,12 @@ package com.soapsnake.algorithms.leetcode.str;
  * @Date 2019-02-14 09:56
  */
 public class Question680 {
+    public static void main(String[] args) {
+        Question680 question680 = new Question680();
+        String s = "abc";
+        System.out.println(question680.validPalindrome(s)); //should be true
+    }
+
     /**
      * 字符串是否能最多删除一个字符变成回文串
      */
@@ -29,11 +35,5 @@ public class Question680 {
         } else {
             return recursion(s, ++left, --right, invalid);
         }
-    }
-
-    public static void main(String[] args) {
-        Question680 question680 = new Question680();
-        String s = "abc";
-        System.out.println(question680.validPalindrome(s)); //should be true
     }
 }

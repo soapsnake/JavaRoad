@@ -7,6 +7,12 @@ import java.util.Arrays;
  * @Date 2018/12/8 23:05
  */
 public class Question26 {
+    public static void main(String[] args) {
+        Question26 question26 = new Question26();
+        int[] arr = {1, 1, 2};
+        System.out.println(question26.removeDuplicates(arr));
+    }
+
     public int removeDuplicates(int[] nums) {
         if (nums == null || nums.length == 0) {
             return 0;
@@ -35,11 +41,5 @@ public class Question26 {
         }
         System.out.println(Arrays.toString(newArr));
         return dup;
-    }
-
-    public static void main(String[] args) {
-        Question26 question26 = new Question26();
-        int[] arr = {1,1,2};
-        System.out.println(question26.removeDuplicates(arr));
     }
 }

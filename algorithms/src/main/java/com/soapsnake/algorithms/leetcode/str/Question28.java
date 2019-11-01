@@ -6,6 +6,13 @@ package com.soapsnake.algorithms.leetcode.str;
  */
 public class Question28 {
 
+    public static void main(String[] args) {
+        Question28 question28 = new Question28();
+        String haystack = "a";
+        String needle = "a";
+        System.out.println(question28.strStr(haystack, needle));
+    }
+
     public int strStr(String haystack, String needle) {
         int pointer = -1;
 
@@ -29,12 +36,5 @@ public class Question28 {
             }
         }
         return pointer;
-    }
-
-    public static void main(String[] args) {
-        Question28 question28 = new Question28();
-        String haystack = "a";
-        String needle = "a";
-        System.out.println(question28.strStr(haystack, needle));
     }
 }

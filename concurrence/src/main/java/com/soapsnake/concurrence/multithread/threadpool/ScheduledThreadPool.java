@@ -15,7 +15,7 @@ public class ScheduledThreadPool {
             public void run() {
                 System.out.println("测试定时1秒任务");
             }
-        }, 1,1, TimeUnit.SECONDS);
+        }, 1, 1, TimeUnit.SECONDS);
 
     }
 }

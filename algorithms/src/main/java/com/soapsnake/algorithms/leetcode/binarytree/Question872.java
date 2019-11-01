@@ -9,7 +9,7 @@ import java.util.Stack;
 /**
  * @author soapsnake
  * @date 2018/10/29
- *
+ * <p>
  * Consider all the leaves of a binary tree.  From left to right order, the values of those leaves form a leaf value sequence.
  */
 class Question872 {
@@ -44,7 +44,8 @@ class Question872 {
     //解法2,解法2使用栈,优化的地方在于,一边遍历一边比较,假如两个二叉树确实不满足,那么不需要遍历完就能知道结果
     public boolean leafSimilar2(TreeNode root1, TreeNode root2) {
         Stack<TreeNode> s1 = new Stack<>(), s2 = new Stack<>();
-        s1.push(root1); s2.push(root2);
+        s1.push(root1);
+        s2.push(root2);
         while (!s1.empty() && !s2.empty())      //s1和s2不为空保证了比较会一直进行下去,否则只要第一对叶子节点比完就会结束
             if (dfs(s1) != dfs(s2)) return false;
         return s1.empty() && s2.empty();

@@ -9,6 +9,12 @@ import java.util.List;
  */
 public class Question131 {
 
+    public static void main(String[] args) {
+        Question131 question131 = new Question131();
+        String s = "aab";
+        System.out.println(question131.partition(s));
+    }
+
     public List<List<String>> partition(String s) {
         List<List<String>> res = new ArrayList<>();
         if (s == null || s.length() == 0) {
@@ -19,13 +25,13 @@ public class Question131 {
     }
 
     private void backTrace(String s, List<List<String>> res, List<String> tmp) {
-        if ( s == null || s.length() == 0) {
+        if (s == null || s.length() == 0) {
             res.add(new ArrayList<>(tmp));
             return;
         }
 
         for (int i = 1; i <= s.length(); i++) {
-            String str = s.substring(0 ,i);   //主要这里用了subString而不是charAt,难倒了
+            String str = s.substring(0, i);   //主要这里用了subString而不是charAt,难倒了
             if (!this.ispalidram(str)) {
                 continue;
             }
@@ -49,11 +55,5 @@ public class Question131 {
             left++;
         }
         return true;
-    }
-
-    public static void main(String[] args) {
-        Question131 question131 = new Question131();
-        String s = "aab";
-        System.out.println(question131.partition(s));
     }
 }

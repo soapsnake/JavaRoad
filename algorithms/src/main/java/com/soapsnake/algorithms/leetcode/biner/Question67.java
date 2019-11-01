@@ -6,6 +6,13 @@ package com.soapsnake.algorithms.leetcode.biner;
  */
 public class Question67 {
 
+    public static void main(String[] args) {
+        Question67 question67 = new Question67();
+        String a = "110010";
+        String b = "10111";
+        System.out.println(question67.addBinary3(a, b));
+    }
+
     //这个解法也太他妈复杂了吧
     public String addBinary(String a, String b) {
         int aLeng = a.length();
@@ -53,13 +60,6 @@ public class Question67 {
             res.insert(0, 1);
         }
         return res.toString();
-    }
-
-    public static void main(String[] args) {
-        Question67 question67 = new Question67();
-        String a = "110010";
-        String b = "10111";
-        System.out.println(question67.addBinary3(a, b));
     }
 
     public String addBinary2(String a, String b) {

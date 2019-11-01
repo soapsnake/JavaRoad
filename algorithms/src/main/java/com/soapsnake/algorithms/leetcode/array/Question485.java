@@ -6,6 +6,12 @@ package com.soapsnake.algorithms.leetcode.array;
  */
 class Question485 {
 
+    public static void main(String[] args) {
+        Question485 question485 = new Question485();
+        int[] nums = {1, 1, 0, 1, 1, 1, 1};
+        System.out.println(question485.findMaxConsecutiveOnes(nums));
+    }
+
     public int findMaxConsecutiveOnes(int[] nums) {
         int max = 0;
         for (int i = 0; i < nums.length; i++) {
@@ -22,11 +28,5 @@ class Question485 {
             }
         }
         return max;
-    }
-
-    public static void main(String[] args) {
-        Question485 question485 = new Question485();
-        int[] nums = {1,1,0, 1, 1, 1, 1};
-        System.out.println(question485.findMaxConsecutiveOnes(nums));
     }
 }

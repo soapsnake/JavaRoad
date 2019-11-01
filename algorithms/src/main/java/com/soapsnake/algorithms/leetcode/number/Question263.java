@@ -2,6 +2,11 @@ package com.soapsnake.algorithms.leetcode.number;
 
 public class Question263 {
 
+    public static void main(String[] args) {
+        Question263 question263 = new Question263();
+        System.out.println(question263.isUgly(14));
+    }
+
     public boolean isUgly(int num) {
         if (num == 0) {
             return false;
@@ -18,10 +23,5 @@ public class Question263 {
         } else {
             return false;
         }
-    }
-
-    public static void main(String[] args) {
-        Question263 question263 = new Question263();
-        System.out.println(question263.isUgly(14));
     }
 }

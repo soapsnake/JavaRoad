@@ -10,25 +10,25 @@ public class Question114 {
 
 
     /**
-     *     1
-     *    / \
-     *   2   5
-     *  / \   \
-     * 3   4   6
-     *
-     * The flattened tree should look like:
-     *
      * 1
-     *  \
-     *   2
-     *    \
-     *     3
-     *      \
-     *       4
-     *        \
-     *         5
-     *          \
-     *           6
+     * / \
+     * 2   5
+     * / \   \
+     * 3   4   6
+     * <p>
+     * The flattened tree should look like:
+     * <p>
+     * 1
+     * \
+     * 2
+     * \
+     * 3
+     * \
+     * 4
+     * \
+     * 5
+     * \
+     * 6
      */
     public void flatten(TreeNode root) {
         if (root == null) {

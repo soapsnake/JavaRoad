@@ -4,13 +4,7 @@ import com.soapsnake.thinkinjava.concurrence.countdownlatch.Worker1;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.concurrent.BlockingDeque;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 
 /**
  * Created by soapsnake on 2017/7/24.

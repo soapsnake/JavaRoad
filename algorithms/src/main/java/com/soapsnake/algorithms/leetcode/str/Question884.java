@@ -8,7 +8,7 @@ import java.util.Map;
 /**
  * @author soapsnake
  * @date 2018/10/31
- *
+ * <p>
  * We are given two sentences A and B.  (A sentence is a string of space separated words.
  * Each word consists only of lowercase letters.)
  */
@@ -18,10 +18,10 @@ class Question884 {
         String[] awords = A.split(" ");
         String[] bwords = B.split(" ");
 
-        Map<String, Integer> map  = new HashMap<>();
+        Map<String, Integer> map = new HashMap<>();
         for (String s1 : awords) {
             if (map.containsKey(s1)) {
-                map.put(s1, map.get(s1)+1 );
+                map.put(s1, map.get(s1) + 1);
             } else {
                 map.put(s1, 1);
             }
@@ -29,13 +29,13 @@ class Question884 {
 
         for (String s2 : bwords) {
             if (map.containsKey(s2)) {
-                map.put(s2, map.get(s2)+1 );
+                map.put(s2, map.get(s2) + 1);
             } else {
                 map.put(s2, 1);
             }
         }
         List<String> res = new ArrayList<>();
-        for(Map.Entry<String, Integer> entry : map.entrySet()) {
+        for (Map.Entry<String, Integer> entry : map.entrySet()) {
             if (entry.getValue() == 1) {
                 res.add(entry.getKey());
             }
@@ -67,5 +67,5 @@ class Question884 {
         }
 
         return list.toArray(new String[0]);
-        }
     }
+}

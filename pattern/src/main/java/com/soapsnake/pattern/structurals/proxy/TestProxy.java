@@ -11,9 +11,10 @@ public class TestProxy {
 
         ObjInterface objInterface = new RealObj();
 
-                                                            //接口的实现对象不知道照样可以代理
-                                                            //这个其实就是
-        ProxyHandler<ObjInterface> handler = new ProxyHandler<>(() -> {}, new SomeInterceptor());
+        //接口的实现对象不知道照样可以代理
+        //这个其实就是
+        ProxyHandler<ObjInterface> handler = new ProxyHandler<>(() -> {
+        }, new SomeInterceptor());
         ObjInterface proxy = (ObjInterface) handler.getProxy();
         proxy.originMethod();
     }

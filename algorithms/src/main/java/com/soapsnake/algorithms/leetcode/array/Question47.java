@@ -10,13 +10,19 @@ import java.util.List;
  */
 public class Question47 {
 
+    public static void main(String[] args) {
+        Question47 question47 = new Question47();
+        int[] nums = {1, 1, 2};
+        System.out.println(question47.permuteUnique(nums));
+    }
+
     /**
      * Input: [1,1,2]
      * Output:
      * [
-     *   [1,1,2],
-     *   [1,2,1],
-     *   [2,1,1]
+     * [1,1,2],
+     * [1,2,1],
+     * [2,1,1]
      * ]
      */
     public List<List<Integer>> permuteUnique(int[] nums) {
@@ -26,7 +32,7 @@ public class Question47 {
         Arrays.sort(nums);
         List<List<Integer>> res = new ArrayList<>();
         boolean[] used = new boolean[nums.length];
-        backtrace(res, new ArrayList<>(), nums,  used);
+        backtrace(res, new ArrayList<>(), nums, used);
         return res;
     }
 
@@ -56,13 +62,6 @@ public class Question47 {
             tmp.remove(tmp.size() - 1);  //回退前会把第i个元素置为没添加过
         }
     }
-
-    public static void main(String[] args) {
-        Question47 question47 = new Question47();
-        int[] nums = {1, 1, 2};
-        System.out.println(question47.permuteUnique(nums));
-    }
-
 
 
 }

@@ -2,11 +2,7 @@ package com.soapsnake.algorithms.leetcode.binarytree;
 
 import com.soapsnake.algorithms.structures.tree.TreeNode;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @Auther soapsnake@gmail.com
@@ -17,6 +13,20 @@ public class Question501 {
     int maxcount = 0;
     Integer prev = null;
     int count = 1;
+
+    public static void main(String[] args) {
+//        TreeNode node = TreeNode.makeBinerSearchTree();
+
+        Map<String, Integer> jiushi = new HashMap<>();
+        jiushi.put("idjisa", null);
+
+        TreeNode node = new TreeNode(2147483647);
+//        node.left = new TreeNode(1);
+//        node.right = new TreeNode(3);
+        Question501 question501 = new Question501();
+        System.out.println(Arrays.toString(question501.findMode(node)));
+    }
+
     public int[] findMode(TreeNode root) {
         if (root == null) {
             return new int[0];
@@ -51,18 +61,5 @@ public class Question501 {
         }
         prev = root.val;
         dfs(root.right, nodes);
-    }
-
-    public static void main(String[] args) {
-//        TreeNode node = TreeNode.makeBinerSearchTree();
-
-        Map<String, Integer> jiushi = new HashMap<>();
-        jiushi.put("idjisa", null);
-
-        TreeNode node = new TreeNode(2147483647);
-//        node.left = new TreeNode(1);
-//        node.right = new TreeNode(3);
-        Question501 question501 = new Question501();
-        System.out.println(Arrays.toString(question501.findMode(node)));
     }
 }

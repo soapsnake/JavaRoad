@@ -8,6 +8,12 @@ import java.util.Arrays;
  */
 public class Question665 {
 
+    public static void main(String[] args) {
+        Question665 question665 = new Question665();
+        int[] nums = {4, 2, 3};
+        System.out.println(question665.checkPossibility(nums));
+    }
+
     public boolean checkPossibility(int[] nums) {
         if (nums == null) {
             return false;
@@ -43,13 +49,6 @@ public class Question665 {
             }
         }
         return test1 || test2;
-    }
-
-
-    public static void main(String[] args) {
-        Question665 question665 = new Question665();
-        int[] nums = {4,2,3};
-        System.out.println(question665.checkPossibility(nums));
     }
 
 }

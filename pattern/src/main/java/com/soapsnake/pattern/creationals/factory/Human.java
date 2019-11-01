@@ -2,11 +2,11 @@ package com.soapsnake.pattern.creationals.factory;
 
 public interface Human {
 
-	String getColor();
+    String getColor();
 
 
-	String sayHello();
+    String sayHello();
 
-	String getSex();
+    String getSex();
 
 }

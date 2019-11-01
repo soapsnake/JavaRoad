@@ -47,28 +47,25 @@ public class KevinExtensionLoader<T> {
      * 接口的class
      */
     private final Class<?> type;
-
+    //这两个缓存文字比较难描述,debug或者搜索一下调用就知道是缓存什么的了
+    private final Holder<Map<String, Class<?>>> cachedClasses = new Holder<>();
+    private final ConcurrentMap<String, Holder<Object>> cachedInstances = new ConcurrentHashMap<>();
     /**
      * 接口SPI默认的实现名(就是把接口上填的默认值)
      */
     private String cachedDefaultName;
-
     /**
      * 异常记录
      */
     private Map<String, IllegalStateException> exceptions = new ConcurrentHashMap<>();
 
-    //这两个缓存文字比较难描述,debug或者搜索一下调用就知道是缓存什么的了
-    private final Holder<Map<String, Class<?>>> cachedClasses = new Holder<>();
-    private final ConcurrentMap<String, Holder<Object>> cachedInstances = new ConcurrentHashMap<>();
-
-
-    private static <T> boolean withExtensionAnnotation(Class<T> type) {
-        return type.isAnnotationPresent(LogSpi.class);
-    }
 
     private KevinExtensionLoader(Class<T> type) {
         this.type = type;
+    }
+
+    private static <T> boolean withExtensionAnnotation(Class<T> type) {
+        return type.isAnnotationPresent(LogSpi.class);
     }
 
     @SuppressWarnings("unchecked")
@@ -92,6 +89,10 @@ public class KevinExtensionLoader<T> {
         return loader;
     }
 
+    //获取类加载器
+    private static ClassLoader findClassLoader() {
+        return KevinExtensionLoader.class.getClassLoader();
+    }
 
     /**
      * 返回指定名字的扩展。如果指定名字的扩展不存在，则抛异常 {@link IllegalStateException}.
@@ -236,11 +237,6 @@ public class KevinExtensionLoader<T> {
         }
     }
 
-    //获取类加载器
-    private static ClassLoader findClassLoader() {
-        return KevinExtensionLoader.class.getClassLoader();
-    }
-
     //获取默认拓展点
     public T getDefaultExtension() {
         getExtensionClasses();
@@ -275,7 +271,6 @@ public class KevinExtensionLoader<T> {
         }
         return new IllegalStateException(buf.toString());
     }
-
 
 
 }

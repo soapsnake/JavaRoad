@@ -7,16 +7,18 @@ import java.util.List;
 
 public class Question222 {
 
+    private List<TreeNode> nodes;
+
     /**
      * Example:
-     *
+     * <p>
      * Input:
-     *     1
-     *    / \
-     *   2   3
-     *  / \  /
+     * 1
+     * / \
+     * 2   3
+     * / \  /
      * 4  5 6
-     *
+     * <p>
      * Output: 6
      */
     public int countNodes(TreeNode root) {
@@ -26,7 +28,7 @@ public class Question222 {
         dfs(root);
         return nodes.size();
     }
-    private List<TreeNode> nodes;
+
     private void dfs(TreeNode root) {
         nodes.add(root);
         if (root.left != null)

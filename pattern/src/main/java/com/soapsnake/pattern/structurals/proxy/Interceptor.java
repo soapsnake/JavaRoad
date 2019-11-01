@@ -2,10 +2,10 @@ package com.soapsnake.pattern.structurals.proxy;
 
 public interface Interceptor {
 
-	void before();
+    void before();
 
-	void after();
+    void after();
 
-	void around();
+    void around();
 
 }

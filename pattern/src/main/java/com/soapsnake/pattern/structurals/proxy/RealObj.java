@@ -4,7 +4,7 @@ package com.soapsnake.pattern.structurals.proxy;
  * @Auther soapsnake@gmail.com
  * @Date 2019-04-29 15:02
  */
-public class RealObj implements ObjInterface  {
+public class RealObj implements ObjInterface {
 
     private String name;
     private int age;

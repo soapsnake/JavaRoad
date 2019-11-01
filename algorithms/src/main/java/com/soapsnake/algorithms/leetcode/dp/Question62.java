@@ -10,9 +10,17 @@ import java.util.List;
  */
 public class Question62 {
 
+    int right = 0;
+    int down = 0;
+
+    public static void main(String[] args) {
+        Question62 question62 = new Question62();
+        int m = 23;
+        int n = 12;
+        System.out.println(question62.uniquePathsSample(m, n));
+    }
+
     /**
-     *
-     *
      * Example 1:
      * Input: right = 3, down = 2
      * Output: 3
@@ -21,7 +29,7 @@ public class Question62 {
      * 1. Right -> Right -> Down
      * 2. Right -> Down -> Right
      * 3. Down -> Right -> Right
-     *
+     * <p>
      * Example 2:
      * Input: right = 7, down = 3
      * Output: 28
@@ -33,12 +41,11 @@ public class Question62 {
         this.right = m;
         this.down = n;
         List<String> paths = new ArrayList<>();
-        dfs(1, 1 , paths, "");
+        dfs(1, 1, paths, "");
         System.out.println(paths);
         return paths.size();
     }
-    int right = 0;
-    int down = 0;
+
     private void dfs(int m, int n, List<String> paths, String path) {
         if (m == this.right && n == this.down) {
             paths.add(path);
@@ -62,12 +69,11 @@ public class Question62 {
         }
         for (int i = 1; i < m; i++) {
             for (int j = 1; j < n; j++) {
-                paths[i][j] = paths[i-1][j] + paths[i][j-1];
+                paths[i][j] = paths[i - 1][j] + paths[i][j - 1];
             }
         }
-        return paths[m-1][n-1];
+        return paths[m - 1][n - 1];
     }
-
 
     public int uniquePaths(int m, int n) {
         int[][] paths = new int[m][n];
@@ -82,18 +88,9 @@ public class Question62 {
         }
         for (int i = 1; i < m; i++) {
             for (int j = 1; j < n; j++) {
-                paths[i][j] = paths[i-1][j] + paths[i][j-1];
+                paths[i][j] = paths[i - 1][j] + paths[i][j - 1];
             }
         }
-        return paths[m-1][n-1];
-    }
-
-
-
-    public static void main(String[] args) {
-        Question62 question62 = new Question62();
-        int m = 23;
-        int n = 12;
-        System.out.println(question62.uniquePathsSample(m, n));
+        return paths[m - 1][n - 1];
     }
 }

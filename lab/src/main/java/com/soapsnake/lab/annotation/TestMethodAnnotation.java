@@ -13,11 +13,11 @@ import java.lang.annotation.Target;
 @Target(ElementType.METHOD)   //这个注解只能被加在方法上
 public @interface TestMethodAnnotation {
 
-	//应该把注解理解成pojo而不是interface,语法很像interface但是实际上是pojo
-	//这个field1()看着非常像一个名叫field1()的接口方法,但是实际上,他表示一个叫field1的布尔变量(Field),默认为true
-	boolean field1() default true;
+    //应该把注解理解成pojo而不是interface,语法很像interface但是实际上是pojo
+    //这个field1()看着非常像一个名叫field1()的接口方法,但是实际上,他表示一个叫field1的布尔变量(Field),默认为true
+    boolean field1() default true;
 
-	String filed2() default "hello world";
+    String filed2() default "hello world";
 
-	String[] fuckAction();
+    String[] fuckAction();
 }

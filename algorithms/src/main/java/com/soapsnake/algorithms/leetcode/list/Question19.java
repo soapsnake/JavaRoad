@@ -11,6 +11,13 @@ import java.util.Map;
  */
 public class Question19 {
 
+    public static void main(String[] args) {
+        Question19 question19 = new Question19();
+        ListNode head = new ListNode(1);
+        head.next = new ListNode(2);
+        System.out.println(question19.removeNthFromEnd(head, 1));
+    }
+
     //借助map法
     public ListNode removeNthFromEnd2(ListNode head, int n) {
         if (head == null) {
@@ -64,13 +71,6 @@ public class Question19 {
         }
         prev.next = cur.next;
         return fakehead.next;
-    }
-
-    public static void main(String[] args) {
-        Question19 question19 = new Question19();
-        ListNode head = new ListNode(1);
-        head.next = new ListNode(2);
-        System.out.println(question19.removeNthFromEnd(head, 1));
     }
 
 }

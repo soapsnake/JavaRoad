@@ -12,6 +12,14 @@ import java.util.Stack;
  */
 public class Question783 {
 
+    private int min = Integer.MAX_VALUE;
+    private int last = -100000000;   //这个last不能取最小值,因为有可能会溢出,造成得到一个负无穷大的数,被判定成最小值
+
+    public static void main(String[] args) {
+        Question783 question783 = new Question783();
+        System.out.println(question783.minDiffInBST2(TreeNode.makeBinerSearchTree()));
+    }
+
     public int minDiffInBST(TreeNode root) {
         //中序遍历二叉搜索树
         if (root == null) {
@@ -20,7 +28,7 @@ public class Question783 {
         List<Integer> res = new ArrayList<>();
         Stack<TreeNode> stack = new Stack<>();
         TreeNode cur = root;
-        while (!stack.isEmpty() || cur != null){
+        while (!stack.isEmpty() || cur != null) {
             while (cur != null) {
                 stack.push(cur);
                 cur = cur.left;
@@ -36,13 +44,6 @@ public class Question783 {
         return min;
     }
 
-    public static void main(String[] args) {
-        Question783 question783 = new Question783();
-        System.out.println(question783.minDiffInBST2(TreeNode.makeBinerSearchTree()));
-    }
-
-    private int min = Integer.MAX_VALUE;
-    private int last = -100000000;   //这个last不能取最小值,因为有可能会溢出,造成得到一个负无穷大的数,被判定成最小值
     public int minDiffInBST2(TreeNode root) {
         System.out.println(last);
         //中序遍历二叉搜索树

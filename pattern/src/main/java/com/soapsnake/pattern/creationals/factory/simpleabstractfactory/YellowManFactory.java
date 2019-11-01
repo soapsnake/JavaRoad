@@ -5,11 +5,11 @@ import com.soapsnake.pattern.creationals.factory.YellowHuman;
 
 public class YellowManFactory extends AbstractFactory {
 
-	public YellowManFactory() {
-	}
+    public YellowManFactory() {
+    }
 
-	@Override
-	public final Human createHuman() {
-		return new YellowHuman();
-	}
+    @Override
+    public final Human createHuman() {
+        return new YellowHuman();
+    }
 }

@@ -65,7 +65,7 @@ public class LargeNumberPlus {
 
     @Test
     public void testGetMaxMin() {
-        int[] arr = {2,3,4,5,45,2,3,4,5,13,4,5,34,623,5,234,903};
+        int[] arr = {2, 3, 4, 5, 45, 2, 3, 4, 5, 13, 4, 5, 34, 623, 5, 234, 903};
         System.out.println(getMaxMin(arr));
 
         System.out.println(8921 % 10);
@@ -116,7 +116,7 @@ public class LargeNumberPlus {
             return true;
         } else if (a == null) {
             return false;
-        }else if (b == null) {
+        } else if (b == null) {
             return false;
         } else if (a.val == b.val) {
             return dfsTree(a.left, b.left) && dfsTree(a.right, b.right);

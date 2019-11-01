@@ -36,7 +36,7 @@ public class Consumer {
         context.start();
 
         GenericService barService = (GenericService) context.getBean("barService");
-        Object result = barService.$invoke("testBar", new String[] {"java.lang.String", "java.lang.Integer"}, new Object[] { "snake", 100 });
+        Object result = barService.$invoke("testBar", new String[]{"java.lang.String", "java.lang.Integer"}, new Object[]{"snake", 100});
         System.out.println("GenericService call ->" + result);
 
         TestGenericService testGenericService = (TestGenericService) context.getBean("testGenericService");

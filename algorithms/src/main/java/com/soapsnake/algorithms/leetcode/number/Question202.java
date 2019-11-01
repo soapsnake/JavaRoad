@@ -10,9 +10,17 @@ import java.util.Set;
 public class Question202 {
 
     /**
-     *  数字的各个位不断求平方和,看最终值是否为1
+     * 数字的各个位不断求平方和,看最终值是否为1
      */
     Set<Integer> cache = new HashSet<>();
+
+    public static void main(String[] args) {
+        Question202 question202 = new Question202();
+        System.out.println(301 % 10);
+        System.out.println(301 / 10);
+        System.out.println(question202.isHappy(19));
+    }
+
     public boolean isHappy(int n) {
         //求余法求各个位的值,感觉是递归问题
         int len = (n + "").length();
@@ -24,17 +32,10 @@ public class Question202 {
         }
         int temp = 0;
         while (n > 0) {
-            int wei =  n % 10;
+            int wei = n % 10;
             temp += wei * wei;
             n = n / 10;
         }
         return isHappy(temp);
-    }
-
-    public static void main(String[] args) {
-        Question202 question202 = new Question202();
-        System.out.println(301 % 10);
-        System.out.println(301 / 10);
-        System.out.println(question202.isHappy(19));
     }
 }

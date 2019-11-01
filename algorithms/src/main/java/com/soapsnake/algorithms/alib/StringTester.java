@@ -53,6 +53,7 @@ public class StringTester {
         }
         return null;
     }
+
     @Test
     public void testFindFirst() {
         String source = "abacbccdeff";

@@ -1,11 +1,7 @@
 package com.soapsnake.algorithms.leetcode.array;
 
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Given an array nums of n integers, are there elements a, b, c in nums such that a + b + c = 0?
@@ -27,7 +23,7 @@ class Question15 {
             if (i != 0 && nums[i] == nums[i - 1]) { //防止第一个数字重复
                 continue;
             }
-            int total =  - nums[i];   //剩余两个数字的和要等于total
+            int total = -nums[i];   //剩余两个数字的和要等于total
             List<Integer> sub = null;
             Set<Integer> seconds = new HashSet<>();
             int left = i + 1;
@@ -37,7 +33,7 @@ class Question15 {
                     sub = new ArrayList<>();
                     sub.add(nums[i]); //第一个数字肯定是不一样的
                     if (!seconds.contains(nums[left])) {  //防止第二个数字重复
-                                                         // 只用判断left,因为nums[left]也是单调递增的
+                        // 只用判断left,因为nums[left]也是单调递增的
                         sub.add(nums[left]);
                         sub.add(nums[right]);
                         res.add(sub);
@@ -47,7 +43,7 @@ class Question15 {
                     right--;
                 } else if (nums[left] + nums[right] > total) {
                     right--;
-                }else if (nums[left] + nums[right] < total) {
+                } else if (nums[left] + nums[right] < total) {
                     left++;
                 }
             }

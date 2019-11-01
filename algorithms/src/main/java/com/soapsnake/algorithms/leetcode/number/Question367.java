@@ -6,6 +6,11 @@ package com.soapsnake.algorithms.leetcode.number;
  */
 public class Question367 {
 
+    public static void main(String[] args) {
+        Question367 question367 = new Question367();
+        System.out.println(question367.isPerfectSquare(16));
+    }
+
     public boolean isPerfectSquare(int num) {
         if (num == 0) {
             return false;
@@ -34,14 +39,9 @@ public class Question367 {
         if (mid > num / mid) { //注意这里不能用mid * mid > num
             return findMid(left, mid - 1, num);
         }
-        if (mid <  num / mid) {
+        if (mid < num / mid) {
             return findMid(mid + 1, right, num);
         }
         return false;
-    }
-
-    public static void main(String[] args) {
-        Question367 question367 = new Question367();
-        System.out.println(question367.isPerfectSquare(16));
     }
 }

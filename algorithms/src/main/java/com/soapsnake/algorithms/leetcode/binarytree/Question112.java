@@ -8,11 +8,16 @@ import com.soapsnake.algorithms.structures.tree.TreeNode;
  */
 public class Question112 {
     private boolean has = false;
+
+    public static void main(String[] args) {
+
+    }
+
     public boolean hasPathSum(TreeNode root, int sum) {
         if (root == null) {
             return false;
         }
-        dfsTree(root,0, sum);
+        dfsTree(root, 0, sum);
         return has;
     }
 
@@ -20,7 +25,7 @@ public class Question112 {
         if (root == null) {
             return;
         }
-        if (root.left == null && root.right ==null) {
+        if (root.left == null && root.right == null) {
             if (root.val + step == sum) {
                 has = true;
                 return;
@@ -29,10 +34,5 @@ public class Question112 {
         step += root.val;
         dfsTree(root.left, step, sum);
         dfsTree(root.right, step, sum);
-    }
-
-
-    public static void main(String[] args) {
-
     }
 }

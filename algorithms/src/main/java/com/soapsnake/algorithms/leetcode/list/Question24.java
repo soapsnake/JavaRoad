@@ -8,6 +8,16 @@ import com.soapsnake.algorithms.structures.list.ListNode;
  */
 public class Question24 {
 
+    public static void main(String[] args) {
+        Question24 question24 = new Question24();
+        ListNode head = ListNode.makeTestListFor725();  //1 -> 2 -> 3 -> 4 -> 5
+        System.out.println(question24.swapPairs(head)); //2 -> 1 -> 4 -> 3 -> 5
+
+        System.out.println("head = " + head);
+        System.out.println(question24.deleteNode(head, 5));
+        System.out.println(question24.deleteNode(head, 4));
+    }
+
     /**
      * 1 -> 2 -> 3 -> 4 -> 5
      * 2 -> 1 -> 4 -> 3 -> 5
@@ -50,15 +60,5 @@ public class Question24 {
             cur = cur.next;
         }
         return fakehead.next;
-    }
-
-    public static void main(String[] args) {
-        Question24 question24 = new Question24();
-        ListNode head = ListNode.makeTestListFor725();  //1 -> 2 -> 3 -> 4 -> 5
-        System.out.println(question24.swapPairs(head)); //2 -> 1 -> 4 -> 3 -> 5
-
-        System.out.println("head = " + head);
-        System.out.println(question24.deleteNode(head, 5));
-        System.out.println(question24.deleteNode(head, 4));
     }
 }

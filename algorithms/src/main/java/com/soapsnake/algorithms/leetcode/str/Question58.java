@@ -6,6 +6,12 @@ package com.soapsnake.algorithms.leetcode.str;
  */
 public class Question58 {
 
+    public static void main(String[] args) {
+        String string = " ";
+        Question58 question58 = new Question58();
+        System.out.println(question58.lengthOfLastWord2(string));
+    }
+
     public int lengthOfLastWord(String s) {
         if (s == null) {
             return 0;
@@ -24,15 +30,9 @@ public class Question58 {
         return strings[strings.length - 1].length();
     }
 
-    public static void main(String[] args) {
-        String string = " ";
-        Question58 question58 = new Question58();
-        System.out.println(question58.lengthOfLastWord2(string));
-    }
-
     public int lengthOfLastWord2(String s) {
         int i = s.length();
-        if (i ==0) {
+        if (i == 0) {
             return 0;
         }
         if (i == 1 && s != " ") {

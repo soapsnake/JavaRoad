@@ -4,9 +4,9 @@ import com.soapsnake.pattern.creationals.factory.Human;
 
 public interface HumanFactory {
 
-	Human createYellow();
+    Human createYellow();
 
-	Human createBlack();
+    Human createBlack();
 
-	Human createWhite();
+    Human createWhite();
 }

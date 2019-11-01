@@ -8,6 +8,11 @@ import java.util.Arrays;
  */
 public class Question242 {
 
+    public static void main(String[] args) {
+        Question242 question242 = new Question242();
+        System.out.println(question242.isAnagram("anagram", "nagaram"));
+    }
+
     public boolean isAnagram(String s, String t) {
 
         //O(nlogn)
@@ -31,16 +36,11 @@ public class Question242 {
 
 //        System.out.println(Arrays.toString(intS));
 //        System.out.println(Arrays.toString(intT));
-       return Arrays.equals(intS, intT);
+        return Arrays.equals(intS, intT);
     }
 
     //todo O(n)解法, 提示:额外数组
     public boolean isAnagram2(String s, String t) {
         return false;
-    }
-
-        public static void main(String[] args) {
-        Question242 question242 = new Question242();
-        System.out.println(question242.isAnagram("anagram", "nagaram"));
     }
 }

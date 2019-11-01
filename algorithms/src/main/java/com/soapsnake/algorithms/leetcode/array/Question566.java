@@ -8,6 +8,12 @@ import java.util.Arrays;
  */
 class Question566 {
 
+    public static void main(String[] args) {
+        Question566 question566 = new Question566();
+        int[][] asn = {{1, 2}, {3, 4}};
+        System.out.println(Arrays.deepToString(question566.matrixReshape(asn, 1, 4)));
+    }
+
     //两次循环 + 额外数组,(本人的)弱智解法
     public int[][] matrixReshape(int[][] nums, int r, int c) {
         int sourceRow = nums.length;
@@ -20,7 +26,7 @@ class Question566 {
         int k = 0;
         for (int i = 0; i < sourceRow; i++) {
             for (int j = 0; j < sourceCol; j++) {
-                int temp  = nums[i][j];
+                int temp = nums[i][j];
                 sourceRes[k++][0] = temp;
             }
         }
@@ -41,12 +47,5 @@ class Question566 {
     public int[][] matrixReshape2(int[][] nums, int r, int c) {
 
         return null;
-    }
-
-
-        public static void main(String[] args) {
-        Question566 question566 = new Question566();
-        int[][] asn = {{1,2}, {3,4}};
-        System.out.println(Arrays.deepToString(question566.matrixReshape(asn, 1, 4)));
     }
 }

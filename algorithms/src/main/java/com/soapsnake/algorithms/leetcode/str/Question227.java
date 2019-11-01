@@ -4,6 +4,12 @@ import java.util.Stack;
 
 public class Question227 {
 
+    public static void main(String[] args) {
+        Question227 question227 = new Question227();
+        String s = "3+5/2";
+        System.out.println(question227.calculate(s));
+    }
+
     public int calculate(String s) {
         if (s == null || s.length() == 0) {
             return 0;
@@ -34,11 +40,5 @@ public class Question227 {
             res += i;
         }
         return res;
-    }
-
-    public static void main(String[] args) {
-        Question227 question227 = new Question227();
-        String s  = "3+5/2";
-        System.out.println(question227.calculate(s));
     }
 }

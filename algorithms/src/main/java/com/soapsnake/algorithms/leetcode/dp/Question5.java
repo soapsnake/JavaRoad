@@ -2,6 +2,12 @@ package com.soapsnake.algorithms.leetcode.dp;
 
 class Question5 {
 
+    /**
+     * 动态规划算法
+     */
+    private int lo;       //最长子字符串左索引
+    private int maxLen;  //最长子字符串最大长度(右边界的偏移量)
+
     public static void main(String[] args) {
         Question5 question5 = new Question5();
 //        String str1 = "babad";
@@ -39,6 +45,9 @@ class Question5 {
         }
     }
 
+    //https://leetcode.com/problems/longest-palindromic-substring/solution/
+    //中文解释可见:https://www.felix021.com/blog/read.php?2040
+
     //解法复杂度还是过高
     public String longestPalindrome2(String s) {
         if (s == null) return "";
@@ -68,22 +77,15 @@ class Question5 {
         return source.equals(sb.toString());
     }
 
-    //https://leetcode.com/problems/longest-palindromic-substring/solution/
-    //中文解释可见:https://www.felix021.com/blog/read.php?2040
-    /**
-     * 动态规划算法
-     */
-    private int lo;       //最长子字符串左索引
-    private int maxLen;  //最长子字符串最大长度(右边界的偏移量)
     public String longestPalindromeDPSolution(String s) {
-       if (s.length() < 2) {
-           return s;
-       }
-       for (int i = 0; i < s.length(); i++) {
-           this.extendPalindrome(s, i ,i);   //以第i个字符为中心点往两边扩散,那么子字符串长度将为奇数
-           this.extendPalindrome(s, i, i + 1); //以第i和i+1个字符为中心点往两边扩散,那么子字符串长度将为偶数
-       }
-       return s.substring(lo, lo + maxLen);
+        if (s.length() < 2) {
+            return s;
+        }
+        for (int i = 0; i < s.length(); i++) {
+            this.extendPalindrome(s, i, i);   //以第i个字符为中心点往两边扩散,那么子字符串长度将为奇数
+            this.extendPalindrome(s, i, i + 1); //以第i和i+1个字符为中心点往两边扩散,那么子字符串长度将为偶数
+        }
+        return s.substring(lo, lo + maxLen);
     }
 
     private void extendPalindrome(String s, int left, int right) {

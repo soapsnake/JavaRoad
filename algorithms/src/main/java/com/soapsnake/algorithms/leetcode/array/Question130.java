@@ -10,10 +10,10 @@ public class Question130 {
 
         //基本思路:已四边上的O作为起点,使用dfs算法找和他近邻的O节点,统一表示成*节点(相当于染色)
         //染色标记完后,再遍历一次地图,发现有剩余的O节点(还剩的O节点肯定就是围死的节点)统一改成X,*节点统一改回O,原来的X节点不变
-        if ( board == null || board.length == 0) {
+        if (board == null || board.length == 0) {
             return;
         }
-        if (board.length < 2 || board[0].length < 2){
+        if (board.length < 2 || board[0].length < 2) {
             return;
         }
         int m = board.length;

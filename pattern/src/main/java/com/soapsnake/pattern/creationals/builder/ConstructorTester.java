@@ -8,6 +8,7 @@ public class ConstructorTester {
      * 2. 子类static
      * 3. 父类constructor(有参构造方法需要子类构造方法调用super(参数)来调用)
      * 4. 子类constrcutor
+     *
      * @param args
      */
     public static void main(String[] args) {

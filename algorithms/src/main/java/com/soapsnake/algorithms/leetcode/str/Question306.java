@@ -2,6 +2,14 @@ package com.soapsnake.algorithms.leetcode.str;
 
 public class Question306 {
 
+    public static void main(String[] args) {
+        Question306 question306 = new Question306();
+        String num = "1123581";
+//        System.out.println(question306.isAdditiveNumber(num));
+
+        System.out.println(num.startsWith("124", 1));
+    }
+
     public boolean isAdditiveNumber(String num) {
         int n = num.length();
         for (int i = 1; i <= n / 2; ++i)
@@ -9,6 +17,7 @@ public class Question306 {
                 if (isValid(i, j, num)) return true;
         return false;
     }
+
     private boolean isValid(int i, int j, String num) {  //i代表第一段数字的长度, j代表第二段数字的长度
         if (num.charAt(0) == '0' && i > 1) return false;
         if (num.charAt(i) == '0' && j > 1) return false;
@@ -23,7 +32,6 @@ public class Question306 {
         }
         return true;
     }
-
 
     public boolean isAdditiveNumber2(String num) {
         if (num == null || num == " ") {
@@ -43,13 +51,5 @@ public class Question306 {
             pre = cur;
         }
         return true;
-    }
-
-    public static void main(String[] args) {
-        Question306 question306 = new Question306();
-        String num = "1123581";
-//        System.out.println(question306.isAdditiveNumber(num));
-
-        System.out.println(num.startsWith("124", 1));
     }
 }

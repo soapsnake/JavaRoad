@@ -21,7 +21,7 @@ public class YiHuo {
         System.out.println(i4);
         System.out.println(i5);
 
-        int[] ints = {7,4,8,9,3,4,1,0};
+        int[] ints = {7, 4, 8, 9, 3, 4, 1, 0};
 
         quickSort(ints, 0, ints.length - 1);
         System.out.println(Arrays.toString(ints));

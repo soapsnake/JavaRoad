@@ -2,17 +2,20 @@ package com.soapsnake.algorithms.leetcode.str;
 
 import com.soapsnake.algorithms.leetcode.array.ArrayUtils;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * @author soapsnake
  * @date 2018/11/17
  */
 class Question784 {
+
+    public static void main(String[] args) {
+        Question784 question784 = new Question784();
+        List<String> res = question784.letterCasePermutation("C");
+        System.out.println(res.size());
+        ArrayUtils.printList(res);
+    }
 
     //这个题目太他妈有意思了!!!!!
     public List<String> letterCasePermutation(String S) {
@@ -48,17 +51,10 @@ class Question784 {
             //变相应大(小)写又一次,相当于treeDFS(root.right, ...);
             if (chars[index] - 'A' <= 25) {
                 chars[index] = (char) (chars[index] - ('A' - 'a')); //大写转小写
-            }else if (chars[index] - 'a' <= 25) {
+            } else if (chars[index] - 'a' <= 25) {
                 chars[index] = (char) (chars[index] + ('A' - 'a')); //小写转大写
             }
             treeDFS(chars, index + 1, res);
         }
-    }
-
-    public static void main(String[] args) {
-        Question784 question784 = new Question784();
-        List<String> res = question784.letterCasePermutation("C");
-        System.out.println(res.size());
-        ArrayUtils.printList(res);
     }
 }

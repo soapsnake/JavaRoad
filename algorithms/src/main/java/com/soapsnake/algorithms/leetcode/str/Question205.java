@@ -9,21 +9,28 @@ import java.util.Map;
  */
 public class Question205 {
 
+    public static void main(String[] args) {
+        Question205 question205 = new Question205();
+        String s = "abb";
+        String t = "egg";
+        System.out.println(question205.isIsomorphic2(s, t));
+    }
+
     //还是没有看懂
     public boolean isIsomorphic(String s, String t) {
-        if(s == null || s.length() <= 1) return true;
+        if (s == null || s.length() <= 1) return true;
         HashMap<Character, Character> map = new HashMap<>();
-        for(int i = 0 ; i< s.length(); i++){
+        for (int i = 0; i < s.length(); i++) {
             char a = s.charAt(i);
             char b = t.charAt(i);
-            if(map.containsKey(a)){
-                if(map.get(a).equals(b))
+            if (map.containsKey(a)) {
+                if (map.get(a).equals(b))
                     continue;
                 else
                     return false;
-            }else{
-                if(!map.containsValue(b))
-                    map.put(a,b);
+            } else {
+                if (!map.containsValue(b))
+                    map.put(a, b);
                 else return false;
 
             }
@@ -37,8 +44,8 @@ public class Question205 {
         int[] m2 = new int[256];
         int n = s.length();
         for (int i = 0; i < n; ++i) {
-            System.out.println("m1[s.charAt("+i+")] = " + m1[s.charAt(i)]);
-            System.out.println("m2[t.charAt("+i+")] = " + m2[t.charAt(i)]);
+            System.out.println("m1[s.charAt(" + i + ")] = " + m1[s.charAt(i)]);
+            System.out.println("m2[t.charAt(" + i + ")] = " + m2[t.charAt(i)]);
             if (m1[s.charAt(i)] != m2[t.charAt(i)]) {   //char字符会转换成ASCii值
                 return false;
             }
@@ -53,18 +60,11 @@ public class Question205 {
         Map<Character, Integer> m1 = new HashMap<>();
         Map<Character, Integer> m2 = new HashMap<>();
 
-        for(int i = 0; i < t.length(); i++) {
-            if(m1.put(t.charAt(i), i) != m2.put(s.charAt(i), i)) {
+        for (int i = 0; i < t.length(); i++) {
+            if (m1.put(t.charAt(i), i) != m2.put(s.charAt(i), i)) {
                 return false;
             }
         }
         return true;
-    }
-
-        public static void main(String[] args) {
-        Question205 question205 = new Question205();
-        String s = "abb";
-        String t = "egg";
-        System.out.println(question205.isIsomorphic2(s, t));
     }
 }

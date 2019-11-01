@@ -9,6 +9,7 @@ public class CallableTask implements Callable<Long> {
     public CallableTask(long time) {
         this.time = time;
     }
+
     @Override
     public Long call() throws Exception {
         System.out.println("callable task...");

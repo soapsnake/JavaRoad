@@ -15,7 +15,7 @@ public class RaftNode implements Runnable {
     public int id;
 
     //服务器最后一次知道的leader的任期号(初始化0,持续递增)
-    public int  currentTerm;
+    public int currentTerm;
 
     //在当前获取选票的候选人的Id
     public int votedFor;
@@ -32,24 +32,13 @@ public class RaftNode implements Runnable {
     //节点角色: 1: leader 2:follower  3:candidate
     private RaftCast cast;
 
-    enum RaftCast {
-        FLEADER(1, "leader"),
-        FOLLOWER(2, "follower"),
-        CANDIDATE(3, "candidate");
-
-        RaftCast(int code, String desc) {
-
-        }
-    }
-
     /**
-     *
-     * @param term   领导人的任期号
-     * @param leaderId   领导人的Id
-     * @param prevLogIndex   行的日志条目紧随之前的索引值
-     * @param prevLogTerm   prevLogIndex条目的任期号
-     * @param entries   准备存储的日志条目(当表示心跳时为空,一次性发送多个是为了提高效率)
-     * @param leaderCommit   领导人已经提交的日志的索引值
+     * @param term         领导人的任期号
+     * @param leaderId     领导人的Id
+     * @param prevLogIndex 行的日志条目紧随之前的索引值
+     * @param prevLogTerm  prevLogIndex条目的任期号
+     * @param entries      准备存储的日志条目(当表示心跳时为空,一次性发送多个是为了提高效率)
+     * @param leaderCommit 领导人已经提交的日志的索引值
      * @return 是否追加成功
      */
     public RaftRpcRes addRaftLogRPC(int term, int leaderId, int prevLogIndex, int prevLogTerm, RaftLog[] entries, int leaderCommit) {
@@ -84,7 +73,6 @@ public class RaftNode implements Runnable {
         }
 
 
-
         return new RaftRpcRes();
     }
 
@@ -93,13 +81,13 @@ public class RaftNode implements Runnable {
         return 0;
     }
 
-
     /**
      * 发起选leader的投票
-     * @param term  候选人的任期号
+     *
+     * @param term         候选人的任期号
      * @param candidateId  拉选票的人的机器Id
-     * @param lastLogIndex  拉选票者的最后日志条目的索引值
-     * @param lastLogTerm 拉选票者最后日志条目的任期号
+     * @param lastLogIndex 拉选票者的最后日志条目的索引值
+     * @param lastLogTerm  拉选票者最后日志条目的任期号
      * @return
      */
     public RaftRpcRes fireVoteRpc(int term, int candidateId, int lastLogIndex, int lastLogTerm) {
@@ -112,7 +100,7 @@ public class RaftNode implements Runnable {
 
         //如果 votedFor 为空或者就是 candidateId，并且候选人的日志至少和自己一样新，那么就投票给他
         //自己可以给自己投票
-        if (this.id == candidateId && this.logs[logs.length - 1].getLogTerm() == lastLogTerm ) {
+        if (this.id == candidateId && this.logs[logs.length - 1].getLogTerm() == lastLogTerm) {
             res.setTerm(this.currentTerm);
             res.setVoteGranted(true);
             return res;
@@ -123,10 +111,10 @@ public class RaftNode implements Runnable {
         return res;
     }
 
-
     /**
      * 节点角色变更为follwer,由选举产生的leader调用
-     * @param T  新leader的任期号
+     *
+     * @param T 新leader的任期号
      */
     public void changeCastToFollower(int T, RaftLog[] newLogs) {
         if (this.commitIndex > lastApplied) {
@@ -152,13 +140,12 @@ public class RaftNode implements Runnable {
         return false;
     }
 
-
     @Override
     public void run() {
         //与leader保持心跳
         while (!pingLeader()) {
             this.currentTerm++;
-            this.fireVoteRpc(0,0,0,0);
+            this.fireVoteRpc(0, 0, 0, 0);
             this.resetCurrentTerm();
         }
     }
@@ -168,8 +155,6 @@ public class RaftNode implements Runnable {
 
     }
 
-
-
     //角色变更为leader
     public void changedToLeader() {
 
@@ -177,6 +162,15 @@ public class RaftNode implements Runnable {
     }
 
 
+    enum RaftCast {
+        FLEADER(1, "leader"),
+        FOLLOWER(2, "follower"),
+        CANDIDATE(3, "candidate");
+
+        RaftCast(int code, String desc) {
+
+        }
+    }
 
     @Data
     static class RaftRpcRes {
@@ -189,8 +183,6 @@ public class RaftNode implements Runnable {
         //候选人赢得了此张选票时为真
         private Boolean voteGranted;
     }
-
-
 
 
 }

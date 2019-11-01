@@ -14,52 +14,6 @@ public class Question95 {
     //草,真他吗难懂
     //https://youtu.be/SHp-uB4ngkU
 
-    /**
-     * Input: 3
-     * Output:
-     * [
-     *   [1,null,3,2],
-     *   [3,2,null,1],
-     *   [3,1,null,null,2],
-     *   [2,1,3],
-     *   [1,null,2,null,3]
-     * ]
-     */
-    public List<TreeNode> generateTrees(int n) {
-        return genTrees(1, n);
-    }
-
-    public List<TreeNode> genTrees(int start, int end) {
-        List<TreeNode> list = new ArrayList<>();
-        if (start > end) {
-            list.add(null);  //这里为什么要add(null)
-            return list;
-        }
-
-        if (start == end) {
-            list.add(new TreeNode(start));
-            return list;
-        }
-
-        //左右两个子树
-        List<TreeNode> left;
-        List<TreeNode> right;
-        for (int i = start; i <= end; i++) {
-            left = genTrees(start, i - 1);  //左子树从0 -> i
-            right = genTrees(i + 1, end);   //右子树从i -> end
-
-            for (TreeNode lnode : left) {   //一次循环中所有可能的左子节点
-                for (TreeNode rnode : right) { //一次循环中所有可能的右子节点
-                    TreeNode root = new TreeNode(i);  //一次循环中的根节点
-                    root.left = lnode;
-                    root.right = rnode;
-                    list.add(root);
-                }
-            }
-        }
-        return list;
-    }
-
     public static void main(String[] args) {
         Question95 question95 = new Question95();
         System.out.println(question95.generateTrees(5));
@@ -98,5 +52,51 @@ public class Question95 {
         node.left = clone(n.left, offset);
         node.right = clone(n.right, offset);
         return node;
+    }
+
+    /**
+     * Input: 3
+     * Output:
+     * [
+     * [1,null,3,2],
+     * [3,2,null,1],
+     * [3,1,null,null,2],
+     * [2,1,3],
+     * [1,null,2,null,3]
+     * ]
+     */
+    public List<TreeNode> generateTrees(int n) {
+        return genTrees(1, n);
+    }
+
+    public List<TreeNode> genTrees(int start, int end) {
+        List<TreeNode> list = new ArrayList<>();
+        if (start > end) {
+            list.add(null);  //这里为什么要add(null)
+            return list;
+        }
+
+        if (start == end) {
+            list.add(new TreeNode(start));
+            return list;
+        }
+
+        //左右两个子树
+        List<TreeNode> left;
+        List<TreeNode> right;
+        for (int i = start; i <= end; i++) {
+            left = genTrees(start, i - 1);  //左子树从0 -> i
+            right = genTrees(i + 1, end);   //右子树从i -> end
+
+            for (TreeNode lnode : left) {   //一次循环中所有可能的左子节点
+                for (TreeNode rnode : right) { //一次循环中所有可能的右子节点
+                    TreeNode root = new TreeNode(i);  //一次循环中的根节点
+                    root.left = lnode;
+                    root.right = rnode;
+                    list.add(root);
+                }
+            }
+        }
+        return list;
     }
 }

@@ -2,8 +2,8 @@ package com.soapsnake.lab.classloader;
 
 public class ClassLoaderTester {
 
-	public static void main(String[] args) throws ClassNotFoundException, IllegalAccessException, InstantiationException, InterruptedException {
-		ClassLoader  classLoader = new KevinLoader();
+    public static void main(String[] args) throws ClassNotFoundException, IllegalAccessException, InstantiationException, InterruptedException {
+        ClassLoader classLoader = new KevinLoader();
 //		try {
 //			Class<?> claz = classLoader.loadClass("com.soapsnake.lab.classloader.Person");
 //			Object o = claz.newInstance();
@@ -12,17 +12,16 @@ public class ClassLoaderTester {
 //			e.printStackTrace();
 //		}
 
-		//forName会初始化static块
-		Class.forName("com.soapsnake.lab.classloader.Person");
+        //forName会初始化static块
+        Class.forName("com.soapsnake.lab.classloader.Person");
 
 
-		//奇怪吧,loadCLass不会初始化static块
-		classLoader.loadClass("com.soapsnake.lab.classloader.ClassLoaderTester");
+        //奇怪吧,loadCLass不会初始化static块
+        classLoader.loadClass("com.soapsnake.lab.classloader.ClassLoaderTester");
 
-		Thread.currentThread().sleep(0);
+        Thread.currentThread().sleep(0);
 
-	}
-
+    }
 
 
 }

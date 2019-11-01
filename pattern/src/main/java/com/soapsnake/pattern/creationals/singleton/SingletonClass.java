@@ -5,7 +5,8 @@ public class SingletonClass {
     private static SingletonClass singletonClass;
     public int test = 1;
 
-    private SingletonClass(){}
+    private SingletonClass() {
+    }
 
     public static synchronized SingletonClass getInstance() {
         if (null == singletonClass) {

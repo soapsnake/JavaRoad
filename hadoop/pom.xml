@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>JavaRoad</artifactId>
@@ -24,12 +24,12 @@
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.apache.mrunit/mrunit -->
-<!--        专门用来测试mapreduce的东西-->
+        <!--        专门用来测试mapreduce的东西-->
         <dependency>
             <groupId>org.apache.mrunit</groupId>
             <artifactId>mrunit</artifactId>
             <version>1.1.0</version>
-<!--            没这个报错,太他吗坑爹了-->
+            <!--            没这个报错,太他吗坑爹了-->
             <classifier>hadoop2</classifier>
             <scope>test</scope>
         </dependency>

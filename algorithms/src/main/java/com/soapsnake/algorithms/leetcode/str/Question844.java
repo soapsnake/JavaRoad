@@ -5,6 +5,13 @@ package com.soapsnake.algorithms.leetcode.str;
  * @Date 2018-12-20 00:56
  */
 public class Question844 {
+    public static void main(String[] args) {
+        Question844 question844 = new Question844();
+        String s = "xywrrmp";
+        String t = "xywrrmu#p";
+        System.out.println(question844.backspaceCompare(s, t));
+    }
+
     public boolean backspaceCompare(String S, String T) {
         char[] charS = S.toCharArray();
         char[] charT = T.toCharArray();
@@ -29,23 +36,15 @@ public class Question844 {
         for (int i = 0; i < chars.length; i++) {
             if (chars[i] == '#') {
                 chars[i] = ' ';
-                for (int j = i;j >= 0;) {
+                for (int j = i; j >= 0; ) {
                     if (chars[j] != ' ') {
                         chars[j] = ' ';
                         break;
-                    }else {
+                    } else {
                         j--;
                     }
                 }
             }
         }
-    }
-
-
-    public static void main(String[] args) {
-        Question844 question844 = new Question844();
-        String s = "xywrrmp";
-        String t = "xywrrmu#p";
-        System.out.println(question844.backspaceCompare(s, t));
     }
 }

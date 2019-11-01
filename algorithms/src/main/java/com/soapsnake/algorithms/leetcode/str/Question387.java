@@ -8,6 +8,15 @@ import java.util.Arrays;
  */
 public class Question387 {
 
+    public static void main(String[] args) {
+        Question387 question387 = new Question387();
+        String tar = "loveleetcode";
+
+        String tar1 = "cc";
+
+        System.out.println(question387.firstUniqChar(tar));
+    }
+
     public int firstUniqChar(String s) {
 
         //todo freqen[]
@@ -25,14 +34,5 @@ public class Question387 {
             }
         }
         return -1;
-    }
-
-    public static void main(String[] args) {
-        Question387 question387 = new Question387();
-        String tar = "loveleetcode";
-
-        String tar1 = "cc";
-
-        System.out.println(question387.firstUniqChar(tar));
     }
 }

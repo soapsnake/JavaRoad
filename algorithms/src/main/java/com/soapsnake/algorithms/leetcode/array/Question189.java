@@ -8,6 +8,14 @@ import java.util.Arrays;
  */
 public class Question189 {
 
+    public static void main(String[] args) {
+        Question189 question189 = new Question189();
+        int[] nums = {-1};
+        int k = 2;
+        question189.rotate(nums, k);
+        System.out.println(Arrays.toString(nums));
+    }
+
     //todo 这道题没那么简单
     public void rotate(int[] nums, int k) {
         k %= nums.length;
@@ -25,13 +33,5 @@ public class Question189 {
             start++;
             end--;
         }
-    }
-
-    public static void main(String[] args) {
-        Question189 question189 = new Question189();
-        int[] nums = {-1};
-        int k = 2;
-        question189.rotate(nums, k);
-        System.out.println(Arrays.toString(nums));
     }
 }

@@ -10,6 +10,22 @@ import com.soapsnake.algorithms.structures.tree.TreeNode;
  */
 class Question669 {
 
+    public static void main(String[] args) {
+        Question669 question669 = new Question669();
+        TreeNode root = new TreeNode(10);
+        root.left = new TreeNode(7);
+        root.left.left = new TreeNode(6);
+        root.left.right = new TreeNode(8);
+        root.left.left.left = new TreeNode(4);
+        root.left.left.left.left = new TreeNode(2);
+
+        root.right = new TreeNode(15);
+        root.right.left = new TreeNode(13);
+        root.right.right = new TreeNode(17);
+
+        TreeNode.middleTravseWhile(question669.trimBST(root, 6, 15));
+    }
+
     public TreeNode trimBST2(TreeNode root, int L, int R) {
 //        List<TreeNode> res = new ArrayList<>();
 //        Stack<TreeNode> stack = new Stack<>();
@@ -32,19 +48,19 @@ class Question669 {
 //                System.out.println(node.val);
 //            }
 
-            if (root.val > L && root.val < R) {
+        if (root.val > L && root.val < R) {
 
-                TreeNode left = root.left;
-                while (left.val < L) {
-                    left = left.left;
-                }
-
-                TreeNode right = root.right;
-                while (right.val > R) {
-                    right = right.right;
-                }
+            TreeNode left = root.left;
+            while (left.val < L) {
+                left = left.left;
             }
-            return null;
+
+            TreeNode right = root.right;
+            while (right.val > R) {
+                right = right.right;
+            }
+        }
+        return null;
     }
 
     //递归版本解法
@@ -63,21 +79,5 @@ class Question669 {
         root.right = trimBST(root.right, L, R);
 
         return root;
-    }
-
-    public static void main(String[] args) {
-        Question669 question669 = new Question669();
-        TreeNode root = new TreeNode(10);
-        root.left = new TreeNode(7);
-        root.left.left = new TreeNode(6);
-        root.left.right = new TreeNode(8);
-        root.left.left.left = new TreeNode(4);
-        root.left.left.left.left = new TreeNode(2);
-
-        root.right = new TreeNode(15);
-        root.right.left = new TreeNode(13);
-        root.right.right = new TreeNode(17);
-
-        TreeNode.middleTravseWhile(question669.trimBST(root, 6, 15));
     }
 }

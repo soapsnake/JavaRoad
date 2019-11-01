@@ -6,6 +6,7 @@ public class Solution {
 
     /**
      * 寻找数组中重复和缺少的数字
+     *
      * @return
      */
     public static int[] findDupAndLose(int[] arr) {
@@ -37,7 +38,7 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        int[] arr = {1, 5 ,2 ,2,2};
+        int[] arr = {1, 5, 2, 2, 2};
         System.out.println(Arrays.toString(findDupAndLose(arr)));  //{2, 4}
     }
 

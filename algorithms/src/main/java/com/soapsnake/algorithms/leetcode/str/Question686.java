@@ -6,6 +6,13 @@ package com.soapsnake.algorithms.leetcode.str;
  */
 public class Question686 {
 
+    public static void main(String[] args) {
+        Question686 question686 = new Question686();
+        String A = "a";
+        String B = "aa";
+        System.out.println(question686.repeatedStringMatch(A, B));
+    }
+
     public int repeatedStringMatch(String A, String B) {
         int i = 1;
         StringBuilder stringBuilder = new StringBuilder(A);
@@ -27,12 +34,5 @@ public class Question686 {
         } else {
             return i;
         }
-    }
-
-    public static void main(String[] args) {
-        Question686 question686 = new Question686();
-        String A = "a";
-        String B = "aa";
-        System.out.println(question686.repeatedStringMatch(A, B));
     }
 }

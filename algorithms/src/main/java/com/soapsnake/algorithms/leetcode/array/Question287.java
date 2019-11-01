@@ -42,14 +42,9 @@ public class Question287 {
     }
 
 
-
-
-
-
-
-
     /**
      * 龟兔赛跑算法,用快慢指针探测链表环
+     *
      * @param nums
      * @return
      */
@@ -74,7 +69,6 @@ public class Question287 {
         //经过两次的循环,可以肯定ptr1肯定是循环节点了
         return ptr1;
     }
-
 
 
 }

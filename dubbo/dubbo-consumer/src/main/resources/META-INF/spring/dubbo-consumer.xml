@@ -32,13 +32,14 @@
     <!--不经过注册中心,点对点直连-->
     <!--<dubbo:reference id="demoService" interface="DemoService" url="dubbo://localhost:20880" />-->
 
-    <dubbo:reference id="barService" interface="com.soapsnake.dubbo.api.service.BarService" generic="true" />
+    <dubbo:reference id="barService" interface="com.soapsnake.dubbo.api.service.BarService" generic="true"/>
     <!--<dubbo:registry protocol="zookeeper" address="118.184.84.117:2181" client="zkclient" />-->
 
-    <dubbo:reference id="testGenericService" check="false" interface="com.soapsnake.dubbo.api.service.TestGenericService"/>
+    <dubbo:reference id="testGenericService" check="false"
+                     interface="com.soapsnake.dubbo.api.service.TestGenericService"/>
 
     <!-- generate proxy for the remote service, then demoService can be used in the same way as the
     local regular interface -->
-    <dubbo:reference id="callbackService" interface="com.soapsnake.dubbo.api.service.CallbackService" />
+    <dubbo:reference id="callbackService" interface="com.soapsnake.dubbo.api.service.CallbackService"/>
 
 </beans>

@@ -9,6 +9,13 @@ import java.util.Map;
  */
 public class Question383 {
 
+    public static void main(String[] args) {
+        Question383 question383 = new Question383();
+        String a = "aa";
+        String b = "aab";
+        System.out.println(question383.canConstruct(a, b));
+    }
+
     public boolean canConstruct(String ransomNote, String magazine) {
         //a中的字符是否都在b里面
         char[] a = ransomNote.toCharArray();
@@ -29,12 +36,5 @@ public class Question383 {
             map.put(c, temp2 - 1);
         }
         return true;
-    }
-
-    public static void main(String[] args) {
-        Question383 question383 = new Question383();
-        String a = "aa";
-        String b = "aab";
-        System.out.println(question383.canConstruct(a, b));
     }
 }

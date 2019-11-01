@@ -8,6 +8,13 @@ import java.util.Arrays;
  */
 public class Question167 {
 
+    public static void main(String[] args) {
+        Question167 question167 = new Question167();
+        int[] e = {2, 7, 11, 15};
+        int target = 9;
+        System.out.println(Arrays.toString(question167.twoSum(e, target)));
+    }
+
     public int[] twoSum(int[] numbers, int target) {
         int[] res = new int[2];
         for (int left = 0, right = numbers.length - 1; left < right; ) {
@@ -26,12 +33,5 @@ public class Question167 {
             }
         }
         return res;
-    }
-
-    public static void main(String[] args) {
-        Question167 question167 = new Question167();
-        int[] e = {2,7,11,15};
-        int target = 9;
-        System.out.println(Arrays.toString(question167.twoSum(e, target)));
     }
 }

@@ -1,12 +1,7 @@
 package com.soapsnake.algorithms.leetcode.array;
 
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Given a string containing digits from 2-9 inclusive, return all possible letter combinations that the number could represent.
@@ -15,6 +10,7 @@ import java.util.Map;
 class Question17 {
 
     public static final Map<String, List> MAP;
+
     static {
         Map<String, List<String>> map1 = new HashMap<>();
         map1.put("2", Arrays.asList("a", "b", "c"));
@@ -28,8 +24,18 @@ class Question17 {
         MAP = Collections.unmodifiableMap(map1);
     }
 
-    private List<List<String>> sources = new ArrayList<>();
     int count = 0;
+    private List<List<String>> sources = new ArrayList<>();
+    private List<String> result = new ArrayList<>(2);
+
+    public static void main(String[] args) {
+
+        String input = "23";
+        Question17 question17 = new Question17();
+        System.out.println(question17.letterCombinations2(input));
+        //output = ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"]
+    }
+
     public List<String> letterCombinations2(String digits) {
         if (digits.isEmpty()) {
             return new ArrayList<>();
@@ -44,7 +50,6 @@ class Question17 {
         return result;
     }
 
-    private List<String> result = new ArrayList<>(2);
     private void dfsTree(int cur, String pre) {
         if (cur >= count) {
             result.add(pre);
@@ -57,14 +62,6 @@ class Question17 {
             //这里如果写成pre += temp,然后下面传pre就不对了
             dfsTree(cur + 1, pre + temp);
         }
-    }
-
-    public static void main(String[] args) {
-
-        String input = "23";
-        Question17 question17 = new Question17();
-        System.out.println(question17.letterCombinations2(input));
-        //output = ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"]
     }
 
 }

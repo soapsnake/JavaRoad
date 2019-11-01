@@ -9,17 +9,17 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class PubConfigure {
 
-	@Value("${subscribeKey}")
-	private String subscribeKey;
+    @Value("${subscribeKey}")
+    private String subscribeKey;
 
-	@Value("${publishKey}")
-	private String publishKey;
+    @Value("${publishKey}")
+    private String publishKey;
 
-	@Bean
-	public PubNub getConfig() {
-		PNConfiguration pnConfiguration =  new PNConfiguration();
-		pnConfiguration.setSubscribeKey(subscribeKey);
-		pnConfiguration.setPublishKey(publishKey);
-		return new PubNub(pnConfiguration);
-	}
+    @Bean
+    public PubNub getConfig() {
+        PNConfiguration pnConfiguration = new PNConfiguration();
+        pnConfiguration.setSubscribeKey(subscribeKey);
+        pnConfiguration.setPublishKey(publishKey);
+        return new PubNub(pnConfiguration);
+    }
 }

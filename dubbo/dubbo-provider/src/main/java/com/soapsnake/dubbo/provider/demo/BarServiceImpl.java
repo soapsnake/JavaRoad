@@ -6,7 +6,6 @@ import com.soapsnake.dubbo.api.service.BarService;
 /**
  * @author soapsnake
  * @date 2018/10/30
- *
  */
 public class BarServiceImpl implements BarService {
     @Override

@@ -18,7 +18,7 @@ public class Person {
     //serialize = true则进行json序列化时就会调到该get方法,其json字符串里面就会多出一个名叫params的字段,哪怕该类没有定义这个字段
     //deserilaize = true 则进行json反序列化时会调到该get方法
     @JSONField(serialize = true, deserialize = true)  //进行序列化
-    public String[]  getParams() {
+    public String[] getParams() {
         String[] strings = new String[10];
         for (int i = 0; i < strings.length; i++) {
             strings[i] = RandomStringUtils.randomAlphanumeric(20);

@@ -9,12 +9,22 @@ import java.util.Map;
  */
 public class Question389 {
 
+    public static void main(String[] args) {
+        String s = "a";
+        String t = "aa";
+
+        Question389 question389 = new Question389();
+        System.out.println(question389.findTheDifference(s, t));
+    }
+
+    //todo 利用ASCII码的O(n)解法,不需要额外内存
+
     public char findTheDifference(String s, String t) {
         char[] charOfs = s.toCharArray();
         Map<Character, Integer> mapS = new HashMap<>();
         for (char c1 : charOfs) {
             if (mapS.containsKey(c1)) {
-                mapS.put(c1, mapS.get(c1)+1);
+                mapS.put(c1, mapS.get(c1) + 1);
             } else {
                 mapS.put(c1, 1);
             }
@@ -33,15 +43,5 @@ public class Question389 {
             }
         }
         return res;
-    }
-
-    //todo 利用ASCII码的O(n)解法,不需要额外内存
-
-    public static void main(String[] args) {
-       String s = "a";
-       String t = "aa";
-
-       Question389 question389 = new Question389();
-        System.out.println(question389.findTheDifference(s, t));
     }
 }

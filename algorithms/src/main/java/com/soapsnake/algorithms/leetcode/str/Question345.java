@@ -13,6 +13,7 @@ public class Question345 {
      * 一遍过就是这么牛逼!!!!!!!!
      */
     private static List<Character> vows = Arrays.asList('a', 'A', 'e', 'E', 'i', 'I', 'o', 'O', 'u', 'U');
+
     public String reverseVowels(String s) {
 
         //左右指针碰撞算法
@@ -43,7 +44,7 @@ public class Question345 {
             right--;
             left++;
         }
-        return  new String(chars);
+        return new String(chars);
     }
 
     private boolean isvow(char aChar) {

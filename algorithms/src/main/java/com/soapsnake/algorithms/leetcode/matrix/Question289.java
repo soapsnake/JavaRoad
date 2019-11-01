@@ -4,6 +4,14 @@ import java.util.Arrays;
 
 public class Question289 {
 
+    public static void main(String[] args) {
+        Question289 question289 = new Question289();
+        int[][] board = {{0, 1, 0}, {0, 0, 1}, {1, 1, 1}, {0, 0, 0}};
+
+        question289.gameOfLife(board);
+        System.out.println(Arrays.deepToString(board));
+    }
+
     public void gameOfLife(int[][] board) {
         if (board == null || board.length == 0) return;
         int m = board.length, n = board[0].length;
@@ -39,13 +47,5 @@ public class Question289 {
         }
         lives -= board[i][j] & 1;
         return lives;
-    }
-
-    public static void main(String[] args) {
-        Question289 question289 = new Question289();
-        int[][] board = {{0,1,0},{0,0,1},{1,1,1},{0,0,0}};
-
-        question289.gameOfLife(board);
-        System.out.println(Arrays.deepToString(board));
     }
 }

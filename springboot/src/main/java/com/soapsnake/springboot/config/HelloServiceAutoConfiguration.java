@@ -12,9 +12,9 @@ import org.springframework.context.annotation.Configuration;
 @ConditionalOnProperty(prefix = "study", name = "enable", havingValue = "true")
 public class HelloServiceAutoConfiguration {
 
-	@Bean
-	public HelloService helloService() {
-		return new HelloService();
-	}
+    @Bean
+    public HelloService helloService() {
+        return new HelloService();
+    }
 
 }

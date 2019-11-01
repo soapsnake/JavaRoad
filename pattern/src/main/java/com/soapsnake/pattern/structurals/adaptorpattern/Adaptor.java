@@ -1,12 +1,12 @@
 package com.soapsnake.pattern.structurals.adaptorpattern;
 
 /**
- *
  * 适配类
+ *
  * @Auther soapsnake@gmail.com
  * @Date 2019-01-02 11:24
  */
-public class Adaptor extends TobeAdapte implements TargetInterface  {
+public class Adaptor extends TobeAdapte implements TargetInterface {
 
 
     //Adaptor由于继承残疾人TobeAdapte而自动获取了其两个接口,这个叫做类适配器

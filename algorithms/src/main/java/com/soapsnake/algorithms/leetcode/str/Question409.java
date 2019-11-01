@@ -1,11 +1,6 @@
 package com.soapsnake.algorithms.leetcode.str;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @Auther soapsnake@gmail.com
@@ -13,11 +8,16 @@ import java.util.Map;
  */
 public class Question409 {
 
+    public static void main(String[] args) {
+        Question409 question409 = new Question409();
+        System.out.println(question409.longestPalindrome("abccccdd"));
+    }
+
     //傻逼版解法
     public int longestPalindrome(String s) {
         char[] chars = s.toCharArray();
         Map<Character, Integer> map = new HashMap<>();
-        for (int i =0 ;i < chars.length; i++) {
+        for (int i = 0; i < chars.length; i++) {
             if (map.containsKey(chars[i])) {
                 map.put(chars[i], map.get(chars[i]) + 1);
             } else {
@@ -53,25 +53,20 @@ public class Question409 {
         return len;
     }
 
-    public static void main(String[] args) {
-        Question409 question409 = new Question409();
-        System.out.println(question409.longestPalindrome("abccccdd"));
-    }
-
     //大神版解法
     public int longestPalindrome2(String s) {
-        if(s==null || s.length()==0) return 0;
+        if (s == null || s.length() == 0) return 0;
         HashSet<Character> hs = new HashSet<Character>();
         int count = 0;
-        for(int i=0; i<s.length(); i++){
-            if(hs.contains(s.charAt(i))){
+        for (int i = 0; i < s.length(); i++) {
+            if (hs.contains(s.charAt(i))) {
                 hs.remove(s.charAt(i));
                 count++;
-            }else{
+            } else {
                 hs.add(s.charAt(i));
             }
         }
-        if(!hs.isEmpty()) return count*2+1;
-        return count*2;
+        if (!hs.isEmpty()) return count * 2 + 1;
+        return count * 2;
     }
 }

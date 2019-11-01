@@ -57,7 +57,7 @@ class Question437 {
             path = path + root.val + "->";
             this.treeDFS(temp, root.left, sum, path, finalres, true);
             this.treeDFS(temp, root.right, sum, path, finalres, true);
-        }else {
+        } else {
             //如果已经开始进行求和,那么这个节点就没有选择了,必须跟进
             temp = temp + root.val;
             path = path + root.val + "->";

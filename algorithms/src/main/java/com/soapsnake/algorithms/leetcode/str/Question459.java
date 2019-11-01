@@ -9,6 +9,12 @@ import java.util.List;
  */
 public class Question459 {
 
+    public static void main(String[] args) {
+        Question459 question459 = new Question459();
+        String s = "aabaaba";
+        System.out.println(question459.repeatedSubstringPattern(s));
+    }
+
     public boolean repeatedSubstringPattern(String s) {
         if (s.length() == 1) {
             return false;
@@ -45,11 +51,5 @@ public class Question459 {
             }
         }
         return false;
-    }
-
-    public static void main(String[] args) {
-        Question459 question459 = new Question459();
-        String s = "aabaaba";
-        System.out.println(question459.repeatedSubstringPattern(s));
     }
 }

@@ -4,8 +4,8 @@ package com.soapsnake.algorithms.design.oo.deckofcards.pojo;
  * @Auther soapsnake@gmail.com
  * @Date 2018/12/9 21:58
  */
-public enum  Suit {
-    HEART(0, "HEART","黑桃"),
+public enum Suit {
+    HEART(0, "HEART", "黑桃"),
     DIAMOND(1, "DIAMOND", "红桃"),
     CLUBS(2, "CLUBS", "方片"),
     SPADE(3, "SPADE", "梅花");

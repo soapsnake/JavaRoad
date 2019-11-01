@@ -13,22 +13,28 @@ import java.io.IOException;
 
 public class JaxpXmlLoader implements XmlLoader {
 
-	@Override
-	public Object loadFromXml(String fileName) {
+    public static void main(String[] args) {
+        JaxpXmlLoader loader = new JaxpXmlLoader();
+        String path = Thread.currentThread().getContextClassLoader().getResource(".").getPath();
+        loader.loadFromXml(path + "/test.xml");
+    }
 
-		DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+    @Override
+    public Object loadFromXml(String fileName) {
 
-		try {
-			DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
-			Document document = documentBuilder.parse(fileName);
+        DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
 
-			System.out.println("getElementById: " + document.getElementById("flower"));
-			System.out.println("getElementsByTagName: " + document.getElementsByTagName("flower"));
+        try {
+            DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+            Document document = documentBuilder.parse(fileName);
 
-			NodeList nodeList = document.getElementsByTagName("flower");
+            System.out.println("getElementById: " + document.getElementById("flower"));
+            System.out.println("getElementsByTagName: " + document.getElementsByTagName("flower"));
 
-			Node root = document.getChildNodes().item(0);
-			parseChildNode(root);
+            NodeList nodeList = document.getElementsByTagName("flower");
+
+            Node root = document.getChildNodes().item(0);
+            parseChildNode(root);
 
 //			for (int i = 0; i < nodeList.getLength(); i++) {
 //				Node node = nodeList.item(i);
@@ -47,48 +53,43 @@ public class JaxpXmlLoader implements XmlLoader {
 //
 
 
-		} catch (ParserConfigurationException | SAXException | IOException e) {
-			e.printStackTrace();
-		}
+        } catch (ParserConfigurationException | SAXException | IOException e) {
+            e.printStackTrace();
+        }
 
-		return null;
-	}
+        return null;
+    }
 
-	/**
-	 * <flowerhouse>
-	 *     <flower type = "xxController">
-	 *         <flowerName>kevin</flowerName>
-	 *         <age>18</age>
-	 *         <douzi>good</douzi>
-	 *     </flower>
-	 *
-	 *     <flower type = "xxService">
-	 *         <flowerName>mengyao</flowerName>
-	 *         <age>28</age>
-	 *         <douzi>bad</douzi>
-	 *     </flower>
-	 * </flowerhouse>
-	 */
-	private void parseChildNode(Node root) {
-		//打印节点名称
-		if (!root.getNodeName().equals("#text")) {
-			System.out.println("nodeName = " + root.getNodeName() + " && " + "nodeContent=" + root.getTextContent() + " && " + " nodeValue= " + root.getNodeValue());
-			if (null != root.getAttributes()) {
-				for (int i = 0; i < root.getAttributes().getLength(); i++) {
-					System.out.println("attr.name = " + root.getAttributes().item(i).getNodeName());   //type
-					System.out.println("attr.value = " + root.getAttributes().item(i).getNodeValue());   //xxController
-				}
-			}
-			NodeList cList = root.getChildNodes();
-			for (int i = 0; i < cList.getLength(); i++) {
-				Node cNode = cList.item(i);
-				parseChildNode(cNode);
-			}
-		}
-	}
-	public static void main(String[] args) {
-		JaxpXmlLoader loader = new JaxpXmlLoader();
-		String path = Thread.currentThread().getContextClassLoader().getResource(".").getPath();
-		loader.loadFromXml(path + "/test.xml");
-	}
+    /**
+     * <flowerhouse>
+     * <flower type = "xxController">
+     * <flowerName>kevin</flowerName>
+     * <age>18</age>
+     * <douzi>good</douzi>
+     * </flower>
+     *
+     * <flower type = "xxService">
+     * <flowerName>mengyao</flowerName>
+     * <age>28</age>
+     * <douzi>bad</douzi>
+     * </flower>
+     * </flowerhouse>
+     */
+    private void parseChildNode(Node root) {
+        //打印节点名称
+        if (!root.getNodeName().equals("#text")) {
+            System.out.println("nodeName = " + root.getNodeName() + " && " + "nodeContent=" + root.getTextContent() + " && " + " nodeValue= " + root.getNodeValue());
+            if (null != root.getAttributes()) {
+                for (int i = 0; i < root.getAttributes().getLength(); i++) {
+                    System.out.println("attr.name = " + root.getAttributes().item(i).getNodeName());   //type
+                    System.out.println("attr.value = " + root.getAttributes().item(i).getNodeValue());   //xxController
+                }
+            }
+            NodeList cList = root.getChildNodes();
+            for (int i = 0; i < cList.getLength(); i++) {
+                Node cNode = cList.item(i);
+                parseChildNode(cNode);
+            }
+        }
+    }
 }

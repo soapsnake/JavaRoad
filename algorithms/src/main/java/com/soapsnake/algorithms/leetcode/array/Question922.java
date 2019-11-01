@@ -4,7 +4,7 @@ class Question922 {
 
     public static void main(String[] args) {
         Question922 question922 = new Question922();
-        int[] a = new int[]{3,2};
+        int[] a = new int[]{3, 2};
         int[] res = question922.sortArrayByParityII(a);
         ArrayUtils.printArr(res);
     }

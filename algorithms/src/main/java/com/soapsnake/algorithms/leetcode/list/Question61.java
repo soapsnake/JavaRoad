@@ -8,6 +8,12 @@ import com.soapsnake.algorithms.structures.list.ListNode;
  */
 public class Question61 {
 
+    public static void main(String[] args) {
+        Question61 question61 = new Question61();
+        ListNode head = ListNode.makeTestListFor61();            // 0 -> 1 -> 2 -> 3 -> 4
+        System.out.println(question61.rotateRight(head, 5));  //3 -> 4 -> 0 -> 1 -> 2
+    }
+
     /**
      * Input: 0->1->2->NULL, k = 4
      * Output: 2->0->1->NULL
@@ -38,7 +44,7 @@ public class Question61 {
             real = length - k;
         }
         ListNode fast = head;
-        while (real - 1  > 0) {
+        while (real - 1 > 0) {
             fast = fast.next;
             real--;
         }
@@ -53,11 +59,5 @@ public class Question61 {
         }
         temp.next = head;
         return newList;
-    }
-
-    public static void main(String[] args) {
-        Question61 question61 = new Question61();
-        ListNode head = ListNode.makeTestListFor61();            // 0 -> 1 -> 2 -> 3 -> 4
-        System.out.println(question61.rotateRight(head, 5));  //3 -> 4 -> 0 -> 1 -> 2
     }
 }

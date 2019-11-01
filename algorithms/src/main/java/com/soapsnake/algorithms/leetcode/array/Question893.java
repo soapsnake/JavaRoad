@@ -3,7 +3,7 @@ package com.soapsnake.algorithms.leetcode.array;
 /**
  * @author soapsnake
  * @date 2018/10/29
- *
+ * <p>
  * You are given an array A of strings.
  * Two strings S and T are special-equivalent if after any number of moves, S == T.
  */

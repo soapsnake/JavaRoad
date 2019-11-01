@@ -9,11 +9,6 @@ import com.soapsnake.algorithms.structures.list.ListNode;
  */
 class Question237 {
 
-    public void deleteNode(ListNode node) {
-        node.val = node.next.val;
-        node.next = node.next.next;
-    }
-
     public static void main(String[] args) {
         Question237 question237 = new Question237();
         ListNode head = new ListNode(1);
@@ -23,6 +18,11 @@ class Question237 {
         ListNode.printListNode(head);
 
         ListNode.printListNode(head);
+    }
+
+    public void deleteNode(ListNode node) {
+        node.val = node.next.val;
+        node.next = node.next.next;
     }
 
 }

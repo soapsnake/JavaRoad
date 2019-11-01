@@ -41,11 +41,9 @@ public class Question443 {
             chars[index++] = ch;
             if (freq == 1) {
 
-            }
-            else if (freq < 10) {
-                chars[index++] = (char)(freq + '0');
-            }
-            else {
+            } else if (freq < 10) {
+                chars[index++] = (char) (freq + '0');
+            } else {
                 String strFreq = String.valueOf(freq);
                 for (char chFreq : strFreq.toCharArray())
                     chars[index++] = chFreq;

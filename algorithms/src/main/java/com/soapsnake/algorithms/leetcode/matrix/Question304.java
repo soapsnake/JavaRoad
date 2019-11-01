@@ -5,6 +5,7 @@ public class Question304 {
     static class NumMatrix2 {
 
         private int[][] matrix;
+
         public NumMatrix2(int[][] matrix) {
             this.matrix = matrix;
         }

@@ -6,9 +6,9 @@ import reactor.core.publisher.Mono;
 
 public interface EmployeeRepository {
 
-	Mono<Employee> findEmployeeById(String id);
+    Mono<Employee> findEmployeeById(String id);
 
-	Flux<Employee> findAllEmployees();
+    Flux<Employee> findAllEmployees();
 
-	Mono<Employee> updateEmployee(Employee employee);
+    Mono<Employee> updateEmployee(Employee employee);
 }

@@ -9,6 +9,22 @@ import java.util.Queue;
  */
 public class Question225 {
 
+    public static void main(String[] args) {
+        MyStack myStack = new MyStack();
+        myStack.push(1);
+        myStack.push(2);
+        myStack.push(3);
+        myStack.push(4);
+
+        System.out.println(myStack.pop());
+        myStack.push(5);
+        System.out.println(myStack.pop());
+
+        System.out.println(myStack.pop());
+
+        System.out.println(myStack.top());
+    }
+
     /**
      * 队列实现栈,top()接口实现的有点问题
      */
@@ -17,6 +33,7 @@ public class Question225 {
         Queue<Integer> q1;
         Queue<Integer> q2;
         Queue<Integer> pushQ;
+
         /**
          * Initialize your data structure here.
          */
@@ -64,21 +81,5 @@ public class Question225 {
         public boolean empty() {
             return q1.isEmpty() && q2.isEmpty();
         }
-    }
-
-    public static void main(String[] args) {
-        MyStack myStack = new MyStack();
-        myStack.push(1);
-        myStack.push(2);
-        myStack.push(3);
-        myStack.push(4);
-
-        System.out.println(myStack.pop());
-        myStack.push(5);
-        System.out.println(myStack.pop());
-
-        System.out.println(myStack.pop());
-
-        System.out.println(myStack.top());
     }
 }

@@ -5,12 +5,18 @@ import java.util.List;
 
 public class Question228 {
 
+    public static void main(String[] args) {
+        Question228 question228 = new Question228();
+        int[] nums = {0, 2, 3, 4, 6, 8, 9};
+        System.out.println(question228.summaryRanges(nums));
+    }
+
     /**
      * Example 1:
      * Input:  [0,1,2,4,5,7]
      * Output: ["0->2","4->5","7"]
      * Explanation: 0,1,2 form a continuous range; 4,5 form a continuous range.
-     *
+     * <p>
      * Example 2:
      * Input:  [0,2,3,4,6,8,9]
      * Output: ["0","2->4","6","8->9"]
@@ -55,11 +61,5 @@ public class Question228 {
 
         return list;
 //        recur(nums, list);
-    }
-
-    public static void main(String[] args) {
-        Question228 question228 = new Question228();
-        int[] nums = {0,2,3,4,6,8,9};
-        System.out.println(question228.summaryRanges(nums));
     }
 }

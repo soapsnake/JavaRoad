@@ -2,17 +2,19 @@ package com.soapsnake.algorithms.leetcode.binarytree;
 
 import com.soapsnake.algorithms.structures.tree.TreeNode;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * @Auther soapsnake@gmail.com
  * @Date 2018-12-12 22:57
  */
 public class Question107 {
+
+    public static void main(String[] args) {
+        Question107 question107 = new Question107();
+        TreeNode node = TreeNode.makeNormalTree();
+        System.out.println(question107.levelOrderBottom(node));
+    }
 
     //迭代版
     public List<List<Integer>> levelOrderBottom(TreeNode root) {
@@ -44,11 +46,5 @@ public class Question107 {
             }
         }
         return res;
-    }
-
-    public static void main(String[] args) {
-        Question107 question107 = new Question107();
-        TreeNode node = TreeNode.makeNormalTree();
-        System.out.println(question107.levelOrderBottom(node));
     }
 }

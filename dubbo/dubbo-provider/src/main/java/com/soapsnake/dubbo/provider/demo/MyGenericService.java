@@ -8,7 +8,7 @@ import java.util.Arrays;
 /**
  * @author soapsnake
  * @date 2018/10/31
- *
+ * <p>
  * 泛化实现
  */
 public class MyGenericService implements GenericService {

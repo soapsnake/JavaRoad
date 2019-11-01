@@ -6,6 +6,16 @@ package com.soapsnake.algorithms.leetcode.biner;
  */
 public class Question192 {
 
+    //大神版解法
+    public static int hammingWeight2(int n) {
+        int ones = 0;
+        while (n != 0) {
+            ones = ones + (n & 1);
+            n = n >>> 1;
+        }
+        return ones;
+    }
+
     //智障版解法
     public int hammingWeight(int n) {
         if (n == 0) {
@@ -19,16 +29,5 @@ public class Question192 {
             }
         }
         return res;
-    }
-
-
-    //大神版解法
-    public static int hammingWeight2(int n) {
-        int ones = 0;
-        while(n!=0) {
-            ones = ones + (n & 1);
-            n = n>>>1;
-        }
-        return ones;
     }
 }

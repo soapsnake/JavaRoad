@@ -10,6 +10,13 @@ public class Question111 {
 
     private int mini = Integer.MAX_VALUE;
 
+    public static void main(String[] args) {
+        Question111 question111 = new Question111();
+
+        TreeNode root = TreeNode.makeNormalTreeFor110();
+        System.out.println(question111.minDepth(root));
+    }
+
     public int minDepth(TreeNode root) {
         if (root == null) {
             return 0;
@@ -31,12 +38,5 @@ public class Question111 {
         if (root.right != null) {
             treeDfs(root.right, depth);
         }
-    }
-
-    public static void main(String[] args) {
-        Question111 question111 = new Question111();
-
-        TreeNode root = TreeNode.makeNormalTreeFor110();
-        System.out.println(question111.minDepth(root));
     }
 }

@@ -8,6 +8,15 @@ import java.util.Arrays;
  */
 public class Question88 {
 
+    public static void main(String[] args) {
+        Question88 question88 = new Question88();
+        int[] nums1 = {2, 0};
+        int m = 1;
+        int[] nums2 = {1};
+        int n = 1;
+        System.out.println(Arrays.toString(question88.merge(nums1, m, nums2, n)));
+    }
+
     //这个解法感觉特别像选择排序
     //todo
     public int[] merge(int[] nums1, int m, int[] nums2, int n) {
@@ -30,14 +39,5 @@ public class Question88 {
             nums1[f--] = nums2[j--];  //这个其实没有看懂!!!
         }
         return nums1;
-    }
-
-    public static void main(String[] args) {
-        Question88 question88 = new Question88();
-        int[] nums1 = {2, 0};
-        int m = 1;
-        int[] nums2 = {1};
-        int n = 1;
-        System.out.println(Arrays.toString(question88.merge(nums1, m, nums2, n)));
     }
 }

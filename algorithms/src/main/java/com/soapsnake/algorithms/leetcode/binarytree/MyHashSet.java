@@ -19,7 +19,9 @@ public class MyHashSet {
 
     }
 
-    /** Returns true if this set contains the specified element */
+    /**
+     * Returns true if this set contains the specified element
+     */
     public boolean contains(int key) {
         return false;
     }

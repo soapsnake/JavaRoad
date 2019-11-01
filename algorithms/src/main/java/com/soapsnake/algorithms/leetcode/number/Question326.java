@@ -6,6 +6,12 @@ package com.soapsnake.algorithms.leetcode.number;
  */
 public class Question326 {
 
+    public static void main(String[] args) {
+        Question326 question326 = new Question326();
+
+        System.out.println(question326.isPowerOfThree(9));
+    }
+
     public boolean isPowerOfThree(int n) {
         if (n == 0) {
             return false;
@@ -18,11 +24,5 @@ public class Question326 {
             n /= 3;
         }
         return true;
-    }
-
-    public static void main(String[] args) {
-        Question326 question326 = new Question326();
-
-        System.out.println(question326.isPowerOfThree(9));
     }
 }

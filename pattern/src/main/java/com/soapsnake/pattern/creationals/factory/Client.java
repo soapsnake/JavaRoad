@@ -6,27 +6,27 @@ import com.soapsnake.pattern.creationals.factory.simpleabstractfactory.YellowMan
 
 public class Client {
 
-	public static void main(String[] args) {
-		Human human = SimpleHumanFactory.createHuman(YellowHuman.class);
+    public static void main(String[] args) {
+        Human human = SimpleHumanFactory.createHuman(YellowHuman.class);
 
-		System.out.println(human.getColor());
+        System.out.println(human.getColor());
 
-		System.out.println(human.sayHello());
+        System.out.println(human.sayHello());
 
-		Human human1 = new YellowManFactory().createHuman();
-		human1.getColor();
+        Human human1 = new YellowManFactory().createHuman();
+        human1.getColor();
 
-		//生产母的的黑人白人黄人
-		FemaleFactory femaleFactory = new FemaleFactory();
-		femaleFactory.createBlack();
-		femaleFactory.createWhite();
-		femaleFactory.createYellow();
+        //生产母的的黑人白人黄人
+        FemaleFactory femaleFactory = new FemaleFactory();
+        femaleFactory.createBlack();
+        femaleFactory.createWhite();
+        femaleFactory.createYellow();
 
-		//生产公的黑人白人黄人
-		MaleFactory maleFactory = new MaleFactory();
-		maleFactory.createBlack();
-		maleFactory.createWhite();
-		maleFactory.createYellow();
+        //生产公的黑人白人黄人
+        MaleFactory maleFactory = new MaleFactory();
+        maleFactory.createBlack();
+        maleFactory.createWhite();
+        maleFactory.createYellow();
 
-	}
+    }
 }

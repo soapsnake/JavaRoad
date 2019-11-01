@@ -7,10 +7,11 @@ import java.util.Collection;
 
 /**
  * 大顶堆
+ *
  * @param <K>
  */
 @SuppressWarnings("unchecked")
-public class MaxPriorityQueue<K extends Comparable<K>> implements PriorityQueue<K>{
+public class MaxPriorityQueue<K extends Comparable<K>> implements PriorityQueue<K> {
 
     private int n = 0;   //指针,如果指向第0位,表明pq是空的,因为0位留空
 
@@ -23,13 +24,9 @@ public class MaxPriorityQueue<K extends Comparable<K>> implements PriorityQueue<
 
     }
 
-    //工厂方法
-    public static <K> MaxPriorityQueue buildMaxPQ(int size) {
-        return new MaxPriorityQueue(size);
-    }
-
     /**
      * create a priority queue of initial capacity max
+     *
      * @param max
      */
     public MaxPriorityQueue(int max) {
@@ -39,8 +36,10 @@ public class MaxPriorityQueue<K extends Comparable<K>> implements PriorityQueue<
         this.pq = (K[]) new Comparable[max + 1];
         this.arrLength = max + 1;
     }
+
     /**
      * create a priority queue from the keys in a[]
+     *
      * @param a
      */
     MaxPriorityQueue(K[] a) {
@@ -51,88 +50,9 @@ public class MaxPriorityQueue<K extends Comparable<K>> implements PriorityQueue<
         this.n = pq.length;
     }
 
-
-    K max() {
-        return this.pq[1];
-    }
-
-    /**
-     * return and remove the largest key
-     */
-    public K delMax() {
-        K max = pq[1];   // 堆顶的元素永远是最大的,这里用max缓存起来,方便后面返回
-        this.exch(1, n--);  //堆顶元素和堆底元素互换,为后面的操作做准备,注意这里是n--,也就是交换之后n指针才会后移
-        pq[n+1] = null;   //最后一位置空方便GC,非常nice(此时n+1是指向原来的堆顶的也就是max)
-        this.sink(1);    //现在的堆顶其实是原来的堆底,肯定不是最大数,需要下沉,下沉完了堆顶还是最大的
-        return max;
-    }
-
-    private void exch(int i1, int i2) {
-        K temp = pq[i1];
-        pq[i1] = pq[i2];
-        pq[i2] = temp;
-    }
-
-    @Override
-    //新插入的元素是插入到数组的最后的,也就是处于树的最低端,如果是比较大的数字可能需要上浮
-    public void insert(K k) {
-        this.pq[++n] = k;
-        this.swim(n);
-    }
-
-    //这个数据结构最核心的其实就是这个swim和下面的sink函数
-    //新插入的堆底元素上浮
-    private void swim(int n) {
-        while (n > 0 && this.lessThan(n / 2, n)) { //如果父节点比子节点要小
-            this.exch(n / 2, n); //那么交换父节点和该子节点
-            n /= 2;   //n / 2后指向其父节点,这里其实并不关心兄弟节点的值得情况
-        }
-    }
-
-    private boolean lessThan(int i1, int i2) {
-        if (null == pq[i1]) {
-            return false;
-        }
-        int res =  pq[i1].compareTo(pq[i2]);
-        return res < 0;
-    }
-
-    //堆中的第i个元素下沉
-    private void sink(int i) {
-        while (2 * i <= n) {
-            int j = 2 * i;    //i元素的左子节点
-            if (j < n && this.lessThan(j, j + 1)) {  //我们的j指针应该指向比较大的那个子节点
-                j++;
-            }
-            if (!this.lessThan(i ,j)) { //父节点的值已经比子节点的值大的情况下就没必要继续算了
-                break;
-            }
-            this.exch(i, j);  //父节点比子节点小那么需要交换
-            i = j;
-        }
-    }
-
-    //这个排序算法,由于要用到del方法,排序结束会清空pq,所以这里用了点技巧把pq缓存了起来,排序结束后再赋值回来
-    public K[] sort() {
-        K[] backup = (K[]) new Comparable[arrLength];
-        System.arraycopy(pq, 0, backup, 0, arrLength);
-        K[] res = (K[]) new Comparable[n];
-        for (int i = 0; i < res.length; i++) {
-            res[i] = this.delMax();
-        }
-        this.pq = backup;
-        return res;
-    }
-
-    @Override
-    public boolean isEmpty() {
-        //如果指针移动到了第0位,那么表明pq已经空了
-        return this.n == 0 ;
-    }
-
-    @Override
-    public int size() {
-        return this.n;
+    //工厂方法
+    public static <K> MaxPriorityQueue buildMaxPQ(int size) {
+        return new MaxPriorityQueue(size);
     }
 
     public static void main(String[] args) {
@@ -164,5 +84,88 @@ public class MaxPriorityQueue<K extends Comparable<K>> implements PriorityQueue<
          */
 
 
+    }
+
+    K max() {
+        return this.pq[1];
+    }
+
+    /**
+     * return and remove the largest key
+     */
+    public K delMax() {
+        K max = pq[1];   // 堆顶的元素永远是最大的,这里用max缓存起来,方便后面返回
+        this.exch(1, n--);  //堆顶元素和堆底元素互换,为后面的操作做准备,注意这里是n--,也就是交换之后n指针才会后移
+        pq[n + 1] = null;   //最后一位置空方便GC,非常nice(此时n+1是指向原来的堆顶的也就是max)
+        this.sink(1);    //现在的堆顶其实是原来的堆底,肯定不是最大数,需要下沉,下沉完了堆顶还是最大的
+        return max;
+    }
+
+    private void exch(int i1, int i2) {
+        K temp = pq[i1];
+        pq[i1] = pq[i2];
+        pq[i2] = temp;
+    }
+
+    @Override
+    //新插入的元素是插入到数组的最后的,也就是处于树的最低端,如果是比较大的数字可能需要上浮
+    public void insert(K k) {
+        this.pq[++n] = k;
+        this.swim(n);
+    }
+
+    //这个数据结构最核心的其实就是这个swim和下面的sink函数
+    //新插入的堆底元素上浮
+    private void swim(int n) {
+        while (n > 0 && this.lessThan(n / 2, n)) { //如果父节点比子节点要小
+            this.exch(n / 2, n); //那么交换父节点和该子节点
+            n /= 2;   //n / 2后指向其父节点,这里其实并不关心兄弟节点的值得情况
+        }
+    }
+
+    private boolean lessThan(int i1, int i2) {
+        if (null == pq[i1]) {
+            return false;
+        }
+        int res = pq[i1].compareTo(pq[i2]);
+        return res < 0;
+    }
+
+    //堆中的第i个元素下沉
+    private void sink(int i) {
+        while (2 * i <= n) {
+            int j = 2 * i;    //i元素的左子节点
+            if (j < n && this.lessThan(j, j + 1)) {  //我们的j指针应该指向比较大的那个子节点
+                j++;
+            }
+            if (!this.lessThan(i, j)) { //父节点的值已经比子节点的值大的情况下就没必要继续算了
+                break;
+            }
+            this.exch(i, j);  //父节点比子节点小那么需要交换
+            i = j;
+        }
+    }
+
+    //这个排序算法,由于要用到del方法,排序结束会清空pq,所以这里用了点技巧把pq缓存了起来,排序结束后再赋值回来
+    public K[] sort() {
+        K[] backup = (K[]) new Comparable[arrLength];
+        System.arraycopy(pq, 0, backup, 0, arrLength);
+        K[] res = (K[]) new Comparable[n];
+        for (int i = 0; i < res.length; i++) {
+            res[i] = this.delMax();
+        }
+        this.pq = backup;
+        return res;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        //如果指针移动到了第0位,那么表明pq已经空了
+        return this.n == 0;
+    }
+
+    @Override
+    public int size() {
+        return this.n;
     }
 }

@@ -9,6 +9,15 @@ import java.util.Map;
  */
 class Question496 {
 
+    public static void main(String[] args) {
+        Question496 question496 = new Question496();
+
+        int[] nums1 = {2, 4};
+        int[] nums2 = {1, 2, 3, 4};
+
+        ArrayUtils.printArr(question496.nextGreaterElement(nums1, nums2));
+    }
+
     //真他妈简单,反过来想,nums2中的数字,先按预期放进map中,然后用nums1中对应元素去取就行了
     public int[] nextGreaterElement(int[] nums1, int[] nums2) {
         int[] res = new int[nums1.length];
@@ -27,15 +36,6 @@ class Question496 {
             res[i] = hashMap.get(nums1[i]); //直接取,因为nums1是nums2的子数组,所以不用防空
         }
         return res;
-    }
-
-    public static void main(String[] args) {
-        Question496 question496 = new Question496();
-
-        int[] nums1 = {2, 4};
-        int[] nums2 = {1,2, 3,4};
-
-        ArrayUtils.printArr(question496.nextGreaterElement(nums1, nums2));
     }
 
 

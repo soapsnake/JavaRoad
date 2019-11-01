@@ -12,7 +12,7 @@ class Question234 {
     /**
      * Input: 1->2->2->1
      * Output: true
-     *
+     * <p>
      * 1. 找到中间节点
      * 2. 后半倒转
      * 3. 比原始和后半
@@ -26,7 +26,7 @@ class Question234 {
         ListNode slow = head;
 
         //寻找链表中间节点slow
-        while (fast != null && fast.next !=null && slow != null) {
+        while (fast != null && fast.next != null && slow != null) {
             fast = fast.next.next;
             slow = slow.next;
         }

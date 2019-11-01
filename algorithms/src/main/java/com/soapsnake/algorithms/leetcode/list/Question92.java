@@ -10,9 +10,19 @@ public class Question92 {
 
     private int code;
 
+    public static void main(String[] args) {
+        Question92 question92 = new Question92();
+        ListNode head = ListNode.makeTestListFor725();   //1 -> 2->3->4->5->6->7->8
+
+
+//        ListNode head = new ListNode(1);
+//        head.next = new ListNode(2);
+        System.out.println(question92.reverseBetween(head, 3, 5));  //1-->2->5->4->3->6->7->8
+    }
+
     /**
      * Example:
-     *
+     * <p>
      * Input: 1->2->3->4->5->NULL, m = 2, n = 4
      * Output: 1->4->3->2->5->NULL
      */
@@ -35,7 +45,7 @@ public class Question92 {
             if (start < m - 1) {
                 brokeleft = brokeleft.next;
             }
-            if (start >= m  && start <= n) {
+            if (start >= m && start <= n) {
                 cur.next = newhead;
                 newhead = cur;
             }
@@ -57,15 +67,5 @@ public class Question92 {
         } else {
             return newhead;
         }
-    }
-
-    public static void main(String[] args) {
-        Question92 question92 = new Question92();
-        ListNode head = ListNode.makeTestListFor725();   //1 -> 2->3->4->5->6->7->8
-
-
-//        ListNode head = new ListNode(1);
-//        head.next = new ListNode(2);
-        System.out.println(question92.reverseBetween(head , 3, 5));  //1-->2->5->4->3->6->7->8
     }
 }

@@ -1,7 +1,7 @@
 package com.soapsnake.algorithms.leetcode.binarytree;
 
-import com.soapsnake.algorithms.structures.tree.TreeNode;
 import com.soapsnake.algorithms.leetcode.array.ArrayUtils;
+import com.soapsnake.algorithms.structures.tree.TreeNode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +12,9 @@ import java.util.List;
  */
 class Question538 {
 
+    int sum = 0;
+    List<Integer> res = new ArrayList<>();
+
     public static void main(String[] args) {
         Question538 question538 = new Question538();
         TreeNode node = TreeNode.makeBinerSearchTree();
@@ -19,8 +22,6 @@ class Question538 {
         TreeNode.layerTravse(newTree);
     }
 
-    int sum = 0;
-    List<Integer> res = new ArrayList<>();
     public TreeNode convertBST(TreeNode root) {
         if (root == null) {
             return null;

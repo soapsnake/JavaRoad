@@ -2,6 +2,7 @@ package com.soapsnake.algorithms.raft;
 
 /**
  * 领导者
+ *
  * @Auther soapsnake@gmail.com
  * @Date 2019-02-02 19:19
  */
@@ -15,8 +16,6 @@ public class RaftLeader extends RaftNode {
 
 
     private boolean isLeader; // 是否是真的leader
-
-
 
 
 }

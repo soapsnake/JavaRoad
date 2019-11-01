@@ -13,9 +13,9 @@ public class Question303 {
 
     public int sumRange(int i, int j) {
         int res = 0;
-            for (int m = i; m <= j; m++) {
-                res += nums[m];
-            }
-            return res;
+        for (int m = i; m <= j; m++) {
+            res += nums[m];
+        }
+        return res;
     }
 }

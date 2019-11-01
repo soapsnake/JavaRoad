@@ -8,7 +8,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
  * Created by soapsnake on 2017/6/3.
  */
 
-@EnableAspectJAutoProxy(proxyTargetClass=true, exposeProxy=true)
+@EnableAspectJAutoProxy(proxyTargetClass = true, exposeProxy = true)
 @SpringBootApplication()
 public class Application {
 

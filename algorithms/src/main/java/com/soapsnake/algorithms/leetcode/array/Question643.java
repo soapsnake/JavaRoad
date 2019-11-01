@@ -6,6 +6,13 @@ package com.soapsnake.algorithms.leetcode.array;
  */
 public class Question643 {
 
+    public static void main(String[] args) {
+        Question643 question643 = new Question643();
+        int[] nums = {1, 12, -5, -6, 50, 3};
+        int k = 4;
+        System.out.println(question643.findMaxAverage(nums, k));
+    }
+
     public double findMaxAverage(int[] nums, int k) {
         if (nums == null) {
             return 0;
@@ -27,12 +34,5 @@ public class Question643 {
             max = Math.max(temp, max);
         }
         return (double) max / (double) k;
-    }
-
-    public static void main(String[] args) {
-        Question643 question643 = new Question643();
-        int[] nums = {1,12,-5,-6,50,3};
-        int k = 4;
-        System.out.println(question643.findMaxAverage(nums, k));
     }
 }
