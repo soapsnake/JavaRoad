@@ -5,7 +5,9 @@ import com.soapsnake.algorithms.structures.tree.TreeNode;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 public class SomeTester {
 
@@ -16,11 +18,11 @@ public class SomeTester {
     public SomeTester() {
         test = 1;
     }
-
-    public SomeTester(ListNode haha, Integer heihei) {
-        this.cur = haha;
-        this.test = heihei;
-    }
+//
+//    public SomeTester(ListNode haha, Integer heihei) {
+//        this.cur = haha;
+//        this.test = heihei;
+//    }
 
     public static void main(String[] args) {
         SomeTester treeTester = new SomeTester();
@@ -108,9 +110,60 @@ public class SomeTester {
         System.out.println(findAllSum(TreeNode.makeNormalTreeFor437(), 18));
     }
 
-    //判断两个链表是否相交
-    public static boolean isFuckedList() {
+    public static List<List<TreeNode>> layerTravse(TreeNode root) {
+        if (root == null) {
+            return new ArrayList<>();
+        }
+        List<List<TreeNode>> res = new ArrayList<>();
+        List<TreeNode> lines = null;
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
 
+        while (!queue.isEmpty()) {
+            lines = new ArrayList<>();
+            while (!queue.isEmpty()) {
+                TreeNode node = queue.poll();
+                lines.add(node);
+            }
+
+            for (TreeNode node : lines) {
+                if (node.left != null) {
+                    queue.add(node.left);
+                }
+                if (node.right != null) {
+                    queue.add(node.right);
+                }
+            }
+            res.add(lines);
+        }
+        return res;
+    }
+
+    @Test
+    public void testlayerTravse() {
+
+        List<List<TreeNode>> lists = layerTravse(TreeNode.makeBinerSearchTree());
+
+        for (List list : lists) {
+            System.out.println(list);
+        }
+    }
+
+
+    //判断两个链表是否相交
+    public static boolean isFuckedList(ListNode list1, ListNode list2) {
+        ListNode cur1 = list1;
+        while (cur1 != null) {
+
+            ListNode cur2 = list2;
+            while (cur2 != null) {
+                if (cur1.next == cur2) {
+                    return true;
+                }
+                cur2 = cur2.next;
+            }
+            cur1 = cur1.next;
+        }
         return false;
     }
 

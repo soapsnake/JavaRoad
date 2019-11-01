@@ -79,4 +79,48 @@ public class ArraysTester {
 		int tar = 100;
 		System.out.println(matrixBinerSearch(matxi, tar));
 	}
+
+	public void fastSort(int[] ints) {
+		if (ints.length == 0) {
+			return;
+		}
+		int left = 0;
+		int right = ints.length - 1;
+		fastSort(ints, left, right);
+	}
+
+	private void fastSort(int[] ints, int left, int right) {
+		if (ints == null || ints.length <= 1 || right <= left){
+			return;
+		}
+		int i = left;
+		int j = right;
+		int mid = left + (right - left) / 2;
+		while (j >= i) {
+			while (ints[i] < ints[mid]) {
+				++i;
+			}
+			while (ints[j] > ints[mid]) {
+				--j;
+			}
+			if (j > i) {
+				int temp = ints[i];
+				ints[i] = ints[j];
+				ints[j] = temp;
+				++i;
+				--j;
+			} else if (j == i) {
+				++i;
+			}
+		}
+		fastSort(ints,left, j);
+		fastSort(ints, i, right);
+	}
+
+	@Test
+	public void testfastSort() {
+		int[] dest = {1,23,4, 78, 24, 23,12, 8, 19, 7, 5};
+		fastSort(dest);
+		System.out.println(Arrays.toString(dest));
+	}
 }

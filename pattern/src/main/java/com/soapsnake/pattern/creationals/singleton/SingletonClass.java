@@ -3,6 +3,7 @@ package com.soapsnake.pattern.creationals.singleton;
 public class SingletonClass {
 
     private static SingletonClass singletonClass;
+    public int test = 1;
 
     private SingletonClass(){}
 
@@ -12,6 +13,7 @@ public class SingletonClass {
         }
         return singletonClass;
     }
+
 
     public static SingletonClass getInstanceDoubleCheck() {
         if (null == singletonClass) {   //一步检测

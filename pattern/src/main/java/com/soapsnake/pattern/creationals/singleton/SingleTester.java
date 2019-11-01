@@ -3,9 +3,11 @@ package com.soapsnake.pattern.creationals.singleton;
 public class SingleTester {
 
     public static void main(String[] args) {
+
         SingletonClass singletonClass = SingletonClass.getInstance();
 
         System.out.println(singletonClass);
+        System.out.println(singletonClass.test);
 
         SingletonClass singletonClass1 = SingletonClass.getInstance();
 

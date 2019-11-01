@@ -54,4 +54,34 @@ public class Question33 {
         int target = 2;
         System.out.println(question33.search(nums, target));  //should be 4
     }
+
+    //旋转数组的二分查找,所谓旋转数组,就是原来一个有序的数组现在被强制截断然后重新组合
+    public int search2(int[] nums, int target) {
+        int left = 0;
+        int right = nums.length - 1;
+        while (right >= left) {
+            int midIndex = left + (right - left) / 2;
+            if (nums[midIndex] == target) {
+                return midIndex;
+            }
+
+            //左半分区的完整二分查找
+            if (nums[left] <= nums[midIndex]){
+                if (target < nums[midIndex] && target >= nums[left])
+                    right = midIndex - 1;
+                else
+                    left = midIndex + 1;
+            }
+
+            //右半分区的完整二分查找
+            if (nums[midIndex] <= nums[right]){
+                if (target > nums[midIndex] && target <= nums[right])
+                    left = midIndex + 1;
+                else
+                    right = midIndex - 1;
+            }
+        }
+        return -1 ;
+    }
+
 }

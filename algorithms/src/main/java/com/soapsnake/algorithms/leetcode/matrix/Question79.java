@@ -6,6 +6,8 @@ package com.soapsnake.algorithms.leetcode.matrix;
  */
 public class Question79 {
 
+    public int test = 1;
+
     /**
      * Example:
      * board =
@@ -19,6 +21,7 @@ public class Question79 {
      * Given word = "ABCB", return false.
      */
     public boolean exist(char[][] board, String word) {
+        int test = 2;
         visited = new boolean[board.length][board[0].length];
         for(int i = 0; i < board.length; i++){
             for(int j = 0; j < board[i].length; j++){
@@ -54,9 +57,11 @@ public class Question79 {
 
     public static void main(String[] args) {
         Question79 question79 = new Question79();
+        System.out.println(question79.test);
         char[][] board = {{'A','B','C','E'},{'S','F','C','S'},{'A','D','E','E'}};
         String str = "ABCCED";
         System.out.println(question79.exist(board, str));
+        System.out.println(question79.test);
 
 
     }

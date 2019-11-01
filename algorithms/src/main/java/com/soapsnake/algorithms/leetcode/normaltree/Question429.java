@@ -13,7 +13,6 @@ import java.util.Queue;
 class Question429 {
 
     public List<List<Integer>> levelOrder(Node root) {
-
         if (root == null) {
             return new ArrayList<>();
         }

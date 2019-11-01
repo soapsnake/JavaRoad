@@ -36,6 +36,26 @@ class Question543 {
 
         //关键:每一次都需要比较最大距离
         max = Math.max(max, left + right);
-        return (left > right ? left : right) + 1;
+        return (Math.max(left, right)) + 1;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

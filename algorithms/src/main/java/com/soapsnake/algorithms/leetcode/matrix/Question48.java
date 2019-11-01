@@ -34,7 +34,23 @@ public class Question48 {
 
         //转置
         this.transPose(matrix);
+    }
 
+    //二阶矩阵行上下翻转标准细写法
+    private int[][] reverseRow(int[][] matrix) {
+        for (int i = 0; i < matrix.length; i++) {
+            int len = matrix[i].length;
+            int high = 0;
+            int low = len - 1;
+            while (high < low) {
+                int temp =  matrix[high][i];
+                matrix[high][i] = matrix[low][i];
+                matrix[low][i] = temp;
+                high++;
+                low--;
+            }
+        }
+        return matrix;
     }
 
     //二阶矩阵转置标准写法
@@ -56,20 +72,4 @@ public class Question48 {
         System.out.println(Arrays.deepToString(question48.reverseRow(matrix)));
     }
 
-    //二阶矩阵行上下翻转标准细写法
-    private int[][] reverseRow(int[][] matrix) {
-        for (int i = 0; i < matrix.length; i++) {
-            int len = matrix[i].length;
-                int high = 0;
-                int low = len - 1;
-                while (high < low) {
-                       int temp =  matrix[high][i];
-                       matrix[high][i] = matrix[low][i];
-                       matrix[low][i] = temp;
-                       high++;
-                       low--;
-                }
-            }
-        return matrix;
-    }
 }
