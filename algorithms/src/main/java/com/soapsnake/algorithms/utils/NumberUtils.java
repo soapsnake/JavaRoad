@@ -5,6 +5,7 @@ import org.apache.commons.lang3.RandomUtils;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 
 public class NumberUtils {
 
@@ -23,13 +24,13 @@ public class NumberUtils {
      * @param size
      * @return
      */
-    public static Collection<Integer> batchGenNonDup(int size) {
+    public static List<Integer> batchGenNonDup(int size) {
         Collection<Integer> collection = new HashSet<>(size);
         while (collection.size() < size) {
             int number = RandomUtils.nextInt(1, 100);
             collection.add(number);
         }
-        return collection;
+        return new ArrayList<>(collection);
     }
 
 

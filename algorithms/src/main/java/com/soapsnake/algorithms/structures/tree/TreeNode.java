@@ -69,11 +69,11 @@ public class TreeNode {
 
     /**
      * 二叉搜索树
-     * 5
-     * / \
-     * 3   6
-     * /\    \
-     * 2  4    7
+     *       5
+     *      / \
+     *     3   6
+     *     /\    \
+     *    2  4    7
      */
     public static TreeNode makeBinerSearchTree() {
         TreeNode root = new TreeNode(5);
@@ -216,13 +216,13 @@ public class TreeNode {
 
     /**
      * 437题的二叉树
-     * 10
-     * /  \
-     * 5   -3
-     * / \    \
-     * 3   2   11
-     * / \   \
-     * 3  -2   1
+     *           10
+     *          /  \
+     *         5   -3
+     *        / \    \
+     *      3   2     11
+     *     / \   \
+     *    3  -2   1
      */
     public static TreeNode makeNormalTreeFor437() {
         TreeNode root = new TreeNode(10);

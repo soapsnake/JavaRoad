@@ -1,6 +1,7 @@
 package com.soapsnake.algorithms.alib;
 
 import com.soapsnake.algorithms.structures.list.ListNode;
+import org.junit.Test;
 
 public class ListTester {
 
@@ -92,5 +93,61 @@ public class ListTester {
             cur = next;
         }
         return fakeHead.next;
+    }
+
+
+    //合并两个排序的链表
+    public ListNode mergeList(ListNode list1, ListNode list2) {
+        if (list1 == null && list2 == null) {
+            return null;
+        }
+        if (list1 == null) {
+            return list2;
+        }
+        if (list2 == null) {
+            return list1;
+        }
+        ListNode fakehead = new ListNode(0);
+        ListNode cur = fakehead;
+        while (list1 != null && list2 != null) {
+            if (list1.val <= list2.val) {
+                cur.next = list1;
+                list1 = list1.next;
+            } else {
+                cur.next = list2;
+                list2 = list2.next;
+            }
+            cur = cur.next;
+        }
+        if (list1 != null) {
+            cur.next = list1;
+        }
+        if (list2 != null) {
+            cur.next = list2;
+        }
+        return fakehead.next;
+    }
+
+    public ListNode mergeList2(ListNode list1, ListNode list2) {
+        if (list1 == null) {
+            return list2;
+        }
+        if (list2 == null) {
+            return list1;
+        }
+        if (list1.val <= list2.val) {
+            list1.next = mergeList2(list1.next,list2);
+            return list1;
+        } else {
+            list2.next = mergeList2(list2.next, list1);
+            return list2;
+        }
+    }
+        @Test
+    public void testMergeList() {
+        ListNode list1 = ListNode.makeTestListFor61();
+        ListNode list2 = ListNode.makeTestListFor82();
+        ListNode newList = mergeList2(list1, list2);
+        ListNode.printListNode(newList);
     }
 }

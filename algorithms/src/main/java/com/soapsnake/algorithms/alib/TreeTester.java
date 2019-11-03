@@ -18,6 +18,48 @@ public class TreeTester {
         Node.layerPrint(treeTester.makeTree());
     }
 
+    @Test
+    public void testPreOrder() {
+        postOrder2(TreeNode.makeBinerSearchTree());
+    }
+
+    //先序遍历,先根节点,然后左孩,然后右孩
+    public void preOrder(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        System.out.print(root.val + " -> ");
+        preOrder(root.left);
+        preOrder(root.right);
+    }
+
+    //中序遍历,先左孩,然后根,然后右节点
+    public void inOrder(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        inOrder(root.left);
+        System.out.print(root.val + " -> ");
+        inOrder(root.right);
+    }
+
+    //后序遍历,先左孩,然后右孩,最后根
+    public List<Integer> postOrder(TreeNode root) {
+        postOrder2(root);
+        return postlist;
+    }
+    public void postOrder2(TreeNode root) {
+        if (root == null){
+            return;
+        }
+        postOrder2(root.left);
+        postOrder2(root.right);
+        System.out.print(root.val + " -> ");
+        postlist.add(root.val);
+    }
+    List<Integer> postlist = new ArrayList<>();
+
+
     public Node makeTree() {
         int layer = rand();
         Node root = new Node(rand());
@@ -47,11 +89,6 @@ public class TreeTester {
         if (root == null) {
             return 0;
         }
-        if (root.left == null && root.right == null) {
-            //到这里说明root不为null, 但是root是叶节点了
-            return 1;
-        }
-
         int left = findMaxRange(root.left);
         int right = findMaxRange(root.right);
         max = Math.max(left + right, max);
@@ -60,7 +97,7 @@ public class TreeTester {
 
     @Test
     public void testFindMaxrange() {
-        System.out.println(findMaxRange(TreeNode.makeNormalTreeFor236()));
+        System.out.println(findMaxRange(TreeNode.makeNormalTreeFor129()));
     }
 
 

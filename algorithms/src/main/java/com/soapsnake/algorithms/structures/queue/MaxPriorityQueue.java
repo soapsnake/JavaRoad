@@ -6,7 +6,9 @@ import java.util.Arrays;
 import java.util.Collection;
 
 /**
- * 大顶堆
+ * 大顶堆, 大顶堆可以用来解决最小k个数的问题
+ * 在运算的过程中,大顶堆的顶部一定是算到目前为止的最大数字,比如我大顶堆大小为10,如果有10000个数字,如果
+ * 从头开始运算,如果第一个数字就是这10000个数字里面最大的数字,那么大顶堆的顶部将永远是这个数字
  *
  * @param <K>
  */
@@ -29,7 +31,7 @@ public class MaxPriorityQueue<K extends Comparable<K>> implements PriorityQueue<
      *
      * @param max
      */
-    public MaxPriorityQueue(int max) {
+    public MaxPriorityQueue(int max) {  //max应该是大顶堆的最大容量
         //学着点泛型数组的创建方式
         //数组元素从1开始,0位留空
 
@@ -57,7 +59,7 @@ public class MaxPriorityQueue<K extends Comparable<K>> implements PriorityQueue<
 
     public static void main(String[] args) {
         MaxPriorityQueue<Integer> queue = new MaxPriorityQueue<>(10);
-        Collection<Integer> numbers = NumberUtils.batchGenNonDup(10);
+        Collection<Integer> numbers = NumberUtils.batchGenNonDup(20);
         for (Integer i : numbers) {
             System.out.println("will insert = " + i);
             queue.insert(i);
@@ -87,11 +89,15 @@ public class MaxPriorityQueue<K extends Comparable<K>> implements PriorityQueue<
     }
 
     K max() {
-        return this.pq[1];
+        return this.pq[1];   //堆顶的元素永远最大
     }
 
     /**
      * return and remove the largest key
+     *
+     * 这个接口到底干嘛用的: 当insert插入完待排序的元素后,我们的大顶堆就已经是堆有序的了,此时调这个delMax挨个把元素从
+     * 大顶堆当中取出来比如放进一个ArrayList,那么这个ArrayList当中的数字就是有序的了
+     *
      */
     public K delMax() {
         K max = pq[1];   // 堆顶的元素永远是最大的,这里用max缓存起来,方便后面返回
@@ -110,7 +116,7 @@ public class MaxPriorityQueue<K extends Comparable<K>> implements PriorityQueue<
     @Override
     //新插入的元素是插入到数组的最后的,也就是处于树的最低端,如果是比较大的数字可能需要上浮
     public void insert(K k) {
-        this.pq[++n] = k;
+        this.pq[++n] = k;   //如果插入元素后超过了最大容量了????
         this.swim(n);
     }
 
@@ -136,7 +142,7 @@ public class MaxPriorityQueue<K extends Comparable<K>> implements PriorityQueue<
         while (2 * i <= n) {
             int j = 2 * i;    //i元素的左子节点
             if (j < n && this.lessThan(j, j + 1)) {  //我们的j指针应该指向比较大的那个子节点
-                j++;
+                j++;  //j在两个子节点上移动,指向比较大的那个
             }
             if (!this.lessThan(i, j)) { //父节点的值已经比子节点的值大的情况下就没必要继续算了
                 break;
@@ -167,5 +173,11 @@ public class MaxPriorityQueue<K extends Comparable<K>> implements PriorityQueue<
     @Override
     public int size() {
         return this.n;
+    }
+
+    //新加元素与堆顶比较,如果比堆顶小,那么交换堆顶,然后下沉堆顶
+    @Override
+    public void addMore(K k) {
+
     }
 }
