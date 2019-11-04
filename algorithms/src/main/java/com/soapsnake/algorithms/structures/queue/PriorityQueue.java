@@ -7,12 +7,11 @@ package com.soapsnake.algorithms.structures.queue;
 public interface PriorityQueue<T extends Comparable<T>> {
 
     /**
-     * 往优先级队列插入数据
+     * 往优先级队列插入数据,没满插入,满则和堆顶比较是要插入还是丢弃
      *
      * @param t
      */
     void insert(T t);
-
 
     /**
      * 是否为空
@@ -29,9 +28,9 @@ public interface PriorityQueue<T extends Comparable<T>> {
     int size();
 
     /**
-     * topK问题所用接口,如果超过了容量,再向堆中添加数据,就需要和堆顶比较,这里
-     * 最小堆和最大堆是不一样的,需要分情况
-     * @param t
+     * 输出排序后的结果
+     *
+     * @return
      */
-    void addMore(T t);
+    T[] sort();
 }

@@ -73,7 +73,7 @@ public class IndexMinPQ<K extends Comparable<K>> implements PriorityQueue<K> {
     }
 
     @Override
-    public void addMore(K k) {
-
+    public K[] sort() {
+        return null;
     }
 }
