@@ -1,4 +1,4 @@
-package com.soapsnake.algorithms.structures.queue;
+package com.soapsnake.algorithms.structures.queue.normal;
 
 import java.util.Stack;
 

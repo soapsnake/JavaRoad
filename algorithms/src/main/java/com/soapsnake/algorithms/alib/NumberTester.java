@@ -1,6 +1,6 @@
 package com.soapsnake.algorithms.alib;
 
-public class IntUtils {
+public class NumberTester {
 
     int maxLen = 0;
     int left = 0;
@@ -68,7 +68,7 @@ public class IntUtils {
 
 //		System.out.println(revertNum(1));
 
-        IntUtils utils = new IntUtils();
+        NumberTester utils = new NumberTester();
 //		System.out.println(utils.findMaxSub("babad"));
         int[] arr = {0, 2, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 18};
         System.out.println(binerSearchIter(arr, 100));

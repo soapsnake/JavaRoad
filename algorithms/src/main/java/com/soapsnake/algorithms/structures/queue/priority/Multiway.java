@@ -1,4 +1,4 @@
-package com.soapsnake.algorithms.structures.queue;
+package com.soapsnake.algorithms.structures.queue.priority;
 
 import org.apache.commons.lang3.RandomStringUtils;
 

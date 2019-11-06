@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-public class KMPtest {
+public class KMPtester {
 
     public static boolean kmpMatch(String s, String p) {
         //找出s中是否有完全匹配p的字串

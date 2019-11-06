@@ -2,9 +2,7 @@ package com.soapsnake.algorithms.alib;
 
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class ArraysTester {
 
@@ -122,6 +120,45 @@ public class ArraysTester {
         int[] dest = {1, 23, 4, 78, 24, 23, 12, 8, 19, 7, 5};
         fastSort(dest);
         System.out.println(Arrays.toString(dest));
+
+
+        List<String> list = new ArrayList<>();
+        list.add("小明");
+        list.add("小刚");
+        list.add("小红");
+        List<String> list1 = Arrays.asList("小明", "小红");
+        list.removeAll(list1);
+        System.out.println(list);
     }
+
+    //求子数组的最大和
+    public static int maxSubArr(int[] arr) {
+        //思路:只有在一种情况下是需要重新制定开始指针的:和小于0的时候,其他情况都应该继续累加
+
+        if (arr == null || arr.length == 0) {
+            return 0;
+        }
+        int total = 0;
+        int max = Integer.MIN_VALUE;
+        for (int i = 0; i < arr.length; i++) {
+            int cur = total + arr[i];
+            if (cur < 0) {
+                total = 0;
+            } else {
+                total += arr[i];
+                if (total > max) {
+                    max = total;
+                }
+            }
+        }
+        return max;
+    }
+    @Test
+    public void testMaxSub() {
+        int[] arr = {1, -2, 3, 10, -4, 7, 2, -5};
+        System.out.println(maxSubArr(arr));
+    }
+
+
 
 }

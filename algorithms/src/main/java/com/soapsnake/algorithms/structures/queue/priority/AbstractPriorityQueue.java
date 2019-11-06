@@ -1,4 +1,4 @@
-package com.soapsnake.algorithms.structures.queue;
+package com.soapsnake.algorithms.structures.queue.priority;
 
 public abstract class AbstractPriorityQueue<T extends Comparable<T>> implements PriorityQueue<T> {
     protected T[] pq;

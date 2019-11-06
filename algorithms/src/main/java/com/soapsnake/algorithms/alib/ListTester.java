@@ -150,4 +150,21 @@ public class ListTester {
         ListNode newList = mergeList2(list1, list2);
         ListNode.printListNode(newList);
     }
+
+    //判断两个链表是否相交
+    public static boolean isFuckedList(ListNode list1, ListNode list2) {
+        ListNode cur1 = list1;
+        while (cur1 != null) {
+
+            ListNode cur2 = list2;
+            while (cur2 != null) {
+                if (cur1.next == cur2) {
+                    return true;
+                }
+                cur2 = cur2.next;
+            }
+            cur1 = cur1.next;
+        }
+        return false;
+    }
 }

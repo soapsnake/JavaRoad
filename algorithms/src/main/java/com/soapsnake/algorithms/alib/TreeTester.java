@@ -1,12 +1,15 @@
 package com.soapsnake.algorithms.alib;
 
+import com.soapsnake.algorithms.structures.list.ListNode;
 import com.soapsnake.algorithms.structures.tree.Node;
 import com.soapsnake.algorithms.structures.tree.TreeNode;
 import org.apache.commons.lang3.RandomUtils;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 public class TreeTester {
 
@@ -98,6 +101,98 @@ public class TreeTester {
     @Test
     public void testFindMaxrange() {
         System.out.println(findMaxRange(TreeNode.makeNormalTreeFor129()));
+    }
+
+    ListNode fakehead = new ListNode();
+    ListNode cur = fakehead;
+    //二叉查找树转排序链表
+    public ListNode treeToList(TreeNode root) {
+        //二叉查找树的中序遍历结果一定是有序的!!!!!
+        TreeNode.layerTravse(root);
+        dfsTree(root);
+        return fakehead.next;
+    }
+
+    private void dfsTree(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        dfsTree(root.left);
+        cur.next = new ListNode(root.val);
+        cur = cur.next;
+        dfsTree(root.right);
+    }
+
+    //二叉树找到所有和为指定值的路径
+    public static List<List<Integer>> findAllSum(TreeNode root, int sum) {
+        //思路: dfs算法:
+        List<List<Integer>> res = new ArrayList<>();
+        if (root == null) {
+            return res;
+        }
+        dfsTree2(root, sum, res, new ArrayList<>());
+        for (List list : res) {
+            System.out.println("res = " + list);
+        }
+        return res;
+    }
+
+    private static void dfsTree2(TreeNode parent, int remain, List<List<Integer>> res, List<Integer> tmp) {
+        System.out.println("remaiin = " + remain);
+        if (remain < 0) {
+            return;
+        } else if (remain == 0) {
+            res.add(new ArrayList<>(tmp));
+        } else {
+            if (parent.left == null && parent.right == null) {
+                return;
+            }
+            tmp.add(parent.val);
+            dfsTree2(parent.left != null ? parent.left : parent.right, remain - parent.val, res, tmp);
+        }
+    }
+
+    public static List<List<TreeNode>> layerTravse(TreeNode root) {
+        if (root == null) {
+            return new ArrayList<>();
+        }
+        List<List<TreeNode>> res = new ArrayList<>();
+        List<TreeNode> lines = null;
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+
+        while (!queue.isEmpty()) {
+            lines = new ArrayList<>();
+            while (!queue.isEmpty()) {
+                TreeNode node = queue.poll();
+                lines.add(node);
+            }
+
+            for (TreeNode node : lines) {
+                if (node.left != null) {
+                    queue.add(node.left);
+                }
+                if (node.right != null) {
+                    queue.add(node.right);
+                }
+            }
+            res.add(lines);
+        }
+        return res;
+    }
+    @Test
+    public void testfindAllSum() {
+        System.out.println(findAllSum(TreeNode.makeNormalTreeFor437(), 18));
+    }
+
+    @Test
+    public void testlayerTravse() {
+
+        List<List<TreeNode>> lists = layerTravse(TreeNode.makeBinerSearchTree());
+
+        for (List list : lists) {
+            System.out.println(list);
+        }
     }
 
 

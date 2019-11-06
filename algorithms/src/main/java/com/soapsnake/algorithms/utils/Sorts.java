@@ -1,6 +1,6 @@
 package com.soapsnake.algorithms.utils;
 
-import com.soapsnake.algorithms.structures.queue.MaxPriorityQueue;
+import com.soapsnake.algorithms.structures.queue.priority.MaxPriorityQueue;
 
 import java.util.ArrayList;
 import java.util.Arrays;
