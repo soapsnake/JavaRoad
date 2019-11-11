@@ -1,4 +1,4 @@
-package com.soapsnake.algorithms.structures.graph;
+package com.soapsnake.algorithms.structures.graph.search;
 
 import java.util.List;
 

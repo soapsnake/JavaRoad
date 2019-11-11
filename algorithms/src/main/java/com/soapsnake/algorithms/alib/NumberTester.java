@@ -4,10 +4,8 @@ public class NumberTester {
 
     int maxLen = 0;
     int left = 0;
-
-    //求字符串“efabcbaefehiabcba”中最长的回文数，不去重（美团）
     int right = 0;
-
+    int mid = 1, fin = 0;
     public static int strToInt(String str) {
         if (str == null || "".equals(str)) {
             return 0;
@@ -71,47 +69,9 @@ public class NumberTester {
         NumberTester utils = new NumberTester();
 //		System.out.println(utils.findMaxSub("babad"));
         int[] arr = {0, 2, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 18};
-        System.out.println(binerSearchIter(arr, 100));
     }
 
-    public static int binerSearchIter(int[] arr, int tar) {
-        if (arr.length == 0) {
-            return -1;
-        }
-//		return binerSearchIter(arr, 0, arr.length - 1, tar);
-        return binerSearchWhile(arr, tar);
-    }
-
-    private static int binerSearchWhile(int[] arr, int tar) {
-        int left = 0;
-        int right = arr.length - 1;
-        while (right >= left) {
-            int midIndex = left + (right - left) / 2;
-            if (arr[midIndex] == tar) {
-                return midIndex;
-            } else if (arr[midIndex] > tar) {
-                right = midIndex - 1;
-            } else {
-                left = midIndex + 1;
-            }
-        }
-        return -1;
-    }
-
-    private static int binerSearchIter(int[] arr, int left, int right, int tar) {
-        if (left > right) {
-            return -1;
-        }
-        int midIndex = left + (right - left) / 2;
-        if (arr[midIndex] == tar) {
-            return midIndex;
-        } else if (arr[midIndex] > tar) {
-            return binerSearchIter(arr, left, midIndex - 1, tar);
-        } else {
-            return binerSearchIter(arr, midIndex + 1, right, tar);
-        }
-    }
-
+    //求字符串“efabcbaefehiabcba”中最长的回文数，不去重（美团）
     public String findMaxSub(String string) {
         if (string == null || string.equals("")) {
             return string;
@@ -150,5 +110,21 @@ public class NumberTester {
             left = i;
             right = j;
         }
+    }
+
+    /**
+     * 30.在从1到n的正数中1出现的次数
+     * 题目：输入一个整数n，求从1到n这n个整数的十进制表示中1出现的次数。
+     * 例如输入12，从1到12这些整数中包含1 的数字有1，10，11和12，1一共出现了5次。
+     * 分析：这是一道广为流传的google面试题。
+     */
+    public int count1(int n) {
+        //思路:罗列所有数字,挨个遍历,单独写个方法判断数字中包含1的个数,有一定规律:
+        //感觉有一定难度
+        //1,
+        //11, 21 ,31....
+        //100, 101,  110,111, 120,121...130,131
+
+        return 0;
     }
 }

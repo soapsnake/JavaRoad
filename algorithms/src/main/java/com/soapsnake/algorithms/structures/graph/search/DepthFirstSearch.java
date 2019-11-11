@@ -1,4 +1,7 @@
-package com.soapsnake.algorithms.structures.graph;
+package com.soapsnake.algorithms.structures.graph.search;
+
+import com.soapsnake.algorithms.structures.graph.Graph;
+import com.soapsnake.algorithms.structures.graph.undirect.UndirectGraph;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,29 +14,29 @@ import java.util.Stack;
  * 3. 如果s - v 连通,找出连通的路径
  */
 public class DepthFirstSearch implements GraphSearch {
-    private final Graph graph;
+    private final UndirectGraph undirectGraph;
     private final int source;
     private boolean[] marked;
     private int count;
     private int[] edgeTO;     //这个数组的索引代表了边终点,值代表了边起点,例如s -> v 就是 edgeTo[v] = s
 
     //这个构造方法很奇特,调用这个构造方法后生成的对象,已经完成了DFS,与指定source连通的所有端点都会被标记
-    public DepthFirstSearch(Graph graph, int source) {
-        this.graph = graph;
+    public DepthFirstSearch(UndirectGraph undirectGraph, int source) {
+        this.undirectGraph = undirectGraph;
         this.source = source;
-        marked = new boolean[graph.getV()];  //数组的长度为图的所有顶点数
-        edgeTO = new int[graph.getV()];
-        dfs(graph, source);
+        marked = new boolean[undirectGraph.getV()];  //数组的长度为图的所有顶点数
+        edgeTO = new int[undirectGraph.getV()];
+        dfs(undirectGraph, source);
     }
 
     //dfs的思路是我要尽快完成搜索任务,所以,只要找到一条可以连通的路径就行了
-    private void dfs(Graph graph, int source) {
+    private void dfs(UndirectGraph undirectGraph, int source) {
         marked[source] = true;
         count++;
-        for (int w : graph.adj(source)) {  //遍历所有与source邻接的点
+        for (int w : undirectGraph.adj(source)) {  //遍历所有与source邻接的点
             if (!marked[w]) {   //如果发现还没有被标记过的点(之前没有访问过),这里如果和w有很多连通的点,那么只会选其中的一条
                 edgeTO[w] = source;    // source -> w
-                dfs(graph, w);   //那就连到该点上,继续搜索
+                dfs(undirectGraph, w);   //那就连到该点上,继续搜索
             }
         }
     }
@@ -70,7 +73,7 @@ public class DepthFirstSearch implements GraphSearch {
             return;
         }
 
-        for (int tar : graph.adj(s)) {
+        for (int tar : undirectGraph.adj(s)) {
             if (tmp.contains(tar)) {
                 continue;
             }

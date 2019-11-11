@@ -1,4 +1,6 @@
-package com.soapsnake.algorithms.structures.graph;
+package com.soapsnake.algorithms.structures.graph.search;
+
+import com.soapsnake.algorithms.structures.graph.undirect.UndirectGraph;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -10,24 +12,22 @@ public class BreadthFirstSearch implements GraphSearch {
     private final int source;
     private boolean[] marked;
     private int[] edgeTo;
-    private Graph graph;
 
-    public BreadthFirstSearch(Graph graph, int source) {  //传入的graph已经构造完邻接表
-        this.graph = graph;
-        marked = new boolean[graph.getV()];
-        edgeTo = new int[graph.getV()];
+    public BreadthFirstSearch(UndirectGraph undirectGraph, int source) {  //传入的graph已经构造完邻接表
+        marked = new boolean[undirectGraph.getV()];
+        edgeTo = new int[undirectGraph.getV()];
         this.source = source;
-        bfs(graph, source);  //意义何在?纯粹就是标记下哪些点可以到达吗?
+        bfs(undirectGraph, source);  //意义何在?纯粹就是标记下哪些点可以到达吗?
     }
 
     //bfs和dfs最大的区别,就是bfs会遍历所有和source连通的点,所有可以连通的路径都会走到
-    private void bfs(Graph graph, int source) {
+    private void bfs(UndirectGraph undirectGraph, int source) {
         Queue<Integer> queue = new LinkedList<>();  //队列
         marked[source] = true;
         queue.add(source);
         while (!queue.isEmpty()) {
             int v = queue.poll();  //取出并删除队头
-            for (int w : graph.adj(v)) {   //graph.adj(v)返回所有从v出发可以到达的点
+            for (int w : undirectGraph.adj(v)) {   //graph.adj(v)返回所有从v出发可以到达的点
                 if (!marked[w]) {
                     edgeTo[w] = v;  //v -> w
                     marked[w] = true;  //标记w被访问了(可达)

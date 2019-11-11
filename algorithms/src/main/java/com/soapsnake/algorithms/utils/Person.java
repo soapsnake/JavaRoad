@@ -10,6 +10,11 @@ public class Person {
         ++person.age;
         System.out.println(person.age);
 
+        Person a = new Person();
+        Person b = new Person();
+
+        int res = a.x(b);
+
     }
 
     public int getAge() {
@@ -26,5 +31,9 @@ public class Person {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int x(Person person) {
+        return person.age;
     }
 }

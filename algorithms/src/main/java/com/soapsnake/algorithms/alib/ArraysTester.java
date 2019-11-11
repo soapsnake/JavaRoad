@@ -159,6 +159,74 @@ public class ArraysTester {
         System.out.println(maxSubArr(arr));
     }
 
+    //递归版二分
+    public static int binerSearchIter(int[] arr, int tar) {
+        if (arr.length == 0) {
+            return -1;
+        }
+//		return binerSearchIter(arr, 0, arr.length - 1, tar);
+        return binerSearchWhile(arr, tar);
+    }
+
+    private static int binerSearchWhile(int[] arr, int tar) {
+        int left = 0;
+        int right = arr.length - 1;
+        while (right >= left) {
+            int midIndex = left + (right - left) / 2;
+            if (arr[midIndex] == tar) {
+                return midIndex;
+            } else if (arr[midIndex] > tar) {
+                right = midIndex - 1;
+            } else {
+                left = midIndex + 1;
+            }
+        }
+        return -1;
+    }
+
+    //迭代版二分
+    private static int binerSearchIter(int[] arr, int left, int right, int tar) {
+        if (left > right) {
+            return -1;
+        }
+        int midIndex = left + (right - left) / 2;
+        if (arr[midIndex] == tar) {
+            return midIndex;
+        } else if (arr[midIndex] > tar) {
+            return binerSearchIter(arr, left, midIndex - 1, tar);
+        } else {
+            return binerSearchIter(arr, midIndex + 1, right, tar);
+        }
+    }
+
+    /**
+     * 题目：在一个字符串中找到第一个只出现一次的字符。如输入abaccdeff，则输出b。
+     * 分析：这道题是2006年google的一道笔试题。
+     */
+    public Character findFirstAcure(String source) {
+        if (null == source || "".equals(source)) {
+            return 0;
+        }
+        if (source.length() == 1) {
+            return 1;
+        }
+        Map<Character, Integer> map = new TreeMap<>(); // char -> count
+        for (int i = 0; i < source.length(); i++) {
+            map.put(source.charAt(i), map.getOrDefault(source.charAt(i),0) + 1);
+        }
+        for (Map.Entry<Character, Integer> entry : map.entrySet()) {
+            if (entry.getValue() == 1) {
+                return entry.getKey();
+            }
+        }
+        return null;
+    }
+
+    @Test
+    public void testFindFirstAccure() {
+        String soure = "abaccdeff";
+        System.out.println(findFirstAcure(soure));
+    }
 
 
 }
