@@ -103,33 +103,4 @@ public class LargeNumberPlus {
 //        System.out.println(fabici(200));
     }
 
-    //判断树A是不是B的子树
-    public boolean isSubTree(TreeNode a, TreeNode b) {
-        if (a == null || b == null) {
-            return false;
-        }
-        return dfsTree(a, b);
-    }
-
-    private boolean dfsTree(TreeNode a, TreeNode b) {
-        if (a == null && b == null) {
-            return true;
-        } else if (a == null) {
-            return false;
-        } else if (b == null) {
-            return false;
-        } else if (a.val == b.val) {
-            return dfsTree(a.left, b.left) && dfsTree(a.right, b.right);
-        } else {
-            return dfsTree(a, b.left) || dfsTree(a, b.right);
-        }
-    }
-
-    @Test
-    public void testIsSubTree() {
-        TreeNode a = TreeNode.makeNormalTreeFor110();
-        TreeNode b = TreeNode.makeNormalTreeFor110v2();
-        System.out.println(isSubTree(b, a));
-    }
-
 }

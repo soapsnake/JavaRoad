@@ -1,5 +1,7 @@
 package com.soapsnake.algorithms.alib;
 
+import org.junit.Test;
+
 public class NumberTester {
 
     int maxLen = 0;
@@ -124,7 +126,30 @@ public class NumberTester {
         //1,
         //11, 21 ,31....
         //100, 101,  110,111, 120,121...130,131
+        // 1 ~ 100: 1+=10,10,100 ~ 200
+        int i = 1;
+        int count = 0;
+        while (i <= n) {
+            if (i < 10) {
+                count += 1;
+            } else if (i < 20) {
+                count += n - 10 + 2;
+            } else if (i < 100) {
+                count += 1;
+            } else if (i < 120) {
+                count += n - 110 + 2; //101,110,111
+            } else if (i < 200) {
+                count += 2;  // 121, 131, 141
+            } else if (i < 220) {
+                count += n - 210 + 2;
+            }
+            i += 10;
+        }
+        return count;
+    }
 
-        return 0;
+    @Test
+    public void testCount1() {
+        System.out.println(count1(12));
     }
 }

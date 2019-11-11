@@ -1,4 +1,4 @@
-package com.soapsnake.algorithms.design.oo.deckofcards.pojo;
+package com.soapsnake.algorithms.systemdesign.oo.deckofcards.pojo;
 
 /**
  * @Auther soapsnake@gmail.com
