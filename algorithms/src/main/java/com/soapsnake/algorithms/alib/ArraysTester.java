@@ -9,8 +9,9 @@ public class ArraysTester {
     //[1,1,2,2,3,4,4,5,5,5] 找出不重复的元素（黄包车）
 
     public static int findNotDup2(int[] arr) {
-        if (arr == null)
+        if (arr == null) {
             return 0;
+        }
         if (arr.length == 1) {
             return arr[0];
         }
@@ -24,8 +25,9 @@ public class ArraysTester {
     }
 
     public static int findNotDup(int[] arr) {
-        if (arr == null)
+        if (arr == null) {
             return 0;
+        }
         if (arr.length == 1) {
             return arr[0];
         }

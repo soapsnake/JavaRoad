@@ -22,10 +22,12 @@ class Question21 {
     }
 
     public ListNode mergeTwoLists2(ListNode l1head, ListNode l2head) {
-        if (l1head == null)
+        if (l1head == null) {
             return l2head;
-        if (l2head == null)
+        }
+        if (l2head == null) {
             return l1head;
+        }
         if (l1head.val <= l2head.val) {
             //l1比较小,所以l1是新链表的表头,那么只需要继续递归计算l1的下一个节点即可,l1的下一个节点只可能在l1的next和
             //l2的head当中产生
@@ -41,8 +43,12 @@ class Question21 {
     //递归版实现,我是想不出来这么好的解法
     public ListNode mergeTwoLists(ListNode l1head, ListNode l2head) {
         //鲁棒性
-        if (l1head == null) return l2head;
-        if (l2head == null) return l1head;
+        if (l1head == null) {
+            return l2head;
+        }
+        if (l2head == null) {
+            return l1head;
+        }
         if (l1head.val < l2head.val) {
             //假如l1链表头的值比l2链表头的值小,那么l1的链表头就是新链表的表头
             l1head.next = mergeTwoLists(l1head.next, l2head);

@@ -53,7 +53,7 @@ public class MaxPriorityQueue<K extends Comparable<K>> extends AbstractPriorityQ
     }
 
     //单例工厂方法
-    public static <K> MaxPriorityQueue buildMaxPQ(int size) {
+    public static <K> MaxPriorityQueue buildMaxPq(int size) {
         if (maxPriorityQueue == null) {
             synchronized (MaxPriorityQueue.class) {
                 maxPriorityQueue = new MaxPriorityQueue(size);
@@ -149,6 +149,7 @@ public class MaxPriorityQueue<K extends Comparable<K>> extends AbstractPriorityQ
     }
 
     //这个排序算法,由于要用到del方法,排序结束会清空pq,所以这里用了点技巧把pq缓存了起来,排序结束后再赋值回来
+    @Override
     @SuppressWarnings("unchecked")
     public K[] sort() {
         K[] backup = (K[]) new Comparable[super.LEN];

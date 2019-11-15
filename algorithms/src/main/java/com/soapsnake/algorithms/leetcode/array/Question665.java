@@ -8,13 +8,24 @@ import java.util.Arrays;
  */
 public class Question665 {
 
+    //    int count;
+    static int count = 3;
+
+    public Question665(int count) {
+//        this.count = count;
+    }
+
     public static void main(String[] args) {
-        Question665 question665 = new Question665();
+        Question665 question665 = new Question665(2);
         int[] nums = {4, 2, 3};
         System.out.println(question665.checkPossibility(nums));
     }
 
     public boolean checkPossibility(int[] nums) {
+        count = 1;
+        System.out.println("local = " + count);
+//        System.out.println("class = " + this.count);
+        System.out.println("static = " + Question665.count);
         if (nums == null) {
             return false;
         }

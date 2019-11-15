@@ -13,7 +13,9 @@ public class Question289 {
     }
 
     public void gameOfLife(int[][] board) {
-        if (board == null || board.length == 0) return;
+        if (board == null || board.length == 0) {
+            return;
+        }
         int m = board.length, n = board[0].length;
 
         for (int i = 0; i < m; i++) {
