@@ -17,6 +17,10 @@ public class Question60 {
         long start = System.currentTimeMillis();
         System.out.println(question60.getPermutation(n, k));
         System.out.println("时间 = " + (System.currentTimeMillis() - start));
+
+
+        System.out.println(Long.MAX_VALUE);
+
     }
 
     /**

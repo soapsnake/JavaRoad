@@ -53,7 +53,7 @@ public class Question113 {
 
         dfs(root.left, res, sum, temp);
         dfs(root.right, res, sum, temp);
-        temp.remove(temp.size() - 1); //其实最关键就是这步,有点类似于backtrace算法的思路
+        temp.remove(temp.size() - 1);
     }
 
 }

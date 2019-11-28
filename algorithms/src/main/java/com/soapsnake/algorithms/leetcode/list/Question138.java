@@ -36,7 +36,8 @@ public class Question138 {
             cache.get(newNode).random = cache.get(newNode.random);
             newNode = newNode.next;
         }
-        return cache.get(head);     //这一步其实更加容易错
+        //这一步其实更加容易错
+        return cache.get(head);
     }
 
     static class Node {

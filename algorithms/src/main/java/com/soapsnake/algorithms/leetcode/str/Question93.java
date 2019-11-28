@@ -29,13 +29,17 @@ public class Question93 {
     }
 
     private void dfsTree(String ip, List<String> solutions, int idx, String restored, int count) {
-        if (count > 4) return;
+        if (count > 4) {
+            return;
+        }
         if (count == 4 && idx == ip.length()) {
             solutions.add(restored);
         }
 
         for (int i = 1; i < 4; i++) {
-            if (idx + i > ip.length()) break;
+            if (idx + i > ip.length()) {
+                break;
+            }
             String s = ip.substring(idx, idx + i);
             if ((s.startsWith("0") && s.length() > 1) || (i == 3 && Integer.parseInt(s) >= 256)) {
                 continue;

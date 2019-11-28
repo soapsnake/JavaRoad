@@ -1,11 +1,15 @@
 package com.soapsnake.springboot.domain;
 
+import lombok.NonNull;
+
 /**
  * Created by soapsnake on 2017/6/3.
  */
 public class Contact {
 
     private long id;
+
+    @NonNull
     private String firstName;
     private String lastName;
     private String phoneNumber;

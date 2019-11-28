@@ -13,7 +13,6 @@ public class RandomTest {
         int gradient = Math.abs(upperLimit - lowLimit);
 //        System.out.println( Math.abs(random.nextLong() % gradient) + lowLimit);
 
-
 //        System.out.println((double)Math.round((random.nextDouble() *.5) *10)/10);
 
         double traceDiff = (double) Math.round((random.nextDouble() * .3) * 10) / 10;

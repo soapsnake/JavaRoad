@@ -44,7 +44,7 @@ public class Question129 {
         }
         if (root.left == null && root.right == null) {
             String total = path + root.val;
-            int totalInt = Integer.valueOf(total);
+            int totalInt = Integer.parseInt(total);
             sum += totalInt;
             return;
         }

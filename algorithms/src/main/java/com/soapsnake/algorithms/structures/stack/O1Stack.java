@@ -15,30 +15,6 @@ public class O1Stack {
         this.minList = new ArrayList<>();
     }
 
-    public static void main(String[] args) {
-        O1Stack stack = new O1Stack();
-        stack.push(1);
-        stack.push(2);
-        stack.push(123);
-        stack.push(17);
-        stack.push(10);
-        System.out.println("最小" + stack.minList);
-
-
-        stack.pop();
-        stack.pop();
-        stack.printStack();
-        System.out.println(stack.min());
-
-        System.out.println("最小" + stack.minList);
-        stack.pop();
-        stack.pop();
-        stack.pop();
-        System.out.println("最小" + stack.minList);
-        System.out.println(stack.min());
-        stack.printStack();
-    }
-
     /**
      * @return min of stack
      */
@@ -82,6 +58,30 @@ public class O1Stack {
         Integer res = items.remove(items.size() - 1);
         minList.remove(res);
         return res;
+    }
+
+    public static void main(String[] args) {
+        O1Stack stack = new O1Stack();
+        stack.push(1);
+        stack.push(2);
+        stack.push(123);
+        stack.push(17);
+        stack.push(10);
+        System.out.println("最小" + stack.minList);
+
+
+        stack.pop();
+        stack.pop();
+        stack.printStack();
+        System.out.println(stack.min());
+
+        System.out.println("最小" + stack.minList);
+        stack.pop();
+        stack.pop();
+        stack.pop();
+        System.out.println("最小" + stack.minList);
+        System.out.println(stack.min());
+        stack.printStack();
     }
 
     public void printStack() {

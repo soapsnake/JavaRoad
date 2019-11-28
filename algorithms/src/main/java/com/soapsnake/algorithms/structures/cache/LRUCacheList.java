@@ -15,6 +15,7 @@ public class LRUCacheList implements Cache {
         this.limit = capacity;
     }
 
+    @Override
     public int get(int key) {
         int res = -1;
         Iterator<Node> iterator = this.list.iterator();
@@ -34,6 +35,7 @@ public class LRUCacheList implements Cache {
         return res;
     }
 
+    @Override
     public void put(int key, int value) {
         int old = this.get(key); //如果存在这个旧Node会被移动到链表尾
         if (old == -1) {

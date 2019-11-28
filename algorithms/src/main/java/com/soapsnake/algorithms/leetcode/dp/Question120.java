@@ -1,6 +1,7 @@
 package com.soapsnake.algorithms.leetcode.dp;
 
 import java.util.List;
+import java.util.jar.JarEntry;
 
 /**
  * @Auther soapsnake@gmail.com
@@ -26,6 +27,20 @@ public class Question120 {
             }
         }
         return triangle.get(0).get(0);
+    }
+
+    //求金字塔顶到塔底的最小路径和
+    public int minimumTotal2(List<List<Integer>> trangle) {
+        for (int i = trangle.size() - 2; i >= 0; i--) {
+            for (int j = 0; j <= i; j++) {
+                //第i行第j个元素的最小值,应该等于第i + 1行第j个元素和第j+ 1个元素中较小的那个数
+                int min = Math.min(trangle.get(i + 1).get(j), trangle.get(i + 1).get(j + 1));
+
+                //把这个最小值放进i行第j个元素当中,那么第i - 1行就可以根据第i的结果进行计算,层层往上,就可以算出第0层的最小值
+                trangle.get(i).set(j, trangle.get(i).get(j) + min);
+            }
+        }
+        return trangle.get(0).get(0);
     }
 
 }
