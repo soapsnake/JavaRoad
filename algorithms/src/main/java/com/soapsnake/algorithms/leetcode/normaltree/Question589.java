@@ -12,8 +12,6 @@ class Question589 {
     private List<Integer> res = new ArrayList<>();
 
     public static void main(String[] args) {
-
-
         Node node5 = new Node(5, null);
         Node node6 = new Node(6, null);
         List<Node> node3children = Arrays.asList(node5, node6);
@@ -66,5 +64,25 @@ class Question589 {
         }
         return list;
     }
+
+    public List<Integer> preOrder3(Node root) {
+        List<Integer> list = new ArrayList<>();
+        if (root == null) {
+            return list;
+        }
+        Stack<Node> stack = new Stack<>();
+        stack.push(root);
+        while (!stack.empty()) {
+            root = stack.pop();
+            list.add(root.val);
+            if (root.children != null) {
+                for (int i = root.children.size() - 1; i >= 0; i--) {
+                    stack.push(root.children.get(i));
+                }
+            }
+        }
+        return list;
+    }
+
 
 }

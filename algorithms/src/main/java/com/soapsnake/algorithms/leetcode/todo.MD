@@ -19,7 +19,8 @@
 ## 刷题发现的一些有意思的东西
 - 2019.5.16达到250题
 - 2019.3.19达到200题
-- ">>n"相当于除以2的n次方, "<<n"相当于除以2的n次方
+- 2019.12.3达到300题
+- ">> n"相当于除以2的n次方, "<< n"相当于除以2的n次方
 - 假如A*B,如何获取其结果是正还是负: res = A > 0 == B > 0 ? "+" : "-";
 - 类似List<List<E>> 这种结构,如果内层的list的值变化,外层的List的值也会跟着变化,如果内层list会一直变,推荐用new ArrayList(内层list)复制一下后再塞到外层list
 - 所有开源项目阅读源码的分支为: kevin_read_source
@@ -33,13 +34,13 @@
 - 判断字符是否'a'~'z'或者'A'~'Z'(英语字母): Character.isLetter(c), 判断字符是数字:Character.isDigit(c)
 - idea进入debug时"Finished,saving caches"卡住的解决办法:https://stackoverflow.com/questions/20658400/intellij-idea-hangs-while-finished-saving-caches
 - Array转List最有效的办法是Arrays.asList();
-- char[]转string最有效的办法是String.valueOf(char[]);
-- 字符串List转数组最有效的办法是list.toArray(new String[0]);
-- Integer型(int就不行)List转数组最有效办法是list.toArray(new Integer[0]),不能使用基本类型;
+- char\[]转string最有效的办法是String.valueOf(char\[]);
+- 字符串List转数组最有效的办法是list.toArray(new String\[0]);
+- Integer型(int就不行)List转数组最有效办法是list.toArray(new Integer\[0]),不能使用基本类型;
 - 某字符串包含某个字符用str.contains(c + "");
 - 字符串去掉某个字符应该用str.replace("#", "")双引号而非单引;
 - 取余运算(%)效率比较低,特别极端情况下应避免;
-- 如何创建一维的二维数组: int[][] dest = new int\[length]\[1];
+- 如何创建一维的二维数组: int\[][] dest = new int\[length]\[1];
 - 同样的实现(比如二分查找),迭代花的时间比递归要长,一种说法是函数调用开销比较大;
 - 二分查找,中位数的取法:int mid = left + (right - left) /2,要注意mid能不能取到边界索引(0和length-1);
 - ArrayList节点,LinkedList节点,HashMap的key....都可以为null,但是ConcurrentHashMap的k和v都不能为null

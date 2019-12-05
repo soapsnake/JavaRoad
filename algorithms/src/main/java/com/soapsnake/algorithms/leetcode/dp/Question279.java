@@ -1,4 +1,4 @@
-package com.soapsnake.algorithms.leetcode.number;
+package com.soapsnake.algorithms.leetcode.dp;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -49,17 +49,13 @@ public class Question279 {
      * dp[n] = Min{ dp[n - i*i] + 1 },  i应该满足的条件: n - i*i >=0 && i >= 1, i++
      */
     public int numSquares(int n) {
-        int[] dp = new int[n + 1];  //dp数组的长度是n + 1
-        Arrays.fill(dp, Integer.MAX_VALUE);  //数组每个数都是最大值
+        int[] dp = new int[n + 1];
+        Arrays.fill(dp, Integer.MAX_VALUE);
         dp[0] = 0;
-        for (int i = 1; i <= n; ++i) {
-            int min = Integer.MAX_VALUE;
-            int j = 1;
-            while (i - j * j >= 0) {
-                min = Math.min(min, dp[i - j * j] + 1);
-                ++j;
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j * j <= i; j++) {
+                dp[i] = Math.min(dp[i], dp[i - j * j] + 1);
             }
-            dp[i] = min;
         }
         return dp[n];
     }
