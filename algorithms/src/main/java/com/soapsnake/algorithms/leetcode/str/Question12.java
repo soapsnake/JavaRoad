@@ -40,40 +40,10 @@ public class Question12 {
          * D             500
          * M             1000
          */
-
-        int length = (num + "").length();
-
-        int curNum = 0;
-        int curWei = 0;
-        String curStr = "";
-        String res = "";
-
-        for (int i = length - 1; i >= 0; i--) {
-            curNum = num % (int) Math.pow(10, i);
-            if (curNum >= 5) {
-                if (i == 0) {
-
-                } else if (i == 1) {
-
-                } else if (i == 2) {
-
-                } else {
-
-                }
-            } else {
-                if (i == 0) {
-
-                } else if (i == 1) {
-
-                } else if (i == 2) {
-
-                } else {
-
-                }
-            }
-            res += curStr;
-        }
-
-        return res;
+        String M[] = {"", "M", "MM", "MMM"};
+        String C[] = {"", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"};
+        String X[] = {"", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"};
+        String I[] = {"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"};
+        return M[num/1000] + C[(num%1000)/100] + X[(num%100)/10] + I[num%10];
     }
 }
