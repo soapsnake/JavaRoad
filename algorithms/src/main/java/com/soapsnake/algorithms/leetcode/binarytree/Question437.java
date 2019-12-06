@@ -3,7 +3,9 @@ package com.soapsnake.algorithms.leetcode.binarytree;
 import com.soapsnake.algorithms.structures.tree.TreeNode;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 class Question437 {
 
@@ -11,6 +13,74 @@ class Question437 {
         TreeNode treeNode = TreeNode.makeNormalTreeFor437();
         Question437 question437 = new Question437();
         System.out.println(question437.pathSum(treeNode, 8));
+    }
+
+    //使用全局变量
+    public int pathSum(TreeNode root, int sum) {
+        HashMap<Integer, Integer> preSum = new HashMap<>();
+
+        //key : the prefix sum, value : how many ways get to this prefix sum
+        preSum.put(0,1);
+        helper(root, 0, sum, preSum);
+        return count;
+    }
+    int count = 0;
+
+    /**
+     *
+     * @param root     当前节点
+     * @param currSum  当前路径和
+     * @param target   目标路径和
+     * @param preSum   路径和 -> 路径数
+     */
+    public void helper(TreeNode root, int currSum, int target, HashMap<Integer, Integer> preSum) {
+        if (root == null) {
+            return;
+        }
+
+        currSum += root.val;
+
+        int remain = currSum - target;  //这里为什么是currSum - target而不是反过来了???
+        if (preSum.containsKey(remain)) {
+            count += preSum.get(remain);
+        }
+        preSum.put(currSum, preSum.getOrDefault(currSum, 0) + 1);
+
+        helper(root.left, currSum, target, preSum);
+        helper(root.right, currSum, target, preSum);
+
+        // 既然都已经加到叶子节点了,说明这个sum是不可能在满足了,所以要把这个路径去掉
+        preSum.put(currSum, preSum.get(currSum) - 1);
+    }
+
+        //不使用全局变量的解决方法
+    public int pathSum2(TreeNode root, int sum) {
+
+        //key : the prefix sum, value : how many ways get to this prefix sum
+        Map<Integer, Integer> preSum = new HashMap<>();
+        preSum.put(0,1);
+        return helper2(root, 0, sum, preSum);
+    }
+
+    public int helper2(TreeNode root, int currSum, int target, Map<Integer, Integer> preSum) {
+        if (root == null) {
+            return 0;
+        }
+
+        currSum += root.val;    //之前的总和+当前节点值
+        //res是达到当前总和的路径数
+        int res = preSum.getOrDefault(currSum - target, 0);
+
+        //到达当前总和的路径数 + 1,为什么要加1了?
+        //如果之前已经存在到该路径和的路径,那么由于当前的计算得出的和又被算出来了一次,所以就相当于又找到了一条
+        preSum.put(currSum, preSum.getOrDefault(currSum, 0) + 1);
+
+        //分别到当前节点的左右子节点中去进行递归
+        res += helper2(root.left, currSum, target, preSum) + helper2(root.right, currSum, target, preSum);
+
+        //这步没有看懂,是回退吗?
+        preSum.put(currSum, preSum.get(currSum) - 1);
+        return res;
     }
 
     /**
@@ -24,7 +94,7 @@ class Question437 {
      * @param sum
      * @return
      */
-    public int pathSum(TreeNode root, int sum) {
+    public int pathSumMyOwnVersion(TreeNode root, int sum) {
         //dfs
         //我觉得这个解法完全没有问题,不知道为啥不算对,他妈的
         if (root == null) {
@@ -32,7 +102,7 @@ class Question437 {
         }
         List<String> finalres = new ArrayList<>();
         this.treeDFS(0, root, sum, "", finalres, false);
-        System.out.println(finalres);
+//        System.out.println(finalres);
         return finalres.size();
     }
 
@@ -64,5 +134,37 @@ class Question437 {
             this.treeDFS(temp, root.left, sum, path, finalres, true);
             this.treeDFS(temp, root.right, sum, path, finalres, true);
         }
+    }
+
+
+    public int myPathSum(TreeNode root, int sum) {
+        if (root == null) {
+            return 0;
+        }
+        Map<Integer, Integer> preSum = new HashMap<>();
+        preSum.put(0, 1);
+        this.myHelper(root, 0, sum, preSum);
+        return this.mycount;
+    }
+    private int mycount;
+    private void myHelper(TreeNode root, int pre, int dest, Map<Integer, Integer> preSum) {
+        if (root == null) {
+            return;
+        }
+        int curSum = pre + root.val;
+        int remain = curSum - dest;
+        if (preSum.containsKey(remain)) {
+            this.mycount += preSum.get(remain);
+        }
+
+        if (preSum.containsKey(curSum)) {
+            preSum.put(curSum, preSum.get(curSum) + 1);
+        } else {
+            preSum.put(curSum, 1);
+        }
+        myHelper(root.left, curSum, dest, preSum);
+        myHelper(root.right, curSum, dest, preSum);
+
+        preSum.put(curSum, preSum.get(curSum) - 1);
     }
 }
