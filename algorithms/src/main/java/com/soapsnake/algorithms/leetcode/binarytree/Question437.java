@@ -40,6 +40,10 @@ class Question437 {
 
         currSum += root.val;
 
+        /**
+         *         例如，如果我们有currSum = 8和target = 6，我们想看看是否可以剪切一些presum为currSum-target = 2的头节点，
+         *         那么我们得到了从该节点的子节点到当前节点的所需路径 。
+         */
         int remain = currSum - target;  //这里为什么是currSum - target而不是反过来了???
         if (preSum.containsKey(remain)) {
             count += preSum.get(remain);
@@ -166,5 +170,18 @@ class Question437 {
         myHelper(root.right, curSum, dest, preSum);
 
         preSum.put(curSum, preSum.get(curSum) - 1);
+    }
+
+    //暴力搜索,这个复杂度没有利用hashmap来的高
+    public int pathSumDfs(TreeNode root, int sum) {
+        if (root == null) {
+            return 0;
+        }
+        return dfs(root, sum) + pathSum(root.left, sum) + pathSum(root.right, sum);
+    }
+
+    private int dfs(TreeNode node, int sum) {
+        if (node == null) return 0;
+        return (node.val == sum ? 1 : 0) + dfs(node.left, sum - node.val) + dfs(node.right, sum - node.val);
     }
 }
