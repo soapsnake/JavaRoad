@@ -27,7 +27,7 @@ public class Question110 {
      * 解法的思路是对的,但是,由于特殊情况,这个答案过不了检查
      * https://leetcode.com/problems/balanced-binary-tree/discuss/36042/Two-different-definitions-of-balanced-binary-tree-result-in-two-different-judgments
      */
-    public boolean isBalanced(TreeNode root) {
+    public boolean isBalanced2(TreeNode root) {
         if (root == null) {
             return true;
         }
@@ -66,4 +66,28 @@ public class Question110 {
         }
         return true;
     }
+
+
+    boolean isBalance = true;
+    public boolean isBalanced(TreeNode root) {
+        if (root == null) {
+            return isBalance;
+        }
+        this.dfsMax(root);
+        return isBalance;
+    }
+
+    private int dfsMax(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        int maxLeft = dfsMax(root.left);
+        int maxRight = dfsMax(root.right);
+        if (Math.abs(maxLeft - maxRight) > 1) {
+            isBalance = false;
+        }
+        return Math.max(maxLeft, maxRight) + 1;
+    }
+
+
 }

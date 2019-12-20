@@ -325,6 +325,28 @@ public class TreeNode {
         return false;
     }
 
+    //判断二叉树是否二叉平衡树
+    boolean isBalance = true;
+    public boolean isBalanced(TreeNode root) {
+        if (root == null) {
+            return isBalance;
+        }
+        this.dfsMax(root);
+        return isBalance;
+    }
+
+    private int dfsMax(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        int maxLeft = dfsMax(root.left);
+        int maxRight = dfsMax(root.right);
+        if (Math.abs(maxLeft - maxRight) > 1) {
+            isBalance = false;
+        }
+        return Math.max(maxLeft, maxRight) + 1;
+    }
+
 
     @Override
     public String toString() {

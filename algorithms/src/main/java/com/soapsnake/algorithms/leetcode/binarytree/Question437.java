@@ -172,7 +172,7 @@ class Question437 {
         preSum.put(curSum, preSum.get(curSum) - 1);
     }
 
-    //暴力搜索,这个复杂度没有利用hashmap来的高
+    //暴力搜索,这个复杂度比利用hashmap来的高
     public int pathSumDfs(TreeNode root, int sum) {
         if (root == null) {
             return 0;

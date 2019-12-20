@@ -3,20 +3,16 @@ package com.soapsnake.algorithms.leetcode.array;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @Auther soapsnake@gmail.com
- * @Date 2019-02-18 10:06
- */
-public class Question118 {
+public class Question119 {
 
-    public static void main(String[] args) {
-        Question118 question118 = new Question118();
-        int n = 4;
-        System.out.println(question118.generate(n));
 
-        System.out.println(question118.generate(n).get(n - 1));
+    public List<Integer> getRow(int rowIndex) {
+        return this.generate(rowIndex + 1).get(rowIndex);
     }
 
+    /**
+     * Could you optimize your algorithm to use only O(k) extra space?
+     */
     public List<List<Integer>> generate(int numRows) {
         List<List<Integer>> res = new ArrayList<>();
         List<Integer> prevRow = null;
@@ -35,5 +31,20 @@ public class Question118 {
             res.add(currentRow);
         }
         return res;
+    }
+
+    public List<Integer> getRow2(int rowIndex) {
+        List<Integer> list = new ArrayList<>();
+        if (rowIndex < 0) {
+            return list;
+        }
+
+        for (int i = 0; i < rowIndex + 1; i++) {
+            list.add(0, 1);
+            for (int j = 1; j < list.size() - 1; j++) {
+                list.set(j, list.get(j) + list.get(j + 1));
+            }
+        }
+        return list;
     }
 }
