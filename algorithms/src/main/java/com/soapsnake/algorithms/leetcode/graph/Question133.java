@@ -2,6 +2,7 @@ package com.soapsnake.algorithms.leetcode.graph;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -9,8 +10,6 @@ import java.util.Map;
  * @Date 2019-04-25 00:12
  */
 public class Question133 {
-
-
     Map<Integer, Node> cache = new HashMap<>();
 
     public Node cloneGraph(Node node) {
@@ -31,4 +30,16 @@ public class Question133 {
         return newNode;
     }
 
+    public static class Node {
+        public int val;
+        public List<Node> neighbors;
+
+        public Node() {
+        }
+
+        public Node(int _val, List<Node> _neighbors) {
+            val = _val;
+            neighbors = _neighbors;
+        }
+    }
 }
