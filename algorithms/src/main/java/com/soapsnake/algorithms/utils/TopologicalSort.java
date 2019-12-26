@@ -18,6 +18,9 @@ import com.soapsnake.algorithms.structures.graph.direct.Vertex;
  */
 public class TopologicalSort {
     /**
+     *
+     * https://blog.csdn.net/oDaiLiDong/article/details/85564366
+     *
      * 判断是否有环及拓扑排序结果
      * <p>
      * 有向无环图(DAG)才有拓扑(topological)排序
