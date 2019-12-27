@@ -3,6 +3,8 @@ package com.soapsnake.algorithms.leetcode.array;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.activation.FileDataSource;
+
 public class Question494 {
 
     public static void main(String[] args) {
@@ -39,7 +41,8 @@ public class Question494 {
         for(int n: nums){
             sum += n;
         }
-        //因为nums给的都是正数,所以sum只可能会落在 -sum  ~ sum 之间,所以才有这个判断,举个例子
+        //因为nums给的都是正数,所以sum只可能会落在 -sum  ~ sum 之间,所以才有这个判断
+        // 举个例子:
         //{1,1,1,1,1} sum = 5, 那么S只能落在 -5 ~ 5之间的闭区间上面
         if (S < -sum || S > sum) {
             return 0;
@@ -48,7 +51,7 @@ public class Question494 {
         //那么这个2 * sum + 1如何理解,还是前面的{1,1,1,1,1} 那么其和会分布在 -5 ~ 5上,所以一共是有11种情况的
         int[][] dp = new int[nums.length + 1][ 2 * sum + 1];
         // 0 + sum 就是sum数组的中间值也就是0 ->  {-sum...., 0, ....sum}
-        dp[0][sum] = 1;
+        dp[0][0 + sum] = 1;
         int leftBound = 0;  //sum的最小取值索引
         int rightBound = sum * 2;  //sum的最大取值索引
         for (int i = 1; i <= nums.length; i++) {
