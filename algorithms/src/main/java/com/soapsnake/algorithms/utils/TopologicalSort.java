@@ -13,7 +13,7 @@ import java.util.Set;
 import com.soapsnake.algorithms.structures.graph.direct.Vertex;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ * @author
  * Created on 2019-12-25
  */
 public class TopologicalSort {
