@@ -1,6 +1,10 @@
 package com.soapsnake.algorithms.leetcode.array;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author
@@ -28,17 +32,39 @@ import java.util.List;
  */
 public class Question127 {
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
-        if (wordList.isEmpty()) {
+        if (wordList.contains(endWord)) {
             return 0;
         }
-        if (!wordList.contains(endWord)) {
-            return 0;
+        Set<String> reached = new HashSet<String>();
+        reached.add(beginWord);
+        wordList.add(endWord);
+        int distance = 1;
+        while (!reached.contains(endWord)) {
+            Set<String> toAdd = new HashSet<String>();
+            for (String each : reached) {
+                for (int i = 0; i < each.length(); i++) {
+                    char[] chars = each.toCharArray();
+                    for (char ch = 'a'; ch <= 'z'; ch++) {
+                        chars[i] = ch;
+                        String word = new String(chars);
+                        if (wordList.contains(word)) {
+                            toAdd.add(word);
+                            wordList.remove(word);
+                        }
+                    }
+                }
+            }
+            distance++;
+            if (toAdd.size() == 0) return 0;
+            reached = toAdd;
         }
+        return distance;
+    }
 
-
-
-
-
-        return 0;
+    public static void main(String[] args) {
+        Question127 question127 = new Question127();
+        List<String> list = Arrays.asList("hot","dot","dog","lot","log","cog");
+        ArrayList<String> list1 = new ArrayList<>(list);
+        System.out.println(question127.ladderLength("hit", "cog", list1));
     }
 }
