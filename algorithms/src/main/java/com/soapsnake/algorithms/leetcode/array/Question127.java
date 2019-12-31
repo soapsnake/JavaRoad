@@ -1,5 +1,6 @@
 package com.soapsnake.algorithms.leetcode.array;
 
+import java.util.HashSet;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -32,33 +33,50 @@ import java.util.Set;
  */
 public class Question127 {
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
-        if (wordList.contains(endWord)) {
+        if (!wordList.contains(endWord)) {
             return 0;
         }
-        Set<String> reached = new HashSet<String>();
-        reached.add(beginWord);
-        wordList.add(endWord);
-        int distance = 1;
-        while (!reached.contains(endWord)) {
-            Set<String> toAdd = new HashSet<String>();
-            for (String each : reached) {
-                for (int i = 0; i < each.length(); i++) {
-                    char[] chars = each.toCharArray();
-                    for (char ch = 'a'; ch <= 'z'; ch++) {
-                        chars[i] = ch;
-                        String word = new String(chars);
-                        if (wordList.contains(word)) {
-                            toAdd.add(word);
-                            wordList.remove(word);
+        Set<String> beginSet = new HashSet<>(), endSet = new HashSet<>();
+        int len = 1;
+        Set<String> visited = new HashSet<>();
+        beginSet.add(beginWord);
+        endSet.add(endWord);
+        while (!beginSet.isEmpty() && !endSet.isEmpty()) {
+            //如果begin大于end,那么交换两个set
+            if (beginSet.size() > endSet.size()) {
+                Set<String> set = beginSet;
+                beginSet = endSet;
+                endSet = set;
+            }
+
+            Set<String> temp = new HashSet<>();
+            for (String word : beginSet) {
+                char[] chs = word.toCharArray();
+                for (int i = 0; i < chs.length; i++) {
+                    for (char c = 'a'; c <= 'z'; c++) {
+                        char old = chs[i];
+                        chs[i] = c;
+                        String target = String.valueOf(chs);
+
+                        if (endSet.contains(target)) {
+                            //已经到达结果,可以返回了
+                            return len + 1;
                         }
+
+                        //还没到结果
+                        if (!visited.contains(target) && wordList.contains(target)) {
+                            //temp装的是wordlist中包含的合法字串,而且之前没有被访问过
+                            temp.add(target);
+                            visited.add(target);
+                        }
+                        chs[i] = old;
                     }
                 }
             }
-            distance++;
-            if (toAdd.size() == 0) return 0;
-            reached = toAdd;
+            beginSet = temp;
+            len++;
         }
-        return distance;
+        return 0;
     }
 
     public static void main(String[] args) {
