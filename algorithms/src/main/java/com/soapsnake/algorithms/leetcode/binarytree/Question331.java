@@ -15,9 +15,13 @@ public class Question331 {
      * 判定一个字符串是不是一个二叉树的先序便利结果(先根遍历)
      */
     public boolean isValidSerialization(String preorder) {
-
-
-        return false;
+        String[] nodes = preorder.split(",");
+        int diff = 1;
+        for (String node: nodes) {
+            if (--diff < 0) return false;
+            if (!node.equals("#")) diff += 2;
+        }
+        return diff == 0;
     }
 
 }
