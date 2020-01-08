@@ -255,7 +255,6 @@
         <module>webflux</module>
         <module>lab</module>
         <module>scala</module>
-        <module>wiki-edits</module>
     </modules>
 
     <build>
