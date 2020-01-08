@@ -3,7 +3,6 @@ package com.soapsnake.algorithms.leetcode.array;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.sun.org.apache.xml.internal.resolver.helpers.PublicId;
 
 /**
  * @author
