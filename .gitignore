@@ -56,3 +56,4 @@ testignore.ls
 /classes/
 dubbo/*/target/
 /.idea/
+hadoop-1.0.0.jar

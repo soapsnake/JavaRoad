@@ -33,6 +33,11 @@ public class DatabindTester {
         list.add(node2);
         ArrayNode arrayNode = new ArrayNode(factory, list);
 
+        System.out.println("2 = " + Integer.toBinaryString(2));
+        System.out.println("10 = " + Integer.toBinaryString(10));
+        System.out.println(2 ^ 10);
+        System.out.println("8 = " + Integer.toBinaryString(8));
+
     }
 
     private static ObjectMapper getMapper() {

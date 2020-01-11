@@ -2,39 +2,7 @@ package com.soapsnake.algorithms.alib;
 
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
-
 public class KMPtester {
-
-    /**
-     * 暴力模式匹配,复杂度m * n
-     * @param s 目标串
-     * @param p 模式串
-     * @return
-     */
-    public static boolean violentSearch (String s, String p) {
-        if (p == null || s == null) {
-            return false;
-        }
-        int m = s.length();
-        int n = p.length();
-
-        for (int i = 0; i < m; i++) {
-            int start = i;
-            for (int j = 0; j < n; j++) {
-                if (start < m && s.charAt(start++) != p.charAt(j)) {
-                    break;
-                }
-                if (j == (n - 1)) {
-                    return true;
-                }
-
-            }
-        }
-        return false;
-    }
 
     //找出s中是否有完全匹配p的字串
     /**
@@ -58,15 +26,20 @@ public class KMPtester {
 
         //kmp的最典型特征是: 文本串指针i绝不后退
         while (i < s.length() && j < p.length()) {
-            if (nextIntkey[j] == -1 || s.charAt(i) == p.charAt(j)) {
+            if (s.charAt(i) == p.charAt(j)) {
                 //当文本串与模式串匹配时
                 i++;
                 j++;
             } else {
                 //失配时,模式串向右移动的位数 = 已匹配字符数 - 失配字符上一位字符对应的next[]中该字符对应的最大长度值
-                j = nextIntkey[j];
+                if (nextIntkey[j] == -1) {
+                    i++;
+                    j = 0;
+                } else {
+                    j = nextIntkey[j];
+                }
             }
-            if (j == p.length() - 1) {
+            if (j == p.length()) {
                 //当模式串与文本串完全匹配时
                 res = true;
                 break;
@@ -74,7 +47,6 @@ public class KMPtester {
         }
         return res;
     }
-
 
     /**
      * https://blog.csdn.net/v_july_v/article/details/7041827
@@ -117,46 +89,66 @@ public class KMPtester {
     @Test
     public  void testSome() {
         String s = "BBC ABCDAB ABCDABCDABDE";
-        String p = "ABCDABE";
+        String p = "CBC";
 
-
-        System.out.println(violentSearch(s,p));
+//        String s = "baddadmad";
+//        String p = "b";
+        System.out.println(kmpMatch(s,p));
     }
 
-
-
-
-
-
-
-
-
-    private static int[] genNext2(String p) {
-        int[] nextIntkey = new int[p.length()];
-        for (int i = 0; i < p.length(); i++) {
-            String sub = p.substring(0, i + 1);
-            Set<String> set = new HashSet<>();
-            //部分匹配表是针对sub来构建的
-            int key = 0;
-            for (int j = 0; j < i; j++) {
-                String prestr = sub.substring(0, j + 1);
-                System.out.println("prestr = " + prestr);
-                if (!set.add(prestr)) {
-                    System.out.println("重复元素 =" + prestr);
-                    key = prestr.length();
-                }
-                String postStr = sub.substring(j + 1, i + 1);
-                System.out.println("postStr = " + postStr);
-                if (!set.add(postStr)) {
-                    System.out.println("重复元素 =" + postStr);
-                    key = postStr.length();
-                }
-            }
-            System.out.println("sub = " + sub + " 结束!");
-            nextIntkey[i] = key;
+    /**
+     * 暴力模式匹配,复杂度m * n
+     * @param s 目标串
+     * @param p 模式串
+     * @return
+     */
+    public static boolean violentSearch (String s, String p) {
+        if (p == null || s == null) {
+            return false;
         }
-        return nextIntkey;
+        int m = s.length();
+        int n = p.length();
+
+        for (int i = 0; i < m; i++) {
+            int start = i;
+            for (int j = 0; j < n; j++) {
+                if (start < m && s.charAt(start++) != p.charAt(j)) {
+                    break;
+                }
+                if (j == (n - 1)) {
+                    return true;
+                }
+
+            }
+        }
+        return false;
     }
 
+//    private static int[] genNext2(String p) {
+//        int[] nextIntkey = new int[p.length()];
+//        for (int i = 0; i < p.length(); i++) {
+//            String sub = p.substring(0, i + 1);
+//            Set<String> set = new HashSet<>();
+//            //部分匹配表是针对sub来构建的
+//            int key = 0;
+//            for (int j = 0; j < i; j++) {
+//                String prestr = sub.substring(0, j + 1);
+//                System.out.println("prestr = " + prestr);
+//                if (!set.add(prestr)) {
+//                    System.out.println("重复元素 =" + prestr);
+//                    key = prestr.length();
+//                }
+//                String postStr = sub.substring(j + 1, i + 1);
+//                System.out.println("postStr = " + postStr);
+//                if (!set.add(postStr)) {
+//                    System.out.println("重复元素 =" + postStr);
+//                    key = postStr.length();
+//                }
+//            }
+//            System.out.println("sub = " + sub + " 结束!");
+//            nextIntkey[i] = key;
+//        }
+//        return nextIntkey;
+//    }
 
 }

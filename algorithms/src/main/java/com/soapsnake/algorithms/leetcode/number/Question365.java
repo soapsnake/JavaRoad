@@ -2,6 +2,7 @@ package com.soapsnake.algorithms.leetcode.number;
 
 public class Question365 {
 
+    //z升的水能不能用x和y量出来
     public boolean canMeasureWater(int x, int y, int z) {
         //limit brought by the statement that water is finallly in one or both buckets
         if(x + y < z) return false;
@@ -9,7 +10,7 @@ public class Question365 {
         if( x == z || y == z || x + y == z ) return true;
 
         //get GCD, then we can use the property of Bézout's identity
-        return z%GCD(x, y) == 0;
+        return z % GCD(x, y) == 0;
     }
 
     public int GCD(int a, int b){
