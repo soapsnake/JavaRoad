@@ -4,7 +4,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 /**
- * @author liudun
  */
 public interface LombokTestService {
 

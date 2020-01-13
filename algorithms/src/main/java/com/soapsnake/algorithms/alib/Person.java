@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.ToString;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+
  * Created on 2019-12-30
  */
 @AllArgsConstructor

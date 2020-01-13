@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Stack;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+
  * Created on 2020-01-09
  */
 public class Question341 {

@@ -13,7 +13,7 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+
  * Created on 2019-12-31
  */
 public class DatabindTester {
