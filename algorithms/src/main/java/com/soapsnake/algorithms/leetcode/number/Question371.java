@@ -8,11 +8,16 @@ public class Question371 {
 
     public static void main(String[] args) {
         Question371 question371 = new Question371();
-        question371.getSum(3, 5);
+        System.out.println(question371.getSum(3, 5));
     }
 
     public int getSum(int a, int b) {
-        //todo 需要二进制运算相关知识
-        return 0;
+        int c;
+        while(b !=0 ) {
+            c = (a&b);
+            a = a ^ b;
+            b = (c)<<1;
+        }
+        return a;
     }
 }
