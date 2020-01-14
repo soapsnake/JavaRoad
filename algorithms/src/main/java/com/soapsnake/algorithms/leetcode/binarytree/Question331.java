@@ -32,4 +32,34 @@ public class Question331 {
         return edges == 0;
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public boolean isValidSerialization2(String preorder) {
+        String[] nodes = preorder.split("#");
+        int edges = 1;
+        for (int i = 0; i < nodes.length; i++) {
+            if (--edges < 0) {
+                return false;
+            }
+            if (!nodes[i].equals("#")) {
+                edges += 2;
+            }
+        }
+        return edges == 0;
+    }
+
 }

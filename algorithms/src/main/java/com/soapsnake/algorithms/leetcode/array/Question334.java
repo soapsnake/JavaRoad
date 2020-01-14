@@ -37,7 +37,37 @@ public class Question334 {
 
     public static void main(String[] args) {
         Question334 question334 = new Question334();
-        int[] nums = {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
-        System.out.println(question334.increasingTriplet(nums));
+        int[] nums = {1,1,1,1,1,1,1,1,100,1,1,1,1,1,1,1,10000};
+        System.out.println(question334.increasingTriplet2(nums));
     }
-}
+
+
+
+    public boolean increasingTriplet2(int[] nums) {
+        if (null == nums || nums.length < 3) {
+            return false;
+        }
+        int left = Integer.MAX_VALUE, right = Integer.MAX_VALUE;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] <= left) {
+                left = nums[i];
+            } else if (nums[i] <= right) {
+                right = nums[i];
+            } else {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+
+
+
+
+
+
+
+
+
+    }
