@@ -2,15 +2,12 @@ package com.soapsnake.algorithms.leetcode.array;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
-import java.util.Set;
 
-import javafx.beans.property.IntegerProperty;
-import sun.jvm.hotspot.jdi.PrimitiveValueImpl;
+import com.soapsnake.algorithms.leetcode.str.Question38;
+
 
 /**
  * @author liudun <liudun@kuaishou.com>
@@ -18,15 +15,25 @@ import sun.jvm.hotspot.jdi.PrimitiveValueImpl;
  */
 public class Question380 {
 
+    static class Person{
+        String name;
+        Person() {
+            System.out.println("person constructor");
+        }
+    }
+
     static class RandomizedSet {
         private Map<Integer, Integer> map;   //val -> index
         private Random random;
+        private final Person person;
         private List<Integer> list;
         /** Initialize your data structure here. */
         public RandomizedSet() {
             this.list = new ArrayList<>();
+            this.person = new Person();
             this.random = new Random();
             this.map = new HashMap<>();
+            System.out.println("constructer");
         }
 
         /** Inserts a value to the set. Returns true if the set did not already contain the specified element. */
@@ -63,9 +70,14 @@ public class Question380 {
         }
     }
 
-    public static void main(String[] args) {
-        RandomizedSet randomizedSet = new RandomizedSet();
-        System.out.println(randomizedSet.insert(10));
-        System.out.println(randomizedSet.getRandom());
+    public static void main(String[] args) throws ClassNotFoundException, IllegalAccessException,
+            InstantiationException {
+//        RandomizedSet randomizedSet = new RandomizedSet();
+//        System.out.println(randomizedSet.insert(10));
+//        System.out.println(randomizedSet.getRandom());
+
+        Class<?> clazz = Class.forName("com.soapsnake.algorithms.leetcode.array.Question380$RandomizedSet");
+        clazz.newInstance();
+
     }
 }
