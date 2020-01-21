@@ -31,4 +31,10 @@ public class ArrayUtils {
             }
         }
     }
+
+    public static void swapByIndex(int[] nums, int index, int i) {
+        int temp = nums[index];
+        nums[index] = nums[i];
+        nums[i] = temp;
+    }
 }
