@@ -30,12 +30,10 @@ public class KafkaConsumerDemo {
                             record.topic(), record.partition(), record.offset(), record.key(), record.value());
                     System.out.println(info);
                 }
-                consumer.commitAsync(new OffsetCommitCallback() {
-                    public void onComplete(Map<TopicPartition, OffsetAndMetadata> offsets, Exception exception) {
-                        if (exception != null) {
-                            String error = String.format("Commit failed for offsets {}", offsets, exception);
-                            System.out.println(error);
-                        }
+                consumer.commitAsync((offsets, exception) -> {
+                    if (exception != null) {
+                        String error = String.format("Commit failed for offsets {}", offsets, exception);
+                        System.out.println(error);
                     }
                 });
             }
