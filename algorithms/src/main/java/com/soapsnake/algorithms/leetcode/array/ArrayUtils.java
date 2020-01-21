@@ -7,6 +7,7 @@ public class ArrayUtils {
     public static void printArr(int[] arr) {
         if (arr == null) {
             System.out.println("数组为空");
+            return;
         }
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < arr.length; i++) {
@@ -21,6 +22,7 @@ public class ArrayUtils {
     public static <T> void printList(List<T> list) {
         if (list == null || list.isEmpty()) {
             System.out.println("list 为空");
+            return;
         }
         for (int i = 0; i < list.size(); i++) {
             System.out.print(list.get(i));
