@@ -9,9 +9,7 @@ import com.codahale.metrics.Histogram;
 import com.codahale.metrics.Meter;
 import com.codahale.metrics.MetricRegistry;
 import com.codahale.metrics.Timer;
-import com.sun.tools.internal.ws.processor.model.Response;
 
-import sun.misc.Request;
 
 /**
  * Created on 2020-01-10
@@ -27,16 +25,16 @@ public class MetricsTester {
     //Timer度量类型包含了Meter和Histogram的统计，即比率和统计信息的综合。
     private final Timer responses = metricRegistry.timer(name(RequestHandler.class, "responses"));
 
-    public String handleRequest(Request request, Response response) {
-        responseSizes.update(response.getFaultBlockCount());
-        final Timer.Context context = responses.time();
-        try {
-            // etc;
-            return "OK";
-        } finally {
-            context.stop();
-        }
-    }
+//    public String handleRequest(Request request, Response response) {
+//        responseSizes.update(response.getFaultBlockCount());
+//        final Timer.Context context = responses.time();
+//        try {
+//            // etc;
+//            return "OK";
+//        } finally {
+//            context.stop();
+//        }
+//    }
 
     public static void startReport() {
         //使用Reporter可以输出测量结果，支持ConsoleReporter, CsvReporter, Slf4Reporter, JmxReporter等等。
