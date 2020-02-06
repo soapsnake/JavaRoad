@@ -1,5 +1,7 @@
 package com.soapsnake.algorithms.leetcode.matrix;
 
+import com.soapsnake.algorithms.structures.tree.Node;
+
 public class Question378 {
 
     public int kthSmallest(int[][] matrix, int k) {
