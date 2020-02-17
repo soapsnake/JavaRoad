@@ -167,4 +167,9 @@ public class ListTester {
         }
         return false;
     }
+
+    //单数递增,双数递减,要求对链表进行排序
+    public static ListNode sortOddEven(ListNode head) {
+        return null;
+    }
 }
