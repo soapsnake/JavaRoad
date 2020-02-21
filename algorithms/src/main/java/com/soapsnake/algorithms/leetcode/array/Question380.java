@@ -6,8 +6,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-import com.soapsnake.algorithms.leetcode.str.Question38;
-
 
 /**
  * @author liudun <liudun@kuaishou.com>

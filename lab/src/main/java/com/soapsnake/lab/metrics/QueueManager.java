@@ -4,7 +4,6 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 import com.codahale.metrics.Gauge;
-import com.codahale.metrics.Histogram;
 import com.codahale.metrics.MetricRegistry;
 
 /**

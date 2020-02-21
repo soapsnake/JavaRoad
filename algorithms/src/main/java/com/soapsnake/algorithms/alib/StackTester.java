@@ -1,11 +1,8 @@
 package com.soapsnake.algorithms.alib;
 
-import org.junit.Test;
-
-import java.security.cert.TrustAnchor;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Stack;
+
+import org.junit.Test;
 
 public class StackTester {
 

@@ -1,10 +1,10 @@
 package com.soapsnake.nio.netty.bytebuf;
 
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
-
 import java.nio.charset.Charset;
 import java.util.Arrays;
+
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
 
 /**
  * Created by soapsnake on 2018/1/15.

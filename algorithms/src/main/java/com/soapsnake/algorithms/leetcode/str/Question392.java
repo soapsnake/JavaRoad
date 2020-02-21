@@ -1,7 +1,6 @@
 package com.soapsnake.algorithms.leetcode.str;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 

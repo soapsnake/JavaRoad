@@ -1,8 +1,12 @@
 package com.soapsnake.algorithms.structures.tree;
 
-import com.soapsnake.algorithms.leetcode.array.ArrayUtils;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Objects;
+import java.util.Stack;
 
-import java.util.*;
+import com.soapsnake.algorithms.leetcode.array.ArrayUtils;
 
 public class TreeNode {
 

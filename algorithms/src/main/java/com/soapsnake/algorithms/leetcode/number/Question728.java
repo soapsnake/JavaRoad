@@ -1,9 +1,9 @@
 package com.soapsnake.algorithms.leetcode.number;
 
-import com.soapsnake.algorithms.leetcode.array.ArrayUtils;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import com.soapsnake.algorithms.leetcode.array.ArrayUtils;
 
 
 /**

@@ -1,9 +1,9 @@
 package com.soapsnake.wsdl.server;
 
-import com.soapsnake.wsdl.pojo.WsdlResponse;
-
 import javax.jws.WebService;
 import javax.xml.ws.Endpoint;
+
+import com.soapsnake.wsdl.pojo.WsdlResponse;
 
 /**
  * Created by kevin on 2017/4/3.

@@ -1,8 +1,8 @@
 package com.soapsnake.springboot.service;
 
-import com.soapsnake.springboot.pojo.User;
-
 import java.util.List;
+
+import com.soapsnake.springboot.pojo.User;
 
 public interface ContactService {
 

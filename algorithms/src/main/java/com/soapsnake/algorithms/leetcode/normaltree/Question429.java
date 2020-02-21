@@ -1,6 +1,10 @@
 package com.soapsnake.algorithms.leetcode.normaltree;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 
 /**
  * @author soapsnake

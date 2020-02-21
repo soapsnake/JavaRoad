@@ -1,11 +1,11 @@
 package com.soapsnake.algorithms.alib;
 
+import org.junit.Test;
+
 import com.soapsnake.algorithms.structures.graph.Graph;
 import com.soapsnake.algorithms.structures.graph.direct.DirectWeightGraph;
 import com.soapsnake.algorithms.structures.graph.direct.Vertex;
-import com.soapsnake.algorithms.structures.graph.direct.WeightGraphTest;
 import com.soapsnake.algorithms.structures.graph.undirect.UndirectGraph;
-import org.junit.Test;
 
 public class GraphTester {
 

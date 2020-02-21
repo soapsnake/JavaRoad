@@ -1,6 +1,5 @@
 package com.soapsnake.zkclient.curator;
 
-import com.soapsnake.zkclient.constant.ZkConstant;
 import org.apache.curator.RetryPolicy;
 import org.apache.curator.RetrySleeper;
 import org.apache.curator.framework.CuratorFramework;
@@ -8,6 +7,8 @@ import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.zookeeper.CreateMode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.soapsnake.zkclient.constant.ZkConstant;
 
 /**
  * Created by soapsnake on 2017/5/26.

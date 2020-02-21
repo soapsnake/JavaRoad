@@ -2,12 +2,6 @@ package com.soapsnake.algorithms.leetcode.list;
 
 import com.soapsnake.algorithms.structures.list.ListNode;
 
-import java.time.temporal.ValueRange;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
-
 public class Question86 {
 
     /**

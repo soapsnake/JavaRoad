@@ -16,12 +16,13 @@
  */
 package com.soapsnake.dubbo.consumer;
 
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import com.alibaba.dubbo.rpc.service.GenericService;
 import com.soapsnake.dubbo.api.service.CallbackListener;
 import com.soapsnake.dubbo.api.service.CallbackService;
 import com.soapsnake.dubbo.api.service.DemoService;
 import com.soapsnake.dubbo.api.service.TestGenericService;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Consumer {
 

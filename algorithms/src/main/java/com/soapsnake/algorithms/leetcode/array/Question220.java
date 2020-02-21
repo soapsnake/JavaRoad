@@ -1,7 +1,5 @@
 package com.soapsnake.algorithms.leetcode.array;
 
-import java.util.TreeSet;
-
 public class Question220 {
 
     public static void main(String[] args) {

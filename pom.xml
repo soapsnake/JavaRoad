@@ -240,21 +240,15 @@
 
     <modules>
         <module>algorithms</module>
-        <module>collections</module>
         <module>pattern</module>
         <module>concurrence</module>
-        <module>enum</module>
-        <module>lambda</module>
-        <module>nativemethod</module>
         <module>thrift</module>
         <module>wsdl</module>
         <module>zookeeper-client</module>
-        <module>generic</module>
         <module>springboot</module>
         <module>thinkinjava</module>
         <module>hbase-client</module>
         <module>nio</module>
-        <module>random</module>
         <module>mq</module>
         <module>spi</module>
         <module>dubbo</module>

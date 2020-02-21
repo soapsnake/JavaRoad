@@ -1,5 +1,7 @@
 package com.soapsnake.nio.netty.bootstrap;
 
+import java.net.InetSocketAddress;
+
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelFuture;
@@ -8,8 +10,6 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
-
-import java.net.InetSocketAddress;
 
 /**
  * Created by soapsnake on 2018/1/15.

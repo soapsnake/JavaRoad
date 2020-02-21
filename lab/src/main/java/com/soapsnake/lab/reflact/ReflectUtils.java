@@ -1,7 +1,11 @@
 package com.soapsnake.lab.reflact;
 
 import java.lang.annotation.Annotation;
-import java.lang.reflect.*;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.lang.reflect.Type;
+import java.lang.reflect.TypeVariable;
 import java.util.regex.Pattern;
 
 public class ReflectUtils {

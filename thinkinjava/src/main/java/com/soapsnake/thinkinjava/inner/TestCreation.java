@@ -1,6 +1,14 @@
 package com.soapsnake.thinkinjava.inner;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Hashtable;
+import java.util.List;
+import java.util.TreeMap;
 
 /**
  * Created by soapsnake on 2017/6/26.

@@ -1,11 +1,8 @@
 package com.soapsnake.algorithms.leetcode.array;
 
-import java.awt.font.NumericShaper;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
-import sun.text.resources.cldr.ur.FormatData_ur_IN;
 
 /**
  * @author liudun <liudun@kuaishou.com>

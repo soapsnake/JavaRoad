@@ -1,9 +1,9 @@
 package com.soapsnake.lab.cglib;
 
+import java.lang.reflect.Method;
+
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
-
-import java.lang.reflect.Method;
 
 public class MethodInterceptorImpl2 implements MethodInterceptor {
     @Override

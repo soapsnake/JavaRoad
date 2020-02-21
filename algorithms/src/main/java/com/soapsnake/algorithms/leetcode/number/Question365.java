@@ -1,7 +1,5 @@
 package com.soapsnake.algorithms.leetcode.number;
 
-import java.sql.SQLOutput;
-
 public class Question365 {
 
     //z升的水能不能用x和y量出来

@@ -1,6 +1,14 @@
 package com.soapsnake.springboot.service;
 
 
+import java.util.Arrays;
+
+import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+
 import com.alibaba.fastjson.JSON;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -18,12 +26,6 @@ import com.pubnub.api.models.consumer.pubsub.PNSignalResult;
 import com.pubnub.api.models.consumer.pubsub.objects.PNMembershipResult;
 import com.pubnub.api.models.consumer.pubsub.objects.PNSpaceResult;
 import com.pubnub.api.models.consumer.pubsub.objects.PNUserResult;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
-
-import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
-import java.util.Arrays;
 
 @Service
 public class PubNubListener {
