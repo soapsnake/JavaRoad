@@ -1,5 +1,7 @@
 package com.soapsnake.algorithms.leetcode.array;
 
+import java.util.TreeSet;
+
 public class Question220 {
 
     public static void main(String[] args) {
@@ -25,9 +27,27 @@ public class Question220 {
      * Input: nums = [1,5,9,1,5,9], k = 2, t = 3
      * Output: false
      */
+    //leetcode220
     public boolean containsNearbyAlmostDuplicate(int[] nums, int k, int t) {
         //索引的最大差值不能超过k, 值最大差值不能超过t
+        if (nums.length < 2 || k == 0) {
+            return false;
+        }
+        TreeSet<Long> set = new TreeSet<>();
 
+        int i = 0;
+        while (i < nums.length) {
+            Long floor = set.floor((long) nums[i]);
+            Long ceiling = set.ceiling((long) nums[i]);
+            if ((floor != null && nums[i] - floor <= t ) ||
+                    (ceiling != null && ceiling - nums[i] <= t)) {
+                return true;
+            }
+            set.add((long) nums[i++]);
+            if (i > k) {
+                set.remove((long) nums[i - k - 1]);
+            }
+        }
         return false;
     }
 }
