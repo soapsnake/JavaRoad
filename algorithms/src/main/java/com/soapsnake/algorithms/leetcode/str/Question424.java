@@ -1,5 +1,11 @@
 package com.soapsnake.algorithms.leetcode.str;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+
 /**
  * @author liudun <liudun@kuaishou.com>
  * Created on 2020-02-26
@@ -19,10 +25,23 @@ public class Question424 {
      * Replace the one 'A' in the middle with 'B' and form "AABBBBA".
      * The substring "BBBB" has the longest repeating letters, which is 4.
      */
+    //leetcode424
     public int characterReplacement(String s, int k) {
-        //含义,对s中的字符进行k次变换,求变换后s中能达到的重复字符的最大个数是多少
-        //思路1:统计每个字符的出现次数,降序排列,依次按k尝试修改2->最后一次字符(实际累加这些出现数字)即可
+        int[] count = new int[26];
+        int start = 0, maxCount = 0, maxLength = 0;
+        for (int end = 0; end < s.length(); end++) {
+            maxCount = Math.max(maxCount, ++count[s.charAt(end) - 'A']);
+            while (end - start + 1 - maxCount > k) {
+                count[s.charAt(start) - 'A']--;
+                start++;
+            }
+            maxLength = Math.max(maxLength, end - start + 1);
+        }
+        return maxLength;
+    }
 
-        return 0;
+    public static void main(String[] args) {
+        Question424 question424 = new Question424();
+        System.out.println(question424.characterReplacement("AABABBA", 0));
     }
 }
