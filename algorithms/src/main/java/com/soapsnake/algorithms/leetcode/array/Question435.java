@@ -39,7 +39,7 @@ public class Question435 {
                 count++;
             }
         }
-        return intervals.length - count;  //总数-合法的=产生了重叠的
+        return intervals.length- count;  //总数-合法的=产生了重叠的
     }
 }
 
