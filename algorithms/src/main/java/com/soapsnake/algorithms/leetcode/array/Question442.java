@@ -23,6 +23,7 @@ public class Question442 {
     //举个例子[0,8,8,x,x,x,x,x,x,x,x,x],当i=1时,我们翻转第8个元素为负值,i=2时,我们准备再次翻转第8个元素时
     //发现第8个元素已经被翻过牌子了,说明一定有一个元素和当前元素值相等,但是到底是第几个,我们不知道
     //所以前提是:1.数组初始时所有元素一定是正的, 2.数组的所有元素的值都不能超过最大索引
+    //leetcode442
     public List<Integer> findDuplicates(int[] nums) {
         List<Integer> result = new ArrayList<>();
         if (nums == null)
