@@ -1,11 +1,12 @@
 package com.soapsnake.springboot.service;
 
-import com.alibaba.fastjson.JSON;
+import java.util.Optional;
+
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import com.alibaba.fastjson.JSON;
 
 @Service
 public class KafkaConsumerService {

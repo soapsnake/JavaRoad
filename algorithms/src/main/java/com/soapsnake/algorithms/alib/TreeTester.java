@@ -1,15 +1,16 @@
 package com.soapsnake.algorithms.alib;
 
-import com.soapsnake.algorithms.structures.list.ListNode;
-import com.soapsnake.algorithms.structures.tree.Node;
-import com.soapsnake.algorithms.structures.tree.TreeNode;
-import org.apache.commons.lang3.RandomUtils;
-import org.junit.Test;
-
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+
+import org.apache.commons.lang3.RandomUtils;
+import org.junit.Test;
+
+import com.soapsnake.algorithms.structures.list.ListNode;
+import com.soapsnake.algorithms.structures.tree.Node;
+import com.soapsnake.algorithms.structures.tree.TreeNode;
 
 public class TreeTester {
 

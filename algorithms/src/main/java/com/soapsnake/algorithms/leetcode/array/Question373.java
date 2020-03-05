@@ -6,8 +6,6 @@ import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
-import com.soapsnake.algorithms.alib.KMPtester;
-
 /**
  * @author liudun <liudun@kuaishou.com>
  * Created on 2020-01-13

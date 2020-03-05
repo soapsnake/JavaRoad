@@ -1,7 +1,5 @@
 package com.soapsnake.algorithms.leetcode.number;
 
-import sun.security.util.Length;
-
 /**
  * @author liudun <liudun@kuaishou.com>
  * Created on 2020-02-10

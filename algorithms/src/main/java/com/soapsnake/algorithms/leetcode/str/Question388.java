@@ -2,7 +2,6 @@ package com.soapsnake.algorithms.leetcode.str;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
-import java.util.List;
 
 /**
  * @author liudun <liudun@kuaishou.com>

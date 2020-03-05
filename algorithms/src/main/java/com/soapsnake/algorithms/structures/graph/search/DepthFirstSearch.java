@@ -1,11 +1,10 @@
 package com.soapsnake.algorithms.structures.graph.search;
 
-import com.soapsnake.algorithms.structures.graph.Graph;
-import com.soapsnake.algorithms.structures.graph.undirect.UndirectGraph;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
+
+import com.soapsnake.algorithms.structures.graph.undirect.UndirectGraph;
 
 /**
  * 深度优先算法可以解决:

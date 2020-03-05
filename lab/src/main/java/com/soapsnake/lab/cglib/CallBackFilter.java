@@ -1,8 +1,8 @@
 package com.soapsnake.lab.cglib;
 
-import net.sf.cglib.proxy.CallbackFilter;
-
 import java.lang.reflect.Method;
+
+import net.sf.cglib.proxy.CallbackFilter;
 
 public class CallBackFilter implements CallbackFilter {
     @Override

@@ -1,5 +1,7 @@
 package com.soapsnake.springboot.service.handler;
 
+import java.lang.reflect.Type;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.simp.stomp.StompCommand;
@@ -7,8 +9,6 @@ import org.springframework.messaging.simp.stomp.StompHeaders;
 import org.springframework.messaging.simp.stomp.StompSession;
 import org.springframework.messaging.simp.stomp.StompSessionHandler;
 import org.springframework.stereotype.Service;
-
-import java.lang.reflect.Type;
 
 @Service(value = "stompSessionHandler")
 public class MyStompSessionHandler implements StompSessionHandler {

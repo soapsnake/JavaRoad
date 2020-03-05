@@ -1,7 +1,9 @@
 package com.soapsnake.webflux.clientside;
 
-import com.soapsnake.webflux.server.pojo.Employee;
 import org.springframework.web.reactive.function.client.WebClient;
+
+import com.soapsnake.webflux.server.pojo.Employee;
+
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 

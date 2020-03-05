@@ -1,8 +1,12 @@
 package com.soapsnake.concurrence.multithread.ball;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Container;
 import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 public class BounceFrame extends JFrame {
 

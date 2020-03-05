@@ -1,7 +1,8 @@
 package com.soapsnake.lab.annotation.old;
 
-import com.alibaba.fastjson.annotation.JSONField;
 import org.apache.commons.lang3.RandomStringUtils;
+
+import com.alibaba.fastjson.annotation.JSONField;
 
 public class Person {
 

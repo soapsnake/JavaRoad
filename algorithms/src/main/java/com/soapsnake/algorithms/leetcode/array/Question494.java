@@ -3,7 +3,6 @@ package com.soapsnake.algorithms.leetcode.array;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.activation.FileDataSource;
 
 public class Question494 {
 

@@ -1,10 +1,5 @@
 package com.soapsnake.algorithms.structures.graph.direct;
 
-import com.soapsnake.algorithms.structures.graph.undirect.UndirectGraph;
-
-import java.util.ArrayList;
-import java.util.List;
-
 public class Edge {
 
     //有向边起点

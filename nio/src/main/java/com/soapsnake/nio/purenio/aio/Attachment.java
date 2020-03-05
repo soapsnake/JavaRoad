@@ -1,10 +1,10 @@
 package com.soapsnake.nio.purenio.aio;
 
-import lombok.Data;
-
 import java.nio.ByteBuffer;
 import java.nio.channels.AsynchronousServerSocketChannel;
 import java.nio.channels.AsynchronousSocketChannel;
+
+import lombok.Data;
 
 @Data
 public class Attachment {

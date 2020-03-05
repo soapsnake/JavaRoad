@@ -1,9 +1,9 @@
 package com.soapsnake.dubbo.provider.demo;
 
+import java.util.Arrays;
+
 import com.alibaba.dubbo.rpc.service.GenericException;
 import com.alibaba.dubbo.rpc.service.GenericService;
-
-import java.util.Arrays;
 
 /**
  * @author soapsnake

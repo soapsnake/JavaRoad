@@ -1,12 +1,13 @@
 package com.soapsnake.mq.kafka.client;
 
-import com.soapsnake.mq.kafka.pojos.Company;
-import org.apache.kafka.clients.consumer.*;
-import org.apache.kafka.common.TopicPartition;
-
 import java.util.Arrays;
-import java.util.Map;
 import java.util.Properties;
+
+import org.apache.kafka.clients.consumer.ConsumerRecord;
+import org.apache.kafka.clients.consumer.ConsumerRecords;
+import org.apache.kafka.clients.consumer.KafkaConsumer;
+
+import com.soapsnake.mq.kafka.pojos.Company;
 
 public class KafkaConsumerDemo {
 

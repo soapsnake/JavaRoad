@@ -11,7 +11,6 @@ import com.soapsnake.springboot.service.LombokTestService;
 import lombok.Cleanup;
 import lombok.NonNull;
 import lombok.extern.java.Log;
-import lombok.val;
 
 @Log
 public class LombokTestServiceImpl implements LombokTestService {

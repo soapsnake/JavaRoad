@@ -1,11 +1,11 @@
 package com.soapsnake.algorithms.structures.graph.search;
 
-import com.soapsnake.algorithms.structures.graph.undirect.UndirectGraph;
-
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 import java.util.Stack;
+
+import com.soapsnake.algorithms.structures.graph.undirect.UndirectGraph;
 
 public class BreadthFirstSearch implements GraphSearch {
 

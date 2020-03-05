@@ -1,15 +1,17 @@
 package com.soapsnake.springboot.service;
 
 
-import com.alibaba.fastjson.JSON;
-import com.soapsnake.springboot.domain.KafkaMessage;
+import java.util.Date;
+import java.util.UUID;
+
+import javax.annotation.Resource;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
-import java.util.Date;
-import java.util.UUID;
+import com.alibaba.fastjson.JSON;
+import com.soapsnake.springboot.domain.KafkaMessage;
 
 @Service
 public class KafkaProduerService {

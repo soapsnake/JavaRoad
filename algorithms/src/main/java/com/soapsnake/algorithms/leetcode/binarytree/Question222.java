@@ -1,9 +1,9 @@
 package com.soapsnake.algorithms.leetcode.binarytree;
 
-import com.soapsnake.algorithms.structures.tree.TreeNode;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import com.soapsnake.algorithms.structures.tree.TreeNode;
 
 public class Question222 {
 

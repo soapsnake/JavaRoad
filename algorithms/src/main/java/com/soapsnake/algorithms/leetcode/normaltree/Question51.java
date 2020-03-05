@@ -1,6 +1,8 @@
 package com.soapsnake.algorithms.leetcode.normaltree;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Question51 {
 

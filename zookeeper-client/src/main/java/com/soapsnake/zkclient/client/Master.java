@@ -1,13 +1,19 @@
 package com.soapsnake.zkclient.client;
 
-import com.soapsnake.zkclient.constant.ZkConstant;
-import org.apache.zookeeper.*;
-import org.apache.zookeeper.data.Stat;
+import static org.apache.zookeeper.ZooDefs.Ids.OPEN_ACL_UNSAFE;
 
 import java.io.IOException;
 import java.util.Random;
 
-import static org.apache.zookeeper.ZooDefs.Ids.OPEN_ACL_UNSAFE;
+import org.apache.zookeeper.AsyncCallback;
+import org.apache.zookeeper.CreateMode;
+import org.apache.zookeeper.KeeperException;
+import org.apache.zookeeper.WatchedEvent;
+import org.apache.zookeeper.Watcher;
+import org.apache.zookeeper.ZooKeeper;
+import org.apache.zookeeper.data.Stat;
+
+import com.soapsnake.zkclient.constant.ZkConstant;
 
 /**
  * 用来在zookeeper中创建master节点(znode)
