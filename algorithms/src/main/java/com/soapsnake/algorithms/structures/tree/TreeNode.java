@@ -273,11 +273,11 @@ public class TreeNode {
     }
 
     /**
-     * 3
-     * / \
-     * 9  20
-     * /  \
-     * 15   7
+     *    3
+     *  /   \
+     * 9   20
+     *    /  \
+     *   15   7
      */
     public static TreeNode makeNormalTreeFor110() {
         TreeNode root = new TreeNode(3);
