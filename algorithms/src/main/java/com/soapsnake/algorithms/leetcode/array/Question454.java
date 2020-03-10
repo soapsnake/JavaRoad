@@ -19,10 +19,10 @@ public class Question454 {
      * B = [-2,-1]
      * C = [-1, 2]
      * D = [ 0, 2]
-     *
+     * <p>
      * Output:
      * 2
-     *
+     * <p>
      * Explanation:
      * The two tuples are:
      * 1. (0, 0, 0, 1) -> A[0] + B[0] + C[0] + D[1] = 1 + (-2) + (-1) + 2 = 0
