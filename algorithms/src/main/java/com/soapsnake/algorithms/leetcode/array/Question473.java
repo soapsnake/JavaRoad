@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 public class Question473 {
 
+    //leetcode473
     public boolean makesquare(int[] nums) {
         if (nums == null || nums.length < 4) {
             return false;
@@ -17,7 +18,7 @@ public class Question473 {
             return false;
         //这里的排序是为了优化运算的,对正确性无影响
         Arrays.sort(nums);
-        //降序,因为nums是int[]不能在sort时使用比较器
+        //降序,因为nums是int[]不能在sort时使用比较器,但是为什么要降序了?
         reverse(nums);
 
         //其实就是backtrace算法,暴力枚举
