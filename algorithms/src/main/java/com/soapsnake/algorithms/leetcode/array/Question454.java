@@ -3,8 +3,6 @@ package com.soapsnake.algorithms.leetcode.array;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.sun.tools.javac.code.Type.ForAll;
-
 /**
  * @author liudun <liudun@kuaishou.com>
  * Created on 2020-03-08
