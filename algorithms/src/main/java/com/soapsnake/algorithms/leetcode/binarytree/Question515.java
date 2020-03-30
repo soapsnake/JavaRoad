@@ -1,0 +1,50 @@
+package com.soapsnake.algorithms.leetcode.binarytree;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
+import javax.swing.tree.RowMapper;
+
+import com.soapsnake.algorithms.structures.tree.TreeNode;
+import com.sun.org.apache.xpath.internal.WhitespaceStrippingElementMatcher;
+
+/**
+ * @author liudun <liudun@kuaishou.com>
+ * Created on 2020-03-30
+ */
+public class Question515 {
+
+    //leetcode515 找出二叉树每一层的最大值
+    public List<Integer> largestValues(TreeNode root) {
+        List<Integer> res = new ArrayList<>();
+        if (root == null) {
+            return res;
+        }
+        Queue<TreeNode> que = new LinkedList<>();
+        que.add(root);
+        res.add(root.val);
+        while (!que.isEmpty()) {
+            List<TreeNode> row = new ArrayList<>();
+            int rowMax = Integer.MIN_VALUE;
+            while (!que.isEmpty()) {
+                TreeNode cur = que.poll();
+                if (cur.left != null) {
+                    row.add(cur.left);
+                    rowMax = Math.max(rowMax, cur.left.val);
+                }
+                if (cur.right != null) {
+                    row.add(cur.right);
+                    rowMax = Math.max(rowMax, cur.right.val);
+                }
+            }
+            if (!row.isEmpty()) {
+                res.add(rowMax);
+                que.addAll(row);
+            }
+        }
+        return res;
+    }
+}
