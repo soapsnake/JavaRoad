@@ -32,20 +32,8 @@ public class Question171 {
      * @param s
      * @return
      */
+    //leetcode171
     public int titleToNumber(String s) {
-        //A -> 1
-        //AB -> 28 = 1 * 26 + 2
-
-        //ZY -> 701 = 26 * (26) + 25
-
-        //BBA -> 2 * (26)² + 2 * (26) + 1 = .....
-        //实际上是26进制
-        //这个map实际上根本就不需要
-//        Map<Character, Integer> map = new HashMap<>();
-//        for (int i = 0; i < 26; i++) {
-//            map.put((char)('A' + i), i+1);
-//        }
-
         char[] chars = s.toCharArray();
         int res = 0;
         for (int i = 0; i < chars.length; i++) {

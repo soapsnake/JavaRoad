@@ -235,5 +235,29 @@ public class ArraysTester {
         System.out.println(findFirstAcure(soure));
     }
 
+    //数组里面的0都移动到后面去,2n复杂度
+    public static void moveZeroes(int[] nums) {
+        if (nums.length == 0) {
+            return;
+        }
+        int nonZeroIndex = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != 0) {
+                nums[nonZeroIndex] = nums[i];
+                nonZeroIndex++; //如果nums[i]为0,那么nonZeroIndex和i就会脱钩,
+            }
+        }
+        for (int i = nonZeroIndex; i < nums.length; i++) {
+            nums[i] = 0;
+        }
+    }
 
+
+
+    @Test
+    public void testMoveZero() {
+        int[] nums = {0,1,0,3,12};
+        moveZeroes(nums);
+        System.out.println(Arrays.toString(nums));
+    }
 }
