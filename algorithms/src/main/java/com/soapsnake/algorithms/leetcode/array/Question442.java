@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ *
  * Created on 2020-03-02
  */
 public class Question442 {

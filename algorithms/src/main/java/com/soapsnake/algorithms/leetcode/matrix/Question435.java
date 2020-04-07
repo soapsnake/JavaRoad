@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ *
  * Created on 2020-02-29
  */
 public class Question435 {

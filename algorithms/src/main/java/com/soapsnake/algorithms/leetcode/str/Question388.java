@@ -4,7 +4,7 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ *
  * Created on 2020-01-20
  */
 public class Question388 {

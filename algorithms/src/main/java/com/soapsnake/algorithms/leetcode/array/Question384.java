@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Random;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ *
  * Created on 2020-01-20
  */
 public class Question384 {

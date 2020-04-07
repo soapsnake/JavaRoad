@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Stack;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ *
  * Created on 2020-03-26
  */
 public class Question503 {

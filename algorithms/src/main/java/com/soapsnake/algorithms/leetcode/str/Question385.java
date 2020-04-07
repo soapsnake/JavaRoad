@@ -7,7 +7,7 @@ import com.soapsnake.algorithms.leetcode.list.NestedInteger;
 
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ *
  * Created on 2020-03-05
  */
 public class Question385 {

@@ -3,7 +3,7 @@ package com.soapsnake.algorithms.leetcode.list;
 import java.util.List;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ *
  * Created on 2020-01-20
  */
 public interface NestedInteger {

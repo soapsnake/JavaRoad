@@ -1,7 +1,7 @@
 package com.soapsnake.lab.lenum;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ *
  * Created on 2020-03-11
  */
 public enum TestEnum {

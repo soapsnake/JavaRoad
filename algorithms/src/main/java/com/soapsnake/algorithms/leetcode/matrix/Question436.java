@@ -3,7 +3,7 @@ package com.soapsnake.algorithms.leetcode.matrix;
 import java.util.TreeMap;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ *
  * Created on 2020-03-02
  */
 public class Question436 {

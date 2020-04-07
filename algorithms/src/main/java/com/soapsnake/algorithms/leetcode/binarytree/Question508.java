@@ -8,7 +8,7 @@ import java.util.Map;
 import com.soapsnake.algorithms.structures.tree.TreeNode;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ *
  * Created on 2020-03-28
  */
 public class Question508 {

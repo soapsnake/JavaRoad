@@ -4,7 +4,7 @@ import java.util.Random;
 import java.util.TreeMap;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ *
  * Created on 2020-03-25
  */
 public class Question497 {

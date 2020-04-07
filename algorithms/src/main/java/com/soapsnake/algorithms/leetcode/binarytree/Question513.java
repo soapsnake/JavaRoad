@@ -9,7 +9,7 @@ import java.util.Queue;
 import com.soapsnake.algorithms.structures.tree.TreeNode;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ *
  * Created on 2020-03-29
  */
 public class Question513 {

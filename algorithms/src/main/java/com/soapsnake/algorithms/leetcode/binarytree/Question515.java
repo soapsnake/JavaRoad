@@ -12,7 +12,7 @@ import com.soapsnake.algorithms.structures.tree.TreeNode;
 import com.sun.org.apache.xpath.internal.WhitespaceStrippingElementMatcher;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ *
  * Created on 2020-03-30
  */
 public class Question515 {
