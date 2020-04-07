@@ -10,7 +10,7 @@ import com.soapsnake.algorithms.leetcode.str.Question38;
 
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ *
  * Created on 2020-01-19
  */
 public class Question380 {

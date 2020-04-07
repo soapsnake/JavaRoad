@@ -9,7 +9,7 @@ import java.util.Queue;
 import com.soapsnake.algorithms.alib.KMPtester;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ *
  * Created on 2020-01-13
  */
 public class Question373 {
