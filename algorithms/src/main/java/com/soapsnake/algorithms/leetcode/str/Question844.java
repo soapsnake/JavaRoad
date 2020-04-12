@@ -36,6 +36,8 @@ public class Question844 {
         for (int i = 0; i < chars.length; i++) {
             if (chars[i] == '#') {
                 chars[i] = ' ';
+
+                //有可能连续出现多个'#'的情况,所以需要把所有的全部改成空字符
                 for (int j = i; j >= 0; ) {
                     if (chars[j] != ' ') {
                         chars[j] = ' ';

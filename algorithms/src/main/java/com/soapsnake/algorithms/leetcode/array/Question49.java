@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import com.soapsnake.algorithms.structures.list.ListNode;
+
 /**
  * @Auther soapsnake@gmail.com
  * @Date 2019-03-20 12:27
@@ -96,5 +98,18 @@ public class Question49 {
             backTrace(res, tmp, chars);
             tmp.remove(tmp.size() - 1);
         }
+    }
+
+    public ListNode middleNode(ListNode head) {
+        if (head == null) {
+            return head;
+        }
+        ListNode slow = head;
+        ListNode hurry = head;
+        while ( hurry != null && hurry.next != null) {
+            slow = slow.next;
+            hurry = hurry.next.next;
+        }
+        return slow;
     }
 }
