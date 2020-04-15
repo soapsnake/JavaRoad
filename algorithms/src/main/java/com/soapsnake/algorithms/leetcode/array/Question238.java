@@ -20,7 +20,6 @@ class Question238 {
      * Output: [24,12,8,6]
      */
 
-
     //平方级别时间复杂度解法
     public int[] productExceptSelf(int[] nums) {
         int[] output = new int[nums.length];
@@ -60,8 +59,18 @@ class Question238 {
     }
 
     //大神级程序员的解法,菜逼退散
+
+    /**
+     * Numbers:     2    3    4     5
+     * Lefts:            2  2*3 2*3*4
+     * Rights:  3*4*5  4*5    5
+     * Let’s fill the empty with 1:
+     *
+     * Numbers:     2    3    4     5
+     * Lefts:       1    2  2*3 2*3*4
+     * Rights:  3*4*5  4*5    5     1
+     */
     public int[] productExceptSelf3(int[] nums) {
-        //TODO 需要debug搞懂
         int n = nums.length;
         int[] res = new int[n];
         res[0] = 1;

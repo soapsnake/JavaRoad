@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.PriorityQueue;
 import java.util.Random;
 import java.util.UUID;
 
@@ -37,14 +38,5 @@ public class Question535 {
         String shorurl = codec.encode(longurl);
         System.out.println(shorurl);
         System.out.println(codec.decode(shorurl));
-    }
-
-    public int lastStoneWeight(int[] stones) {
-        Arrays.sort(stones);
-        for (int i = 0; i < stones.length; i++) {
-
-        }
-
-        return 0;
     }
 }
