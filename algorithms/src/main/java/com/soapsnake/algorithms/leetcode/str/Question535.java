@@ -38,13 +38,4 @@ public class Question535 {
         System.out.println(shorurl);
         System.out.println(codec.decode(shorurl));
     }
-
-    public int lastStoneWeight(int[] stones) {
-        Arrays.sort(stones);
-        for (int i = 0; i < stones.length; i++) {
-
-        }
-
-        return 0;
-    }
 }

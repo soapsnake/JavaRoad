@@ -1,14 +1,16 @@
 package com.soapsnake.algorithms.leetcode.str;
 
+import org.omg.IOP.TAG_ORB_TYPE;
+
 public class Question43 {
 
-    public static void main(String[] args) {
-        Question43 question43 = new Question43();
-        String num1 = "498828660196";
-        String num2 = "840477629533";
-        System.out.println(question43.multiply2(num1, num2));
-
-    }
+//    public static void main(String[] args) {
+//        Question43 question43 = new Question43();
+//        String num1 = "498828660196";
+//        String num2 = "840477629533";
+//        System.out.println(question43.multiply2(num1, num2));
+//
+//    }
 
     public String multiply(String num1, String num2) {
         int n1 = num1.length(), n2 = num2.length();
@@ -61,5 +63,33 @@ public class Question43 {
             stringBuilder.deleteCharAt(0);
         }
         return stringBuilder.length() == 0 ? "0" : stringBuilder.toString();
+    }
+
+    //leetcode678
+    public static boolean checkValidString(String s) {
+        return check(s, 0, 0);
+    }
+
+    private static boolean check(String s, int start, int count) {
+        if (count < 0) return false;
+        for (int i = start; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (c == '(') {
+                count++;
+            }
+            else if (c == ')') {
+                if (count <= 0) return false;
+                count--;
+            }
+            else if (c == '*') {
+                return check(s, i + 1, count + 1) || check(s, i + 1, count - 1) || check(s, i + 1, count);
+            }
+        }
+        return count == 0;
+    }
+
+    public static void main(String[] args) {
+        String s = ")(";
+        System.out.println(checkValidString(s));
     }
 }
