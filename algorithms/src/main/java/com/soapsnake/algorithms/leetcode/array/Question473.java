@@ -54,4 +54,8 @@ public class Question473 {
             j--;
         }
     }
+
+    public static void main(String[] args) {
+
+    }
 }
