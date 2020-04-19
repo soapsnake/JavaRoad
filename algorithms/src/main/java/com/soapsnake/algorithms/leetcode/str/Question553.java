@@ -100,12 +100,4 @@ public class Question553 {
         System.out.println(String.join(",", nanmes));
     }
 
-    public int search(int[] nums, int target) {
-        //旋转数组的二分查找
-        if (nums.length == 0) {
-            return 0;
-        }
-
-
-    }
 }
