@@ -22,7 +22,6 @@ public class Question64 {
      * @return
      */
     public int minPathSum(int[][] grid) {
-
         if (grid == null) {
             return 0;
         }

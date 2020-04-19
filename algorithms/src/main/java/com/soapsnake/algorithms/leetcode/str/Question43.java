@@ -1,5 +1,8 @@
 package com.soapsnake.algorithms.leetcode.str;
 
+import java.net.DatagramPacket;
+import java.util.concurrent.ForkJoinPool;
+
 import org.omg.IOP.TAG_ORB_TYPE;
 
 public class Question43 {
@@ -92,4 +95,25 @@ public class Question43 {
         String s = ")(";
         System.out.println(checkValidString(s));
     }
+
+
+    public int minPathSum(int[][] grid) {
+        int x = grid.length;
+        int y = grid[0].length;
+        for (int i = 0; i < x; i++) {
+            for (int j = 0; j < y; j++) {
+                if (i == 0 && j == 0) {
+                    continue;
+                } else if (i == 0) {
+                    grid[i][j] += grid[i][j - 1];
+                } else if (j == 0) {
+                    grid[i][j] += grid[i - 1][j];
+                } else {
+                    grid[i][j] += Math.min(grid[i - 1][j], grid[i][j - 1]);
+                }
+            }
+        }
+        return grid[x - 1][y - 1];
+    }
+
 }
