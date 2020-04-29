@@ -79,7 +79,6 @@ public class Question221 {
                 }
             }
         }
-
         return max * max;
     }
 

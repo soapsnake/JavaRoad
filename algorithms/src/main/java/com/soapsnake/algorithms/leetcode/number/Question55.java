@@ -28,7 +28,6 @@ public class Question55 {
      * 问题的本质是一个索引可以到达，每个先前的索引都必须是可达的。
      */
     public boolean canJump(int[] nums) {
-
         int reachAble = 0;
         for (int i = 0; i < nums.length; i++) {
             if (i > reachAble) {
@@ -38,4 +37,5 @@ public class Question55 {
         }
         return true;
     }
+
 }
