@@ -6,7 +6,7 @@ import java.util.List;
 import apple.laf.JRSUIConstants.ScrollBarHit;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ *
  * Created on 2020-04-13
  */
 public class Question539 {
