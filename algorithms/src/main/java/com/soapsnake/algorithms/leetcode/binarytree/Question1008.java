@@ -5,7 +5,7 @@ import com.soapsnake.algorithms.structures.tree.TreeNode;
 import java.util.List;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ *
  * Created on 2020-04-20
  */
 public class Question1008 {
