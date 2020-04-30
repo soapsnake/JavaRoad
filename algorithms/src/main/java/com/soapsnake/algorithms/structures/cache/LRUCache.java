@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ *
  * Created on 2020-04-24
  */
 public class LRUCache implements Cache<Integer, Integer>{

@@ -1,5 +1,13 @@
 package com.soapsnake.algorithms.leetcode.array;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import com.soapsnake.algorithms.orion.Test;
+
 /**
  * @Auther soapsnake@gmail.com
  * @Date 2019-03-12 11:02
@@ -10,7 +18,17 @@ public class Question33 {
         Question33 question33 = new Question33();
         int[] nums = {1, 3};
         int target = 2;
-        System.out.println(question33.search(nums, target));  //should be 4
+//        System.out.println(question33.search(nums, target));  //should be 4
+        test();
+    }
+
+
+    public static void test(){
+        Map<String, Object> map = new HashMap<>();
+        map.put("jiushi", "就是");
+        map.put("haishi", null);
+        String obj = (String) map.getOrDefault("haishi", null);
+        System.out.println(obj);
     }
 
     /**

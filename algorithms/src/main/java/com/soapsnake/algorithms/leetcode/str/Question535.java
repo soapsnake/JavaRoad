@@ -10,7 +10,7 @@ import java.util.Random;
 import java.util.UUID;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ *
  * Created on 2020-04-11
  */
 public class Question535 {

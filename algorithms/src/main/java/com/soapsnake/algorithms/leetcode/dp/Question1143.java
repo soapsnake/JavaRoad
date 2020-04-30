@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.text.DecimalFormat;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ *
  * Created on 2020-04-26
  */
 public class Question1143 {

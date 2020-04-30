@@ -42,7 +42,7 @@
 - HashSet的add()添加失败时会返回false,可用这个来判数组或list的重复元素
 - 判断字符是否'a'~'z'或者'A'~'Z'(英语字母): Character.isLetter(c), 判断字符是数字:Character.isDigit(c)
 - idea进入debug时"Finished,saving caches"卡住的解决办法: https://stackoverflow.com/questions/20658400/intellij-idea-hangs-while-finished-saving-caches
-- Array转List最有效的办法是Arrays.asList();
+- Array转List最有效的办法是Arrays.asList(),但是注意了,Arrays.asList()返回的是一个固定容量的array,不能再add或者remove元素
 - char\[]转string最有效的办法是String.valueOf(char\[]);
 - 字符串List转数组最有效的办法是list.toArray(new String\[0]);
 - Integer型(int就不行)List转数组最有效办法是list.toArray(new Integer\[0]),不能使用基本类型;

@@ -50,4 +50,16 @@ public class Question560 {
         return res;
     }
 
+    public static int rangeBitwiseAnd(int m, int n) {
+        int res = m;
+        for (int i = m + 1; i <= n; i++) {
+            res &= i;
+        }
+        return res;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(rangeBitwiseAnd(5, 7));
+    }
+
 }
