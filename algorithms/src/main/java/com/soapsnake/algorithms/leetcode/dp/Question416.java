@@ -1,5 +1,10 @@
 package com.soapsnake.algorithms.leetcode.dp;
 
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.NoSuchElementException;
+import java.util.Set;
+
 public class Question416 {
 
     public boolean canPartition(int[] nums) {
@@ -38,5 +43,37 @@ public class Question416 {
             }
         }
         return dp[volumn];
+    }
+
+
+    class FirstUnique {
+        Set<Integer> uniq = new LinkedHashSet<>();
+        Set<Integer> noUniq = new LinkedHashSet<>();
+
+        public FirstUnique(int[] nums) {
+            for (int n : nums) {
+                this.add(n);
+            }
+        }
+
+        public int showFirstUnique() {
+            if (uniq.iterator().hasNext()) {
+                return uniq.iterator().next();
+            } else {
+                return -1;
+            }
+        }
+
+        public void add(int value) {
+            if (noUniq.contains(value)) {
+                return;
+            }
+            if (uniq.contains(value)) {
+                noUniq.add(value);
+                uniq.remove(value);
+                return;
+            }
+            uniq.add(value);
+        }
     }
 }
