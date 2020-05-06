@@ -3,7 +3,7 @@ package com.soapsnake.lab.exception;
 import javax.swing.TransferHandler;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ * @author liudun <liudun@.com>
  * Created on 2020-04-30
  */
 public class ExceptionTestor {

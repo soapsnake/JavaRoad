@@ -45,7 +45,7 @@ public class Question567 {
         return true;
     }
 
-
+    //二叉树是否有满足条件的路径
     public boolean isValidSequence(TreeNode root, int[] arr) {
         return dfs(root,   arr, 0);
     }
