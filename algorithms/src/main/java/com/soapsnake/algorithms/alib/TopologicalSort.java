@@ -4,7 +4,7 @@ import com.soapsnake.algorithms.structures.graph.Graph;
 import com.soapsnake.algorithms.structures.graph.direct.DirectWeightGraph;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ *
  * Created on 2020-05-01
  */
 public class TopologicalSort {

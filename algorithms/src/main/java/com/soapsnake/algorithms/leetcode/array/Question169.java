@@ -20,9 +20,13 @@ class Question169 {
         int majority = 0;
         int count = 0;
         for (int num : nums) {
+
+            //count==0时说明归零了,从新开始算吧
             if (count == 0) {
                 majority = num;
             }
+
+            //count不为0时
             if (num == majority) {
                 count++;
             } else {

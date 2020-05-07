@@ -3,7 +3,7 @@ package com.soapsnake.lab.excel;
 import lombok.Data;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ *
  * Created on 2020-05-01
  */
 @Data

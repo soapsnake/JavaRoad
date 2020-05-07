@@ -4,7 +4,7 @@ import lombok.Data;
 import lombok.ToString;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ *
  * Created on 2020-05-06
  */
 public class TestNpe {
