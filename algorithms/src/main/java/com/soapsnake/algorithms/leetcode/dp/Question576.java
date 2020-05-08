@@ -12,7 +12,7 @@ import com.soapsnake.algorithms.structures.tree.TreeNode;
 import com.sun.tools.hat.internal.model.Root;
 
 /**
- *
+ *E
  * Created on 2020-05-06
  */
 public class Question576 {
@@ -79,6 +79,10 @@ public class Question576 {
                 return map.get(x) != map.get(y);
             }
         }
+        return false;
+    }
+
+    public boolean checkStraightLine(int[][] coordinates) {
         return false;
     }
 }
