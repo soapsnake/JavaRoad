@@ -16,6 +16,7 @@ public class Question383 {
         System.out.println(question383.canConstruct(a, b));
     }
 
+    //leetcode383
     public boolean canConstruct(String ransomNote, String magazine) {
         //a中的字符是否都在b里面
         char[] a = ransomNote.toCharArray();
