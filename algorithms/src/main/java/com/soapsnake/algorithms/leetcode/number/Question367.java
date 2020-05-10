@@ -11,6 +11,7 @@ public class Question367 {
         System.out.println(question367.isPerfectSquare(16));
     }
 
+    //leetcode367
     public boolean isPerfectSquare(int num) {
         if (num == 0) {
             return false;
