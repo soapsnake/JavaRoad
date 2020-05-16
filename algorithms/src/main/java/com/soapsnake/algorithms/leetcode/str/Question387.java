@@ -17,17 +17,13 @@ public class Question387 {
         System.out.println(question387.firstUniqChar(tar));
     }
 
+    //leetcode387
     public int firstUniqChar(String s) {
-
-        //todo freqen[]
-
         int[] frequen = new int[26];
         char[] chars = s.toCharArray();
-
         for (int i = 0; i < chars.length; i++) {
             frequen[chars[i] - 'a']++;
         }
-        System.out.println(Arrays.toString(frequen));
         for (int i = 0; i < chars.length; i++) {
             if (frequen[chars[i] - 'a'] == 1) {
                 return i;

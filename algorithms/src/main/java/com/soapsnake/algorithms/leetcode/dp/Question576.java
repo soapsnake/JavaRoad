@@ -82,7 +82,4 @@ public class Question576 {
         return false;
     }
 
-    public boolean checkStraightLine(int[][] coordinates) {
-        return false;
-    }
 }
