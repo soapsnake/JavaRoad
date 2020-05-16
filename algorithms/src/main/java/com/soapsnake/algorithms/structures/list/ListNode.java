@@ -4,14 +4,16 @@ public class ListNode {
     public int val;
     public ListNode next;
 
+    private ListNode end;
+
 //    public ListNode tail;
 
     public ListNode() {
-
     }
 
     public ListNode(int val) {
         this.val = val;
+        this.end = this;
     }
 
     public static void printListNode(ListNode root) {
@@ -31,6 +33,13 @@ public class ListNode {
             }
         }
         System.out.println("   ->ListSize is: " + size);
+    }
+
+    public ListNode next(int val) {
+        ListNode nextNode = new ListNode(val);
+        this.end.next = nextNode;
+        this.end = nextNode;
+        return end;
     }
 
     public static ListNode revertList(ListNode head) {
