@@ -48,13 +48,13 @@ public class Question918 {
      * Input: 2->1->3->5->6->4->7->NULL
      * Output: 2->3->6->7->1->5->4->NULL
      */
-    public ListNode oddEvenList(ListNode head) {
+    public static ListNode oddEvenList(ListNode head) {
         if (head == null) {
             return null;
         }
-        ListNode oddHead = new ListNode();
+        ListNode oddHead = new ListNode(1);
         ListNode oddCur = oddHead;
-        ListNode evenHead = new ListNode();
+        ListNode evenHead = new ListNode(1);
         ListNode evenCur = evenHead;
         ListNode cur = head;
         int i = 1;
@@ -73,10 +73,5 @@ public class Question918 {
         }
         oddCur.next = evenHead.next;
         return oddHead;
-    }
-
-    public static void main(String[] args) {
-        ListNode node = new ListNode(1).next(2).next(3).next(4).next(5);
-        System.out.println(node);
     }
 }

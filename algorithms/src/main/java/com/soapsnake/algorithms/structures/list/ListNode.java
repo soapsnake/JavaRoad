@@ -4,16 +4,18 @@ public class ListNode {
     public int val;
     public ListNode next;
 
+    private final ListNode head;
     private ListNode end;
 
-//    public ListNode tail;
-
     public ListNode() {
+        this.head = this;
+        this.end = head;
     }
 
     public ListNode(int val) {
         this.val = val;
-        this.end = this;
+        this.head = this;
+        this.end = head;
     }
 
     public static void printListNode(ListNode root) {
@@ -35,11 +37,12 @@ public class ListNode {
         System.out.println("   ->ListSize is: " + size);
     }
 
+    //实现链式调用
     public ListNode next(int val) {
         ListNode nextNode = new ListNode(val);
         this.end.next = nextNode;
         this.end = nextNode;
-        return end;
+        return this;
     }
 
     public static ListNode revertList(ListNode head) {
