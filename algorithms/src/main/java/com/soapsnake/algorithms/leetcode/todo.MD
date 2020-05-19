@@ -12,13 +12,13 @@
 - Dfs or Bfs: 257,784, 437, 111, 680也有这个思想, 235, 17, 22, 39, 46, 40, 47, 77, 113, 加权有向图计算两点间所有路径 ,216, 130
 - Binary search:367, 33, 74, 374, 378(在值范围做二分)
 - Binary search tree:450(二叉搜索树节点删除)
-- 字串滑动窗口: 76,3,30,438 算法(未搞懂):https://leetcode.com/problems/find-all-anagrams-in-a-string/discuss/92007/Sliding-Window-algorithm-template-to-solve-all-the-Leetcode-substring-search-problem.
+- 滑动窗口:424,76,3,30,438, 567 算法(未搞懂):https://leetcode.com/problems/find-all-anagrams-in-a-string/discuss/92007/Sliding-Window-algorithm-template-to-solve-all-the-Leetcode-substring-search-problem.
+- 栈相关(单调队列:https://medium.com/@gregsh9.5/monotonic-queue-notes-980a019d5793): 1130, 907, 901, 856, 503, 496, 84, 42, 739
 - Awk:193
 - Comparator:937
 - Matrix:48(图像顺时针旋转)
 - Random: 382, 380, 384,398(这个就太...)
 - Recursive(递归): 397, 1315
-- slide window: 424
 - backtrace: 491,47,473,77,139,279,300,377, 526
 - priorityQueue: 1046
 

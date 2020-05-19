@@ -1,6 +1,11 @@
 package com.soapsnake.algorithms.leetcode.str;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.soapsnake.algorithms.structures.tree.TreeNode;
+
+import jdk.nashorn.internal.ir.debug.JSONWriter;
 
 /**
  *
@@ -80,5 +85,11 @@ public class Question567 {
 
         int[] arr = {0, 1, 1};
         System.out.println(question567.isValidSequence(root, arr));
+
+
+        List<String> re = new ArrayList<>();
+        re.add("lrer");
+        re.add("fdas");
+        re.toString();
     }
 }
