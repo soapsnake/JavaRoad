@@ -1,6 +1,10 @@
 package com.soapsnake.algorithms.leetcode.array;
 
 import com.soapsnake.algorithms.structures.list.ListNode;
+import com.soapsnake.algorithms.structures.tree.TreeNode;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author liudun <liudun@kuaishou.com>
@@ -74,4 +78,25 @@ public class Question918 {
         oddCur.next = evenHead.next;
         return oddHead;
     }
+
+    List<Integer> list = new ArrayList<>();
+    public int kthSmallest(TreeNode root, int k) {
+        if (root == null) {
+            return 0;
+        }
+        //bst的先序遍历结果是排序的
+        this.preorder(root);
+        return list.get(k + 1);
+    }
+
+    private void preorder(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        preorder(root.left);
+        list.add(root.val);
+        preorder(root.right);
+    }
+
+
 }
