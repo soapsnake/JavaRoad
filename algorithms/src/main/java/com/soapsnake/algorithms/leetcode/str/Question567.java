@@ -1,11 +1,9 @@
 package com.soapsnake.algorithms.leetcode.str;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.soapsnake.algorithms.structures.tree.TreeNode;
 
-import jdk.nashorn.internal.ir.debug.JSONWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *

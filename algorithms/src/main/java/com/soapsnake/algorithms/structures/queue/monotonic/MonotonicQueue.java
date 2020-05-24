@@ -1,7 +1,7 @@
 package com.soapsnake.algorithms.structures.queue.monotonic;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ *
  * Created on 2020-05-19
  *
  * 单调队列,队列内的元素都是单调递增或者/递减的

@@ -1,13 +1,12 @@
 package com.soapsnake.nio.netty.eventloop;
 
 
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeUnit;
-
 import com.soapsnake.nio.netty.bytebuf.MyChannelFactory;
-
 import io.netty.channel.Channel;
 import io.netty.util.concurrent.ScheduledFuture;
+
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by soapsnake on 2018/1/15.

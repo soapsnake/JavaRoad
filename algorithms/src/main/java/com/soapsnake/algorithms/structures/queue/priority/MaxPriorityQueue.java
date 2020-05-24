@@ -1,9 +1,9 @@
 package com.soapsnake.algorithms.structures.queue.priority;
 
+import com.soapsnake.algorithms.utils.NumberUtils;
+
 import java.util.Arrays;
 import java.util.Collection;
-
-import com.soapsnake.algorithms.utils.NumberUtils;
 
 /**
  * 大顶堆, 大顶堆可以用来解决最小k个数的问题

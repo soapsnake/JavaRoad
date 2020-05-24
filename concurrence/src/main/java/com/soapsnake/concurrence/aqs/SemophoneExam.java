@@ -1,8 +1,8 @@
 package com.soapsnake.concurrence.aqs;
 
-import java.util.concurrent.Semaphore;
-
 import com.soapsnake.concurrence.multithread.lock.Person;
+
+import java.util.concurrent.Semaphore;
 
 public class SemophoneExam {
     private static final int MAX_AVAILABLE = 100;

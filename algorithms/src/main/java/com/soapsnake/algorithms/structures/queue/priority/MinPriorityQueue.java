@@ -1,10 +1,10 @@
 package com.soapsnake.algorithms.structures.queue.priority;
 
 
+import com.soapsnake.algorithms.utils.NumberUtils;
+
 import java.util.Arrays;
 import java.util.List;
-
-import com.soapsnake.algorithms.utils.NumberUtils;
 
 /**
  * 小顶堆,可以用来解决最大n个数的问题

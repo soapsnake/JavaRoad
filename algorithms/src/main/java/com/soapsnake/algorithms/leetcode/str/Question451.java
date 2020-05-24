@@ -38,7 +38,6 @@ public class Question451 {
         Map<Character, Integer> map = new HashMap<>();  //char -> count
         for (char c : s.toCharArray())
             map.put(c, map.getOrDefault(c, 0) + 1);
-
         List<Character>[] bucket = new List[s.length() + 1];  //数组的每个元素为一个list,类似hashmap
         for (char key : map.keySet()) {
             int frequency = map.get(key);  //count
@@ -49,7 +48,6 @@ public class Question451 {
             //这个操作其实是一个归并操作,把所有出现次数相同的char归到了同一个list中,index代表了list中各char的重复次数
             bucket[frequency].add(key);
         }
-
         StringBuilder sb = new StringBuilder();
         //倒着排,从多到少
         for (int pos = bucket.length - 1; pos >= 0; pos--)
@@ -63,8 +61,7 @@ public class Question451 {
         return sb.toString();
     }
 
-
-        public String frequencySort2(String s) {
+    public String frequencySort2(String s) {
         //傻逼解法,对map的value进行排序,由于leetcode识别不了entry类,所以编译失败
         Map<Character, Integer> map = new LinkedHashMap<>();
         for (int i = 0; i < s.length(); i++) {

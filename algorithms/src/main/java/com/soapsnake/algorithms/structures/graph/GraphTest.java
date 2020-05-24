@@ -1,10 +1,10 @@
 package com.soapsnake.algorithms.structures.graph;
 
-import java.util.Arrays;
-
 import com.soapsnake.algorithms.structures.graph.search.DepthFirstSearch;
 import com.soapsnake.algorithms.structures.graph.search.GraphSearch;
 import com.soapsnake.algorithms.structures.graph.undirect.UndirectGraph;
+
+import java.util.Arrays;
 
 public class GraphTest {
 

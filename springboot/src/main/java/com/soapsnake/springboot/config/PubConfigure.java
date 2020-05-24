@@ -1,11 +1,10 @@
 package com.soapsnake.springboot.config;
 
+import com.pubnub.api.PNConfiguration;
+import com.pubnub.api.PubNub;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import com.pubnub.api.PNConfiguration;
-import com.pubnub.api.PubNub;
 
 @Configuration
 public class PubConfigure {

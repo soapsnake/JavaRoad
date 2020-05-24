@@ -1,13 +1,13 @@
 package com.soapsnake.zkclient.client;
 
-import java.io.IOException;
-
 import org.apache.zookeeper.AsyncCallback;
 import org.apache.zookeeper.KeeperException;
 import org.apache.zookeeper.WatchedEvent;
 import org.apache.zookeeper.Watcher;
 import org.apache.zookeeper.ZooKeeper;
 import org.apache.zookeeper.data.Stat;
+
+import java.io.IOException;
 
 /**
  * Created by soapsnake on 2017/5/20.

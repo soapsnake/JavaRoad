@@ -1,10 +1,5 @@
 package com.soapsnake.nio.websocket;
 
-import java.io.File;
-import java.io.RandomAccessFile;
-import java.net.URISyntaxException;
-import java.net.URL;
-
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
@@ -20,6 +15,11 @@ import io.netty.handler.codec.http.HttpVersion;
 import io.netty.handler.codec.http.LastHttpContent;
 import io.netty.handler.ssl.SslHandler;
 import io.netty.handler.stream.ChunkedNioFile;
+
+import java.io.File;
+import java.io.RandomAccessFile;
+import java.net.URISyntaxException;
+import java.net.URL;
 
 /**
  * Created by soapsnake on 2018/1/16.

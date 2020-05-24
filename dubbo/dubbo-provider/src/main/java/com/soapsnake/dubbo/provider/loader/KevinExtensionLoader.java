@@ -1,5 +1,8 @@
 package com.soapsnake.dubbo.provider.loader;
 
+import com.soapsnake.dubbo.provider.annotation.LogSpi;
+import com.soapsnake.dubbo.provider.util.Holder;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
@@ -11,9 +14,6 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.regex.Pattern;
-
-import com.soapsnake.dubbo.provider.annotation.LogSpi;
-import com.soapsnake.dubbo.provider.util.Holder;
 
 /**
  * @author soapsnake

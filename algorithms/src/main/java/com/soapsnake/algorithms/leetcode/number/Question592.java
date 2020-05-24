@@ -1,14 +1,9 @@
 package com.soapsnake.algorithms.leetcode.number;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
-import java.util.Stack;
-
-import org.hamcrest.core.Is;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ *
  * Created on 2020-05-12
  */
 public class Question592 {

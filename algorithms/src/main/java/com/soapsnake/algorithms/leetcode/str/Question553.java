@@ -1,10 +1,7 @@
 package com.soapsnake.algorithms.leetcode.str;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.List;
-
-import javax.lang.model.element.Name;
 
 /**
  *

@@ -1,8 +1,5 @@
 package com.soapsnake.algorithms.leetcode.biner;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-
 /**
  * Given a positive integer, output its complement number.
  * The complement strategy is to flip the bits of its binary representation.

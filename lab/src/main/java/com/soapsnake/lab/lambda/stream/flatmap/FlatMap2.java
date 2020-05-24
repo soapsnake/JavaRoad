@@ -1,9 +1,9 @@
 package com.soapsnake.lab.lambda.stream.flatmap;
 
+import com.soapsnake.lab.lambda.stream.Person;
+
 import java.util.Arrays;
 import java.util.List;
-
-import com.soapsnake.lab.lambda.stream.Person;
 
 public class FlatMap2 {
 

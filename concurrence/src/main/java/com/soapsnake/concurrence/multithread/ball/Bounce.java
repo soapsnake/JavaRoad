@@ -1,8 +1,7 @@
 package com.soapsnake.concurrence.multithread.ball;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
+import javax.swing.*;
+import java.awt.*;
 
 public class Bounce {
 

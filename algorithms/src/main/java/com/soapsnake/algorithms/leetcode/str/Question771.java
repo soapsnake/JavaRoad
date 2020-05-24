@@ -1,8 +1,5 @@
 package com.soapsnake.algorithms.leetcode.str;
 
-import java.util.HashSet;
-import java.util.Set;
-
 class Question771 {
 
     //leetcode771

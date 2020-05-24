@@ -1,13 +1,12 @@
 package com.soapsnake.mq.kafka.client;
 
-import java.util.Arrays;
-import java.util.Properties;
-
+import com.soapsnake.mq.kafka.pojos.Company;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 
-import com.soapsnake.mq.kafka.pojos.Company;
+import java.util.Arrays;
+import java.util.Properties;
 
 public class KafkaConsumerDemo {
 

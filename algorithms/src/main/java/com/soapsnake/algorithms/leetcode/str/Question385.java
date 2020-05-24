@@ -1,9 +1,9 @@
 package com.soapsnake.algorithms.leetcode.str;
 
+import com.soapsnake.algorithms.leetcode.list.NestedInteger;
+
 import java.util.List;
 import java.util.Stack;
-
-import com.soapsnake.algorithms.leetcode.list.NestedInteger;
 
 
 /**

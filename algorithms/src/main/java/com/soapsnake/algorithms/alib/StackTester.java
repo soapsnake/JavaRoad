@@ -1,8 +1,8 @@
 package com.soapsnake.algorithms.alib;
 
-import java.util.Stack;
-
 import org.junit.Test;
+
+import java.util.Stack;
 
 public class StackTester {
 

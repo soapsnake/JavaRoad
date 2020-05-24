@@ -1,10 +1,10 @@
 package com.soapsnake.algorithms.leetcode.binarytree;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.soapsnake.algorithms.leetcode.array.ArrayUtils;
 import com.soapsnake.algorithms.structures.tree.TreeNode;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Given a Binary GraphSearch Tree (BST), convert it to a Greater Tree such that every key of the original BST

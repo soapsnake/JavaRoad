@@ -1,12 +1,11 @@
 package com.soapsnake.lab.collections.map;
 
+import com.soapsnake.lab.collections.list.SomeOne;
+import org.apache.commons.lang3.RandomStringUtils;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-
-import org.apache.commons.lang3.RandomStringUtils;
-
-import com.soapsnake.lab.collections.list.SomeOne;
 
 public class MapTest {
 

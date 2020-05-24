@@ -1,10 +1,7 @@
 package com.soapsnake.algorithms.leetcode.str;
 
-import java.util.HashSet;
-import java.util.Set;
-
 /**
- * @author liudun <liudun@kuaishou.com>
+ *
  * Created on 2020-05-01
  */
 public class Question583 {

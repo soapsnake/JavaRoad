@@ -1,12 +1,11 @@
 package com.soapsnake.nio.websocket;
 
-import org.apache.log4j.Logger;
-
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.channel.group.ChannelGroup;
 import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
 import io.netty.handler.codec.http.websocketx.WebSocketServerProtocolHandler;
+import org.apache.log4j.Logger;
 
 /**
  * Created by soapsnake on 2018/1/16.

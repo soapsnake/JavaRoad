@@ -1,7 +1,6 @@
 package com.soapsnake.hbaseclient;
 
-import java.io.IOException;
-
+import com.google.protobuf.ServiceException;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.ClusterStatus;
 import org.apache.hadoop.hbase.HBaseConfiguration;
@@ -14,7 +13,7 @@ import org.apache.hadoop.hbase.util.Bytes;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.google.protobuf.ServiceException;
+import java.io.IOException;
 
 /**
  * Created by soapsnake on 2017/9/21.

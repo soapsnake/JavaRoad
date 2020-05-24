@@ -1,10 +1,10 @@
 package com.soapsnake.lab.lambda.stream.flatmap;
 
+import com.alibaba.fastjson.JSONArray;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import com.alibaba.fastjson.JSONArray;
 
 public class FlatMapTest1 {
 
