@@ -1,6 +1,7 @@
 package com.soapsnake.algorithms.alib;
 
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 /**
@@ -8,10 +9,11 @@ import lombok.ToString;
  * Created on 2019-12-30
  */
 @AllArgsConstructor
+@NoArgsConstructor
 @ToString
 public class Person {
 
     public String name;
-    public int age;
+    public Integer age;
     public int weight;
 }
