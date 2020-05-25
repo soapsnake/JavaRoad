@@ -1,10 +1,10 @@
 package com.soapsnake.algorithms.leetcode.binarytree;
 
+import com.soapsnake.algorithms.structures.tree.TreeNode;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
-
-import com.soapsnake.algorithms.structures.tree.TreeNode;
 
 /**
  * 二叉树的前序遍历(先根)

@@ -1,5 +1,14 @@
 package com.soapsnake.lab.excel;
 
+import lombok.extern.slf4j.Slf4j;
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -8,14 +17,6 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-
-import org.apache.poi.hssf.usermodel.HSSFCell;
-import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.WorkbookFactory;
-
-import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class ExcelUtil {
@@ -39,8 +40,8 @@ public class ExcelUtil {
                     .getResource(".")).getPath();
             excelFile = new File(path + "/" + filePath);
             is = new FileInputStream(excelFile);// 获取文件输入流
-            org.apache.poi.ss.usermodel.Workbook workbook2007 = WorkbookFactory.create(is);
-            org.apache.poi.ss.usermodel.Sheet sheet = workbook2007.getSheetAt(0); //第一个sheet
+            Workbook workbook2007 = WorkbookFactory.create(is);
+            Sheet sheet = workbook2007.getSheetAt(0); //第一个sheet
             // 开始循环遍历行，表头不处理，从1开始
             for (int i = 1; i <= sheet.getLastRowNum(); i++) {
                 data = clazz.newInstance();// 实例化Student对象
@@ -76,8 +77,7 @@ public class ExcelUtil {
                 }
                 dataList.add(data);// 数据装入List
             }
-        } catch (IOException | InvalidFormatException | IllegalAccessException
-                | InstantiationException | NoSuchFieldException e) {
+        } catch (IOException | IllegalAccessException | InstantiationException | NoSuchFieldException | InvalidFormatException e) {
             e.printStackTrace();
             log.error("解析excel出错!!!",e);
         } finally {// 关闭文件流

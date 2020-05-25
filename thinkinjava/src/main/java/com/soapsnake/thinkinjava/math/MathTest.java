@@ -1,8 +1,8 @@
 package com.soapsnake.thinkinjava.math;
 
-import java.util.Random;
-
 import com.soapsnake.thinkinjava.array.ArrayTest2;
+
+import java.util.Random;
 
 /**
  * Created by soapsnake on 2017/6/8.

@@ -1,17 +1,16 @@
 package com.soapsnake.mq.kafka.client;
 
-import java.util.Date;
-import java.util.Properties;
-import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
-
+import com.soapsnake.mq.kafka.pojos.Company;
 import org.apache.kafka.clients.producer.Callback;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.clients.producer.RecordMetadata;
 
-import com.soapsnake.mq.kafka.pojos.Company;
+import java.util.Date;
+import java.util.Properties;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
 
 public class KafkaProducerDemo {
     public static final String brokerList = "118.184.84.117:9092";

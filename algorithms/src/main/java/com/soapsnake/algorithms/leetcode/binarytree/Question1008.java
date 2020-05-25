@@ -14,10 +14,11 @@ public class Question1008 {
     public TreeNode bstFromPreorder(int[] preorder) {
         return bstFromPreorder(preorder, Integer.MAX_VALUE);
     }
-
     int i = 0;
     public TreeNode bstFromPreorder(int[] A, int bound) {
-        if (i == A.length || A[i] > bound) return null;
+        if (i == A.length || A[i] > bound) {
+            return null;
+        }
         TreeNode root = new TreeNode(A[i++]);
         root.left = bstFromPreorder(A, root.val);
         root.right = bstFromPreorder(A, bound);

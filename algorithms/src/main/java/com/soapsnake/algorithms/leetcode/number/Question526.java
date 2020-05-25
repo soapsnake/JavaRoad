@@ -1,7 +1,5 @@
 package com.soapsnake.algorithms.leetcode.number;
 
-import java.util.List;
-
 /**
  *
  * Created on 2020-04-08

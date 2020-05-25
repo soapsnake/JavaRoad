@@ -1,11 +1,11 @@
 package com.soapsnake.thinkinjava.generics;
 
+import com.soapsnake.thinkinjava.classtest.Son;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
-
-import com.soapsnake.thinkinjava.classtest.Son;
 
 /**
  * Created by soapsnake on 2017/7/8.

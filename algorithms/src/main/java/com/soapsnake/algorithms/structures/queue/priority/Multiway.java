@@ -1,8 +1,8 @@
 package com.soapsnake.algorithms.structures.queue.priority;
 
-import java.util.Arrays;
-
 import org.apache.commons.lang3.RandomStringUtils;
+
+import java.util.Arrays;
 
 public class Multiway {
     public static void merge(String[] streams) {

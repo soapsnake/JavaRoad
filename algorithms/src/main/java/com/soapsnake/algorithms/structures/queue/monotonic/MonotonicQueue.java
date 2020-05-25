@@ -1,7 +1,7 @@
 package com.soapsnake.algorithms.structures.queue.monotonic;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ *
  * Created on 2020-05-19
  *
  * 单调队列的两个限制条件:

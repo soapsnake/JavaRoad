@@ -1,12 +1,12 @@
 package com.soapsnake.mq.kafka.partition;
 
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.atomic.AtomicInteger;
-
 import org.apache.kafka.clients.producer.Partitioner;
 import org.apache.kafka.common.Cluster;
 import org.apache.kafka.common.PartitionInfo;
+
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class DemoPartitioner implements Partitioner {
     private final AtomicInteger atomicInteger = new AtomicInteger(0);

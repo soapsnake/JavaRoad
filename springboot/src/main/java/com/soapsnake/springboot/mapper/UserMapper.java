@@ -1,10 +1,9 @@
 package com.soapsnake.springboot.mapper;
 
-import java.util.List;
-
+import com.soapsnake.springboot.pojo.User;
 import org.apache.ibatis.annotations.Mapper;
 
-import com.soapsnake.springboot.pojo.User;
+import java.util.List;
 
 @Mapper
 public interface UserMapper {

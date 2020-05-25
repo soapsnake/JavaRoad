@@ -1,8 +1,8 @@
 package com.soapsnake.concurrence.aqs;
 
-import java.util.concurrent.locks.ReentrantReadWriteLock;
-
 import com.soapsnake.concurrence.multithread.lock.Person;
+
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class CacheData {
     // 读写锁实例

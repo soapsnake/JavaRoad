@@ -1,6 +1,5 @@
 package com.soapsnake.algorithms.leetcode.stack;
 
-import java.nio.charset.Charset;
 import java.util.Stack;
 
 /**

@@ -1,10 +1,10 @@
 package com.soapsnake.concurrence.runnable.app;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
 import com.soapsnake.concurrence.runnable.factory.HandlerThreadFactory;
 import com.soapsnake.concurrence.runnable.thread.ExceptionThread2;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class TestException {
 

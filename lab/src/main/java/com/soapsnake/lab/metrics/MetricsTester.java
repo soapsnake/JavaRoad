@@ -1,14 +1,14 @@
 package com.soapsnake.lab.metrics;
 
-import static com.codahale.metrics.MetricRegistry.name;
-
-import java.util.concurrent.TimeUnit;
-
 import com.codahale.metrics.ConsoleReporter;
 import com.codahale.metrics.Histogram;
 import com.codahale.metrics.Meter;
 import com.codahale.metrics.MetricRegistry;
 import com.codahale.metrics.Timer;
+
+import java.util.concurrent.TimeUnit;
+
+import static com.codahale.metrics.MetricRegistry.name;
 
 
 /**

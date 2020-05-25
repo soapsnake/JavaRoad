@@ -1,9 +1,9 @@
 package com.soapsnake.algorithms.leetcode.list;
 
+import com.soapsnake.algorithms.structures.list.ListNode;
+
 import java.util.HashMap;
 import java.util.Map;
-
-import com.soapsnake.algorithms.structures.list.ListNode;
 
 /**
  * @Auther soapsnake@gmail.com

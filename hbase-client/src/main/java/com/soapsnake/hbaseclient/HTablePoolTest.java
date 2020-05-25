@@ -1,12 +1,12 @@
 package com.soapsnake.hbaseclient;
 
-import java.io.IOException;
-
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.HBaseConfiguration;
 import org.apache.hadoop.hbase.client.HTableInterface;
 import org.apache.hadoop.hbase.client.HTablePool;
 import org.apache.hadoop.hbase.client.Table;
+
+import java.io.IOException;
 
 /**
  * Created by soapsnake on 2017/9/20.

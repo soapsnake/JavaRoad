@@ -1,12 +1,11 @@
 package com.soapsnake.mq.kafka.serializer;
 
+import com.soapsnake.mq.kafka.pojos.Company;
+import org.apache.kafka.common.serialization.Serializer;
+
 import java.io.UnsupportedEncodingException;
 import java.nio.ByteBuffer;
 import java.util.Map;
-
-import org.apache.kafka.common.serialization.Serializer;
-
-import com.soapsnake.mq.kafka.pojos.Company;
 
 public class DemoSerializer implements Serializer<Company> {
     @Override

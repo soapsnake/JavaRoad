@@ -1,16 +1,15 @@
 package com.soapsnake.springboot.service.impl;
 
+import com.soapsnake.springboot.service.LombokTestService;
+import lombok.Cleanup;
+import lombok.NonNull;
+import lombok.extern.java.Log;
+
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-
-import com.soapsnake.springboot.service.LombokTestService;
-
-import lombok.Cleanup;
-import lombok.NonNull;
-import lombok.extern.java.Log;
 
 @Log
 public class LombokTestServiceImpl implements LombokTestService {

@@ -1,11 +1,11 @@
 package com.soapsnake.algorithms.leetcode.normaltree;
 
+import com.soapsnake.algorithms.leetcode.array.ArrayUtils;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Stack;
-
-import com.soapsnake.algorithms.leetcode.array.ArrayUtils;
 
 //多叉树的先根遍历(前序遍历)
 class Question589 {

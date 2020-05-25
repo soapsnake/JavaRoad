@@ -1,10 +1,10 @@
 package com.soapsnake.lab.metrics;
 
-import java.util.LinkedList;
-import java.util.Queue;
-
 import com.codahale.metrics.Gauge;
 import com.codahale.metrics.MetricRegistry;
+
+import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * Created on 2020-01-10

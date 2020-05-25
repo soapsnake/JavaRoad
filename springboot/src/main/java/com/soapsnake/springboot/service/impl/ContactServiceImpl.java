@@ -1,18 +1,16 @@
 package com.soapsnake.springboot.service.impl;
 
-import java.util.List;
-
-import javax.annotation.Resource;
-
+import com.soapsnake.springboot.mapper.UserMapper;
+import com.soapsnake.springboot.pojo.User;
+import com.soapsnake.springboot.service.ContactService;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.aop.framework.AopContext;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.soapsnake.springboot.mapper.UserMapper;
-import com.soapsnake.springboot.pojo.User;
-import com.soapsnake.springboot.service.ContactService;
+import javax.annotation.Resource;
+import java.util.List;
 
 
 @Service

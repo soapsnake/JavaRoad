@@ -1,10 +1,10 @@
 package com.soapsnake.algorithms.leetcode.list;
 
+import com.soapsnake.algorithms.structures.list.ListNode;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import com.soapsnake.algorithms.structures.list.ListNode;
 
 /**
  * @Auther soapsnake@gmail.com

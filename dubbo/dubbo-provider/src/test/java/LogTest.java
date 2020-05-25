@@ -1,7 +1,6 @@
-import org.junit.Test;
-
 import com.soapsnake.dubbo.provider.loader.KevinExtensionLoader;
 import com.soapsnake.dubbo.provider.log.Logger;
+import org.junit.Test;
 
 /**
  * @author soapsnake

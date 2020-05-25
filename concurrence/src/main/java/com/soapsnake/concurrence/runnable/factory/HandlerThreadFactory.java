@@ -1,8 +1,8 @@
 package com.soapsnake.concurrence.runnable.factory;
 
-import java.util.concurrent.ThreadFactory;
-
 import com.soapsnake.concurrence.runnable.handler.MyUncaughtExceptionHandler;
+
+import java.util.concurrent.ThreadFactory;
 
 public class HandlerThreadFactory implements ThreadFactory {
 

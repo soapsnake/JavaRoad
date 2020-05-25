@@ -1,12 +1,12 @@
 package com.soapsnake.algorithms.leetcode.str;
 
+import com.soapsnake.algorithms.leetcode.array.ArrayUtils;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
-import com.soapsnake.algorithms.leetcode.array.ArrayUtils;
 
 /**
  * @author soapsnake

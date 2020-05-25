@@ -1,9 +1,9 @@
 package com.soapsnake.pattern.structurals.observerpattern.object;
 
+import com.soapsnake.pattern.structurals.observerpattern.observer.ObserverConcreate;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import com.soapsnake.pattern.structurals.observerpattern.observer.ObserverConcreate;
 
 /**
  * @author soapsnake

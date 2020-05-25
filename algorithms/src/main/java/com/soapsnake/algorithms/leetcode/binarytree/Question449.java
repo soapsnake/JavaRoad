@@ -1,10 +1,10 @@
 package com.soapsnake.algorithms.leetcode.binarytree;
 
+import com.soapsnake.algorithms.structures.tree.TreeNode;
+
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
-
-import com.soapsnake.algorithms.structures.tree.TreeNode;
 
 /**
  *

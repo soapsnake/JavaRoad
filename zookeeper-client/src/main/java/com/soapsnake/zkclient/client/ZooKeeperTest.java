@@ -1,7 +1,6 @@
 package com.soapsnake.zkclient.client;
 
-import java.io.IOException;
-
+import com.soapsnake.zkclient.constant.ZkConstant;
 import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.KeeperException;
 import org.apache.zookeeper.WatchedEvent;
@@ -9,7 +8,7 @@ import org.apache.zookeeper.Watcher;
 import org.apache.zookeeper.ZooDefs;
 import org.apache.zookeeper.ZooKeeper;
 
-import com.soapsnake.zkclient.constant.ZkConstant;
+import java.io.IOException;
 
 /**
  * Created by soapsnake on 2017/5/21.

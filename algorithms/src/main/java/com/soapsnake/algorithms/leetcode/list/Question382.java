@@ -1,10 +1,10 @@
 package com.soapsnake.algorithms.leetcode.list;
 
+import com.soapsnake.algorithms.structures.list.ListNode;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
-import com.soapsnake.algorithms.structures.list.ListNode;
 
 /**
  *

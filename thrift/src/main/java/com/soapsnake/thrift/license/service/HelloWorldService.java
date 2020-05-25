@@ -7,13 +7,7 @@
  */
 package com.soapsnake.thrift.license.service;
 
-import java.util.BitSet;
-import java.util.Collections;
-import java.util.EnumMap;
-import java.util.EnumSet;
-import java.util.HashMap;
-import java.util.Map;
-
+import com.soapsnake.thrift.license.pojo.Person;
 import org.apache.thrift.protocol.TTupleProtocol;
 import org.apache.thrift.scheme.IScheme;
 import org.apache.thrift.scheme.SchemeFactory;
@@ -22,7 +16,12 @@ import org.apache.thrift.scheme.TupleScheme;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.soapsnake.thrift.license.pojo.Person;
+import java.util.BitSet;
+import java.util.Collections;
+import java.util.EnumMap;
+import java.util.EnumSet;
+import java.util.HashMap;
+import java.util.Map;
 
 public class HelloWorldService {
 

@@ -1,8 +1,6 @@
 package com.soapsnake.zkclient.client;
 
-import java.io.IOException;
-import java.util.Random;
-
+import com.soapsnake.zkclient.constant.ZkConstant;
 import org.apache.zookeeper.AsyncCallback;
 import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.KeeperException;
@@ -11,7 +9,8 @@ import org.apache.zookeeper.Watcher;
 import org.apache.zookeeper.ZooDefs;
 import org.apache.zookeeper.ZooKeeper;
 
-import com.soapsnake.zkclient.constant.ZkConstant;
+import java.io.IOException;
+import java.util.Random;
 
 /**
  * Created by soapsnake on 2017/5/20.

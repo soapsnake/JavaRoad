@@ -1,10 +1,10 @@
 package com.soapsnake.nio.purenio.block;
 
+import org.apache.tomcat.util.http.fileupload.IOUtils;
+
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.channels.SocketChannel;
-
-import org.apache.tomcat.util.http.fileupload.IOUtils;
 
 public class SocketHandler implements Runnable {
     private SocketChannel socketChannel;

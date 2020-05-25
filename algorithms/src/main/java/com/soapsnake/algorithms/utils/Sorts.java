@@ -1,11 +1,11 @@
 package com.soapsnake.algorithms.utils;
 
+import com.soapsnake.algorithms.structures.queue.priority.MaxPriorityQueue;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
-
-import com.soapsnake.algorithms.structures.queue.priority.MaxPriorityQueue;
 
 /**
  * @Auther soapsnake@gmail.com

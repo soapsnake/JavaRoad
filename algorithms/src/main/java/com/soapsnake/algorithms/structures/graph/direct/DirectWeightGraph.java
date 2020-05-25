@@ -1,11 +1,11 @@
 package com.soapsnake.algorithms.structures.graph.direct;
 
+import com.soapsnake.algorithms.structures.graph.Graph;
+
 import java.util.Arrays;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
-import com.soapsnake.algorithms.structures.graph.Graph;
 
 /**
  * 加权有向图,也可以用来表示加权无向图吧

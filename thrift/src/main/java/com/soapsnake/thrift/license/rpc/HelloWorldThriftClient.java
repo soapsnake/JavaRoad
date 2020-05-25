@@ -1,10 +1,9 @@
 package com.soapsnake.thrift.license.rpc;
 
-import org.apache.thrift.TException;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
 import com.soapsnake.thrift.license.pojo.Person;
 import com.soapsnake.thrift.license.service.HelloWorldService;
+import org.apache.thrift.TException;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  * Created by soapsnake on 2017/6/4.

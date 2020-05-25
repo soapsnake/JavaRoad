@@ -1,10 +1,10 @@
 package com.soapsnake.nio.netty.decoder;
 
-import java.util.List;
-
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.ByteToMessageDecoder;
+
+import java.util.List;
 
 /**
  * Created by soapsnake on 2018/1/16.

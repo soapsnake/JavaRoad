@@ -1,10 +1,10 @@
 package com.soapsnake.algorithms.leetcode.binarytree;
 
+import com.soapsnake.algorithms.structures.tree.TreeNode;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
-
-import com.soapsnake.algorithms.structures.tree.TreeNode;
 
 /**
  * Given a binary tree, return the inorder traversal of its nodes' values.

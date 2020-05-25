@@ -1,9 +1,6 @@
 package com.soapsnake.algorithms.leetcode.array;
 
-import java.text.Normalizer.Form;
 import java.util.List;
-
-import apple.laf.JRSUIConstants.ScrollBarHit;
 
 /**
  *
