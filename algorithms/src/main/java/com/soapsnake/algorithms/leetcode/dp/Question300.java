@@ -40,6 +40,7 @@ public class Question300 {
         //思路:backtrace,找到所有的递增数组,返回长度最长的
         return backtrac(nums, 0, Integer.MIN_VALUE);
     }
+
     private Integer backtrac(int[] nums, int curIndex, int prev) {
         if (curIndex == nums.length) {
             return 0;

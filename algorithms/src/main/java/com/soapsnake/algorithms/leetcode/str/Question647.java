@@ -23,20 +23,4 @@ public class Question647 {
             right++;
         }
     }
-
-    //用线连A和B中相等的数字,求最多可以画多少条不相交的线
-//if A[i] and B[j] are same, increment count and advance i and j and work on the remaning arrays.
-//    Otherwise, we advance i and check the count on the remaining arrays,
-    //   in another case we advance j and check, choose the max from the two sub-problems.
-    public int maxUncrossedLines(int[] A, int[] B) {
-        int m = A.length, n = B.length;
-        int[][] dp = new int[m + 1][n + 1];
-        for (int i = 1; i <= m; ++i)
-            for (int j = 1; j <= n; ++j)
-                if (A[i - 1] == B[j - 1])
-                    dp[i][j] = 1 + dp[i - 1][j - 1];
-                else
-                    dp[i][j] = Math.max(dp[i][j - 1], dp[i - 1][j]);
-        return dp[m][n];
-    }
 }
