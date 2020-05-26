@@ -249,19 +249,20 @@ public class Sorts {
         List<List<Integer>> buckList = new ArrayList<>();  //每一个桶里都是一个链表,和HashMap的结构一样
         // create bucket
         for (int i = 1; i <= bucketNum; i++) {
-            buckList.add(new ArrayList<>());
+            buckList.add(new ArrayList<>());   //bucklist实际上只有前bucketNum数的位置上有元素
         }
         // push into the bucket
         for (int i = 0; i < nums.length; i++) {
-
-            //是不是很眼熟,非常像HashMap的索引计算
-            int index = indexFor(nums[i], min, 10);   //这个step其实就是区间范围,比如1~10, 或者20~30
-            buckList.get(index).add(nums[i]);
+            //要把一个元素插入某个bucket中,必须先对该元素进行索引计算,挂入桶中链表时,先不计较链表是否有序
+            //每一个桶内元素都是处于一个区间的,这就保证了,数据是桶级别排序的,但是在每一个桶内数据可能还不是有序的
+            int index = indexFor(nums[i], min, 10);   //这个step为什么是10了????
+            buckList.get(index).add(nums[i]);  //list.add
         }
         ArrayList<Integer> bucket = null;
         int index = 0;
         for (int i = 0; i < bucketNum; i++) {
             bucket = (ArrayList<Integer>) buckList.get(i);
+
             insertSort(bucket);  //为何此处使用插入排序???
             for (int k : bucket) {
                 nums[index++] = k;   //其实这个就是合并

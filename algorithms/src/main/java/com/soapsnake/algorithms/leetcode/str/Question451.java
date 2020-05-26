@@ -38,7 +38,12 @@ public class Question451 {
         Map<Character, Integer> map = new HashMap<>();  //char -> count
         for (char c : s.toCharArray())
             map.put(c, map.getOrDefault(c, 0) + 1);
+
+        //map保存了每一个字符以及该字符对应的出现次数
         List<Character>[] bucket = new List[s.length() + 1];  //数组的每个元素为一个list,类似hashmap
+
+        //bucket的索引对应该bucket中的list中的元素出现的次数,
+        //比如 bucket[3] = ['a', 'b'] 表名a,b字符均出现了3次
         for (char key : map.keySet()) {
             int frequency = map.get(key);  //count
             if (bucket[frequency] == null) {
