@@ -1,10 +1,10 @@
-package com.soapsnake.lab.annotation.old;
+package com.soapsnake.algorithms.alib;
 
 
+import java.util.Arrays;
 /**
  */
-public class CodeCmo {
-
+public class Smart {
 	public int solution(int[][] A) {
 		// write your code in Java SE 8
 		if (A == null || A.length == 0) {
@@ -48,9 +48,9 @@ public class CodeCmo {
 
 	public static void main(String[] args) {
 		int[][] a = {{5, 4, 4}, {4, 3, 4}, {3, 2, 4}, {2, 2, 2}, {3, 3, 4}, {1, 4, 4}, {4, 1, 1}};
-		int[][] a1 = {};
-		CodeCmo codeCmo = new CodeCmo();
-		System.out.println(codeCmo.solution(a1));
+		Smart codeCmo = new Smart();
+		System.out.println(Arrays.deepToString(a));
+		System.out.println(codeCmo.solution(a));
 	}
 
 

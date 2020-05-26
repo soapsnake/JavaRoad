@@ -15,21 +15,20 @@ public class Question300 {
         if (nums.length == 0) {
             return 0;
         }
-        int[] dp = new int[nums.length];  //dp数组的长度比原始数组长1个
-        dp[0] = 1;
-        int maxans = 1;   //最终的最长子数组的长度
-        for (int i = 1; i < dp.length; i++) {
+        int[] dp = new int[nums.length];  //1️⃣.dp数组的含义, i -> 到第i个数字时的最长子串的'长度'
+        dp[0] = 1;   //2️⃣. dp数组的初始值, 当数组的长度为1时,那么最长子数组的长度就是1(只有一个数字)
+        int maxlen = 1;
+        for (int i = 1; i < dp.length; i++) {   //i: 1 -> length
             int maxval = 0;
-            for (int j = 0; j < i; j++) {
-                if (nums[i] > nums[j]) {    //新的第i个数字还是保持递增的,这种情况最大长度直接加1接口
+            for (int j = 0; j < i; j++) {   //j: 0 -> i
+                if (nums[i] > nums[j]) {    //只要数组是保持递增的,那就可以更新最大长度
                     maxval = Math.max(maxval, dp[j]);
                 }
             }
-
-            dp[i] = maxval + 1;
-            maxans = Math.max(maxans, dp[i]);
+            dp[i] = maxval + 1;   //dp [i] = Math.max(maxval, dp[i - 1]) + 1
+            maxlen = Math.max(maxlen, dp[i]);
         }
-        return maxans;
+        return maxlen;
     }
 
     //递归版本算法
@@ -41,7 +40,6 @@ public class Question300 {
         //思路:backtrace,找到所有的递增数组,返回长度最长的
         return backtrac(nums, 0, Integer.MIN_VALUE);
     }
-
     private Integer backtrac(int[] nums, int curIndex, int prev) {
         if (curIndex == nums.length) {
             return 0;
