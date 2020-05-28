@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import com.soapsnake.lab.thread.Person;
+import com.soapsnake.lab.concurrence.stream.Person;
 
 /**
  * @author liudun <liudun@kuaishou.com>

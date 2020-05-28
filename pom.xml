@@ -246,7 +246,6 @@
     <modules>
         <module>algorithms</module>
         <module>pattern</module>
-        <module>concurrence</module>
         <module>thrift</module>
         <module>wsdl</module>
         <module>zookeeper-client</module>
