@@ -260,6 +260,7 @@
         <module>webflux</module>
         <module>lab</module>
         <module>scala</module>
+        <module>Atm</module>
     </modules>
 
     <build>
