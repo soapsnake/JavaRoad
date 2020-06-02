@@ -18,7 +18,7 @@
 - Comparator:937
 - Matrix:48(图像顺时针旋转)
 - Random: 382, 380, 384,398(这个就太...)
-- Recursive(递归): 397, 1315
+- Recursive(递归): 397, 1315, smart
 - backtrace: 491,47,473,77,139,279,300,377, 526
 - priorityQueue: 1046
 - 对map的value进行排序,451
