@@ -261,6 +261,7 @@
         <module>lab</module>
         <module>scala</module>
         <module>Atm</module>
+        <module>soapbook</module>
     </modules>
 
     <build>
