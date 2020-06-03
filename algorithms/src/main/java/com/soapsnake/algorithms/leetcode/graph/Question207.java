@@ -60,4 +60,10 @@ public class Question207 {
         }
         return edgeCnt == 0;
     }
+
+    public static void main(String[] args) {
+        int i = 6;
+        i += i - 1;
+        System.out.println(i);
+    }
 }

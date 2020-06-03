@@ -57,7 +57,6 @@ public class ListTester {
         //pre -> cur -> next ->
         //pre -> next
 
-
         //用cur指针做删除必然会遇到的一些坑,连续目标节点删不干净
         while (cur != null && cur.next != null) {
             ListNode next = cur.next;
