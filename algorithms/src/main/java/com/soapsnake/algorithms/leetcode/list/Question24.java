@@ -45,14 +45,14 @@ public class Question24 {
         return fakehead.next;
     }
 
-    public ListNode deleteNode(ListNode head, int val) {
-        if (head == null) {
+    public ListNode deleteNode(ListNode node, int val) {
+        if (node == null) {
             return null;
         }
-        System.out.println("删除前head = " + head);
+        System.out.println("删除前head = " + node);
         ListNode fakehead = new ListNode(0);
-        fakehead.next = head;
-        ListNode cur = head;
+        fakehead.next = node;
+        ListNode cur = node;
         ListNode pre = fakehead;
         while (cur != null) {
             if (cur.val == val) {
