@@ -279,8 +279,6 @@ public class TOTP {
         String myKey = userid + "HENNGECHALLENGE003";
         String rowkey = Hex.encodeHexString(myKey.getBytes());
         System.out.println("rowkey = " + rowkey + " rowkeylenth = " + rowkey.length());
-//        String key = (rowkey + rowkey).substring(0, 128);  //这里可能会有问题,叠加运算了一次
-
         String key = rowkey;
         System.out.println("key = " + key + " lenth = " + key.length());
 
@@ -306,5 +304,9 @@ public class TOTP {
 
         System.out.println(JSON.toJSONString(conta));
         HttpUtils.httpPost(urlParameters, url, finalCode, conta);
+
+        String OS = System.getProperty("os.name").toLowerCase();
+        System.out.println("os = " + OS);
+
     }
 }
