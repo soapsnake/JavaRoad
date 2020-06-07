@@ -135,14 +135,15 @@ public class ListTester {
             return list1;
         }
         if (list1.val <= list2.val) {
-            list1.next = mergeList2(list1.next,list2);
+            list1.next = mergeList2(list1.next, list2);
             return list1;
         } else {
             list2.next = mergeList2(list2.next, list1);
             return list2;
         }
     }
-        @Test
+
+    @Test
     public void testMergeList() {
         ListNode list1 = ListNode.makeTestListFor61();
         ListNode list2 = ListNode.makeTestListFor82();
@@ -171,4 +172,5 @@ public class ListTester {
     public static ListNode sortOddEven(ListNode head) {
         return null;
     }
+
 }
