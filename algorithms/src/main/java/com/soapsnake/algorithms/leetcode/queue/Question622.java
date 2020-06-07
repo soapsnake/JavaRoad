@@ -1,5 +1,7 @@
 package com.soapsnake.algorithms.leetcode.queue;
 
+import com.soapsnake.algorithms.structures.list.ListNode;
+
 /**
  * @author liudun <liudun@kuaishou.com>
  * Created on 2020-06-01
@@ -53,5 +55,14 @@ public class Question622 {
         public boolean isFull() {
             return len == a.length;
         }
+    }
+
+    public void deleteNode(ListNode node) {
+
+    }
+
+
+    public static void main(String[] args) {
+
     }
 }
