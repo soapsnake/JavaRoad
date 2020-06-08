@@ -23,7 +23,8 @@ public class LRUCache implements Cache<Integer, Integer>{
     private int capacity;
     // tail will point to the most recently used/accessed/added node
     // head will point to the least recently used/accessed/added node
-    private DoubleNode head, tail;
+    private DoubleNode head;
+    private DoubleNode tail;
     private Map<Integer, DoubleNode> map;
 
     public LRUCache(int capacity) {
@@ -32,63 +33,73 @@ public class LRUCache implements Cache<Integer, Integer>{
     }
 
     public int get(int key) {
-        DoubleNode doubleNode = map.get(key);
-        if(doubleNode == null) return -1;
-
+        DoubleNode node = map.get(key);
+        if(node == null) return -1;
         // node exists in the cache
-        if(doubleNode != tail) {
-            if(doubleNode == head) {
+
+        //如果该节点不在队列的尾部的话,移动该节点到尾部
+        //这里的移动用的方法很搞笑,先变量保存该节点,然后从链表中删除该节点,最后变量链到尾部
+        if(node != tail) {
+            //如果node不是表尾节点
+            if(node == head) {
+                //如果node是表头,那么表头指向下一个节点(删除该节点)
                 head = head.next;
             } else {
-                doubleNode.prev.next = doubleNode.next;
-                doubleNode.next.prev = doubleNode.prev;
+                //节点在中间,前节点指向该节点的下一个节点
+                node.prev.next = node.next;
+                //下节点的前节点指向当前节点的前节点
+                //双向链表的中间节点的删除非常麻烦,两队指针要动
+                node.next.prev = node.prev;
             }
 
             // move the curr node to the end/tail
-            tail.next = doubleNode;
-            doubleNode.prev = tail;
-            doubleNode.next = null;
-            tail = doubleNode;
+            tail.next = node;
+            node.prev = tail;
+            node.next = null;
+            tail = node;
         }
 
-        return doubleNode.val;
+        return node.val;
     }
 
     public void put(int key, int value) {
-        DoubleNode doubleNode = map.get(key);
-        if(doubleNode == null) {
+        DoubleNode node = map.get(key);
+        if(node == null) {
             // add new node
-            doubleNode = new DoubleNode(key, value);
+            node = new DoubleNode(key, value);
             if(capacity == 0) {
                 // ran out of space
                 map.remove(head.key);
+
+                //淘汰节点处在链表头,我说为啥要get时候把节点放表尾了
                 head = head.next;
                 capacity++;
             }
             if(head == null) {
-                head = doubleNode;
+                head = node;
             } else {
-                tail.next = doubleNode;
-                doubleNode.prev = tail;
+                tail.next = node;
+                node.prev = tail;
             }
-            tail = doubleNode;
-            map.put(key, doubleNode);
+            tail = node;
+            map.put(key, node);
             capacity--;
         } else {
             // update the existing node with the value
-            doubleNode.val = value;
-            if(doubleNode != tail) {
-                if(doubleNode == head) {
+            node.val = value;
+            if(node != tail) {
+                if(node == head) {
                     head = head.next;
                 } else {
-                    doubleNode.prev.next = doubleNode.next;
-                    doubleNode.next.prev = doubleNode.prev;
+                    node.prev.next = node.next;
+                    node.next.prev = node.prev;
                 }
 
-                tail.next = doubleNode;
-                doubleNode.prev = tail;
-                doubleNode.next = null;
-                tail = doubleNode;
+                //改完节点值后要把节点再放回链表尾部,这里是最安全的地方
+                tail.next = node;
+                node.prev = tail;
+                node.next = null;
+                tail = node;
             }
         }
     }
