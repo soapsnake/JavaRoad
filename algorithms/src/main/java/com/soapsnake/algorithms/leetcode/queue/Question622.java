@@ -1,5 +1,8 @@
 package com.soapsnake.algorithms.leetcode.queue;
 
+import java.util.Arrays;
+import java.util.Comparator;
+
 import com.soapsnake.algorithms.structures.list.ListNode;
 
 /**
@@ -64,6 +67,18 @@ public class Question622 {
     }
 
     public void deleteNode(ListNode node) {
+
+    }
+
+
+    public int[][] kClosest(int[][] points, int K) {
+        Arrays.sort(points, new Comparator<int[]>() {
+            @Override
+            public int compare(int[] o1, int[] o2) {
+                return 0;
+            }
+        });
+
 
     }
 
