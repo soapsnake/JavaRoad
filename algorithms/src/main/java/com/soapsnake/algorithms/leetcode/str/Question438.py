@@ -4,6 +4,7 @@
 # 解法复杂度过高,但是实现是没有问题的!!!!!!!!!!!!
 class Solution:
 
+    leetcode438
     def findAnagrams(self, s, p):
         """
         :type s: str
