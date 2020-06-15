@@ -4,6 +4,7 @@ import com.soapsnake.algorithms.structures.list.ListNode;
 import com.soapsnake.algorithms.structures.tree.Node;
 import com.soapsnake.algorithms.structures.tree.TreeNode;
 import org.apache.commons.lang3.RandomUtils;
+import org.apache.commons.lang3.Validate;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -222,6 +223,26 @@ public class TreeTester {
         TreeNode a = TreeNode.makeNormalTreeFor110();
         TreeNode b = TreeNode.makeNormalTreeFor110v2();
         System.out.println(isSubTree(b, a));
+    }
+
+    public TreeNode searchBST(TreeNode root, int val) {
+        if (root == null) {
+            return null;
+        }
+        if (root.val == val) {
+            return root;
+        } else if (root.val > val) {
+           return  searchBST(root.left, val);
+        } else {
+           return searchBST(root.right, val);
+        }
+    }
+
+    @Test
+    public void testSearchBst() {
+        TreeNode root = null;
+        int val = 2;
+        searchBST(root, val);
     }
 
 

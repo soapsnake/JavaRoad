@@ -156,13 +156,9 @@ public class Question787 {
             return;
         }
         for (int[] i : map.get(src)) {
-            //i的len只有2,其中0是to端点,1是边权重
-            //Pruning, check the sum of current price and next cost.
-            //If it's greater then the ans so far, continue
+            //这个continue可以说是这个解法的核心
             if (cost + i[1] > ans_dfs)
-                //这个什么意思了,就是说加了这个边权重后超过了ans了,说明不是想要的,贪心算法
                 continue;
-            //到这里说明这个端点与src构成的边长比ans_dfs要小,可以使用,累加了cost的值
             dfs(map, i[0], dst, k - 1, cost + i[1]);
         }
     }
