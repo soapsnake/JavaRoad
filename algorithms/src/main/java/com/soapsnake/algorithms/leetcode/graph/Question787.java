@@ -2,6 +2,7 @@ package com.soapsnake.algorithms.leetcode.graph;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -25,141 +26,68 @@ public class Question787 {
      * The graph looks like this:
      * The cheapest price from city 0 to city 2 with at most 0 stop costs 500, as marked blue in the picture.
      */
-    //leetcode 787
-    private class City implements Comparable<City> {
-        int id;
-        int costFromSrc;
-        int stopFromSrc;
-
-        public City(int id, int costFromSrc, int stopFromSrc) {
-            this.id = id;
-            this.costFromSrc = costFromSrc;
-            this.stopFromSrc = stopFromSrc;
-        }
-
-        public boolean equals(City c) {
-            if (c != null) {
-                return this.id == c.id;
-            }
-            return false;
-        }
-
-        public int compareTo(City c) {
-            return this.costFromSrc - c.costFromSrc;
-        }
-    }
+    private int dfs_min = Integer.MAX_VALUE;
+    private int dst;
 
     public int findCheapestPrice(int n, int[][] flights, int src, int dst, int K) {
-        int[][] srcToDst = new int[n][n];
-        for (int[] flight : flights) {
-            srcToDst[flight[0]][flight[1]] = flight[2];
-        }
-
-        PriorityQueue<City> minHeap = new PriorityQueue<>();
-        minHeap.offer(new City(src, 0, 0));
-
-        int[] cost = new int[n];
-        Arrays.fill(cost, Integer.MAX_VALUE);
-        cost[src] = 0;
-        int[] stop = new int[n];
-        Arrays.fill(stop, Integer.MAX_VALUE);
-        stop[src] = 0;
-
-        while (!minHeap.isEmpty()) {
-            City curCity = minHeap.poll();
-            if (curCity.id == dst) {
-                return curCity.costFromSrc;
-            }
-            if (curCity.stopFromSrc == K + 1) {
-                continue;
-            }
-            int[] nexts = srcToDst[curCity.id];
-            for (int i = 0; i < n; i++) {
-                if (nexts[i] != 0) {
-                    int newCost = curCity.costFromSrc + nexts[i];
-                    int newStop = curCity.stopFromSrc + 1;
-                    if (newCost < cost[i]) {
-                        minHeap.offer(new City(i, newCost, newStop));
-                        cost[i] = newCost;
-                    } else if (newStop < stop[i]) {
-                        minHeap.offer(new City(i, newCost, newStop));
-                        stop[i] = newStop;
-                    }
-                }
-            }
-        }
-        return cost[dst] == Integer.MAX_VALUE ? -1 : cost[dst];
-    }
-
-    //dfs算法解决这个题
-
-    public int findCheapestPrice2(int n, int[][] flights, int src, int dst, int K) {
         Map<Integer, List<int[]>> map = new HashMap<>();
-        this.dst = dst;
         for (int[] ints : flights) {
             map.putIfAbsent(ints[0], new ArrayList<>());
             map.get(ints[0]).add(new int[] {ints[1], ints[2]});
         }
+        this.dst = dst;
         this.dfsGraph(map, src, K, 0);
         return dfs_min == Integer.MAX_VALUE ? -1 : dfs_min;
     }
 
-    private int dfs_min = Integer.MAX_VALUE;
-    private int dst;
-
-    private void dfsGraph(Map<Integer, List<int[]>> map, int src, int k, int price) {
+    private void dfsGraph(Map<Integer, List<int[]>> map, int src, int k, int curTotal) {
+        if (src == dst) {
+            dfs_min = curTotal;
+            return;
+        }
         if (k < 0) {
             return;
         }
-        if (src == dst) {
-            this.dfs_min = price;
+        if (map.get(src) == null) {
             return;
         }
-        if (!map.containsKey(src)) {
-            return;
-        }
-        for (int[] list : map.get(src)) {
-            if (price + list[1] > dfs_min) {
+        for (int[] ints : map.get(src)) {
+            if (ints[1] + curTotal > dfs_min) {
                 continue;
             }
-            dfsGraph(map, list[0], k - 1, price + list[1]);
+            dfsGraph(map, ints[0], --k, curTotal + ints[1]);
         }
     }
 
-    //bfs:
-    public int findCheapestPrice3(int n, int[][] flights, int src, int dst, int K) {
+    public int findCheapestPrice2(int n, int[][] flights, int src, int dst, int K) {
+        int bfs_min = Integer.MAX_VALUE;
         Map<Integer, List<int[]>> map = new HashMap<>();
         for (int[] ints : flights) {
             map.putIfAbsent(ints[0], new ArrayList<>());
             map.get(ints[0]).add(new int[] {ints[1], ints[2]});
         }
-        Queue<int[]> queue = new LinkedList<>();
-        queue.add(new int[] {src, 0});
-        int bfs_min = Integer.MAX_VALUE;
+        Queue<int[]> que = new LinkedList<>();
         int step = 0;
-        while (!queue.isEmpty()) {
-            //这里的一批端点的含义一定要搞清楚
-//            step++;     //错误点3,不能再这里递增step的值
-            int size = queue.size();
+        que.offer(new int[] {src, 0});
+        //图的bfs算法和树思想是一致的,树的时候,这个queue的一批次poll出的是树的一层,但是图的话,批次poll出的就是一个端点的所有邻居节点(会不会重复了?)
+        while (!que.isEmpty()) {
+            int size = que.size();
             for (int i = 0; i < size; i++) {
-                int[] cur = queue.poll();
-                int curPoint = cur[0];   //当前节点
-                int curTotal = cur[1];  //当前总价
+                int[] cur = que.poll();
+                int curPoint = cur[0];
+                int curPrice = cur[1];
+
                 if (curPoint == dst) {
-                    bfs_min = Math.min(curTotal, bfs_min);
-//                    break;          //错误点1,不能break,为什么???
+                    bfs_min = Math.min(bfs_min, curPrice);
                 }
                 if (map.get(curPoint) == null) {
-//                    break;
-                    continue;    //错误点2,不能break
+                    continue;
                 }
                 for (int[] ints : map.get(curPoint)) {
-                    int nextPoint = ints[0];
-                    int nextPrice = ints[1];
-                    if (curTotal + nextPrice > bfs_min) {
+                    if (ints[1] + curPrice > bfs_min) {
                         continue;
                     }
-                    queue.add(new int[] {nextPoint, curTotal + nextPrice});
+                    que.offer(new int[] {ints[0], ints[1]});
                 }
             }
             if (step++ > K) {
@@ -167,5 +95,37 @@ public class Question787 {
             }
         }
         return bfs_min == Integer.MAX_VALUE ? -1 : bfs_min;
+    }
+
+    //Dijkstra 算法
+    public int findCheapestPrice3(int n, int[][] flights, int src, int dst, int K) {
+        Map<Integer, List<int[]>> map = new HashMap<>();
+        for (int[] f : flights) {
+            map.putIfAbsent(f[0], new ArrayList<>());
+            map.get(f[0]).add(new int[] {f[1], f[2]});
+        }
+        PriorityQueue<int[]> q = new PriorityQueue<>(new Comparator<int[]>() {
+            @Override
+            public int compare(int[] o1, int[] o2) {
+                return Integer.compare(o1[0], o2[0]);
+            }
+        });
+        q.offer(new int[] {0, src, K + 1});
+        while (!q.isEmpty()) {
+            int[] c = q.poll();
+            int cost = c[0];
+            int curr = c[1];
+            int stop = c[2];
+            if (curr == dst)
+                return cost;
+            if (stop > 0) {
+                if (!map.containsKey(curr))
+                    continue;
+                for (int[] next : map.get(curr)) {
+                    q.add(new int[] {cost + next[1], next[0], stop - 1});
+                }
+            }
+        }
+        return -1;
     }
 }

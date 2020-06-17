@@ -13,7 +13,7 @@
 - Binary search:367, 33, 74, 374, 378(在值范围做二分)
 - Binary search tree:450(二叉搜索树节点删除)
 - 滑动窗口:424,76,3,30,438, 567 算法(未搞懂):https://leetcode.com/problems/find-all-anagrams-in-a-string/discuss/92007/Sliding-Window-algorithm-template-to-solve-all-the-Leetcode-substring-search-problem.
-- 栈相关(单调队列:https://medium.com/@gregsh9.5/monotonic-queue-notes-980a019d5793): 1130, 907, 901, 856, 503, 496, 84, 42, 739
+- 单调队列:https://medium.com/@gregsh9.5/monotonic-queue-notes-980a019d5793): 1130, 907, 901, 856, 503, 496, 84, 42, 739
 - Awk:193
 - Comparator:937
 - Matrix:48(图像顺时针旋转)
@@ -24,6 +24,7 @@
 - 对map的value进行排序,451
 - DP: https://leetcode.com/discuss/general-discussion/662866/dp-for-beginners-problems-patterns-sample-solutions  300,368,354,646,673,740,1048,416,698,1143,72,115,712,132,647,322,518,377,279,983,1049,1039,1130,312,1314,304,174,120,221,931,494,1027,1218,1339,121,122,123,188,309,714,576,688,486,877,486,877,1262,91,279,357,978,1155
 - 贪心算法: https://leetcode.com/list/xyehq5j6/
+- 加权有向图的最短路径问题,一篇安排的明明白白: https://leetcode.com/problems/cheapest-flights-within-k-stops/discuss/361711/Java-DFSBFSBellman-Ford-Dijkstra's
 
 ## 刷题发现的一些有意思的东西
 - 2020.5.25达到450题
@@ -32,6 +33,7 @@
 - 2019.12.3达到300题
 - 2019.5.16达到250题
 - 2019.3.19达到200题
+- PriorityQueue的特性:1.PriorityQueue会成为小顶还是大顶堆取决于传入的比较器,如果不指定比较器,那么默认就是小顶堆, 2.PriorityQueue是无界的,因此想实现topK问题可能需要业务代码判断size然后做delete操作来保证queue的固定大小 3.PriorityQueue和stack一样,迭代时候体现不出来结构的特色,但是poll()元素时,会发现出来的元素都是有序的
 - Integer[]类型的数组可以使用Arrays.sort(arr, (a,b) -> b-a)来实现降序排序,但是int[]不能用这种方法,我们可以先升序排序,然后倒转数组实现降序排序
 - Java的split函数不能使用"."来分割字串,必须使用"//.",因为正则中的"."代表任意字符
 - ">> n"相当于除以2的n次方, "<< n"相当于除以2的n次方

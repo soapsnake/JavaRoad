@@ -108,4 +108,74 @@ public class MatrixTester {
         int[] order = {0, 1, 2};
         System.out.println(Arrays.toString(countWinner(winlose, order)));
     }
+
+    public void solve(char[][] board) {
+        if (board == null) {
+            return;
+        }
+        if (board.length == 0) {
+            return;
+        }
+        int m = board.length;
+        int n = board[0].length;
+        for (int i = 0; i < m; i++) {
+                //与边界相连的0不能转为x,先把这些染成'#',然后再遍历一次把非'#'的全部改成'0'
+            if (board[0][i] == 'O') {
+                this.helper(board, 0, i);
+            }
+            if (board[n - 1][i] == 'O') {
+                this.helper(board, 3, i);
+            }
+        }
+        for (int i = 0; i < m; i++) {
+            //与边界相连的0不能转为x,先把这些染成'#',然后再遍历一次把非'#'的全部改成'0'
+            if (board[i][0] == 'O') {
+                this.helper(board, i, 0);
+            }
+            if (board[i][m - 1] == 'O') {
+                this.helper(board, i, 3);
+            }
+        }
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (board[i][j] == '#') {
+                    board[i][j] = 'O';
+                } else if (board[i][j] == 'O') {
+                    board[i][j] = 'X';
+                }
+            }
+        }
+    }
+
+    private void helper(char[][] board, int i, int j) {
+        int m = board.length;
+        int n = board[0].length;
+        if (i >= m || i < 0 || j >= n || j < 0) {
+            return;
+        }
+        if (board[i][j] != 'O') {
+            return;
+        }
+        board[i][j] = '#';
+        //能够往目标格子移动有一个前提:目标格子必须也是'0'
+        helper(board, i, j + 1);
+        helper(board, i, j - 1);
+        helper(board, i + 1, j);
+        helper(board, i - 1, j);
+    }
+
+
+    /**
+     * [["X","X","X","X"],
+     * ["X","X","X","X"],
+     * ["X","X","X","X"],
+     * ["X","O","X","X"]]
+     */
+    @Test
+    public void testSolve() {
+        char[][] board = {{'X', 'X', 'X', 'X'}, {'X', 'O', 'O', 'X'}, {'X', 'X', 'O', 'X'}, {'X', 'O', 'X', 'X'}};
+        solve(board);
+        System.out.println("12342432");
+        System.out.println(Arrays.deepToString(board));
+    }
 }
