@@ -66,4 +66,6 @@ public class Question207 {
         i += i - 1;
         System.out.println(i);
     }
+
+
 }

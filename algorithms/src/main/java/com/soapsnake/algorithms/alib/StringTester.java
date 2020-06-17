@@ -2,6 +2,9 @@ package com.soapsnake.algorithms.alib;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -74,7 +77,7 @@ public class StringTester {
         //abcdef ->  cdefab
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(source, 0, n);
-        stringBuilder.insert(0,source.substring(n));
+        stringBuilder.insert(0, source.substring(n));
         return stringBuilder.toString();
     }
 
@@ -87,8 +90,6 @@ public class StringTester {
 
     /**
      * 字符串转数字
-     * @param str
-     * @return
      */
     public static int strToInt(String str) {
         if (str == null || "".equals(str)) {
@@ -139,8 +140,54 @@ public class StringTester {
                 if (text1.charAt(i) == text2.charAt(j)) {
                     dp[i + 1][j + 1] = dp[i][j] + 1;
                 } else {
-                    dp[i + 1][j + 1] =  Math.max(dp[i][j + 1], dp[i + 1][j]);
+                    dp[i + 1][j + 1] = Math.max(dp[i][j + 1], dp[i + 1][j]);
                 }
         return dp[text1.length()][text2.length()];
+    }
+
+    @Test
+    public void testIssubsequence() {
+        System.out.println(isSubsequence("ba", "aab"));
+    }
+
+    public boolean isSubsequence(String s, String t) {
+        List<Integer>[] idx = new List[256]; // Just for clarity  hashmap结构
+        for (int i = 0; i < t.length(); i++) {
+            if (idx[t.charAt(i)] == null)
+                idx[t.charAt(i)] = new ArrayList<>();
+            idx[t.charAt(i)].add(i);
+        }
+
+        int prev = 0;
+        for (int i = 0; i < s.length(); i++) {
+            if (idx[s.charAt(i)] == null) {
+                return false; // Note: char of S does NOT exist in T causing NPE
+            }
+            int j = Collections.binarySearch(idx[s.charAt(i)], prev);
+            if (j < 0)
+                j = -j - 1;
+            if (j == idx[s.charAt(i)].size())
+                return false;
+            prev = idx[s.charAt(i)].get(j) + 1;
+        }
+        return true;
+    }
+
+    @Test
+    public void testCollectionsBinarySearch() {
+        List<Integer> lls = new ArrayList<>();
+        lls.add(3);
+        lls.add(4);
+        lls.add(5);
+        lls.add(9);
+        lls.add(123);
+
+        System.out.println(Collections.binarySearch(lls, 3));
+        System.out.println(Collections.binarySearch(lls, 5));
+        System.out.println(Collections.binarySearch(lls, -1));
+        System.out.println(Collections.binarySearch(lls, 100));
+        System.out.println(Collections.binarySearch(lls, 123));
+        System.out.println(Collections.binarySearch(lls, 1999));
+        System.out.println(Collections.binarySearch(lls, -10000));
     }
 }

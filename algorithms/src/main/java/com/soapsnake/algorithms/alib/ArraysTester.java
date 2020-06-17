@@ -2,12 +2,15 @@ package com.soapsnake.algorithms.alib;
 
 import org.junit.Test;
 
+import java.lang.annotation.Target;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
+
+import com.sun.org.apache.xpath.internal.WhitespaceStrippingElementMatcher;
 
 public class ArraysTester {
 
@@ -252,12 +255,43 @@ public class ArraysTester {
         }
     }
 
-
-
     @Test
     public void testMoveZero() {
         int[] nums = {0,1,0,3,12};
         moveZeroes(nums);
         System.out.println(Arrays.toString(nums));
+    }
+
+
+    /**
+     * find target value, if not, show the index of what if we insert it into this array
+     * @param nums
+     * @param target
+     * @return
+     */
+    public int searchInsert(int[] nums, int target) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+        int left = 0;
+        int right = nums.length - 1;
+        while (right >= left) {
+            int mid = left + (right - left) / 2;
+            if (nums[mid] == target) {
+                return mid;
+            } else if (nums[mid] > target) {
+                right = mid - 1;
+            } else {
+                left = mid + 1;
+            }
+        }
+        return left;
+    }
+
+    @Test
+    public void testSearchInsert() {
+        int[] nums = {};
+        int tar = 0;
+        System.out.println(searchInsert(nums, tar));
     }
 }

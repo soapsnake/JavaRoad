@@ -69,7 +69,6 @@ public class O1Stack {
         stack.push(10);
         System.out.println("最小" + stack.minList);
 
-
         stack.pop();
         stack.pop();
         stack.printStack();

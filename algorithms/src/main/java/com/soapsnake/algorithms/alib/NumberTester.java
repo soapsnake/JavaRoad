@@ -1,5 +1,9 @@
 package com.soapsnake.algorithms.alib;
 
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 import org.junit.Test;
 
 public class NumberTester {
@@ -106,6 +110,46 @@ public class NumberTester {
             i += 10;
         }
         return count;
+    }
+
+    public boolean isPowerOfTwo(int n) {
+        //n is or not 2's power
+        if (n == 0) {
+            return false;
+        }
+        if (n == 1) {
+            return true;
+        }
+        if (n % 2 != 0) {
+            return false;
+        } else {
+            return isPowerOfTwo(n / 2);
+        }
+    }
+
+    @Test
+    public void testIsPower() {
+        System.out.println(isPowerOfTwo(9));
+        Map<String, String> map1 = new HashMap<>();
+        map1.put("-500", "hashmap");
+        map1.put("200", "hashmap");
+        map1.put("-900", "hashmap");
+
+        for (Map.Entry<String, String> entry : map1.entrySet()) {
+            System.out.print(entry.getKey());
+            System.out.println(entry.getValue());
+        }
+
+        Map<String, String> map2 = new LinkedHashMap<>();
+        map2.put("-500", "hashmap");
+        map2.put("200", "hashmap");
+        map2.put("-900", "hashmap");
+
+        for (Map.Entry<String, String> entry : map2.entrySet()) {
+            System.out.print(entry.getKey());
+            System.out.println(entry.getValue());
+        }
+
     }
 
     @Test
