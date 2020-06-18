@@ -28,6 +28,6 @@ public class Question640 {
      * Output: "No solution"
      */
     public String solveEquation(String equation) {
-
+        return null;
     }
 }
