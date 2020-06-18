@@ -25,6 +25,8 @@ public class Question641 {
         /** Deletes an item from the front of Deque. Return true if the operation is successful. */
         public boolean deleteFront() {
 
+
+            //
         }
 
         /** Deletes an item from the rear of Deque. Return true if the operation is successful. */
