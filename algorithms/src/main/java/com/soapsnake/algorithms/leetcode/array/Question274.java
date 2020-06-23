@@ -14,6 +14,7 @@ public class Question274 {
      * Input: citations = [3,0,6,1,5]
      * Output: 3
      */
+    //leetcode 274
     public int hIndex(int[] citations) {
         if (citations.length == 0) {
             return 0;

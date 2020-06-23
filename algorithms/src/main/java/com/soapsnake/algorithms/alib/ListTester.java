@@ -1,5 +1,7 @@
 package com.soapsnake.algorithms.alib;
 
+import java.util.List;
+
 import com.soapsnake.algorithms.structures.list.ListNode;
 import org.junit.Test;
 

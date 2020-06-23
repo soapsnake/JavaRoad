@@ -245,6 +245,38 @@ public class TreeTester {
         searchBST(root, val);
     }
 
+    public List<List<TreeNode>> layerTree(TreeNode root) {
+        if (root == null) {
+            return null;
+        }
+        Queue<TreeNode> queue = new LinkedList<>();
+        List<List<TreeNode>> res = new ArrayList<>();
+        List<List<Integer>> res2 = new ArrayList<>();
+        queue.offer(root);
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            List<TreeNode> layer = new ArrayList<>();
+            List<Integer> layer1 = new ArrayList<>();
+            for (int i = 0; i < size; i++) {
+                TreeNode cur = queue.poll();
+                if (cur == null) {
+                    continue;
+                }
+                layer.add(cur);
+                layer1.add(cur.val);
+                if (cur.left != null) {
+                    queue.offer(cur.left);
+                }
+                if (cur.right != null) {
+                    queue.offer(cur.right);
+                }
+            }
+            res.add(layer);
+            res2.add(layer1);
+        }
+        System.out.println(res2);
+        return res;
+    }
     public int countNodes(TreeNode root) {
         if (root == null) {
             return 0;
@@ -262,4 +294,9 @@ public class TreeTester {
         helper(root.right);
     }
 
+    @Test
+    public void printTree() {
+        TreeNode root = TreeNode.makeNormalTreeFor437();
+        System.out.println(layerTree(root));
+    }
 }

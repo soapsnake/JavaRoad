@@ -1,5 +1,8 @@
 package com.soapsnake.algorithms.alib;
 
+import java.util.concurrent.ForkJoinPool;
+import java.util.concurrent.ThreadPoolExecutor;
+
 import org.junit.Test;
 
 public class DPtester {
@@ -42,5 +45,19 @@ public class DPtester {
         int n = 45;
 //        System.out.println(countJump(n));
         System.out.println(countJump2(n));
+    }
+
+    //二维数组最大路径和
+    public int calculateMinimumHP(int[][] dungeon) {
+        int m = dungeon.length;
+        int n = dungeon[0].length;
+        int[][] dp = new int[m + 1][n + 1];  //1.dp[i][j]指到ij位置的最大路径和
+        dp[0][0] = dungeon[0][0];
+        for (int i = 1; i < m + 1; i++) {
+            for (int j = 1; j < n + 1; j++) {
+                dp[i][j] = Math.min(dp[i - 1][j], dp[i][j - 1]) + dungeon[i - 1][j - 1];
+            }
+        }
+        return dp[m][n];
     }
 }
