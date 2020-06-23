@@ -53,6 +53,8 @@ public class Question641 {
         /** Checks whether the circular deque is empty or not. */
         public boolean isEmpty() {
 
+
+
             return false;
         }
 
