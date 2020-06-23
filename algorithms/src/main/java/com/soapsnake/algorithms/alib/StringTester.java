@@ -4,9 +4,14 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.TreeMap;
+
+import javax.print.attribute.standard.Destination;
+import javax.xml.ws.soap.Addressing;
 
 public class StringTester {
 
@@ -189,5 +194,58 @@ public class StringTester {
         System.out.println(Collections.binarySearch(lls, 123));
         System.out.println(Collections.binarySearch(lls, 1999));
         System.out.println(Collections.binarySearch(lls, -10000));
+    }
+
+
+    /**
+     * Input: n = 4, k = 9
+     * Output: "2314"
+     */
+    public String getPermutation(int n, int k) {
+        if (n == 0) {
+            return null;
+        }
+        if (n == 1) {
+            return "1";
+        }
+        int[] source = new int[n];
+        for (int i = 0; i < n; i++) {
+            source[i] =i + 1;
+        }
+        Set<Integer> all = new HashSet<>();
+        this.backTrace(source, 0, all, new ArrayList<>());
+        List<Integer> alllList = new ArrayList<>(all);
+        alllList.sort(Integer::compareTo);
+        return String.valueOf(alllList.get(k - 1));
+    }
+
+    private void backTrace(int[] source, int pre, Set<Integer> all, List<Integer> tmp) {
+        if (tmp.size() == source.length) {
+            int des = this.formNumber(tmp);
+            all.add(des);
+            return;
+        }
+        for (int j = pre; j < source.length; j++) {
+            if (tmp.contains(source[j])) {
+                continue;
+            }
+            tmp.add(source[j]);
+            backTrace(source, pre, all, tmp);
+            tmp.remove(tmp.size() - 1);
+        }
+    }
+
+    private int formNumber(List<Integer> tmp) {
+        int res = 0;
+        for (Integer integer : tmp) {
+            res = res * 10 + integer;
+        }
+        return res;
+    }
+
+    @Test
+    public void testgetPermu(){
+        String res = getPermutation(4, 9);
+        System.out.println(res);
     }
 }
