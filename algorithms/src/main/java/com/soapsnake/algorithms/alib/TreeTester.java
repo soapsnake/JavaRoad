@@ -245,5 +245,21 @@ public class TreeTester {
         searchBST(root, val);
     }
 
+    public int countNodes(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        helper(root);
+        return total;
+    }
+    private int total;
+    private void helper(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        helper(root.left);
+        total++;
+        helper(root.right);
+    }
 
 }
