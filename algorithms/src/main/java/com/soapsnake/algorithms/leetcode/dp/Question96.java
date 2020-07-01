@@ -32,9 +32,9 @@ public class Question96 {
          * with k consecutive nodes.It is used as database when we need to know how many left sub trees are possible
          * for k nodes when picking(k+1) as root.
          */
-        int[] dp = new int[n + 1];
+        int[] dp = new int[n + 1];  //dp数组含义: n个节点可生成的二叉搜索树的数量
         dp[0] = 1;
-        dp[1] = 1;
+        dp[1] = 1;  //初始条件
         for (int level = 2; level <= n; level++) {
             for (int root = 1; root <= level; root++) {
                 dp[level] += dp[level - root] * dp[root - 1];

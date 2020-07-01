@@ -50,17 +50,17 @@ public class Question287 {
      */
     public int findDuplicate(int[] nums) {
         // Find the intersection point of the two runners.
-        int tortoise = nums[0];
-        int hare = nums[0];
+        int wugui = nums[0];  //乌龟一次一步
+        int tuzi = nums[0];  //兔子一次两步
         do {
-            tortoise = nums[tortoise];   //慢指针一次走一步
-            hare = nums[nums[hare]];    //快速指针一次走两步(nums[hare]相当于走了一步,然后nums[nums[hare]]相当于走了两步)
-        } while (tortoise != hare);    //当快慢指针指向的值相等时说明有可能遇到了循环节点,为什么说有可能???
+            wugui = nums[wugui];   //慢指针一次走一步
+            tuzi = nums[nums[tuzi]];    //快速指针一次走两步(nums[hare]相当于走了一步,然后nums[nums[hare]]相当于走了两步)
+        } while (wugui != tuzi);    //当快慢指针指向的值相等时说明有可能遇到了循环节点,为什么说有可能???
 
         // Find the "entrance" to the cycle.
         //这里为什么要采用第二次循环才能判定是循环节点,因为有可能第一次探测到的节点是两个指针指向的是同一个索引,比如[2,5,9,6,9,3,8,9,7,1],第一次循环结束两个指针都指向index8
         int ptr1 = nums[0];      //ptr1指针指向表头
-        int ptr2 = tortoise;    //ptr2指针指向第一次循环探测到的可能的循环节点
+        int ptr2 = wugui;    //ptr2指针指向第一次循环探测到的可能的循环节点
         while (ptr1 != ptr2) {       //如果第二次相等说明肯定是探测到了环了
             ptr1 = nums[ptr1];     //一次一步
             ptr2 = nums[ptr2];    //一次一步
@@ -70,5 +70,9 @@ public class Question287 {
         return ptr1;
     }
 
+
+    public static void main(String[] args) {
+
+    }
 
 }
