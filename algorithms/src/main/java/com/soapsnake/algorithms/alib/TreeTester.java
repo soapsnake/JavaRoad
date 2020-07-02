@@ -299,4 +299,64 @@ public class TreeTester {
         TreeNode root = TreeNode.makeNormalTreeFor437();
         System.out.println(layerTree(root));
     }
+
+    @Test
+    public void testfindwords() {
+        char[][] board = {{'o', 'a', 'a', 'n'}, {'e', 't', 'a', 'e'}, {'i', 'h', 'k', 'r'}, {'i', 'f', 'l', 'v'}};
+        String[] words = {"oath", "pea", "eat", "rain"};
+        System.out.println(findWords(board, words));
+    }
+
+    public List<String> findWords(char[][] board, String[] words) {
+        TireNode trie = this.buildTrie(words);
+        List<String> res = new ArrayList<>();
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[0].length; j++) {
+                this.wordsHelper(board, trie, i, j, res);
+            }
+        }
+        return res;
+    }
+
+    private void wordsHelper(char[][] board, TireNode trie, int i, int j, List<String> res) {
+        if (i < 0 || i >= board.length || j < 0 || j >= board[0].length || trie == null) {
+            return;
+        }
+        if (trie.word != null) {
+            //trie到达了叶子节点,叶子节点才有单词
+            if (!res.contains(trie.word)) {
+                res.add(trie.word);
+            }
+        }
+        //trie未达到叶子节点
+        int cur = board[i][j] - 'a';
+        wordsHelper(board, trie.children[cur], i, j + 1, res);
+        wordsHelper(board, trie.children[cur], i - 1, j, res);
+        wordsHelper(board, trie.children[cur], i + 1, j, res);
+        wordsHelper(board, trie.children[cur], i, j - 1, res);
+    }
+
+    private TireNode buildTrie(String[] words) {
+        TireNode root = new TireNode();
+        for (String word : words) {
+            TireNode node = root;
+            for (char ch : word.toCharArray()) {
+                int index = ch - 'a';
+                if (node.children[index] == null) {
+                    node.children[index] = new TireNode();
+                }
+                node = node.children[index];
+            }
+            node.word = word;  //叶子节点有单词
+        }
+        return root;
+    }
+
+    static class TireNode{
+        private String word;
+        private TireNode[] children;
+        public TireNode() {
+            this.children = new TireNode[26];
+        }
+    }
 }

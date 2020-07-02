@@ -4,6 +4,7 @@ import com.soapsnake.algorithms.structures.tree.TreeNode;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -21,14 +22,15 @@ public class Question107 {
     }
 
     //迭代版
+    //leetcode107
     public List<List<Integer>> levelOrderBottom(TreeNode root) {
         if (root == null) {
             return new ArrayList<>();
         }
         List<List<Integer>> res = new ArrayList<>();
         Queue<TreeNode> queue = new LinkedList<>();
-        ((LinkedList<TreeNode>) queue).add(root);
-        res.add(Arrays.asList(root.val));
+        queue.add(root);
+        res.add(Collections.singletonList(root.val));
         while (!queue.isEmpty()) {
             List<TreeNode> row = new ArrayList<>();
             while (!queue.isEmpty()) {
@@ -43,9 +45,10 @@ public class Question107 {
             List<Integer> rowInts = new ArrayList<>();
             for (TreeNode node : row) {
                 rowInts.add(node.val);   //每一行的数字
-                ((LinkedList<TreeNode>) queue).add(node);
+                queue.add(node);
             }
             if (rowInts.size() != 0) {
+                //技巧全在这儿了,往0号索引插入元素,就实现了栈的功能
                 res.add(0, rowInts);
             }
         }

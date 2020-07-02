@@ -86,4 +86,10 @@ public class Question212 {
     public void testArrange() {
         System.out.println(arrangeCoins(1));
     }
+
+
+
+
+
+
 }
