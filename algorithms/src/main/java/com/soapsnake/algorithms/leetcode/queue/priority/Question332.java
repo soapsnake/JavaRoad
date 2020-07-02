@@ -1,4 +1,4 @@
-package com.soapsnake.algorithms.leetcode.array;
+package com.soapsnake.algorithms.leetcode.queue.priority;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -27,11 +27,13 @@ public class Question332 {
      * Explanation: Another possible reconstruction is ["JFK","SFO","ATL","JFK","ATL","SFO"].
      *              But it is larger in lexical order.
      */
+    //leetcode332
     public List<String> findItinerary(List<List<String>> tickets) {
-        Map<String, PriorityQueue<String>> targets = new HashMap<>();
+        Map<String, PriorityQueue<String>> targets = new HashMap<>(); //小顶堆
         for (List<String> ticket : tickets) {
             targets.computeIfAbsent(ticket.get(0), k -> new PriorityQueue<>()).add(ticket.get(1));
         }
+        System.out.println(targets);
         List<String> route = new LinkedList<>();
         Stack<String> stack = new Stack<>();
         stack.push("JFK");
