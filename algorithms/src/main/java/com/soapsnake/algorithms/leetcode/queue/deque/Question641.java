@@ -1,4 +1,4 @@
-package com.soapsnake.algorithms.leetcode.deque;
+package com.soapsnake.algorithms.leetcode.queue.deque;
 
 /**
  * @author liudun <liudun@kuaishou.com>
