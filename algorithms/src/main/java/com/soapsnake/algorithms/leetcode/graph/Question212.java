@@ -6,7 +6,7 @@ import java.util.List;
 import org.junit.Test;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ *
  * Created on 2020-06-30
  */
 public class Question212 {

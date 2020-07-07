@@ -3,7 +3,7 @@ package com.soapsnake.algorithms.leetcode.dp;
 import javax.swing.plaf.nimbus.NimbusLookAndFeel;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ *
  * Created on 2020-06-03
  */
 public class Question1029 {

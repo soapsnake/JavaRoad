@@ -5,7 +5,7 @@ import javax.smartcardio.Card;
 import com.soapsnake.Atm.enums.CustomerStatus;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ *
  * Created on 2020-05-28
  */
 public abstract class Customer {

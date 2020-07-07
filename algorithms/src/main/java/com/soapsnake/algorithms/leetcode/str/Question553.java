@@ -93,7 +93,7 @@ public class Question553 {
     }
 
     public static void main(String[] args) {
-        List<String> nanmes = Arrays.asList("liudun", "zahngsan");
+        List<String> nanmes = Arrays.asList("soapsnake", "zahngsan");
         System.out.println(String.join(",", nanmes));
     }
 

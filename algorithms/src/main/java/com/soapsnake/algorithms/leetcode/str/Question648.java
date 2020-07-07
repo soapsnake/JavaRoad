@@ -9,7 +9,7 @@ import java.util.Set;
 import org.junit.Test;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ *
  * Created on 2020-06-27
  */
 public class Question648 {

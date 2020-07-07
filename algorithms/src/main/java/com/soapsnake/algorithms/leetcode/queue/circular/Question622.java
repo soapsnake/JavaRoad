@@ -6,7 +6,7 @@ import java.util.Comparator;
 import com.soapsnake.algorithms.structures.list.ListNode;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ *
  * Created on 2020-06-01
  */
 public class Question622 {

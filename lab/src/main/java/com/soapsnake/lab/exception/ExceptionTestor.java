@@ -1,7 +1,7 @@
 package com.soapsnake.lab.exception;
 
 /**
- * @author liudun <liudun@.com>
+ * @author soapsnake <soapsnake@.com>
  * Created on 2020-04-30
  */
 public class ExceptionTestor {
