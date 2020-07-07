@@ -1,4 +1,4 @@
-package com.soapsnake.algorithms.leetcode.number;
+package com.soapsnake.algorithms.leetcode.queue.priority;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +37,7 @@ public class Question264 {
     }
 
     //2, 3, 5
+    //leetcode264
     public int nthUglyNumber(int n) {
         int[] ugly = new int[n];
         ugly[0] = 1;

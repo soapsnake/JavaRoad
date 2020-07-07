@@ -1,4 +1,4 @@
-package com.soapsnake.algorithms.leetcode.queue;
+package com.soapsnake.algorithms.leetcode.queue.circular;
 
 import java.util.Arrays;
 import java.util.Comparator;

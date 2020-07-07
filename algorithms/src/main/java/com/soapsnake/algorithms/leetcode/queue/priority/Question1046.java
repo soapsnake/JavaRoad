@@ -1,4 +1,4 @@
-package com.soapsnake.algorithms.leetcode.queue;
+package com.soapsnake.algorithms.leetcode.queue.priority;
 
 import java.util.PriorityQueue;
 
