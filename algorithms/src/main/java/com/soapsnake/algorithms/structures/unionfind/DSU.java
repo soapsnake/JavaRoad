@@ -3,7 +3,7 @@ package com.soapsnake.algorithms.structures.unionfind;
 /**
  *
  * Created on 2020-07-07
- * 并查集,union find数据结构,主要用于联通性探测
+ * 并查集,union-find数据结构,主要用于联通性探测
  */
 public class DSU {
     int[] parent;
