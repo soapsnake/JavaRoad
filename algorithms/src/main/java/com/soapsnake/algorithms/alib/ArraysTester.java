@@ -6,8 +6,10 @@ import java.lang.annotation.Target;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.TreeMap;
 
 import com.sun.org.apache.xpath.internal.WhitespaceStrippingElementMatcher;
@@ -293,5 +295,55 @@ public class ArraysTester {
         int[] nums = {};
         int tar = 0;
         System.out.println(searchInsert(nums, tar));
+    }
+
+    public List<List<Integer>> threeSum(int[] nums) {
+        List<List<Integer>> res = new ArrayList<>();
+        if (nums.length < 3) {
+            return res;
+        }
+        Arrays.sort(nums);
+        if (nums[0] == 0 && nums[1] != 0) {
+            return res;
+        }
+        for (int i = 0; i < nums.length; i++) {
+            if (i != 0 && nums[i] == nums[i - 1]) { //防止第一个数字重复
+                continue;
+            }
+            Set<Integer> cache = new HashSet<>();
+            int remain = nums[i];
+            if (remain > 0) {
+                break;
+            }
+            int left = i + 1;
+            int right = nums.length - 1;
+            while (right > left) {
+                int leftvalue = nums[left];
+                int rightvalue = nums[right];
+                if (leftvalue + rightvalue == -remain) {
+                    if (!cache.contains(leftvalue)) {
+                        List<Integer> temp = new ArrayList<>();
+                        temp.add(remain);
+                        temp.add(leftvalue);
+                        temp.add(rightvalue);
+                        res.add(temp);
+                        cache.add(leftvalue);
+                    }
+                    right--;
+                    left++;
+                } else if (leftvalue + rightvalue > -remain) {
+                    right--;
+                } else {
+                    left++;
+                }
+            }
+        }
+        return res;
+    }
+
+    @Test
+    public void testThreeSum() {
+        int[] nums = {0, 0, 0};
+        System.out.println(threeSum(nums));
     }
 }

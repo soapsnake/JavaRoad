@@ -1,4 +1,4 @@
-package com.soapsnake.algorithms.leetcode.graph.unsolve;
+package com.soapsnake.algorithms.leetcode.graph;
 
 import java.util.ArrayList;
 import java.util.HashMap;
