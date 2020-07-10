@@ -6,8 +6,8 @@ package com.soapsnake.algorithms.leetcode.list;
  */
 public class Question430 {
 
-    //leetcode430
     //展平双向链表
+    //leetcode430
     public Node flatten(Node head) {
         if (head == null)
             return head;
