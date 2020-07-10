@@ -1,7 +1,7 @@
 package com.soapsnake.lab.totp;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ *
  * Created on 2020-06-03
  */
 import java.lang.reflect.UndeclaredThrowableException;

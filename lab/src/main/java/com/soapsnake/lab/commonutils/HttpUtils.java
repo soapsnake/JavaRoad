@@ -32,7 +32,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import sun.net.www.http.HttpClient;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ *
  * Created on 2020-06-03
  */
 public class HttpUtils {

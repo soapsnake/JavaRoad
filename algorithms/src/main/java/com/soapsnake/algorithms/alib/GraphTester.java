@@ -3,8 +3,11 @@ package com.soapsnake.algorithms.alib;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.SortedMap;
 import java.util.logging.FileHandler;
 
 import com.soapsnake.algorithms.structures.graph.Graph;
@@ -99,4 +102,69 @@ public class GraphTester {
         int K = 1;
         System.out.println(findCheapestPrice(n, flights, src, dst, K));
     }
+
+
+    public double[] calcEquation(String[][] equations, double[] values, String[][] queries) {
+        if (equations.length == 0 || values == null || values.length == 0 || queries.length == 0) {
+            return null;
+        }
+        Map<String, Map<String, Double>> adj = new HashMap<>();
+        for (int i = 0; i < equations.length; i++) {
+            String source = equations[i][0];
+            String end = equations[i][1];
+            double weight = values[i];
+            adj.putIfAbsent(source, new HashMap<>());
+            adj.get(source).put(end, weight);
+
+            adj.putIfAbsent(end, new HashMap<>());
+            adj.get(end).put(source, 1 / weight); //a->b=k, b->a=1/k
+        }
+        System.out.println(adj);
+        double[] res = new double[queries.length];
+        int i = 0;
+        for (String[] strings : queries) {
+            String source = strings[0];
+            String end = strings[1];
+            res[i++] = dfsGraph(adj, source, end, 1, new HashSet<>());//每一次运算一个cache
+        }
+        return res;
+    }
+
+    private double dfsGraph(Map<String, Map<String, Double>> adj, String source, String end, double weight, Set<String> cache) {
+        if (adj.get(source) == null) {
+            return -1;
+        }
+        if (!cache.add(source)) {
+            return -1;
+        }
+        if (source.equals(end)) {
+            //两点联通,这种情况可以返回结果
+            return weight;
+        }
+        for (String next : adj.get(source).keySet()) {
+            double res = dfsGraph(adj, next, end, weight * adj.get(source).get(next), cache);
+            if (res != -1) { //res=-1代表两点不连通或者出现了环路
+                return res;
+            }
+        }
+        return -1;
+    }
+
+    @Test
+    /**
+     * equations = [ ["a", "b"], ["b", "c"] ],
+     * values = [2.0, 3.0],
+     * queries = [ ["a", "c"], ["b", "a"], ["a", "e"], ["a", "a"], ["x", "x"] ].
+     * return [6.0, 0.5, -1.0, 1.0, -1.0 ].
+     */
+    public void testcalcEquation() {
+        String[][] equations = {{"a", "b"}, {"b", "c"}};
+        double[] values = {2.0, 3.0};
+        String[][] queries = {{"a", "c"}, {"b", "a"}, {"a", "e"}, {"a", "a"}, {"x", "x"}};
+        String[][] queries1 = {{"b", "a"}};
+        System.out.println(Arrays.toString(calcEquation(equations, values, queries)));
+    }
+
+
 }
+

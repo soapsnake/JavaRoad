@@ -9,7 +9,7 @@
 //    public static void main(String[] args) {
 //
 //        Person person = new Person();
-//        person.setName("liudun");
+//        person.setName("soapsnake");
 //        person.setPassword("1234");
 //        person.setAge(19);
 //

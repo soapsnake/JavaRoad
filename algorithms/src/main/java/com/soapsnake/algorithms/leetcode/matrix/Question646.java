@@ -14,7 +14,7 @@ import com.soapsnake.algorithms.structures.tree.TreeNode;
 import lombok.experimental.Helper;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ *
  * Created on 2020-06-24
  */
 public class Question646 {

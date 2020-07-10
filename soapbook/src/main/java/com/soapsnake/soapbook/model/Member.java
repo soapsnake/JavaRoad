@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ *
  * Created on 2020-06-01
  */
 public class Member extends Person {

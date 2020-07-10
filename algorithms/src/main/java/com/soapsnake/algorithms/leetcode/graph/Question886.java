@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Queue;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ *
  * Created on 2020-05-27
  */
 public class Question886 {

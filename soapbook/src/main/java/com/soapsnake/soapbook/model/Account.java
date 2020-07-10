@@ -3,7 +3,7 @@ package com.soapsnake.soapbook.model;
 import com.soapsnake.soapbook.enums.AccountStatus;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ *
  * Created on 2020-06-01
  */
 public class Account {

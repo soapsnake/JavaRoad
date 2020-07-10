@@ -5,7 +5,7 @@ import java.util.Date;
 import com.soapsnake.soapbook.enums.ConnectionInvitationStatus;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ *
  * Created on 2020-06-01
  */
 public class ConnectionInvitation {

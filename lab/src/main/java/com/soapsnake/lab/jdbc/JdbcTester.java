@@ -10,7 +10,7 @@ import java.sql.Statement;
 import com.soapsnake.lab.concurrence.stream.Person;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ *
  * Created on 2020-05-20
  */
 public class JdbcTester {
