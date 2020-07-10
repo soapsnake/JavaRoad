@@ -12,6 +12,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
+import javax.management.QueryEval;
+
 public class TreeTester {
 
     //求树节点的最大距离
@@ -358,5 +360,35 @@ public class TreeTester {
         public TireNode() {
             this.children = new TireNode[26];
         }
+    }
+
+
+    public int widthOfBinaryTree(TreeNode root) {
+        //bfs计算
+        if (root == null) {
+            return 0;
+        }
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+        int max = -1;
+        while (!queue.isEmpty()) {
+            int cursize = queue.size();
+            max = Math.max(max, cursize);
+            for (int i = 0; i < cursize; i++) {
+                TreeNode node = queue.poll();
+                if (node.left != null) {
+                    queue.offer(node.left);
+                }
+                if (node.right != null) {
+                    queue.offer(node.right);
+                }
+            }
+        }
+        return max;
+    }
+
+    @Test
+    public void testwidthOfBinaryTree() {
+        System.out.println(widthOfBinaryTree(TreeNode.makeNormalTreeFor110v2()));
     }
 }
