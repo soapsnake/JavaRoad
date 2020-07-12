@@ -8,6 +8,9 @@ package com.soapsnake.algorithms.structures.unionfind;
 public class DSU {
     int[] parent;
     int[] rank;
+    //这个参数是为leetcode765而加
+    //如何理解这个count:初始值为顶点数量,会随着两点发生连接而减小,可以理解为孤点数量
+    int count;
 
     public DSU(int size) {
         parent = new int[size];
@@ -15,6 +18,7 @@ public class DSU {
             parent[i] = i;
         }
         rank = new int[size];
+        count = size;
     }
 
     //返回x元素所在组的根root,为什么是根实在想不明白
@@ -48,7 +52,13 @@ public class DSU {
             parent[yr] = xr;
             rank[xr]++;
         }
+        //只有在一种情况下会发生count--,那就是连接了AB后
+        count--;
         //到这里x所在的树和y所在的树已经合并,x和y本来不连通,现在联通了
         return true;
+    }
+
+    public int getCount() {
+        return this.count;
     }
 }

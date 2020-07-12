@@ -346,4 +346,35 @@ public class ArraysTester {
         int[] nums = {0, 0, 0};
         System.out.println(threeSum(nums));
     }
+
+    public List<List<Integer>> subsets(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return new ArrayList<>();
+        }
+        Arrays.sort(nums);
+        List<List<Integer>> res = new ArrayList<>();
+        this.backTrace(nums, res, 0, new ArrayList<>());
+        return res;
+    }
+
+    private void backTrace(int[] nums, List<List<Integer>> res, int i, List<Integer> temp) {
+        List<Integer> dest = new ArrayList<>(temp);
+        if (!res.contains(dest)) {
+            res.add(dest);
+        }
+        for (int j = i; j < nums.length; j++) {
+            if (temp.contains(nums[j])) {
+                continue;
+            }
+            temp.add(nums[j]);
+            backTrace(nums, res, i + 1, temp);
+            temp.remove(temp.size() - 1);
+        }
+    }
+
+    @Test
+    public void testSubSets() {
+        int[] nums = {1,2,3};
+        System.out.println(subsets(nums));
+    }
 }

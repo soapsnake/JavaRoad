@@ -1,5 +1,7 @@
 package com.soapsnake.algorithms.leetcode.graph.unsolve;
 
+import com.soapsnake.algorithms.structures.unionfind.DSU;
+
 /**
  * @author liudun <liudun@kuaishou.com>
  * Created on 2020-07-11
@@ -16,8 +18,17 @@ public class Question765 {
      * @param row
      * @return
      */
+    //没有搞懂啊!!!
     public int minSwapsCouples(int[] row) {
-        //感觉这道题非常的难
-        return 0;
+        //N = 情侣的对数
+        int N = row.length/ 2;
+        DSU uf = new DSU(N);
+        for (int i = 0; i < N; i++) {
+            int a = row[2*i];
+            int b = row[2*i + 1];
+            uf.union(a/2, b/2);
+        }
+        //结果等于情侣对数 - 孤点的数量
+        return N - uf.getCount();
     }
 }
