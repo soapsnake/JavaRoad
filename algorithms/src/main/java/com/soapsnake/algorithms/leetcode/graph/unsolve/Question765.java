@@ -3,7 +3,7 @@ package com.soapsnake.algorithms.leetcode.graph.unsolve;
 import com.soapsnake.algorithms.structures.unionfind.DSU;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ * }
  * Created on 2020-07-11
  */
 public class Question765 {
