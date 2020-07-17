@@ -377,4 +377,37 @@ public class ArraysTester {
         int[] nums = {1,2,3};
         System.out.println(subsets(nums));
     }
+
+    public int[] topKFrequent(int[] nums, int k) {
+        if (nums == null || nums.length == 0) {
+            return nums;
+        }
+        List[] lists = new List[1024];
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            map.put(nums[i], map.getOrDefault(nums[i], 0) + 1);
+        }
+        for (Integer key : map.keySet()) {
+            if (lists[map.get(key)] == null) {
+                lists[map.get(key)] = new ArrayList();
+            }
+            lists[map.get(key)].add(key);
+        }
+        List<Integer> res = new ArrayList<>();
+        for (int i = lists.length - 1; i > 0 && res.size() < k; i--) {
+            if (lists[i] != null) {
+                res.addAll(lists[i]);
+            }
+        }
+        int[] res1 = new int[k];
+        for (int i = 0; i < res.size(); i++) {
+            res1[i] = res.get(i);
+        }
+        return res1;
+    }
+
+    @Test
+    public void testtopKSets() {
+
+    }
 }

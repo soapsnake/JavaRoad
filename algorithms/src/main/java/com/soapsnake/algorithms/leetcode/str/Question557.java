@@ -24,7 +24,7 @@ class Question557 {
             return "";
 
         String[] strings = s.split(" ");
-        String res = "";
+        StringBuilder res = new StringBuilder();
 
         for (int j = 0; j < strings.length; j++) {
             char[] chars = strings[j].toCharArray();
@@ -33,17 +33,21 @@ class Question557 {
                 chars[i] = chars[chars.length - i - 1];
                 chars[chars.length - i - 1] = temp;
             }
-            res += new String(chars);
+            res.append(new String(chars));
             if (j != strings.length - 1)
-                res += " ";
+                res.append(" ");
         }
-        return res;
+        return res.toString();
     }
 
     //只遍历数组一遍的算法,双指针, todo 需要自己实现一遍
     public String reverseWords2(String s) {
-
-        return "";
+        String[] parts = s.trim().split("\\s+");
+        StringBuilder out = new StringBuilder();
+        for (int i = parts.length - 1; i > 0; i--) {
+            out.append(parts[i]).append(" ");
+        }
+        return out + parts[0];
     }
 
     private void reverse(char[] ca, int i, int j) {

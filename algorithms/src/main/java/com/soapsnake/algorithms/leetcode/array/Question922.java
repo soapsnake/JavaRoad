@@ -18,7 +18,6 @@ class Question922 {
             while (even < length && A[even] % 2 == 0) {
                 even += 2;
             }
-
             while (odd < length && A[odd] % 2 != 0) {
                 odd += 2;
             }

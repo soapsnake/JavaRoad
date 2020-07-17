@@ -19,11 +19,13 @@ public class Question50 {
      * n%2==0 -> x^n = x^(n/2) * x^(n/2) = (x*x)^(n/2)
      * n%2==1 -> x^n = x*(x^(n/2) * x^(n/2)) = x * (x*x)^(n/2)
      */
+    //leetcode50
     public double myPow(double x, int n) {
         if (x == 0) return 0;
         if (n == 0) return 1;
         // check data overflow
         if (n == Integer.MIN_VALUE) {
+            //n为负无穷大
             return (1 / x) * myPow(x, n + 1);
         }
         if (n < 0) {  //如果n小于0
