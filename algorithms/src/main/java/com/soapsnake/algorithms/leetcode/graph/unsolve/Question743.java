@@ -16,7 +16,7 @@ import java.util.SortedMap;
 import org.junit.Test;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ * }
  * Created on 2020-07-08
  */
 public class Question743 {
