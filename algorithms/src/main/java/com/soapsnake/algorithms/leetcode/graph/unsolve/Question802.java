@@ -14,6 +14,7 @@ import com.soapsnake.algorithms.structures.unionfind.DSU;
 public class Question802 {
 
     //实际上是探测有向图graph是否有环路,返回所有无回路的顶点
+    //这道题的解题思路可以用来解释question210中的dfs()函数
     //question802
     public List<Integer> eventualSafeNodes(int[][] graph) {
         List<Integer> res = new ArrayList<>();
@@ -47,7 +48,9 @@ public class Question802 {
             if (!dfs(graph, to, color))
                 return false;
         }
-        //能到这里,说明from节点的所有邻居节点都是安全的,那么from节点也是安全的,标记为1,并且返回true
+        //能到这里,说明from节点的所有邻居节点都是安全的,
+        //那么from节点也是安全的,标记为1,并且返回true
+        //这里的安全不安全其实可以理解为是否构成环路
         color[from] = 1;
         return true;
     }

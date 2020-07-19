@@ -125,4 +125,58 @@ public class Question67 {
         System.out.println("reverse前 = " + sb.toString());
         return sb.reverse().toString();  //这里为什么要反转实在是想不明白
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public String addBinary4(String a, String b) {
+        StringBuilder stringBuilder = new StringBuilder();
+        int i = a.length() - 1;
+        int j = b.length() - 1;
+        int step = 0;
+        while (i >= 0 || j >= 0) {
+            if (i >= 0) {
+                step += a.charAt(i) - '0';
+            }
+            if (j >= 0) {
+                step += b.charAt(j) - '0';
+            }
+            i--;
+            j--;
+            int remain = step % 2;
+            stringBuilder.append(remain);
+            step /= 2;
+        }
+        if (step != 0) {
+            stringBuilder.append(step);
+        }
+        stringBuilder.reverse();
+        return stringBuilder.toString();
+    }
+
+
+
+
 }
