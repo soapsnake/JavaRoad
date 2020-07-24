@@ -126,31 +126,6 @@ public class Question67 {
         return sb.reverse().toString();  //这里为什么要反转实在是想不明白
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public String addBinary4(String a, String b) {
         StringBuilder stringBuilder = new StringBuilder();
         int i = a.length() - 1;

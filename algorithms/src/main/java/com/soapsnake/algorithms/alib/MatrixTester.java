@@ -7,7 +7,12 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.ForkJoinPool;
 import java.util.stream.Collectors;
+
+import com.soapsnake.algorithms.structures.tree.Trie;
+
+import lombok.ToString;
 
 public class MatrixTester {
 
@@ -177,5 +182,66 @@ public class MatrixTester {
         solve(board);
         System.out.println("12342432");
         System.out.println(Arrays.deepToString(board));
+    }
+
+    public boolean exist(char[][] board, String word) {
+        //求单词word是否在board中存在
+        Trie head = new Trie();
+        Trie root = head;
+        char[] chars= word.toCharArray();
+        for (int i = 0; i < chars.length; i++) {
+            if (i < chars.length - 1) {
+                root.children[chars[i] - 'A'] = new Trie();
+                root = root.children[chars[i] - 'A'];
+            } else {
+                root.word = word;
+            }
+        }
+        System.out.println(head);
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[0].length; j++) {
+                if (board[i][j] == chars[0]) {
+                    return this.dfs(board, i, j, head, word);
+                }
+            }
+        }
+        return false;
+    }
+
+    private boolean dfs(char[][] board, int i, int j, Trie root, String word) {
+        if (i < 0 || i >= board.length || j < 0 || j >= board[0].length) {
+            return false;
+        }
+//        System.out.println("i = " + i + " j = " + j + " board.length = " + board.length +
+//                " board[0].len = " + board[0].length) ;
+        char cur = board[i][j];
+        if (root.children[cur - 'A'] == null) {
+            //叶子了
+            System.out.println("herere  word = " + root.word + " ");
+            return word.equals(root.word);
+        }
+        //非叶子
+        Trie next = root.children[cur - 'A'];
+        dfs(board, i + 1, j, next, word);
+        dfs(board, i - 1, j, next, word);
+        dfs(board, i, j + 1, next, word);
+        dfs(board, i, j - 1, next, word);
+        return true;
+    }
+
+    @ToString
+    class Trie {
+        String word;
+        Trie[] children;
+        public Trie() {
+            this.children = new Trie[26];
+        }
+    }
+
+    @Test
+    public void testTire1() {
+        char[][] boards = {{'A', 'B', 'C', 'E'}, {'S', 'F', 'C', 'S'}, {'A', 'D', 'E', 'E'}};
+        String word = "ABCCED";
+        System.out.println(exist(boards, word));
     }
 }

@@ -6,9 +6,6 @@ package com.soapsnake.algorithms.leetcode.matrix;
  */
 public class Question79 {
 
-    public int test = 1;
-    private boolean[][] visited;  //关键是这个数组,防止走回头路
-
     public static void main(String[] args) {
         Question79 question79 = new Question79();
         System.out.println(question79.test);
@@ -32,6 +29,7 @@ public class Question79 {
      * Given word = "SEE", return true.
      * Given word = "ABCB", return false.
      */
+
     public boolean exist(char[][] board, String word) {
         int test = 2;
         visited = new boolean[board.length][board[0].length];
@@ -42,15 +40,14 @@ public class Question79 {
                 }
             }
         }
-
         return false;
     }
-
+    public int test = 1;
+    private boolean[][] visited;  //关键是这个数组,防止走回头路
     private boolean dfs(char[][] board, String word, int i, int j, int index) {
         if (index == word.length()) {
             return true;
         }
-
         if (i >= board.length || i < 0 || j >= board[i].length || j < 0 || board[i][j] != word.charAt(index) || visited[i][j]) {
             return false;
         }
@@ -62,7 +59,6 @@ public class Question79 {
                 dfs(board, word, i, j + 1, index + 1)) {
             return true;
         }
-
         visited[i][j] = false;
         return false;
     }

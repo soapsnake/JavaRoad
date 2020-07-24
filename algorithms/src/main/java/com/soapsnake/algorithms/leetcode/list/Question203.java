@@ -15,6 +15,7 @@ public class Question203 {
     }
 
     //链表的题目真心都不简单,及其容易把人搞晕
+    //leetcode203 删除链表节点
     public ListNode removeElements(ListNode head, int val) {
         ListNode fakeHead = new ListNode(0);
         fakeHead.next = head;

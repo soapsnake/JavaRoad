@@ -21,7 +21,6 @@ public class Question284 {
 
 
     static class PeekingIterator implements Iterator<Integer> {
-
         Iterator<Integer> iterator;  //iterator代理了一个list
 
         Integer next;

@@ -175,4 +175,24 @@ public class ListTester {
         return null;
     }
 
+    public ListNode removeElements(ListNode head, int val) {
+        if (head == null) {
+            return head;
+        }
+        ListNode fakeHead = new ListNode(0);
+        ListNode pre = fakeHead;
+        pre.next = head;
+        ListNode cur = head;
+        while (cur != null) {
+            ListNode next = cur.next;
+            if (cur.val == val) {
+                pre.next = next;
+            } else {
+                pre = pre.next;
+            }
+            cur = next;
+        }
+        return fakeHead.next;
+    }
+
 }
