@@ -7,8 +7,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.SortedMap;
-import java.util.logging.FileHandler;
 
 import com.soapsnake.algorithms.structures.graph.Graph;
 import com.soapsnake.algorithms.structures.graph.direct.DirectWeightGraph;
@@ -163,6 +161,35 @@ public class GraphTester {
         String[][] queries = {{"a", "c"}, {"b", "a"}, {"a", "e"}, {"a", "a"}, {"x", "x"}};
         String[][] queries1 = {{"b", "a"}};
         System.out.println(Arrays.toString(calcEquation(equations, values, queries)));
+    }
+
+    //求0 -> i-1的所有联通路径
+    public List<List<Integer>> allPathsSourceTarget(int[][] graph) {
+        List<List<Integer>> res = new ArrayList<>();
+        if (graph == null || graph.length == 0) {
+            return res;
+        }
+        int last = graph.length - 1;
+        this.dfs1(graph, 0, last, res, new ArrayList<>());
+        return res;
+    }
+
+    private void dfs1(int[][] graph, int from, int last, List<List<Integer>> res, List<Integer> path) {
+        if (from == last) {
+            res.add(path);
+        }
+        path.add(from);
+        int[] nexts = graph[from];
+        for (int next : nexts) {
+            List<Integer> copyPaths = new ArrayList<>(path);
+            dfs1(graph, next, last, res, copyPaths);
+        }
+    }
+
+    @Test
+    public void testALlpath() {
+        int[][] graph = {{1,2}, {3}, {3}, {}};
+        System.out.println(allPathsSourceTarget(graph));
     }
 
 
