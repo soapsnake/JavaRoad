@@ -2,6 +2,7 @@ package com.soapsnake.algorithms.alib;
 
 import org.junit.Test;
 
+import java.lang.ProcessBuilder.Redirect;
 import java.lang.annotation.Target;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -410,4 +411,22 @@ public class ArraysTester {
     public void testtopKSets() {
 
     }
+
+
+    public int[] singleNumber(int[] nums) {
+        Set<Integer> set = new HashSet<>();
+        for (int i = 0; i < nums.length; i++) {
+            if (!set.add(nums[i])) {
+                set.remove(nums[i]);
+            }
+        }
+        int[] res = new int[set.size()];
+        int i = 0;
+        List<Integer> resfds = new ArrayList<>(set);
+        for (int j = 0; j < res.length; j++) {
+            res[j] = resfds.get(j);
+        }
+        return res;
+    }
+
 }

@@ -14,6 +14,7 @@ public class Question260 {
     }
 
     //O(n)版本解法
+    //leetcode260
     public int[] singleNumber(int[] nums) {
         // Pass 1 :
         // Get the XOR of the two numbers we need to find
