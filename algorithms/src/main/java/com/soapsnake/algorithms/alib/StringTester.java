@@ -248,4 +248,32 @@ public class StringTester {
         String res = getPermutation(4, 9);
         System.out.println(res);
     }
+
+    public boolean detectCapitalUse(String word) {
+        //首字母大写,全大写,全小写,只有这三种合法
+        if (word == null || word == "") {
+            return true;
+        }
+        if (word.charAt(0) >= 'A' && word.charAt(0) <= 'Z') {
+            int count = 1;
+            for (int i = 1; i < word.length(); i++) {
+                if (word.charAt(i) >= 'A' && word.charAt(i) <= 'Z') {
+                    count++;
+                }
+            }
+            return count == word.length() || count == 1;
+        } else {
+            for (int i = 0; i < word.length(); i++) {
+                if (word.charAt(i) >= 'A' && word.charAt(i) <= 'Z') {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    @Test
+    public void testCapital() {
+        System.out.println(detectCapitalUse("FlaG"));
+    }
 }

@@ -20,14 +20,14 @@ public class Question106 {
      *     /  \
      *    15   7
      */
-    int pInorder;   // index of inorder array
-    int pPostorder; // index of postorder array
+    //leetcode106
     public TreeNode buildTree(int[] inorder, int[] postorder) {
         pInorder = inorder.length - 1;
         pPostorder = postorder.length - 1;
         return buildTree(inorder, postorder, null);
     }
-
+    int pInorder;   // index of inorder array
+    int pPostorder; // index of postorder array
     private TreeNode buildTree(int[] inorder, int[] postorder, TreeNode end) {
         if (pPostorder < 0) {
             return null;
