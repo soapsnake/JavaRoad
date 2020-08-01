@@ -1,4 +1,4 @@
-package com.soapsnake.algorithms.leetcode.graph.unsolve;
+package com.soapsnake.algorithms.leetcode.graph.theme;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Queue;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ *
  * Created on 2020-07-24
  */
 public class Question797 {

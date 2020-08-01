@@ -412,7 +412,6 @@ public class ArraysTester {
 
     }
 
-
     public int[] singleNumber(int[] nums) {
         Set<Integer> set = new HashSet<>();
         for (int i = 0; i < nums.length; i++) {
@@ -427,6 +426,14 @@ public class ArraysTester {
             res[j] = resfds.get(j);
         }
         return res;
+    }
+
+    //旋转数组最小值
+    public int findMin(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+        return 0;
     }
 
 }
