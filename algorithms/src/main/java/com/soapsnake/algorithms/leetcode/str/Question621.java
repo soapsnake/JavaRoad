@@ -80,6 +80,7 @@ public class Question621 {
      * each distinct char. This is O(n) time and O(26) space since we only handle upper case letters.
      * All other operations are O(1) time O(1) space which give us total time complexity of O(n) and space O(1)
      */
+    //leetcode621
     public int leastInterval(char[] tasks, int n) {
         int[] counter = new int[26];
         int max = 0;
