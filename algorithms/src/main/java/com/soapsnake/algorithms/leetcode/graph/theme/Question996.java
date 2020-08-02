@@ -17,6 +17,7 @@ import org.junit.Test;
  */
 public class Question996 {
 
+    //leetcode996
     public int numSquarefulPerms(int[] A) {
         Arrays.sort(A);
         helper(new ArrayList<>(), A, new boolean[A.length], -1);
