@@ -22,7 +22,6 @@ public class Question367 {
 
         int left = 0;
         int right = num;
-        int mid = left + (right - left) / 2;
         return findMid(left, right, num);
     }
 
