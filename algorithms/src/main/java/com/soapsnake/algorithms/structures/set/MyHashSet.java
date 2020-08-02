@@ -1,4 +1,4 @@
-package com.soapsnake.algorithms.leetcode.tree.binarytree;
+package com.soapsnake.algorithms.structures.set;
 
 /**
  * @Auther soapsnake@gmail.com
@@ -6,24 +6,25 @@ package com.soapsnake.algorithms.leetcode.tree.binarytree;
  */
 public class MyHashSet {
 
-
+    int[] arr;
+    private static final int SIZE = 1000000;
     public MyHashSet() {
-
+        arr = new int[SIZE];
     }
 
     public void add(int key) {
-
+        arr[key] = 1;
     }
 
     public void remove(int key) {
-
+        arr[key] = 0;
     }
 
     /**
      * Returns true if this set contains the specified element
      */
     public boolean contains(int key) {
-        return false;
+        return arr[key] == 1;
     }
 
 }
