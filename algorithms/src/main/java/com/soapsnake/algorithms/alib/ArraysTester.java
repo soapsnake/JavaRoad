@@ -436,4 +436,26 @@ public class ArraysTester {
         return 0;
     }
 
+    public List<Integer> findDuplicates(int[] nums) {
+        //数字在 1 <= n 之间,那么就很简单了
+        List<Integer> list = new ArrayList<>();
+        if (nums == null || nums.length <= 1) {
+            return list;
+        }
+        int i = 0;
+        int pointer = nums[0];
+        for (int j = 0; j < nums.length; j++) {
+            int p = nums[j];
+            if (p == -1) {
+                list.add(p);
+                continue;
+            }
+            while (p != -1) {
+                p = nums[p];
+                nums[p] = -1;
+            }
+        }
+        return list;
+    }
+
 }
