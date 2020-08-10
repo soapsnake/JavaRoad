@@ -277,4 +277,5 @@ public class StringTester {
         System.out.println(detectCapitalUse("FlaG"));
     }
 
+
 }
