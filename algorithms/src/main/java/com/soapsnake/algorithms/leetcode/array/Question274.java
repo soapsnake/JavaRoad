@@ -28,8 +28,6 @@ public class Question274 {
                 buckets[c]++;  //除了最后一个桶之外,其他位置的桶内存的是引用次数小于发表文章数的次数(索引是引用次数)
             }
         }
-
-        System.out.println(Arrays.toString(buckets));
         int count = 0;
         for (int i = n; i >= 0; i--) {
             count += buckets[i];
