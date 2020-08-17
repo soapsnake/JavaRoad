@@ -13,6 +13,8 @@ import java.util.TreeMap;
 import javax.print.attribute.standard.Destination;
 import javax.xml.ws.soap.Addressing;
 
+import com.soapsnake.algorithms.structures.cache.LRUCache;
+
 public class StringTester {
 
     /**
@@ -277,5 +279,40 @@ public class StringTester {
         System.out.println(detectCapitalUse("FlaG"));
     }
 
+
+    public int longestPalindrome(String s) {
+        if (s == null) {
+            return 0;
+        }
+        Set<Character> set = new HashSet<>();
+        int count = 0;
+        for (int i = 0; i < s.length(); i++) {
+            if (!set.add(s.charAt(i))) {
+                count++;
+                set.remove(s.charAt(i));
+            }
+        }
+        return set.isEmpty() ? count * 2 : count * 2 + 1;
+    }
+
+    @Test
+    public void testLongestPalidrome(){
+        System.out.println(longestPalindrome("abccccdd"));
+    }
+
+    static boolean foo(char c)
+    {
+        System.out.print(c);
+        return true;
+    }
+    public static void main( String[] argv )
+    {
+        int i = 0;
+        for ( foo('A'); foo('B') && (i < 2); foo('C'))
+        {
+            i++ ;
+            foo('D');
+        }
+    }
 
 }

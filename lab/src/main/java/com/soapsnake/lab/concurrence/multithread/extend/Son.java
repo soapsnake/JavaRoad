@@ -18,4 +18,10 @@ public class Son extends Parent implements SonOtherParent {
         // Auto-generated method stub
         System.out.println("this is a method implement a interface");
     }
+
+    @Override
+    void funcitionOfParent() {
+        super.funcitionOfParent();
+        System.out.println("this is a function overide by  sun!!!!");
+    }
 }
