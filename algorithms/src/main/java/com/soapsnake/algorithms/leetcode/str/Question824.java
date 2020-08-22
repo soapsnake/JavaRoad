@@ -31,7 +31,7 @@ class Question824 {
                 strings[i] += "a";
             }
         }
-        return String.join(",", strings);
+        return String.join(" ", strings);
     }
 
     private boolean isVowel(String string) {
