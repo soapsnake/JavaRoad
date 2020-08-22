@@ -13,6 +13,8 @@ public class TestMain {
         son.function0();               //继承,子类中会有所有的父类方法
         son.function1();
 
+        son.funcitionOfParent();
+
 
         //函数式接口必须只能有一个方法,否则不是函数式接口
         //函数式接口类型的对象,应该是一个函数              //不需要声明变量类型 ,当只有一个参数时,圆括号都可以省略

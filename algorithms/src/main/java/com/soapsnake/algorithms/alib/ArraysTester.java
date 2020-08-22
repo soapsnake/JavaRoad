@@ -8,11 +8,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Queue;
 import java.util.Set;
 import java.util.TreeMap;
 
+import com.soapsnake.algorithms.structures.cache.LRUCache;
 import com.sun.org.apache.xpath.internal.WhitespaceStrippingElementMatcher;
 
 public class ArraysTester {
@@ -456,6 +459,48 @@ public class ArraysTester {
             }
         }
         return list;
+    }
+
+    public int[] distributeCandies(int candies, int num_people) {
+        int[] res = new int[num_people];
+        for (int i = 0; candies > 0; ++i) {
+            res[i % num_people] += Math.min(candies, i + 1);
+            candies -= i + 1;
+        }
+        return res;
+    }
+
+    @Test
+    public void testDistributeCandies() {
+        System.out.println(Arrays.toString(distributeCandies(7, 4)));
+    }
+
+    public int[] sortArrayByParity(int[] A) {
+        if (A == null || A.length == 0) {
+            return null;
+        }
+        if (A.length == 1) {
+            return A;
+        }
+        int left = 0;
+        int right = A.length - 1;
+        while (right >= left) {
+            //偶前奇后
+            while (right >= left && A[left] % 2 == 0) {
+                left++;
+            }
+            while (right >= left && A[right] % 2 != 0) {
+                right--;
+            }
+            if (right >= left) {
+                int temp = A[left];
+                A[left] = A[right];
+                A[right] = temp;
+                right--;
+                left++;
+            }
+        }
+        return A;
     }
 
 }

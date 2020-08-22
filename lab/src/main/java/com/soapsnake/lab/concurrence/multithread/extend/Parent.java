@@ -13,4 +13,8 @@ public class Parent {
         System.out.println("this is a method own by parent only");
     }
 
+    void funcitionOfParent() {
+        System.out.println("this is a function from parent!!!!");
+    }
+
 }
