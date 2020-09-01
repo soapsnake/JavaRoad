@@ -27,6 +27,7 @@ public class Question450 {
         } else if (key > root.val) {
             root.right = deleteNode(root.right, key);
         } else {
+            //找到了要删除的节点了
             if (root.left == null) {
                 return root.right;
             } else if (root.right == null) {
@@ -48,6 +49,7 @@ public class Question450 {
         while (node.left != null) {
             node = node.left;
         }
+        //node是最左叶子节点
         return node;
     }
 }
