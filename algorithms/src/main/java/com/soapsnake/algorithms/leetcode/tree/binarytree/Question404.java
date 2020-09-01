@@ -34,17 +34,15 @@ public class Question404 {
         return this.sum;
     }
 
-    //先根遍历递归写法
     private void dfsRecur(TreeNode root) {
         res.add(root.val);
-        System.out.println(root.val + " -> ");
 
         if (root.left != null) {
-            isLeft = true;   //往左走了,下一个节点要么是左叶子,要么左非叶子
+            isLeft = true;
             dfsRecur(root.left);
         }
         if (root.right != null) {
-            isLeft = false;  //往右走了,下一个节点要么右叶子,要么右非叶子
+            isLeft = false;
             dfsRecur(root.right);
         }
 

@@ -1,5 +1,7 @@
 package com.soapsnake.algorithms.structures.unionfind;
 
+import javax.xml.bind.annotation.XmlSeeAlso;
+
 /**
  *
  * Created on 2020-07-07
@@ -12,13 +14,22 @@ public class DSU {
     //如何理解这个count:初始值为顶点数量,会随着两点发生连接而减小,可以理解为孤点数量
     int count;
 
-    public DSU(int size) {
-        parent = new int[size];
-        for (int i = 0; i < size; i++) {
+    /**
+     * @see com.soapsnake.algorithms.leetcode.graph.theme.Question952
+     */
+    int max;
+    int[] size;
+
+    public DSU(int _size) {
+        parent = new int[_size];
+        size = new int[_size];
+        for (int i = 0; i < _size; i++) {
             parent[i] = i;
+            size[i] = 1;
         }
-        rank = new int[size];
-        count = size;
+        max = 1;
+        rank = new int[_size];
+        count = _size;
     }
 
     //返回x元素所在组的根root,为什么是根实在想不明白
@@ -54,11 +65,17 @@ public class DSU {
         }
         //只有在一种情况下会发生count--,那就是连接了AB后
         count--;
+        size[xr] += size[yr];
+        max = Math.max(max, size[yr]);
         //到这里x所在的树和y所在的树已经合并,x和y本来不连通,现在联通了
         return true;
     }
 
     public int getCount() {
         return this.count;
+    }
+
+    public int getMax() {
+        return this.max;
     }
 }
