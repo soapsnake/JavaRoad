@@ -59,3 +59,4 @@ dubbo/*/target/
 hadoop-1.0.0.jar
 xx表.xlsx
 *.classpath
+*.factorypath
