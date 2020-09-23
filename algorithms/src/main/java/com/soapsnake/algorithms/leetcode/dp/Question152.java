@@ -65,6 +65,7 @@ public class Question152 {
     }
 
     //动态规划算法,实在太他妈难理解了
+    //leetcode152
     public int maxProduct2(int[] nums) {
         int r = nums[0];
 
