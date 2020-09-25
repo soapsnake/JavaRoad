@@ -1,9 +1,11 @@
 package com.soapsnake.algorithms.alib;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -212,7 +214,7 @@ public class StringTester {
         }
         int[] source = new int[n];
         for (int i = 0; i < n; i++) {
-            source[i] =i + 1;
+            source[i] = i + 1;
         }
         Set<Integer> all = new HashSet<>();
         this.backTrace(source, 0, all, new ArrayList<>());
@@ -246,7 +248,7 @@ public class StringTester {
     }
 
     @Test
-    public void testgetPermu(){
+    public void testgetPermu() {
         String res = getPermutation(4, 9);
         System.out.println(res);
     }
@@ -296,23 +298,47 @@ public class StringTester {
     }
 
     @Test
-    public void testLongestPalidrome(){
+    public void testLongestPalidrome() {
         System.out.println(longestPalindrome("abccccdd"));
     }
 
-    static boolean foo(char c)
-    {
+    static boolean foo(char c) {
         System.out.print(c);
         return true;
     }
-    public static void main( String[] argv )
-    {
+
+    public static void main(String[] argv) {
         int i = 0;
-        for ( foo('A'); foo('B') && (i < 2); foo('C'))
-        {
-            i++ ;
+        for (foo('A'); foo('B') && (i < 2); foo('C')) {
+            i++;
             foo('D');
         }
     }
 
+    //leetcode290
+    public boolean wordPattern(String pattern, String str) {
+        char[] chars = pattern.toCharArray();
+        String[] strings = str.split(" ");
+        if (chars.length != strings.length) {
+            return false;
+        }
+        Map<Character, String> map = new HashMap<>();
+        Set<String> values = new HashSet<>();
+        for (int i = 0; i < chars.length; i++) {
+            if (map.get(chars[i]) != null) {
+                if (map.get(chars[i]).equals(strings[i])) {
+                    continue;
+                } else {
+                    return false;
+                }
+            } else {
+                if (values.contains(strings[i])) {
+                    return false;
+                }
+                map.put(chars[i], strings[i]);
+                values.add(strings[i]);
+            }
+        }
+        return true;
+    }
 }
