@@ -1,4 +1,4 @@
-package com.soapsnake.hadoop.client;
+package com.soapsnake.hadoop.hdfs;
 
 import java.io.IOException;
 import java.net.URI;

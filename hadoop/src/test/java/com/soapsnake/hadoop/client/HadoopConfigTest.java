@@ -4,6 +4,8 @@ import org.apache.hadoop.io.Text;
 import org.junit.Assert;
 import org.junit.Test;
 
+import com.soapsnake.hadoop.config.HadoopConfig;
+
 public class HadoopConfigTest {
     HadoopConfig hadoopConfig = new HadoopConfig();
 

@@ -1,4 +1,4 @@
-package com.soapsnake.hadoop.example;
+package com.soapsnake.hadoop.mrexample;
 
 
 import java.io.BufferedReader;

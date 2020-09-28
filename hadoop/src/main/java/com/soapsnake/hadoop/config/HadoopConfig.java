@@ -1,4 +1,4 @@
-package com.soapsnake.hadoop.client;
+package com.soapsnake.hadoop.config;
 
 
 import org.apache.hadoop.conf.Configuration;

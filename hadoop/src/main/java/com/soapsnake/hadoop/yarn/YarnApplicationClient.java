@@ -3,6 +3,8 @@ package com.soapsnake.hadoop.yarn;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -15,23 +17,36 @@ import org.apache.hadoop.fs.FileStatus;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.DataOutputBuffer;
+import org.apache.hadoop.net.NetUtils;
 import org.apache.hadoop.security.Credentials;
 import org.apache.hadoop.security.UserGroupInformation;
 import org.apache.hadoop.security.token.Token;
+import org.apache.hadoop.util.Shell;
 import org.apache.hadoop.yarn.api.ApplicationConstants;
 import org.apache.hadoop.yarn.api.ApplicationConstants.Environment;
 import org.apache.hadoop.yarn.api.protocolrecords.GetNewApplicationResponse;
+import org.apache.hadoop.yarn.api.protocolrecords.RegisterApplicationMasterResponse;
+import org.apache.hadoop.yarn.api.records.ApplicationAttemptId;
 import org.apache.hadoop.yarn.api.records.ApplicationId;
 import org.apache.hadoop.yarn.api.records.ApplicationReport;
 import org.apache.hadoop.yarn.api.records.ApplicationSubmissionContext;
+import org.apache.hadoop.yarn.api.records.Container;
+import org.apache.hadoop.yarn.api.records.ContainerId;
 import org.apache.hadoop.yarn.api.records.ContainerLaunchContext;
+import org.apache.hadoop.yarn.api.records.FinalApplicationStatus;
 import org.apache.hadoop.yarn.api.records.LocalResource;
 import org.apache.hadoop.yarn.api.records.Priority;
 import org.apache.hadoop.yarn.api.records.Resource;
+import org.apache.hadoop.yarn.client.api.AMRMClient.ContainerRequest;
 import org.apache.hadoop.yarn.client.api.YarnClient;
 import org.apache.hadoop.yarn.client.api.YarnClientApplication;
+import org.apache.hadoop.yarn.client.api.async.AMRMClientAsync;
+import org.apache.hadoop.yarn.client.api.async.AMRMClientAsync.AbstractCallbackHandler;
+import org.apache.hadoop.yarn.client.api.async.NMClientAsync;
+import org.apache.hadoop.yarn.client.api.async.impl.NMClientAsyncImpl;
 import org.apache.hadoop.yarn.conf.YarnConfiguration;
 import org.apache.hadoop.yarn.exceptions.YarnException;
+import org.apache.hadoop.yarn.util.ConverterUtils;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -40,13 +55,13 @@ import lombok.extern.slf4j.Slf4j;
  * Created on 2020-09-26
  */
 @Slf4j
-public class YarnApplication {
+public class YarnApplicationClient {
 
     public static void main(String[] args) throws IOException, YarnException {
         Configuration conf = new Configuration();
 
         //yarnClient的主要作用是方便client提交任务给yarn执行,相当于mvc的controller
-        YarnClient yarnClient = YarnClient.createYarnClient();
+        org.apache.hadoop.yarn.client.api.YarnClient yarnClient = org.apache.hadoop.yarn.client.api.YarnClient.createYarnClient();
         yarnClient.init(conf);
         yarnClient.start();
 
@@ -113,9 +128,9 @@ public class YarnApplication {
                     localResources, shellCommand);
         }
 
-        String[] shellArgs = {};
+        String shellArgs = "";
         String shellArgsPath = "";
-        if (shellArgs.length > 0) {
+        if (shellArgs.length() > 0) {
             addToLocalResources(fs, null, shellArgsPath, appId.toString(),
                     localResources, StringUtils.join(shellArgs, " "));
         }
@@ -252,6 +267,166 @@ public class YarnApplication {
 
         //if one task taking too long,we can manually kill this task by this instruction
         yarnClient.killApplication(appId);
+
+
+        Map<String, String> envs = System.getenv();
+//        String containerIdString = envs.get(ApplicationConstants.AM_CONTAINER_ID_ENV);  //这个报错
+        String containerIdString = envs.get(ApplicationConstants.APP_SUBMIT_TIME_ENV);
+
+        if (containerIdString == null) {
+            // container id should always be set in the env by the framework
+            throw new IllegalArgumentException(
+                    "ContainerId not set in the environment");
+        }
+        ContainerId containerId = ConverterUtils.toContainerId(containerIdString);
+        ApplicationAttemptId appAttemptID = containerId.getApplicationAttemptId();
+
+        //amRMClient是client((AM)ApplicationMaster,mr的管理员)用来和ResourceManager进行通信用的
+        AMRMClientAsync.AbstractCallbackHandler allocListener = new RMCallbackHandler();
+        AMRMClientAsync amRMClient = AMRMClientAsync.createAMRMClientAsync(1000, allocListener);
+        amRMClient.init(conf);
+        //启动ResourceManager
+        amRMClient.start();
+
+        //nmClientAsync是client((AM)ApplicationMaster,mr的管理员)用来和NodeManager进行通信用的
+        NMClientAsync.AbstractCallbackHandler containerListener = createNMCallbackHandler();
+        NMClientAsync nmClientAsync = new NMClientAsyncImpl(containerListener);
+        nmClientAsync.init(conf);
+        //启动NodeManager
+        nmClientAsync.start();
+
+
+        // Register ApplicationMaster with ResourceManager
+        // This will start heartbeating to the RM
+        //MR的ApplicationMaster向yarn的ResourceManager注册自己,这个执行后AM将向RM发送心跳
+        String appMasterHostname = NetUtils.getHostname();
+        int appMasterRpcPort = 123;
+        String appMasterTrackingUrl = "";
+        RegisterApplicationMasterResponse response = amRMClient.registerApplicationMaster(appMasterHostname, appMasterRpcPort,
+                        appMasterTrackingUrl);
+
+        // Dump out information about cluster capability as seen by the
+        // resource manager
+        //利用resourceMaster查询集群资源信息
+        int maxMem = response.getMaximumResourceCapability().getMemory();
+        log.info("Max mem capability of resources in this cluster " + maxMem);
+        int maxVCores = response.getMaximumResourceCapability().getVirtualCores();
+        log.info("Max vcores capability of resources in this cluster " + maxVCores);
+
+        // A resource ask cannot exceed the max.
+        if (containerMemory > maxMem) {
+            log.info("Container memory specified above max threshold of cluster."
+                    + " Using max value." + ", specified=" + containerMemory + ", max="
+                    + maxMem);
+            containerMemory = maxMem;
+        }
+
+        if (containerVirtualCores > maxVCores) {
+            log.info("Container virtual cores specified above max threshold of  cluster."
+                    + " Using max value." + ", specified=" + containerVirtualCores + ", max="
+                    + maxVCores);
+            containerVirtualCores = maxVCores;
+        }
+
+        List<Container> previousAMRunningContainers =
+                response.getContainersFromPreviousAttempts();
+        log.info("Received " + previousAMRunningContainers.size() + " previous AM's running containers on AM registration.");
+
+        int numTotalContainers = 100;
+        int numTotalContainersToRequest =
+                numTotalContainers - previousAMRunningContainers.size();
+        // Setup ask for containers from RM
+        // Send request for containers to RM
+        // Until we get our fully allocated quota, we keep on polling RM for containers
+        // Keep looping until all the containers are launched and shell script
+        // executed on them ( regardless of success/failure).
+        for (int i = 0; i < numTotalContainersToRequest; ++i) {
+            ContainerRequest containerAsk = setupContainerAskForRM(1,2);
+            amRMClient.addContainerRequest(containerAsk);
+        }
+
+        // Set the necessary command to execute on the allocated container
+        // Set executable command
+        vargs.add(shellCommand);
+        // Set shell script path
+        String scriptPath = "hdfs://ffds";
+        String ExecBatScripStringtPath = "";
+        String ExecShellStringPath = "";
+        if (!scriptPath.isEmpty()) {
+            vargs.add(Shell.WINDOWS ? ExecBatScripStringtPath
+                                    : ExecShellStringPath);
+        }
+
+        // Set args for the shell command if any
+        vargs.add(shellArgs);
+        // Add log redirect params
+        vargs.add("1>" + ApplicationConstants.LOG_DIR_EXPANSION_VAR + "/stdout");
+        vargs.add("2>" + ApplicationConstants.LOG_DIR_EXPANSION_VAR + "/stderr");
+
+        // Get final command
+        StringBuilder command1 = new StringBuilder();
+        for (CharSequence str : vargs) {
+            command1.append(str).append(" ");
+        }
+
+        List<String> commandList = new ArrayList<>();
+        commandList.add(command1.toString());
+
+        // Set up ContainerLaunchContext, setting local resource, environment,
+        // command and token for constructor.
+
+        // Note for tokens: Set up tokens for the container too. Today, for normal
+        // shell commands, the container in distribute-shell doesn't need any
+        // tokens. We are populating them mainly for NodeManagers to be able to
+        // download anyfiles in the distributed file-system. The tokens are
+        // otherwise also useful in cases, for e.g., when one is running a
+        // "hadoop dfs" command inside the distributed shell.
+        ByteBuffer allTokens = ByteBuffer.allocate(1);
+        ContainerLaunchContext ctx = ContainerLaunchContext.newInstance(
+                localResources, shellEnv, commands, null, allTokens.duplicate(), null);
+//        containerListeners.addContainer(container.getId(), container);
+        Container container = null;
+
+        //NodeManager异步启动container
+        nmClientAsync.startContainerAsync(container, ctx);
+
+
+        FinalApplicationStatus appStatus = FinalApplicationStatus.SUCCEEDED;
+        String appMessage = "";
+        try {
+            //After the ApplicationMaster determines the work is done, it needs to unregister itself through the
+            //AM-RM client, and then stops the client.
+            amRMClient.unregisterApplicationMaster(appStatus, appMessage, null);
+        } catch (YarnException | IOException ex) {
+            log.error("Failed to unregister application", ex);
+        }
+        //关闭
+        amRMClient.stop();
+
+        Collections.singletonMap("pacakge", response);
+
+    }
+
+    //组装设置container的内存和vCores的request
+    private static ContainerRequest setupContainerAskForRM(int containerMemory, int containerVirtualCores) {
+        int requestPriority = 1;
+        // setup requirements for hosts
+        // using * as any host will do for the distributed shell app
+        // set the priority for the request
+        Priority pri = Priority.newInstance(requestPriority);
+
+        // Set up resource type requirements
+        // For now, memory and CPU are supported so we set memory and cpu requirements
+        Resource capability = Resource.newInstance(containerMemory, containerVirtualCores);
+
+        ContainerRequest request = new ContainerRequest(capability, null, null, pri);
+        log.info("Requested container ask: " + request.toString());
+        return request;
+    }
+
+    private static NMClientAsync.AbstractCallbackHandler createNMCallbackHandler() {
+
+        return null;
     }
 
     private static void addToLocalResources(FileSystem fs, String appMasterJar, String appMasterJarPath,
