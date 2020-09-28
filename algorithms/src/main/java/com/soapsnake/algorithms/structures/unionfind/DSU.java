@@ -24,8 +24,8 @@ public class DSU {
         parent = new int[_size];
         size = new int[_size];
         for (int i = 0; i < _size; i++) {
-            parent[i] = i;
-            size[i] = 1;
+            parent[i] = i;   //parent = [0,1,2,3,4,5,6....]
+            size[i] = 1;  //size = [1,1,1,1,1,1,1...]
         }
         max = 1;
         rank = new int[_size];
