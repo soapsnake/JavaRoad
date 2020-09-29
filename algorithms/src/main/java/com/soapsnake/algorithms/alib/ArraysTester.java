@@ -501,11 +501,12 @@ public class ArraysTester {
             return 0;
         }
         int res = 0;
+        int product = 1;
         for (int left = 0, right = 0; right >= left && right < nums.length; right++) {
-            int product = nums[left] * nums[right];
+            product *= nums[right];
             while (product > k) {
                 left++;
-                product = product / nums[left];
+                product /= nums[left];  //这里不会出现除0异常吗?
             }
             res += right - left + 1;  // [1,2] -> [1],[2];
         }
