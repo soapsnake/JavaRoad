@@ -12,7 +12,7 @@
 - Dfs or Bfs: 257,784, 437, 111, 680也有这个思想, 235, 17, 22, 39, 46, 40, 47, 77, 113, 加权有向图计算两点间所有路径 ,216, 130
 - Binary search:367, 33, 74, 374, 378(在值范围做二分)
 - Binary search tree:450(二叉搜索树节点删除)
-- 滑动窗口:424,76,3,30,438, 567 算法(未搞懂):https://leetcode.com/problems/find-all-anagrams-in-a-string/discuss/92007/Sliding-Window-algorithm-template-to-solve-all-the-Leetcode-substring-search-problem.
+- 滑动窗口:424,76,3,30,438,713, 567 算法(未搞懂):https://leetcode.com/problems/find-all-anagrams-in-a-string/discuss/92007/Sliding-Window-algorithm-template-to-solve-all-the-Leetcode-substring-search-problem.
 - 单调队列:https://medium.com/@gregsh9.5/monotonic-queue-notes-980a019d5793): 1130, 907, 901, 856, 503, 496, 84, 42, 739
 - Awk:193
 - Comparator:937
@@ -27,6 +27,7 @@
 - 加权有向图的最短路径问题,一篇安排的明明白白: https://leetcode.com/problems/cheapest-flights-within-k-stops/discuss/361711/Java-DFSBFSBellman-Ford-Dijkstra's
 
 ## 刷题发现的一些有意思的东西
+- 2020.8.1达到500题
 - 2020.5.25达到450题
 - 2020.3.22达到400题
 - 2020.1.20达到350题

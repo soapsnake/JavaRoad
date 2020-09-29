@@ -59,11 +59,6 @@ public class ArraysTester {
         return -1;
     }
 
-    public static void main(String[] args) {
-        int[] arr = {1, 1, 2, 2, 3, 4, 4, 5, 5, 5};
-        System.out.println(findNotDup2(arr));
-    }
-
     public boolean matrixBinerSearch(int[][] matrix, int target) {
         if (matrix == null) {
             return false;
@@ -169,6 +164,7 @@ public class ArraysTester {
         }
         return max;
     }
+
     @Test
     public void testMaxSub() {
         int[] arr = {1, -2, 3, 10, -4, 7, 2, -5};
@@ -180,7 +176,7 @@ public class ArraysTester {
         if (arr.length == 0) {
             return -1;
         }
-//		return binerSearchIter(arr, 0, arr.length - 1, tar);
+        //		return binerSearchIter(arr, 0, arr.length - 1, tar);
         return binerSearchWhile(arr, tar);
     }
 
@@ -228,7 +224,7 @@ public class ArraysTester {
         }
         Map<Character, Integer> map = new TreeMap<>(); // char -> count
         for (int i = 0; i < source.length(); i++) {
-            map.put(source.charAt(i), map.getOrDefault(source.charAt(i),0) + 1);
+            map.put(source.charAt(i), map.getOrDefault(source.charAt(i), 0) + 1);
         }
         for (Map.Entry<Character, Integer> entry : map.entrySet()) {
             if (entry.getValue() == 1) {
@@ -263,7 +259,7 @@ public class ArraysTester {
 
     @Test
     public void testMoveZero() {
-        int[] nums = {0,1,0,3,12};
+        int[] nums = {0, 1, 0, 3, 12};
         moveZeroes(nums);
         System.out.println(Arrays.toString(nums));
     }
@@ -271,9 +267,6 @@ public class ArraysTester {
 
     /**
      * find target value, if not, show the index of what if we insert it into this array
-     * @param nums
-     * @param target
-     * @return
      */
     public int searchInsert(int[] nums, int target) {
         if (nums == null || nums.length == 0) {
@@ -378,7 +371,7 @@ public class ArraysTester {
 
     @Test
     public void testSubSets() {
-        int[] nums = {1,2,3};
+        int[] nums = {1, 2, 3};
         System.out.println(subsets(nums));
     }
 
@@ -503,4 +496,19 @@ public class ArraysTester {
         return A;
     }
 
+    public int numSubarrayProductLessThanK(int[] nums, int k) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+        int res = 0;
+        for (int left = 0, right = 0; right >= left && right < nums.length; right++) {
+            int product = nums[left] * nums[right];
+            while (product > k) {
+                left++;
+                product = product / nums[left];
+            }
+            res += right - left + 1;  // [1,2] -> [1],[2];
+        }
+        return res;
+    }
 }
