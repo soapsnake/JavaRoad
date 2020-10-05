@@ -1,6 +1,8 @@
 package com.soapsnake.algorithms.leetcode.array;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @Auther soapsnake@gmail.com
@@ -18,23 +20,24 @@ public class Question532 {
     //用双指针再做一次,
     //todo
     public int findPairs(int[] nums, int k) {
-        Arrays.sort(nums);
-        int res = 0;
-        for (int i = 0; i < nums.length; i++) {
-            if (i != 0 && nums[i] == nums[i - 1]) {
-                continue;
-            }
-            for (int j = nums.length - 1; j > i; j--) {
-                if (j != nums.length - 1 && nums[j] == nums[j + 1]) {
-                    continue;
+        Map<Integer, Integer> map = new HashMap<>();
+        int count = 0;
+        for (int i : nums) {
+            map.put(i, map.getOrDefault(i, 0) + 1);  //数字 -> 数字出现次数
+        }
+        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+            if (k == 0) {
+                //count how many elements in the array that appear more than twice.
+                if (entry.getValue() >= 2) {
+                    count++;
                 }
-                if (nums[j] - nums[i] == k) {
-                    res++;
-                    System.out.println("i = " + i + " j = " + j);
+            } else {
+                if (map.containsKey(entry.getKey() + k)) {
+                    count++;
                 }
             }
         }
-        return res;
+        return count;
     }
 
     public int findPairs2(int[] nums, int k) {

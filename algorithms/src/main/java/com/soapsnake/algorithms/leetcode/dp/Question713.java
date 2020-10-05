@@ -29,10 +29,14 @@ public class Question713 {
         int cnt = 0;
         int pro = 1;
         for (int i = 0, j = 0; j < nums.length; j++) {
+            //窗口右侧往右移动
             pro *= nums[j];
+            //当引入新的数字导致总乘积大于k后
             while (i <= j && pro >= k) {
+                //窗口左侧往右走,需要把之前的乘积刨除掉
                 pro /= nums[i++];
             }
+            //到这里,相当于当前窗口又找到了一个满足条件的子数组,这个j-i+1有点难以想到
             cnt += j - i + 1;
         }
         return cnt;
