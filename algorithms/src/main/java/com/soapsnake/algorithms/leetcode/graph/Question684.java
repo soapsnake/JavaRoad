@@ -14,6 +14,7 @@ public class Question684 {
 
             //如果对两个顶点进行union时,返回了false,代表两点本来就是联通的,说明这俩点用了多余的边去连接他们
             if (!dsu.union(edge[0], edge[1]))
+                //本题目要的就是这个多余的边
                 return edge;
         }
         throw new AssertionError();
