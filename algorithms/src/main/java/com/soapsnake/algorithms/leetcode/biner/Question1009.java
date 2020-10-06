@@ -6,6 +6,7 @@ package com.soapsnake.algorithms.leetcode.biner;
  */
 public class Question1009 {
 
+    //leetcode1009
         public int bitwiseComplement(int N) {
             if (N == 0) return 1;
             if (N == 1) return 0;
