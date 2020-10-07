@@ -25,6 +25,7 @@
 - DP: https://leetcode.com/discuss/general-discussion/662866/dp-for-beginners-problems-patterns-sample-solutions  300,368,354,646,673,740,1048,416,698,1143,72,115,712,132,647,322,518,377,279,983,1049,1039,1130,312,1314,304,174,120,221,931,494,1027,1218,1339,121,122,123,188,309,714,576,688,486,877,486,877,1262,91,279,357,978,1155
 - 贪心算法: https://leetcode.com/list/xyehq5j6/
 - 加权有向图的最短路径问题,一篇安排的明明白白: https://leetcode.com/problems/cheapest-flights-within-k-stops/discuss/361711/Java-DFSBFSBellman-Ford-Dijkstra's
+- 买卖股票问题: 121(只允许买卖一次), 122(允许多次买入卖出,允许当天买入当天卖出),123(最多允许两笔), 188(最多允许k次买入和卖出), 309(带冷却时间)
 
 ## 刷题发现的一些有意思的东西
 - 2020.8.1达到500题

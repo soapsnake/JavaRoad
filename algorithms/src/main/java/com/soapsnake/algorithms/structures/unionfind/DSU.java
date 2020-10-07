@@ -8,7 +8,7 @@ import javax.xml.bind.annotation.XmlSeeAlso;
  * 并查集,union-find数据结构,主要用于联通性探测
  */
 public class DSU {
-    int[] parent;
+    int[] parent; //DSU的精髓就在于这个parent数组
     int[] rank;
     //这个参数是为leetcode765而加
     //如何理解这个count:初始值为顶点数量,会随着两点发生连接而减小,可以理解为孤点数量
@@ -33,7 +33,8 @@ public class DSU {
     }
 
     //返回x元素所在组的根root,为什么是根实在想不明白
-    public int find(int x) {
+    //find接口不是向外暴露的,想想这意味着什么
+    private int find(int x) {
         // 寻找x节点所在组的根节点，根节点具有性质 root = parent[root]
         while (x != parent[x]) {
             x = parent[x];
@@ -44,6 +45,9 @@ public class DSU {
     /**
      * union的作用是联通x和y,但是如果union返回false,表名x和y本来就是联通的,不需要再操作
      * 如果返回true则表名x和y本来不是联通的,但是现在联通了
+     * 通过union接口返回的true和false可以知道:
+     * true:  x和y本来不联通,现在两点已经联通
+     * false: x和y本来就已经通过其他的路径实现了联通,但是现在又有边试图连接x和y,说明图中出现了环路
      */
     public boolean union(int x, int y) {
         //xr代表x的组, yr代表y的组
