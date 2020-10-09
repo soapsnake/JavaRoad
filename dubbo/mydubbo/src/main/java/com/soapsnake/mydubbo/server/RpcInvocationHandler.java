@@ -7,6 +7,7 @@ import java.net.URLDecoder;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
+import java.lang.reflect.*;
 
 import javax.management.ServiceNotFoundException;
 
@@ -33,10 +34,7 @@ public class RpcInvocationHandler implements InvocationHandler {
         }
         try {
             realImp = serviceMap.get(serviceName).newInstance();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-            throw new ServiceNotFoundException(serviceName + "==>该服务不存在");
-        } catch (IllegalAccessException e) {
+        } catch (InstantiationException | IllegalAccessException e) {
             e.printStackTrace();
             throw new ServiceNotFoundException(serviceName + "==>该服务不存在");
         }
