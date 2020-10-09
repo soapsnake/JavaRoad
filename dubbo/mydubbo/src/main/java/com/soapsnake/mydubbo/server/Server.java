@@ -1,5 +1,6 @@
 package com.soapsnake.mydubbo.server;
 
+import com.soapsnake.mydubbo.constants.Constant;
 import com.soapsnake.mydubbo.msg.RpcRequest;
 import com.soapsnake.mydubbo.regcenter.impl.SimpleServiceRegistry;
 
@@ -24,7 +25,7 @@ public class Server {
 
     public void init() {
         //初始化注册中心,注册已有服务
-        new SimpleServiceRegistry().registerService("TestService", "127.0.0.1:8080");
+        new SimpleServiceRegistry().registerService("TestService", Constant.ZK_SERVER_HOSTS);
         //开启socket监听，等待客户端调用服务
         EventLoopGroup bossGroup = new NioEventLoopGroup();
         EventLoopGroup workerGroup = new NioEventLoopGroup();
@@ -44,8 +45,8 @@ public class Server {
                     })
                     .option(ChannelOption.SO_BACKLOG, 128)
                     .childOption(ChannelOption.SO_KEEPALIVE, true);
-            System.out.println("MyDubboServer启动成功!");
-            ChannelFuture channelFuture = bootstrap.bind(8080).sync();
+            System.out.println("MyDubboServer启动成功!,server地址:" + Constant.SERVER_HOST);
+            ChannelFuture channelFuture = bootstrap.bind(Constant.SERVER_PORT).sync();
             channelFuture.channel().closeFuture().sync();
             channelFuture.channel().writeAndFlush("MyDubboServer已关闭!");
         } catch (InterruptedException e) {

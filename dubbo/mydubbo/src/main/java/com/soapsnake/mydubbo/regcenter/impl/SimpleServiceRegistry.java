@@ -16,7 +16,6 @@ import lombok.extern.slf4j.Slf4j;
  * @author liudun <liudun@kuaishou.com>
  * Created on 2020-10-09
  */
-@Slf4j
 public class SimpleServiceRegistry implements ServiceRegistry {
 
     private CuratorFramework client = ZkManager.INSTANCE.getClient();
@@ -34,10 +33,10 @@ public class SimpleServiceRegistry implements ServiceRegistry {
                 //注意了,这里创建的是永久性质的节点
                 client.create().creatingParentContainersIfNeeded().withMode(CreateMode.PERSISTENT)
                         .forPath(path, serviceAddress.getBytes());
-                log.info("服务注册成功!");
+                System.out.println("服务注册成功!");
             } else {
                 client.setData().forPath(path, serviceAddress.getBytes());
-                log.info("服务已存在，更新成功!");
+                System.out.println("服务已存在，更新成功!");
             }
             System.out.println(client.getChildren().forPath(path));
             System.out.println(new String(client.getData().forPath(path)));

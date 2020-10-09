@@ -15,4 +15,5 @@ public class RpcResponse {
     public void setReturnObject(Object returnObject) {
         this.returnObject = returnObject;
     }
+
 }

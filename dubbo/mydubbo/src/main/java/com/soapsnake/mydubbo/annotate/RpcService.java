@@ -1,4 +1,4 @@
-package com.soapsnake.mydubbo;
+package com.soapsnake.mydubbo.annotate;
 
 /**
  * @author liudun <liudun@kuaishou.com>
