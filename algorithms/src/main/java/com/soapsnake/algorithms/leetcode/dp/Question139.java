@@ -19,18 +19,22 @@ public class Question139 {
     }
 
     public boolean wordBreak(String s, List<String> wordDict) {
-        boolean[] breakable = new boolean[s.length() + 1];
-        breakable[0] = true;
+        //dp含义: dp[i] = s的子串从s[0]到s[i]是否符合条件
+        boolean[] dp = new boolean[s.length() + 1];
+        dp[0] = true;
 
         for (int i = 1; i <= s.length(); i++) {
             for (int j = 0; j < i; j++) {
-                if (breakable[j] && wordDict.contains(s.substring(j, i))) {  //两个条件: 1.j之前的子串是满足的, 2.j-i是满足的,同时满足两个条件i处才能标true
-                    breakable[i] = true;
+                //这里找的不是dp[i]和dp[i-1]的关系,而是对每一个i都从头扫描一遍进行计算
+                if (dp[j] && wordDict.contains(s.substring(j, i))) {
+                   //s切成两部分,0->j, j ->i, dp[j]为true代表0->j的子串满足
+                    //j->i如果也满足,那么代表0->i的子串肯定是能满足条件了,所以dp[i]必定为true
+                    dp[i] = true;
                     break;
                 }
             }
         }
-        return breakable[s.length()];
+        return dp[s.length()];
     }
 
     //复杂度过高

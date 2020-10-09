@@ -10,16 +10,36 @@ package com.soapsnake.algorithms.leetcode.array;
 class Question121 {
     public static void main(String[] args) {
         Question121 question121 = new Question121();
-        int[] pr = new int[]{7, 1, 5, 3, 6, 4};
+        int[] pr = new int[] {7, 1, 5, 3, 6, 4};
 
-        int[] pr2 = new int[]{7, 6, 4, 3, 1};
-//        System.out.println(question121.maxProfit(pr));
+        int[] pr2 = new int[] {7, 6, 4, 3, 1};
+        //        System.out.println(question121.maxProfit(pr));
 
         System.out.println(question121.maxProfit2(pr2));
     }
 
-    //n平方级别算法
     public int maxProfit(int[] prices) {
+        if (prices.length == 0) {
+            return 0;
+        }
+        int max = 0;
+        int sofarMin = prices[0];
+        for (int i = 0; i < prices.length; ++i) {
+            if (prices[i] > sofarMin) {
+                //if cur prices bigger than sofarMin,that means if you sell stock at current day
+                //you would make bigger profit
+                max = Math.max(max, prices[i] - sofarMin);
+            } else {
+                //if current prices is less than sofarMin, if you sell your stock you would lost a
+                //lot of money,so you should update the sofarMin value.
+                sofarMin = prices[i];
+            }
+        }
+        return max;
+    }
+
+    //n平方级别算法
+    public int maxProfit1(int[] prices) {
         int max = 0;
         if (null == prices) {
             return max;

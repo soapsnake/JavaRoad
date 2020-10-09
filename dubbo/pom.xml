@@ -15,6 +15,7 @@
         <module>dubbo-consumer</module>
         <module>dubbo-provider</module>
         <module>dubbo-api</module>
+        <module>mydubbo</module>
     </modules>
 
     <dependencies>

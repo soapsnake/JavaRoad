@@ -13,6 +13,7 @@ public class TreeNode {
     public int val;
     public TreeNode left;
     public TreeNode right;
+    private TreeNode root;
 
     public TreeNode(int x) {
         val = x;
@@ -196,7 +197,7 @@ public class TreeNode {
             nodes.add(cur);
             cur = cur.right;
         }
-        System.out.print("中序遍历: ");
+        System.out.println("中序遍历: ");
         ArrayUtils.printList(vals);
         return nodes;
     }
@@ -321,7 +322,28 @@ public class TreeNode {
 
     //todo 二叉查找树节点插入
     public boolean insertIntoBinerSearchTree(TreeNode node) {
-        return false;
+        if (this.root == null) {
+            root = new TreeNode(val);
+            return true;
+        }
+        helper(root, val);
+        return true;
+    }
+
+    private void helper(TreeNode root, int val) {
+        if (root.val < val && root.right == null) {
+            //如果root的值比val的值小,并且root无右孩子,那么该节点就是右孩子
+            root.right = new TreeNode(val);
+        } else if (root.val > val && root.left == null) {
+            //如果root的值比val的值大,并且root无左孩子,那么该节点就是左孩子
+            root.left = new TreeNode(val);
+        } else if (root.val > val) {
+            //如果root的值比val的值大,并且root有左孩子,那么在左孩子中递归
+            helper(root.left, val);
+        } else {
+            //如果root的值比val的值小,并且root有右孩子,那么在右孩子中递归
+            helper(root.right, val);
+        }
     }
 
     //todo 二叉查找树节点删除
@@ -354,11 +376,8 @@ public class TreeNode {
 
     @Override
     public String toString() {
-        return "TreeNode{" +
-                "val=" + val +
-                ", left=" + left +
-                ", right=" + right +
-                '}';
+        return "TreeNode{" + "val=" + val + ", left=" + left
+                + ", right=" + right + '}';
     }
 
     @Override
