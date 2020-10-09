@@ -23,7 +23,7 @@ public class Question449 {
         // Encodes a tree to a single string.
         public String serialize(TreeNode root) {
             StringBuilder sb = new StringBuilder();
-            serialize(root, sb);
+            this.serialize(root, sb);
             return sb.toString();
         }
 
