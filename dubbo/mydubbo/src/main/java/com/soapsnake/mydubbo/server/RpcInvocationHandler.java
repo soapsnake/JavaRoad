@@ -2,6 +2,8 @@ package com.soapsnake.mydubbo.server;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.util.Enumeration;
@@ -10,7 +12,7 @@ import java.util.Map;
 
 import javax.management.ServiceNotFoundException;
 
-import com.soapsnake.mydubbo.RpcService;
+import com.soapsnake.mydubbo.annotate.RpcService;
 
 /**
  * @author liudun <liudun@kuaishou.com>
@@ -107,7 +109,6 @@ public class RpcInvocationHandler implements InvocationHandler {
             }
         }
     }
-
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
