@@ -34,7 +34,10 @@
 - 2019.12.3达到300题
 - 2019.5.16达到250题
 - 2019.3.19达到200题
-- PriorityQueue的特性:1.PriorityQueue会成为小顶还是大顶堆取决于传入的比较器,如果不指定比较器,那么默认就是小顶堆, 2.PriorityQueue是无界的,因此想实现topK问题可能需要业务代码判断size然后做delete操作来保证queue的固定大小 3.PriorityQueue和stack一样,迭代时候体现不出来结构的特色,但是poll()元素时,会发现出来的元素都是有序的
+- PriorityQueue的特性:
+    - PriorityQueue会成为小顶还是大顶堆取决于传入的比较器,如果不指定比较器,那么默认就是小顶堆;
+    - PriorityQueue是无界的,因此想实现topK问题可能需要业务代码判断size然后做delete操作来保证queue的固定大小 
+    - PriorityQueue和stack一样,迭代时候体现不出来结构的特色,但是poll()元素时,会发现出来的元素都是有序的
 - Integer[]类型的数组可以使用Arrays.sort(arr, (a,b) -> b-a)来实现降序排序,但是int[]不能用这种方法,我们可以先升序排序,然后倒转数组实现降序排序
 - Java的split函数不能使用"."来分割字串,必须使用"//.",因为正则中的"."代表任意字符
 - ">> n"相当于除以2的n次方, "<< n"相当于除以2的n次方
