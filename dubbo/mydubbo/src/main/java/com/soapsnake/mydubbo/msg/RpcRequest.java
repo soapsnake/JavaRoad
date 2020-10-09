@@ -9,8 +9,9 @@ public class RpcRequest {
     private String serviceName;
 
     private String methodName;
-    private Class<?> paramType;
+    private Class<?>[] paramType;
     private Object[] args;
+    private Class<?> returnType;
 
     public String getServiceName() {
         return serviceName;
@@ -28,11 +29,11 @@ public class RpcRequest {
         this.methodName = methodName;
     }
 
-    public Class<?> getParamType() {
+    public Class<?>[] getParamType() {
         return paramType;
     }
 
-    public void setParamType(Class<?> paramType) {
+    public void setParamType(Class<?>[] paramType) {
         this.paramType = paramType;
     }
 
@@ -42,5 +43,13 @@ public class RpcRequest {
 
     public void setArgs(Object[] args) {
         this.args = args;
+    }
+
+    public void setReturnType(Class<?> returnType) {
+        this.returnType = returnType;
+    }
+
+    public Class<?> getReturnType() {
+        return returnType;
     }
 }

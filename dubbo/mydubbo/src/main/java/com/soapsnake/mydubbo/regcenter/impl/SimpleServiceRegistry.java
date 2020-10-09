@@ -49,7 +49,7 @@ public class SimpleServiceRegistry implements ServiceRegistry {
 
     @Override
     @Nullable
-    public String findServices(String serviceName) {
+    public String discoverService(String serviceName) {
         client.start();
         //获取服务地址
         if (serviceName == null) {

@@ -10,5 +10,5 @@ public interface ServiceRegistry {
     void registerService(String serviceName, String serviceAddress);
 
     //服务发现
-    String findServices(String serviceName);
+    String discoverService(String serviceName);
 }
