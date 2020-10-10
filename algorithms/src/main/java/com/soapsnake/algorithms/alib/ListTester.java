@@ -1,5 +1,6 @@
 package com.soapsnake.algorithms.alib;
 
+import java.util.Arrays;
 import java.util.List;
 
 import com.soapsnake.algorithms.structures.list.ListNode;
@@ -193,6 +194,69 @@ public class ListTester {
             cur = next;
         }
         return fakeHead.next;
+    }
+
+    //合并k个有序链表,要求最终链表有序
+    public ListNode mergeKSortedList(List<ListNode> listNodes) {
+        if (listNodes == null || listNodes.size() == 0) {
+            return null;
+        }
+        return this.helper(listNodes, 0, listNodes.size() - 1);
+    }
+
+    private ListNode helper(List<ListNode> listNodes, int l, int r) {
+        if (l == r) {
+            return listNodes.get(l);
+        }
+        if (l == r - 1) {
+            return this.mergeTwoList(listNodes.get(l), listNodes.get(r));
+        }
+        int mid = l + (r - l) / 2;
+        ListNode left = helper(listNodes, l, mid);
+        ListNode right = helper(listNodes, mid + 1, r);
+        return this.mergeTwoList(left, right);
+    }
+
+    private ListNode mergeTwoList(ListNode first, ListNode second) {
+        if (first == null && second == null) {
+            return null;
+        }
+        if (first == null) {
+            return second;
+        }
+        if (second == null) {
+            return first;
+        }
+        ListNode fakeHead = new ListNode();
+        ListNode fPointer = first;
+        ListNode sPointer = second;
+        ListNode cur = fakeHead;
+        while (fPointer != null && sPointer != null) {
+            if (fPointer.val <= sPointer.val) {
+                cur.next = fPointer;
+                fPointer = fPointer.next;
+            } else {
+                cur.next = sPointer;
+                sPointer = sPointer.next;
+            }
+            cur = cur.next;
+        }
+        if (fPointer == null) {
+            cur.next = sPointer;
+        }
+        if (sPointer == null) {
+            cur.next = fPointer;
+        }
+        return fakeHead.next;
+    }
+
+    @Test
+    public void testMergeKList() {
+        ListNode l1 = new ListNode(1).next(20).next(99);
+        ListNode l2 = new ListNode(7).next(8).next(10).next(11);
+        ListNode l3 = new ListNode(2).next(3).next(4).next(15);
+
+        System.out.println(mergeKSortedList(Arrays.asList(l1, l2, l3)));
     }
 
 }
