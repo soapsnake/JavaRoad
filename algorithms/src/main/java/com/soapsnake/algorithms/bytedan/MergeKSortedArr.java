@@ -1,12 +1,13 @@
 package com.soapsnake.algorithms.bytedan;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * @author liudun <liudun@kuaishou.com>
  * Created on 2020-10-09
  */
-public class Questions {
+public class MergeKSortedArr {
     //题目:lists中的nums都是有序数组,合并这些数组,要求数组都是有序的
     public int[] mergeList(List<int[]> arrays) {
         // write your code here
@@ -23,7 +24,7 @@ public class Questions {
         }
         //偶数个数组的情况下
         if (l + 1 == r) {
-            return merge2Arrays(arrays.get(l), arrays.get(r));
+            return this.merge2Arrays(arrays.get(l), arrays.get(r));
         }
 
         //mid指针指向最中间的那个数组
@@ -35,7 +36,7 @@ public class Questions {
         int[] right = helper(arrays, mid + 1, r);
 
         //最左侧数组已经吞并了左半区间的数组,最右数组同样,最后把这俩家伙最后做一次合并
-        return merge2Arrays(left, right);
+        return this.merge2Arrays(left, right);
     }
 
     //专门用来合并两个数组
@@ -57,6 +58,14 @@ public class Questions {
             }
         }
         return res;
+    }
+
+    public static void main(String[] args) {
+        List<Integer> res = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            res.add(i, i);
+        }
+        System.out.println(res);
     }
 
 }
