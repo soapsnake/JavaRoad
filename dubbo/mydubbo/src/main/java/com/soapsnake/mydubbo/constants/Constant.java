@@ -12,4 +12,7 @@ public class Constant {
 
     public static final String SERVICES_NAME_PREFIX = "/registry/";
 
+    public static final String CLASS_PREFIX = "com.soapsnake.mydubbo.server.service.";
+
+
 }

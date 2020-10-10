@@ -10,8 +10,7 @@ public class RpcTester {
         RpcProxy rpcProxy = new RpcProxy("TestService");
 
         //调用方式一
-        rpcProxy.execute("hello");
-        rpcProxy.execute("hello","hahahaha");
+        rpcProxy.execute("someFunction","hahahaha");
 
         //调用方式二：跟调本地服务有啥分别？？
 //        TestService testService = (TestService) rpcProxy.create();
