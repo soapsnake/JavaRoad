@@ -26,6 +26,7 @@
 - 贪心算法: https://leetcode.com/list/xyehq5j6/
 - 加权有向图的最短路径问题,一篇安排的明明白白: https://leetcode.com/problems/cheapest-flights-within-k-stops/discuss/361711/Java-DFSBFSBellman-Ford-Dijkstra's
 - 买卖股票问题: 121(只允许买卖一次), 122(允许多次买入卖出,允许当天买入当天卖出),123(最多允许两笔), 188(最多允许k次买入和卖出), 309(带冷却时间)
+- greedy: 452,
 
 ## 刷题发现的一些有意思的东西
 - 2020.8.1达到500题
