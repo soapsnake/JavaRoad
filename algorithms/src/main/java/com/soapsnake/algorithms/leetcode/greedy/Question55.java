@@ -1,4 +1,4 @@
-package com.soapsnake.algorithms.leetcode.number;
+package com.soapsnake.algorithms.leetcode.greedy;
 
 /**
  * @Auther soapsnake@gmail.com
