@@ -12,7 +12,6 @@ import java.util.Queue;
  */
 public class Question449 {
 
-
     /**
      * Serialization is the process of converting a data structure or object into a sequence of bits
      * so that it can be stored in a file or memory buffer, or transmitted across a network connection
