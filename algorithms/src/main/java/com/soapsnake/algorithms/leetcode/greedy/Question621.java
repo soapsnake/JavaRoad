@@ -1,4 +1,4 @@
-package com.soapsnake.algorithms.leetcode.str;
+package com.soapsnake.algorithms.leetcode.greedy;
 
 public class Question621 {
 

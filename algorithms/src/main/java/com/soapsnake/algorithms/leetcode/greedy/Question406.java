@@ -1,4 +1,4 @@
-package com.soapsnake.algorithms.leetcode.matrix;
+package com.soapsnake.algorithms.leetcode.greedy;
 
 import java.util.Arrays;
 import java.util.Comparator;
