@@ -259,4 +259,33 @@ public class ListTester {
         System.out.println(mergeKSortedList(Arrays.asList(l1, l2, l3)));
     }
 
+    public ListNode sortList(ListNode head) {
+        if (head == null) {
+            return head;
+        }
+        ListNode fakeHead = new ListNode(0);
+        ListNode pre = fakeHead;
+        ListNode cur = head;
+//        pre.next = cur;  //加这个就循环了
+        while (cur != null) {
+            ListNode next = cur.next;
+            while (pre.next != null && pre.next.val < cur.val) {
+                pre = pre.next;
+            }
+            //here,pre.next is bigger than cur,we should link cur to pre.next
+            cur.next = pre.next;
+            pre.next = cur;
+            pre = fakeHead;
+            cur = next;
+        }
+        return fakeHead.next;
+    }
+
+    @Test
+    public void testSortList() {
+        ListNode head = new ListNode(5).next(-1).next(2).next(8).next(3);
+        System.out.println(sortList(head));
+    }
+
+
 }
