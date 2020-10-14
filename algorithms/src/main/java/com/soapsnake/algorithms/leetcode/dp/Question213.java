@@ -8,6 +8,7 @@ public class Question213 {
         System.out.println(question213.rob(nums));
     }
 
+    //leetcode213,抢银行问题,dp解法,连续的房子不能被抢
     public int rob(int[] nums) {
         if (nums.length == 0)
             return 0;

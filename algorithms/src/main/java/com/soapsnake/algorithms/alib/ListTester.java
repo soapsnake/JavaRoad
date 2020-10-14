@@ -259,4 +259,35 @@ public class ListTester {
         System.out.println(mergeKSortedList(Arrays.asList(l1, l2, l3)));
     }
 
+    //单向链表排序
+    public ListNode sortList(ListNode head) {
+        if (head == null) {
+            return null;
+        }
+        ListNode cur = head;
+        ListNode fakeHead = new ListNode(0);
+        ListNode pre = fakeHead;
+        pre.next = cur;
+        while (cur != null) {
+            ListNode nextNode = cur.next;
+            ListNode nextNext = nextNode.next;
+            if (cur.val <= nextNode.val) {
+                cur = nextNode;
+                pre = pre.next;
+            } else {
+                pre.next = nextNode;
+                nextNode.next = cur;
+                cur.next = nextNext;
+                cur = cur.next;
+            }
+        }
+        return fakeHead.next;
+    }
+
+    @Test
+    public void testSortList() {
+        ListNode l1 = new ListNode(1).next(-1).next(-2);
+        System.out.println(sortList(l1));
+    }
+
 }
