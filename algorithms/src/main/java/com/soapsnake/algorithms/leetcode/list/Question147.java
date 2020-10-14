@@ -8,7 +8,7 @@ public class Question147 {
     public static void main(String[] args) {
         Question147 question147 = new Question147();
         //-1->5->3->4->0
-        ListNode res = question147.insertSortList(ListNode.makeTestListFor147());
+        ListNode res = question147.insertionSortList(ListNode.makeTestListFor147());
         ListNode.printListNode(res);
     }
 
@@ -38,8 +38,6 @@ public class Question147 {
         if (head == null) {
             return head;
         }
-
-        //首先需要搞明白插入排序到底是怎么插入的
         ListNode fakeHead = new ListNode(0); //new starter of the sorted list
         ListNode cur = head; //the node will be inserted
         ListNode pre = fakeHead; //insert node between pre and pre.next
@@ -71,25 +69,4 @@ public class Question147 {
 //        System.out.println(Arrays.toString(nums));
 //    }
 
-    public ListNode insertSortList(ListNode head) {
-        if (head == null) {
-            return head;
-        }
-        ListNode fakeHead = new ListNode();
-        ListNode pre = fakeHead;
-//		pre.next = head;    //这个一旦打开就会死循环
-        ListNode cur = head;        //相当于i指针
-        while (cur != null) {
-            ListNode next = cur.next;
-            //cur指针已经就位,从表头开始遍历
-            while (pre.next != null && pre.next.val < cur.val) {
-                pre = pre.next;
-            }
-            cur.next = pre.next;
-            pre.next = cur;    //这一步赋值,会永久改变pre的值,也会导致fakeHead的值跟着改变
-            pre = fakeHead;   //pre需要返回到链表头部的位置
-            cur = next;
-        }
-        return fakeHead.next;
-    }
 }

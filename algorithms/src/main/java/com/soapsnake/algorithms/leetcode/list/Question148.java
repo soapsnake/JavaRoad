@@ -49,8 +49,8 @@ class Question148 {
     }
 
     ListNode merge(ListNode l1, ListNode l2) {
-        ListNode l = new ListNode(0);
-        ListNode p = l;   //p指针会沿链表头向表尾移动,但是l指针一直指向表头
+        ListNode fakeHead = new ListNode(0);
+        ListNode p = fakeHead;   //p指针会沿链表头向表尾移动,但是l指针一直指向表头
 
         while (l1 != null && l2 != null) {
             if (l1.val < l2.val) {
@@ -69,7 +69,7 @@ class Question148 {
         if (l2 != null)
             p.next = l2;
 
-        return l.next;   //再一次强调,l是指向表头的,可以把l想象成fakehead
+        return fakeHead.next;
     }
 
 }

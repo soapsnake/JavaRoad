@@ -15,7 +15,9 @@ public class Question213 {
         if (nums.length < 2)
             return nums[0];
 
+        //第一个DP数组
         int[] startFromFirstHouse = new int[nums.length + 1];  //该数组用来存从0开始的结果
+        //第二个DP数组
         int[] startFromSecondHouse = new int[nums.length + 1];  //该数组用来存从1开始的结果
 
         startFromFirstHouse[0] = 0;
