@@ -15,6 +15,8 @@ import java.util.Queue;
 import java.util.Set;
 import java.util.TreeMap;
 
+import javax.swing.KeyStroke;
+
 import com.soapsnake.algorithms.structures.cache.LRUCache;
 import com.sun.org.apache.xpath.internal.WhitespaceStrippingElementMatcher;
 
@@ -511,5 +513,26 @@ public class ArraysTester {
             res += right - left + 1;  // [1,2] -> [1],[2];
         }
         return res;
+    }
+
+
+    public void rotateArr(int[] nums, int k) {
+        if (nums == null || nums.length == 0) {
+            return;
+        }
+        k %= nums.length;
+        this.revertArr(nums, 0, nums.length - 1);
+        this.revertArr(nums, 0, k - 1);
+        this.revertArr(nums, k, nums.length - 1);
+    }
+
+    private void revertArr(int[] nums, int left, int right) {
+        while (left < right) {
+            int tem = nums[left];
+            nums[left] = nums[right];
+            nums[right] = tem;
+            left++;
+            right--;
+        }
     }
 }
