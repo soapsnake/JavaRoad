@@ -15,22 +15,18 @@ public class Question456 {
             this.max = max;
         }
     }
+    //leetcode456
     public boolean find132pattern(int[] nums) {
-        Stack<Pair> stack = new Stack();
-        for(int n: nums){
-            if(stack.isEmpty() || n <stack.peek().min ) stack.push(new Pair(n,n));
-            else if(n > stack.peek().min){
-                Pair last = stack.pop();
-                if(n < last.max) return true;
-                else {
-                    last.max = n;
-                    while(!stack.isEmpty() && n >= stack.peek().max) stack.pop();
-                    // At this time, n < stack.peek().max (if stack not empty)
-                    if(!stack.isEmpty() && stack.peek().min < n) return true;
-                    stack.push(last);
-                }
-
+        Stack<Integer> stack = new Stack<>();
+        int k = Integer.MIN_VALUE;
+        for (int i = nums.length - 1; i >= 0; i--) {
+            if (nums[i] < k)
+                return true;
+            //j, 1 3 2
+            while (!stack.isEmpty() && nums[i] > stack.peek()) {
+                k = stack.pop();
             }
+            stack.push(nums[i]); //push j, k
         }
         return false;
     }

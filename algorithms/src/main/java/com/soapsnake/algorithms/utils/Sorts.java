@@ -217,7 +217,7 @@ public class Sorts {
     }
 
     /**
-     * 堆排,使用优先级队列
+     * 堆排,使用优先级队列,这个写法就是个狗屁,重写!!
      */
     public static void heapSorts(int[] nums) {
         Long start = System.currentTimeMillis();
