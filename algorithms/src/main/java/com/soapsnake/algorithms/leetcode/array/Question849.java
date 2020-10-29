@@ -11,6 +11,7 @@ public class Question849 {
         System.out.println(question849.maxDistToClosest(seats));
     }
 
+
     public int maxDistToClosest(int[] seats) {
         if (seats == null || seats.length == 1) {
             return 0;
