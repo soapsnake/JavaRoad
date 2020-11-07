@@ -4,7 +4,6 @@ import com.soapsnake.algorithms.structures.list.ListNode;
 
 public class Question147 {
 
-
     public static void main(String[] args) {
         Question147 question147 = new Question147();
         //-1->5->3->4->0
