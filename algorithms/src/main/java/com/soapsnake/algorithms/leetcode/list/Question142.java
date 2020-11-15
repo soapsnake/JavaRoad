@@ -8,20 +8,28 @@ import com.soapsnake.algorithms.structures.list.ListNode;
  */
 public class Question142 {
 
-    //todo 此题目还没有解
+    //leetcode142
     public ListNode detectCycle(ListNode head) {
         if (head == null) {
             return head;
         }
 
         ListNode slow = head;
-        ListNode fast = head.next;
-        while (slow != null && fast != null) {
+        ListNode fast = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+
+            //快慢指针
             if (slow == fast) {
+                ListNode slow2 = head;
+                while (slow2 != slow) {
+                    slow2 = slow2.next;
+                    slow = slow.next;
+                }
+                return slow;
             }
-            slow = head.next;
-            fast = head.next.next;
         }
-        return head;
+        return null;
     }
 }

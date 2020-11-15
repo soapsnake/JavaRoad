@@ -8,8 +8,6 @@ import com.soapsnake.algorithms.structures.tree.TreeNode;
  */
 public class Question111 {
 
-    private int mini = Integer.MAX_VALUE;
-
     public static void main(String[] args) {
         Question111 question111 = new Question111();
 
@@ -24,6 +22,7 @@ public class Question111 {
         this.treeDfs(root, 0);
         return mini;
     }
+    private int mini = Integer.MAX_VALUE;
 
     private void treeDfs(TreeNode root, int depth) {
         depth++;

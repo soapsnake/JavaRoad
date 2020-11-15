@@ -1,5 +1,7 @@
 package com.soapsnake.algorithms.leetcode.list;
 
+import java.util.Stack;
+
 import com.soapsnake.algorithms.structures.list.ListNode;
 
 /**
@@ -13,43 +15,37 @@ public class Question445 {
      * Input: (7 -> 2 -> 4 -> 3) + (5 -> 6 -> 4)
      * Output: 7 -> 8 -> 0 -> 7
      */
+    //leetcode445
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        //1. 分别reverse l1 和 l2
-        ListNode l1point = this.reverseList(l1);
-        ListNode l2point = this.reverseList(l2);
+        Stack<Integer> s1 = new Stack<>();
+        Stack<Integer> s2 = new Stack<>();
 
-        //2. 分别两个指针指向两个链表,游离add to l1, if l1 longer than l2....
-        int step = 0;
-        ListNode l3head = new ListNode(0);
-        ListNode l3point = l3head;
-        while (l1point != null || l2point != null) {
-            int l1value = l1point != null ? l1point.val : 0;
-            int l2value = l2point != null ? l2point.val : 0;
-            int temp = l1value + l2value + step;
-            int value = temp % 10;
-            step = temp / 10;
-            l3point.next = new ListNode(value);
-            l1point = l1point != null ? l1point.next : null;
-            l2point = l2point != null ? l2point.next : null;
-            l3point = l3point.next;
+        while (l1 != null) {
+            s1.push(l1.val);
+            l1 = l1.next;
         }
-        //3. reverse l1, and return it
-        return this.reverseList(l3head.next);
-    }
+        ;
+        while (l2 != null) {
+            s2.push(l2.val);
+            l2 = l2.next;
+        }
 
-    public ListNode reverseList(ListNode head) {
-        if (head == null) {
-            return head;
+        int sum = 0;
+        ListNode list = new ListNode(0);
+        while (!s1.empty() || !s2.empty()) {
+            if (!s1.empty())
+                sum += s1.pop();
+            if (!s2.empty())
+                sum += s2.pop();
+            list.val = sum % 10;
+            ListNode head = new ListNode(sum / 10);
+            //表尾倒着往表头移动
+            head.next = list;
+            list = head;
+            sum /= 10;
         }
-        ListNode cur = head;
-        ListNode newHead = null;
-        while (cur != null) {
-            ListNode temp = cur.next;
-            cur.next = newHead;
-            newHead = cur;
-            cur = temp;
-        }
-        return newHead;
+
+        return list.val == 0 ? list.next : list;
     }
 
 }

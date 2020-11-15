@@ -4,7 +4,6 @@ import com.soapsnake.algorithms.structures.list.ListNode;
 
 public class Question147 {
 
-
     public static void main(String[] args) {
         Question147 question147 = new Question147();
         //-1->5->3->4->0
@@ -48,16 +47,13 @@ public class Question147 {
             //find the right place to insert
             while (pre.next != null && pre.next.val < cur.val) {
                 pre = pre.next;
-//                ListNode.printListNode(helper);
             }
-            //到这里有两种情况: 1. pre.next == null 2.pre.next > cur 也就是找到了一个比cur大的元素,需要把cur插到这个位置
 
             //insert between pre and pre.next
             cur.next = pre.next;
             pre.next = cur;
             pre = fakeHead;    //pre指针回归初始位置,也就是每一次pre指针都是从表头遍历到cur指针
-
-            cur = next;   //晚上回去搞这一题
+            cur = next;
         }
 
         return fakeHead.next;
@@ -68,5 +64,19 @@ public class Question147 {
 //        insertSort2(nums);
 //        System.out.println(Arrays.toString(nums));
 //    }
+
+    public int maxPower(String s) {
+        int ans = 1;
+        for (int i = 1, cnt = 1; i < s.length(); ++i) {
+            if (s.charAt(i) == s.charAt(i - 1)) {
+                if (++cnt > ans) {
+                    ans = cnt;
+                }
+            }else {
+                cnt = 1;
+            }
+        }
+        return ans;
+    }
 
 }
