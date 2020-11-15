@@ -19,4 +19,64 @@ public class Question684 {
         }
         throw new AssertionError();
     }
+
+
+    public Boolean solution(int size, int[] edges) {
+        if (size == 0) {
+            return false;
+        }
+        UnionFind uf = new UnionFind(size);
+        for (int i = 0; i < edges.length; i += 2) {
+            int from = edges[i];
+            int to = edges[i + 1];
+            if (!uf.union(from, to)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    //we use union find algorithms to solve this problem
+    public class UnionFind {
+        private int[] parent;
+        private int[] rank;
+
+        public UnionFind(int _size) {
+            parent = new int[_size];
+            for (int i = 0; i < _size; i++) {
+                //parent = [0,1,2,3,4,5,6....]
+                parent[i] = i;
+            }
+            rank = new int[_size];
+        }
+
+        private int find(int x) {
+            while (x != parent[x]) {
+                x = parent[x];
+            }
+            return x;
+        }
+
+        public boolean union(int x, int y) {
+            int xr = find(x), yr = find(y);
+            if (xr == yr) {
+                //this means x and y already connected,there must be a cycle!
+                return false;
+            } else if (rank[xr] < rank[yr]) {
+                parent[xr] = yr;
+            } else if (rank[xr] > rank[yr]) {
+                parent[yr] = xr;
+            } else {
+                parent[yr] = xr;
+                rank[xr]++;
+            }
+            //this means we have connected x and y
+            return true;
+        }
+    }
+
+    public static void main(String[] args) {
+        int i = 1024 * 1024;
+        System.out.println(i);
+    }
 }
