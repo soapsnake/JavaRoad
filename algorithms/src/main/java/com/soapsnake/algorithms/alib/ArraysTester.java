@@ -535,4 +535,21 @@ public class ArraysTester {
             right--;
         }
     }
+
+    public int solution(int width, int height) {
+        if (width <= 0) {
+            throw new IllegalArgumentException("width can only be positive!");
+        }
+        if (height <= 0) {
+            throw new IllegalArgumentException("height can only be positive!");
+        }
+        return width * height;
+    }
+
+    String[] queue;
+
+
+    public String[] solution(int capacity, String[] commands) {
+        return new String[0];
+    }
 }
