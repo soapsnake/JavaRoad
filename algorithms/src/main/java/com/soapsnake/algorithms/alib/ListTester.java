@@ -1,6 +1,7 @@
 package com.soapsnake.algorithms.alib;
 
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 import com.soapsnake.algorithms.structures.list.ListNode;
@@ -285,6 +286,28 @@ public class ListTester {
     public void testSortList() {
         ListNode head = new ListNode(5).next(-1).next(2).next(8).next(3);
         System.out.println(sortList(head));
+    }
+
+
+    public int[] slidWindow(int k, int[] nums) {
+        if (nums.length < 2) {
+            return nums;
+        }
+        int[] res = new int[nums.length - k + 1];
+        LinkedList<Integer> queue = new LinkedList<>();
+        for (int i = 0; i < nums.length; i++) {
+            while (!queue.isEmpty() && nums[queue.peekLast()] <= nums[i]) {
+                queue.pollLast();
+            }
+            queue.addLast(i);
+            if (queue.peek() < i - k + 1) {
+                queue.poll();
+            }
+            if (i - k + 1 > 0) {
+                res[i - k + 1] = queue.poll();
+            }
+        }
+        return res;
     }
 
 
