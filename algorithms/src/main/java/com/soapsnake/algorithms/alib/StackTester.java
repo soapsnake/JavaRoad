@@ -1,8 +1,10 @@
 package com.soapsnake.algorithms.alib;
 
+import java.util.Stack;
+
 import org.junit.Test;
 
-import java.util.Stack;
+import com.soapsnake.algorithms.structures.list.ListNode;
 
 public class StackTester {
 
@@ -50,9 +52,33 @@ public class StackTester {
 
     @Test
     public void testValidPopSequence() {
-        int[] pushs = {1,2,3,4,5};
-        int[] pops = {4, 3,5,1,2};
+        int[] pushs = {1, 2, 3, 4, 5};
+        int[] pops = {4, 3, 5, 1, 2};
         System.out.println(validPopSequence2(pushs, pops));
+    }
+
+    public ListNode mergeTwoSortedList(ListNode head1, ListNode head2) {
+        // write code here
+        if (head1 == null) {
+            return head2;
+        }
+        if (head2 == null) {
+            return head1;
+        }
+        ListNode fakeHead = new ListNode(0);
+        ListNode pointer = fakeHead;
+        while (head1 != null && head2 != null) {
+            if (head1.val <= head2.val) {
+                pointer.next = head1;
+                head1 = head1.next;
+            } else {
+                pointer.next = head2;
+                head2 = head2.next;
+            }
+            pointer = pointer.next;
+        }
+        pointer.next = head1 == null ? head2 : head1;
+        return fakeHead.next;
     }
 
 }

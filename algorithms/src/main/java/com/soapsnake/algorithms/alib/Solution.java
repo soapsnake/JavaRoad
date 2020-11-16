@@ -5,7 +5,91 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
+import com.soapsnake.algorithms.structures.list.ListNode;
+
 public class Solution {
+
+    public String sortStr(String text) {
+        //字符串排序,要求:
+        //1. 不区分大小写,a -> z
+        //2. 同一个英文大小写都存在时,按输入顺序排
+        //3. 非英语字母位置不变
+//        char[] chars = text.toCharArray();
+        Character[] chars1 = text.chars().mapToObj(c -> (char) c).toArray(Character[]::new);
+        Arrays.sort(chars1, (a, b) -> {
+            int resI = compute(a);
+            int resJ = compute(b);
+            if (resI >= 0 && resJ >= 0) {
+                return resI - resJ;
+            } else if (resI < 0 && resJ >= 0) {
+                return 1;
+            } else if (resI >= 0 && resJ < 0) {
+                return -1;
+            } else {
+                return 0;
+            }
+        });
+
+//        for (int i = 0; i < chars.length; i++) {
+//            for (int j = i + 1; j < chars.length; j++) {
+//                int resI = compute(chars[i]);
+//                int resJ = compute(chars[j]);
+//                if (resI >= 0 && resJ >= 0) {
+//                    if (resI >= resJ) {
+//                        swap(chars, i ,j);
+//                    }
+//                    if (resI == resJ && i <= j) {
+//                        swap(chars, i, j);
+//                    }
+//                }
+//            }
+//        }
+        StringBuilder res = new StringBuilder();
+        for (Character c : chars1) {
+            res.append(c);
+        }
+        return res.toString();
+    }
+
+    private void swap(char[] chars, int i, int j) {
+        char temp = chars[i];
+        chars[i] = chars[j];
+        chars[j] = temp;
+    }
+
+    private int compute(char aChar) {
+        if (aChar >= 'a' && aChar <= 'z') {
+            return aChar - 'a';
+        }
+        if (aChar >= 'A' && aChar <= 'Z') {
+            return aChar - 'A';
+        }
+        return -1;
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        System.out.println(solution.compute('m'));
+        System.out.println(solution.compute('M'));
+        System.out.println(solution.sortStr("m MaAAAA"));;
+        System.out.println(solution.sortStr("A Famous Saying: Much Ado About Nothing"));;
+    }
+
+
+
+    private boolean isLower(char aChar) {
+        return aChar >= 'a' && aChar <= 'z';
+    }
+
+    private boolean isUpper(char aChar) {
+        return aChar >= 'A' && aChar <= 'Z';
+    }
+
+    private boolean isValid(char aChar) {
+        return (aChar <= 'z' && aChar >= 'a')
+                || (aChar <= 'Z' && aChar >= 'A');
+    }
 
     //    private List<String> queue;
 //    private int maxSize;
@@ -92,11 +176,11 @@ public class Solution {
         return res;
     }
 
-    public static void main(String[] args) {
-        Solution solution = new Solution();
-        System.out.println(Arrays.toString(solution.solution(3, new String[]{"OFFER wo cao", "OFFER world", "OFFER !", "OFFER nim adf","TAKE", "TAKE", "SIZE", "TAKE", "SIZE", "WHAT"})));
-
-    }
+//    public static void main(String[] args) {
+//        Solution solution = new Solution();
+//        System.out.println(Arrays.toString(solution.solution(3, new String[]{"OFFER wo cao", "OFFER world", "OFFER !", "OFFER nim adf","TAKE", "TAKE", "SIZE", "TAKE", "SIZE", "WHAT"})));
+//
+//    }
 
     //
     public int[] solution(int windowSize, int[] numbers) {
@@ -173,6 +257,50 @@ public class Solution {
         }
         //if we couldn't find those two sticks, return an empty array
         return new int[0];
+    }
+
+
+    public ListNode mergeKSortedList(List<ListNode> listNodes) {
+        if (listNodes == null || listNodes.size() == 0) {
+            return null;
+        }
+        return this.helper(listNodes, 0, listNodes.size() - 1);
+    }
+
+    private ListNode helper(List<ListNode> listNodes, int l, int r) {
+        if (l == r) {
+            return listNodes.get(l);
+        }
+        if (l == r - 1) {
+            return this.mergeTwoList(listNodes.get(l), listNodes.get(r));
+        }
+        int m = l + (l - r) / 2;
+        ListNode lList = helper(listNodes, l, m - 1);
+        ListNode rList = helper(listNodes, m, r);
+        return this.mergeTwoList(lList, rList);
+    }
+
+    private ListNode mergeTwoList(ListNode head1, ListNode head2) {
+        if (head1 == null) {
+            return head2;
+        }
+        if (head2 == null) {
+            return head1;
+        }
+        ListNode fakeHead = new ListNode(0);
+        ListNode cur = fakeHead;
+        while (head1 != null && head2 != null) {
+            if (head1.val <= head2.val) {
+                cur.next = head1;
+                head1 = head1.next;
+            } else {
+                cur.next = head2;
+                head2 = head2.next;
+            }
+            cur = cur.next;
+        }
+        cur.next = head1 == null ? head2 : head1;
+        return fakeHead.next;
     }
 
 }
