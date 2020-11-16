@@ -1,6 +1,8 @@
 package com.soapsnake.algorithms.leetcode.number;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -31,5 +33,37 @@ public class Question593 {
 
 	public int distance(int[] p1, int[] p2) {
 		return (p2[0] - p1[0]) * (p2[0] - p1[0]) + (p2[1] - p1[1]) * (p2[1] - p1[1]);
+	}
+
+	public List<List<Integer>> permuteUnique(int[] nums) {
+		List<List<Integer>> res = new ArrayList<>();
+		if (nums == null || nums.length == 0) {
+			return res;
+		}
+		boolean[] used = new boolean[nums.length];
+		this.backTrace(nums, res, new ArrayList<>(), used);
+		return res;
+	}
+
+	private void backTrace(int[] nums, List<List<Integer>> res, List<Integer> tmp, boolean[] used) {
+		if (tmp.size() == nums.length) {
+			if (!res.contains(tmp)) {
+				res.add(new ArrayList<>(tmp));
+				return;
+			}
+		}
+		for (int i = 0; i < nums.length; i++) {
+			if (used[i]) {
+				continue;
+			}
+			if (i > 0 && nums[i] == nums[i - 1] && !used[i - 1]) {
+				continue;
+			}
+			used[i] = true;
+			tmp.add(nums[i]);
+			backTrace(nums, res, tmp, used);
+			used[i] = false;
+			tmp.remove(tmp.size() - 1);
+		}
 	}
 }
