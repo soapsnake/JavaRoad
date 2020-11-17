@@ -2,6 +2,7 @@ package com.soapsnake.algorithms.alib;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -9,71 +10,37 @@ import com.soapsnake.algorithms.structures.list.ListNode;
 
 public class Solution {
 
-    public String sortStr(String text) {
-        //字符串排序,要求:
-        //1. 不区分大小写,a -> z
-        //2. 同一个英文大小写都存在时,按输入顺序排
-        //3. 非英语字母位置不变
-//        char[] chars = text.toCharArray();
-        Character[] chars1 = text.chars().mapToObj(c -> (char) c).toArray(Character[]::new);
-        Arrays.sort(chars1, (a, b) -> {
-            int resI = compute(a);
-            int resJ = compute(b);
-            if (resI >= 0 && resJ >= 0) {
-                return resI - resJ;
-            } else if (resI < 0 && resJ >= 0) {
-                return 1;
-            } else if (resI >= 0 && resJ < 0) {
-                return -1;
-            } else {
-                return 0;
+
+    public String sortStrRight(String text) {
+        //正确解法:
+        /**
+         * 1.收集所有英文字符
+         * 2.排序所有英文字符
+         * 3.扫描原始字符串 && 排序后的英文字符串,原始串非字母就拼原始串的字符,是字母则拿出排序英文串的字符
+         */
+        List<Character> list = new ArrayList<>();
+        for (char c : text.toCharArray()) {
+            if (Character.isLetter(c)) {
+                list.add(c);
             }
-        });
-
-//        for (int i = 0; i < chars.length; i++) {
-//            for (int j = i + 1; j < chars.length; j++) {
-//                int resI = compute(chars[i]);
-//                int resJ = compute(chars[j]);
-//                if (resI >= 0 && resJ >= 0) {
-//                    if (resI >= resJ) {
-//                        swap(chars, i ,j);
-//                    }
-//                    if (resI == resJ && i <= j) {
-//                        swap(chars, i, j);
-//                    }
-//                }
-//            }
-//        }
-        StringBuilder res = new StringBuilder();
-        for (Character c : chars1) {
-            res.append(c);
         }
-        return res.toString();
-    }
-
-    private void swap(char[] chars, int i, int j) {
-        char temp = chars[i];
-        chars[i] = chars[j];
-        chars[j] = temp;
-    }
-
-    private int compute(char aChar) {
-        if (aChar >= 'a' && aChar <= 'z') {
-            return aChar - 'a';
+        list.sort(Comparator.comparingInt(Character::toUpperCase));
+        StringBuilder stringBuilder = new StringBuilder();
+        int j = 0;
+        for (int i = 0; i < text.length(); i++) {
+            char c = text.charAt(i);
+            if (!Character.isLetter(c)) {
+                stringBuilder.append(c);
+            } else {
+                stringBuilder.append(list.get(j++));
+            }
         }
-        if (aChar >= 'A' && aChar <= 'Z') {
-            return aChar - 'A';
-        }
-        return -1;
+        return stringBuilder.toString();
     }
-
     public static void main(String[] args) {
         Solution solution = new Solution();
-
-        System.out.println(solution.compute('m'));
-        System.out.println(solution.compute('M'));
-        System.out.println(solution.sortStr("m MaAAAA"));;
-        System.out.println(solution.sortStr("A Famous Saying: Much Ado About Nothing"));;
+        //A aaAAbc dFgghh: iimM nNn oooos Sttuuuy
+        System.out.println(solution.sortStrRight("A Famous Saying: Much Ado About Nothing"));;
     }
 
 
