@@ -288,7 +288,14 @@ public class ListTester {
         System.out.println(sortList(head));
     }
 
-
+    /**
+     * @see com.soapsnake.algorithms.leetcode.queue.Question239
+     * @param k
+     * @param nums
+     * @return
+     *
+     * 整体思路其实类似于维护了一个大顶堆,堆顶是当前窗口的最大值,只不过这里用了双向队列而已
+     */
     public int[] slidWindow(int k, int[] nums) {
         if (nums.length < 2) {
             return nums;
@@ -303,7 +310,7 @@ public class ListTester {
             if (queue.peek() < i - k + 1) {
                 queue.poll();
             }
-            if (i - k + 1 > 0) {
+            if (i - k + 1 >= 0) {
                 res[i - k + 1] = queue.poll();
             }
         }
