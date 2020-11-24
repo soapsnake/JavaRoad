@@ -2,23 +2,7 @@ package com.soapsnake.algorithms.alib;
 
 import org.junit.Test;
 
-import java.lang.ProcessBuilder.Redirect;
-import java.lang.annotation.Target;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Queue;
-import java.util.Set;
-import java.util.TreeMap;
-
-import javax.swing.KeyStroke;
-
-import com.soapsnake.algorithms.structures.cache.LRUCache;
-import com.sun.org.apache.xpath.internal.WhitespaceStrippingElementMatcher;
+import java.util.*;
 
 public class ArraysTester {
 
@@ -552,4 +536,157 @@ public class ArraysTester {
     public String[] solution(int capacity, String[] commands) {
         return new String[0];
     }
+
+    /**
+     * * s = "3[a]2[bc]", return "aaabcbc".
+     *      * s = "3[a2[c]]", return "accaccacc".
+     *      * s = "2[abc]3[cd]ef", return "abcabccdcdcdef".
+     * @param s
+     * @return
+     */
+    public String decodeString(String s) {
+        if (s == null) {
+            return s;
+        }
+        Stack<Integer> countStack = new Stack<>();
+        Stack<String> strStack = new Stack<>();
+        int index = 0;
+        String temp = "";
+        while (index < s.length()) {
+            if (Character.isDigit(s.charAt(index))) {
+                int count = 0;
+                while (index < s.length() && Character.isDigit(s.charAt(index))) {
+                    count += count * 10 + (s.charAt(index) - '0');
+                    index++;
+                }
+                System.out.println("will push number to stack = " + count);
+                countStack.push(count);
+            } else if (s.charAt(index) == '[') {
+                temp = "";
+                index++;
+            } else if (s.charAt(index) == ']') {
+                //弹栈指令触发
+                String last = strStack.pop();
+                int repeatCount = countStack.pop();
+                String willRepeat = last + temp;
+                System.out.println("str = " + willRepeat + " will repeat " + repeatCount + " times");
+                for (int i = 1; i <= repeatCount - 1; i++) {
+                    willRepeat += willRepeat;
+                }
+                temp = willRepeat;
+                System.out.println("after repeat = " + willRepeat + " now temp = " + temp);
+
+                index++;
+            } else {
+                StringBuilder sb = new StringBuilder();
+                while (index < s.length() && Character.isLetter(s.charAt(index))) {
+                    sb.append(s.charAt(index));
+                    index++;
+                }
+                System.out.println("will push str to stack = " + sb.toString());
+                strStack.push(sb.toString());
+            }
+        }
+        return temp;
+    }
+
+    @Test
+    public void testStringDecoder() {
+        System.out.println("final res = " + decodeString("3[a2[c]]"));
+
+
+        Stack<String> stack = new Stack<>();
+        String res = "123";
+        stack.push(res);
+        res = "";
+        System.out.println(stack);
+
+
+        Stack<Person> stack1 = new Stack<>();
+        Person person = new Person("fdsf", 1, 1);
+        stack1.push(person);
+        person = null;
+        System.out.println(stack1);
+
+
+        List<Person> list = new ArrayList<>();
+        Person person1 = new Person("哈哈", 2, 3);
+        list.add(person1);
+//        person1 = null;
+        person1.weight = 80;
+        System.out.println(list);
+
+    }
+
+    //Input: nums = [2,5,6,0,0,1,2], target = 3
+    //Output: false
+    public boolean search(int[] nums, int target) {
+        //旋转数组的二分查找
+        int left = 0;
+        int right = nums.length - 1;
+        while (right >= left) {
+            int midIndex = left + (right - left) / 2;
+            if (nums[midIndex] == target) {
+                return true;
+            }
+
+            //左半分区的完整二分查找
+            if (nums[left] <= nums[midIndex]) {
+                if (target < nums[midIndex] && target >= nums[left])
+                    right = midIndex - 1;
+                else
+                    left = midIndex + 1;
+            }
+
+            //右半分区的完整二分查找
+            if (nums[midIndex] <= nums[right]) {
+                if (target > nums[midIndex] && target <= nums[right])
+                    left = midIndex + 1;
+                else
+                    right = midIndex - 1;
+            }
+        }
+        return false;
+    }
+
+    //leetcode227
+    public int calculate(String s) {
+        if (s == null) {
+            return 0;
+        }
+        Stack<Integer> numbers = new Stack<>();
+        char preOperator = '+';
+        int num = 0;
+        for (int i = 0; i <= s.length(); i++) {
+            if (i < s.length() && Character.isDigit(s.charAt(i))) {
+                num = num * 10 + s.charAt(i) - '0';
+            } else if (i == s.length() || s.charAt(i) != ' '){
+                if (preOperator == '+') {
+                    numbers.push(num);
+                } else if (preOperator == '-') {
+                    numbers.push(-num);
+                } else if (preOperator == '*') {
+                    numbers.push(num * numbers.pop());
+                } else if (preOperator == '/') {
+                    numbers.push(numbers.pop() / num);
+                }
+                if (i < s.length()) {
+                    preOperator = s.charAt(i);
+                }
+                num = 0;
+            }
+        }
+        int res = 0;
+        for (Integer integer : numbers) {
+            res += integer;
+        }
+        return res;
+    }
+
+    @Test
+    public void testCaucluate() {
+        String s = "1+2*3+4-9+5/2 ";
+        System.out.println(calculate(s));
+    }
+
 }

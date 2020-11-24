@@ -3,14 +3,7 @@ package com.soapsnake.algorithms.alib;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
+import java.util.*;
 
 import javax.print.attribute.standard.Destination;
 import javax.xml.ws.soap.Addressing;
@@ -340,5 +333,42 @@ public class StringTester {
             }
         }
         return true;
+    }
+
+    public String decodeString(String s) {
+        if (s == null) {
+            return s;
+        }
+        String res = "";
+        Stack<Integer> countStack = new Stack<>();
+        Stack<String> resStack = new Stack<>();
+        int idx = 0;
+        while (idx < s.length()) {
+            if (Character.isDigit(s.charAt(idx))) {
+                int count = 0;
+                //count数量是有可能大于10的
+                while (Character.isDigit(s.charAt(idx))) {
+                    count = 10 * count + (s.charAt(idx) - '0');
+                    idx++;
+                }
+                countStack.push(count);
+            } else if (s.charAt(idx) == '[') {
+                //清空res
+                resStack.push(res);
+                res = "";
+                idx++;
+            } else if (s.charAt(idx) == ']') {
+                StringBuilder temp = new StringBuilder(resStack.pop());
+                int repeatTimes = countStack.pop();
+                for (int i = 0; i < repeatTimes; i++) {
+                    temp.append(res);
+                }
+                res = temp.toString();
+                idx++;
+            } else {
+                res += s.charAt(idx++);
+            }
+        }
+        return res;
     }
 }
