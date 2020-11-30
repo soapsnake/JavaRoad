@@ -2,23 +2,7 @@ package com.soapsnake.algorithms.alib;
 
 import org.junit.Test;
 
-import java.lang.ProcessBuilder.Redirect;
-import java.lang.annotation.Target;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Queue;
-import java.util.Set;
-import java.util.TreeMap;
-
-import javax.swing.KeyStroke;
-
-import com.soapsnake.algorithms.structures.cache.LRUCache;
-import com.sun.org.apache.xpath.internal.WhitespaceStrippingElementMatcher;
+import java.util.*;
 
 public class ArraysTester {
 
@@ -553,125 +537,156 @@ public class ArraysTester {
         return new String[0];
     }
 
-
-    public int atMostNGivenDigitSet(String[] digits, int n) {
-        int res = 0;
-        String N_str = String.valueOf(n);
-        int N_len = N_str.length();
-        int D_len = digits.length;
-
-        for (int i = 1; i < N_len; ++i) { // 比N位数小的，都是满足条件的
-            res += Math.pow(D_len, i);
+    /**
+     * * s = "3[a]2[bc]", return "aaabcbc".
+     *      * s = "3[a2[c]]", return "accaccacc".
+     *      * s = "2[abc]3[cd]ef", return "abcabccdcdcdef".
+     * @param s
+     * @return
+     */
+    public String decodeString(String s) {
+        if (s == null) {
+            return s;
         }
-
-        // 考虑与N位数相同的情况
-        for (int i = 0; i < N_len; ++i) {
-            int c = N_str.charAt(i) - '0';
-            for (int j = D_len - 1; j >= 0; --j) {
-                int d = Integer.parseInt(digits[j]);
-                if (d > c) {
-                    if (j == 0) { // 边界条件1: 如果j到0了，说明D中所有的数都比N当前位置的数大，当前位可能的数量为0，此时无需再继续往下比
-                        return res;
-                    }
-                } else if (d < c) { // 如果 d < c, 说明不用再比下去了，当前位的可能数量为小于等于d的数量
-                    res += Math.pow(D_len, N_len - i - 1) * (j + 1);
-                    return res;
-                } else { // d == c, 则继续比较C的下一位，当前位的可能数量为小于d的数量（不包括d）
-                    res += Math.pow(D_len, N_len - i - 1) * j;
-                    break;
+        Stack<Integer> countStack = new Stack<>();
+        Stack<String> strStack = new Stack<>();
+        int index = 0;
+        String temp = "";
+        while (index < s.length()) {
+            if (Character.isDigit(s.charAt(index))) {
+                int count = 0;
+                while (index < s.length() && Character.isDigit(s.charAt(index))) {
+                    count += count * 10 + (s.charAt(index) - '0');
+                    index++;
                 }
+                System.out.println("will push number to stack = " + count);
+                countStack.push(count);
+            } else if (s.charAt(index) == '[') {
+                temp = "";
+                index++;
+            } else if (s.charAt(index) == ']') {
+                //弹栈指令触发
+                String last = strStack.pop();
+                int repeatCount = countStack.pop();
+                String willRepeat = last + temp;
+                System.out.println("str = " + willRepeat + " will repeat " + repeatCount + " times");
+                for (int i = 1; i <= repeatCount - 1; i++) {
+                    willRepeat += willRepeat;
+                }
+                temp = willRepeat;
+                System.out.println("after repeat = " + willRepeat + " now temp = " + temp);
+
+                index++;
+            } else {
+                StringBuilder sb = new StringBuilder();
+                while (index < s.length() && Character.isLetter(s.charAt(index))) {
+                    sb.append(s.charAt(index));
+                    index++;
+                }
+                System.out.println("will push str to stack = " + sb.toString());
+                strStack.push(sb.toString());
             }
         }
-        return res + 1;
+        return temp;
     }
 
-    private void backTrace1(String[] digits, int n, List<String> numbers, String temp, int start) {
-        if (!temp.equals("") && Integer.parseInt(temp) < n) {
-            if (!numbers.contains(temp)) {
-                numbers.add(temp);
+    @Test
+    public void testStringDecoder() {
+        System.out.println("final res = " + decodeString("3[a2[c]]"));
+
+
+        Stack<String> stack = new Stack<>();
+        String res = "123";
+        stack.push(res);
+        res = "";
+        System.out.println(stack);
+
+
+        Stack<Person> stack1 = new Stack<>();
+        Person person = new Person("fdsf", 1, 1);
+        stack1.push(person);
+        person = null;
+        System.out.println(stack1);
+
+
+        List<Person> list = new ArrayList<>();
+        Person person1 = new Person("哈哈", 2, 3);
+        list.add(person1);
+//        person1 = null;
+        person1.weight = 80;
+        System.out.println(list);
+
+    }
+
+    //Input: nums = [2,5,6,0,0,1,2], target = 3
+    //Output: false
+    public boolean search(int[] nums, int target) {
+        //旋转数组的二分查找
+        int left = 0;
+        int right = nums.length - 1;
+        while (right >= left) {
+            int midIndex = left + (right - left) / 2;
+            if (nums[midIndex] == target) {
+                return true;
+            }
+
+            //左半分区的完整二分查找
+            if (nums[left] <= nums[midIndex]) {
+                if (target < nums[midIndex] && target >= nums[left])
+                    right = midIndex - 1;
+                else
+                    left = midIndex + 1;
+            }
+
+            //右半分区的完整二分查找
+            if (nums[midIndex] <= nums[right]) {
+                if (target > nums[midIndex] && target <= nums[right])
+                    left = midIndex + 1;
+                else
+                    right = midIndex - 1;
             }
         }
-        for (int i = start; i < digits.length; i++) {
-            temp += digits[i];
-            backTrace1(digits, n, numbers, temp, start + 1);
-            numbers.remove(numbers.size() - 1);
-        }
+        return false;
     }
 
-    public static String findNumber(List<Integer> arr, int k) {
-        // Write your code here
-
-        if (arr == null || arr.size() == 0) {
-            return "NO";
-        }
-        for (int i = 0; i < arr.size(); i++) {
-            if (arr.get(i) == k) {
-                return "YES";
-            }
-        }
-        return "NO";
-    }
-
-    public static List<Integer> oddNumbers(int l, int r) {
-        // Write your code here
-        List<Integer> res = new ArrayList<>();
-        if (l == r) {
-            if (l % 2 != 0) {
-                res.add(l);
-                return res;
-            }
-        }
-        for (int i = l; i <= r; i++) {
-            if (i % 2 != 0) {
-                res.add(i);
-            }
-        }
-        return res;
-    }
-
-
-    public static String paste(List<String> arr) {
-        if (arr == null || arr.size() == 0) {
-            return "";
-        }
-        return String.join(";", arr);
-    }
-
-    public static int prc(List<String> products, List<Float> productPrices, List<String> productSold,
-            List<Float> soldPrice) {
-
-        Map<String, Float> productsPricesMap = new HashMap<>();
-        for (int i = 0; i < products.size(); i++) {
-            productsPricesMap.put(products.get(i), productPrices.get(i));
-        }
-        int res = 0;
-        for (int i = 0; i < productSold.size(); i++) {
-            if (!productsPricesMap.get(productSold.get(i)).equals(soldPrice.get(i))) {
-                res++;
-            }
-        }
-        return res;
-    }
-
-    public static List<Integer> comon(List<String> inputs) {
-        List<Integer> res = new ArrayList<>();
-        for (String str : inputs) {
-            res.add(helper(str));
-        }
-        return res;
-    }
-
-    private static int helper(String str) {
-        if (str == null) {
+    //leetcode227
+    public int calculate(String s) {
+        if (s == null) {
             return 0;
         }
-        for (int i = 0; i < str.length(); i++) {
-            if (str.substring(i).contains(str.substring(i, str.length()))) {
-                return i;
+        Stack<Integer> numbers = new Stack<>();
+        char preOperator = '+';
+        int num = 0;
+        for (int i = 0; i <= s.length(); i++) {
+            if (i < s.length() && Character.isDigit(s.charAt(i))) {
+                num = num * 10 + s.charAt(i) - '0';
+            } else if (i == s.length() || s.charAt(i) != ' '){
+                if (preOperator == '+') {
+                    numbers.push(num);
+                } else if (preOperator == '-') {
+                    numbers.push(-num);
+                } else if (preOperator == '*') {
+                    numbers.push(num * numbers.pop());
+                } else if (preOperator == '/') {
+                    numbers.push(numbers.pop() / num);
+                }
+                if (i < s.length()) {
+                    preOperator = s.charAt(i);
+                }
+                num = 0;
             }
         }
-        return 0;
+        int res = 0;
+        for (Integer integer : numbers) {
+            res += integer;
+        }
+        return res;
     }
 
+    @Test
+    public void testCaucluate() {
+        String s = "1+2*3+4-9+5/2 ";
+        System.out.println(calculate(s));
+    }
 
 }

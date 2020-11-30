@@ -17,7 +17,7 @@ public class Question56 {
             return intervals;
 
         // Sort by ascending starting point
-        Arrays.sort(intervals, (i1, i2) -> Integer.compare(i1[0], i2[0]));
+        Arrays.sort(intervals, Comparator.comparingInt(i -> i[0]));
 
         List<int[]> result = new ArrayList<>();
         int[] newInterval = intervals[0];
@@ -95,6 +95,28 @@ public class Question56 {
                     ", end=" + end +
                     '}';
         }
+    }
+
+
+    public int[][] merge2(int[][] intervals) {
+        if (intervals == null || intervals.length == 0) {
+            return intervals;
+        }
+
+        //思路:先对左边界进行排序
+        Arrays.sort(intervals, Comparator.comparingInt(a -> a[0]));
+        List<int[]> res = new ArrayList<>();
+        int[] newInterval = intervals[0];
+        res.add(newInterval);
+        for (int[] interval : intervals) {
+            if (newInterval[1] >= interval[0]) {
+                newInterval[1] = Math.max(newInterval[1], interval[1]);
+            } else {
+                newInterval = interval;
+                res.add(newInterval);
+            }
+        }
+        return res.toArray(new int[res.size()][]);
     }
 
 }
