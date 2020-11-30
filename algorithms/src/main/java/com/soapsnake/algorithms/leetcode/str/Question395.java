@@ -132,7 +132,6 @@ public class Question395 {
         }
 
         return Math.max(result, longestSubstring(s, k, prevStart, end));
-
     }
 
     public static void main(String[] args) {

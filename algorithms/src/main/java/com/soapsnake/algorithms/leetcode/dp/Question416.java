@@ -1,6 +1,8 @@
 package com.soapsnake.algorithms.leetcode.dp;
 
 import java.util.LinkedHashSet;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Set;
 
 public class Question416 {
@@ -73,5 +75,27 @@ public class Question416 {
             }
             uniq.add(value);
         }
+    }
+
+    //滑动窗口最大值
+    public int[] maxSlidingWindow(int[] nums, int k) {
+        if (nums == null || nums.length == 0) {
+            return nums;
+        }
+        LinkedList<Integer> queue = new LinkedList<>();  //queue中放的是索引
+        int[] res = new int[nums.length - k + 1];
+        for (int i = 0; i < nums.length ; i++) {
+            while (!queue.isEmpty() && nums[queue.peekLast()] <= nums[i]) {
+                queue.pollLast();
+            }
+            queue.addLast(i);
+            if (queue.peekFirst() <= i - k) {
+                queue.pollFirst();
+            }
+            if (i + 1 >= k) {
+                res[i] = nums[queue.peekFirst()];  //队列头放的是最大值的索引
+            }
+        }
+        return res;
     }
 }

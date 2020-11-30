@@ -552,4 +552,126 @@ public class ArraysTester {
     public String[] solution(int capacity, String[] commands) {
         return new String[0];
     }
+
+
+    public int atMostNGivenDigitSet(String[] digits, int n) {
+        int res = 0;
+        String N_str = String.valueOf(n);
+        int N_len = N_str.length();
+        int D_len = digits.length;
+
+        for (int i = 1; i < N_len; ++i) { // 比N位数小的，都是满足条件的
+            res += Math.pow(D_len, i);
+        }
+
+        // 考虑与N位数相同的情况
+        for (int i = 0; i < N_len; ++i) {
+            int c = N_str.charAt(i) - '0';
+            for (int j = D_len - 1; j >= 0; --j) {
+                int d = Integer.parseInt(digits[j]);
+                if (d > c) {
+                    if (j == 0) { // 边界条件1: 如果j到0了，说明D中所有的数都比N当前位置的数大，当前位可能的数量为0，此时无需再继续往下比
+                        return res;
+                    }
+                } else if (d < c) { // 如果 d < c, 说明不用再比下去了，当前位的可能数量为小于等于d的数量
+                    res += Math.pow(D_len, N_len - i - 1) * (j + 1);
+                    return res;
+                } else { // d == c, 则继续比较C的下一位，当前位的可能数量为小于d的数量（不包括d）
+                    res += Math.pow(D_len, N_len - i - 1) * j;
+                    break;
+                }
+            }
+        }
+        return res + 1;
+    }
+
+    private void backTrace1(String[] digits, int n, List<String> numbers, String temp, int start) {
+        if (!temp.equals("") && Integer.parseInt(temp) < n) {
+            if (!numbers.contains(temp)) {
+                numbers.add(temp);
+            }
+        }
+        for (int i = start; i < digits.length; i++) {
+            temp += digits[i];
+            backTrace1(digits, n, numbers, temp, start + 1);
+            numbers.remove(numbers.size() - 1);
+        }
+    }
+
+    public static String findNumber(List<Integer> arr, int k) {
+        // Write your code here
+
+        if (arr == null || arr.size() == 0) {
+            return "NO";
+        }
+        for (int i = 0; i < arr.size(); i++) {
+            if (arr.get(i) == k) {
+                return "YES";
+            }
+        }
+        return "NO";
+    }
+
+    public static List<Integer> oddNumbers(int l, int r) {
+        // Write your code here
+        List<Integer> res = new ArrayList<>();
+        if (l == r) {
+            if (l % 2 != 0) {
+                res.add(l);
+                return res;
+            }
+        }
+        for (int i = l; i <= r; i++) {
+            if (i % 2 != 0) {
+                res.add(i);
+            }
+        }
+        return res;
+    }
+
+
+    public static String paste(List<String> arr) {
+        if (arr == null || arr.size() == 0) {
+            return "";
+        }
+        return String.join(";", arr);
+    }
+
+    public static int prc(List<String> products, List<Float> productPrices, List<String> productSold,
+            List<Float> soldPrice) {
+
+        Map<String, Float> productsPricesMap = new HashMap<>();
+        for (int i = 0; i < products.size(); i++) {
+            productsPricesMap.put(products.get(i), productPrices.get(i));
+        }
+        int res = 0;
+        for (int i = 0; i < productSold.size(); i++) {
+            if (!productsPricesMap.get(productSold.get(i)).equals(soldPrice.get(i))) {
+                res++;
+            }
+        }
+        return res;
+    }
+
+    public static List<Integer> comon(List<String> inputs) {
+        List<Integer> res = new ArrayList<>();
+        for (String str : inputs) {
+            res.add(helper(str));
+        }
+        return res;
+    }
+
+    private static int helper(String str) {
+        if (str == null) {
+            return 0;
+        }
+        for (int i = 0; i < str.length(); i++) {
+            if (str.substring(i).contains(str.substring(i, str.length()))) {
+                return i;
+            }
+        }
+        return 0;
+    }
+
+
 }

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Stack;
 
 /**
  * @Auther soapsnake@gmail.com
@@ -95,4 +96,5 @@ public class Question56 {
                     '}';
         }
     }
+
 }
