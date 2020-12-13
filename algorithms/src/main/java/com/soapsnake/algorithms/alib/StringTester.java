@@ -1,5 +1,6 @@
 package com.soapsnake.algorithms.alib;
 
+import com.sun.tools.javac.code.TargetType;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -370,5 +371,68 @@ public class StringTester {
             }
         }
         return res;
+    }
+
+    public int calculate(String s) {
+        //实现一个计算器
+        if (s == null) {
+            return 0;
+        }
+        Stack<Integer> stack = new Stack<>();
+        int num = 0;
+        char preOperator = '+';
+        for (int i = 0; i <= s.length(); i++) {
+            if (i < s.length() && Character.isDigit(s.charAt(i))) {
+                    num = num * 10 + (s.charAt(i) - '0');
+            } else if (i == s.length() || s.charAt(i) != ' '){
+                if (preOperator == '+') {
+                    stack.push(num);
+                } else if (preOperator == '-') {
+                    stack.push(-num);
+                } else if (preOperator == '*') {
+                    stack.push(stack.pop() * num);
+                } else if (preOperator == '/') {
+                    stack.push(stack.pop() / num);
+                }
+                num = 0;
+                preOperator = s.charAt(i);
+            }
+        }
+        int res = 0;
+        for (Integer integer : stack) {
+            res += integer;
+        }
+        return res;
+    }
+
+        //旋转数组的二分查找
+    public boolean search(int[] nums, int target) {
+        if (nums == null) {
+            return false;
+        }
+        int left = 0;
+        int right = nums.length;
+        while (right >= left) {
+            int mid = left + (right - left) / 2;
+            if (nums[mid] == target) {
+                return true;
+            }
+            if (nums[mid] > nums[0]) {
+                if (target >= nums[0] && target < nums[mid]) {
+                    right = mid;
+                } else {
+                    left = mid + 1;
+                }
+            } else if (nums[mid] < nums[0]) {
+                if (target >= nums[mid] && target <= nums[nums.length - 1]) {
+                    left = mid + 1;
+                } else {
+                    right = mid;
+                }
+            } else {
+                left++;
+            }
+        }
+        return false;
     }
 }
