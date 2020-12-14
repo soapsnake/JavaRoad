@@ -31,7 +31,7 @@ public class Question131 {
         }
 
         for (int i = 1; i <= s.length(); i++) {
-            String str = s.substring(0, i);   //主要这里用了subString而不是charAt,难倒了
+            String str = s.substring(0, i);
             if (!this.ispalidram(str)) {
                 continue;
             }

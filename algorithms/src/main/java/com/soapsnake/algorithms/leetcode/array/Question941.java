@@ -1,5 +1,7 @@
 package com.soapsnake.algorithms.leetcode.array;
 
+import java.util.List;
+
 /**
  * @Auther soapsnake@gmail.com
  * @Date 2018/12/7 01:02
@@ -12,26 +14,20 @@ public class Question941 {
         System.out.println(question941.validMountainArray(a));
     }
 
-    public boolean validMountainArray(int[] A) {
-        if (A.length == 0 || A.length == 1) {
-            return false;
-        }
-
-        int maxAbsence = 0;
-        if (A[1] < A[0]) {
-            return false;
-        }
-
-        for (int i = 1; i < A.length - 1; i++) {
-            if (A[i] > A[i + 1] && maxAbsence == 0) {
-                maxAbsence = 1;
-                continue;
-            }
-
-            if (maxAbsence == 1 && A[i + 1] >= A[i]) {
-                return false;
+    public boolean validMountainArray(int[] arr) {
+        if (arr.length < 3) return false;
+        int start = 0;
+        int end = arr.length-1;
+        while (start < end) {
+            if (arr[start+1] > arr[start]) {
+                start++;
+            } else if (arr[end-1] > arr[end]) {
+                end--;
+            } else {
+                break;
             }
         }
-        return maxAbsence == 1;
+        return start != 0 && end != arr.length-1 && start == end;
     }
+
 }
