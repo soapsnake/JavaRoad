@@ -539,8 +539,9 @@ public class ArraysTester {
 
     /**
      * * s = "3[a]2[bc]", return "aaabcbc".
-     *      * s = "3[a2[c]]", return "accaccacc".
-     *      * s = "2[abc]3[cd]ef", return "abcabccdcdcdef".
+     * * s = "3[a2[c]]", return "accaccacc".
+     * * s = "2[abc]3[cd]ef", return "abcabccdcdcdef".
+     *
      * @param s
      * @return
      */
@@ -660,7 +661,7 @@ public class ArraysTester {
         for (int i = 0; i <= s.length(); i++) {
             if (i < s.length() && Character.isDigit(s.charAt(i))) {
                 num = num * 10 + s.charAt(i) - '0';
-            } else if (i == s.length() || s.charAt(i) != ' '){
+            } else if (i == s.length() || s.charAt(i) != ' ') {
                 if (preOperator == '+') {
                     numbers.push(num);
                 } else if (preOperator == '-') {
@@ -688,5 +689,4 @@ public class ArraysTester {
         String s = "1+2*3+4-9+5/2 ";
         System.out.println(calculate(s));
     }
-
 }
