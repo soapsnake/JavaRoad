@@ -34,9 +34,8 @@ public class Question454 {
                 map.put(i + j, map.getOrDefault(i + j, 0) + 1);
             }
         }
-
         int res = 0;
-        for (int l : A) {
+        for (int l : A) { 
             for (int m : B) {
                 res += map.getOrDefault(-(l + m), 0);
             }
