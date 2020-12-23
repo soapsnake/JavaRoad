@@ -71,8 +71,6 @@ public class Question110 {
         return true;
     }
 
-
-    boolean isBalance = true;
     public boolean isBalanced(TreeNode root) {
         if (root == null) {
             return isBalance;
@@ -80,7 +78,7 @@ public class Question110 {
         this.dfsMax(root);
         return isBalance;
     }
-
+    boolean isBalance = true;
     private int dfsMax(TreeNode root) {
         if (root == null) {
             return 0;
