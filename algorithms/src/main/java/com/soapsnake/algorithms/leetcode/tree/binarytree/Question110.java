@@ -1,12 +1,12 @@
 package com.soapsnake.algorithms.leetcode.tree.binarytree;
 
-import com.soapsnake.algorithms.structures.tree.TreeNode;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+
+import com.soapsnake.algorithms.structures.tree.TreeNode;
 
 /**
  * @Auther soapsnake@gmail.com
@@ -71,8 +71,6 @@ public class Question110 {
         return true;
     }
 
-
-    boolean isBalance = true;
     public boolean isBalanced(TreeNode root) {
         if (root == null) {
             return isBalance;
@@ -80,7 +78,7 @@ public class Question110 {
         this.dfsMax(root);
         return isBalance;
     }
-
+    boolean isBalance = true;
     private int dfsMax(TreeNode root) {
         if (root == null) {
             return 0;

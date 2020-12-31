@@ -27,7 +27,6 @@ public class Question977 {
         return res;
     }
 
-
     public int[] sortedSquares2(int[] nums) {
         int[] res = new int[nums.length];
         int l = 0, r = nums.length - 1;

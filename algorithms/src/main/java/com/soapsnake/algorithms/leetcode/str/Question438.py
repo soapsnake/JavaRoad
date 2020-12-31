@@ -4,7 +4,6 @@
 # 解法复杂度过高,但是实现是没有问题的!!!!!!!!!!!!
 class Solution:
 
-    leetcode438
     def findAnagrams(self, s, p):
         """
         :type s: str
@@ -14,6 +13,9 @@ class Solution:
         if s == "" or p == "":
             return []
         resu = []
+
+        next()
+
         for i in range(0, len(s) - len(p) + 1):
             str1 = s[i:len(p) + i]
             resu.append(i)
@@ -33,5 +35,14 @@ class Solution:
 
 
 sp = Solution()
-res = sp.findAnagrams("abcahidjsaijdabcjasidjsa", "abc")
-print(res)
+# res = sp.findAnagrams("abcahidjsaijdabcjasidjsa", "abc")
+# print(res)
+
+list_1 = [1,2,3,4,5]
+new_list = iter(list_1)
+
+print(next(new_list))
+print(next(new_list))
+print(next(new_list))
+print(next(new_list))
+print(next(new_list))

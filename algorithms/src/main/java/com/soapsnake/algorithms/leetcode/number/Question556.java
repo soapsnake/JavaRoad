@@ -11,7 +11,6 @@ public class Question556 {
     //leetcode556
     public int nextGreaterElement(int n) {
         char[] number = (n + "").toCharArray();
-
         int i, j;
         //1.从最右侧的数字开始往左扫描,找到第一对两个连着的数字,左边小于右边的数字对
         for (i = number.length-1; i > 0; i--)
@@ -19,8 +18,9 @@ public class Question556 {
                 break;
 
         //如果没有这样的数字对,比如21,表名这个数字不可能出现题目要求的结果
-        if (i == 0)
+        if (i == 0) {
             return -1;
+        }
 
         //2.找出第i-1个数字右侧所有大于number[i-1]的数字中的最小的那个
         int x = number[i-1], smallest = i;

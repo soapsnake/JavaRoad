@@ -15,7 +15,6 @@ public class Question498 {
         //保存结果
         int[] result = new int[m * n];
         int row = 0, col = 0, d = 0;
-        //这个干嘛的?
         int[][] dirs = {{-1, 1}, {1, -1}};
         for (int i = 0; i < m * n; i++) {
             result[i] = matrix[row][col];
