@@ -1,5 +1,7 @@
 package com.soapsnake.algorithms.leetcode.dp;
 
+import com.soapsnake.algorithms.structures.list.ListNode;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -101,6 +103,5 @@ class Question5 {
             maxLen = right - left - 1;
         }
     }
-
 
 }
