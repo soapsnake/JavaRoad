@@ -1,5 +1,7 @@
 package com.soapsnake.algorithms.leetcode.dp;
 
+import com.soapsnake.algorithms.structures.list.ListNode;
+
 /**
  *
  * Created on 2020-07-03
@@ -127,4 +129,35 @@ public class Question10 {
         }
         return dp[m][n];
     }
+
+
+    public ListNode deleteDuplicates(ListNode head) {
+        //删除重复节点,要求重复节点本身也要被删除
+        if (head == null) {
+            return head;
+        }
+        ListNode fakeHead = new ListNode(0);
+        fakeHead.next = head;
+        ListNode pre = fakeHead;
+        ListNode cur = head;
+        while (cur != null) {
+            while (cur.next != null && cur.next.val == cur.val) {
+                cur = cur.next;
+            }
+
+            //到此,cur节点和下一节点已经不相同
+            if (pre.next == cur) {
+                //pre的下一个节点没有变,还是cur
+                pre = pre.next;
+            } else {
+                //pre的下一个节点变了,意思就是发现了重复,要删除节点
+                pre.next = cur.next;
+            }
+            cur = cur.next;
+        }
+        return fakeHead.next;
+    }
+
+
+
 }
