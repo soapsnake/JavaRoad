@@ -1,6 +1,7 @@
 package com.soapsnake.algorithms.leetcode.dp;
 
 import com.soapsnake.algorithms.structures.list.ListNode;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,14 +14,14 @@ class Question5 {
     private int lo;       //最长子字符串左索引
     private int maxLen;  //最长子字符串最大长度(右边界的偏移量)
 
-    public static void main(String[] args) {
-        Question5 question5 = new Question5();
-//        String str1 = "babad";
-        String str2 = "efabcbaefehiabcba";
-        System.out.println(question5.longestPalindromeDPSolution(str2));
-    }
+//    public static void main(String[] args) {
+//        Question5 question5 = new Question5();
+////        String str1 = "babad";
+//        String str2 = "efabcbaefehiabcba";
+//        System.out.println(question5.longestPalindromeDPSolution(str2));
+//    }
 
-    //答案正确,但是解法复杂度过高,n平方
+    //答案正确,但是解法复杂度过高,n平方,因为只能追加写,所以就是
     public String longestPalindrome(String s) {
         if (s == null) return "";
         if (s.equals("")) return "";
@@ -102,6 +103,33 @@ class Question5 {
             lo = left + 1;
             maxLen = right - left - 1;
         }
+    }
+
+    public int findKthPositive(int[] arr, int k) {
+        int l = 0, r = arr.length;
+        while (l < r) {
+            int mid = l + (r - l) / 2;
+            if (arr[mid] - (mid + 1) >= k) {
+                r = mid;  //missed more or equal than k numbers, left side;
+            } else {
+                l = mid + 1;   // missed less than k numbers, must be in the right side;
+            }
+        }
+        return l + k;
+    }
+
+    /**
+     * Input: arr = [2,3,4,7,11], k = 5
+     * Output: 9
+     *
+     * Input: arr = [1,2,3,4], k = 2
+     * Output: 6
+     */
+    @Test
+    public void testFindk() {
+        int[] arr = {2,3,4,7,11};
+        int k = 5;
+        System.out.println(findKthPositive(arr, k));
     }
 
 }
