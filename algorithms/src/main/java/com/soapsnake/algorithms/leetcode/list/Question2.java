@@ -2,6 +2,8 @@ package com.soapsnake.algorithms.leetcode.list;
 
 import com.soapsnake.algorithms.structures.list.ListNode;
 
+import java.util.Arrays;
+
 /**
  * You are given two non-empty linked lists representing two non-negative integers.
  * The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.
@@ -113,6 +115,21 @@ class Question2 {
             l2 = (l2 == null) ? l2 : l2.next;
         }
         return head.next;
+    }
+
+    //leetcode881
+    public int numRescueBoats(int[] people, int limit) {
+        Arrays.sort(people);
+        int left = 0, right = people.length - 1;
+        while (left <= right) {
+            if (people[left] + people[right] <= limit) {
+                left++;
+                right--;
+            } else {
+                right--;
+            }
+        }
+        return people. length - 1 - right;
     }
 
 }
