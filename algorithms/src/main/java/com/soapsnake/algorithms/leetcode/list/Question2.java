@@ -129,7 +129,31 @@ class Question2 {
                 right--;
             }
         }
-        return people. length - 1 - right;
+        return people.length - 1 - right;
+    }
+
+
+    public int minOperations(int[] nums, int x) {
+        //思路在于:找两端和为x, 如果nums总和为total,那可以转化为中间连续子数组的和为total-x的问题
+        int total = 0;
+        for (int i = 0; i < nums.length; i++) {
+            total += nums[i];
+        }
+        int target = -1;
+        int currentTotal = 0;
+        for (int left = 0, right = 0; right < nums.length; right++) {
+            currentTotal += nums[right];
+            while (currentTotal > total - x && right > left) {
+                currentTotal -= nums[left];
+                left++;
+            }
+
+            if (currentTotal == total - x) {
+                //这里取max,因为中间数组的长度越长,两端数组的长度就越短
+                target = Math.max(target, right - left + 1);
+            }
+        }
+        return target == -1 ? -1 : nums.length - target;
     }
 
 }
