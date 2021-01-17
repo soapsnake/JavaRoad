@@ -2,6 +2,8 @@ package com.soapsnake.algorithms.leetcode.list;
 
 import com.soapsnake.algorithms.structures.list.ListNode;
 
+import java.util.Arrays;
+
 /**
  * You are given two non-empty linked lists representing two non-negative integers.
  * The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.
@@ -113,6 +115,45 @@ class Question2 {
             l2 = (l2 == null) ? l2 : l2.next;
         }
         return head.next;
+    }
+
+    //leetcode881
+    public int numRescueBoats(int[] people, int limit) {
+        Arrays.sort(people);
+        int left = 0, right = people.length - 1;
+        while (left <= right) {
+            if (people[left] + people[right] <= limit) {
+                left++;
+                right--;
+            } else {
+                right--;
+            }
+        }
+        return people.length - 1 - right;
+    }
+
+
+    public int minOperations(int[] nums, int x) {
+        //思路在于:找两端和为x, 如果nums总和为total,那可以转化为中间连续子数组的和为total-x的问题
+        int total = 0;
+        for (int i = 0; i < nums.length; i++) {
+            total += nums[i];
+        }
+        int target = -1;
+        int currentTotal = 0;
+        for (int left = 0, right = 0; right < nums.length; right++) {
+            currentTotal += nums[right];
+            while (currentTotal > total - x && right > left) {
+                currentTotal -= nums[left];
+                left++;
+            }
+
+            if (currentTotal == total - x) {
+                //这里取max,因为中间数组的长度越长,两端数组的长度就越短
+                target = Math.max(target, right - left + 1);
+            }
+        }
+        return target == -1 ? -1 : nums.length - target;
     }
 
 }

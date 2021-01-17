@@ -41,21 +41,44 @@ class Question21 {
 
 
     //递归版实现,我是想不出来这么好的解法
-    public ListNode mergeTwoLists(ListNode l1head, ListNode l2head) {
+    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         //鲁棒性
-        if (l1head == null) {
-            return l2head;
+        if (l1 == null) {
+            return l2;
         }
-        if (l2head == null) {
-            return l1head;
+        if (l2 == null) {
+            return l1;
         }
-        if (l1head.val < l2head.val) {
+        if (l1.val < l2.val) {
             //假如l1链表头的值比l2链表头的值小,那么l1的链表头就是新链表的表头
-            l1head.next = mergeTwoLists(l1head.next, l2head);
-            return l1head;
+            l1.next = mergeTwoLists(l1.next, l2);
+            return l1;
         } else {
-            l2head.next = mergeTwoLists(l1head, l2head.next);
-            return l2head;
+            l2.next = mergeTwoLists(l1, l2.next);
+            return l2;
         }
     }
+
+    public ListNode deleteDuplicates(ListNode head) {
+        if (head == null) {
+            return null;
+        }
+        ListNode fakehead = new ListNode(0);
+        fakehead.next = head;
+        ListNode pre = fakehead;
+        ListNode cur = head;
+        while (cur != null) {
+            while (cur.next != null && cur.next.val == cur.val) {
+                cur = cur.next;
+            }
+            if (pre.next == cur) {
+                pre = pre.next;
+            } else {
+                pre.next = cur.next;
+            }
+            cur = cur.next;
+        }
+        return fakehead.next;
+    }
+
 }

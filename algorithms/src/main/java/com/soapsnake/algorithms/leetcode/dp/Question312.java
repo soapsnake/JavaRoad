@@ -1,5 +1,7 @@
 package com.soapsnake.algorithms.leetcode.dp;
 
+import com.soapsnake.algorithms.structures.tree.TreeNode;
+
 /**
  * @author liudun <liudun@kuaishou.com>
  * Created on 2020-12-13
@@ -36,4 +38,23 @@ public class Question312 {
         }
         return nums[i];
     }
+
+    //是否二叉平衡搜索树
+    public boolean isValidBST(TreeNode root) {
+        if (root == null) {
+            return false;
+        }
+        return isValid(Long.MIN_VALUE, Long.MAX_VALUE, root);
+    }
+
+    private boolean isValid(long minValue, long maxValue, TreeNode root) {
+        if (root == null) {
+            return false;
+        }
+        if (root.val < minValue || root.val > maxValue) {
+            return false;
+        }
+        return isValid(minValue, root.val, root.left) && isValid(root.val, maxValue, root.right);
+    }
+
 }

@@ -31,6 +31,7 @@ import java.util.Set;
  * Explanation: The endWord "cog" is not in wordList, therefore no possible transformation.
  */
 public class Question127 {
+    //leetcode127
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
         if (!wordList.contains(endWord)) {
             return 0;
@@ -49,6 +50,7 @@ public class Question127 {
             }
 
             Set<String> temp = new HashSet<>();
+            //完全暴力枚举
             for (String word : beginSet) {
                 char[] chs = word.toCharArray();
                 for (int i = 0; i < chs.length; i++) {
