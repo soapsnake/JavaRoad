@@ -41,7 +41,6 @@ public class Question24 {
             //cur指针指向的是second,也就是需要交换的一对node的前一个节点
             cur = cur.next.next;
         }
-
         return fakehead.next;
     }
 
@@ -50,10 +49,10 @@ public class Question24 {
             return null;
         }
         System.out.println("删除前head = " + node);
-        ListNode fakehead = new ListNode(0);
-        fakehead.next = node;
+        ListNode fakeHead = new ListNode(0);
+        fakeHead.next = node;
         ListNode cur = node;
-        ListNode pre = fakehead;
+        ListNode pre = fakeHead;
         while (cur != null) {
             if (cur.val == val) {
                 pre.next = cur.next;
@@ -62,6 +61,6 @@ public class Question24 {
             }
             cur = cur.next;
         }
-        return fakehead.next;
+        return fakeHead.next;
     }
 }

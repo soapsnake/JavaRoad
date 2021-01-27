@@ -15,15 +15,16 @@ public class Question1345 {
     public int minJumps(int[] arr) {
         int n = arr.length;
         HashMap<Integer, List<Integer>> indicesOfValue = new HashMap<>();
-        for (int i = 0; i < n; i++)
+        for (int i = 0; i < n; i++) {
             indicesOfValue.computeIfAbsent(arr[i], x -> new LinkedList<>()).add(i);
+        }
         boolean[] visited = new boolean[n]; visited[0] = true;
         Queue<Integer> q = new LinkedList<>(); q.offer(0);
         int step = 0;
         while (!q.isEmpty()) {
             for (int size = q.size(); size > 0; --size) {
                 int i = q.poll();
-                if (i == n - 1) return step; // Reached to last index
+                if (i == n - 1) return step; // Reached to  last index
                 List<Integer> next = indicesOfValue.get(arr[i]);
                 next.add(i - 1); next.add(i + 1);
                 for (int j : next) {
