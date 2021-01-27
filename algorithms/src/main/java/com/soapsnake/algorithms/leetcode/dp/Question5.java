@@ -1,5 +1,6 @@
 package com.soapsnake.algorithms.leetcode.dp;
 
+import com.soapsnake.algorithms.structures.cache.LRUCache;
 import com.soapsnake.algorithms.structures.list.ListNode;
 import org.junit.jupiter.api.Test;
 
@@ -132,4 +133,50 @@ class Question5 {
         System.out.println(findKthPositive(arr, k));
     }
 
+    public ListNode mergeKLists(ListNode[] lists) {
+        if (lists == null || lists.length < 1) {
+            return null;
+        }
+        int left = 0, right = lists.length - 1;
+        return this.helper(left, right, lists);
+    }
+
+    private ListNode helper(int left, int right, ListNode[] lists) {
+        if (left == right) {
+            return lists[left];
+        }
+        if (left + 1 == right) {
+            return this.mergeTwoList(lists[left], lists[right]);
+        }
+        int mid = left + (right - left) / 2;
+        ListNode leftList = this.helper(left, mid - 1, lists);
+        ListNode rightList = this.helper(mid, right, lists);
+        return this.mergeTwoList(leftList, rightList);
+    }
+
+    private ListNode mergeTwoList(ListNode leftList, ListNode rightList) {
+        if (leftList == null && rightList == null) {
+            return null;
+        }
+        ListNode lp = leftList;
+        ListNode rp = rightList;
+        ListNode fakeHead = new ListNode(0);
+        ListNode cur = fakeHead;
+        while (lp != null && rp != null) {
+            if (lp.val <= rp.val) {
+                cur.next = lp;
+                lp = lp.next;
+            } else {
+                cur.next = rp;
+                rp = rp.next;
+            }
+            cur = cur.next;
+        }
+        if (lp != null) {
+            cur.next = lp;
+        } else {
+            cur.next = rp;
+        }
+        return fakeHead.next;
+    }
 }

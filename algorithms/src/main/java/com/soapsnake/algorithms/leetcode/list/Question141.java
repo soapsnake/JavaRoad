@@ -2,6 +2,8 @@ package com.soapsnake.algorithms.leetcode.list;
 
 import com.soapsnake.algorithms.structures.list.ListNode;
 
+import java.util.Arrays;
+
 class Question141 {
 
     public static void main(String[] args) {
@@ -40,6 +42,52 @@ class Question141 {
             }
         }
         return false;
+    }
+
+    public int maxOperations(int[] nums, int k) {
+        if (nums == null) {
+            return 0;
+        }
+        Arrays.sort(nums);
+        int total = 0;
+        int left = 0, right = nums.length - 1;
+        while (right > left) {
+            if (nums[left] + nums[right] == k) {
+                total++;
+                left++;
+                right--;
+            } else if (nums[left] + nums[right] > k) {
+                right--;
+            } else {
+                left++;
+            }
+        }
+        return total;
+    }
+
+
+    public String longestPalindrome(String s) {
+        if (s.length() < 2) {
+            return s;
+        }
+        for (int i = 0; i < s.length(); i++) {
+            this.helper(i, i, s);
+            this.helper(i, i + 1, s);
+        }
+        return s.substring(start, start + maxlen);
+    }
+
+    int start = 0;
+    int maxlen = 0;
+    private void helper(int left, int right, String s) {
+        while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
+            left--;
+            right++;
+        }
+        if (right - left - 1 > maxlen) {
+            maxlen = right - left - 1;
+            start = left + 1;
+        }
     }
 
 }
