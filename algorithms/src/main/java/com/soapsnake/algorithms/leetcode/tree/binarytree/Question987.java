@@ -33,13 +33,12 @@ public class Question987 {
         int prev_x = Integer.MIN_VALUE;
         while (!pq.isEmpty()){
             Point p = pq.poll();
-            if (p.x > prev_x){
+            if (p.x > prev_x) {
                 List<Integer> list = new ArrayList<>();
                 list.add(p.val);
                 res.add(list);
-            }
-            else{
-                List<Integer> list = res.get(res.size()-1);
+            } else {
+                List<Integer> list = res.get(res.size() - 1);
                 list.add(p.val);
             }
             prev_x = p.x;

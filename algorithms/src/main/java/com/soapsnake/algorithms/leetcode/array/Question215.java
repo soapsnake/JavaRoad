@@ -1,6 +1,7 @@
 package com.soapsnake.algorithms.leetcode.array;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.PriorityQueue;
 
 public class Question215 {
@@ -58,6 +59,21 @@ public class Question215 {
         int temp = nums[leftIndex];
         nums[leftIndex] = nums[rightIndex];
         nums[rightIndex] = temp;
+    }
+
+    public int[][] diagonalSort(int[][] mat) {
+        int m = mat.length, n = mat[0].length;
+        HashMap<Integer, PriorityQueue<Integer>> d = new HashMap<>();
+        for (int i = 0; i < m; ++i) {
+            for (int j = 0; j < n; ++j) {
+                d.putIfAbsent(i - j, new PriorityQueue<>());
+                d.get(i - j).add(mat[i][j]);
+            }
+        }
+        for (int i = 0; i < m; ++i)
+            for (int j = 0; j < n; ++j)
+                mat[i][j] = d.get(i - j).poll();
+        return mat;
     }
 
 }
