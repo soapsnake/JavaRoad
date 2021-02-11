@@ -14,7 +14,7 @@ public class Question138 {
         Node tail = new Node(2, null, null);
         tail.random = tail;
         Node head = new Node(1, tail, tail);
-
+        System.out.println("");
         System.out.println(question138.copyRandomList(head));
 
     }

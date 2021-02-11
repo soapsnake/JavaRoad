@@ -10,6 +10,10 @@ import java.util.PriorityQueue;
  */
 public class Question1631 {
 
+    public static void main(String[] args) {
+        System.out.println("卧槽到底他妈的是个什么情况啊这是");
+    }
+
     int[] DIR = new int[]{0, 1, 0, -1, 0};
     public int minimumEffortPath(int[][] heights) {
         int m = heights.length, n = heights[0].length;
