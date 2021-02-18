@@ -13,6 +13,7 @@ public class Question242 {
         System.out.println(question242.isAnagram("anagram", "nagaram"));
     }
 
+    //leetcode242
     public boolean isAnagram(String s, String t) {
 
         //O(nlogn)
@@ -33,9 +34,6 @@ public class Question242 {
         }
         Arrays.sort(intS);
         Arrays.sort(intT);
-
-//        System.out.println(Arrays.toString(intS));
-//        System.out.println(Arrays.toString(intT));
         return Arrays.equals(intS, intT);
     }
 

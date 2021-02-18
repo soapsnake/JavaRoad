@@ -22,6 +22,7 @@ class Question784 {
     }
 
     //这个题目太他妈有意思了!!!!!
+    //leetcode784
     public List<String> letterCasePermutation(String S) {
         Set<String> res = new HashSet<>();
         if (S == null) {
