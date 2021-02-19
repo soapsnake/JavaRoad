@@ -30,6 +30,7 @@ public class Question11 {
     /**
      * 动态规划,看不懂
      */
+    //leetcode11
     public int maxArea2(int[] height) {
         int area = 0, i = 0, j = height.length - 1;
 
