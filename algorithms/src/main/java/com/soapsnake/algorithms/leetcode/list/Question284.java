@@ -21,25 +21,14 @@ public class Question284 {
 
 
     static class PeekingIterator implements Iterator<Integer> {
-        Iterator<Integer> iterator;  //iterator代理了一个list
-
-        Integer next;
-
-        boolean hasMoreElement;
+        private Integer next = null;
+        private Iterator<Integer> iter;
 
         public PeekingIterator(Iterator<Integer> iterator) {
             // initialize any member here.
-            this.iterator = iterator;
-            this.advanceIter();  //初始化时候先初始化下next的值
-        }
-
-        private void advanceIter() {
-            if (!this.iterator.hasNext()) {
-                this.hasMoreElement = false;
-            } else {
-                this.hasMoreElement = true;
-                this.next = iterator.next();
-            }
+            iter = iterator;
+            if (iter.hasNext())
+                next = iter.next();
         }
 
         // Returns the next element in the iteration without advancing the iterator.
@@ -52,18 +41,14 @@ public class Question284 {
         // Override them if needed.
         @Override
         public Integer next() {
-            if (!hasMoreElement) {
-                throw new NoSuchElementException();
-            } else {
-                Integer res = next;
-                this.advanceIter();
-                return res;
-            }
+            Integer res = next;
+            next = iter.hasNext() ? iter.next() : null;
+            return res;
         }
 
         @Override
         public boolean hasNext() {
-            return this.hasMoreElement;
+            return next != null;
         }
     }
 }
