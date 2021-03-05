@@ -1,4 +1,4 @@
-package com.soapsnake.lab.reflact;
+package com.soapsnake.lab.reflect;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
@@ -13,7 +13,7 @@ public class ReflectUtils {
     private static Pattern pattern = Pattern.compile("\\w+\\.");
 
     public static void main(String[] args) {
-        String classname = "com.soapsnake.lab.reflact.ReflactTester";
+        String classname = "com.soapsnake.lab.reflact.ReflectUtils";
         test(classname);
     }
 
