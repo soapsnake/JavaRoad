@@ -1,6 +1,6 @@
 package com.soapsnake.algorithms.leetcode.array;
 
-import java.util.Arrays;
+import com.soapsnake.algorithms.structures.list.ListNode;
 
 /**
  * @Auther soapsnake@gmail.com
@@ -82,6 +82,38 @@ public class Question645 {
         System.out.println(c);
 
 //        System.out.println(2 ^ 1);
+    }
+
+    //找出两个链表交叉点,如果没有交叉就返回null
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        headA = this.reverse(headA);
+        headB = this.reverse(headB);
+        ListNode prehead = null;
+        while (headA != null && headB != null) {
+            if (headA == headB) {
+                headA = headA.next;
+                headB = headB.next;
+                prehead = headA;
+            } else {
+                return prehead;
+            }
+        }
+        return null;
+    }
+
+    private ListNode reverse(ListNode head) {
+        if (head == null) {
+            return head;
+        }
+        ListNode newhead = null;
+        ListNode cur = head;
+        while (cur != null) {
+            ListNode nextnode = cur.next;
+            cur.next = newhead;
+            newhead = cur;
+            cur = nextnode;
+        }
+        return newhead;
     }
 
 }
