@@ -23,13 +23,13 @@ public class Question623 {
         return root;
     }
 
-    private void dfs(TreeNode root, int v, int d, int depth) {
+    private void dfs(TreeNode root, int v, int d, int curDepth) {
         if (root == null) {
             return;
         }
-        if (depth < d - 1) {
-            dfs(root.left, v, d, depth + 1);
-            dfs(root.right, v, d, depth + 1);
+        if (curDepth < d - 1) {
+            dfs(root.left, v, d, curDepth + 1);
+            dfs(root.right, v, d, curDepth + 1);
         } else {
             TreeNode tmpLeft = root.left;
             TreeNode tmpRight = root.right;
