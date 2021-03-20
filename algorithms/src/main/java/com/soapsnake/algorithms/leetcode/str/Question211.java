@@ -10,7 +10,7 @@ public class Question211 {
     /**
      * kmp字符串搜索
      */
-    static class WordDictionary {
+   public static class WordDictionary {
         private TrieNode root;
 
         /**

@@ -1,7 +1,5 @@
 package com.soapsnake.algorithms.leetcode.dp;
 
-import java.util.Arrays;
-
 public class Question322 {
 
     public static void main(String[] args) {
@@ -25,20 +23,20 @@ public class Question322 {
      * f(n) = min((1 + f(n - (不同面额)))  //如果面额池有1,2,5三个值,这里就要分别算三次,即f(n-1),f(n-2),f(n-5)
      */
     public int coinChange(int[] coins, int amount) {
-        if (coins.length == 0) {
-            return 0;
-        }
+        if (amount < 1) return 0;
         int[] dp = new int[amount + 1];
-        Arrays.fill(dp, Integer.MAX_VALUE);
-        dp[0] = 0;
-        for (int i = 1; i <= amount; i++) {
-            for (int j = 0; j < coins.length; j++) {  //有多少种不同面额这里就要算多少次
-                if (i - coins[j] >= 0) {
-                    dp[i] = Math.min(dp[i], 1 + dp[i - coins[j]]);
+        int sum = 0;
+
+        while (++sum <= amount) {
+            int min = -1;
+            for (int coin : coins) {
+                if (sum >= coin && dp[sum - coin] != -1) {
+                    int temp = dp[sum - coin] + 1;
+                    min = min < 0 ? temp : (Math.min(temp, min));
                 }
             }
+            dp[sum] = min;
         }
-        System.out.println(Arrays.toString(dp));
-        return dp[amount] > amount ? -1 : dp[amount];
+        return dp[amount];
     }
 }

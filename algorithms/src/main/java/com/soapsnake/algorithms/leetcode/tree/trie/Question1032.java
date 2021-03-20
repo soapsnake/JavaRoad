@@ -6,11 +6,21 @@ package com.soapsnake.algorithms.leetcode.tree.trie;
  */
 public class Question1032 {
 
-    class StreamChecker {
-        class TrieNode {
-            boolean isWord;
-            TrieNode[] next = new TrieNode[26];
+    class TrieNode {
+
+        boolean isWord;
+        TrieNode[] next;
+
+        public TrieNode(){}
+
+        public TrieNode(boolean isWord, TrieNode[] next) {
+            this.isWord = isWord;
+            this.next = next;
         }
+    }
+
+
+    class StreamChecker {
 
         TrieNode root = new TrieNode();
         StringBuilder sb = new StringBuilder();
