@@ -5,26 +5,26 @@ public class Question29 {
 
     /**
      * 不用除号实现除法
-     * @param dividend
-     * @param divisor
+     * @param a
+     * @param b
      * @return
      */
-    public int divide(int dividend, int divisor) {
+    public int divide(int a, int b) {
         int sign = 1;
-        if ((dividend > 0 && divisor < 0) || (dividend < 0 && divisor > 0)) {
+        if ((a > 0 && b < 0) || (a < 0 && b > 0)) {
             sign = -1;
         }
-        long ldividend = Math.abs((long) dividend);
-        long ldivisor = Math.abs((long) divisor);
+        long realA = Math.abs((long) a);
+        long realB = Math.abs((long) b);
 
-        if (ldivisor == 0) {
+        if (realB == 0) {
             return Integer.MAX_VALUE;
         }
-        if ((ldividend == 0) || (ldividend < ldivisor)) {
+        if ((realA == 0) || (realA < realB)) {
             return 0;
         }
 
-        long lans = ldivide(ldividend, ldivisor);
+        long lans = ldivide(realA, realB);
 
         int ans;
         if (lans > Integer.MAX_VALUE){ //Handle overflow.
@@ -35,23 +35,23 @@ public class Question29 {
         return ans;
     }
 
-    private long ldivide(long ldividend, long ldivisor) {
+    private long ldivide(long a, long b) {
         // Recursion exit condition
-        if (ldividend < ldivisor) {
+        if (a < b) {
             return 0;
         }
 
         //  Find the largest multiple so that (divisor * multiple <= dividend),
         //  whereas we are moving with stride 1, 2, 4, 8, 16...2^n for performance reason.
         //  Think this as a binary search.
-        long sum = ldivisor;
+        long sum = b;
         long multiple = 1;
-        while (sum * 2 <= ldividend) {
+        while (sum * 2 <= a) {
             sum *= 2;
             multiple += multiple;
         }
         //Look for additional value for the multiple from the reminder (dividend - sum) recursively.
-        return multiple + ldivide(ldividend - sum, ldivisor);
+        return multiple + ldivide(a - sum, b);
     }
 
     public static void main(String[] args) {
