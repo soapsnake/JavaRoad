@@ -37,10 +37,10 @@ public class Question376 {
         boolean increase = nums[k] < nums[k + 1];
         for (int i = k + 1; i < nums.length - 1; i++) {
             if (increase && nums[i] > nums[i + 1]) {
-                increase = !increase;
+                increase = false;
                 res++;
             } else if (!increase && nums[i] < nums[i + 1]) {
-                increase = !increase;
+                increase = true;
                 res++;
             }
         }
@@ -78,7 +78,7 @@ public class Question376 {
         return Math.max(up, down);  //取两个数组的最大长度
     }
 
-    public static void main(String[] args) {
+        public static void main(String[] args) {
         Question376 question376 = new Question376();
         int[] nums = {0, 0, 0};
         System.out.println(question376.wiggleMaxLength(nums));

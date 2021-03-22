@@ -1,4 +1,4 @@
-package com.soapsnake.algorithms.leetcode.sys;
+package com.soapsnake.algorithms.leetcode.sysDesign;
 
 import java.util.ArrayList;
 import java.util.HashMap;

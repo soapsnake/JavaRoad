@@ -60,9 +60,12 @@ public class Question714 {
      */
     public int maxProfit(int[] prices, int fee) {
         if (prices.length <= 1) return 0;
-        int days = prices.length, buy[] = new int[days], sell[] = new int[days];
-        buy[0]=-prices[0]-fee;
+        int days = prices.length;
+        int[] buy = new int[days];  //如果第i天买入将会获得的最大收益
+        int[] sell = new int[days];  //如果第i天卖出将会获得的的最大收益
+        buy[0] = -prices[0] - fee;   //初始条件: 如果第一天卖出的最大收益 = (负)第一天买入成本 - 交易费
         for (int i = 1; i<days; i++) {
+            //第i天买入的最大收益 = max(i-1天买入但是i天什么都不做(i天不买入),  i-1天卖出股票获得收益 - 第i天买入 - 买入的交易费)
             buy[i] = Math.max(buy[i - 1], sell[i - 1] - prices[i] - fee); // keep the same as day i-1, or buy from sell status at day i-1
             sell[i] = Math.max(sell[i - 1], buy[i - 1] + prices[i]); // keep the same as day i-1, or sell from buy status at day i-1
         }
