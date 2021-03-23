@@ -67,22 +67,22 @@ public class Sorts {
     }
 
     //归并排序的拆分过程
-    private static void mergeSortRecursive(int[] arr, int start, int end) {
+    private static void mergeSortRecursive(int[] arr, int left, int right) {
         //如果只有一个元素，那就不用排序了
-        if (start == end) {
+        if (left == right) {
             return;
         } else {
             //取中间的数，进行拆分
-            int mid = (start + end) / 2;
+            int mid = (left + right) / 2;
 
             //左边的数不断进行拆分
-            mergeSortRecursive(arr, start, mid);
+            mergeSortRecursive(arr, left, mid);
 
             //右边的数不断进行拆分
-            mergeSortRecursive(arr, mid + 1, end);
+            mergeSortRecursive(arr, mid + 1, right);
 
             //合并
-            merge(arr, start, mid + 1, end);
+            merge(arr, left, mid + 1, right);
         }
     }
 

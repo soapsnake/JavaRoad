@@ -2,6 +2,7 @@ package com.soapsnake.algorithms.alib;
 
 import org.junit.Test;
 
+import java.awt.font.NumericShaper;
 import java.util.*;
 
 public class ArraysTester {
@@ -688,5 +689,39 @@ public class ArraysTester {
     public void testCaucluate() {
         String s = "1+2*3+4-9+5/2 ";
         System.out.println(calculate(s));
+    }
+
+    public void quickSort(int[] nums) {
+        doQuickSort(nums, 0, nums.length - 1);
+    }
+
+    public void doQuickSort(int[] nums, int low, int high) {
+        if (nums == null || low >= high || nums.length == 1) {
+            return;
+        }
+        int left = low;
+        int right = high;
+        int middleValue = nums[(right + left) / 2];
+
+        while (left <= right) {
+            while (nums[left] < middleValue) {
+                left++;
+            }
+            while (nums[right] > middleValue) {
+                right--;
+            }
+            if (left < right) {
+                int temp = nums[left];
+                nums[left] = nums[right];
+                nums[right] = temp;
+                left++;
+                right--;
+            } else if (left == right) {
+                left++;
+            }
+        }
+        doQuickSort(nums, low, right);
+        doQuickSort(nums, left, high);
+
     }
 }
