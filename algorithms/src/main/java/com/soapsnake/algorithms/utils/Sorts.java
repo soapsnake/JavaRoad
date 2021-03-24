@@ -331,4 +331,30 @@ public class Sorts {
         return res;
     }
 
+    public boolean threeSum(int[] nums, int target) {
+        if (nums == null || nums.length < 3) {
+            return false;
+        }
+        Arrays.sort(nums);
+        for (int i = 0; i < nums.length; i++) {
+            int cur = nums[i];
+            if (cur >= target) {
+                return false;
+            }
+            int remain = target - cur;
+            int left = i + 1;
+            int right = nums.length - 1;
+            while (left < right) {
+                if (nums[left] + nums[right] == remain) {
+                    return true;
+                } else if (nums[left] + nums[right] < remain) {
+                    left++;
+                } else {
+                    right--;
+                }
+            }
+        }
+        return false;
+    }
+
 }

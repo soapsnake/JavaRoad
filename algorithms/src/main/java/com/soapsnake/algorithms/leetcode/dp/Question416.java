@@ -82,18 +82,27 @@ public class Question416 {
         if (nums == null || nums.length == 0) {
             return nums;
         }
-        LinkedList<Integer> queue = new LinkedList<>();  //queue中放的是索引
+        LinkedList<Integer> window = new LinkedList<>();  //queue中放的是索引
         int[] res = new int[nums.length - k + 1];
         for (int i = 0; i < nums.length ; i++) {
-            while (!queue.isEmpty() && nums[queue.peekLast()] <= nums[i]) {
-                queue.pollLast();
+
+            //如果窗口尾部的元素比i指针的元素要小,那么丢弃该窗口中的元素
+            while (!window.isEmpty() && nums[window.peekLast()] <= nums[i]) {
+                window.pollLast();
             }
-            queue.addLast(i);
-            if (queue.peekFirst() <= i - k) {
-                queue.pollFirst();
+            //到这里,窗口中最尾部的元素也要比i指针数字大了
+
+
+            window.addLast(i);  //这里把i指针数字加到窗尾,事实上窗口内的元素是从小到大排序的
+
+            //这个操作实际上是把窗子头部的元素丢弃了,因为窗子一直在往右走,如果窗子内的元素不在窗子的左右边界内会出问题
+            if (window.peekFirst() <= i - k) {
+                window.pollFirst();
             }
+
+
             if (i + 1 >= k) {
-                res[i] = nums[queue.peekFirst()];  //队列头放的是最大值的索引
+                res[i] = nums[window.peekFirst()];  //队列头放的是最大值的索引
             }
         }
         return res;
