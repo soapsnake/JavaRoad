@@ -15,7 +15,24 @@ class Question496 {
         int[] nums1 = {2, 4};
         int[] nums2 = {1, 2, 3, 4};
 
-        ArrayUtils.printArr(question496.nextGreaterElement(nums1, nums2));
+//        ArrayUtils.printArr(question496.nextGreaterElement(nums1, nums2));
+
+
+        StringBuilder stringBuilder = new StringBuilder("hello");
+        System.out.println("stringBuilder=>" + stringBuilder.hashCode());
+        question496.doSomeThing(stringBuilder);
+        System.out.println("stringBuilder=>" + stringBuilder.toString() + stringBuilder.hashCode());
+
+        //到这里hello对象已经不可访问了,gc会标记hello为垃圾并进行回收
+        stringBuilder = new StringBuilder("wocao");
+        System.out.println("stringBuilder=>" + stringBuilder.toString() + stringBuilder.hashCode());
+
+    }
+
+    public void doSomeThing(StringBuilder sb) {
+        System.out.println("in doSomeThing =>" + sb.toString() + sb.hashCode());
+        sb = new StringBuilder("world");
+        System.out.println("in doSomeThing =>" + sb.toString() + sb.hashCode());
     }
 
     //真他妈简单,反过来想,nums2中的数字,先按预期放进map中,然后用nums1中对应元素去取就行了

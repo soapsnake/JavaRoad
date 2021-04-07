@@ -724,4 +724,92 @@ public class ArraysTester {
         doQuickSort(nums, left, high);
 
     }
+
+    public int[] advantageCount(int[] A, int[] B) {
+        //思路,对A进行全部permutation,然后一个一个比对
+        List<List<Integer>> all = new ArrayList<>();
+        helper(A, all, new ArrayList<>(), 0, new boolean[A.length]);
+        List<Integer> maxArr = null;
+        int maxCount = Integer.MIN_VALUE;
+        for (List<Integer> ints : all) {
+            int ad = advantage(ints, B);
+            if (ad > maxCount) {
+                maxCount = ad;
+                maxArr = ints;
+            }
+        }
+        int[] res = new int[A.length];
+        for (int i = 0; i < A.length; i++) {
+            res[i] = maxArr.get(i);
+        }
+        return res;
+    }
+
+    private static int advantage(List<Integer> ints, int[] b) {
+        int count = 0;
+        for (int i = 0; i < ints.size(); i++) {
+            if (ints.get(i) > b[i]) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    private static void helper(int[] a, List<List<Integer>> all, List<Integer> temp, int start, boolean[] used) {
+        if (temp.size() == a.length) {
+            if (!all.contains(temp)) {
+                all.add(new ArrayList<>(temp));
+            }
+        }
+        for (int i = 0; i < a.length; i++) {
+            if (used[i]) {
+                continue;
+            }
+            temp.add(a[i]);
+            used[i] = true;
+            helper(a, all, temp, start + 1, used);
+            used[i] = false;
+            temp.remove(temp.size() - 1);
+        }
+    }
+
+    @Test
+    public void testHelper() {
+        int[] a = {1,2,3,4};  //4*3*2*1=24 种变化
+        List<List<Integer>> all = new ArrayList<>();
+        helper(a, all, new ArrayList<>(), 0, new boolean[a.length]);
+        System.out.println(all);
+        System.out.println("size = " + all.size());
+    }
+
+    //leetcode870
+    public int[] advantageCount2(int[] A, int[] B) {
+        if (A.length != B.length) {
+            return null;
+        }
+        PriorityQueue<int[]> queue = new PriorityQueue<int[]>((a, b) -> {
+            return a[0] - b[0];
+        });
+        for (int i = 0; i < B.length; i++) {
+            queue.add(new int[]{B[i], i});
+        }
+
+        int low = 0;
+        int high = A.length - 1;
+        Arrays.sort(A);
+        int[] res = new int[A.length];
+        while (!queue.isEmpty()) {
+            int[] cur = queue.poll();
+            int curValue = cur[0];
+            int curIdx = cur[1];
+            if (A[high] > curValue) {
+                res[curIdx] = A[high];
+                high--;
+            } else {
+                res[curIdx] = A[low];
+                low++;
+            }
+        }
+        return res;
+    }
 }

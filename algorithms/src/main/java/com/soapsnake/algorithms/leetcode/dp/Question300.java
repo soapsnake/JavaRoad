@@ -11,11 +11,12 @@ public class Question300 {
 
     //遍历版本dp,dp数组存的是从0 -> i的最大递增子数组的长度,每一次计算dp[i+1]的时候都需要重头算0 -> i+1的最大子数组长度和dp[i]比较取较大的
     //所以这个虽然是使用动态规划,但是复杂性还是比较的高的
+    //注意了,不能改变原数组的数字顺序
     public int lengthOfLIS(int[] nums) {
         if (nums.length == 0) {
             return 0;
         }
-        int[] dp = new int[nums.length];  //1️⃣.dp数组的含义, i -> 到第i个数字时的最长子串的'长度'
+        int[] dp = new int[nums.length];  //1️⃣.dp数组的含义, i -> 到第i个数字时的最长自增子串的'长度'
         dp[0] = 1;   //2️⃣. dp数组的初始值, 当数组的长度为1时,那么最长子数组的长度就是1(只有一个数字)
         int maxlen = 1;
         for (int i = 1; i < dp.length; i++) {   //i: 1 -> length
