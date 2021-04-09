@@ -35,7 +35,7 @@ public class DSU {
     //返回x元素所在组的根root,为什么是根实在想不明白
     //find接口不是向外暴露的,想想这意味着什么
     private int find(int x) {
-        // 寻找x节点所在组的根节点，根节点具有性质 root = parent[root]
+        // 寻找x节点所在组的根节点，根节点具有性质 root = parent[root],idx和value一致
         while (x != parent[x]) {
             x = parent[x];
         }
