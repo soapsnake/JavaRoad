@@ -11,6 +11,7 @@ import com.soapsnake.algorithms.structures.list.ListNode;
  */
 public class Question622 {
 
+    //leetcode622
     class MyCircularQueue {
         final int[] a;
         int front, rear = -1, len = 0;
