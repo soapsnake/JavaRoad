@@ -12,6 +12,7 @@ public class Question86 {
      * Input: head = 1->4->3->2->5->2, x = 3
      * Output: 1->2->2->4->3->5
      */
+    //leetcode 86
     public ListNode partition(ListNode head, int x) {
         //思路1:由于题目要求保留所有原始顺序,可以两个list,list1存放比x小的node,
         // list2存放剩下的,然后把list2拼在list1后面
