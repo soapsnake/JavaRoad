@@ -67,12 +67,12 @@ public class Question622 {
 
 
     public int[][] kClosest(int[][] points, int K) {
-        Arrays.sort(points, new Comparator<int[]>() {
-            @Override
-            public int compare(int[] o1, int[] o2) {
-                return 0;
-            }
-        });
+//        Arrays.sort(points, new Comparator<int[]>() {
+//            @Override
+//            public int compare(int[] o1, int[] o2) {
+//                return 0;
+//            }
+//        });
 
         return null;
     }
