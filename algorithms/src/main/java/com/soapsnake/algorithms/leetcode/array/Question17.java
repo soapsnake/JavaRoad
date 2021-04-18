@@ -33,14 +33,6 @@ class Question17 {
     private List<List<String>> sources = new ArrayList<>();
     private List<String> result = new ArrayList<>(2);
 
-    public static void main(String[] args) {
-
-        String input = "23";
-        Question17 question17 = new Question17();
-        System.out.println(question17.letterCombinations2(input));
-        //output = ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"]
-    }
-
     public List<String> letterCombinations2(String digits) {
         if (digits.isEmpty()) {
             return new ArrayList<>();
@@ -67,6 +59,14 @@ class Question17 {
             //这里如果写成pre += temp,然后下面传pre就不对了
             dfsTree(cur + 1, pre + temp);
         }
+    }
+
+    public static void main(String[] args) {
+
+        String input = "23";
+        Question17 question17 = new Question17();
+        System.out.println(question17.letterCombinations2(input));
+        //output = ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"]
     }
 
 }
