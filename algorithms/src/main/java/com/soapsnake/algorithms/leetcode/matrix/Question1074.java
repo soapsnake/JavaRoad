@@ -39,6 +39,9 @@ public class Question1074 {
             }
         }
 
+
+
+
         return count;
     }
 }
