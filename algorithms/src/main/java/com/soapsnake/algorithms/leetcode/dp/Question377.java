@@ -39,19 +39,17 @@ public class Question377 {
 
     //EDIT: The above solution is top-down. How about a bottom-up one?
     public int combinationSum4bottom(int[] nums, int target) {
-        int[] comb = new int[target + 1];
-        comb[0] = 1;
-        for (int i = 1; i < comb.length; i++) {
+        int[] dp = new int[target + 1];  //dp的含义是什么? 和为index时一共有value种组合方式
+        dp[0] = 1;  //和为0时只有一种组合方式: [0]
+        for (int i = 1; i < dp.length; i++) {
             for (int j = 0; j < nums.length; j++) {
                 if (i - nums[j] >= 0) {
-                    comb[i] += comb[i - nums[j]];
+                    dp[i] += dp[i - nums[j]];
                 }
             }
         }
-        return comb[target];
+        return dp[target];
     }
-
-
 
     public int combinationSum4backtrace(int[] nums, int target) {
         if (null == nums || nums.length == 0) {
