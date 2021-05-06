@@ -9,7 +9,7 @@ import java.util.Arrays;
 public class Question665 {
 
     //    int count;
-    static int count = 3;
+//    static int count = 3;
 
     public Question665(int count) {
 //        this.count = count;
@@ -22,10 +22,10 @@ public class Question665 {
     }
 
     public boolean checkPossibility(int[] nums) {
-        count = 1;
-        System.out.println("local = " + count);
+//        count = 1;
+//        System.out.println("local = " + count);
 //        System.out.println("class = " + this.count);
-        System.out.println("static = " + Question665.count);
+//        System.out.println("static = " + Question665.count);
         if (nums == null) {
             return false;
         }
@@ -39,7 +39,7 @@ public class Question665 {
                 //第一种尝试:
                 int temp = nums[i - 1];
                 nums[i - 1] = nums[i];
-                System.out.println("第一次nums[]:" + Arrays.toString(nums));
+//                System.out.println("第一次nums[]:" + Arrays.toString(nums));
                 for (int j = 0; j < nums.length; j++) {
                     if (j != 0 && nums[j] < nums[j - 1]) {
                         test1 = false;
@@ -49,7 +49,7 @@ public class Question665 {
                 //第二种尝试:
                 nums[i - 1] = temp;
                 nums[i] = temp;
-                System.out.println("第二次nums[]:" + Arrays.toString(nums));
+//                System.out.println("第二次nums[]:" + Arrays.toString(nums));
                 for (int j = 0; j < nums.length; j++) {
                     if (j != 0 && nums[j] < nums[j - 1]) {
                         test2 = false;
