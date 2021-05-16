@@ -30,6 +30,7 @@ public class Question114 {
      * \
      * 6
      */
+    //leetcode114
     public void flatten(TreeNode root) {
         if (root == null) {
             return;
@@ -50,7 +51,7 @@ public class Question114 {
             while (root.right != null)
                 root = root.right;
 
-            // step 3: contatinate left flatten subtree with flatten right subtree
+            // step 3: contatinate left flatten subtree with flatœten right subtree
             root.right = right;
         }
     }
