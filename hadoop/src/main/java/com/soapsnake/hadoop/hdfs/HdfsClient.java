@@ -9,7 +9,7 @@ import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ * 
  * Created on 2020-09-20
  */
 public class HdfsClient {

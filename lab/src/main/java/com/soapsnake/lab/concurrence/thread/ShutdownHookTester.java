@@ -3,7 +3,7 @@ package com.soapsnake.lab.concurrence.thread;
 import lombok.SneakyThrows;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ * 
  * Created on 2020-10-31
  */
 public class ShutdownHookTester {

@@ -3,7 +3,7 @@ package com.soapsnake.algorithms.leetcode.tree.trie;
 import java.util.*;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ * 
  * Created on 2021-03-07
  */
 public class Question820 {

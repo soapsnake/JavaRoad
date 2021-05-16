@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ * 
  * Created on 2021-04-17
  */
 public class Question1273 {

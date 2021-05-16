@@ -13,7 +13,7 @@ import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.util.CharsetUtil;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ * 
  * Created on 2020-10-09
  */
 public class MyDubboServerHandler extends ChannelInboundHandlerAdapter {

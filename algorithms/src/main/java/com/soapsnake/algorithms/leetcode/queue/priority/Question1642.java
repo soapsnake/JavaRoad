@@ -3,7 +3,7 @@ package com.soapsnake.algorithms.leetcode.queue.priority;
 import java.util.PriorityQueue;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ * 
  * Created on 2021-04-27
  */
 public class Question1642 {

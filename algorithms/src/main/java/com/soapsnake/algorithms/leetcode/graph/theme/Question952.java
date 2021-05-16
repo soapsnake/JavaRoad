@@ -6,7 +6,7 @@ import java.util.Map;
 import com.soapsnake.algorithms.structures.unionfind.DSU;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ * 
  * Created on 2020-08-30
  */
 public class Question952 {

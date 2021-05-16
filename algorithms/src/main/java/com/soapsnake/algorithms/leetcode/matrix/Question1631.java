@@ -5,7 +5,7 @@ import java.util.Comparator;
 import java.util.PriorityQueue;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ * 
  * Created on 2021-01-27
  */
 public class Question1631 {

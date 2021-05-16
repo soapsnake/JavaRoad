@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ * 
  * Created on 2021-03-05
  */
 class MemoryJavaFileManager extends ForwardingJavaFileManager<JavaFileManager> {

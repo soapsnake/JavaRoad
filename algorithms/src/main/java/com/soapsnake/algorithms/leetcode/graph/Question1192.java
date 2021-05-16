@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ * 
  * Created on 2021-04-25
  */
 public class Question1192 {

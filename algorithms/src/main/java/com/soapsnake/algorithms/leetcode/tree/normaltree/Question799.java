@@ -1,7 +1,7 @@
 package com.soapsnake.algorithms.leetcode.tree.normaltree;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ * 
  * Created on 2020-10-26
  */
 public class Question799 {

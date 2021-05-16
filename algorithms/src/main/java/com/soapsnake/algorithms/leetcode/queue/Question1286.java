@@ -9,7 +9,7 @@ import jdk.nashorn.internal.objects.NativeJava;
 import sun.print.SunMinMaxPage;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ * 
  * Created on 2020-08-14
  */
 public class Question1286 {

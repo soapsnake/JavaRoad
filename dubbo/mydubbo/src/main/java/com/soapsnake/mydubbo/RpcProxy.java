@@ -7,7 +7,7 @@ import com.soapsnake.mydubbo.client.RpcClientInvocationHandler;
 import com.soapsnake.mydubbo.constants.Constant;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ * 
  * Created on 2020-10-09
  */
 public class RpcProxy {

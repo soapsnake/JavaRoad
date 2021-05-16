@@ -10,7 +10,7 @@ import java.util.Queue;
 import com.google.common.collect.Lists;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ * 
  * Created on 2020-11-30
  */
 public class Question218 {

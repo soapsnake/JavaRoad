@@ -4,7 +4,7 @@ package com.soapsnake.algorithms.leetcode.tree.binarytree;
 import java.util.PriorityQueue;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ * 
  * Created on 2021-01-31
  */
 public class Question1675 {

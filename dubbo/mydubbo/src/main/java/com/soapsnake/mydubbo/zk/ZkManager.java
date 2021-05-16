@@ -8,7 +8,7 @@ import org.apache.curator.retry.ExponentialBackoffRetry;
 import com.soapsnake.mydubbo.constants.Constant;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ * 
  * Created on 2020-10-09
  */
 public enum ZkManager {
