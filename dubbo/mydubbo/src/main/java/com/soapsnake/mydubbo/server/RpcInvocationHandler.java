@@ -16,7 +16,7 @@ import javax.management.ServiceNotFoundException;
 import com.soapsnake.mydubbo.annotate.RpcService;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ * 
  * Created on 2020-10-09
  */
 public class RpcInvocationHandler implements InvocationHandler {

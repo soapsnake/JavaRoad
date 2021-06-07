@@ -24,6 +24,7 @@ public class Question304 {
         }
     }
 
+    //leetcode304,初始化时直接算好,那么查的时候复杂度会大大降低
     static class NumMatrix {
         private int[][] matrix;
         private int[][] dp;

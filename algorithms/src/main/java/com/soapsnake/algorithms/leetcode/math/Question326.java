@@ -12,6 +12,7 @@ public class Question326 {
         System.out.println(question326.isPowerOfThree(9));
     }
 
+    //leetcode326
     public boolean isPowerOfThree(int n) {
         if (n == 0) {
             return false;

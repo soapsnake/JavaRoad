@@ -1,7 +1,7 @@
 package com.soapsnake.algorithms.collected;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ * 
  * Created on 2020-10-24
  *
  *

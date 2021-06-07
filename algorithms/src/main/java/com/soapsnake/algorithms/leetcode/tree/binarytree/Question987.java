@@ -8,7 +8,7 @@ import java.util.PriorityQueue;
 import com.soapsnake.algorithms.structures.tree.TreeNode;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ * 
  * Created on 2020-08-07
  */
 public class Question987 {

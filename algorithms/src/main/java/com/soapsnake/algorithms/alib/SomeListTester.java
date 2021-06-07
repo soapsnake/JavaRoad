@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ * 
  * Created on 2020-11-18
  */
 public class SomeListTester {

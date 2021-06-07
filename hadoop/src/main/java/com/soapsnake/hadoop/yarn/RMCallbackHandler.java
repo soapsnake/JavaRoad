@@ -16,7 +16,7 @@ import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ * 
  * Created on 2020-09-27
  */
 @Slf4j

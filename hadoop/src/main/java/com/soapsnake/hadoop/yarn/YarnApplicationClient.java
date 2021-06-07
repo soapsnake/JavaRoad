@@ -51,7 +51,7 @@ import org.apache.hadoop.yarn.util.ConverterUtils;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ * 
  * Created on 2020-09-26
  */
 @Slf4j

@@ -12,7 +12,7 @@ import java.util.jar.JarEntry;
 import org.junit.Test;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ * 
  * Created on 2020-08-02
  */
 public class Question996 {

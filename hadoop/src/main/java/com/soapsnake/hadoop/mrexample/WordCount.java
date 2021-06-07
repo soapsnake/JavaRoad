@@ -16,7 +16,7 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ * 
  * Created on 2020-09-24
  */
 public class WordCount {

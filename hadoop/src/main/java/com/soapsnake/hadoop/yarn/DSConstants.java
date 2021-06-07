@@ -1,7 +1,7 @@
 package com.soapsnake.hadoop.yarn;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ * 
  * Created on 2020-09-26
  */
 public class DSConstants {

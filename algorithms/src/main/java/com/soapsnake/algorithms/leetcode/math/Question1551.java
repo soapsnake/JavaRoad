@@ -1,7 +1,7 @@
 package com.soapsnake.algorithms.leetcode.math;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ * 
  * Created on 2021-04-07
  */
 public class Question1551 {

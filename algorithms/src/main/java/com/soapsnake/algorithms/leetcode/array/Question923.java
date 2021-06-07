@@ -3,7 +3,7 @@ package com.soapsnake.algorithms.leetcode.array;
 import java.util.Arrays;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ * 
  * Created on 2021-03-24
  */
 public class Question923 {

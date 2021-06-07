@@ -3,6 +3,9 @@ package com.soapsnake.algorithms.leetcode.tree.binarytree;
 import com.soapsnake.algorithms.structures.list.ListNode;
 import com.soapsnake.algorithms.structures.tree.TreeNode;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * @Auther soapsnake@gmail.com
  * @Date 2019-04-10 18:45
@@ -22,7 +25,18 @@ public class Question109 {
      */
     public TreeNode sortedListToBST(ListNode head) {
         if (head == null) return null;
-        return toBST(head, null);
+        if (head.next == null) return new TreeNode(head.val);
+        ListNode slow = head, pre = null, fast = head;
+        while (fast != null && fast.next != null) {
+            pre = slow;
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        pre.next = null; //cut left sub list here
+        TreeNode res = new TreeNode(slow.val);
+        res.left = sortedListToBST(head);
+        res.right = sortedListToBST(slow.next);
+        return res;
     }
 
     public TreeNode toBST(ListNode head, ListNode tail) {
@@ -39,5 +53,10 @@ public class Question109 {
         thead.left = toBST(head, slow);   //这里传了slow节点当做tail节点,其实list已经被一分为二了,前半部分是左子树
         thead.right = toBST(slow.next, fast);  //slow是中间节点,总感觉这里应该传fast的(因为fast此时指向的是tail节点),list的后半截是右子树
         return thead;
+    }
+
+    public static void main(String[] args) {
+        List<String> list =  Arrays.asList("wocao", "fuck", "gan");
+        list.add("hello");
     }
 }

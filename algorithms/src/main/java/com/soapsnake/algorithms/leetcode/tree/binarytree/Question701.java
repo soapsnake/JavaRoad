@@ -3,7 +3,7 @@ package com.soapsnake.algorithms.leetcode.tree.binarytree;
 import com.soapsnake.algorithms.structures.tree.TreeNode;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ * 
  * Created on 2020-10-07
  */
 public class Question701 {

@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.PriorityQueue;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ * 
  * Created on 2021-03-25
  */
 public class Question870 {

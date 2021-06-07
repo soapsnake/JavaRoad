@@ -11,7 +11,7 @@ import org.junit.Test;
 import com.soapsnake.algorithms.alib.Person;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ * 
  * Created on 2020-10-11
  */
 public class Question452 {

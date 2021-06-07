@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ * 
  * Created on 2020-08-11
  */
 public class Question928 {

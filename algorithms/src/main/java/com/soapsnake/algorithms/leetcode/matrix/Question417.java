@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ * 
  * Created on 2021-03-26
  */
 public class Question417 {

@@ -6,6 +6,7 @@ package com.soapsnake.algorithms.leetcode.dp;
  */
 public class Question63 {
 
+    //leetcode63
     public int uniquePathsWithObstacles(int[][] obstacleGrid) {
         int width = obstacleGrid[0].length;
         int[] dp = new int[width];
@@ -24,22 +25,30 @@ public class Question63 {
     public int uniquePathsWithObstacles2(int[][] obstacleGrid) {
         int m = obstacleGrid.length;
         int n = obstacleGrid[0].length;
+        if (obstacleGrid.length == 1) {
+            return 1;
+        }
+
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
                 if (obstacleGrid[i][j] == 0) {
+                    //该点可以走
                     obstacleGrid[i][j] = 1;
                 } else {
+                    //该点不可以走
                     obstacleGrid[i][j] = 0;
                 }
             }
         }
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
+        for (int i = 1; i < m; i++) {
+            for (int j = 1; j < n; j++) {
                 if (obstacleGrid[i][j] == 1) {
+                    //如果该点可达,那么到该点的路径只有两条: 1>从上面往下走一步,2>从左边往右走一步
                     obstacleGrid[i][j] = obstacleGrid[i - 1][j] + obstacleGrid[i][j - 1];
                 }
             }
         }
+        //obstacleGrid 直接充当了dp数组,其实和青蛙跳楼梯是同一类问题
         return obstacleGrid[m - 1][n - 1];
     }
 

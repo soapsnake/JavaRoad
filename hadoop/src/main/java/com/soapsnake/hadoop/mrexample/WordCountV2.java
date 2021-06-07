@@ -25,7 +25,7 @@ import org.apache.hadoop.util.GenericOptionsParser;
 import org.apache.hadoop.util.StringUtils;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ * 
  * Created on 2020-09-25
  */
 public class WordCountV2 {

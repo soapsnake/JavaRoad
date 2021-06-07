@@ -1,7 +1,7 @@
 package com.soapsnake.mydubbo.regcenter;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ * 
  * Created on 2020-10-09
  */
 public interface ServiceRegistry {
