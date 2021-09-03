@@ -206,8 +206,7 @@
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
-                <version>1.18.10</version>
-                <scope>provided</scope>
+                <version>1.18.20</version>
             </dependency>
 
             <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->

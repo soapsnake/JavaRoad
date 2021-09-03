@@ -42,5 +42,7 @@ public class DPtester {
         int n = 45;
 //        System.out.println(countJump(n));
         System.out.println(countJump2(n));
+
+        System.out.println("hello");
     }
 }
