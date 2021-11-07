@@ -45,4 +45,41 @@ public class Question11 {
 
         return area;
     }
+
+
+    public static int fib(int n) {
+        if (n <= 1) {
+            return n;
+        }
+        int first = 0;
+        int second = 1;
+        int third = first + second;
+        for (int i = 1; i < n; i++) {
+            third = first + second;
+            first = second;
+            second = third;
+        }
+        return third;
+    }
+
+    public static int tribonacci(int n) {
+        if (n <= 2) {
+            return n;
+        }
+        int first = 0;
+        int second = 1;
+        int third = first + second;
+        int fourth = first + second + third;
+        for (int i = 1; i < n; i++) {
+            fourth = first + second + third;
+            first = second;
+            second = third;
+            third = fourth;
+        }
+        return fourth;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(fib(4));
+    }
 }
