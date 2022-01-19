@@ -1,6 +1,7 @@
 package com.soapsnake.algorithms.leetcode.dp;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -59,5 +60,33 @@ class Question70 {
             fib2 = fibn;
         }
         return fibn;
+    }
+
+    public int rob(int[] nums) {
+        int robPrev = 0;
+        int notRobPrev = 0;
+
+        for (int i = 0; i < nums.length; i++) {
+            int robCurrent = notRobPrev + nums[i];
+            int notRobCurrent = Math.max(robPrev, notRobPrev);
+
+            robPrev = robCurrent;
+            notRobPrev = notRobCurrent;
+        }
+        return Math.max(robPrev, notRobPrev);
+    }
+
+    public boolean wordBreak(String s, List<String> wordDict) {
+        boolean[] dp = new boolean[s.length() + 1];
+        dp[0] = true;
+        for (int i = 1; i <= s.length(); i++) {
+            for (int j = 0; j < i; j++) {
+                if (dp[j] && wordDict.contains(s.substring(j, i))) {
+                    dp[i] = true;
+                    break;
+                }
+            }
+        }
+        return dp[s.length()];
     }
 }

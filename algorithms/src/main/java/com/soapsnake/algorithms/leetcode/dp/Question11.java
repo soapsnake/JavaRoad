@@ -79,6 +79,26 @@ public class Question11 {
         return fourth;
     }
 
+    public int rob(int[] nums) {
+        int robPrev = 0;
+        int notRobPrev = 0;
+        for (int i = 0; i < nums.length; i++) {
+
+            int robCurrent = notRobPrev + nums[i];
+            /**
+             *  不抢劫当前家的话,最大收益从以下两种当中选择:
+             *  1. 上一家也没抢,收益为抢劫上上家的收入
+             *  2. 上一家抢劫了,收益为抢劫上一家的收入
+             */
+            int notRobCurrent = Math.max(robPrev, notRobPrev);
+
+            //到这里,抢劫已经结束,分别更新抢和不抢的值,为下一轮抢劫做好准备
+            robPrev = robCurrent;
+            notRobPrev = notRobCurrent;
+        }
+        return Math.max(robPrev, notRobPrev);
+    }
+
     public static void main(String[] args) {
         System.out.println(fib(4));
     }

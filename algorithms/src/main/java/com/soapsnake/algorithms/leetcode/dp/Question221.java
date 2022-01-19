@@ -97,5 +97,31 @@ public class Question221 {
         } else if (x + 1 < w) {
             dfs(xstart, ystart, matrix, len, w, x + 1, y);  //只往下走
         }
+
+    }
+
+
+    public String longestPalindrome(String s) {
+        if (s == null) {
+            return s;
+        }
+        for (int i = 0; i < s.length(); i++) {
+            this.extend(s, i, i);
+            this.extend(s, i, i + 1);
+        }
+        return s.substring(lo, lo + maxLen);
+    }
+    int lo = 0;
+    int maxLen = 0;
+    private void extend(String s, int left, int right) {
+        while (left >= 0 && right <= s.length() - 1
+                && s.charAt(left) == s.charAt(right)) {
+            left--;
+            right++;
+        }
+        if (maxLen < right - left - 1) {
+            lo = left + 1;
+            maxLen = right - left - 1;
+        }
     }
 }

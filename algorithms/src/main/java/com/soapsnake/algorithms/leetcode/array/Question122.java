@@ -9,7 +9,7 @@ public class Question122 {
     /**
      * Input: [7,1,5,3,6,4]
      * Output: 7
-     *
+     * <p>
      * 不限制交易的笔数
      */
     public int maxProfit(int[] prices) {
@@ -25,7 +25,7 @@ public class Question122 {
     }
 
     /**
-     *限制交易笔数为1笔
+     * 限制交易笔数为1笔
      */
     public int maxProfit2(int[] prices) {
         int[] sell = new int[prices.length + 1];  //第i天为卖出状态的最大收益
@@ -40,10 +40,22 @@ public class Question122 {
 //            buy[i] = Math.max(buy[i - 1], sell[i - 1] - prices[i]);  //在k=1的情况下,这条状态转移方程是错的
 
             //如果是限制一笔交易的情况下, sell[i - 1] - prices[i] 事实上是不用考虑的,因为卖的行为已经发生,代表所有机会已经用完
-            buy[i] = Math.max(buy[i - 1],  -prices[i]); //-prices[i]一定是负的,所以这里的max其实可以省略
+            buy[i] = Math.max(buy[i - 1], -prices[i]); //-prices[i]一定是负的,所以这里的max其实可以省略
         }
 
         //结果为什么取sell而不是buy的,因为股票一定要卖出状态才能获得收益,buy的话有可能到最后一天了还没卖出
         return sell[prices.length];
+    }
+
+    public int maxProfit(int[] prices, int fee) {
+        int[][] dp = new int[prices.length + 1][2];
+        dp[0][0] = 0;
+        dp[0][1] = -prices[0];
+
+        for (int i = 1; i < prices.length; i++) {
+            dp[i][0] = Math.max(dp[i - 1][0], dp[i - 1][1] + (prices[i] - fee));
+            dp[i][1] = Math.max(dp[i - 1][1], dp[i - 1][0] - prices[i]);
+        }
+        return dp[prices.length][0];
     }
 }

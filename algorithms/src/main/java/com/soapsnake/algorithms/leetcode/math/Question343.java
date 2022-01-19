@@ -19,4 +19,18 @@ public class Question343 {
         }
         return product * n;  //到这里n已经是比4小的数字了,没必要再继续拆分
     }
+
+    public int rob(int[] nums) {
+        int robPrev = 0;
+        int notRobPrev = 0;
+
+        for (int i = 0; i < nums.length; i++) {
+            int robCurrent = notRobPrev + nums[i];
+            int notRobCurrent = Math.max(robPrev, notRobPrev);
+
+            robPrev = robCurrent;
+            notRobPrev = notRobCurrent;
+        }
+        return Math.max(robPrev, notRobPrev);
+    }
 }

@@ -15,6 +15,8 @@ public class Question213 {
         if (nums.length < 2)
             return nums[0];
 
+        System.out.println("");
+
         //第一个DP数组
         int[] startFromFirstHouse = new int[nums.length + 1];  //该数组用来存从0开始的结果
         //第二个DP数组
@@ -38,6 +40,31 @@ public class Question213 {
         }
 
         return Math.max(startFromFirstHouse[nums.length - 1], startFromSecondHouse[nums.length]);
+    }
+
+    class Tuple {
+        private int imax;
+        private int imin;
+
+        Tuple(int imax, int imin) {
+            this.imax = imax;
+            this.imin = imin;
+        }
+    }
+
+    //关键点就是这句话：“由于存在负数，那么会导致最大的变最小的，最小的变最大的。因此还需要维护当前最小值imin。”
+    public int maxProduct(int[] nums) {
+        Tuple[] dp = new Tuple[nums.length + 1];
+        dp[0] = new Tuple(nums[0], nums[0]);
+        int maxRes = dp[0].imax;
+        for (int i = 1; i < nums.length; i++) {
+            Tuple prev = dp[i - 1];
+            int curMax = Math.max(Math.max(nums[i], prev.imax * nums[i]), nums[i] * prev.imin);
+            int curMin = Math.min(Math.min(nums[i], prev.imin * nums[i]), nums[i] * prev.imax);
+            dp[i] = new Tuple(curMax, curMin);
+            maxRes = Math.max(maxRes, curMax);
+        }
+        return maxRes;
     }
 
 
