@@ -19,27 +19,29 @@ public class Question918 {
      * 第一种情况,只需要按照非循环数组的连续最大子数组和计算方式来算
      * 第二种情况,只需要算出数组总和,然后按第一种情况反向计算最小连续子数组的和,然后:总和 - 最小子数组和 = 最大子数组和
      * 两种情况都算出来后,在比较一次谁更大就可以了,非常的tricky
-     * @param A
+     * @param nums
      * @return
      */
     //leetcode 918
-    public int maxSubarraySumCircular(int[] A) {
-        int total = 0, maxSum = -30000, curMax = 0, minSum = 30000, curMin = 0;
-        for (int a : A) {
+    public int maxSubarraySumCircular(int[] nums) {
+        int total = 0;
+        int finalMax = Integer.MIN_VALUE, curMax = 0;
+        int finalMin = Integer.MAX_VALUE, curMin = 0;
+        for (int a : nums) {
             //当前最大加a之后的和
             curMax = Math.max(curMax + a, a);
             //总最大和与当前最大
-            maxSum = Math.max(maxSum, curMax);
+            finalMax = Math.max(finalMax, curMax);
             //当前最小加a后的和
             curMin = Math.min(curMin + a, a);
             //总最小与当前最小
-            minSum = Math.min(minSum, curMin);
+            finalMin = Math.min(finalMin, curMin);
             total += a;
         }
 
         //如果总最大大于0, 那么最终结果在  总最大 vs (总和-总最小) 之间产生
         //如果总最大小于等于0, 那么最终结果就是总最大
-        return maxSum > 0 ? Math.max(maxSum, total - minSum) : maxSum;
+        return finalMax > 0 ? Math.max(finalMax, total - finalMin) : finalMax;
     }
 
     /**
@@ -97,6 +99,7 @@ public class Question918 {
         list.add(root.val);
         preorder(root.right);
     }
+
 
 
 }
