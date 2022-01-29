@@ -25,7 +25,7 @@ public class HdfsClient {
         Path file = new Path(dir + "test.txt");
 
         fileSystem.mkdirs(dir);
-        fileSystem.copyFromLocalFile(new Path("/Users/liudun/test.txt"), file);
+        fileSystem.copyFromLocalFile(new Path("/Users/xxxx/test.txt"), file);
         FileStatus fileStatus = fileSystem.getFileStatus(file);
         System.out.println(fileStatus.getPath());
         System.out.println(fileStatus.getPath().toUri().getPath());

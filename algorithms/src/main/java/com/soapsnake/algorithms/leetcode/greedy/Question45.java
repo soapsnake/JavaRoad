@@ -1,7 +1,7 @@
 package com.soapsnake.algorithms.leetcode.greedy;
 
 /**
- * @author liudun <liudun@kuaishou.com>
+ * @author 
  * Created on 2021-05-05
  */
 public class Question45 {

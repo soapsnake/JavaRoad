@@ -42,8 +42,8 @@ public class Question452 {
     @Test
     public void testFindMinArrowShots() {
 //        Assert.fail("should this logic be false");
-        Person person1 = new Person("liudun", 18, 180);
-        Person person2 = new Person("liudun", 18, 180);
+        Person person1 = new Person("xxxx", 18, 180);
+        Person person2 = new Person("xxxx", 18, 180);
         Assert.assertEquals(person1, person2);
 
 
