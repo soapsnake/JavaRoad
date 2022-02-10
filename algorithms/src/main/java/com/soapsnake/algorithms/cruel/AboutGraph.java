@@ -1,16 +1,17 @@
 package com.soapsnake.algorithms.cruel;
 
-import org.junit.Assert;
 import org.junit.Test;
 
-import javax.management.QueryEval;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @author
@@ -187,6 +188,60 @@ public class AboutGraph {
             }
         }
     }
+
+    //310
+    public List<Integer> findMinHeightTrees(int n, int[][] edges) {
+        //思路: 构建图,
+        //然后遍历每一个node进行dfs,dfs的同时记录每一条路径的长度, node -> path,最后比较哪个node的path最短
+        if (n == 1) {
+            return Arrays.asList(0);
+        }
+        List<List<Integer>> graph = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            graph.add(new ArrayList<>());
+        }
+        int[] inDegree = new int[n];
+
+        //无向图标准构建方法,与有向图的区别是要add两次
+        for (int i = 0; i < edges.length; i++) {
+            int[] edge = edges[i];
+            graph.get(edge[0]).add(edge[1]);
+            graph.get(edge[1]).add(edge[0]);
+            inDegree[edge[0]]++;
+            inDegree[edge[1]]++;
+        }
+        Queue<Integer> queue = new LinkedList<>();
+        for (int i = 0; i < n; i++) {
+            if (inDegree[i] == 1) {
+                queue.offer(i);  //入度为1的node其实是最外层的叶子节点,我们从外向内就像剥洋葱一样
+            }
+        }
+        List<Integer> res = new ArrayList<>();
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            res = new ArrayList<>();  //res起到暂存的作用,最后保留的就是圆心的节点
+            for (int i = 0; i < size; i++) {
+                int cur = queue.poll();
+                res.add(cur);
+                for (int next : graph.get(cur)) {
+                    inDegree[next]--;
+                    if (inDegree[next] == 1) {
+                        queue.offer(next);
+                    }
+                }
+            }
+        }
+        return res;
+    }
+
+    @Test
+    public void testFind() {
+        AboutGraph a = new AboutGraph();
+        int n = 4;
+        int[][] edges = {{1,0}, {1,2}, {1,3}};
+        System.out.println(a.findMinHeightTrees(n, edges));
+    }
+
 
     public int maximumInvitations(int[] favorite) {
         List<List<Integer>> graph = new ArrayList<>();
