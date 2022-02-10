@@ -224,10 +224,10 @@ public class Question354 {
     public long mostPoints(int[][] questions) {
         //这个可能要用DP
         int n = questions.length;  //dp总长度
-        long[] dp = new long[n + 1];   //从index开始解的最大分数
+        long[] dp = new long[n + 1];   //从index开始解的最大分数, 倒着来
         for (int i = n - 1; i >= 0; i--) {
             int points = questions[i][0];
-            dp[i] = points;
+            dp[i] = points;  //做这个题的得分
             int indexRange = questions[i][1];
             if (i + indexRange < n) {
                 dp[i] += dp[i + indexRange + 1];

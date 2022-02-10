@@ -1,4 +1,4 @@
-package com.soapsnake.algorithms.leetcodecontext;
+package com.soapsnake.algorithms.cruel;
 
 import java.util.ArrayList;
 import java.util.Arrays;

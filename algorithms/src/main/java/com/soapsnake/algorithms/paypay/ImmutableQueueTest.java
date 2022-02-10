@@ -12,7 +12,7 @@ public class ImmutableQueueTest {
         immutableQueue.enQueue("Hello");
         immutableQueue.enQueue("world");
         immutableQueue.enQueue("I am");
-        immutableQueue.enQueue("liu dun");
+        immutableQueue.enQueue("xxxx");
     }
 
     @Test

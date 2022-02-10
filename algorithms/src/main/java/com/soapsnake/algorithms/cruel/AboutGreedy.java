@@ -1,5 +1,9 @@
 package com.soapsnake.algorithms.cruel;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 /**
  * @author 
  * Created on 2022-01-24
@@ -19,6 +23,24 @@ public class AboutGreedy {
             }
         }
         return res;
+    }
+
+    //2136
+    public int earliestFullBloom(int[] plantTime, int[] growTime) {
+        int n = plantTime.length;
+        List<Integer> list = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            list.add(i);
+        }
+        list.sort((o1, o2) -> growTime[o2] - growTime[o1]);
+        int ans = 0;
+        int pt = 0, gt = 0;
+        for (int index: list) {
+            pt += plantTime[index];
+            gt = pt + growTime[index];
+            ans = Math.max(ans, gt);
+        }
+        return ans;
     }
 
 
