@@ -1,6 +1,5 @@
 package com.soapsnake.algorithms.alib;
 
-import com.sun.tools.javac.code.TargetType;
 import org.junit.Ignore;
 import org.junit.Test;
 
