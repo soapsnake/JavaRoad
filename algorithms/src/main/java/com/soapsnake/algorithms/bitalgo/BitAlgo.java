@@ -2,6 +2,9 @@ package com.soapsnake.algorithms.bitalgo;
 
 
 import java.util.Arrays;
+import java.util.Random;
+
+import javax.sound.sampled.SourceDataLine;
 
 /**
  * 位运算
@@ -48,6 +51,25 @@ public class BitAlgo {
         int[] arr = {2, 3, 4};
         changeArr(arr);
         System.out.println(Arrays.toString(arr));
+
+
+        //异或XOR运算: ^ 运算用来判断两个数字是否相同,如果两个数字相同那么返回0, 如果不相同那么返回1
+        int a = 1;
+        int b = 1;
+        System.out.println(" 1 ^ 1 = " + (a ^ b));
+        
+        b = 0;
+        System.out.println(" 1 ^ 0 = "  + (a ^ b));
+        a = 0;
+        System.out.println(" 0 ^ 0 = "  + (a ^ b));
+        b = 1;
+        System.out.println(" 0 ^ 1 = "  + (a ^ b));
+        
+        int c = new Random().nextInt(100);
+        System.out.println("任意一个数字异或自身总是为0, c ^ c  = "  + (c ^ c));
+
+        System.out.println("任意一个数字异或0总是等于自身 c = " + c + ", c ^ 0  = "  + (c ^ 0));
+
 
     }
 
