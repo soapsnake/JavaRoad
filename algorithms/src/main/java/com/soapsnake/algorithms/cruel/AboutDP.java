@@ -200,14 +200,46 @@ public class AboutDP {
         System.out.println(Integer.bitCount(2));
         System.out.println(Integer.toBinaryString(2));
 
-
-
         System.out.println(Integer.bitCount(3));
         System.out.println(Integer.toBinaryString(3));
 
-
-
     }
 
+
+    public int maxCompatibilitySum(int[][] students, int[][] mentors) {
+        int m = students.length;
+        int n = students[0].length;
+        int max = 1 << m;
+
+        int[] stu = new int[m];
+        int[] teacher = new int[m];
+        for (int i = 0; i < m; i++) {
+            stu[i] = arrayToInt(students[i]);
+            teacher[i] = arrayToInt(mentors[i]);
+        }
+        int[] ans = new int[max];
+        for (int i = 1; i < max; i++) {
+            int count = Integer.bitCount(i);
+            for (int j = 0; j < m; j++ ) {
+                int pre = i ^ (1 << j);
+                if (pre < i) {
+                    ans[i] = Math.max(ans[i], ans[pre] + n - Integer.bitCount(stu[count - 1] ^ teacher[j]));
+                }
+            }
+        }
+        return ans[max - 1];
+    }
+
+    private int arrayToInt(int[] arr) {
+        int ans = 0;
+        for (int i = 0; i < arr.length; i++) {
+            ans = (ans << 1) | arr[i];
+        }
+        return ans;
+    }
+
+    public void systemjiusijidf(int args, String arsdfs, String[] intsdfds) {
+        Arrays.toString(intsdfds);
+    }
 
 }

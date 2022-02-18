@@ -41,14 +41,6 @@ public class WeeklyContext280 {
         helper(num1, num2);
     }
 
-
-    public static void main(String[] args) {
-        WeeklyContext280 weeklyContext280 = new WeeklyContext280();
-        int[] nums = {2,1,2,2,2,2};
-        System.out.println(weeklyContext280.minimumOperations(nums));
-        System.out.println(weeklyContext280.minimumOperations4(nums));
-    }
-
     public int minimumOperations4(int[] nums) {
     if (nums.length == 1) {
         return 0;
@@ -256,9 +248,42 @@ public class WeeklyContext280 {
         return ans;
     }
 
+    
+    public static void main(String[] args) {
+        WeeklyContext280 weeklyContext280 = new WeeklyContext280();
+        int[] nums = {2,1,2,2,2,2};
+        System.out.println(weeklyContext280.minimumOperations(nums));
+        System.out.println(weeklyContext280.minimumOperations4(nums));
+
+        weeklyContext280.printshits();
+    }
+
 
     public void printshits () {
-        
+       
+        Map<String, String> map = new HashMap<>();
+        map.put("ni hao","ya" );
+        map.put("wo bing bu", "hao");
+        map.put("wei shen", "ma");
+
+
+        map.forEach((k, v) -> {
+            System.out.println(k);
+        });
+
+        System.out.println("结束了1");
+
+        map.forEach((k, v) -> {
+            System.out.println(k);
+        });
+
+        System.out.println("结束了2");
+
+        map.forEach((k, v) -> {
+            System.out.println(k);
+        });
+        System.out.println("结束了3");
+
     }
 
 }

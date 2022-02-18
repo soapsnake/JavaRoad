@@ -2,7 +2,6 @@ package com.soapsnake.algorithms.cruel;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -137,4 +136,26 @@ public class AboutBinary {
         }
         return res;
     }
+
+    List<Integer> list = new ArrayList<>();
+    List<Integer> list2= new ArrayList<>();
+    List<Integer> list3 = new ArrayList<>();
+    List<Integer> list4 = new ArrayList<>();
+    List<Integer> list5 = new ArrayList<>();
+    List<Integer> list6 = new ArrayList<>();
+    List<Integer> list7 = new ArrayList<>();
+    List<Integer> list8 = new ArrayList<>();
+    List<Integer> list9 = new ArrayList<>();
+
+
+    List<Integer> list10 = new ArrayList<>();
+
+    List<Integer> list11 = new ArrayList<>();
+    List<Integer> list12 = new ArrayList<>();
+    List<Integer> list13 = new ArrayList<>();
+    List<Integer> list14 = new ArrayList<>();
+    List<Integer> list15 = new ArrayList<>();
+
+    
+
 }
