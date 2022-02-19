@@ -333,4 +333,8 @@ public class ArrayUtils {
         return count == 0;
     }
 
+    public void isValid(String s) {
+        if ()
+    } 
+
 }
