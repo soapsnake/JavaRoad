@@ -1,6 +1,10 @@
 package com.soapsnake.algorithms.cruel;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  *xxxx
@@ -241,5 +245,124 @@ public class AboutDP {
     public void systemjiusijidf(int args, String arsdfs, String[] intsdfds) {
         Arrays.toString(intsdfds);
     }
+    
 
+
+    public boolean canDistribute(int[] nums, int[] quantity) {
+        int status = 1 << quantity.length;
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            map.put(nums[i], map.getOrDefault(nums[i], 0) + 1);
+        }
+        int[] cnt = new int[map.size()];
+        int index = 0;
+        for (int times : map.values()) {
+            cnt[index++] = times;
+        }
+        //cnt存储的是每种货物的总量
+        int[] need = new int[status];
+        for (int i = 1; i < status; i++) {
+            int x = Integer.numberOfTrailingZeros(i); //lowbit
+            int y = (i ^ (1 << x));  
+            need[i] = need[y] + quantity[x];
+        }
+        boolean[][] dp = new boolean[status][cnt.length];
+        for (int i = 0; i < cnt.length; i++) {
+            dp[0][i] = true;
+        }
+        for (int i = 0; i < cnt.length; i++) {
+            for (int bitMask = 1; bitMask < status; bitMask++) {
+                if (i > 0 && dp[bitMask][i - 1]) {
+                    dp[bitMask][i] = true;
+                    continue;
+                }
+                for (int j = bitMask; j != 0; j = ((j - 1) & bitMask)) {
+                    int prev = (bitMask ^ j);
+                    if ((i == 0 ? prev == 0 : dp[prev][i - 1]) && cnt[i] >= need[j]) {
+                        dp[bitMask][i] = true;
+                        break;
+                    }
+                }
+            }
+        }
+        return dp[status - 1][cnt.length - 1];
+    }
+
+    
+    //https://leetcode-cn.com/problems/minimum-number-of-work-sessions-to-finish-the-tasks/solution/zhuang-ya-dpshi-shi-hou-xue-xi-yi-xia-li-q4mk/
+    public int minSessions(int[] tasks, int sessionTime) {
+        int n = tasks.length, m = 1 << n;
+        final int INF = 20;
+        int[] dp = new int[m];
+        Arrays.fill(dp, INF);
+
+        // 预处理每个状态，合法状态预设为 1
+        for (int i = 1; i < m; i++) {
+            int state = i, idx = 0;
+            int spend = 0;
+            while (state > 0) {
+                int bit = state & 1;
+                if (bit == 1) {
+                    spend += tasks[idx];
+                }
+                state >>= 1;
+                idx++;
+            }
+            if (spend <= sessionTime) {
+                dp[i] = 1;
+            }
+        }
+
+        // 对每个状态枚举子集，跳过已经有最优解的状态
+        for (int i = 1; i < m; i++) {
+            if (dp[i] == 1) {
+                continue;
+            }
+            int split = i >> 1;
+            // 由于转移是由子集与补集得来，因此可以将子集分割为两块，避免重复枚举
+            for (int j = (i - 1) & i; j > split; j = (j - 1) & i) {
+                // i 状态的最优解可能由当前子集 j 与子集 j 的补集得来
+                dp[i] = Math.min(dp[i], dp[j] + dp[i ^ j]);
+            }
+        }
+
+        return dp[m - 1];
+    }
+
+    //1713
+    public int minOperations(int[] t, int[] arr) {
+        int n = t.length, m = arr.length;
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < n; i++) {
+            map.put(arr[i],  i);
+        }
+        List<Integer> dup  = new ArrayList<>();
+        for (int i =0; i < m; i++) {
+            if(map.containsKey(arr[i])) {
+                dup.add(map.get(arr[i]));
+            }
+        }
+        int len = dup.size();
+        int[] dp = new int[len];
+        int[] g = new int[len + 1];
+        Arrays.fill(g, Integer.MAX_VALUE);
+        int max = 0;
+        for(int i = 0; i < len; i++) {
+            int l = 0, r = len;
+            while (r > l) {
+                int mid = 1 + (r - l) >> 1;
+                if(g[mid] > dup.get(i)) {
+                    r = mid - 1;
+                } else {
+                    l = mid;
+                }
+                int clen = r + 1;
+                dp[i] = clen;
+                g[clen] = Math.min(g[clen], dup.get(i));
+                max = Math.max(max, clen);
+            }
+        }
+        return m - max;
+    }
 }
+
