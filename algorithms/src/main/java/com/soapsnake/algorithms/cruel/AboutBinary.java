@@ -21,9 +21,12 @@ public class AboutBinary {
     /**
      * 二进制常用的运算有:
      * 1. 整数n的二进制表示中第k位(从右往左)是0还是1: n >> k & 1 (就是把n二进制的k位右移k位然后&1)
-     * 2. lowbit(x), 返回x的最后一位1 : x & -x
+     * 2. lowbit(x), 返回x的最后一位1 : x & -x    //常用来求n在二进制表示下最低位的1后后面的0构成的数值
      * //这个可以用来求整数n的二进制表示法中1的个数,类似于Integer.bitCount() ????
      * 3. 原码, 反码, 补码
+     * 
+     * 
+     * 4. 1 & (x >> 1) 判断x的二进制数中，第i位是否是1，从左到右数
      */
 
     public static void main(String[] args) {
@@ -35,7 +38,10 @@ public class AboutBinary {
         AboutBinary aboutBinary = new AboutBinary();
         int[] nums1 = { 1, 2 };
         int[] nums2 = { 2, 3 };
-        System.out.println(aboutBinary.minimumXORSum(nums1, nums2));
+        // System.out.println(aboutBinary.minimumXORSum(nums1, nums2));
+
+        System.out.println("3 >> 1 = " + (3 >> 1));   // 3 / 2 = 1
+
     }
 
     // 1879,这道题根本就不会做,基本思路是动态规划
@@ -136,26 +142,5 @@ public class AboutBinary {
         }
         return res;
     }
-
-    List<Integer> list = new ArrayList<>();
-    List<Integer> list2= new ArrayList<>();
-    List<Integer> list3 = new ArrayList<>();
-    List<Integer> list4 = new ArrayList<>();
-    List<Integer> list5 = new ArrayList<>();
-    List<Integer> list6 = new ArrayList<>();
-    List<Integer> list7 = new ArrayList<>();
-    List<Integer> list8 = new ArrayList<>();
-    List<Integer> list9 = new ArrayList<>();
-
-
-    List<Integer> list10 = new ArrayList<>();
-
-    List<Integer> list11 = new ArrayList<>();
-    List<Integer> list12 = new ArrayList<>();
-    List<Integer> list13 = new ArrayList<>();
-    List<Integer> list14 = new ArrayList<>();
-    List<Integer> list15 = new ArrayList<>();
-
-    
 
 }

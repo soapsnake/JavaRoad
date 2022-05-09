@@ -1,5 +1,6 @@
 package com.soapsnake.algorithms.cruel;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -29,6 +30,9 @@ public class AboutPalindrome {
                 break;
             }
         }
+
+        int[] temp = new int[res];
+        System.out.println(Arrays.toString(temp));
         return res;
     }
 }

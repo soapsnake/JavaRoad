@@ -329,4 +329,38 @@ public class AboutGraph {
         }
         return ans;
     }
+
+    //状态压缩DP
+    public int minNumberOfSemesters(int n, int[][] relations, int k) {
+        int[] pre = new int[n];
+        for(int[] relation:relations){
+            //1. 因为点编号是1到n,所以对应于0到n-1的数组，映射位置应为 i-1
+            //2. 使用状压代表课程先修
+            pre[relation[1]-1]|=1<<(relation[0]-1);
+        }
+        
+        int max = 1 << n;
+        int [] dp = new int[max];
+        Arrays.fill(dp,n);
+        dp[0]=0;
+        //3. 枚举学习课程的已经学习情况
+        for(int learned = 0; learned < max; learned++){
+            //4. 枚举当前学习情况，后续可学习的可能情况
+            int waitStudy = 0;
+            for(int i = 0; i < n; i++){
+                if((pre[i]&learned)==pre[i])
+                    waitStudy |= 1 << i;
+            }
+            //细节1. 枚举可学课程需要排除已学课程
+            waitStudy = waitStudy & (~learned);
+            //5. 枚举当前1的位置的子集（包含自身），然后用 当前课程= (当前课程-1)&所有可学课程,这种方式，循环找到所有课程枚举子集
+            for(int learnTerm = waitStudy; learnTerm>0; learnTerm = (learnTerm-1)&waitStudy){
+                //细节2. 枚举选择的本轮课程需要排除掉一轮学习可能超过最大目标课程的情况
+                if(Integer.bitCount(learnTerm)>k)
+                    continue;
+                dp[learned|learnTerm] = Math.min(dp[learned|learnTerm],dp[learned]+1);
+            }
+        }
+        return dp[max-1];
+    }
 }
