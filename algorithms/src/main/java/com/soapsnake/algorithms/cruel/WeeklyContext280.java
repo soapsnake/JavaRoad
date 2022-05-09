@@ -256,6 +256,12 @@ public class WeeklyContext280 {
         System.out.println(weeklyContext280.minimumOperations4(nums));
 
         weeklyContext280.printshits();
+
+
+        int[][] arr = new int[][]{{1 ,2},{3, 4}};
+        for (int[] tmp : arr) {
+            System.out.println(Arrays.toString(tmp));
+        }
     }
 
 
