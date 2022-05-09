@@ -25,6 +25,8 @@ public class WeeklyContext290 {
         WeeklyContext290 weeklyCOntext290 = new WeeklyContext290();
         int[][] circles = {{2, 2, 1}};
         System.out.println(weeklyCOntext290.countLatticePoints(circles));
+
+        StringBuilder sb = new StringBuilder("Hello");
     }
 
     public List<Integer> intersection(int[][] nums) {
