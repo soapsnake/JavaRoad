@@ -188,23 +188,6 @@ public class AboutBacktrack {
         List<Integer> list = Arrays.asList(1,2,3);
         System.out.println(aboutBacktrack.permutation(list));
     }
-    
-
-    List<Integer> list = new ArrayList<>();
-    List<Integer> list1 = new ArrayList<>();
-    List<Integer> list2 = new ArrayList<>();
-    List<Integer> list3 = new ArrayList<>();
-    List<Integer> list4 = new ArrayList<>(0);
-    List<Integer> list5 = new ArrayList<>(9);
-    List<Integer> list6 = new ArrayList<>(0);
-    List<Integer> list7 = new ArrayList<>(190);
-
-    List<Integer> list8 = new ArrayList<>(2);
-    List<Integer> list9 = new ArrayList<>(3);
-    
-
-
-
 
 }
 

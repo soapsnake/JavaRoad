@@ -81,14 +81,14 @@ public class TreeNode {
      *    2  4    7
      */
     public static TreeNode makeBinerSearchTree() {
-        TreeNode root = new TreeNode(5);
+        TreeNode root = new TreeNode(4);
 
-        root.left = new TreeNode(3);
-        root.left.left = new TreeNode(2);
-        root.left.right = new TreeNode(4);
+        root.left = new TreeNode(8);
+        root.left.left = new TreeNode(0);
+        root.left.right = new TreeNode(1);
 
-        root.right = new TreeNode(6);
-        root.right.right = new TreeNode(7);
+        root.right = new TreeNode(5);
+        root.right.right = new TreeNode(6);
         return root;
     }
 

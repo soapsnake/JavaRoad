@@ -74,4 +74,14 @@ public class AboutDFS {
             return ans;
         }
     }
+
+
+    public static void main(String[] args) {
+        int[][] arr = new int[1][2];
+        Arrays.sort(arr, (o1, o2) -> {
+            return o1[0] - o2[0];
+        });
+
+        System.out.println(Arrays.toString(arr));
+    }
 }
