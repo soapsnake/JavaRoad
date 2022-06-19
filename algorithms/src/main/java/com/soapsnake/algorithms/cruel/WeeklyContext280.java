@@ -262,6 +262,9 @@ public class WeeklyContext280 {
         for (int[] tmp : arr) {
             System.out.println(Arrays.toString(tmp));
         }
+
+        String sb = "";
+        sb.substring(1, 2);
     }
 
 

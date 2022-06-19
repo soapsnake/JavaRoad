@@ -1,6 +1,7 @@
 package com.soapsnake.algorithms.cruel;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -24,9 +25,28 @@ public class WeeklyContext290 {
     public static void main(String[] args) {
         WeeklyContext290 weeklyCOntext290 = new WeeklyContext290();
         int[][] circles = {{2, 2, 1}};
-        System.out.println(weeklyCOntext290.countLatticePoints(circles));
+        //System.out.println(weeklyCOntext290.countLatticePoints(circles));
 
-        StringBuilder sb = new StringBuilder("Hello");
+        //StringBuilder sb = new StringBuilder("Hello");
+        int a = 10;
+        int b = 12;
+        System.out.println("before swap, a = 10, b = 12");
+
+        weeklyCOntext290.swap(a, b);
+        System.out.println("after swap, a = " + a + " b = " + b);
+
+        Integer c = 14;
+        Integer d = 15;
+        System.out.println("before swap, c = 14, d = 15");
+        weeklyCOntext290.swap(c, d);
+        System.out.println("after swap, c = " + c + " d = " + d);
+    }
+
+
+    public void swap(Object a, Object b) {
+        Object tmp = a;
+        a = b;
+        b = tmp;
     }
 
     public List<Integer> intersection(int[][] nums) {
@@ -155,6 +175,73 @@ public class WeeklyContext290 {
         }
         return res;
     }
+
+    public int[] minDifference(int[] nums, int[][] queries) {
+        int[][] count = new int[nums.length][101];
+        int[] tmp = new int[101];
+        for(int i = 0 ; i < nums.length ; i++){
+            tmp[nums[i]]++;
+            count[i] = tmp.clone();
+        }
+        int n = queries.length;
+        int[] res = new int[n];
+        Arrays.fill(res , 105);
+        for(int i = 0 ; i < n ; i++){
+            int[] copy = queries[i];
+            int l = copy[0] , r = copy[1];
+            tmp = new int[101];
+            int pre = 0;
+            tmp[nums[l]]++;
+            for(int j = 0 ; j < 101 ; j++){
+                tmp[j] += count[r][j] - count[l][j];
+                if(tmp[j] > 0){
+                    if(pre == 0){
+                        pre = j;
+                    }else{
+                        res[i] = Math.min(j-pre , res[i]);
+                        pre = j;
+                    }
+                }
+            }
+            res[i] = res[i] == 105 ? -1 : res[i];
+        }
+        return res;
+    }
+
+
+    /**
+     * The idea is a simple trick. First, you notice that at every single element in our original nums array,
+     * you have 2 choices: To earn or not to earn. Based on problem, whichever element you earn, you must delete
+     * any values of nums[i]-1 and nums[i]+1. It helps to assume a sorted array so that you can place elements
+     * in ascending order to visualize the problem. You notice there that if you earn an element,
+     * you cannot earn its immediate unequal neighbors on both sides.
+     * You also notice that if you have duplicate values in nums array, if you earn one of them, you end up
+     * earning all of them. This is because you have deleted its neighbors and therefore make
+     * its remaining duplicates "undeletable". This is important because you notice the problem simplifies to which
+     * values can earn you the largest total.
+     * So I aggregated the sums into a sums array to map each value (array's index) with the total sum you can earn by
+     * deleting all elements of that value (array's value). Then write a for loop to compute the maximum sum ending
+     * at i At each step, your sum can either depend on your previous sum or the prior plus the current.
+     * You use a greedy algorithm to always pick the maximum value for each i.
+     * *** Notice that when you create sums array, it naturally orders (sorts) the elements for you in ascending order
+     * so you can traverse it and get its immediate unequal neighbors on both sides in O(1).
+     *
+     * sum[i] = Max(sum[i-1], sum[i-2] + sum[i])
+     * class Solution {
+     *     public int deleteAndEarn(int[] nums) {
+     *         int[] sum = new int[10002];
+     *
+     *         for(int i = 0; i < nums.length; i++){
+     *             sum[nums[i]] += nums[i];
+     *         }
+     *
+     *         for(int i = 2; i < sum.length; i++){
+     *             sum[i] = Math.max(sum[i-1], sum[i-2] + sum[i]);
+     *         }
+     *         return sum[10001];
+     *     }
+     * }
+     */
 
 
 }
