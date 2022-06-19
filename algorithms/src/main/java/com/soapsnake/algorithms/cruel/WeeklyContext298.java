@@ -35,12 +35,58 @@ public class WeeklyContext298 {
 
     public int minimumNumbers(int num, int k) {
         //1.求得是一个list的最小size, list中每个数字各位数都要是k, list所有数字相加得num
-        //思路: 如果num是两位数,先把所有满足条件的两位数搞出来,然后用2sum?
-        return 0;
+        //思路: 先把1 -> num所有尾数是k的数字全部枚举出来,然后使用coin change(同一枚硬币有无数枚)
+        int[] tmp;
+        List<Integer> list = new ArrayList<>();
+        for (int i = 1; i <= num; i++) {
+            if (i % 10 == k) {
+                list.add(i);
+            }
+        }
+        tmp = list.stream().mapToInt(x -> x).toArray();
+        return coinChange(tmp, num);
+    }
+
+    private int coinChange(int[] coins, int amount) {
+        //dp[i] = 金额达到i需要的最少coin数量
+        //dp[i] = dp[i - coins[k]] + 1;
+        //dp[i] = i;
+        int[] dp = new int[amount + 1];
+        for (int i = 0; i < dp.length; i++) {
+            dp[i] = i;
+        }
+        for (int i = 0; i < coins.length; i++) {
+            for (int coin : coins) {
+                if (i - coin >= 0) {
+                    dp[i] = dp[i - coin] + 1;
+                }
+            }
+        }
+        return dp[amount];
+    }
+
+    public int longestSubsequence(String s, int k) {
+        int zeros = 0;
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == '0') {
+                zeros++;
+            }
+        }
+        int ones = 0;
+        for (int i = s.length() - 1; i >= 0; i--) {
+            if (s.charAt(i) == '1') {
+                if (Long.parseLong(s.substring(i), 2) > k) {
+                    break;
+                } 
+                ones++;
+            }
+        }
+        return zeros + ones;
     }
 
 
-    public int longestSubsequence(String s, int k) {
+
+    public int longestSubsequence2(String s, int k) {
         //dp[i] 到索引i时的最长串的长度 dp[n]  new int[n + 1] 
         //dp[i] -> max(dp[i - 1] + 1, dp[i - 1])
         //dp[0] = 1,  
