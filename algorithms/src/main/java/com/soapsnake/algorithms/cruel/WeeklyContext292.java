@@ -4,6 +4,7 @@ import com.soapsnake.algorithms.structures.tree.TreeNode;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.TreeMap;
 
 /**
  * @author soapsnake <soapsnake@gmail.com>
@@ -17,6 +18,15 @@ public class WeeklyContext292 {
 
         TreeNode treeNode = TreeNode.makeBinerSearchTree();  //should be 5 but 4
         System.out.println(weeklyContext292.averageOfSubtree(treeNode));
+
+        TreeMap<Integer, Integer> map = new TreeMap<>();
+        //if no such entry exists, returns the entry for the least key greater than the specified key
+        //人话: 找到大于该key的最小一个key
+        map.ceilingKey(0);
+
+        //if no such entry exists, returns the entry for the greatest key less than the specified key
+        //人话: 找到小于该key的最大一个key
+        map.floorKey(1);
     }
 
     public String largestGoodInteger(String num) {
@@ -120,6 +130,7 @@ public class WeeklyContext292 {
             }
             if (cnt < 0) return false;
         }
+        String a = "";
         return cnt == 0;
     }
 
