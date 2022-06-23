@@ -109,7 +109,6 @@ public class WeeklyContext298 {
         System.out.println(Arrays.toString(dp));
         return prev.length();
     }
-
     private boolean check(String string, int k) {
         boolean res = Integer.parseInt(string, 2) <= k;
         System.out.println("s = " + string + "  => res = " + res);
