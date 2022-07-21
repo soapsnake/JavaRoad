@@ -9,7 +9,7 @@ import java.util.Map;
 /**
  * Google,Baidu 搜索栏自动补全提示系统,例如: 输入goo 弹出提示:google
  */
-class AutocompleteSystem {
+public class AutocompleteSystem {
     private Map<String, Integer> map;  //word -> count
     private StringBuilder sb;
     private TrieNode root;
