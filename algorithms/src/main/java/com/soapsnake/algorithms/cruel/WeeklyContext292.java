@@ -137,13 +137,3 @@ public class WeeklyContext292 {
 
 }
 
-class Node {
-    int x;
-    int y;
-    String s;
-    public Node(int x, int y, String s) {
-        this.x = x;
-        this.y = y;
-        this.s = s;
-    }
-}

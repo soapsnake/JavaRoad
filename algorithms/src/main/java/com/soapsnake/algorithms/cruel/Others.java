@@ -179,4 +179,56 @@ public class Others {
         }
         return new int[]{-1, -1};
     }
+
+    public int maximumScore(int[] scores, int[][] edges) {
+        //读题: 无向图, 要求返回一个长度为4的序列,这个序列的和最大,如果没有长度为4的序列那么返回0,
+        //思路: 枚举每个点
+        int n = scores.length;
+        List<int[]>[] graph = new ArrayList[n];
+        Arrays.setAll(graph, x -> new ArrayList<>());
+        for (int[] edge : edges) {
+            int x = edge[0];
+            int y = edge[1];
+            graph[x].add(new int[] {scores[y], y});
+            graph[y].add(new int[] {scores[x], x});
+        }
+        for (int i = 0; i < n; i++) {
+            if (graph[i].size() > 3) {
+                graph[i].sort((a, b) -> b[0] - a[0]);
+                graph[i] = new ArrayList<>(graph[i].subList(0, 3));
+            }
+        }
+        int ans = -1;
+        for (int[] edge : edges) {
+            int x = edge[0];
+            int y = edge[1];
+            for (int[] p : graph[x]) {
+                //枚举xy边所有与x点相邻的点
+                int a = p[1];
+                for (int[] q : graph[y]) {
+                    //枚举xy边所有与y点相邻的点
+                    int b = q[1];
+                    if (a != y && b != x && a != b) {
+                        ans = Math.max(ans, p[0] + scores[x] + scores[y] + q[0]);
+                    }
+                }
+            }
+        }
+        return ans;
+    }
+
+    public int latestTimeCatchTheBus(int[] buses, int[] passengers, int capacity) {
+        Arrays.sort(buses);
+        Arrays.sort(passengers);
+        int j = 0, c = 0;
+        for (int t : buses) {
+            for (c = capacity; c > 0 && j < passengers.length && passengers[j] <= t; --c) {
+                ++j;
+            }
+        }
+        --j;
+        int ans = c > 0 ? buses[buses.length - 1] : passengers[j];
+        while (j >= 0 && passengers[j--] == ans) --ans;
+        return ans;
+    }
 }
