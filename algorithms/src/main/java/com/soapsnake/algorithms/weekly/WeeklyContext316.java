@@ -64,6 +64,7 @@ public class WeeklyContext316 {
     public int subarrayGCD(int[] nums, int k) {
         //问题1: 如何快速判断一个数组的最大公约数是不是k
         //问题2:
+        return 0;
     }
 
     public int gcd(int a, int b) {
@@ -71,6 +72,6 @@ public class WeeklyContext316 {
     }
 
     public long minCost(int[] nums, int[] cost) {
-
+        return 0;
     }
 }
