@@ -1,14 +1,12 @@
 package com.soapsnake.algorithms;
 
-import org.apache.commons.collections4.map.HashedMap;
-
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-import static java.util.concurrent.TimeUnit.HOURS;
+import org.apache.commons.collections4.map.HashedMap;
 
 
 /**
@@ -34,15 +32,17 @@ public class TreadPoolTest {
     }
 
 
-    public void testTread(long time) {
-        threadPoolExecutor.submit(() -> this.testRun(time));
+    public void testTread(long time, CountDownLatch latch) {
+        threadPoolExecutor.submit(() -> this.testRun(time, latch));
     }
 
-    private void testRun(long time) {
+    private void testRun(long time, CountDownLatch latch) {
         try {
             Thread.sleep(time);
         } catch (InterruptedException e) {
             e.printStackTrace();
+        } finally {
+            latch.countDown();
         }
     }
 
@@ -51,11 +51,11 @@ public class TreadPoolTest {
         TreadPoolTest treadPoolTest = new TreadPoolTest();
         CountDownLatch latch = new CountDownLatch(1);
         System.out.println(treadPoolTest.find());
-        treadPoolTest.testTread(1);
-        treadPoolTest.testTread(1000 * 60 * 60 * 5L);
+        treadPoolTest.testTread(1, latch);
         treadPoolTest.setPool(15, 100);
         Thread.sleep(1000L);
         System.out.println(treadPoolTest.find());
+        System.out.println("Hello there!!!");
         latch.await();
 
     }
