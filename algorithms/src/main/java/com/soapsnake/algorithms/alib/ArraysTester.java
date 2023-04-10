@@ -228,6 +228,8 @@ public class ArraysTester {
     public void testFindFirstAccure() {
         String soure = "abaccdeff";
         System.out.println(findFirstAcure(soure));
+
+        System.out.println("haha");
     }
 
 
