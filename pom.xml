@@ -261,6 +261,7 @@
         <module>webflux</module>
         <module>lab</module>
         <module>scala</module>
+        <module>kotlin</module>
     </modules>
 
     <build>
