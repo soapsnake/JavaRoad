@@ -1,10 +1,8 @@
 package com.soapsnake.lab.reflact;
 
-import javax.annotation.Resource;
 import javax.management.MXBean;
 
 @MXBean
-@Resource
 public class ReflactTester {
 
     public int age;

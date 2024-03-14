@@ -262,6 +262,7 @@
         <module>lab</module>
         <module>scala</module>
         <module>kotlin</module>
+        <module>react-java-mysql</module>
     </modules>
 
     <build>
