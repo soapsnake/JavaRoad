@@ -1,10 +1,8 @@
-package main.kotlin.com.soapsnake.kotlin.test
+package main.kotlin.com.soapsnake.kotlin.normal
 import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.SerializationFeature
-import com.fasterxml.jackson.dataformat.xml.XmlMapper
-import com.fasterxml.jackson.module.kotlin.registerKotlinModule
 
 
 data class Person(
@@ -26,21 +24,26 @@ fun Person.filterFields(vararg fieldsToFilter: Set<String>): Person {
 }
 
 fun main() {
-    val jsonStr = "{\"optionKey\":\"toto\",\"columns\":[\"rcash_point\",\"sec_able_rcash_point\",\"month_rcash_point_total\",\"max_rcash_point_month\",\"max_rcash_point_order\",\"min_point\"]}"
-    val obj = parseJsonAwait<Some>(jsonStr)
-    println(obj)
-    println(obj.columns.javaClass)
 
-    val person = Person("Alice", 25, "123 Main St")
-    val filteredPerson = person.filterFields(setOf("name"))
-
-    val xmlMapper = XmlMapper().registerKotlinModule()
-    xmlMapper.enable(SerializationFeature.INDENT_OUTPUT)
-
-    println(filteredPerson)
-//    xmlMapper.setDefaultPropertyInclusion(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL)
-    val xmlString = xmlMapper.writeValueAsString(filteredPerson)
-    println(xmlString)
+    val list = emptyList<String>()
+    println(list.first().length)
+//
+//
+//    val jsonStr = "{\"optionKey\":\"toto\",\"columns\":[\"rcash_point\",\"sec_able_rcash_point\",\"month_rcash_point_total\",\"max_rcash_point_month\",\"max_rcash_point_order\",\"min_point\"]}"
+//    val obj = parseJsonAwait<Some>(jsonStr)
+//    println(obj)
+//    println(obj.columns.javaClass)
+//
+//    val person = Person("Alice", 25, "123 Main St")
+//    val filteredPerson = person.filterFields(setOf("name"))
+//
+//    val xmlMapper = XmlMapper().registerKotlinModule()
+//    xmlMapper.enable(SerializationFeature.INDENT_OUTPUT)
+//
+//    println(filteredPerson)
+////    xmlMapper.setDefaultPropertyInclusion(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL)
+//    val xmlString = xmlMapper.writeValueAsString(filteredPerson)
+//    println(xmlString)
 }
 
 

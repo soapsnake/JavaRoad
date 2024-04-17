@@ -63,7 +63,7 @@ public class AppTest {
         SomeClass some3 = new SomeClass();
         //虽然Number是Integer的父类型
         // 但是SomeClass<Number> 类型和SomeClass<Integer> 之间没有任何联系
-//        test(someInte);
+//        normal(someInte);
 
         test(someNum);
         test(some3);

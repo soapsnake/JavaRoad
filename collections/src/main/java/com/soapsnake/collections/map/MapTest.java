@@ -21,9 +21,11 @@ public class MapTest {
 
 
         Map<ClassMates, Integer> map2 = new ConcurrentHashMap<>();
+        map.containsKey("321");
         map2.put(mates2, 8);
 
         SomeOne someOne = new SomeOne();
+
 
 
         class A {

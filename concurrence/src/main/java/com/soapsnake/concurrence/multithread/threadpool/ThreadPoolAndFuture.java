@@ -18,7 +18,7 @@ public class ThreadPoolAndFuture {
         task.run();
         task.run();
         task.run();
-        System.out.println("test 1 ,time is = " + (System.currentTimeMillis() - start) / 1000);
+        System.out.println("normal 1 ,time is = " + (System.currentTimeMillis() - start) / 1000);
 
         Long start2 = System.currentTimeMillis();
 
@@ -38,7 +38,7 @@ public class ThreadPoolAndFuture {
         System.out.println(future4.get());
         System.out.println(future5.get());
 
-        System.out.println("test 2 ,time is = " + (System.currentTimeMillis() - start2) / 1000);
+        System.out.println("normal 2 ,time is = " + (System.currentTimeMillis() - start2) / 1000);
 
         executorService.shutdown();
 

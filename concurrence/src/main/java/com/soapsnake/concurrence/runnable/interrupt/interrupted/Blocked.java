@@ -31,7 +31,7 @@ public class Blocked implements Runnable {
                     n1.cleanup();
                 }
             }
-            System.out.println("Exiting via while() test");
+            System.out.println("Exiting via while() normal");
         } catch (Exception e) {
             //: handle exception
             System.out.println("Exiting via InterruptedException");

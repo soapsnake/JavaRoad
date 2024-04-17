@@ -1,4 +1,4 @@
-package main.kotlin.com.soapsnake.kotlin.coroutine
+package main.kotlin.com.soapsnake.kotlin.coroutine.lab
 
 import kotlin.coroutines.Continuation
 import kotlin.coroutines.CoroutineContext

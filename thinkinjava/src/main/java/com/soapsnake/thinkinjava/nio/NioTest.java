@@ -30,7 +30,7 @@ public class NioTest {
             System.out.println(key.interestOps());
 
 
-            System.out.println("test over ...");
+            System.out.println("normal over ...");
 
         } catch (IOException e) {
             e.printStackTrace();

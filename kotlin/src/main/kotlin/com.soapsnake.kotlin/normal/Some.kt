@@ -1,4 +1,4 @@
-package main.kotlin.com.soapsnake.kotlin.test
+package main.kotlin.com.soapsnake.kotlin.normal
 
 /**
  * Created on 2023-07-07

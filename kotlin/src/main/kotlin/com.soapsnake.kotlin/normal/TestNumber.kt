@@ -1,4 +1,4 @@
-package main.kotlin.com.soapsnake.kotlin.test
+package main.kotlin.com.soapsnake.kotlin.normal
 
 import java.time.ZoneId
 import java.time.ZonedDateTime

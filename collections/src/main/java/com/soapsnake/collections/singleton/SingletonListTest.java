@@ -18,11 +18,11 @@ public class SingletonListTest {
 
         System.out.println(list);
 
-        List list1 = Collections.singletonList("test");
+        List list1 = Collections.singletonList("normal");
 
         //singletonList不支持add,remove等操作
 //        list1.add("single");
-//        list1.remove("test");
+//        list1.remove("normal");
 
         System.out.println(list1);
 

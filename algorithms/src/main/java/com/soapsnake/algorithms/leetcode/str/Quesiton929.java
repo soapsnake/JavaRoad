@@ -9,14 +9,14 @@ import java.util.List;
  * <p>
  * Example 1:
  * <p>
- * Input: ["test.email+alex@leetcode.com","test.e.mail+bob.cathy@leetcode.com","testemail+david@lee.tcode.com"]
+ * Input: ["normal.email+alex@leetcode.com","normal.e.mail+bob.cathy@leetcode.com","testemail+david@lee.tcode.com"]
  * Output: 2
  * Explanation: "testemail@leetcode.com" and "testemail@lee.tcode.com" actually receive mails
  */
 class Quesiton929 {
 
     public static void main(String[] args) {
-        String[] emiai = {"test.email+alex@leetcode.com", "test.e.mail+bob.cathy@leetcode.com", "testemail+david@lee.tcode.com"
+        String[] emiai = {"normal.email+alex@leetcode.com", "normal.e.mail+bob.cathy@leetcode.com", "testemail+david@lee.tcode.com"
         };
         Quesiton929 quesiton929 = new Quesiton929();
         System.out.println(quesiton929.numUniqueEmails(emiai));

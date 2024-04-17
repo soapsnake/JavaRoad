@@ -1,7 +1,10 @@
 package com.soapsnake.algorithms.acwing.lecture1;
 
+import com.soapsnake.algorithms.structures.tree.Node;
+
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -74,6 +77,16 @@ public class Question1_quicksort {
 
 
     public long maximumHappinessSum(int[] happiness, int k) {
+        LinkedList<Node> list = new LinkedList<>();
+        Node no = new Node(1);
+        list.addFirst(no);
+        list.lastIndexOf(no);
+        int index = 2;
+        list.remove(index);
+
+
+
+
         //
         int n = happiness.length;
         Arrays.sort(happiness);

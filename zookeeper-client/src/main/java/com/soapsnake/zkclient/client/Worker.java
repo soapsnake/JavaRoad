@@ -81,7 +81,7 @@ public class Worker implements Watcher {
 
     void stopZK() throws InterruptedException, KeeperException {
 //        zk.exists("/workers",this,existsCallBack,null);
-        zk.delete("/workers/worker-test", -1);
+        zk.delete("/workers/worker-normal", -1);
         Thread.sleep(2000);
         zk.delete("/workers", -1);
         zk.close();
@@ -144,13 +144,13 @@ public class Worker implements Watcher {
     void registWorker() {
         //创建节点
         try {
-            zk.create("/workers/worker-test",
+            zk.create("/workers/worker-normal",
                     "Idle".getBytes(),
                     ZooDefs.Ids.OPEN_ACL_UNSAFE,
                     CreateMode.PERSISTENT);
 
             //手动监控子节点
-            zk.exists("/workers/worker-test", true);
+            zk.exists("/workers/worker-normal", true);
         } catch (KeeperException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {

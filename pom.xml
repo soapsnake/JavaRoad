@@ -263,6 +263,7 @@
         <module>scala</module>
         <module>kotlin</module>
         <module>react-java-mysql</module>
+        <module>docker-redis-cluster</module>
     </modules>
 
     <build>

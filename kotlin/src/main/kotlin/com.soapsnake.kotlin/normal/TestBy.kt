@@ -1,4 +1,4 @@
-package main.kotlin.com.soapsnake.kotlin.test
+package main.kotlin.com.soapsnake.kotlin.normal
 
 interface Sound {
     fun makeSound()

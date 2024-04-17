@@ -1,4 +1,4 @@
-package main.kotlin.com.soapsnake.kotlin.coroutine
+package main.kotlin.com.soapsnake.kotlin.coroutine.lab
 
 import kotlin.coroutines.Continuation
 import kotlin.coroutines.ContinuationInterceptor
@@ -9,9 +9,9 @@ var list: List<Int> = emptyList()
 var coroutineContext : CoroutineContext = EmptyCoroutineContext
 
 
-class CoroutineName(private val name: String) : CoroutineContext.Element {
+class CoroutineName1(private val name: String) : CoroutineContext.Element {
 
-    companion object Key: CoroutineContext.Key<CoroutineName>
+    companion object Key: CoroutineContext.Key<CoroutineName1>
 
     override val key: CoroutineContext.Key<*>
         get() = Key
