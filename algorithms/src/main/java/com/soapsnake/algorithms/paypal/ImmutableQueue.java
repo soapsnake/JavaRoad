@@ -1,4 +1,4 @@
-package com.soapsnake.algorithms.paypay;
+package com.soapsnake.algorithms.paypal;
 
 import java.util.Arrays;
 import java.util.concurrent.locks.ReentrantLock;

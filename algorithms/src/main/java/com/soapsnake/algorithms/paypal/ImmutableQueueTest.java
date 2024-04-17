@@ -1,4 +1,4 @@
-package com.soapsnake.algorithms.paypay;
+package com.soapsnake.algorithms.paypal;
 
 import org.junit.Assert;
 import org.junit.Test;

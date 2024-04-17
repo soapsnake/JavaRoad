@@ -1,4 +1,4 @@
-package com.soapsnake.algorithms.paypay;
+package com.soapsnake.algorithms.paypal;
 
 public interface Queue<T> {
 
