@@ -261,7 +261,7 @@
         <module>webflux</module>
         <module>lab</module>
         <module>scala</module>
-        <module>kotlin</module>
+<!--        <module>kotlin</module>-->
         <module>react-java-mysql</module>
         <module>docker-redis-cluster</module>
     </modules>
