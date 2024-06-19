@@ -1,6 +1,5 @@
 package main.kotlin.com.soapsnake.kotlin.coroutine.lab
 
-import kotlin.system.measureTimeMillis
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ObsoleteCoroutinesApi
 import kotlinx.coroutines.coroutineScope
@@ -10,9 +9,10 @@ import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
+import kotlin.system.measureTimeMillis
 
 suspend fun massiveRun(action: suspend () -> Unit) {
-    val n = 100  // 启动的协程数量
+    val n = 100 // 启动的协程数量
     val k = 1000 // 每个协程重复执行同一动作的次数
     val time = measureTimeMillis {
         coroutineScope { // 协程的作用域
@@ -27,12 +27,12 @@ suspend fun massiveRun(action: suspend () -> Unit) {
 }
 
 @OptIn(ObsoleteCoroutinesApi::class)
-val counterContext = newSingleThreadContext("CounterContext")  //单线程
+val counterContext = newSingleThreadContext("CounterContext") // 单线程
 
-//sampleStart
+// sampleStart
 var counter = 0
 
-//fun main() = runBlocking {
+// fun main() = runBlocking {
 //    withContext(Dispatchers.Default) {
 //        massiveRun {
 //            withContext(counterContext) {
@@ -41,9 +41,8 @@ var counter = 0
 //        }
 //    }
 //    println("Counter = $counter")
-//}
-//sampleEnd
-
+// }
+// sampleEnd
 
 val mutex = Mutex()
 fun main() = runBlocking {

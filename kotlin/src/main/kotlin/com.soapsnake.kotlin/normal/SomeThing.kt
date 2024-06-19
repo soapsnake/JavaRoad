@@ -4,17 +4,17 @@ import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.SerializationFeature
 
-
 data class Person(
-                @JsonInclude(JsonInclude.Include.NON_NULL)
-                val name: String,
-                  @JsonInclude(JsonInclude.Include.NON_NULL)
-                  val age: Int?,
-                  @JsonInclude(JsonInclude.Include.NON_NULL)
-                    val address: String)
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    val name: String,
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    val age: Int?,
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    val address: String
+)
 fun Person.filterFields(vararg fieldsToFilter: Set<String>): Person {
     val filteredFields = this::class.java.declaredFields.filter { field ->
-        fieldsToFilter.any { it.contains( field.name) }
+        fieldsToFilter.any { it.contains(field.name) }
     }
     filteredFields.forEach { field ->
         field.isAccessible = true
@@ -24,7 +24,6 @@ fun Person.filterFields(vararg fieldsToFilter: Set<String>): Person {
 }
 
 fun main() {
-
     val list = emptyList<String>()
     println(list.first().length)
 //
@@ -41,11 +40,10 @@ fun main() {
 //    xmlMapper.enable(SerializationFeature.INDENT_OUTPUT)
 //
 //    println(filteredPerson)
-////    xmlMapper.setDefaultPropertyInclusion(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL)
+// //    xmlMapper.setDefaultPropertyInclusion(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL)
 //    val xmlString = xmlMapper.writeValueAsString(filteredPerson)
 //    println(xmlString)
 }
-
 
 inline fun <reified T> parseJsonAwait(deserialized: String): T {
     val objectMapper: ObjectMapper = ObjectMapper()
@@ -55,6 +53,5 @@ inline fun <reified T> parseJsonAwait(deserialized: String): T {
 //        ))
         .disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
         .disable(DeserializationFeature.ADJUST_DATES_TO_CONTEXT_TIME_ZONE)
-   return objectMapper.readValue(deserialized, T::class.java)
+    return objectMapper.readValue(deserialized, T::class.java)
 }
-

@@ -16,8 +16,4 @@ fun main() {
     println("GMT 时间带微秒: $gmtTimeWithMicros")
 }
 
-
-class TimeStamp {
-
-
-}
+class TimeStamp

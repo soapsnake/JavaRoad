@@ -5,9 +5,8 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 
-
 fun main() = runBlocking(CoroutineName("main")) {
-//sampleStart
+// sampleStart
     log("Started main coroutine")
     // 运行两个后台值计算
     val v1 = async(CoroutineName("v1coroutine")) {
@@ -21,5 +20,5 @@ fun main() = runBlocking(CoroutineName("main")) {
         6
     }
     log("The answer for v1 / v2 = ${v1.await() / v2.await()}")
-//sampleEnd
+// sampleEnd
 }

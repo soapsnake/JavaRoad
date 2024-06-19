@@ -11,7 +11,7 @@ open class DispatcherContext(private val dispatcher: Dispatcher) :
 }
 
 private class DispatchedContinuation<T> (
-    val delegate : Continuation<T>,
+    val delegate: Continuation<T>,
     val dispatcher: Dispatcher
 ) : Continuation<T> {
     override val context = delegate.context

@@ -1,7 +1,7 @@
 package main.kotlin.com.soapsnake.kotlin.coroutine.lite.core
 
-import kotlin.coroutines.CoroutineContext
 import main.kotlin.com.soapsnake.kotlin.coroutine.lite.dispose.Disposable
+import kotlin.coroutines.CoroutineContext
 
 /**
  * 协程抽象, 类比Java的线程Thread来理解
@@ -10,27 +10,25 @@ interface Job : CoroutineContext.Element {
 
     companion object Key : CoroutineContext.Key<Job>
 
-
     /**
      * 用于将协程的Job实例存入上下文,这样就可以从上下文中随意获取协程实例
      */
-    override val key : CoroutineContext.Key<*> get() = Job
-
+    override val key: CoroutineContext.Key<*> get() = Job
 
     /**
      * @see Thread.isAlive
      */
-    val isActive : Boolean
+    val isActive: Boolean
 
     /**
      * 注册一个协程被取消时触发的回调函数
      */
-    fun invokeOnCancel(onCancel : OnCancel) : Disposable
+    fun invokeOnCancel(onCancel: OnCancel): Disposable
 
     /**
      * 注册一个协程完成时的回调函数
      */
-    fun invokeOnCompletion(onComplete : OnComplete): Disposable
+    fun invokeOnCompletion(onComplete: OnComplete): Disposable
 
     /**
      * 类比线程的interrupt()
@@ -41,7 +39,7 @@ interface Job : CoroutineContext.Element {
     /**
      * 用于移除回调(取消 or 完成)函数
      */
-    fun remove(disposable : Disposable)
+    fun remove(disposable: Disposable)
 
     /**
      * Thread的join会阻塞线程
@@ -52,7 +50,6 @@ interface Job : CoroutineContext.Element {
      * @see delay
      */
     suspend fun join()
-
 }
 
 typealias OnComplete = () -> Unit

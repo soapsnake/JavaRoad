@@ -1,10 +1,5 @@
 package main.kotlin.com.soapsnake.kotlin.coroutine.lite.core
 
-import java.util.concurrent.atomic.AtomicReference
-import kotlin.coroutines.Continuation
-import kotlin.coroutines.CoroutineContext
-import kotlin.coroutines.cancellation.CancellationException
-import kotlin.coroutines.resume
 import main.kotlin.com.soapsnake.kotlin.coroutine.lab.coroutineContext
 import main.kotlin.com.soapsnake.kotlin.coroutine.lite.core.CoroutineState.Incomplete
 import main.kotlin.com.soapsnake.kotlin.coroutine.lite.dispose.CancellationHandlerDisposable
@@ -12,7 +7,11 @@ import main.kotlin.com.soapsnake.kotlin.coroutine.lite.dispose.CompletionHandler
 import main.kotlin.com.soapsnake.kotlin.coroutine.lite.dispose.Disposable
 import main.kotlin.com.soapsnake.kotlin.coroutine.lite.scope.CoroutineScope1
 import main.kotlin.com.soapsnake.kotlin.coroutine.lite.suspendCancellableCoroutine
-
+import java.util.concurrent.atomic.AtomicReference
+import kotlin.coroutines.Continuation
+import kotlin.coroutines.CoroutineContext
+import kotlin.coroutines.cancellation.CancellationException
+import kotlin.coroutines.resume
 
 /**
  * Job的抽象子类
@@ -29,10 +28,9 @@ abstract class AbstractCoroutine<T> (context: CoroutineContext) : Job, Continuat
         }
     }
 
-
     protected val state = AtomicReference<CoroutineState>()
 
-    override val context : CoroutineContext
+    override val context: CoroutineContext
 
     override val scopeContext: CoroutineContext
         get() = context
@@ -46,7 +44,7 @@ abstract class AbstractCoroutine<T> (context: CoroutineContext) : Job, Continuat
         get() = state.get() is CoroutineState.Complete<*>
 
     override val isActive: Boolean
-        get() = when(state.get()) {
+        get() = when (state.get()) {
             is CoroutineState.Complete<*> -> false
             is CoroutineState.Cancelling -> false
             else -> true
@@ -72,7 +70,7 @@ abstract class AbstractCoroutine<T> (context: CoroutineContext) : Job, Continuat
             }
         }
 
-        //如果新状态是已完成,需要立刻调用回调
+        // 如果新状态是已完成,需要立刻调用回调
         (newState as? CoroutineState.Complete<T>)?.let {
             block(
                 when {
@@ -86,8 +84,8 @@ abstract class AbstractCoroutine<T> (context: CoroutineContext) : Job, Continuat
     }
 
     override fun cancel() {
-        val prevState = state.getAndUpdate {prev ->
-            when(prev) {
+        val prevState = state.getAndUpdate { prev ->
+            when (prev) {
                 is Incomplete -> {
                     CoroutineState.Cancelling()
                 }
@@ -95,7 +93,7 @@ abstract class AbstractCoroutine<T> (context: CoroutineContext) : Job, Continuat
                 is CoroutineState.Complete<*> -> prev
             }
         }
-        if(prevState is Incomplete) {
+        if (prevState is Incomplete) {
             prevState.notifyCancellation()
             prevState.clear()
         }
@@ -103,11 +101,11 @@ abstract class AbstractCoroutine<T> (context: CoroutineContext) : Job, Continuat
     }
 
     override suspend fun join() {
-        when(state.get()) {
+        when (state.get()) {
             is Incomplete, is CoroutineState.Cancelling -> return joinSuspend()
             is CoroutineState.Complete<*> -> {
                 val currentCallingJobState = coroutineContext[Job]?.isActive ?: return
-                if(!currentCallingJobState) {
+                if (!currentCallingJobState) {
                     throw CancellationException("coroutine is cancelled!!")
                 }
                 return
@@ -115,14 +113,13 @@ abstract class AbstractCoroutine<T> (context: CoroutineContext) : Job, Continuat
         }
     }
 
-
     /**
      * @see delay
      */
     private suspend fun joinSuspend() =
-        //suspendCoroutine 会挂起当前协程
-        suspendCancellableCoroutine<Unit>  { continuation ->
-            val dispos : Disposable = doOnCompleted { result ->
+        // suspendCoroutine 会挂起当前协程
+        suspendCancellableCoroutine<Unit> { continuation ->
+            val dispos: Disposable = doOnCompleted { result ->
                 continuation.resume(Unit)
             }
             continuation.invokeOnCancellation { dispos.dispose() }
@@ -130,11 +127,11 @@ abstract class AbstractCoroutine<T> (context: CoroutineContext) : Job, Continuat
 
     override fun resumeWith(result: Result<T>) {
         val newState = state.updateAndGet { prev ->
-            when(prev) {
+            when (prev) {
                 is CoroutineState.Cancelling,
-                    is Incomplete -> {
-                        CoroutineState.Complete(result.getOrNull(), result.exceptionOrNull()).from(prev)
-                    }
+                is Incomplete -> {
+                    CoroutineState.Complete(result.getOrNull(), result.exceptionOrNull()).from(prev)
+                }
                 is CoroutineState.Complete<*> -> {
                     throw IllegalStateException("Already completed!")
                 }
@@ -146,14 +143,14 @@ abstract class AbstractCoroutine<T> (context: CoroutineContext) : Job, Continuat
 
     override fun invokeOnCancel(onCancel: OnCancel): Disposable {
         val disposable = CancellationHandlerDisposable(this, onCancel)
-        val newState = state.updateAndGet {prev ->
-            when(prev) {
+        val newState = state.updateAndGet { prev ->
+            when (prev) {
                 is Incomplete -> {
                     Incomplete().from(prev).with(disposable)
                 }
                 is CoroutineState.Cancelling,
                 is CoroutineState.Complete<*> -> {
-                        prev
+                    prev
                 }
             }
         }
@@ -174,8 +171,8 @@ abstract class AbstractCoroutine<T> (context: CoroutineContext) : Job, Continuat
      * 移除注册的回调
      */
     override fun remove(disposable: Disposable) {
-        state.updateAndGet {prev ->
-            when(prev) {
+        state.updateAndGet { prev ->
+            when (prev) {
                 is Incomplete -> {
                     Incomplete().from(prev).without(disposable)
                 }
@@ -194,5 +191,4 @@ abstract class AbstractCoroutine<T> (context: CoroutineContext) : Job, Continuat
     }
 
     protected open fun handleJobException(e: Throwable) = false
-
 }

@@ -6,9 +6,9 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 fun main() = runBlocking<Unit> {
-//sampleStart
+// sampleStart
     launch(Dispatchers.Default + CoroutineName("normal")) {
         println("I'm working in thread ${Thread.currentThread().name}")
     }
-//sampleEnd
+// sampleEnd
 }

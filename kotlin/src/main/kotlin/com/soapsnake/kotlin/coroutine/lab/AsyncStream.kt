@@ -36,7 +36,7 @@ fun main() {
 
     runBlocking {
         launch {
-            for(k in 1..3) {
+            for (k in 1..3) {
                 println("I'm not blocked $k")
                 delay(10000)
             }

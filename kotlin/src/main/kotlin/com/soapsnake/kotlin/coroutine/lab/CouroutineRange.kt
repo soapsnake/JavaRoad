@@ -6,7 +6,6 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
-
 class Activity {
     private val mainScope = MainScope()
 
@@ -27,7 +26,7 @@ class Activity {
 } // Activity 类结束
 
 fun main() = runBlocking<Unit> {
-//sampleStart
+// sampleStart
     val activity = Activity()
     activity.doSomething() // 运行测试函数
     println("Launched coroutines")
@@ -35,5 +34,5 @@ fun main() = runBlocking<Unit> {
     println("Destroying activity!")
     activity.destroy() // 取消所有的协程
     delay(1000) // 为了在视觉上确认它们没有工作
-//sampleEnd
+// sampleEnd
 }

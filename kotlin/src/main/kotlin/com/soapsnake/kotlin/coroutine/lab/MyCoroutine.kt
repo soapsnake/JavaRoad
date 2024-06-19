@@ -6,12 +6,11 @@ import kotlin.coroutines.CoroutineContext
 import kotlin.coroutines.EmptyCoroutineContext
 
 var list: List<Int> = emptyList()
-var coroutineContext : CoroutineContext = EmptyCoroutineContext
-
+var coroutineContext: CoroutineContext = EmptyCoroutineContext
 
 class CoroutineName1(private val name: String) : CoroutineContext.Element {
 
-    companion object Key: CoroutineContext.Key<CoroutineName1>
+    companion object Key : CoroutineContext.Key<CoroutineName1>
 
     override val key: CoroutineContext.Key<*>
         get() = Key
@@ -28,22 +27,18 @@ interface CoroutineExceptionHandler : CoroutineContext.Element {
     fun handleException(context: CoroutineContext, exception: Throwable)
 }
 
-
 class LogInterceptor : ContinuationInterceptor {
     override val key = ContinuationInterceptor
 
-    override fun <T> interceptContinuation(continuation: Continuation<T>)
-            = LogContinuation(continuation)
+    override fun <T> interceptContinuation(continuation: Continuation<T>) =
+        LogContinuation(continuation)
 }
 
-class LogContinuation<T>(private val continuation: Continuation<T>)
-    : Continuation<T> by continuation {
+class LogContinuation<T>(private val continuation: Continuation<T>) :
+    Continuation<T> by continuation {
     override fun resumeWith(result: Result<T>) {
         println("before resumeWith: $result")
-          continuation.resumeWith(result)
+        continuation.resumeWith(result)
         println("after resumeWith.")
     }
 }
-
-
-

@@ -12,7 +12,7 @@ fun log(msg: String) = println("[${Thread.currentThread().name}] $msg")
  */
 @OptIn(ObsoleteCoroutinesApi::class)
 fun main() {
-//sampleStart
+// sampleStart
     newSingleThreadContext("Ctx1").use { ctx1 ->
         newSingleThreadContext("Ctx2").use { ctx2 ->
             runBlocking(ctx1) {
@@ -24,6 +24,5 @@ fun main() {
             }
         }
     }
-//sampleEnd
+// sampleEnd
 }
-

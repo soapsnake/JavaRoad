@@ -6,9 +6,7 @@ import java.time.ZonedDateTime
 /**
  * Created on 2023-07-19
  */
-class TestNumber {
-
-}
+class TestNumber
 
 fun main() {
 //    val point = 100000
@@ -17,21 +15,19 @@ fun main() {
     val redeemUnit = 1
     val requestAuthPoint = 1001
 
-    val realAuthPoint = if (redeemUnit != null) {
+    val realAuthPoint = run {
         val rem = requestAuthPoint.rem(redeemUnit)
         println("rem = $rem")
         val res = requestAuthPoint.minus(rem)
         println("res=$res")
         res
-    } else {
-        requestAuthPoint
     }
     println(realAuthPoint)
 
     val fds = 10
     println(fds.rem(10))
 
-    val now = ZonedDateTime.now();
+    val now = ZonedDateTime.now()
     println(now.withZoneSameInstant(ZoneId.of("Asia/Shanghai")))
     println(now.withZoneSameInstant(ZoneId.of("Asia/Tokyo")))
 }

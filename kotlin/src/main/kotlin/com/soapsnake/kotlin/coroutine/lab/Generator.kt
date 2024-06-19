@@ -8,9 +8,8 @@ import kotlin.coroutines.resume
 import kotlin.coroutines.startCoroutine
 import kotlin.coroutines.suspendCoroutine
 
-
 interface Generator<T> {
-    operator fun iterator() : Iterator<T>
+    operator fun iterator(): Iterator<T>
 }
 
 interface GeneratorScope<T> {
@@ -27,20 +26,19 @@ class GeneratorImpl<T>(block: suspend GeneratorScope<T>.(T) -> Unit) : Generator
     override fun iterator(): Iterator<T> {
         TODO("Not yet implemented")
     }
-
 }
 
 class GeneratorIterator<T> (
-    private val block : suspend GeneratorScope<T>.(T) -> Unit,
-    private val parameter : T
-    ) : GeneratorScope<T>, Iterator<T>, Continuation<Any?> {
+    private val block: suspend GeneratorScope<T>.(T) -> Unit,
+    private val parameter: T
+) : GeneratorScope<T>, Iterator<T>, Continuation<Any?> {
     override val context: CoroutineContext
         get() = EmptyCoroutineContext
 
     private var state: State
 
     init {
-        val coroutineBlock : suspend GeneratorScope<T>.() -> Unit = { block(parameter) }
+        val coroutineBlock: suspend GeneratorScope<T>.() -> Unit = { block(parameter) }
         val start = coroutineBlock.createCoroutine(this, this)
         state = State.NotReady(start)
     }
@@ -51,7 +49,7 @@ class GeneratorIterator<T> (
     }
 
     private fun resume() {
-        when(val currentState = state) {
+        when (val currentState = state) {
             is State.NotReady -> currentState.continuation.resume(Unit)
             is State.Done -> TODO()
             is State.Ready<*> -> TODO()
@@ -59,7 +57,7 @@ class GeneratorIterator<T> (
     }
 
     override fun next(): T {
-        return when(val currentState = state) {
+        return when (val currentState = state) {
             is State.NotReady -> {
                 resume()
                 return next()
@@ -78,10 +76,10 @@ class GeneratorIterator<T> (
     }
 
     override suspend fun yield(value: T) = suspendCoroutine {
-        continuation ->
-        state = when(state) {
+            continuation ->
+        state = when (state) {
             is State.NotReady -> State.Ready(continuation, value)
-            is State.Ready<*> -> throw  IllegalStateException("cannot yield while ready.")
+            is State.Ready<*> -> throw IllegalStateException("cannot yield while ready.")
             is State.Done -> throw IllegalStateException("cannot yield while done.")
         }
     }
@@ -93,20 +91,19 @@ sealed class State {
      * “NotReady：下一个元素尚未就绪，通常是挂起后，尚未恢复执行时的情况，此时由于生成器函数尚未执行，
      * 后续是否存在新元素仍然未知，需要恢复执行之后确定。Continuation记录了当前生成器挂起的位置，用于后续恢复生成器的执行”
      */
-    class NotReady(val continuation : Continuation<Unit>) : State()
+    class NotReady(val continuation: Continuation<Unit>) : State()
 
     /**
      * “Ready：恢复执行后，再次遇到yield调用产生新元素时进入该状态，此时生成器挂起。
      * Continuation记录了当前生成器挂起的位置，用于后续恢复生成器的执行”
      */
-    class Ready<T> (val continuation: Continuation<Unit>, val nextValue: T): State()
+    class Ready<T> (val continuation: Continuation<Unit>, val nextValue: T) : State()
 
     /**
      * “Done：生成器已经执行完毕，无新元素产生”
      */
     data object Done : State()
 }
-
 
 fun main() {
 //    val nums = generator<Int> { start: Int ->
@@ -139,7 +136,7 @@ fun main() {
         yield(1L)
         var current = 1L
         var next = 1L
-        while(true) {
+        while (true) {
             yield(next)
             next += current
             current = next - current
@@ -147,19 +144,13 @@ fun main() {
     }
     fibnocci.take(10).forEach(::println)
 
-
     suspend {
         val user = getUser()
         println(user)
     }.startCoroutine(completion = TODO())
-
 }
 
 suspend fun getUser(): User = suspendCoroutine {
-
 }
 
-class User{
-
-}
-
+class User

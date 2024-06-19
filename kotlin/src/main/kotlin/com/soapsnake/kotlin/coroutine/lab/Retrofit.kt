@@ -1,5 +1,10 @@
 package main.kotlin.com.soapsnake.kotlin.coroutine.lab
 
+import okhttp3.Call
+import okhttp3.Callback
+import okhttp3.Response
+import retrofit2.http.GET
+import retrofit2.http.Path
 import java.io.IOException
 import kotlin.coroutines.Continuation
 import kotlin.coroutines.CoroutineContext
@@ -8,16 +13,10 @@ import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.startCoroutine
 import kotlin.coroutines.suspendCoroutine
-import okhttp3.Call
-import okhttp3.Callback
-import okhttp3.Response
-import retrofit2.http.GET
-import retrofit2.http.Path
-
 
 interface GitHubApi {
     @GET("users/{login}")
-    fun getUserCallBack(@Path("login") login : String) : Call
+    fun getUserCallBack(@Path("login") login: String): Call
 }
 
 class GitHubApiImpl : GitHubApi {
@@ -27,7 +26,7 @@ class GitHubApiImpl : GitHubApi {
 }
 
 fun main() {
-val res = GitHubApiImpl()
+    val res = GitHubApiImpl()
     async {
 //        val user = await {
 //            res.getUserCallBack("bennyhuo") }
@@ -35,14 +34,14 @@ val res = GitHubApiImpl()
     }
 }
 
-
 interface AsyncScope
-fun async(context: CoroutineContext = EmptyCoroutineContext,
-          block : suspend AsyncScope.() -> Unit) {
+fun async(
+    context: CoroutineContext = EmptyCoroutineContext,
+    block: suspend AsyncScope.() -> Unit
+) {
     val completion = AsyncCoroutine(context)
     block.startCoroutine(completion, completion)
 }
-
 
 class AsyncCoroutine(override val context: CoroutineContext = EmptyCoroutineContext) : Continuation<Unit>, AsyncScope {
     override fun resumeWith(result: Result<Unit>) {
@@ -51,7 +50,7 @@ class AsyncCoroutine(override val context: CoroutineContext = EmptyCoroutineCont
 }
 
 suspend fun <T> AsyncScope.await(block: () -> Call) = suspendCoroutine<T> {
-    continuation ->
+        continuation ->
     val call = block()
     call.enqueue(object : Callback {
         override fun onFailure(p0: Call, p1: IOException) {
@@ -59,9 +58,9 @@ suspend fun <T> AsyncScope.await(block: () -> Call) = suspendCoroutine<T> {
         }
 
         override fun onResponse(p0: Call, p1: Response) {
-            if(p1.isSuccessful) {
+            if (p1.isSuccessful) {
                 p1.body()?.let {
-                    continuation::resume  //如果callback成功回调那就直接resume
+                    continuation::resume // 如果callback成功回调那就直接resume
                 } ?: continuation.resumeWithException(NullPointerException())
             } else {
 //                continuation.resumeWithException(HttpException(httprep1))

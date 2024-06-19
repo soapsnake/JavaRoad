@@ -1,16 +1,16 @@
 package main.kotlin.com.soapsnake.kotlin.coroutine.lab
 
-import java.io.IOException
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import java.io.IOException
 
-//sampleStart
-//@OptIn(DelicateCoroutinesApi::class)
-//fun main() = runBlocking {
+// sampleStart
+// @OptIn(DelicateCoroutinesApi::class)
+// fun main() = runBlocking {
 //    val job = GlobalScope.launch { // launch 根协程
 //        println("Throwing exception from launch")
 //        throw IndexOutOfBoundsException() // 我们将在控制台打印 Thread.defaultUncaughtExceptionHandler
@@ -27,9 +27,8 @@ import kotlinx.coroutines.runBlocking
 //    } catch (e: ArithmeticException) {
 //        println("Caught ArithmeticException")
 //    }
-//}
-//sampleEnd
-
+// }
+// sampleEnd
 
 @OptIn(DelicateCoroutinesApi::class)
 fun main() = runBlocking {

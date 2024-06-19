@@ -9,7 +9,7 @@ import kotlinx.coroutines.yield
 val threadLocal = ThreadLocal<String?>() // 声明线程局部变量
 
 fun main() = runBlocking<Unit> {
-//sampleStart
+// sampleStart
     threadLocal.set("main")
     println("Pre-main, current thread: ${Thread.currentThread()}, thread local value: '${threadLocal.get()}'")
     val job = launch(Dispatchers.Default + threadLocal.asContextElement(value = "launch")) {
@@ -19,5 +19,5 @@ fun main() = runBlocking<Unit> {
     }
     job.join()
     println("Post-main, current thread: ${Thread.currentThread()}, thread local value: '${threadLocal.get()}'")
-//sampleEnd
+// sampleEnd
 }

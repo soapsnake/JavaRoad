@@ -4,12 +4,14 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.runBlocking
 
 fun main() = runBlocking<Unit> {
-//sampleStart
+// sampleStart
     println("My job is ${coroutineContext[Job]}")
-//sampleEnd
+// sampleEnd
 
-    val map = mapOf("opp_user_id" to "fdafdasfa",
-                    "123" to "jfdajfidsa")
+    val map = mapOf(
+        "opp_user_id" to "fdafdasfa",
+        "123" to "jfdajfidsa"
+    )
     val newMap = map.toMutableMap().apply {
         remove("jfdaofdoias")
     }

@@ -6,7 +6,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 fun main() = runBlocking<Unit> {
-//sampleStart
+// sampleStart
     // 启动一个协程来处理某种传入请求（request）
     val request = launch {
         // 生成了两个子作业
@@ -27,5 +27,5 @@ fun main() = runBlocking<Unit> {
     request.cancel() // 取消请求（request）的执行
     println("main: Who has survived request cancellation?")
     delay(1000) // 主线程延迟一秒钟来看看发生了什么
-//sampleEnd
+// sampleEnd
 }

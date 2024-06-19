@@ -1,31 +1,31 @@
 package main.kotlin.com.soapsnake.kotlin.coroutine.lite.callback
 
-import java.util.concurrent.atomic.AtomicReference
-import kotlin.coroutines.Continuation
-import kotlin.coroutines.CoroutineContext
-import kotlin.coroutines.cancellation.CancellationException
 import main.kotlin.com.soapsnake.kotlin.coroutine.lite.core.CancelDecision
 import main.kotlin.com.soapsnake.kotlin.coroutine.lite.core.CancelState
 import main.kotlin.com.soapsnake.kotlin.coroutine.lite.core.Job
 import main.kotlin.com.soapsnake.kotlin.coroutine.lite.core.OnCancel
+import java.util.concurrent.atomic.AtomicReference
+import kotlin.coroutines.Continuation
+import kotlin.coroutines.CoroutineContext
+import kotlin.coroutines.cancellation.CancellationException
 
 class CancellableContinuation<T>(private val continuation: Continuation<T>) :
     Continuation<T> by continuation {
-        private val state = AtomicReference<CancelState>(CancelState.Incomplete)
-        private val decision = AtomicReference(CancelDecision.UNDECIDED)
+    private val state = AtomicReference<CancelState>(CancelState.Incomplete)
+    private val decision = AtomicReference(CancelDecision.UNDECIDED)
 
     val isCompleted: Boolean
-        get()  = when(state.get()) {
+        get() = when (state.get()) {
             CancelState.Incomplete,
-                is CancelState.CancelHandler -> false
-                is CancelState.Complete<*>,
-                CancelState.Cancelled -> true
+            is CancelState.CancelHandler -> false
+            is CancelState.Complete<*>,
+            CancelState.Cancelled -> true
         }
 
-    fun invokeOnCancellation(onCancel : OnCancel) {
+    fun invokeOnCancellation(onCancel: OnCancel) {
         val newState = state.updateAndGet {
-            prev ->
-            when(prev) {
+                prev ->
+            when (prev) {
                 CancelState.Incomplete -> CancelState.CancelHandler(onCancel)
                 is CancelState.CancelHandler -> throw IllegalStateException("Prohibited")
                 is CancelState.Complete<*>, CancelState.Cancelled -> prev
@@ -46,32 +46,31 @@ class CancellableContinuation<T>(private val continuation: Continuation<T>) :
 
     private fun doCancel() {
         val prevState = state.getAndUpdate {
-            prev ->
-            when(prev) {
+                prev ->
+            when (prev) {
                 is CancelState.CancelHandler,
                 CancelState.Incomplete -> {
                     CancelState.Cancelled
-                    }
-                    CancelState.Cancelled,
-                        is CancelState.Complete<*> -> {
-                            prev
-                        }
+                }
+                CancelState.Cancelled,
+                is CancelState.Complete<*> -> {
+                    prev
+                }
             }
         }
-        if(prevState is CancelState.CancelHandler) {
+        if (prevState is CancelState.CancelHandler) {
             prevState.onCancel()
 //            resumeWith Exception (Cancellation Exception("Cancelled."))
         }
     }
 
-    fun getResult() : Any? {
+    fun getResult(): Any? {
         installCancelHandler()
-        if(decision.compareAndSet(CancelDecision.UNDECIDED, CancelDecision.SUSPEND)) {
-
-            //todo 应该是COROUTINE_SUSPEND????
+        if (decision.compareAndSet(CancelDecision.UNDECIDED, CancelDecision.SUSPEND)) {
+            // todo 应该是COROUTINE_SUSPEND????
             return CancelDecision.SUSPEND
         }
-        return when(val currentState = state.get()) {
+        return when (val currentState = state.get()) {
             is CancelState.CancelHandler, CancelState.Incomplete -> CancelDecision.SUSPEND
             CancelState.Cancelled -> throw CancellationException("Continuation is cancelled.")
             is CancelState.Complete<*> -> {
@@ -81,7 +80,6 @@ class CancellableContinuation<T>(private val continuation: Continuation<T>) :
             }
         }
     }
-
 
     override val context: CoroutineContext
         get() = TODO("Not yet implemented")
@@ -93,7 +91,7 @@ class CancellableContinuation<T>(private val continuation: Continuation<T>) :
             }
             decision.compareAndSet(CancelDecision.SUSPEND, CancelDecision.RESUMED) -> {
                 state.updateAndGet { prev ->
-                    when(prev) {
+                    when (prev) {
                         is CancelState.Complete<*> -> {
                             throw IllegalStateException("Already completed.")
                         }

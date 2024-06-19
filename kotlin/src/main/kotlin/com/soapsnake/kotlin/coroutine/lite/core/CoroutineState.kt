@@ -11,13 +11,11 @@ sealed class CoroutineState {
 
     private var disposableList: DisposableList = DisposableList.Nil
 
-
     /**
      * “协程启动后立即进入该状态，直到完成或者被取消”
      *
      */
     class Incomplete : CoroutineState()
-
 
     /**
      * “协程执行中被取消后进入该状态。进入该状态后，要等待协程体内部的挂起函数调用响应取消，
@@ -29,12 +27,12 @@ sealed class CoroutineState {
     /**
      * “协程执行完成（包括正常返回和异常结束）时进入该状态”
      */
-    class Complete<T>(val value: T? = null, val exception : Throwable? = null) : CoroutineState()
+    class Complete<T>(val value: T? = null, val exception: Throwable? = null) : CoroutineState()
 
     /**
      * “在创建新状态的时候，使用from即可拿到上一个状态的所有回调”
      */
-    fun from(state : CoroutineState): CoroutineState {
+    fun from(state: CoroutineState): CoroutineState {
         this.disposableList = state.disposableList
         return this
     }
@@ -60,7 +58,7 @@ sealed class CoroutineState {
     }
 
     fun <T> notifyCompletion(result: Result<T>) {
-        //挨个遍历所有已经注册的完成回调,并且调用这些完成回调
+        // 挨个遍历所有已经注册的完成回调,并且调用这些完成回调
         this.disposableList.loopOn<CompletionHandlerDisposable<T>> {
             it.onComplete(result)
         }

@@ -15,7 +15,7 @@ class DeferredCoroutine<T> (context: CoroutineContext) : Deferred<T>, AbstractCo
         val currentState = state.get()
         return when (currentState) {
             is CoroutineState.Incomplete,
-                is CoroutineState.Cancelling -> awaitSuspend()
+            is CoroutineState.Cancelling -> awaitSuspend()
             is CoroutineState.Complete<*> -> {
                 currentState.exception?.let {
                     throw it
@@ -30,10 +30,9 @@ class DeferredCoroutine<T> (context: CoroutineContext) : Deferred<T>, AbstractCo
      */
     private suspend fun awaitSuspend() =
         suspendCoroutine<T> {
-            continuation ->
-                doOnCompleted { result ->
-                    continuation.resumeWith(result)
-                }
+                continuation ->
+            doOnCompleted { result ->
+                continuation.resumeWith(result)
+            }
         }
-
 }

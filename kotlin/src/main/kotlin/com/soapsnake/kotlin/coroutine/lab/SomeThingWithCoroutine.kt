@@ -1,5 +1,6 @@
 package main.kotlin.com.soapsnake.kotlin.coroutine.lab
 
+import kotlinx.coroutines.delay
 import kotlin.coroutines.Continuation
 import kotlin.coroutines.CoroutineContext
 import kotlin.coroutines.EmptyCoroutineContext
@@ -7,8 +8,6 @@ import kotlin.coroutines.RestrictsSuspension
 import kotlin.coroutines.createCoroutine
 import kotlin.coroutines.resume
 import kotlin.coroutines.startCoroutine
-import kotlinx.coroutines.delay
-
 
 suspend fun main() {
     val continuation = suspend {
@@ -16,7 +15,7 @@ suspend fun main() {
         5
     }.createCoroutine(object : Continuation<Int> {
         override fun resumeWith(result: Result<Int>) {
-            //完成回调
+            // 完成回调
             println("Coroutine End : $result")
         }
 
@@ -24,7 +23,6 @@ suspend fun main() {
     })
 
     continuation.resume(Unit)
-
 
     val continuation2 = suspend {
         println("In Coroutine2.")
@@ -38,23 +36,25 @@ suspend fun main() {
         }
     })
 
-
     ProducerScope<Int>().callLaunchCoroutine()
 }
 
 fun <R, T> launchCoroutine(receiver: R, block: suspend R.() -> T) {
-    block.startCoroutine(receiver, object : Continuation<T> {
-        override val context: CoroutineContext
-            get() = EmptyCoroutineContext
+    block.startCoroutine(
+        receiver,
+        object : Continuation<T> {
+            override val context: CoroutineContext
+                get() = EmptyCoroutineContext
 
-        override fun resumeWith(result: Result<T>) {
-            println("Coroutine End : $result")
+            override fun resumeWith(result: Result<T>) {
+                println("Coroutine End : $result")
+            }
         }
-    })
+    )
 }
 
 class ProducerScope<T> {
-    private suspend fun produce(value : T) {
+    private suspend fun produce(value: T) {
         println("ProduceScope::produce being called => $value")
     }
 
@@ -70,7 +70,7 @@ class ProducerScope<T> {
 
 @RestrictsSuspension
 class RestrictProducerScope<T> {
-    suspend fun produce(value : T) {
+    suspend fun produce(value: T) {
         println("ProduceScope::produce being called => $value")
     }
 
