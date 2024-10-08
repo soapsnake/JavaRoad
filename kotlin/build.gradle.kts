@@ -20,6 +20,7 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.12.5")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.0")
     implementation("com.squareup.retrofit2:retrofit:2.5.0")
+    implementation("io.vertx:vertx-core:4.4.0")
     testImplementation("org.jetbrains.kotlin:kotlin-test:1.9.0")
 }
 

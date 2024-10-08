@@ -26,6 +26,8 @@ public class GraphTester {
 
         Map<Integer, Map<Integer, Integer>> map = new HashMap<>();
 
+        System.out.println("dsadsa");
+
         int c = 0;
         for(Map.Entry<Integer, Integer> next : map.get(c).entrySet()) {
         }
