@@ -264,6 +264,7 @@
 <!--        <module>kotlin</module>-->
         <module>react-java-mysql</module>
         <module>docker-redis-cluster</module>
+        <module>profiles</module>
     </modules>
 
     <build>
